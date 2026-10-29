@@ -1,5 +1,10 @@
 # Agent Memory
 
+## Session 127 verified finalization — same-session evidence
+
+Preserve failed full-suite attempts and truthful Partial checkpoints. Append a separate same-session Achieved entry after actual exact metadata, first containing readback, signed impact and owned cleanup; never let a parser-first Partial entry be silently rewritten. Score536 and two outcomes are counted once. Final containing receipt publication and original-lock release remain separately verified.
+
+
 ## Session 127 durable patterns
 
 - A successful restore response can still corrupt the visible session when its envelope is passed where the dashboard is expected; verify Restore through the actual control and then perform another authoritative action.

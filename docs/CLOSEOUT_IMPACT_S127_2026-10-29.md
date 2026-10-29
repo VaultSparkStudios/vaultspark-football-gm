@@ -34,7 +34,7 @@
   ───────────────────────────────────────────────────────────────────────────────────────────
 
   FOLLOW-UPS
-    • Finalization remains required: Exact closing metadata acceptance, containing main publication/readback, signed impact and owned cleanup remain pending.
+    • Final native completion guards: Verify the final containing receipt publication/readback and release ONLY the original goal-bound S127 lock. This brief does not attest its own containing push.
 
   BLOCKERS
     • Independent public launch holds: Identity/email, lifecycle and founder launch approval remain separate; no public launch transition is authorized.

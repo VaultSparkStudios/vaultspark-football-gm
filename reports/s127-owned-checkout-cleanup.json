@@ -1,0 +1,20 @@
+{
+  "session": 127,
+  "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+  "observedAt": "2026-10-29T05:11:16.256Z",
+  "verified": true,
+  "checkout": ".cache/s127-source-checkout",
+  "removed": true,
+  "registrationRemoved": true,
+  "dependencyJunctionOnly": true,
+  "sharedDependenciesPreserved": true,
+  "generatedPaths": [
+    "context/PROJECT_STATUS.json",
+    "docs/STARTUP_BRIEF.md"
+  ],
+  "generatedPatch": {
+    "path": ".cache/s127-cleanup-generated.patch",
+    "sha256": "3860688b0b1e0ef002c1dad80295835021353db948ac8acae43c237c68c9b335"
+  },
+  "scope": "Only the completed S127 disposable verification checkout; all source, metadata patches and native test logs remain preserved outside it."
+}

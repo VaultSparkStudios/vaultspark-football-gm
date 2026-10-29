@@ -1,0 +1,71 @@
+{
+  "session": 127,
+  "verified": true,
+  "observedAt": "2026-10-29T05:25:54.959Z",
+  "checks": {
+    "session": 127,
+    "observedAt": "2026-10-29T05:25:08.138Z",
+    "subject": "franchise-architect-football",
+    "verified": true,
+    "results": {
+      "coherence": {
+        "ok": true,
+        "claimed": 127,
+        "latestDurable": 127,
+        "surfaces": {
+          "sil": 127,
+          "handoff": 127,
+          "workLog": 127,
+          "closeoutBrief": 127
+        },
+        "missing": [],
+        "reason": "closeout write-back coherent for S127",
+        "foreignBriefs": [
+          {
+            "name": "CLOSEOUT_BRIEF_S14_2026-06-04.md",
+            "claimed": "vaultspark-football-gm"
+          }
+        ]
+      },
+      "freshness": {
+        "ok": true,
+        "expected": 127,
+        "sil": 127,
+        "handoff": 127,
+        "stale": [],
+        "reason": "session numbers coherent at S127"
+      },
+      "summary": {
+        "ok": true,
+        "expected": 127,
+        "actual": 127,
+        "reason": "lastSessionSummary coherent at S127"
+      },
+      "contextPreservation": {
+        "ok": true,
+        "findings": []
+      },
+      "writebackCurrency": {
+        "ok": true,
+        "inFlight": false,
+        "debtCount": 0,
+        "anchor": {
+          "sha": "a533a31b",
+          "subject": "[SIL] chore: record S127 verified deployment and closeout checkpoint",
+          "isoDate": "2026-10-29T01:10:22-04:00"
+        },
+        "reason": "write-back current — no substantive commits since a533a31b (2026-10-29T01:10:22-04:00)",
+        "unmeasured": false,
+        "debt": []
+      }
+    },
+    "scope": "Read-only native coherence and preservation checks, explicitly rooted in this recipient. Does not substitute for source CI, final metadata suite, security, push or deployment."
+  },
+  "doctor": {
+    "blockingFailing": 0,
+    "passing": 12,
+    "warning": 0,
+    "scope": "Fresh native read-only recipient lifecycle/blocker/release-currency observation."
+  },
+  "scope": "Actual final formal-record coherence and context preservation; current application source remains the accepted immutable release."
+}

@@ -63,13 +63,13 @@
 ╔══ WHERE WE LEFT OFF  ·  Session 127 ═══════════════════════════╗
 ║  Shipped:  S127 shipped trustworthy franchise recovery: Restore  ║
 ║  Tests: Unverified for this session                              ║
-║  Deploy: S127 frontend and matching API8ab05e49 verified; techn  ║
+║  Deploy: S127 frontend and matching API8ab05e49 accepted; corre  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    6% used                          ║
-║     16,579 / 272,000 tok  ·  codex/codex-272k  ·  heuristic      ║
-║     ~8,290 tok/turn  ·  cache 50%  ·  28 turns to compact        ║
+║  ✓  ██░░░░░░░░░░░░░░░░░░░░░░    8% used                          ║
+║     21,345 / 272,000 tok  ·  codex/codex-272k  ·  heuristic      ║
+║     ~10,673 tok/turn  ·  cache 50%  ·  21 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -80,7 +80,7 @@
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
 ║  ✓  IGNIS         43895 FORGE  ·  0d old                         ║
-║  ⛔  Truth         selected S127 technical production verified;   ║
+║  ⛔  Truth         selected S127 technical release and closeout   ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
 ║  ✓  Entropy       0.012  (healthy)                               ║
@@ -108,7 +108,7 @@
 
 ╔══ MOMENTUM METER ══════════════════════════════════════════════╗
 ║  Velocity:   ▁▁▁▁▁  2→  (last 5 sessions)                        ║
-║  Intent:     40% achieved last 5                                 ║
+║  Intent:     60% achieved last 5                                 ║
 ║  Streak:     — (last intent not achieved)                        ║
 ╚════════════════════════════════════════════════════════════════╝
 

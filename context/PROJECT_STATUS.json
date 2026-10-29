@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S127 shipped trustworthy franchise recovery: Restore applies the saved dashboard and preserves the next playable action; runtime-owned retention handles storage pressure. Damaged optional First Season Contract records no longer crash the Desk or grant malformed completion. Matching frontend/API production source is verified; closeout finalization remains pending.",
-  "nextMilestone": "Finish S127 exact closing metadata, containing publication/readback, signed impact and owned cleanup; preserve independent public-launch holds.",
+  "currentFocus": "S127 shipped trustworthy franchise recovery: Restore applies the saved dashboard and preserves the next playable action; runtime-owned retention handles storage pressure. Damaged optional First Season Contract records no longer crash the Desk or grant malformed completion. Matching frontend/API release and formal closeout evidence are verified, subject to final containing receipt publication and original-lock release.",
+  "nextMilestone": "Verify the final containing receipt publication/readback and release only the original bound S127 lock; independent identity/email/lifecycle/public-launch holds remain separate.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -22,7 +22,7 @@
     "protocol": "oidc-authorization-code-s256-pkce",
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
-  "truthAuditStatus": "Selected S127 technical production verified; closeout finalization pending; broader launch readiness partial.",
+  "truthAuditStatus": "Selected S127 technical release and closeout phases verified; final containing receipt publication/readback and ONLY original bound S127 lock release remain native completion guards; broader launch readiness partial.",
   "truthAuditLastRun": "2026-10-29",
   "ignisScore": 43895,
   "ignisGrade": "FORGE",
@@ -91,7 +91,10 @@
     "acceptance": "reports/s127-release-acceptance.json",
     "sourceStudioReceipt": "reports/s127-isolated-studio.json",
     "tests": "Two selected outcomes independently reviewed. Exact committed source has native Studio398/398 and hosted CI7/7. Staging and production each have four desktop/mobile dark/light worker journeys,24 independently reviewed captures, native provenance14/14 and unchanged five-run performance checks on both profiles. Actual matching API image is running, database ready, existing database/routing preserved, prior source/image and frontend deployment retained for rollback. Final visual84 preserves baseline/local/hosted source boundaries and documented capture limits. Counts have separate scopes and are not summed. No real-player outcome, restore drill or public launch approval is claimed.",
-    "scope": "Accepted selected technical source/release evidence; final closing metadata and containing publication remain pending."
+    "scope": "Exact source/release and corrected exact staged closing metadata separately verified; final containing receipt publication and original-lock release remain native completion guards.",
+    "finalMetadataReceipt": "reports/s127-final-metadata.json",
+    "metadataFirstFailedAttempt": "reports/s127-final-metadata-attempt1.json",
+    "completion": "reports/s127-closeout-completion.json"
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
@@ -132,14 +135,14 @@
   },
   "complianceScore": 37,
   "complianceTotal": 37,
-  "sanitizationLastCleared": "2026-10-25",
+  "sanitizationLastCleared": "2026-10-29",
   "lastVerificationAt": "2026-10-29T04:45:20.380Z",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.012,
   "entropyLastComputed": "2026-10-29",
-  "lastSessionSummary": "S127 shipped trustworthy franchise recovery: Restore applies the saved dashboard and preserves the next playable action; runtime-owned retention handles storage pressure. Damaged optional First Season Contract records no longer crash the Desk or grant malformed completion. Matching frontend/API production source is verified; closeout finalization remains pending.",
+  "lastSessionSummary": "S127 shipped trustworthy franchise recovery: Restore applies the saved dashboard and preserves the next playable action; runtime-owned retention handles storage pressure. Damaged optional First Season Contract records no longer crash the Desk or grant malformed completion. Matching frontend/API release and formal closeout evidence are verified, subject to final containing receipt publication and original-lock release.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -2287,9 +2290,9 @@
   "sessionState": {
     "version": 1,
     "durableSession": 127,
-    "currentFocus": "S127 shipped trustworthy franchise recovery: Restore applies the saved dashboard and preserves the next playable action; runtime-owned retention handles storage pressure. Damaged optional First Season Contract records no longer crash the Desk or grant malformed completion. Matching frontend/API production source is verified; closeout finalization remains pending.",
-    "nextMilestone": "Finish S127 exact closing metadata, containing publication/readback, signed impact and owned cleanup; preserve independent public-launch holds.",
-    "lastSessionSummary": "S127 shipped trustworthy franchise recovery: Restore applies the saved dashboard and preserves the next playable action; runtime-owned retention handles storage pressure. Damaged optional First Season Contract records no longer crash the Desk or grant malformed completion. Matching frontend/API production source is verified; closeout finalization remains pending."
+    "currentFocus": "S127 shipped trustworthy franchise recovery: Restore applies the saved dashboard and preserves the next playable action; runtime-owned retention handles storage pressure. Damaged optional First Season Contract records no longer crash the Desk or grant malformed completion. Matching frontend/API release and formal closeout evidence are verified, subject to final containing receipt publication and original-lock release.",
+    "nextMilestone": "Verify the final containing receipt publication/readback and release only the original bound S127 lock; independent identity/email/lifecycle/public-launch holds remain separate.",
+    "lastSessionSummary": "S127 shipped trustworthy franchise recovery: Restore applies the saved dashboard and preserves the next playable action; runtime-owned retention handles storage pressure. Damaged optional First Season Contract records no longer crash the Desk or grant malformed completion. Matching frontend/API release and formal closeout evidence are verified, subject to final containing receipt publication and original-lock release."
   },
   "partialCloseout": {
     "session": 117,
@@ -2653,23 +2656,29 @@
   "technicalDebtTrend": "decreasing",
   "closeoutExecution": {
     "session": 127,
-    "state": "ordered-records-written-finalization-pending",
-    "finalMetadataVerified": false,
-    "publicationVerified": false,
-    "arkDelivered": false,
-    "cleanupVerified": false
+    "state": "verified-with-final-containing-publication-and-original-lock-guard",
+    "finalMetadataVerified": true,
+    "publicationVerified": true,
+    "arkDelivered": true,
+    "cleanupVerified": true,
+    "completion": "reports/s127-closeout-completion.json",
+    "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with zero owned transient jobs; then release ONLY the original goal-bound S127 lock (start 2026-10-29T02:12:39.579Z, startHead ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd). This receipt cannot attest to its own containing publication or lock release.",
+    "finalContainingReceiptPublicationVerified": false,
+    "originalLockReleased": false
   },
   "lastCloseoutSession": 127,
   "closeoutPublication": {
-    "session": 126,
-    "commit": "463f686e3db270435bc24a1f5f859ed7b5121a4b",
+    "session": 127,
+    "commit": "a533a31b32c7d8f7e463abceff7ef8d07270ba2a",
     "pushed": true,
-    "applicationSourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+    "applicationSourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+    "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
     "receiptOnly": true,
-    "independentReview": "passed-round-two-after-two-display-fixes",
-    "arkCargoId": "01K62HHV1K620ABDCA3702225A",
-    "completion": "reports/s126-c2-closeout-completion.json",
-    "nativeCompletionGuard": "Before native goal completion require the final containing receipt commit on remote main, exact ancestor receipt bytes, clean project worktree, zero owned transient jobs and release only the original bound S126 lock. This receipt does not attest to its own containing push."
+    "independentReview": "reports/s127-independent-final-review.json",
+    "arkCargoId": "01K63134KU7A5F6CF32DD300EC",
+    "completion": "reports/s127-closeout-completion.json",
+    "finalContainingReceiptPublicationVerified": false,
+    "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with zero owned transient jobs; then release ONLY the original goal-bound S127 lock (start 2026-10-29T02:12:39.579Z, startHead ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd). This receipt cannot attest to its own containing publication or lock release."
   },
   "silVelocity": 2,
   "historicalTestShardReceipt": {
@@ -2725,12 +2734,17 @@
       }
     },
     "finalMetadata": {
-      "verified": false,
-      "status": "pending exact staged closing metadata"
+      "verified": true,
+      "passed": 398,
+      "total": 398,
+      "testedStagedTree": "150020108b8857ad084b5ac15661097c3d896225",
+      "receipt": "reports/s127-final-metadata.json",
+      "failedAttempt": "reports/s127-final-metadata-attempt1.json",
+      "scope": "Actual tested closing checkpoint; subsequent formal attestations are metadata only, separately reviewed and checked."
     },
     "proof": "reports/s127-release-acceptance.json"
   },
-  "testsDeferredNote": "Exact-source CI7/7, source Studio398/398 and final metadata Studio separately passed. Aggregate unit-case count and real-player outcomes remain unmeasured.",
+  "testsDeferredNote": "Exact-source CI7/7, source Studio398/398 and corrected closing metadata398/398 separately passed. First metadata397/398 failure is preserved. No aggregate application case count or real-player outcome is claimed.",
   "historicalCloseoutPublication": {
     "commit": "eb0ed0a6dfb018c2fd21aef090bb4f4325572186",
     "pushed": true,
@@ -2752,7 +2766,7 @@
     "receipt": "reports/s118-closeout-protocol.json",
     "tests": 44
   },
-  "truthAuditNote": "S127 selected recovery/progress release verified at matching frontend/API source; capture limitations and independent public-launch holds remain. No real-player outcome claim.",
+  "truthAuditNote": "S127 technical source/release and corrected metadata proof verified with preserved failed attempt and scoped visual evidence; final containing receipt publication and original-lock release remain guarded. Independent launch holds unchanged.",
   "closeoutSecurity": {
     "session": 123,
     "status": "passed",
@@ -2760,10 +2774,13 @@
     "exactStagedScan": "verified"
   },
   "closeoutProtocol": {
-    "session": 124,
-    "status": "artifacts-verified",
-    "receipt": "reports/s124-closeout-completion.json",
-    "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact f39 staging/frontend/API identity, terminal receipt-only CI with no observed executed failure, zero owned transient jobs/processes, and release only the original S124 lock."
+    "session": 127,
+    "status": "verified-phases-final-native-guards-pending",
+    "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+    "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
+    "receipt": "reports/s127-closeout-completion.json",
+    "orderedSteps": 11,
+    "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with zero owned transient jobs; then release ONLY the original goal-bound S127 lock (start 2026-10-29T02:12:39.579Z, startHead ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd). This receipt cannot attest to its own containing publication or lock release."
   },
   "priorReleaseAuthority": {
     "schemaVersion": "1.0",
@@ -2850,10 +2867,11 @@
     "audit": "docs/AUDIT_2026-10-29.json",
     "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
     "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-    "status": "technical-production-verified-ordered-records-written-finalization-pending",
+    "status": "selected-outcomes-and-full-arc-phases-verified-final-native-guards-pending",
     "productionVerified": true,
     "acceptance": "reports/s127-release-acceptance.json",
-    "closeoutComplete": false
+    "closeoutComplete": true,
+    "completion": "reports/s127-closeout-completion.json"
   },
   "silScoreBasis": "Reviewed engineering judgment; no measured player or financial outcome claim.",
   "silDebt": "→",
@@ -2899,7 +2917,7 @@
   },
   "silDebtTrend": "→",
   "silLastUpdated": "2026-10-29",
-  "lastDeployStatus": "S127 frontend and matching API8ab05e49 verified; technical acceptance reports/s127-release-acceptance.json. Exact closing metadata, containing publication, signed impact and owned cleanup remain pending.",
+  "lastDeployStatus": "S127 frontend and matching API8ab05e49 accepted; corrected closing metadata398, first containing publication, signed impact and owned cleanup verified. Final containing receipt publication/readback and original lock release remain guarded.",
   "previousBackendDeployment": {
     "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
     "workflowRun": 40135991113,
@@ -2964,8 +2982,8 @@
     "completion": "reports/s123-closeout-completion.json",
     "nativeCompletionGuard": "Verify this final containing receipt commit on remote main, reconfirm live490 staging/frontend/API, zero owned running jobs and release only the original S123 lock before native goal completion."
   },
-  "sessionIntentAchieved": false,
-  "sessionIntentDisposition": "partial-finalization-pending",
+  "sessionIntentAchieved": true,
+  "sessionIntentDisposition": "complete-with-final-containing-publication-and-original-lock-guard",
   "silSparkline": [
     838,
     856,
@@ -2975,5 +2993,39 @@
     500,
     510,
     505
-  ]
+  ],
+  "historicalCloseoutRecords": [
+    {
+      "field": "closeoutProtocol",
+      "historicalSession": 124,
+      "record": {
+        "session": 124,
+        "status": "artifacts-verified",
+        "receipt": "reports/s124-closeout-completion.json",
+        "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact f39 staging/frontend/API identity, terminal receipt-only CI with no observed executed failure, zero owned transient jobs/processes, and release only the original S124 lock."
+      },
+      "scope": "Historical prior-session record; never S127 completion evidence."
+    },
+    {
+      "field": "closeoutPublication",
+      "historicalSession": 126,
+      "record": {
+        "session": 126,
+        "commit": "463f686e3db270435bc24a1f5f859ed7b5121a4b",
+        "pushed": true,
+        "applicationSourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+        "receiptOnly": true,
+        "independentReview": "passed-round-two-after-two-display-fixes",
+        "arkCargoId": "01K62HHV1K620ABDCA3702225A",
+        "completion": "reports/s126-c2-closeout-completion.json",
+        "nativeCompletionGuard": "Before native goal completion require the final containing receipt commit on remote main, exact ancestor receipt bytes, clean project worktree, zero owned transient jobs and release only the original bound S126 lock. This receipt does not attest to its own containing push."
+      },
+      "scope": "Historical prior-session record; never S127 completion evidence."
+    }
+  ],
+  "sanitizationEvidence": {
+    "session": 127,
+    "receipt": "reports/s127-final-staged-security.json",
+    "scope": "Actual initial containing closing-metadata staged blobs and settings checked. Final receipt descendants require their own fresh staged scan before publication."
+  }
 }

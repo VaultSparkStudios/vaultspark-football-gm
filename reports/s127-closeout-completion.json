@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "session": 127,
+  "at": "2026-10-29T05:19:44.432Z",
+  "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+  "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
+  "selectedOutcomes": 2,
+  "silScore": 536,
+  "silCategoriesV3": {
+    "devHealth": 93,
+    "creativeAlignment": 70,
+    "momentum": 65,
+    "engagement": 45,
+    "processQuality": 62,
+    "crossRepoCoherence": 60,
+    "securityPosture": 60,
+    "ecosystemIntegration": 20,
+    "capitalEfficiency": 0,
+    "automationCoverage": 61
+  },
+  "fullArcPhasesVerified": true,
+  "closeoutComplete": true,
+  "nativeGoalComplete": false,
+  "launchApproved": false,
+  "sameSessionFinalization": true,
+  "priorPartialCheckpointPreserved": true,
+  "technicalAcceptance": {
+    "path": "reports/s127-release-acceptance.json",
+    "sha256": "a9d58fc2a9c77cafa9c7e9898e7fff78874d1471c64776a6565d48873d502928"
+  },
+  "visualReceipt": {
+    "path": "docs/visual-qa/LATEST.json",
+    "sha256": "a2bb7fb058ce3d712feeb67decd3b9039299a5453011f769c6445bd0c32d6a54",
+    "frozen": true
+  },
+  "finalMetadata": {
+    "receipt": "reports/s127-final-metadata.json",
+    "testedStagedTree": "150020108b8857ad084b5ac15661097c3d896225",
+    "summary": {
+      "valid": true,
+      "reason": null,
+      "tests": 398,
+      "pass": 398,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "failedFirstAttempt": "reports/s127-final-metadata-attempt1.json"
+  },
+  "firstContainingPublication": "a533a31b32c7d8f7e463abceff7ef8d07270ba2a",
+  "ark": {
+    "receipt": "reports/s127-ark-impact.json",
+    "cargoId": "01K63134KU7A5F6CF32DD300EC",
+    "state": "shipped",
+    "hmacVerified": true,
+    "adoption": "Not asserted"
+  },
+  "ownedCleanup": {
+    "checkout": "reports/s127-owned-checkout-cleanup.json",
+    "jobs": "reports/s127-owned-jobs.json",
+    "running": 0
+  },
+  "independentReview": "reports/s127-independent-final-review.json",
+  "inputHashes": {
+    "reports/s127-release-acceptance.json": "a9d58fc2a9c77cafa9c7e9898e7fff78874d1471c64776a6565d48873d502928",
+    "docs/visual-qa/LATEST.json": "a2bb7fb058ce3d712feeb67decd3b9039299a5453011f769c6445bd0c32d6a54",
+    ".cache/arc-goals/19c8027e1d8e1b7e1d8b96bd41d2a5d84521f19f08d1476287bc6298fc35cf1c.json": "1980456c7a6994a80003dbcb69b22e2f9bd405e2eafe0abde4ffb10184549c98",
+    ".cache/s127-closeout-plan.json": "8d13114a479e934daec9fc0a0d0e118ba5ebaa75a370218d1133d7e6f9c065a2",
+    ".cache/s127-closeout-writeback.ndjson": "01f17929116ac55e0588334bd7921ab49a60aa85fb9260e73c4d9420f7b80a19",
+    ".cache/s127-isolated-studio-state.json": "5e50856a84faf08b453899c1d615cfa6e13bc26002c5f4ef29e71a9490fdee7b",
+    "reports/s127-ci.json": "1ce882b9b7b5ad835fbb96cf9dcefb781fc55825d56a1df54afb0c014f69e647",
+    "reports/s127-isolated-studio.json": "eac283a9a009d3fe2d6388803788b22b769b4205e78d125d3d857e4188326cd1",
+    "reports/s127-final-metadata.json": "f2380db13d462d54221f73dd51a86a0372afaec436a88babbf31498cabe5840c",
+    "reports/s127-final-metadata-attempt1.json": "56ef376ab800cd469b4b7ada610fa9fe420d716ea85d2bfff0b9ca9d7234a27c",
+    "reports/s127-metadata-publication.json": "b346b85f72c30ad41e1f982886e00d453e70f7ef41c748d0fcd19b62de2aff51",
+    "reports/s127-ark-impact.json": "836b2f466789dd4efd963f35a55f340b03e8fd4a67838ce20d99c4514fc7e02b",
+    "reports/s127-owned-checkout-cleanup.json": "0cbfb041b4df6971f8fbd7afb38aba27a3c45774a9b1ef45e04b6cd3ebf5952f",
+    "reports/s127-owned-jobs.json": "68f17aba5a6b5ce652b7a4e61681f3e6d395a20ea966e01795a091d25ee2476d",
+    "reports/s127-independent-final-review.json": "793420107ba1249ccdc95b33042820ebebb42ca784bb7d169ca9935700086df5",
+    ".cache/s127-final-metadata.log": "fff44d24c226c1bdaaac9429a463059c6e7229db70d6924fb8ed4b151335b42c",
+    ".cache/s127-final-metadata.patch": "502e741465ba463dcc3523151f5f0142c19bd7c7378a4c8ebd13ce321d154e84",
+    ".cache/s127-final-metadata-generated.patch": "3860688b0b1e0ef002c1dad80295835021353db948ac8acae43c237c68c9b335",
+    ".cache/s127-final-metadata-attempt1.log": "e75767df91c78d19ba09a581c70aafd7751b8725a84a36288411329a0e095b5b",
+    ".cache/s127-final-metadata-attempt1.patch": "a07b513c68d303c53107be5426dcf9a262500b21a3be9afe12e32de5ee22e097",
+    ".cache/s127-final-metadata-attempt1-generated.patch": "e3d0f9ee87e93c55f90c62b6f57e87c802e23144fabe5634fd9d5e9f1758b45f",
+    ".cache/s127-final-metadata-attempt1-original.json": "8fbeb294165dcd4bef01f4ea1dbadd75ed131e8c2219a5b48887efc638cc9664",
+    ".cache/s127-isolated-studio.log": "06e66d68346c19971a5faedd623b6ade328de05a7a152d8fe65430772cd65823",
+    ".cache/s127-cleanup-generated.patch": "3860688b0b1e0ef002c1dad80295835021353db948ac8acae43c237c68c9b335"
+  },
+  "formalWriterSha256": "851841713d61fa929e9ec3b9ba544c500674ec3462768ad4588467d130facb7b",
+  "originalLockSha256": "b1aeff465405137803838151943a830a471c0d8efb19d815b3a9cf45a12fb674",
+  "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with zero owned transient jobs; then release ONLY the original goal-bound S127 lock (start 2026-10-29T02:12:39.579Z, startHead ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd). This receipt cannot attest to its own containing publication or lock release.",
+  "finalContainingReceiptPublicationVerified": false,
+  "originalBoundLockReleased": false,
+  "derivedSurfaceFollowThrough": "Before the final containing publication, root refreshes canonical SIL rolling status, startup/impact/status boards from current records and checks the final metadata-only diff. This formal receipt does not claim later derived-surface checks or its own publication.",
+  "boundary": "Actual full arc phase evidence with first containing publication and owned cleanup is verified. Final containing receipt publication/readback and ONLY original bound S127 lock release remain explicit native completion guards. No public-launch, lifecycle or player outcome claim."
+}

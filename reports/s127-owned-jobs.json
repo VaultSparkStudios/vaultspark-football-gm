@@ -1,0 +1,160 @@
+{
+  "session": 127,
+  "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+  "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
+  "at": "2026-10-29T05:15:15.285Z",
+  "verified": true,
+  "rootReturnedLiveHandlesObserved": 22,
+  "started": 22,
+  "closed": 22,
+  "terminal": 0,
+  "missing": 22,
+  "running": 0,
+  "osTaskProcessMatches": 0,
+  "ownedPreviewListeners": 0,
+  "observations": [
+    {
+      "session_id": 77888,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 77888"
+      }
+    },
+    {
+      "session_id": 23521,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 23521"
+      }
+    },
+    {
+      "session_id": 35830,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 35830"
+      }
+    },
+    {
+      "session_id": 48238,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 48238"
+      }
+    },
+    {
+      "session_id": 34640,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 34640"
+      }
+    },
+    {
+      "session_id": 10791,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 10791"
+      }
+    },
+    {
+      "session_id": 11219,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 11219"
+      }
+    },
+    {
+      "session_id": 78611,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 78611"
+      }
+    },
+    {
+      "session_id": 75387,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 75387"
+      }
+    },
+    {
+      "session_id": 98295,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 98295"
+      }
+    },
+    {
+      "session_id": 21728,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 21728"
+      }
+    },
+    {
+      "session_id": 6707,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 6707"
+      }
+    },
+    {
+      "session_id": 21224,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 21224"
+      }
+    },
+    {
+      "session_id": 94320,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 94320"
+      }
+    },
+    {
+      "session_id": 81766,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 81766"
+      }
+    },
+    {
+      "session_id": 9355,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 9355"
+      }
+    },
+    {
+      "session_id": 1391,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 1391"
+      }
+    },
+    {
+      "session_id": 11797,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 11797"
+      }
+    },
+    {
+      "session_id": 39774,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 39774"
+      }
+    },
+    {
+      "session_id": 50421,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 50421"
+      }
+    },
+    {
+      "session_id": 73479,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 73479"
+      }
+    },
+    {
+      "session_id": 42989,
+      "result": {
+        "error": "write_stdin failed: Unknown process id 42989"
+      }
+    }
+  ],
+  "osObservation": {
+    "matches": [],
+    "observedAt": "2026-10-29T05:15:04.1822737Z",
+    "ownedPreviewListeners": 0,
+    "session": 127,
+    "scope": "Named S127 transient helpers plus the owned preview port; unrelated services and production containers are preserved.",
+    "ownedPreviewPort": 4273,
+    "osTaskProcessMatches": 0
+  },
+  "childAgents": "All assigned non-root implementation/review/preparation tasks reported completion; no additional task remains assigned.",
+  "scope": "Actual known S127 asynchronous native handles polled and currently missing, plus fresh named-helper/owned-port OS census. Closed denotes ended tracked transient work, not successful exits; failures and successes remain in their own preserved receipts. Synchronous commands are not counted as background jobs. Unrelated services and production containers are preserved."
+}

@@ -1,5 +1,16 @@
 # Current State
 
+## 2026-10-29 — Session 127 — Verified finalization checkpoint
+
+S127 shipped trustworthy franchise recovery: Restore applies the saved dashboard and preserves the next playable action; runtime-owned retention handles storage pressure. Damaged optional First Season Contract records no longer crash the Desk or grant malformed completion. Matching frontend/API release and formal closeout evidence are verified, subject to final containing receipt publication and original-lock release.
+
+Two selected outcomes. Exact-source hosted CI7/7, source Studio398/398 and corrected closing-metadata Studio398/398 are separate checks, never an aggregate application case count. Staging and production each have four desktop/mobile dark/light actual worker journeys,24 independently reviewed captures, native provenance14/14 and five-run performance on both profiles. Matching API image/database readiness and existing database/routing preservation are accepted by reports/s127-release-acceptance.json. Final visual84 retains baseline12/local-C1 24/staging24/production24 scopes and capture limitations. No real-player outcome, restore drill, broad launch readiness or lifecycle transition is inferred.
+
+The corrected closing metadata passed the unchanged native Studio suite398/398 at staged tree 150020108b8857ad084b5ac15661097c3d896225; the first397/398 failure remains preserved as reports/s127-final-metadata-attempt1.json. First containing metadata commit a533a31b32c7d8f7e463abceff7ef8d07270ba2a was pushed and read back. Signed impact 01K63134KU7A5F6CF32DD300EC was shipped and HMAC verified; recipient adoption is not asserted. The owned verification checkout was removed with evidence preserved, and actual owned-job census found zero running. This is verified finalization for the same S127, not a new session or additional product delivery. Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with zero owned transient jobs; then release ONLY the original goal-bound S127 lock (start 2026-10-29T02:12:39.579Z, startHead ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd). This receipt cannot attest to its own containing publication or lock release.
+
+Completion evidence: reports/s127-closeout-completion.json. Earlier ordered-checkpoint pending statements below are historical. Independent public-launch holds remain.
+
+
 ## 2026-10-29 — Session 127 — Trustworthy franchise recovery
 
 S127 shipped trustworthy franchise recovery: Restore applies the saved dashboard and preserves the next playable action; runtime-owned retention handles storage pressure. Damaged optional First Season Contract records no longer crash the Desk or grant malformed completion. Matching frontend/API production source is verified; closeout finalization remains pending.

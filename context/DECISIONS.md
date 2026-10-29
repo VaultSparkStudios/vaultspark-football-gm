@@ -121,3 +121,11 @@ Independent final review found stale current deployment/truth labels inherited f
 ### S127 metadata acceptance correction
 
 The first exact closing-metadata Studio run passed397/398 and failed the mandatory explicit SIL intent-disposition check. Its full report, log, patch and generated overlay remain preserved as attempt1. Append a truthful Partial checkpoint while finalization is pending; keep the existing score/history intact. Remove the generated impact brief extra EOF blank, then retest the corrected staged tree with the unchanged full native suite. No test or gate is relaxed.
+
+## 2026-10-29 — Session 127 — Verified finalization checkpoint
+
+Preserve the executed first397/398 metadata failure and its truthful Partial intent checkpoint. Record verified finalization as an additional append-only scored entry for the SAME S127; do not rewrite history, increment session identity, count two more outcomes or change the reviewed536assessment.
+
+The corrected closing metadata passed the unchanged native Studio suite398/398 at staged tree 150020108b8857ad084b5ac15661097c3d896225; the first397/398 failure remains preserved as reports/s127-final-metadata-attempt1.json. First containing metadata commit a533a31b32c7d8f7e463abceff7ef8d07270ba2a was pushed and read back. Signed impact 01K63134KU7A5F6CF32DD300EC was shipped and HMAC verified; recipient adoption is not asserted. The owned verification checkout was removed with evidence preserved, and actual owned-job census found zero running. This is verified finalization for the same S127, not a new session or additional product delivery. Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with zero owned transient jobs; then release ONLY the original goal-bound S127 lock (start 2026-10-29T02:12:39.579Z, startHead ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd). This receipt cannot attest to its own containing publication or lock release.
+
+No new creative, licensing, security-policy, lifecycle or launch decision is made.

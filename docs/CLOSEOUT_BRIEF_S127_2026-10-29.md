@@ -9,7 +9,7 @@
 
 ## Follow-ups
 
-- **Finalization remains required**: Exact closing metadata acceptance, containing main publication/readback, signed impact and owned cleanup remain pending.
+- **Final native completion guards**: Verify the final containing receipt publication/readback and release ONLY the original goal-bound S127 lock. This brief does not attest its own containing push.
 
 ## Blockers
 
@@ -17,7 +17,7 @@
 
 ## Honesty Ledger
 
-- **Preserved failed observations**: Local ignored-environment Studio failures, early harness observation failure and baseline fixture/capture limitations remain recorded.
+- **Earlier failed observations preserved**: The initial closing metadata397/398 failure, truthful Partial checkpoint, local ignored-environment and harness failures, and capture limitations remain separately recorded.
 - **Evidence scope**: CI7, source Studio398, separate focused suites, four journeys per origin, native14 each and84scoped rasters are not summed or represented as whole-product/real-player proof.
 - **Engineering judgment**: Impact bars and SIL are reviewed engineering judgments; no retention, revenue or recipient adoption measurement is claimed.
 
@@ -26,4 +26,4 @@
 - Files changed: n/a
 - Insertions: n/a
 - Deletions: n/a
-- Suite: Exact CI7/7; source Studio398/398; hosted worker4 and native14 per origin;84scoped inspected rasters. Closing metadata remains separate.
+- Suite: Exact CI7/7; source Studio398/398 and corrected closing metadata398/398 separately; hosted worker4 and native14 per origin;84scoped inspected rasters. Final native guards remain.

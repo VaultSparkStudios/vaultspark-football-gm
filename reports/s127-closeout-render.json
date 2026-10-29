@@ -15,11 +15,11 @@
   },
   "ascii": {
     "path": "docs/CLOSEOUT_IMPACT_S127_2026-10-29.md",
-    "sha256": "372fba608317f69e8b048ae0950b508e37c640a496c6a30ae61d9291b047cc9b"
+    "sha256": "9e067dadb5c5fca5241df489b726130c5246e1d12f8ff6cb61549e52551babce"
   },
   "board": {
     "path": "docs/CLOSEOUT_STATUS_BOARD.md",
-    "sha256": "bae364d264feb49ef2815f98f07e8640f112c4c414e8af6ba9abd966e33fec68"
+    "sha256": "547ed865d96476c27797dbce48ed63d0f17cbddae2907947175435b76468dfb2"
   },
   "nativeLogs": {
     "sil": {
@@ -58,7 +58,7 @@
       "scope": "Actual native stdout retained privately; public record stores only its hash."
     }
   },
-  "scope": "Ordered checkpoint render only; final metadata/publication/impact/cleanup remain separately required.",
+  "scope": "Actual canonical ordered and finalization projection snapshots. Original stdout hashes retain their checkpoint scope; raw stdout stays private. Final containing receipt publication/readback and original bound lock release remain native guards.",
   "rawLogPublication": "Raw stdout stays in ignored cache; no home paths are published.",
   "currentProjectionCorrection": {
     "verified": true,
@@ -109,5 +109,63 @@
         "stdoutSha256": "9bc473bb0c65b8959da200871aff4f6d1177115cf030ccf275d8d23e2232dfc6"
       }
     ]
+  },
+  "finalizationProjection": {
+    "observedAt": "2026-10-29T05:23:20.069Z",
+    "verified": true,
+    "logs": [
+      {
+        "command": "node scripts/render-sil-rolling-status.mjs --write",
+        "exitCode": 0,
+        "stdoutSha256": "55c87223b4baa583e129d46683434bbb0a445bb58eddc29ead4c5a8a282d92aa"
+      },
+      {
+        "command": "node scripts/render-sil-rolling-status.mjs --check",
+        "exitCode": 0,
+        "stdoutSha256": "86b7526ec808769cc683d4ca86b910899eecac6eb57b36b971ec9f03983003b3"
+      },
+      {
+        "command": "node scripts/lib/write-project-status.mjs --check",
+        "exitCode": 0,
+        "stdoutSha256": "96c483fbb98101e3c52447c3b09b4f14c80c18ae78beb7c0d5067af4394b4abb"
+      },
+      {
+        "command": "node scripts/render-startup-brief.mjs",
+        "exitCode": 0,
+        "stdoutSha256": "47bacd7ea5488607b03726701632327287c862774b75e287b11c4bb8bf5261e1"
+      },
+      {
+        "command": "node scripts/validate-brief-format.mjs docs/STARTUP_BRIEF.md",
+        "exitCode": 0,
+        "stdoutSha256": "a687437197d81f7e3bc03d137ab0aa047e746a6e49e1836e0fb60bcf295cc407"
+      },
+      {
+        "command": "node scripts/render-audit-md.mjs --input docs/AUDIT_2026-10-29.json",
+        "exitCode": 0,
+        "stdoutSha256": "0cad369e4110000d798fb2651458aa6a78d5126a23a7854ed84fbcfba3ea5a0b"
+      },
+      {
+        "command": "node scripts/render-closeout-brief.mjs --input .cache/s127-closeout-brief-input.json",
+        "exitCode": 0,
+        "stdoutSha256": "ad7848d4e6a547ab9fc5164960eaee7f3b7619bf7d6482e1cc42ad7fc36dfddf"
+      },
+      {
+        "command": "node scripts/render-closeout-board.mjs --project .",
+        "exitCode": 0,
+        "stdoutSha256": "0abb627046f2f4dbd618332ae0382a75af170625c00f58615a978881040ee37e"
+      },
+      {
+        "command": "node scripts/validate-closeout-board-format.mjs docs/CLOSEOUT_STATUS_BOARD.md --json",
+        "exitCode": 0,
+        "stdoutSha256": "9bc473bb0c65b8959da200871aff4f6d1177115cf030ccf275d8d23e2232dfc6"
+      }
+    ],
+    "silDelta": {
+      "previous": 532,
+      "current": 536
+    },
+    "shellCensus": "reports/s127-owned-jobs.json",
+    "finalContainingPublicationVerified": false,
+    "originalBoundLockReleased": false
   }
 }

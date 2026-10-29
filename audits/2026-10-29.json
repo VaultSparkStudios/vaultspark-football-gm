@@ -20,6 +20,9 @@
   },
   "silScore": 536,
   "acceptance": "reports/s127-release-acceptance.json",
-  "closeoutComplete": false,
-  "scope": "Selected technical release and ordered record checkpoint only. Final metadata/publication/impact/cleanup remain unverified."
+  "closeoutComplete": true,
+  "scope": "S127 two selected outcomes, actual technical release, corrected closing metadata, first containing publication, signed impact and owned cleanup verified; final containing receipt publication and original bound lock release remain native guards.",
+  "closeoutCompletion": "reports/s127-closeout-completion.json",
+  "completion": "reports/s127-closeout-completion.json",
+  "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with zero owned transient jobs; then release ONLY the original goal-bound S127 lock (start 2026-10-29T02:12:39.579Z, startHead ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd). This receipt cannot attest to its own containing publication or lock release."
 }

@@ -8,7 +8,7 @@
     "type": "game",
     "name": "Franchise Architect: Football"
   },
-  "scope": "Fresh S127 arc: trustworthy rewind recovery and resilient first-season progress",
+  "scope": "S127 two selected outcomes, actual technical release, corrected closing metadata, first containing publication, signed impact and owned cleanup verified; final containing receipt publication and original bound lock release remain native guards.",
   "profile": {
     "rubric": "product",
     "audience": "public-unlaunched",
@@ -598,7 +598,7 @@
   },
   "implementationComplete": true,
   "releaseComplete": true,
-  "closeoutComplete": false,
+  "closeoutComplete": true,
   "generatedAt": "2026-10-29T02:17:23.431Z",
   "processLimitations": [
     "Startup guard helper timed out launching nested PowerShell; invoking PowerShell applied and verified the same canonical User/Process guard values.",
@@ -627,6 +627,9 @@
     "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
     "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
     "acceptance": "reports/s127-release-acceptance.json",
-    "status": "technical-production-verified-finalization-pending"
-  }
+    "status": "technical-production-and-closeout-phases-verified-final-native-guards-pending"
+  },
+  "closeoutCompletion": "reports/s127-closeout-completion.json",
+  "completion": "reports/s127-closeout-completion.json",
+  "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with zero owned transient jobs; then release ONLY the original goal-bound S127 lock (start 2026-10-29T02:12:39.579Z, startHead ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd). This receipt cannot attest to its own containing publication or lock release."
 }

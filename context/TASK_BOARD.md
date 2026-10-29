@@ -5,7 +5,7 @@
 - [x] Wave 1 — Fresh native goal S127 binding, startup checks, nine-axis audit and pre-edit admission. Startup held-source-absent and missing-helper limits remain recorded.
 - [x] Wave 2 — Both selected recovery outcomes independently reviewed; scoped focused/local browser evidence remains distinct from exact release proof.
 - [x] Wave 3 — Exact source CI7, source Studio398, staging and production frontend/API technical release accepted at 8ab05e49d658e512e03614bd5cc12f6f85a5a75f; reports/s127-release-acceptance.json.
-- [ ] Wave 4 — Ordered records written; final closing metadata, containing publication/readback, signed impact and owned cleanup remain required.
+- [x] Wave 4 — Ordered records, corrected exact metadata398, first containing publication/readback, signed impact and owned cleanup verified; reports/s127-closeout-completion.json. Final containing receipt publication/readback and ONLY original bound S127 lock release remain native completion guards.
 
 ## S127 future discipline — unselected follow-ups
 

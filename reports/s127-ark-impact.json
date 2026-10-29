@@ -1,0 +1,21 @@
+{
+  "session": 127,
+  "at": "2026-10-29T05:11:01.041Z",
+  "cargoId": "01K63134KU7A5F6CF32DD300EC",
+  "type": "session-impact-summary",
+  "from": "franchise-architect-football",
+  "to": "*",
+  "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+  "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
+  "operationKey": "46acc89824e10c978e9d4918e27d28fe5a841ae28f3c7b426043ee9a6a75b9ed",
+  "reviewedPlanSha256": "7565031caf512a569c91700b287dbbe7c3d4b018b65aaf2a16012c4924e0245b",
+  "closeoutCommit": "a533a31b32c7d8f7e463abceff7ef8d07270ba2a",
+  "observedRemoteMain": "a533a31b32c7d8f7e463abceff7ef8d07270ba2a",
+  "hmacVerified": true,
+  "ed25519Posture": "unsigned",
+  "repoRootExplicit": true,
+  "studioOpsRootExplicit": true,
+  "state": "shipped",
+  "reusedExisting": false,
+  "adoption": "Not asserted. Signed delivery, recipient acceptance/application and verified adoption remain distinct."
+}
