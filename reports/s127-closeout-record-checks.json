@@ -1,0 +1,59 @@
+{
+  "session": 127,
+  "observedAt": "2026-10-29T04:49:24.959Z",
+  "subject": "franchise-architect-football",
+  "verified": true,
+  "results": {
+    "coherence": {
+      "ok": true,
+      "claimed": 127,
+      "latestDurable": 127,
+      "surfaces": {
+        "sil": 127,
+        "handoff": 127,
+        "workLog": 127,
+        "closeoutBrief": 127
+      },
+      "missing": [],
+      "reason": "closeout write-back coherent for S127",
+      "foreignBriefs": [
+        {
+          "name": "CLOSEOUT_BRIEF_S14_2026-06-04.md",
+          "claimed": "vaultspark-football-gm"
+        }
+      ]
+    },
+    "freshness": {
+      "ok": true,
+      "expected": 127,
+      "sil": 127,
+      "handoff": 127,
+      "stale": [],
+      "reason": "session numbers coherent at S127"
+    },
+    "summary": {
+      "ok": true,
+      "expected": 127,
+      "actual": 127,
+      "reason": "lastSessionSummary coherent at S127"
+    },
+    "contextPreservation": {
+      "ok": true,
+      "findings": []
+    },
+    "writebackCurrency": {
+      "ok": true,
+      "inFlight": false,
+      "debtCount": 0,
+      "anchor": {
+        "sha": "8ab05e49",
+        "subject": "fix: preserve rewind response parity and session record authority (S127)",
+        "isoDate": "2026-10-28T22:53:27-04:00"
+      },
+      "reason": "write-back current — no substantive commits since 8ab05e49 (2026-10-28T22:53:27-04:00)",
+      "unmeasured": false,
+      "debt": []
+    }
+  },
+  "scope": "Read-only native coherence and preservation checks, explicitly rooted in this recipient. Does not substitute for source CI, final metadata suite, security, push or deployment."
+}

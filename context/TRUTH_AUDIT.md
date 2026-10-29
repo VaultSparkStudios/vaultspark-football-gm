@@ -1,8 +1,8 @@
 <!-- truth-audit-version: 1.1 -->
 # Truth Audit
 
-Overall status: selected S126 technical production verified; final metadata/publication pending; broader readiness partial
-Last reviewed: 2026-10-28
+Overall status: selected S127 technical production verified; final metadata/publication/impact/cleanup pending; broader readiness partial
+Last reviewed: 2026-10-29
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
 
@@ -111,3 +111,9 @@ Exact C2 source CI7/7; source Studio398/398; selected focused143/143 and entry37
 ---
 
 Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+## 2026-10-29 — Session 127 — Separate accepted technical release from finalization
+
+Two selected outcomes independently reviewed. Exact committed source has native Studio398/398 and hosted CI7/7. Staging and production each have four desktop/mobile dark/light worker journeys,24 independently reviewed captures, native provenance14/14 and unchanged five-run performance checks on both profiles. Actual matching API image is running, database ready, existing database/routing preserved, prior source/image and frontend deployment retained for rollback. Final visual84 preserves baseline/local/hosted source boundaries and documented capture limits. Counts have separate scopes and are not summed. No real-player outcome, restore drill or public launch approval is claimed.
+
+Exact technical source `8ab05e49d658e512e03614bd5cc12f6f85a5a75f`; artifact `9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2`; reports/s127-release-acceptance.json. The84 selected images preserve baseline12, local-C1 24, staging24 and production24 boundaries. Runtime exceptions are established by their repro report, not inferred from a stale screenshot. Sticky-header cropping and transient cache-notice overlap remain explicit limits. Aggregate application cases, real-player outcomes and broad launch readiness remain unmeasured. Final exact staged closing-metadata Studio acceptance, final staged security/supply-chain checks, containing metadata commit/push/readback, actual signed impact and owned process/worktree/lock cleanup remain required. This checkpoint does not prove final publication, full arc or native goal completion.

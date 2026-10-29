@@ -1,0 +1,113 @@
+{
+  "session": 127,
+  "observedAt": "2026-10-29T04:48:46.776Z",
+  "verified": true,
+  "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+  "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
+  "silDelta": {
+    "previous": 532,
+    "current": 536,
+    "kind": "numeric"
+  },
+  "impactJudgment": {
+    "reviewer": "root",
+    "basis": "Engineering judgment only; real-player and financial outcomes unmeasured."
+  },
+  "ascii": {
+    "path": "docs/CLOSEOUT_IMPACT_S127_2026-10-29.md",
+    "sha256": "372fba608317f69e8b048ae0950b508e37c640a496c6a30ae61d9291b047cc9b"
+  },
+  "board": {
+    "path": "docs/CLOSEOUT_STATUS_BOARD.md",
+    "sha256": "bae364d264feb49ef2815f98f07e8640f112c4c414e8af6ba9abd966e33fec68"
+  },
+  "nativeLogs": {
+    "sil": {
+      "sha256": "55c87223b4baa583e129d46683434bbb0a445bb58eddc29ead4c5a8a282d92aa",
+      "bytes": 33,
+      "scope": "Actual native stdout retained privately; public record stores only its hash."
+    },
+    "status": {
+      "sha256": "96c483fbb98101e3c52447c3b09b4f14c80c18ae78beb7c0d5067af4394b4abb",
+      "bytes": 39,
+      "scope": "Actual native stdout retained privately; public record stores only its hash."
+    },
+    "startup": {
+      "sha256": "d304da47d74cefb02924d6699a0239f6b04487a142f2b7fcbdc4fd85f8c5fb7f",
+      "bytes": 239,
+      "scope": "Actual native stdout retained privately; public record stores only its hash."
+    },
+    "startupFormat": {
+      "sha256": "a687437197d81f7e3bc03d137ab0aa047e746a6e49e1836e0fb60bcf295cc407",
+      "bytes": 287,
+      "scope": "Actual native stdout retained privately; public record stores only its hash."
+    },
+    "brief": {
+      "sha256": "32ee4ef295b5ae88291da12953460796037c0a6158fb748637b87834b7d18e4b",
+      "bytes": 1544,
+      "scope": "Actual native stdout retained privately; public record stores only its hash."
+    },
+    "board": {
+      "sha256": "0abb627046f2f4dbd618332ae0382a75af170625c00f58615a978881040ee37e",
+      "bytes": 68,
+      "scope": "Actual native stdout retained privately; public record stores only its hash."
+    },
+    "boardFormat": {
+      "sha256": "9bc473bb0c65b8959da200871aff4f6d1177115cf030ccf275d8d23e2232dfc6",
+      "bytes": 108,
+      "scope": "Actual native stdout retained privately; public record stores only its hash."
+    }
+  },
+  "scope": "Ordered checkpoint render only; final metadata/publication/impact/cleanup remain separately required.",
+  "rawLogPublication": "Raw stdout stays in ignored cache; no home paths are published.",
+  "currentProjectionCorrection": {
+    "verified": true,
+    "observedAt": "2026-10-29T04:52:24.263Z",
+    "reason": "Current S127 deployment/truth inputs refreshed and native startup/board validators passed; prior raw receipt preserved privately."
+  },
+  "formatCorrection": {
+    "extraEofBlankRemoved": true,
+    "meaningUnchanged": true
+  },
+  "latestProjectionRefresh": {
+    "observedAt": "2026-10-29T05:00:22.545Z",
+    "verified": true,
+    "rows": [
+      {
+        "command": "node scripts/render-sil-rolling-status.mjs --write",
+        "exitCode": 0,
+        "stdoutSha256": "55c87223b4baa583e129d46683434bbb0a445bb58eddc29ead4c5a8a282d92aa"
+      },
+      {
+        "command": "node scripts/render-sil-rolling-status.mjs --check",
+        "exitCode": 0,
+        "stdoutSha256": "86b7526ec808769cc683d4ca86b910899eecac6eb57b36b971ec9f03983003b3"
+      },
+      {
+        "command": "node scripts/lib/write-project-status.mjs --check",
+        "exitCode": 0,
+        "stdoutSha256": "96c483fbb98101e3c52447c3b09b4f14c80c18ae78beb7c0d5067af4394b4abb"
+      },
+      {
+        "command": "node scripts/render-startup-brief.mjs",
+        "exitCode": 0,
+        "stdoutSha256": "52a612ca111b7e666a3af2bb4ae806763331f93bea33dcea86eb8f58118b1184"
+      },
+      {
+        "command": "node scripts/validate-brief-format.mjs docs/STARTUP_BRIEF.md",
+        "exitCode": 0,
+        "stdoutSha256": "a687437197d81f7e3bc03d137ab0aa047e746a6e49e1836e0fb60bcf295cc407"
+      },
+      {
+        "command": "node scripts/render-closeout-board.mjs --project .",
+        "exitCode": 0,
+        "stdoutSha256": "0abb627046f2f4dbd618332ae0382a75af170625c00f58615a978881040ee37e"
+      },
+      {
+        "command": "node scripts/validate-closeout-board-format.mjs docs/CLOSEOUT_STATUS_BOARD.md --json",
+        "exitCode": 0,
+        "stdoutSha256": "9bc473bb0c65b8959da200871aff4f6d1177115cf030ccf275d8d23e2232dfc6"
+      }
+    ]
+  }
+}

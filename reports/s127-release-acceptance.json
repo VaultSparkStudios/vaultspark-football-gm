@@ -1,0 +1,320 @@
+{
+  "schemaVersion": "1.0",
+  "session": 127,
+  "at": "2026-10-29T04:45:20.380Z",
+  "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+  "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
+  "technicalAcceptanceComplete": true,
+  "verified": true,
+  "technicalReleaseVerified": true,
+  "closeoutComplete": false,
+  "launchApproved": false,
+  "ci": {
+    "ok": true,
+    "sha": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+    "runId": 40809657220,
+    "attempt": 1,
+    "requiredJobs": [
+      "unit-shards (core)",
+      "unit-shards (runtime)",
+      "unit-shards (sim:contract)",
+      "unit-shards (sim:realism)",
+      "unit-shards (long)",
+      "unit-shards (studio)",
+      "browser-gates"
+    ],
+    "lane": "hosted-exact-sha"
+  },
+  "sourceStudio": {
+    "passed": 398,
+    "total": 398,
+    "scope": "Exact committed source; closing metadata acceptance remains separate."
+  },
+  "frontend": {
+    "deploymentId": "1ebd486d-40a4-4a4e-8195-42cccd8bb022",
+    "rollback": {
+      "available": true,
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d"
+    }
+  },
+  "backend": {
+    "verified": true,
+    "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+    "preservedDatabaseAndRouting": true,
+    "previousSourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5"
+  },
+  "api": {
+    "ok": true,
+    "database": "ready",
+    "latencyMs": 0,
+    "schemaVersion": 1,
+    "service": "franchise-architect-community-stats",
+    "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f"
+  },
+  "phases": [
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "workerJourneys": 4,
+      "reviewedCaptures": 24,
+      "performanceVerified": true,
+      "native": {
+        "status": "verified",
+        "checksPassed": 14,
+        "checksTotal": 14
+      }
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "workerJourneys": 4,
+      "reviewedCaptures": 24,
+      "performanceVerified": true,
+      "native": {
+        "status": "verified",
+        "checksPassed": 14,
+        "checksTotal": 14
+      }
+    }
+  ],
+  "live": [
+    {
+      "phase": "staging",
+      "schemaVersion": "1.1",
+      "generatedBy": "scripts/verify-staging-receipt.mjs",
+      "checkedAt": "2026-10-29T04:45:18.895Z",
+      "baseUrl": "https://staging.playfranchisearchitect.com",
+      "expectedRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+      "summary": {
+        "status": "verified",
+        "checksPassed": 14,
+        "checksTotal": 14
+      },
+      "checks": [
+        {
+          "name": "health stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "manifest stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "style asset stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "health reachable",
+          "ok": true
+        },
+        {
+          "name": "manifest reachable",
+          "ok": true
+        },
+        {
+          "name": "style asset reachable",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset reachable",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset identity",
+          "ok": true,
+          "expected": "community-stats.25f97e0a1e.js",
+          "observed": "community-stats.25f97e0a1e.js"
+        },
+        {
+          "name": "source revision",
+          "ok": true,
+          "expected": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+          "observed": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f"
+        },
+        {
+          "name": "artifact fingerprint",
+          "ok": true,
+          "expected": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
+          "observed": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2"
+        },
+        {
+          "name": "style asset identity",
+          "ok": true,
+          "expected": "styles.c4075a9e38.css",
+          "observed": "styles.c4075a9e38.css"
+        },
+        {
+          "name": "repository identity",
+          "ok": true,
+          "expected": "VaultSparkStudios/vaultspark-football-gm",
+          "observed": "VaultSparkStudios/vaultspark-football-gm"
+        },
+        {
+          "name": "launch truth separation",
+          "ok": true,
+          "expected": false,
+          "observed": false
+        }
+      ],
+      "stagingContract": {
+        "sameOriginRequired": true,
+        "healthSchemaRequired": true,
+        "exactDeployIdentityRequired": true,
+        "declaredBootAssetsRequired": true
+      }
+    },
+    {
+      "phase": "production",
+      "schemaVersion": "1.1",
+      "generatedBy": "scripts/verify-staging-receipt.mjs",
+      "checkedAt": "2026-10-29T04:45:19.169Z",
+      "baseUrl": "https://playfranchisearchitect.com",
+      "expectedRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+      "summary": {
+        "status": "verified",
+        "checksPassed": 14,
+        "checksTotal": 14
+      },
+      "checks": [
+        {
+          "name": "health stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "manifest stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "style asset stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "health reachable",
+          "ok": true
+        },
+        {
+          "name": "manifest reachable",
+          "ok": true
+        },
+        {
+          "name": "style asset reachable",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset reachable",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset identity",
+          "ok": true,
+          "expected": "community-stats.25f97e0a1e.js",
+          "observed": "community-stats.25f97e0a1e.js"
+        },
+        {
+          "name": "source revision",
+          "ok": true,
+          "expected": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+          "observed": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f"
+        },
+        {
+          "name": "artifact fingerprint",
+          "ok": true,
+          "expected": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
+          "observed": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2"
+        },
+        {
+          "name": "style asset identity",
+          "ok": true,
+          "expected": "styles.c4075a9e38.css",
+          "observed": "styles.c4075a9e38.css"
+        },
+        {
+          "name": "repository identity",
+          "ok": true,
+          "expected": "VaultSparkStudios/vaultspark-football-gm",
+          "observed": "VaultSparkStudios/vaultspark-football-gm"
+        },
+        {
+          "name": "launch truth separation",
+          "ok": true,
+          "expected": false,
+          "observed": false
+        }
+      ],
+      "stagingContract": {
+        "sameOriginRequired": true,
+        "healthSchemaRequired": true,
+        "exactDeployIdentityRequired": true,
+        "declaredBootAssetsRequired": true
+      }
+    }
+  ],
+  "visual": {
+    "captures": 84,
+    "scope": "84 selected rasters:12 original baseline,24 exact-input C1 local,24 staging and24 production at current C2. Historical images retain their own source boundaries. This is selected content/action coverage, not whole-product visual, field-device or real-player outcome acceptance."
+  },
+  "receipts": [
+    {
+      "path": "reports/s127-ci.json",
+      "sha256": "1ce882b9b7b5ad835fbb96cf9dcefb781fc55825d56a1df54afb0c014f69e647"
+    },
+    {
+      "path": "reports/s127-isolated-studio.json",
+      "sha256": "eac283a9a009d3fe2d6388803788b22b769b4205e78d125d3d857e4188326cd1"
+    },
+    {
+      "path": "reports/s127-frontend-deployment.json",
+      "sha256": "17ee52b53418ca4b9b85f9ecf33afcd87a6b84a57c18ba1ed50c7f7af255b92a"
+    },
+    {
+      "path": "reports/s127-backend-deployment.json",
+      "sha256": "cfa35b4699e3063d8215a5ca403467e2f3b79888e88c95631eab88f32e849791"
+    },
+    {
+      "path": "reports/s127-source-publication.json",
+      "sha256": "290efa798e9a27b952e50086b64adbf34e89e50242c69d1bbe851ed025132f60"
+    },
+    {
+      "path": "docs/visual-qa/LATEST.json",
+      "sha256": "a2bb7fb058ce3d712feeb67decd3b9039299a5453011f769c6445bd0c32d6a54"
+    },
+    {
+      "path": "reports/s127-staging-browser.json",
+      "sha256": "31000e941f689aebaf2786325b99bce48aaa55dc62751c7a2a93a1b991a34195"
+    },
+    {
+      "path": "reports/s127-staging-performance.json",
+      "sha256": "616172d4cc1f04ae6fba21ba492764dec34c93a4915a56fee1ad9ab871df0782"
+    },
+    {
+      "path": "reports/s127-staging-visual-review.json",
+      "sha256": "bc9bd036ca9bdb6235e17f39ee86afc04fbaa496928fa132536df86601dc5223"
+    },
+    {
+      "path": "reports/s127-production-browser.json",
+      "sha256": "825d321f04d1711b64b9849568e30105043e44b3b2dd495f68bd8d623891dbfe"
+    },
+    {
+      "path": "reports/s127-production-performance.json",
+      "sha256": "d2803987e8ba56c0990dc300e5257d4d8dd730d452132085746b7b8f78075d8a"
+    },
+    {
+      "path": "reports/s127-production-visual-review.json",
+      "sha256": "f8d84f13bfc9aae4b711dc1533c9cb1aeb9d2d4585d9a219ceeac08f348e1d75"
+    }
+  ],
+  "limits": [
+    "Selected technical release only; no public/lifecycle launch approval or real-player outcome claim.",
+    "Local/baseline capture boundaries and capture limitations remain in the visual receipt.",
+    "Ordered closeout, exact closing-metadata acceptance, containing publication, signed impact and owned cleanup remain required."
+  ]
+}

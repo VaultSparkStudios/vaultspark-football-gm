@@ -587,6 +587,23 @@
       },
       "delta": 0,
       "cause": "S126: Mobile and Full View controls remain usable when browser storage fails, damaged optional predictions cannot interr"
+    },
+    {
+      "date": "2026-10-29",
+      "session": 127,
+      "total": 0,
+      "maxTotal": 25,
+      "overallStatus": "selected S126 technical production verified; final metadata/publication pending; broader readiness partial",
+      "lastReviewed": "2026-10-28",
+      "dimensions": {
+        "schema_alignment": 0,
+        "prompt_template_alignment": 0,
+        "derived_view_freshness": 0,
+        "handoff_continuity": 0,
+        "contradiction_density": 0
+      },
+      "delta": 0,
+      "cause": "S127 shipped trustworthy franchise recovery: Restore applies the saved dashboard and preserves the next playable action;"
     }
   ]
 }

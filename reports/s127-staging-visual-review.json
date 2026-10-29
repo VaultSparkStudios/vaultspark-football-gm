@@ -1,0 +1,395 @@
+{
+  "schemaVersion": 1,
+  "session": 127,
+  "phase": "staging",
+  "origin": "https://staging.playfranchisearchitect.com",
+  "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+  "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
+  "captureReport": "reports/s127-staging-browser.json",
+  "captureReportSha256": "31000e941f689aebaf2786325b99bce48aaa55dc62751c7a2a93a1b991a34195",
+  "reviewedAt": "2026-10-29T03:02:50.467Z",
+  "reviewer": "review_contract",
+  "verdict": "pass-selected-surfaces-with-capture-limitations",
+  "inspectedImageCount": 24,
+  "inspected": [
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "contract-recovered",
+      "file": ".cache/s127-staging/contract-recovered-desktop-dark.png",
+      "sha256": "6b98bcf95f3afb82efd757c7c0b873fe320894a1a67075d8571da71becf9ddcb",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "contract-closed",
+      "file": ".cache/s127-staging/contract-closed-desktop-dark.png",
+      "sha256": "b4c595c34b96f0e622c3e510c03c207da51feec8454d75f24546e862960bc42b",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "rewind-checkpoint",
+      "file": ".cache/s127-staging/rewind-checkpoint-desktop-dark.png",
+      "sha256": "0c41160517828f0c08bf62a95608d0db8bb21642b92032d2e76a1049d92c4394",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "rewind-restored",
+      "file": ".cache/s127-staging/rewind-restored-desktop-dark.png",
+      "sha256": "32cf154e089e3eb916bcca3088d94ca4ed9ebba7899fe3951b44ec477b37ce61",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "status",
+      "file": ".cache/s127-staging/status-desktop-dark.png",
+      "sha256": "33d1abf434e89ae1547272485cc2253f7dab1defe84bd1b5448d2baa606ce4b4",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "contract-recovered",
+      "file": ".cache/s127-staging/contract-recovered-desktop-light.png",
+      "sha256": "b4b52fe343de08cfdab582919c9ae35616220e58c423428f3a8ed85ec4a497df",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "contract-closed",
+      "file": ".cache/s127-staging/contract-closed-desktop-light.png",
+      "sha256": "4bedd7633a034ce4dcc6e53f692b849802f85cf36412cca083bcafef68157a95",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "rewind-checkpoint",
+      "file": ".cache/s127-staging/rewind-checkpoint-desktop-light.png",
+      "sha256": "0db689539b908da4d030abfc1c0c294de6a76ed4b4eab103c02c6521368bbd11",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "rewind-restored",
+      "file": ".cache/s127-staging/rewind-restored-desktop-light.png",
+      "sha256": "430ffeb896a46d78a8ee85960a48aa888159736ae90b054727d3d9a6e976209b",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "status",
+      "file": ".cache/s127-staging/status-desktop-light.png",
+      "sha256": "3b6471c9870858c0e6a129926defced42b1093d071e8842d256cbc02b1d8ad66",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "contract-recovered",
+      "file": ".cache/s127-staging/contract-recovered-mobile-dark.png",
+      "sha256": "f65b59c9736649157fb937eba00ee54ed3b4faf173624a2342df2a5ba33e9abb",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "contract-recovered-top",
+      "file": ".cache/s127-staging/contract-recovered-top-mobile-dark.png",
+      "sha256": "d10beb8f1fe80136f2ebd41385f1498f80bc680f4bbc53687103062a3d74cecd",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "contract-closed",
+      "file": ".cache/s127-staging/contract-closed-mobile-dark.png",
+      "sha256": "8b5e1506a8a7ed1e6a09fcb1df52db6ea6f084a9c0d7433509d2fb3bec5e7471",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "contract-closed-top",
+      "file": ".cache/s127-staging/contract-closed-top-mobile-dark.png",
+      "sha256": "436df26c41dfef26df948f077b3ef31b6ad7f98ebb31b65280b1b45c2b4ba712",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "rewind-checkpoint",
+      "file": ".cache/s127-staging/rewind-checkpoint-mobile-dark.png",
+      "sha256": "1001962095468f35d6167664a21e21255d0b09e5227224e66e4540dfcafa5c06",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "rewind-restored",
+      "file": ".cache/s127-staging/rewind-restored-mobile-dark.png",
+      "sha256": "0525fff73501304f1e6889a4ed82d5ef86c0fb65593cb1cb37a0f65dc35e961a",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "status",
+      "file": ".cache/s127-staging/status-mobile-dark.png",
+      "sha256": "80623bfa689e3a137fa4a4c07f76b1a454dd51f1b2a7a49f9b5cd3d08c43ef21",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "contract-recovered",
+      "file": ".cache/s127-staging/contract-recovered-mobile-light.png",
+      "sha256": "34e2876febfda0f55192629062580386b94eb936ee1ed02c85b85f7e0aba733c",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "contract-recovered-top",
+      "file": ".cache/s127-staging/contract-recovered-top-mobile-light.png",
+      "sha256": "1c4379e4dab53973ea535873412bb6ed2841387caea754740077ef2adca9428b",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "contract-closed",
+      "file": ".cache/s127-staging/contract-closed-mobile-light.png",
+      "sha256": "0a994b2ef6e38bda664c2cec38625e658181791b855dbe1de7315a2034d29ca9",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "contract-closed-top",
+      "file": ".cache/s127-staging/contract-closed-top-mobile-light.png",
+      "sha256": "25a8bd6811e6d817d900294a0c1507c044d4a8948515b4cf43715d4611103fc8",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "rewind-checkpoint",
+      "file": ".cache/s127-staging/rewind-checkpoint-mobile-light.png",
+      "sha256": "fa74afe6371d3bfb5e535fc0d63d5d3280857c03706abd3c450056d80562fe50",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "rewind-restored",
+      "file": ".cache/s127-staging/rewind-restored-mobile-light.png",
+      "sha256": "d2a7cdf11239bf11e1771bd85c71017be7b676c8e1e6fd20288821882c4524fb",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "status",
+      "file": ".cache/s127-staging/status-mobile-light.png",
+      "sha256": "7f116a717560d3fbf38566bb2ceae00d9d7c46d30f4f41dd4e45daa088d23edd",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "blockingDefectsOpen": 0
+  },
+  "findings": [
+    "All 24 named images actually viewed. Selected contract objectives and 1/5 versus recorded 5/5 states are legible in both themes; desktop shows all rows and mobile top/bottom pairs cover all five.",
+    "Rewind checkpoint and restored timeline entries, Restore/delete controls and manual-checkpoint controls are legible at both viewport sizes.",
+    "Selected 2026-10-29 status note is readable in both themes and viewport sizes. No horizontal overflow was observed in selected content."
+  ],
+  "captureLimitations": [
+    "Mobile element captures include the sticky game header, obscuring panel titles or upper rows; paired contract-top captures supply the missing contract content. Rewind title is visible in desktop captures, while mobile entry/control evidence remains visible.",
+    "A transient new-version-cached notice appears in desktop-light checkpoint and mobile-light contract captures. It partially overlays lower content and the contract dismissal control; all objective text is covered across the paired images. This review does not certify that transient notice or dismissal interaction.",
+    "Screenshots use controlled browser scenario inputs and do not establish actual-player outcomes, complete product visual readiness or production deployment."
+  ],
+  "sourceBinding": {
+    "reportBeforeAfterMatch": true,
+    "allImageDigestsMatch": true,
+    "scope": "Report records exact stable staging origin/source/artifact before and after capture; production remains separate."
+  }
+}

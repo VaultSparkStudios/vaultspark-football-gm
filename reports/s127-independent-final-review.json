@@ -1,0 +1,238 @@
+{
+  "session": 127,
+  "verified": true,
+  "verdict": "approve-after-fix",
+  "reviewer": "closeout_review",
+  "rounds": [
+    {
+      "schemaVersion": 1,
+      "session": 127,
+      "reviewer": "closeout_review",
+      "reviewedAt": "2026-10-29T04:50:40.152Z",
+      "verdict": "fix",
+      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
+      "scope": "Independent fresh-context source diff ba3a126..8ab05e49 and current closing-metadata snapshot. Read-only tracked files. Technical release acceptance distinct from unverified closing metadata and full arc completion.",
+      "findings": [
+        {
+          "id": "S127-CLOSEOUT-1",
+          "severity": "medium",
+          "paths": [
+            "context/PROJECT_STATUS.json:2902",
+            "context/PROJECT_STATUS.json:2755",
+            "context/PROJECT_STATUS.json:25",
+            "docs/STARTUP_BRIEF.md:66",
+            "docs/STARTUP_BRIEF.md:83"
+          ],
+          "title": "Refresh current deployment and truth display inputs before publishing the S127 handoff",
+          "evidence": "PROJECT_STATUS.lastDeployStatus still calls S126/309bb0f the current deployment and cites the S126 closeout receipt. truthAuditNote still names S121 and truthAuditLastRun is 2026-10-27. The newly generated S127 startup brief renders the S126 deployment as WHERE WE LEFT OFF Session127 and labels truth as selected S126 technical production verified. This conflicts with correctly source-bound S127 lastVerification/backendDeployment and the new S127 truth audit.",
+          "requestedFix": "Update current lastDeployStatus and truth display fields/date from the accepted S127 technical release and pending-closeout boundary, retaining prior fields as historical if needed. Re-render the native startup/closeout surfaces and ensure any generic stale/unverified test cache stays explicitly scoped rather than substituting for source398 or CI7."
+        }
+      ],
+      "verified": [
+        "Actual source fixes apply response.state and return augmented restored dashboard; runtime retention handles preflight/oldest eviction/newest protection and acknowledged worker writes. No additional source correctness blocker found in selected diff.",
+        "All12 release-acceptance receipt hashes match current files; isolated source Studio raw-log hash matches and native tail records398passed398total with zero failures/skips/cancellations. This is source acceptance only.",
+        "CI receipt identifies exact source and run40809657220 attempt1 with7 named required jobs; frontend deployment1ebd486d and matching API running source are coherent. API preservation before/after database identity/mount and routing hashes match.",
+        "Actual production browser receipt has four desktop/mobile dark/light worker journeys, restored week1 then nextweek2, no errors; 24 associated production images and24 staging images match independently authored actual visual-review hashes.",
+        "Final visual receipt has84rasters with all84published image hashes matching and current sourceFiles matching. Baseline ba3a126 and local C1 remain separately attributed; capture limitations are preserved. This reviewer audited the prior image-inspection receipts and hashes, did not claim a new84-image pixel inspection.",
+        "Staging and production unchanged entry performance gates use five runs each desktop/mobile; current production medians LCP452/372ms, INP24/24ms, CLS0.0003/0.0131. No field cohort claim.",
+        "SIL10categories sum536; +4 is explicitly engineering judgment. DECISIONS and SIL preserve HEAD entries verbatim outside authorized rolling header and append new S127 material. Current wave4/closeoutExecution and acceptance honestly retain pending flags.",
+        "Selected public status note matches implemented player behavior; no new licensing/public-launch authorization or secret literal found in reviewed additions."
+      ],
+      "pendingGuards": [
+        "Final staged closing-metadata native Studio acceptance is not established by source398.",
+        "Final staged security/supply-chain acceptance, containing commit/push/readback, signed Ark transport and owned cleanup remain pending and must be verified by root.",
+        "Final status board must include live owned shell census per protocol; current pre-finalization board has no shell row. This is pending finalization, not a present false zero-running claim.",
+        "Historical closeoutPublication/session126 and older closeoutProtocol fields must not be borrowed as S127 completion; closeoutExecution/session127 currently correctly says pending."
+      ],
+      "snapshotHashes": [
+        {
+          "path": "context/PROJECT_STATUS.json",
+          "sha256": "60ba2970980ba937569c00737ca8134b9ee3c055d4a587bb3ced54e4c1f286c1"
+        },
+        {
+          "path": "context/CURRENT_STATE.md",
+          "sha256": "8821cbdb84053ae3b9615db763a54cf1d6821e479fd5e76726b12585a272e14d"
+        },
+        {
+          "path": "context/DECISIONS.md",
+          "sha256": "83a287f1f6577ee00a229a476c37696265897971e7f0a437aff537b81a8a55e5"
+        },
+        {
+          "path": "context/SELF_IMPROVEMENT_LOOP.md",
+          "sha256": "9bde74574c6cbb9d22d42793f8597e29e8160275f0f6e508d07e8d6564f67672"
+        },
+        {
+          "path": "context/LATEST_HANDOFF.md",
+          "sha256": "c6c29cf43534169773c6cc2f5b0ac0eb3160483b57d79629beac97ef42e789e6"
+        },
+        {
+          "path": "context/TRUTH_AUDIT.md",
+          "sha256": "b7181b161af2e1fb7e1a7e9d1302cd8dac79fea740487717781f00f8279b3f95"
+        },
+        {
+          "path": "context/TASK_BOARD.md",
+          "sha256": "02b0780edd598bdd2cd3abd6506a8a1a000e9c9baa98efc19dc1082c1379a127"
+        },
+        {
+          "path": "docs/STARTUP_BRIEF.md",
+          "sha256": "8959a96682bf48af3da0dfe6922ac4e540c275b9a3601b26c444744965947484"
+        },
+        {
+          "path": "docs/CLOSEOUT_STATUS_BOARD.md",
+          "sha256": "c98c9e76c1929e96c34b19ad95d8a4dc7aba135e1008775c72734e364c4313de"
+        },
+        {
+          "path": "docs/CLOSEOUT_BRIEF_S127_2026-10-29.md",
+          "sha256": "1d60aac1b1fe4bee6381adc9bf64584b870f5efdbf9c4164592aa73f1f091181"
+        },
+        {
+          "path": "docs/CLOSEOUT_IMPACT_S127_2026-10-29.md",
+          "sha256": "cc3499da5c9b4970d79bb669dbcf7f3c0b4217f572c47223696fd73d8cd2c24f"
+        },
+        {
+          "path": "reports/s127-release-acceptance.json",
+          "sha256": "a9d58fc2a9c77cafa9c7e9898e7fff78874d1471c64776a6565d48873d502928"
+        },
+        {
+          "path": "reports/s127-ci.json",
+          "sha256": "1ce882b9b7b5ad835fbb96cf9dcefb781fc55825d56a1df54afb0c014f69e647"
+        },
+        {
+          "path": "reports/s127-isolated-studio.json",
+          "sha256": "eac283a9a009d3fe2d6388803788b22b769b4205e78d125d3d857e4188326cd1"
+        },
+        {
+          "path": "reports/s127-production-browser.json",
+          "sha256": "825d321f04d1711b64b9849568e30105043e44b3b2dd495f68bd8d623891dbfe"
+        },
+        {
+          "path": "reports/s127-production-performance.json",
+          "sha256": "d2803987e8ba56c0990dc300e5257d4d8dd730d452132085746b7b8f78075d8a"
+        },
+        {
+          "path": "reports/s127-production-visual-review.json",
+          "sha256": "f8d84f13bfc9aae4b711dc1533c9cb1aeb9d2d4585d9a219ceeac08f348e1d75"
+        },
+        {
+          "path": "reports/s127-staging-visual-review.json",
+          "sha256": "bc9bd036ca9bdb6235e17f39ee86afc04fbaa496928fa132536df86601dc5223"
+        },
+        {
+          "path": "reports/s127-backend-deployment.json",
+          "sha256": "cfa35b4699e3063d8215a5ca403467e2f3b79888e88c95631eab88f32e849791"
+        },
+        {
+          "path": "reports/s127-frontend-deployment.json",
+          "sha256": "17ee52b53418ca4b9b85f9ecf33afcd87a6b84a57c18ba1ed50c7f7af255b92a"
+        },
+        {
+          "path": "docs/visual-qa/LATEST.json",
+          "sha256": "a2bb7fb058ce3d712feeb67decd3b9039299a5453011f769c6445bd0c32d6a54"
+        },
+        {
+          "path": "public/lib/firstSeasonContract.js",
+          "sha256": "a0fdea0126fcbcd89601e4fc2f22ebad9958801de32b3eb45718aef4e8897960"
+        },
+        {
+          "path": "public/lib/tabSettings.js",
+          "sha256": "84a361b4edacb6359537aadb953afba4f8c8fb86409219726e79567110a4879f"
+        },
+        {
+          "path": "src/adapters/persistence/rewindRetention.js",
+          "sha256": "fa45f931976f6b1ac4697fa75e54db092a75f1b2aef89f9d104913fb5822899a"
+        },
+        {
+          "path": "src/app/api/localApiRuntime.js",
+          "sha256": "a9d4a912dd96c26647a4fcb19a16cc277b30c3a1974b36be30fc2d6527fa4213"
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "session": 127,
+      "round": 2,
+      "reviewer": "closeout_review",
+      "reviewedAt": "2026-10-29T04:53:04.305Z",
+      "verdict": "approve",
+      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+      "scope": "Approval of updated closeout checkpoint and round1 correction only; final exact staged metadata acceptance, containing publication/readback, Ark and cleanup remain pending.",
+      "findings": [],
+      "resolved": [
+        {
+          "id": "S127-CLOSEOUT-1",
+          "verified": true,
+          "evidence": "Actual status lastDeployStatus/truthAuditStatus/truthAuditNote/truthAuditLastRun now identify accepted S127 source and2026-10-29 while retaining pending finalization. Native startup WHERE WE LEFT OFF and Truth rows now render S127. Truth audit current projection refreshed; append-only decision correction documents actual issues."
+        }
+      ],
+      "checks": [
+        "Public renderer native stdout fields retain exact SHA256 and byte counts of privately preserved raw strings; all7 nativeLogs hashes match private raw receipt. Public brief/ascii and current board artifact hashes match.",
+        "Original failed public-path scan remains preserved privately with private-local-path finding; current working scan reports42textfiles, zero findings and settings passing. No scan-rule weakening or hidden successful-first-attempt claim observed.",
+        "Targeted supply-chain receipt binds current manifest hashes and records zero affected project repos for named incident checks; provider capability inventory is explicitly advisory and does not claim provider action health.",
+        "Native doctor receipt reports12passing0blocking; local coherence/freshness/summary/contextPreservation/writebackCurrency gates report pass with explicit recipient scope.",
+        "All12 technical release acceptance receipt bindings still match; no changed source or visual binding issue found.",
+        "S127 closeoutExecution keeps all4 finalMetadata/publication/Ark/cleanup booleans false. Existing source398 and accepted technical deployment remain separate from final staged closing metadata."
+      ],
+      "pendingGuards": [
+        "Complete final exact staged closing-metadata native Studio acceptance and final staged security without borrowing source398.",
+        "Verify containing publication/readback, signed Ark and owned cleanup before full arc/native goal completion.",
+        "Add the actual final live shell census to final board; no zero-running claim is currently asserted."
+      ],
+      "snapshotHashes": [
+        {
+          "path": "context/PROJECT_STATUS.json",
+          "sha256": "3104ff7d11b81eb59cda5ffdf16d3e5d69ed9c2424d90ed0b7d76dba2cafe5f0"
+        },
+        {
+          "path": "context/TRUTH_AUDIT.md",
+          "sha256": "85c288d5c9ff8dc7d79fabdba626f800d50fb807827696ff16c91ee146c62e18"
+        },
+        {
+          "path": "context/DECISIONS.md",
+          "sha256": "79acdaf04069fad2d41398cd1c154909d9cde1096d3c76c422ed95a1d95c5dae"
+        },
+        {
+          "path": "docs/STARTUP_BRIEF.md",
+          "sha256": "e1ab8f91946bb1c4d484bfe4cfb3e10ce4cc1385e0a02622d7b1b4639635bc0b"
+        },
+        {
+          "path": "docs/CLOSEOUT_STATUS_BOARD.md",
+          "sha256": "3b279db8f455fdbbef1ac189baffd5a0a3f93352e143933d6283914da64d332e"
+        },
+        {
+          "path": "docs/CLOSEOUT_BRIEF_S127_2026-10-29.md",
+          "sha256": "1d60aac1b1fe4bee6381adc9bf64584b870f5efdbf9c4164592aa73f1f091181"
+        },
+        {
+          "path": "docs/CLOSEOUT_IMPACT_S127_2026-10-29.md",
+          "sha256": "cc3499da5c9b4970d79bb669dbcf7f3c0b4217f572c47223696fd73d8cd2c24f"
+        },
+        {
+          "path": "reports/s127-closeout-render.json",
+          "sha256": "62cab10407448f321d8f3b67c180f294bd475e10592d2a2e559eb6f47cd870ee"
+        },
+        {
+          "path": "reports/s127-final-working-security.json",
+          "sha256": "d1d1eb1822d4eb6ea5820d8d12ca4ccfc9fc874aaa3eb1d2a64dfe274fedcd40"
+        },
+        {
+          "path": "reports/s127-final-supply-chain.json",
+          "sha256": "a370e6e5c3bbec3b1ac01d193e995558bfb54800000ad64423a4b539f2984bb7"
+        },
+        {
+          "path": "reports/s127-release-acceptance.json",
+          "sha256": "a9d58fc2a9c77cafa9c7e9898e7fff78874d1471c64776a6565d48873d502928"
+        },
+        {
+          "path": ".cache/s127-doctor.json",
+          "sha256": "c88c0499a82c4e4d6f48270d687dd6796087b5703e9382f8770bd89bd444c953"
+        },
+        {
+          "path": ".cache/s127-closeout-gates-latest.json",
+          "sha256": "bc95280db99ab73e6112b66e6883c0a4caa90cec7f10d6ef62a7b42572a81abe"
+        }
+      ]
+    }
+  ],
+  "scope": "Actual independent source and ordered-checkpoint claims review, not later metadata/publication/cleanup acceptance. Root subsequently adds the truthful pending intent label and removes EOF whitespace under unchanged native gates."
+}

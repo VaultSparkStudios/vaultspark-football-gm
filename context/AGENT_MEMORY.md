@@ -1,5 +1,15 @@
 # Agent Memory
 
+## Session 127 durable patterns
+
+- A successful restore response can still corrupt the visible session when its envelope is passed where the dashboard is expected; verify Restore through the actual control and then perform another authoritative action.
+- Storage cleanup belongs beside the runtime writer. Page-side localStorage pruning bypasses an acknowledged worker mirror and can create two incompatible views of checkpoint authority.
+- A retention comparator must define a total order for missing dates, and the just-written checkpoint must survive inherited future dates. Quota recovery must run before a new payload write can fail.
+- Optional saved summaries require container, recognized-key, boolean and cross-field validation. Preserve valid independent action marks, derive display totals/verdicts from accepted rows, and document legacy evidence conventions.
+- Screenshots show rendered state, not thrown exceptions. Keep runtime repro evidence, source bindings, baseline scope, sticky-header limitations and actual inspected image hashes distinct.
+- Source Studio, hosted CI, actual browser journeys, provenance and performance receipts are separate acceptance contracts; no narrow or historical green proves release completion.
+
+
 ## Session 126 durable patterns
 
 - Valid JSON can still have an invalid container or entry shape; optional state must not block authoritative dashboard hydration.

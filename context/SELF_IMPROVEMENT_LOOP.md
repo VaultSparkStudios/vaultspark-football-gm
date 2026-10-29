@@ -3,11 +3,11 @@
 
 
 <!-- rolling-status-start -->
-Last session: 126 (2026-10-28) | Total: 532/1000 | Velocity: 3 | Debt: →
-Avgs — 3: 515.7 | 5: 506.4 | 10: 660.8 | 25: 814.6 | all: 935.9
+Last session: 127 (2026-10-29) | Total: 536/1000 | Velocity: 2 | Debt: →
+Avgs — 3: 524.3 | 5: 516.6 | 10: 648.9 | 25: 797.7 | all: 930.9
 Sparkline: ▁▁▁▁▁
 Intent rate: 40% (2/5 last 5)
-SIL delta: 505 → 532 (+27). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 80 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 532 → 536 (+4). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 81 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
 > Older entries S112 live verbatim in `context/archive/SELF_IMPROVEMENT_LOOP_S112-S112.md`.
@@ -189,3 +189,32 @@ Proof: reports/s126-c2-closeout-completion.json. SIL remains532/1000; selected o
 ---
 
 Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+## 2026-10-29 — Session 127 — Trustworthy franchise recovery
+
+SIL v3.0: **536 / 1000** (Dev Health 93, Creative Alignment 70, Momentum 65, Engagement 45, Process Quality 62, Cross-Repo Coherence 60, Security Posture 60, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 61). Classification: **Partial — finalization pending** at this ordered-record checkpoint. Selected product and technical release evidence is verified; final metadata/publication/impact/cleanup remain required. Scores are reviewed engineering judgment, not measured player or financial outcomes.
+
+Two selected outcomes independently reviewed. Exact committed source has native Studio398/398 and hosted CI7/7. Staging and production each have four desktop/mobile dark/light worker journeys,24 independently reviewed captures, native provenance14/14 and unchanged five-run performance checks on both profiles. Actual matching API image is running, database ready, existing database/routing preserved, prior source/image and frontend deployment retained for rollback. Final visual84 preserves baseline/local/hosted source boundaries and documented capture limits. Counts have separate scopes and are not summed. No real-player outcome, restore drill or public launch approval is claimed.
+
+Velocity: 2 selected product outcomes, excluding SIL/meta tasks. Debt trend remains unmeasured unless separately derived from the current task board.
+
+- Dev Health: Reviewed +1 for two reproduced player failures repaired, independent boundary review, meaningful regression coverage, exact-source Studio398, hosted CI7 and actual production worker journeys. No whole-product correctness guarantee.
+- Creative Alignment: Preserves the deterministic football management loop, existing first-season objectives and player-owned recovery. No new creative direction, mechanics expansion or lifecycle approval is inferred.
+- Momentum: Two selected outcomes reached the actual matching frontend/API release. Retain prior category score because engineering output is distinct from measured player adoption.
+- Engagement: Reliable rewind and progress continuity support repeat sessions, but no real-player comprehension, fun, engagement or retention outcome was measured. No increase is proposed.
+- Process Quality: Reviewed +2 for invocation-bound goal identity, admitted premise checks, independent review that caught actual retention boundaries and explicit capture limitations. Startup propagation/missing-helper limitations remain recorded; final closeout remains required.
+- Cross-Repo Coherence: Uses the existing canonical gateway and recipient-owned deployment/Ark boundaries. No direct sibling edits, verified recipient adoption or portfolio improvement is claimed.
+- Security Posture: Strict optional-state hydration avoids malformed summaries or coercible marks granting completion. Existing identity/data-handling policies remain unchanged; final staged security proof and independent launch holds remain separate.
+- Ecosystem Integration: No newly proven identity or email integration. Retain the prior score and existing launch gaps.
+- Capital Efficiency: No measured financial, revenue or unit-economics result. Retain zero rubric credit without implying a monetary loss; no paid recovery service was added.
+- Automation Coverage: Proposed +1 for registered meaningful malformed-contract and rewind-retention regressions, including acknowledged worker failure paths and real browser restore/next-action scenarios. Task-local adapters are not claimed as shipped reusable tooling.
+
+Brainstorm: A successful restore response can still corrupt the visible session when its envelope is passed where the dashboard is expected; verify Restore through the actual control and then perform another authoritative action. Storage cleanup belongs beside the runtime writer. Page-side localStorage pruning bypasses an acknowledged worker mirror and can create two incompatible views of checkpoint authority. A retention comparator must define a total order for missing dates, and the just-written checkpoint must survive inherited future dates. Quota recovery must run before a new payload write can fail. Optional saved summaries require container, recognized-key, boolean and cross-field validation. Preserve valid independent action marks, derive display totals/verdicts from accepted rows, and document legacy evidence conventions. Screenshots show rendered state, not thrown exceptions. Keep runtime repro evidence, source bindings, baseline scope, sticky-header limitations and actual inspected image hashes distinct. Source Studio, hosted CI, actual browser journeys, provenance and performance receipts are separate acceptance contracts; no narrow or historical green proves release completion.
+
+- [SIL:127] Future discipline — unselected: Future discipline: when changing a recovery runway, test mixed or future dates, inherited full storage and acknowledged worker failures together before declaring retention safe.
+- [SIL:127] Future discipline — unselected: Future discipline: verify each named mobile capture contains its target headings/actions before cutting a candidate, and preserve transient overlay and failed-fixture evidence instead of silently replacing it.
+
+Final exact staged closing-metadata Studio acceptance, final staged security/supply-chain checks, containing metadata commit/push/readback, actual signed impact and owned process/worktree/lock cleanup remain required. This checkpoint does not prove final publication, full arc or native goal completion.
+
+
+Intent outcome: Partial. This is the ordered S127 checkpoint: selected implementation and technical production are verified, while exact closing metadata, containing publication, signed impact and owned cleanup remain pending. A later verified finalization is an append-only checkpoint for this same session.

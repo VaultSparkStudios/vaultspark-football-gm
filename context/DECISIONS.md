@@ -103,3 +103,21 @@ Proof: reports/s126-c2-closeout-completion.json. SIL remains532/1000; selected o
 ---
 
 Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+## 2026-10-29 — Session 127 — Recovery authority and validated optional progress
+
+Apply the restored dashboard from the response state rather than passing its envelope into browser authority. Rewind retention belongs to the runtime storage writer, including acknowledged worker writes; preflight and bounded quota retry preserve a usable recent recovery point. Missing dates require a total ordering and newly written checkpoints must survive inherited future dates.
+
+Validate optional First Season Contract records, recognized boolean action marks and consistent five-row finalizations before rendering. Derive totals/verdicts from accepted rows while preserving legitimate legacy completion conventions and tab-only progress. No identity/trust/data-handling, rights/license, spending or lifecycle policy change is made.
+
+Technical release is accepted by reports/s127-release-acceptance.json; source398/398 is not closing-metadata acceptance. Baseline/runtime and selected pixel scopes retain their original boundaries and capture limitations. Final exact staged closing-metadata Studio acceptance, final staged security/supply-chain checks, containing metadata commit/push/readback, actual signed impact and owned process/worktree/lock cleanup remain required. This checkpoint does not prove final publication, full arc or native goal completion.
+
+
+### S127 closeout review corrections
+
+Independent final review found stale current deployment/truth labels inherited from older sessions; current projections now use the actual S127 accepted release while finalization stays pending. A working-tree public-path scan found a local path inside native renderer stdout; its original bytes and nonpassing scan are preserved privately, and the public render receipt retains stdout hashes instead. No detector rule, source test, release threshold or prior ledger entry was changed.
+
+
+### S127 metadata acceptance correction
+
+The first exact closing-metadata Studio run passed397/398 and failed the mandatory explicit SIL intent-disposition check. Its full report, log, patch and generated overlay remain preserved as attempt1. Append a truthful Partial checkpoint while finalization is pending; keep the existing score/history intact. Remove the generated impact brief extra EOF blank, then retest the corrected staged tree with the unchanged full native suite. No test or gate is relaxed.

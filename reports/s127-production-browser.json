@@ -1,0 +1,477 @@
+{
+  "session": 127,
+  "phase": "production",
+  "origin": "https://playfranchisearchitect.com",
+  "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+  "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
+  "before": {
+    "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+    "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2"
+  },
+  "after": {
+    "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+    "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2"
+  },
+  "observedModules": [
+    {
+      "path": "app.js",
+      "sha256": "59bc345f65cb26435a5c661d74e9e7e93764b4822daa73e9d0be447a3761b8dd"
+    },
+    {
+      "path": "lib/tabSettings.js",
+      "sha256": "84a361b4edacb6359537aadb953afba4f8c8fb86409219726e79567110a4879f"
+    },
+    {
+      "path": "lib/firstSeasonContract.js",
+      "sha256": "a0fdea0126fcbcd89601e4fc2f22ebad9958801de32b3eb45718aef4e8897960"
+    },
+    {
+      "path": "lib/engagementFeatures.js",
+      "sha256": "1962e29aed23a9319a3838ac747bb5363ffa49bafa5b3b846b156004852ff216"
+    },
+    {
+      "path": "src/app/api/localApiRuntime.js",
+      "sha256": "a9d4a912dd96c26647a4fcb19a16cc277b30c3a1974b36be30fc2d6527fa4213"
+    },
+    {
+      "path": "src/adapters/persistence/rewindRetention.js",
+      "sha256": "fa45f931976f6b1ac4697fa75e54db092a75f1b2aef89f9d104913fb5822899a"
+    }
+  ],
+  "startedAt": "2026-10-29T04:42:15.857Z",
+  "completedAt": "2026-10-29T04:43:05.911Z",
+  "verified": true,
+  "results": [
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "contract": {
+        "done": 1,
+        "total": 5,
+        "completedNow": false,
+        "marks": {
+          "depth-chart": true
+        }
+      },
+      "closed": {
+        "done": 5,
+        "total": 5
+      },
+      "saved": {
+        "week": 1,
+        "team": "BUF",
+        "id": "manual-y2026-w1-1793248939551",
+        "kind": "worker"
+      },
+      "restored": {
+        "week": 1,
+        "team": "BUF"
+      },
+      "next": 2,
+      "errors": [],
+      "verified": true
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "contract": {
+        "done": 1,
+        "total": 5,
+        "completedNow": false,
+        "marks": {
+          "depth-chart": true
+        }
+      },
+      "closed": {
+        "done": 5,
+        "total": 5
+      },
+      "saved": {
+        "week": 1,
+        "team": "BUF",
+        "id": "manual-y2026-w1-1793248952338",
+        "kind": "worker"
+      },
+      "restored": {
+        "week": 1,
+        "team": "BUF"
+      },
+      "next": 2,
+      "errors": [],
+      "verified": true
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "contract": {
+        "done": 1,
+        "total": 5,
+        "completedNow": false,
+        "marks": {
+          "depth-chart": true
+        }
+      },
+      "closed": {
+        "done": 5,
+        "total": 5
+      },
+      "saved": {
+        "week": 1,
+        "team": "BUF",
+        "id": "manual-y2026-w1-1793248965067",
+        "kind": "worker"
+      },
+      "restored": {
+        "week": 1,
+        "team": "BUF"
+      },
+      "next": 2,
+      "errors": [],
+      "verified": true
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "contract": {
+        "done": 1,
+        "total": 5,
+        "completedNow": false,
+        "marks": {
+          "depth-chart": true
+        }
+      },
+      "closed": {
+        "done": 5,
+        "total": 5
+      },
+      "saved": {
+        "week": 1,
+        "team": "BUF",
+        "id": "manual-y2026-w1-1793248976379",
+        "kind": "worker"
+      },
+      "restored": {
+        "week": 1,
+        "team": "BUF"
+      },
+      "next": 2,
+      "errors": [],
+      "verified": true
+    }
+  ],
+  "captures": [
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "contract-recovered",
+      "file": ".cache/s127-production/contract-recovered-desktop-dark.png",
+      "sha256": "8935b23b59f09417be2ef2d7fa2179c1bb491841fc6b0292984cbbe192df5c10"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "contract-closed",
+      "file": ".cache/s127-production/contract-closed-desktop-dark.png",
+      "sha256": "765635c64980340664b73bc2e5f83860aee4cd8d8fe46beb02350ee349e3863c"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "rewind-checkpoint",
+      "file": ".cache/s127-production/rewind-checkpoint-desktop-dark.png",
+      "sha256": "5acfa113c59d944b4ee08e1d361b0d5b6bdfa597bfa5d5d90a34261430bbba08"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "rewind-restored",
+      "file": ".cache/s127-production/rewind-restored-desktop-dark.png",
+      "sha256": "5c6d846a90f5c52f45c464f8d6fc635945f20e422974ab1a2b8ce523a5a47ba9"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "status",
+      "file": ".cache/s127-production/status-desktop-dark.png",
+      "sha256": "33d1abf434e89ae1547272485cc2253f7dab1defe84bd1b5448d2baa606ce4b4"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "contract-recovered",
+      "file": ".cache/s127-production/contract-recovered-desktop-light.png",
+      "sha256": "67a2e7dea7ac7d7b4619643a6d7c03a5093dd66cf07a417a0ae26d94fce2f49d"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "contract-closed",
+      "file": ".cache/s127-production/contract-closed-desktop-light.png",
+      "sha256": "4bedd7633a034ce4dcc6e53f692b849802f85cf36412cca083bcafef68157a95"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "rewind-checkpoint",
+      "file": ".cache/s127-production/rewind-checkpoint-desktop-light.png",
+      "sha256": "f8293b3c327405cfe753710b156abbdf10a9da9b6e5e432b7e386b70814f1328"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "rewind-restored",
+      "file": ".cache/s127-production/rewind-restored-desktop-light.png",
+      "sha256": "198140a01bb89403dc2b09361e8e9b1797c902df8bc5056d72ab56e171683a91"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "status",
+      "file": ".cache/s127-production/status-desktop-light.png",
+      "sha256": "3b6471c9870858c0e6a129926defced42b1093d071e8842d256cbc02b1d8ad66"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "contract-recovered",
+      "file": ".cache/s127-production/contract-recovered-mobile-dark.png",
+      "sha256": "f65b59c9736649157fb937eba00ee54ed3b4faf173624a2342df2a5ba33e9abb"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "contract-recovered-top",
+      "file": ".cache/s127-production/contract-recovered-top-mobile-dark.png",
+      "sha256": "55ab0f8c295d17f2b924a08fe6bb298f105d6be3f825eb423f450deee1025c06"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "contract-closed",
+      "file": ".cache/s127-production/contract-closed-mobile-dark.png",
+      "sha256": "3b041e2bb392755e309053ed0a8c5e4357cdca704eed2970c23470614cb20343"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "contract-closed-top",
+      "file": ".cache/s127-production/contract-closed-top-mobile-dark.png",
+      "sha256": "5b1be191eaceb91773b42991b4b98a55e83a7a345baae6dfc9261c2bb24aa263"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "rewind-checkpoint",
+      "file": ".cache/s127-production/rewind-checkpoint-mobile-dark.png",
+      "sha256": "47d0e1f68d5a55311405ac19b369733b34a85f32faea108b02921947d81fef6e"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "rewind-restored",
+      "file": ".cache/s127-production/rewind-restored-mobile-dark.png",
+      "sha256": "86054cd1922b5bf48a6c7517e9e79e9f0a0dad4a1644fbf3afa214330c32d0ee"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "status",
+      "file": ".cache/s127-production/status-mobile-dark.png",
+      "sha256": "80623bfa689e3a137fa4a4c07f76b1a454dd51f1b2a7a49f9b5cd3d08c43ef21"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "contract-recovered",
+      "file": ".cache/s127-production/contract-recovered-mobile-light.png",
+      "sha256": "bed2cda51840f125f8c33418661931a231f6470ffa0eb1a55b6ca1cfe04e7e5c"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "contract-recovered-top",
+      "file": ".cache/s127-production/contract-recovered-top-mobile-light.png",
+      "sha256": "cb24a1e4ff564486aac688f56806d9e354bbb1498f53a990aeb7db991fc3727d"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "contract-closed",
+      "file": ".cache/s127-production/contract-closed-mobile-light.png",
+      "sha256": "0a994b2ef6e38bda664c2cec38625e658181791b855dbe1de7315a2034d29ca9"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "contract-closed-top",
+      "file": ".cache/s127-production/contract-closed-top-mobile-light.png",
+      "sha256": "faf26bb11d8e9c45b80334a9f3104d466b5de22ce16f14de9d8056f1ca91e52d"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "rewind-checkpoint",
+      "file": ".cache/s127-production/rewind-checkpoint-mobile-light.png",
+      "sha256": "3b4ecb42f8bb47eb66ce0b1556075fc05e3cf04511ed76d5b708569f28be3bc8"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "rewind-restored",
+      "file": ".cache/s127-production/rewind-restored-mobile-light.png",
+      "sha256": "199ae0170755bc7e532c6e80f2f6c7bdc8921200e92bcb7d9984f9c2061fa9eb"
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "status",
+      "file": ".cache/s127-production/status-mobile-light.png",
+      "sha256": "7f116a717560d3fbf38566bb2ceae00d9d7c46d30f4f41dd4e45daa088d23edd"
+    }
+  ],
+  "error": null
+}

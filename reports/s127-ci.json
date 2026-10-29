@@ -1,0 +1,20 @@
+{
+  "session": 127,
+  "verified": true,
+  "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+  "observedAt": "2026-10-29T04:39:47.411Z",
+  "ok": true,
+  "sha": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+  "runId": 40809657220,
+  "attempt": 1,
+  "requiredJobs": [
+    "unit-shards (core)",
+    "unit-shards (runtime)",
+    "unit-shards (sim:contract)",
+    "unit-shards (sim:realism)",
+    "unit-shards (long)",
+    "unit-shards (studio)",
+    "browser-gates"
+  ],
+  "lane": "hosted-exact-sha"
+}

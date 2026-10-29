@@ -1,0 +1,14 @@
+{
+  "session": 127,
+  "observedAt": "2026-10-29T04:49:20.855Z",
+  "verified": true,
+  "blockingFailing": 0,
+  "passing": 12,
+  "warning": 0,
+  "command": "node scripts/doctor.mjs --update-json",
+  "raw": {
+    "path": ".cache/s127-doctor.json",
+    "sha256": "c88c0499a82c4e4d6f48270d687dd6796087b5703e9382f8770bd89bd444c953"
+  },
+  "scope": "Actual recipient-native lifecycle, blocker and exact release-currency checks; not a whole-product test count."
+}

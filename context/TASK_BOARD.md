@@ -2,10 +2,15 @@
 
 ## S127 Wave status
 
-- [x] Wave 1 — Fresh native goal S127 binding, startup checks, nine-axis audit and pre-edit candidate admission. Startup propagation held-source-absent and missing helper limits remain recorded.
-- [x] Wave 2 — Restore actual dashboard and runtime-owned retention; validate optional First Season Contract. Focused67/67, final actual-worker browser4/4 and24 reviewed selected captures passed; independent implementation reviews approved. Exact-candidate release remains separate.
-- [ ] Wave 3 — Freeze exact source, verify staging, required CI and actual frontend/API deployment.
-- [ ] Wave 4 — Ordered closeout, complete evidence, main publication/readback, signed impact and owned cleanup.
+- [x] Wave 1 — Fresh native goal S127 binding, startup checks, nine-axis audit and pre-edit admission. Startup held-source-absent and missing-helper limits remain recorded.
+- [x] Wave 2 — Both selected recovery outcomes independently reviewed; scoped focused/local browser evidence remains distinct from exact release proof.
+- [x] Wave 3 — Exact source CI7, source Studio398, staging and production frontend/API technical release accepted at 8ab05e49d658e512e03614bd5cc12f6f85a5a75f; reports/s127-release-acceptance.json.
+- [ ] Wave 4 — Ordered records written; final closing metadata, containing publication/readback, signed impact and owned cleanup remain required.
+
+## S127 future discipline — unselected follow-ups
+
+- [ ] [SIL:127] Future discipline: when changing a recovery runway, test mixed or future dates, inherited full storage and acknowledged worker failures together before declaring retention safe.
+- [ ] [SIL:127] Future discipline: verify each named mobile capture contains its target headings/actions before cutting a candidate, and preserve transient overlay and failed-fixture evidence instead of silently replacing it.
 
 ## S126 Wave status
 
