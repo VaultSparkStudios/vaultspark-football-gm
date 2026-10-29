@@ -1012,3 +1012,16 @@ While closeout CI was running, Studio Template Bot advanced main to 08a3d08 with
 <!-- /s113-closeout:truth -->
 
 <!-- s115-closeout:truth -->
+
+## 2026-10-03 — S115 — A persona effect that measured as nothing, and two closeouts that skipped this ledger
+
+**The first draft tilt was a no-op.** Keyed to strategy profile, it acted on a population that is almost entirely "balanced". A matched 10-season probe against a clean worktree showed no movement. It was re-keyed to GM archetype and re-measured: Win-Now draftee headroom fell from 2.38–2.49 to 1.69–1.73, and league overall mean, sd and p90 and the spread of champions held.
+
+**Situational-call neutrality is asserted, not assumed.** Default adjustments are exactly zero, enforced by a negative control. A one-time comparison against the HEAD engine showed byte-identical results over 36 seeded games.
+
+**S114 and S115 initially skipped TRUTH_AUDIT.** A ledger-retention test that was hard-pinned to S105 surfaced it when S105 aged out of the window. That test now asserts the newest session's own entry in every live ledger, and this entry closes the gap for both sessions.
+
+**A full run was reaped by host memory pressure, not by a failure.** Five shards passed in that run; the studio shard was completed at the same commit afterwards.
+<!-- /s115-closeout:truth -->
+
+<!-- s116-closeout:truth -->

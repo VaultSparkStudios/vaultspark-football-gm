@@ -19,6 +19,12 @@
 - On Windows, hash the exact committed source bytes for source-bound receipts; preserve working-copy line-ending evidence separately rather than treating CRLF as a logic change.
 
 
+## Session 125 — Note delivery boundary
+
+A public status note changes the frontend artifact and generated archive/feed/sitemap. Preserve accepted game/API authority separately, stage and verify the new frontend, register every actual note PNG in the canonical ledger, and retain failed metadata attempts. Final root native service completion is a separate event.
+
+S126 closeout lesson: canonical handoff headings carry session authority. Preserve an executed failed metadata suite and verify the corrected staged tree with the full native suite; do not relabel source CI as closing-metadata evidence.
+
 ## Session 124 durable patterns
 
 - Storage property access can throw before a function body; use guarded accessors and isolate method failures.
@@ -107,25 +113,7 @@
 - Hosted email protection can change page-response bytes. Verify both encoded addresses and the exact observed decoder insertion before normalizing those two transformations; retain raw inequality and require the changed release-note block to match exactly.
 <!-- /s112-delivery-followthrough -->
 
-## Session 111 durable patterns
-
-- CPU-to-CPU transactions belong behind the same `TradeService` legality, cap, roster, pick and deadline authority as player trades. Use a matched seeded control before interpreting volume changes as league ecology.
-- `docs/visual-qa/LATEST.json` and the PNG files are insufficient as a historical receipt. Run `writeCaptureLedger()` after final captures, then the Studio capture-ledger regression; the ledger keeps old hashes after pruning.
-- A browser evidence driver must resolve the product's real GM gates through visible controls before advancing a week. A forced transition is not evidence of the player path.
-- A structured mail proof must witness inbound delivery and reply-as identity on the project domain. Passing route checks or a provider configuration description cannot clear launch readiness.
-- Treat CI, stable staging, live Pages, backend health, and launch authority as distinct witnesses. The exact artifact digest binds static surfaces; backend has its own revision and database-ready health.
-- Re-check inherited incident language against ordinary observed commands. The S110 hook completed on normal pushes and was slow rather than reproducibly deadlocked; do not replace it from a stale diagnosis.
-- Test the actual Play click and direct document URL on the stable Pages hostname with an installed service worker. Pages canonicalizes `/game.html` to `/game`; a worker returning the cached redirected HTML response breaks the navigation even when static provenance is exact. Let the browser own navigation and keep the worker cache for static assets.
-- A hidden dialog can retain all of its buttons in the DOM. On a bye week, assert that the tactic dialog stays hidden; counting `.tactic-option` elements misstates the user-visible contract.
-
-## Session 125 — Note delivery boundary
-
-A public status note changes the frontend artifact and generated archive/feed/sitemap. Preserve accepted game/API authority separately, stage and verify the new frontend, register every actual note PNG in the canonical ledger, and retain failed metadata attempts. Final root native service completion is a separate event.
-
 <!-- ledger-roll:pointer -->
 ---
 
 Older entries are retained verbatim in `context/archive/AGENT_MEMORY.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-
-S126 closeout lesson: canonical handoff headings carry session authority. Preserve an executed failed metadata suite and verify the corrected staged tree with the full native suite; do not relabel source CI as closing-metadata evidence.

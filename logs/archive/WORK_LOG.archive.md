@@ -1376,3 +1376,10 @@ On the founder's "yes" to the S113 next list: published the S113 release note, m
 <!-- /s114-closeout:worklog -->
 
 <!-- s115-closeout:worklog -->
+
+## Session 115 — 2026-10-03 — Situational calls, archetype drafting and a parallel deploy gate
+
+On "go": parallelized the deploy gate and built situational calls (one agent, with proofs of neutrality and stream invariance). The first draft-persona tilt was keyed to strategy profile; a matched 10-season probe against a clean worktree showed it was a no-op, because generated clubs are nearly all balanced. It was re-keyed to GM archetype and re-measured. The full run was reaped by host memory pressure during the studio shard; the studio shard was completed at the same commit after the founder freed memory. Source 80125a0a5609be8a9fd7c01399e176ffe1b8e052. Six-shard suite 1765/1765 at this commit (core 290, runtime 1013, sim-contract 85, sim-realism 9, long 3 in one run; studio 365 re-run after the first run was stopped by host memory pressure). Stable staging 14/14 (artifact b4506762…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37141977109 success with the gate as four parallel legs (about 7.5 minutes, was about 23), production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt 214 captures bound to 80125a0. Public launch remains HOLD.
+<!-- /s115-closeout:worklog -->
+
+<!-- s116-closeout:worklog -->

@@ -1,4 +1,6 @@
-# S127 — implementation verified; release in progress
+# Latest Handoff — Session 126 → Session 127
+
+Last closed session: S126. Active S127 implementation is verified; release remains in progress.
 
 ## Where We Left Off (Session 127)
 

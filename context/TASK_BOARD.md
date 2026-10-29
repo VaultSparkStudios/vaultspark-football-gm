@@ -157,40 +157,6 @@ S112 evidence correction to the older CPU–CPU market task: test/session111-cpu
 - [ ] Launch stays HOLD: delivered on-domain email, candidate-bound founder approval and lifecycle reconciliation (registry SPARKED vs local FORGE).
 <!-- /s115-closeout:tasks -->
 
-## Session 114 — Release note, display codes and the server route split (2026-10-02)
-
-- [x] Publish the S113 player-facing release note (2026-10-02 "The league talks back").
-- [x] Stored headlines and four pure client modules use display codes (src/domain/teamLabel.js, public/lib/teamDisplay.js).
-- [x] Split src/server.js into 11 domain route modules with a shared source reader for text-based checks; route-split test pins all 129 routes and forbids duplicates.
-- [x] Retire the styles.css split on measurement: 207 KB raw, 38 KB gzip, 31 KB brotli, service-worker cached after the first visit.
-- [x] Verify and deliver: Source 1c57a3beeb420001d6ba1611e027043df76f7d57. Direct six-shard suite 1752/1752 (core 290, runtime 1000, sim-contract 85, sim-realism 9, long 3, studio 365), exit 0. Stable staging 14/14 (artifact a878e519…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37054296649 success after run 37050905781 hit the gate job's 25-minute timeout on a slower runner, production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt 214 captures bound to 1c57a3b. Public launch remains HOLD.
-
-### Next
-- [x] Give the deploy gate job headroom: its four shards take ~23 of its 25 minutes, and a slower runner cancelled one promotion. Raise the timeout or split the gate into parallel jobs, and land the change with the next deployable candidate.
-- [x] Persona-tilted CPU drafting and in-game 4th-down / two-minute calls behind a measured 10-season realism probe (needs founder go-ahead: changes simulation outcomes).
-- [ ] Launch stays HOLD: delivered on-domain email, candidate-bound founder approval and lifecycle reconciliation (registry SPARKED vs local FORGE).
-<!-- /s114-closeout:tasks -->
-
-## Session 113 — Player language, League Pulse, scouting fog and the public site (2026-10-02)
-
-- [x] Audit the public site, game shell and server/ops (three read-only sweeps); 18 ranked items in docs/AUDIT_2026-10-01_SESSION113.json.
-- [x] Player-language pass across game and site, plus a marketing-vocabulary gate with a negative control.
-- [x] Desk lead (calls beside the Advisor), progress rail, lazy Co-GM "bring your own AI" drawer, injuries once.
-- [x] League Pulse, Advisor look-ahead, Boardroom operating statement, potential scouting fog, real-spot Sim-Watch.
-- [x] GM archetypes from real inputs (every club had been "Loyalty"); Contracts active cap (always $0); distinct trade-builder defaults.
-- [x] Public site: claims single source, five new pages, RSS, press kit, shared header/meta, landing rebuild.
-- [x] Server hardening (413 stop, generic 500, path separator, clamps, proxy trust flags, headers); precache 3.21 MB → 2.84 MB.
-- [x] Verify and deliver: Source 097a7caf6f63c019bc4bf18ed763a3dae68da4d3. Direct six-shard suite 1748/1748 (core 290, runtime 996, sim-contract 85, sim-realism 9, long 3, studio 365), exit 0. Stable staging 14/14 (artifact af49f89b…), production promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36985778315 success (gate, build with full browser suite and evidence, deploy), production provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt: 214 captures bound to 097a7ca, changed surfaces inspected in both themes. Public launch remains HOLD.
-
-### Next
-- [x] Publish the S113 player-facing release note on status.html with the next deployable change (freshness gate tolerates one session; it lands with S114's candidate rather than forcing a docs-only promotion).
-- [x] Split src/server.js routes after moving the API parity checker and the seven text-reading tests onto a route manifest.
-- [x] Rival personas tilt CPU drafting (need-weighted today) behind a measured 10-season realism probe; in-game 4th-down / two-minute decisions in Sim-Watch.
-- [x] News/milestone headlines stored with raw team ids (src) and four pure client modules still print ids; move display codes to creation time.
-- [x] Split styles.css into critical + per-island sheets within boot-budget headroom. **Retired S114 on measurement: 31 KB brotli, cached after first visit.**
-- [ ] Observe the first real opted-in cohort; launch stays HOLD for delivered email evidence, founder approval and lifecycle reconciliation.
-<!-- /s113-closeout:tasks -->
-
 <!-- ledger-roll:pointer -->
 ---
 

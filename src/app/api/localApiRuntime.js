@@ -212,7 +212,7 @@ async function _rwWriteSnapshot(storage, session, trigger, label) {
     }
     meta.unshift(entry);
     const retained = await retainRewindCheckpoints(storage, meta, { newestId: id });
-    return { ok: true, entry, ...retained };
+    return { ok: true, entry, snapshots: retained.snapshots };
   } catch (e) {
     // An unacknowledged index must not strand a fresh payload outside retention.
     // If cleanup itself fails, keep the payload recoverable by reconciliation.

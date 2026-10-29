@@ -605,6 +605,11 @@
     "Initial canon-sync propagation timed out; explicit recipient-rooted drain completed with session-trailer-hook held-source-absent and39 queued deliveries. Adoption suggest/check passed; conformance has0 ABSOLUTE gaps and the known STRONG CANON-045 gap.",
     "Local startup-recovery, premise-timing and review-recorder helpers are absent. Native goal binding, current writeback/start-sync, pre-edit premiseGate and pending bundle admission preserve available evidence; no missing helper is claimed executed.",
     "Initial mobile baseline capture used wrong preference value and was recaptured before product edits. Original obscured attempt was replaced while baseline source was still intact.",
-    "The first fast final browser attempt failed due to an async harness predicate. Actual state tracing and the corrected synchronous final4 passed; failed report retained."
-  ]
+    "The first fast final browser attempt failed due to an async harness predicate. Actual state tracing and the corrected synchronous final4 passed; failed report retained.",
+    "First full local Studio run392/398: one response-shape regression repaired; handoff closed-session heading and ledger roll repaired; ignored local generic scripts/private CDR caused three environment-only failures and will be excluded by an isolated committed-source checkout, preserving local private files."
+  ],
+  "requiredReleaseRepair": {
+    "reason": "Full native Studio exposed an extra local rewind response field; removed it to preserve server/local response parity.",
+    "verification": "Targeted API/session/ledger checks21/21 passed after repair; full clean exact-source Studio and hosted CI remain required."
+  }
 }

@@ -7,18 +7,6 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 
 
 
-## 2026-10-03 — S115 — A persona effect that measured as nothing, and two closeouts that skipped this ledger
-
-**The first draft tilt was a no-op.** Keyed to strategy profile, it acted on a population that is almost entirely "balanced". A matched 10-season probe against a clean worktree showed no movement. It was re-keyed to GM archetype and re-measured: Win-Now draftee headroom fell from 2.38–2.49 to 1.69–1.73, and league overall mean, sd and p90 and the spread of champions held.
-
-**Situational-call neutrality is asserted, not assumed.** Default adjustments are exactly zero, enforced by a negative control. A one-time comparison against the HEAD engine showed byte-identical results over 36 seeded games.
-
-**S114 and S115 initially skipped TRUTH_AUDIT.** A ledger-retention test that was hard-pinned to S105 surfaced it when S105 aged out of the window. That test now asserts the newest session's own entry in every live ledger, and this entry closes the gap for both sessions.
-
-**A full run was reaped by host memory pressure, not by a failure.** Five shards passed in that run; the studio shard was completed at the same commit afterwards.
-<!-- /s115-closeout:truth -->
-
-<!-- s116-closeout:truth -->
 ## 2026-10-04 — S116 — A gate that could not see a small change, and a formula that is not the one it claims
 
 **The first negative control proved nothing.** Moving a draft weight from −0.35 to −0.36 left the golden master identical, because no pick changed. A −6 weight flipped 94 sections. The gate is real; the first control was too gentle to show it.
@@ -115,11 +103,11 @@ Closeout records require separate final metadata/publication proof. Prepared hel
 
 S125: Three optional player-state repairs shipped and accepted at game/API1ad; the truthful public release note is live at frontend12a8. Original evidence, actual signed GAME impact and initial owned cleanup are preserved; independent launch holds remain. GAME/API 1ad07d9919f75d0a8ccfb024c7f42b7f58f62937 remains independently accepted under original168/82fd. Current frontend 12a8abf88403ffbc4905b853a77495fb7babac1b uses artifactd541 and actual sourceCI7/native14, note12 pixels and measured public-entry performance. First containing commit a215623caf79eb326889cbecbc43ec0172e90358 and signed GAME cargo 01K604PB039056B3306CA03B39 are actual. Failed provisional metadata389/386/3 and389/388/1 remain failed. Final clarified metadata still requires one exact native full Studio, containing publication, final cleanup and the native service completion guard before the goal is marked complete.
 
+## 2026-10-28 — Session 126 — Separate implementation, source checks and finalization
+
+Exact C2 source CI7/7; source Studio398/398; selected focused143/143 and entry37/37 separately, with overlap not summed. Actual C2 staging/production browser7/7 and native provenance14/14 per origin; 60 primary plus24 prediction images cover selected named states only. Native five-run desktop/mobile performance passed both origins; production LCP1472/1456ms, INP24ms and CLS0.0003/0.0131. Matching immutable C2 API image and ready database verified with existing database/routing preservation. Earlier C1 local/browser and failed performance observations remain historical. Aggregate application case count, actual-player outcomes and full launch readiness remain unmeasured. Primary60 and prediction supplemental24 images cover named selected states and themes only. Source Studio is not final metadata acceptance; full application test totals and real-player outcomes are not measured. Original failed fixture, quota-grade and transport observations remain retained. Exact frontend/API release: reports/s126-c2-release-acceptance.json. Final exact staged closing-metadata Studio acceptance, final security/supply-chain checks, containing main commit/push/readback, actual signed impact delivery and owned process/worktree/lock cleanup remain required. No final metadata, publication, Ark delivery, cleanup or native goal completion is claimed at this checkpoint.
+
 <!-- ledger-roll:pointer -->
 ---
 
 Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-## 2026-10-28 — Session 126 — Separate implementation, source checks and finalization
-
-Exact C2 source CI7/7; source Studio398/398; selected focused143/143 and entry37/37 separately, with overlap not summed. Actual C2 staging/production browser7/7 and native provenance14/14 per origin; 60 primary plus24 prediction images cover selected named states only. Native five-run desktop/mobile performance passed both origins; production LCP1472/1456ms, INP24ms and CLS0.0003/0.0131. Matching immutable C2 API image and ready database verified with existing database/routing preservation. Earlier C1 local/browser and failed performance observations remain historical. Aggregate application case count, actual-player outcomes and full launch readiness remain unmeasured. Primary60 and prediction supplemental24 images cover named selected states and themes only. Source Studio is not final metadata acceptance; full application test totals and real-player outcomes are not measured. Original failed fixture, quota-grade and transport observations remain retained. Exact frontend/API release: reports/s126-c2-release-acceptance.json. Final exact staged closing-metadata Studio acceptance, final security/supply-chain checks, containing main commit/push/readback, actual signed impact delivery and owned process/worktree/lock cleanup remain required. No final metadata, publication, Ark delivery, cleanup or native goal completion is claimed at this checkpoint.

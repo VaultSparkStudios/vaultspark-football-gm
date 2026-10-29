@@ -1,0 +1,83 @@
+{
+  "session": 127,
+  "group": "studio",
+  "startedAt": "2026-10-29T02:37:29.463Z",
+  "completedAt": "2026-10-29T02:48:13.343Z",
+  "head": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
+  "sourceBinding": "Listed worktree input hashes; exact committed identity is checked separately.",
+  "sources": [
+    {
+      "path": "src/adapters/persistence/rewindRetention.js",
+      "sha256": "fa45f931976f6b1ac4697fa75e54db092a75f1b2aef89f9d104913fb5822899a"
+    },
+    {
+      "path": "src/app/api/localApiRuntime.js",
+      "sha256": "c0db333952922a553fc29729cd83ec41504a8ff42513a2d24c3073771bf4f70e"
+    },
+    {
+      "path": "public/lib/tabSettings.js",
+      "sha256": "84a361b4edacb6359537aadb953afba4f8c8fb86409219726e79567110a4879f"
+    },
+    {
+      "path": "public/lib/firstSeasonContract.js",
+      "sha256": "a0fdea0126fcbcd89601e4fc2f22ebad9958801de32b3eb45718aef4e8897960"
+    },
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "1962e29aed23a9319a3838ac747bb5363ffa49bafa5b3b846b156004852ff216"
+    },
+    {
+      "path": "public/app.js",
+      "sha256": "59bc345f65cb26435a5c661d74e9e7e93764b4822daa73e9d0be447a3761b8dd"
+    },
+    {
+      "path": "public/status.html",
+      "sha256": "fd7e2771dd5eed62b56232580ea8fa34981101fb6f49ece7654504267f9021c1"
+    },
+    {
+      "path": "scripts/run-test-shard.mjs",
+      "sha256": "73335c0faa45ea9709df43f27cf6141adf23dc0b82d4a5c0699fd688500090a4"
+    },
+    {
+      "path": "test/session127-rewind-retention.test.js",
+      "sha256": "af1144fbb8a98fb0c604c45a3041b427e286655e488e33e5a4902516ec7aac8e"
+    },
+    {
+      "path": "test/session127-first-season-contract.test.js",
+      "sha256": "302ca1c4880ebf375c0029f958b748c9e55293b3cbaf0e0dcadafd3ad8dc51a9"
+    },
+    {
+      "path": "test/session109-first-season-contract.test.js",
+      "sha256": "3ec399b8b7bf74d898d9603fe57cb60cb235133765e2d22d5570d6428e8e8aff"
+    },
+    {
+      "path": "test/session112-signing-evidence.test.js",
+      "sha256": "71cf3e2632ad2afc43166a5d9280cba4cb9a149ffb0da9c3bb3860aba774ef2b"
+    },
+    {
+      "path": "test/session101-restore-and-rewind.test.js",
+      "sha256": "b81eec7ea462273778e6a8a2519602476b833021037e8dcf0179265c416f3d37"
+    },
+    {
+      "path": "test/mobile-loop.test.js",
+      "sha256": "0431181185d5a4d904668f5e5346bedc1756486ff208edb20417dbdfa1d403f9"
+    }
+  ],
+  "exitCode": 1,
+  "summary": {
+    "valid": true,
+    "reason": null,
+    "tests": 398,
+    "pass": 392,
+    "fail": 6,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "unchanged": true,
+  "verified": false,
+  "rawLog": {
+    "path": ".cache/s127-studio-checks.log",
+    "sha256": "ce38807916c41226acb56233d82fd348510278a3c5ee2e1958704dda77a9277d"
+  }
+}

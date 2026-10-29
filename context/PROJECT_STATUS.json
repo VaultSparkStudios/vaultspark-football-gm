@@ -130,14 +130,21 @@
   "silHealth": 509,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 0,
+    "blockingFailing": 1,
     "total": 12,
-    "failing": 0,
-    "score": 100,
+    "failing": 1,
+    "score": 92,
     "date": "2026-10-29",
-    "passing": 12,
+    "passing": 11,
     "warning": 0,
-    "checks": []
+    "checks": [
+      {
+        "id": "release-authority-git-head-covered-by-publication",
+        "status": "failing",
+        "blocking": true,
+        "detail": "HEAD f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524 is not covered by live production 309bb0fa11f89b4fb643f1dd554dbcf860c3aff5"
+      }
+    ]
   },
   "complianceScore": 37,
   "complianceTotal": 37,

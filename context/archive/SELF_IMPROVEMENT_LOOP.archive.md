@@ -1995,3 +1995,24 @@ Source 80125a0a5609be8a9fd7c01399e176ffe1b8e052. Six-shard suite 1765/1765 at th
 <!-- /s115-closeout:sil -->
 
 <!-- s116-closeout:sil -->
+
+## 2026-10-04 — Session 116 — Multi-sport platform: guardrails and the first six seams
+
+SIL v3.0: **858 / 1000** (Dev Health 97, Creative Alignment 96, Momentum 95, Engagement 72, Process Quality 88, Cross-Repo Coherence 88, Security Posture 82, Ecosystem Integration 76, Capital Efficiency 70, Automation Coverage 94). Intent outcome: **Achieved** for Phase 0 and steps 1–6. Public launch remains HOLD. Scores are engineering judgment.
+
+- Momentum and Process: six behavior-identical extractions, each with a fired negative control; verification adapted to memory pressure without skipping a shard.
+- Engagement: no new player features this session, by design.
+
+Source d913b9f9c0043d00131506c0d4271034a15fc169. All six shards green at this commit, run shard by shard and in runtime chunks under host memory pressure (studio 365, sim-contract 122, sim-realism 9, long 3, core 290, runtime 1013). Football golden master identical at every extraction step. Stable staging 14/14 (artifact b4acf986…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37200292923 success, production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Public launch remains HOLD.
+
+- [SIL] A negative control must be strong enough to change an outcome; a perturbation below the decision threshold proves nothing about the gate.
+- [SIL] Under host memory pressure, run shards and runtime chunks in the foreground instead of retrying one long background run.
+<!-- /s116-closeout:sil -->
+
+<!-- s116-addendum:sil -->
+### Session 116 addendum — launch path (no new scored session)
+
+S116 remains 858/1000. The email blocker was a missing route, not a missing provider: the evidence was a 550 bounce, read from the sender's mailbox within a second, and fixing the route was a single API call. Cloudflare Email Routing had no rule for football@playfranchisearchitect.com (550 5.1.1). A forward rule to the studio Zoho mailbox was added through the Cloudflare API. Inbound is verified end to end: test (3) was delivered with no bounce, and the founder replied from Zoho. Reply-as football@ (Zoho Send Mail As through Brevo SMTP) is deferred to the founder's custom email studio project. The S0→FB registry transition has green Ladder Court verdicts and a GO packet, but the apply command is founder-only and is still pending. No deployable change since d913b9f; production already serves it.
+
+- [SIL] Before configuring providers, send one real message and read the bounce; it names the broken hop.
+<!-- /s116-addendum:sil -->

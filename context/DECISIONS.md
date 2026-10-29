@@ -6,29 +6,6 @@ Public-safe decisions only. Detailed internal decision history is maintained pri
 
 > Older entries S112 live verbatim in `context/archive/DECISIONS_S112-S112.md`.
 
-## 2026-10-04 — S116 — Extract behind a byte-identity gate, one seam at a time
-
-**Decision 1 — no extraction step ships unless football is byte-identical.** The golden master hashes 70 sections per scenario. Each gate's negative control was a real behavior change, never a synthetic one: a 0.01 draft-weight nudge was too small to change any pick, so the control was strengthened until the gate demonstrably fired.
-
-**Decision 2 — the engine returns, the core applies.** Removing the simulator's StatBook writes was the decoupling every later sport depends on. The records keep the original write order through a shared sequence number.
-
-**Decision 3 — packs are declarations; the core dispatches.** Rules, stat schema, calendar and competition are data or functions on the pack. Stored ids (phases, stages, bracket keys) are unchanged, so every existing save restores as before.
-
-**Decision 4 — defer data-key renames to their own migration step.** superBowl, AFC/NFC and the passer-rating formula all change stored data or outcomes, so each gets a deliberate step with its own save migration or golden-master regeneration.
-
-**Decision 5 — verify under memory pressure by splitting, not skipping.** When the host kept stopping long background runs, the suite ran shard by shard and in runtime chunks at the same commit. Every shard still ran.
-<!-- /s116-closeout:decisions -->
-
-<!-- s116-addendum:decisions -->
-## 2026-10-05 — S116 addendum — Founder direction: every sport, and the email plane as its own project
-
-**Decision 1 — Franchise Architect becomes a multi-sport platform** (founder direction: "the #1 most diverse sports simulation platform"). The plan is a shared core plus sport packs in this monorepo, with basketball second. Football is kept byte-identical behind the golden master.
-
-**Decision 2 — reply-as email is deferred to the founder's custom email studio project.** Inbound now works through a Cloudflare routing rule. The launch email receipt waits for that project or for Zoho Send Mail As through Brevo SMTP.
-
-**Decision 3 — founder approvals are run by the founder.** The S0→FB transition is verdicted green, but the founder-go apply was not executed by the agent. CANON-052 and the session's permission system both keep it founder-run.
-<!-- /s116-addendum:decisions -->
-
 ## 2026-10-08 — S117 partial closeout and release disposition
 
 Honor explicit closeout without converting partial work into completion. Preserve the immutable accepted grooming fixture for historical modern geometry; current categorical geometry remains compared to production and modern sculpt/eyes have their own acceptance authority. Do not regenerate goldens. Preserve unadopted trunk experiments outside production. Keep the save-size and rendered appearance gates unchanged; authorized deployment waits on applicable checks, with no redundant approval request.
@@ -107,11 +84,6 @@ Guard optional player evidence without weakening authoritative checkpoint recove
 
 Routine exact-source promotion reuses existing bounded founder authorization. Metadata-only successor retains exact CI/image/staging/artifact/rollback gates; absence of path-filtered Pages is explicitly not success. No policy/identity/lifecycle/right/spend change is inferred. Source4a2 exact CI browser failure remains nonpassing; its focused13 report and local40 pixels retain original source labels. New client fixture focused14 and exact successor CI7 are separate. Historical local40 are used only under specific full payload/module byte equivalence, never as fresh successor hosted proof. Earlier server-runtime captures are historical only; authoritative client checkpoint refusal remains intentional. Initial late capture-ledger binding and failed metadata CI remain historical. Synthetic component fixtures and hosted lab performance do not prove player cohorts, complete seasons, device capacity or public launch readiness. Earlier dev-server/fixture/capture overreach, source2 Studio387/389, failed source4a2 browser288passed/3skipped/1failed, and prepared Pages admission findings remain recorded in the S125 evidence reports. No rejected attempt is relabeled passing.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
 ## 2026-10-28 — Session 126 — Validated optional state and durable truth
 
 Validate prediction containers and resolved grades before interpreting them. A discarded contradictory grade keeps an in-tab tombstone when persistence fails; pending writes merge with reread durable neighbors. Mobile mode choices and earned trophy feedback remain usable in this tab without claiming reload persistence. Preserve existing browser-wide cross-franchise trophies. No identity/trust-policy, license, rights, lifecycle, spending or public-launch change.
@@ -126,3 +98,8 @@ Exact technical release is accepted by reports/s126-c2-release-acceptance.json; 
 Final closing metadata passed the full unchanged native Studio suite (398/398) on staged tree 5fffb3f7898640997bd3ef376d6c23a00d709376. First containing metadata commit 463f686e3db270435bc24a1f5f859ed7b5121a4b was pushed and read back. Signed impact 01K62HHV1K620ABDCA3702225A was persisted and verified; delivery is not adoption. The owned verification checkout was removed after preserving its evidence; owned native job census found zero running. Final containing receipt publication and original-lock release are enforced post-publication guards. Independent launch holds remain in force.
 
 Proof: reports/s126-c2-closeout-completion.json. SIL remains532/1000; selected outcome count remains3.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

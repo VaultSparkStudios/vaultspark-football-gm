@@ -12,27 +12,6 @@ SIL delta: 505 → 532 (+27). Engineering assessments, not user-outcome measurem
 
 > Older entries S112 live verbatim in `context/archive/SELF_IMPROVEMENT_LOOP_S112-S112.md`.
 
-## 2026-10-04 — Session 116 — Multi-sport platform: guardrails and the first six seams
-
-SIL v3.0: **858 / 1000** (Dev Health 97, Creative Alignment 96, Momentum 95, Engagement 72, Process Quality 88, Cross-Repo Coherence 88, Security Posture 82, Ecosystem Integration 76, Capital Efficiency 70, Automation Coverage 94). Intent outcome: **Achieved** for Phase 0 and steps 1–6. Public launch remains HOLD. Scores are engineering judgment.
-
-- Momentum and Process: six behavior-identical extractions, each with a fired negative control; verification adapted to memory pressure without skipping a shard.
-- Engagement: no new player features this session, by design.
-
-Source d913b9f9c0043d00131506c0d4271034a15fc169. All six shards green at this commit, run shard by shard and in runtime chunks under host memory pressure (studio 365, sim-contract 122, sim-realism 9, long 3, core 290, runtime 1013). Football golden master identical at every extraction step. Stable staging 14/14 (artifact b4acf986…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37200292923 success, production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Public launch remains HOLD.
-
-- [SIL] A negative control must be strong enough to change an outcome; a perturbation below the decision threshold proves nothing about the gate.
-- [SIL] Under host memory pressure, run shards and runtime chunks in the foreground instead of retrying one long background run.
-<!-- /s116-closeout:sil -->
-
-<!-- s116-addendum:sil -->
-### Session 116 addendum — launch path (no new scored session)
-
-S116 remains 858/1000. The email blocker was a missing route, not a missing provider: the evidence was a 550 bounce, read from the sender's mailbox within a second, and fixing the route was a single API call. Cloudflare Email Routing had no rule for football@playfranchisearchitect.com (550 5.1.1). A forward rule to the studio Zoho mailbox was added through the Cloudflare API. Inbound is verified end to end: test (3) was delivered with no bounce, and the founder replied from Zoho. Reply-as football@ (Zoho Send Mail As through Brevo SMTP) is deferred to the founder's custom email studio project. The S0→FB registry transition has green Ladder Court verdicts and a GO packet, but the apply command is founder-only and is still pending. No deployable change since d913b9f; production already serves it.
-
-- [SIL] Before configuring providers, send one real message and read the bounce; it names the broken hop.
-<!-- /s116-addendum:sil -->
-
 ## 2026-10-08 — Session 117 — Scoped foundations, explicit partial handoff
 
 SIL v3.0: **655 / 1000** (Dev Health 55, Creative Alignment 75, Momentum 60, Engagement 50, Process Quality 55, Cross-Repo Coherence 70, Security Posture 75, Ecosystem Integration 60, Capital Efficiency 90, Automation Coverage 65). Intent outcome: Partial. Velocity: 0 newly completed whole audit items at closeout. Debt: ↑ reproducible save-payload regression and uncompleted final verification. These are engineering assessments, not measured player outcomes. Scores reflect substantial researched/scoped progress, explicit observed failures, and an unfinished integrated outcome.
@@ -176,11 +155,6 @@ Intent outcome: **Achieved** for the accepted session work and actual closing ar
 
 GAME/API 1ad07d9919f75d0a8ccfb024c7f42b7f58f62937 remains independently accepted under original168/82fd. Current frontend 12a8abf88403ffbc4905b853a77495fb7babac1b uses artifactd541 and actual sourceCI7/native14, note12 pixels and measured public-entry performance. First containing commit a215623caf79eb326889cbecbc43ec0172e90358 and signed GAME cargo 01K604PB039056B3306CA03B39 are actual. Failed provisional metadata389/386/3 and389/388/1 remain failed. Final clarified metadata still requires one exact native full Studio, containing publication, final cleanup and the native service completion guard before the goal is marked complete.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
 ## 2026-10-28 — Session 126 — Resilient player loops
 
 SIL v3.0: **532 / 1000** (Dev Health 92, Creative Alignment 70, Momentum 65, Engagement 45, Process Quality 60, Cross-Repo Coherence 60, Security Posture 60, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 60). Intent outcome: **Partial** at this ordered-record checkpoint: selected product and technical release are verified; final metadata/publication/impact/cleanup remain required. Scores are reviewed engineering judgment, not measured player or financial outcomes.
@@ -210,3 +184,8 @@ Final exact staged closing-metadata Studio acceptance, final security/supply-cha
 Final closing metadata passed the full unchanged native Studio suite (398/398) on staged tree 5fffb3f7898640997bd3ef376d6c23a00d709376. First containing metadata commit 463f686e3db270435bc24a1f5f859ed7b5121a4b was pushed and read back. Signed impact 01K62HHV1K620ABDCA3702225A was persisted and verified; delivery is not adoption. The owned verification checkout was removed after preserving its evidence; owned native job census found zero running. Final containing receipt publication and original-lock release are enforced post-publication guards. Independent launch holds remain in force.
 
 Proof: reports/s126-c2-closeout-completion.json. SIL remains532/1000; selected outcome count remains3.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

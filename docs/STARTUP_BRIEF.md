@@ -3,7 +3,7 @@
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: 06c3f662e849c4b7 -->
-<!-- genius-authority-fingerprint: 227d768c2f18f67d -->
+<!-- genius-authority-fingerprint: b0794fe419e4c498 -->
 <!-- session-authority: committed=S126 · SIL=S126 · status=S126 · handoff=S126; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
@@ -23,9 +23,7 @@
 
 ╔══ LAST SESSION (S126) - WHAT SHIPPED ══════════════════════════╗
 ║  S126: Mobile and Full View controls remain usable when browser  ║
-║  Tests Exact C2 CI7/7; source Studio398/398; closing             ║
-║  metadata398/398 separately; hosted browser7/7 each origin. No   ║
-║  aggregate or real-player outcome claimed.                       ║
+║  Tests Unverified for this session                               ║
 ║  Deploy verified 14/14 checks @309bb0fa                          ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -64,15 +62,13 @@
 
 ╔══ WHERE WE LEFT OFF  ·  Session 126 ═══════════════════════════╗
 ║  Shipped:  S126: Mobile and Full View controls remain usable wh  ║
-║  Tests: Exact C2 CI7/7; source Studio398/398; closing            ║
-║  metadata398/398 separately; hosted browser7/7 each origin. No   ║
-║  aggregate or real-player outcome claimed.                       ║
+║  Tests: Unverified for this session                              ║
 ║  Deploy: S126 C2 frontend and matching API309bb0f verified; clo  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
-║     33,864 / 1,000,000 tok  ·  codex  ·  heuristic-stale         ║
+║     30,296 / 1,000,000 tok  ·  codex  ·  heuristic-stale         ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -92,7 +88,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ✓  Doctor        12/12 (100%)  ·  2026-10-29  ✓                 ║
+║  ⛔  Doctor        11/12 (92%)  ·  1 failing                      ║
 ║  ✓  Cost          Max flat-rate · $0.00/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -116,9 +112,9 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-10-28.json               ║
-║  Closed: 3 · Open: 0                                             ║
-║  All 3 live-premise-verified audit items are done.               ║
+║  ✓ queue exhausted · source: AUDIT_2026-10-29.json               ║
+║  Closed: 2 · Open: 0                                             ║
+║  All 2 live-premise-verified audit items are done.               ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ```
