@@ -68,13 +68,73 @@ function contractMemory(dashboard, storage) {
   if (!records.has(key)) records.set(key, { value: null, pending: false });
   return records.get(key);
 }
+function isRecord(value) {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function validYear(value) {
+  return Number.isSafeInteger(value) && value > 0 && value <= 9999;
+}
+
+function completionDate(value) {
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z)?$/.test(value)) return null;
+  const timestamp = Date.parse(value);
+  return Number.isFinite(timestamp) && new Date(timestamp).toISOString().slice(0, 10) === value.slice(0, 10) ? value : null;
+}
+
+const CLOSEOUT_EVIDENCE_BOUNDARY = "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict.";
+
+function closeoutVerdict(rows) {
+  const done = rows.filter((row) => row.done).length;
+  const unverified = rows.filter((row) => row.status === "unverified").length;
+  return done === rows.length ? "All five first-season objectives met." :
+    `${done} of ${rows.length} first-season objectives met.${unverified ? ` ${unverified} could not be verified.` : ""}`;
+}
+
+// Saved summaries are optional evidence, not an authority to invent completed
+// objectives. Accept complete, internally consistent current/legacy receipts;
+// discard a damaged receipt while retaining separately valid action marks.
+function validatedCloseout(value) {
+  if (!isRecord(value) || !validYear(value.year) || !Array.isArray(value.rows) ||
+      value.rows.length !== OBJECTIVES.length || value.total !== OBJECTIVES.length) return null;
+  const ids = new Set();
+  const rows = [];
+  for (const row of value.rows) {
+    if (!isRecord(row) || ids.has(row.id) || typeof row.done !== "boolean") return null;
+    const objective = OBJECTIVES.find((entry) => entry.id === row.id);
+    if (!objective || (row.progress != null && typeof row.progress !== "string")) return null;
+    // Before status was recorded, a boolean done was the complete row result.
+    const status = row.status ?? (row.done ? "met" : "not-met");
+    if (!(row.done ? status === "met" : status === "not-met" || status === "unverified")) return null;
+    ids.add(row.id);
+    rows.push({ id: objective.id, title: objective.title, detail: objective.detail,
+      done: row.done, progress: row.progress || "", status });
+  }
+  const done = rows.filter((row) => row.done).length;
+  if (value.done !== done) return null;
+  return { year: value.year, done, total: rows.length, rows,
+    verdict: closeoutVerdict(rows), evidenceBoundary: CLOSEOUT_EVIDENCE_BOUNDARY };
+}
+
 function contractValue(parsed) {
+  const value = isRecord(parsed) ? parsed : {};
+  const marks = {};
+  for (const objective of OBJECTIVES) {
+    if (objective.source === "action" && isRecord(value.marks) &&
+        Object.hasOwn(value.marks, objective.id) && value.marks[objective.id] === true) marks[objective.id] = true;
+  }
+  const startYear = validYear(value.startYear) ? value.startYear : null;
+  let finalized = validatedCloseout(value.finalized);
+  if (finalized && startYear !== null && finalized.year !== startYear) finalized = null;
+  const hasActionEvidence = OBJECTIVES.filter((row) => row.source === "action").every((row) => marks[row.id] === true);
   return {
-    marks: { ...(parsed?.marks || {}) },
-    dismissed: Boolean(parsed?.dismissed),
-    completedAt: parsed?.completedAt || null,
-    startYear: parsed?.startYear ?? null,
-    finalized: parsed?.finalized ? JSON.parse(JSON.stringify(parsed.finalized)) : null
+    marks,
+    dismissed: value.dismissed === true,
+    // Legacy completed contracts predate finalized receipts. Their three action
+    // marks remain necessary; a stray timestamp alone cannot hide the contract.
+    completedAt: hasActionEvidence || finalized?.done === OBJECTIVES.length ? completionDate(value.completedAt) : null,
+    startYear,
+    finalized
   };
 }
 
@@ -141,7 +201,7 @@ export function evaluateObjectives(dashboard = {}, contractState = { marks: {} }
     let done = false;
     let progress = "";
     if (objective.source === "action") {
-      done = Boolean(marks[objective.id]) ||
+      done = marks[objective.id] === true ||
         (objective.id === "sign-starter" && hasFirstSeasonSigningEvidence(dashboard, contractState));
     } else if (objective.id === "owner-floor") {
       if (target && record) {
@@ -182,7 +242,7 @@ export function finalizeFirstSeasonContract(dashboard = {}, storage = tabStorage
   const current = readContractState(dashboard, storage);
   if (current.finalized) return current.finalized;
   const year = Number(dashboard.seasonAwardsStage?.year ?? dashboard.currentYear);
-  if (!Number.isFinite(year) || (current.startYear != null && Number(current.startYear) !== year) ||
+  if (!validYear(year) || (current.startYear != null && Number(current.startYear) !== year) ||
       (current.startYear == null && Number(dashboard.seasonsSimulated || 0) > 0)) return null;
   const hasRecord = Boolean(controlledRecord(dashboard));
   const hasTarget = ownerTargetWins(dashboard) != null;
@@ -194,15 +254,13 @@ export function finalizeFirstSeasonContract(dashboard = {}, storage = tabStorage
         ? "unverified" : "not-met"
   }));
   const done = rows.filter((row) => row.done).length;
-  const unverified = rows.filter((row) => row.status === "unverified").length;
   const finalized = {
     year,
     done,
     total: rows.length,
     rows,
-    verdict: done === rows.length ? "All five first-season objectives met." :
-      `${done} of ${rows.length} first-season objectives met.${unverified ? ` ${unverified} could not be verified.` : ""}`,
-    evidenceBoundary: "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+    verdict: closeoutVerdict(rows),
+    evidenceBoundary: CLOSEOUT_EVIDENCE_BOUNDARY
   };
   writeContractState(dashboard, { ...current, startYear: current.startYear ?? year, finalized }, storage);
   return finalized;
@@ -259,6 +317,7 @@ export function renderContractRows(summary) {
 }
 
 export function renderContractCloseout(closeout) {
+  closeout = validatedCloseout(closeout);
   if (!closeout) return "";
   return `<section class="sr-first-season-contract" aria-label="First Season Contract result">` +
     `<strong>First Season Contract · ${escapeHtml(String(closeout.year))}</strong>` +

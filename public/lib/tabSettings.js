@@ -720,9 +720,13 @@ export function renderRewindTimeline() {
   list.querySelectorAll(".rewind-restore-btn").forEach((btn) => {
     btn.addEventListener("click", async () => {
       if (!confirm(`Restore to: ${btn.dataset.id}?\n\nYour current state will be auto-snapshotted first.`)) return;
-      const data = await api("/api/rewind/restore", { method: "POST", body: { id: btn.dataset.id } });
-      if (data.state) applyDashboard(data);
-      await loadRewindHistory();
+      btn.disabled = true;
+      try {
+        const data = await api("/api/rewind/restore", { method: "POST", body: { id: btn.dataset.id } });
+        if (data.state) applyDashboard(data.state);
+        await loadRewindHistory();
+      } catch (error) { presentActionError(error); }
+      finally { btn.disabled = false; }
     });
   });
 

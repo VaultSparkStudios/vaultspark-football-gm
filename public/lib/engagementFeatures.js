@@ -662,39 +662,4 @@ export function buildMentorshipBadge(player, mentorships = []) {
     </div>`;
 }
 
-// LOCALSTORAGE SIZE GUARD
-
-const REWIND_SIZE_LIMIT = 4 * 1024 * 1024; // 4MB
-
-export function checkAndPruneRewindStorage() {
-  try {
-    const indexRaw = localStorage.getItem("vsfgm-rw-index");
-    if (!indexRaw) return;
-    const index = JSON.parse(indexRaw);
-    if (!Array.isArray(index)) return;
-    // Estimate total size of rewind slots
-    let totalSize = indexRaw.length;
-    for (const slot of index) {
-      const raw = localStorage.getItem(`vsfgm:rw-state:${slot.id}`);
-      if (raw) totalSize += raw.length;
-    }
-    if (totalSize <= REWIND_SIZE_LIMIT) return;
-    // Prune oldest slots until under limit
-    let pruned = 0;
-    const sorted = [...index].sort((a, b) => (a.savedAt || 0) - (b.savedAt || 0));
-    while (totalSize > REWIND_SIZE_LIMIT && sorted.length > 1) {
-      const oldest = sorted.shift();
-      const raw = localStorage.getItem(`vsfgm:rw-state:${oldest.id}`);
-      if (raw) totalSize -= raw.length;
-      localStorage.removeItem(`vsfgm:rw-state:${oldest.id}`);
-      const newIndex = index.filter((s) => s.id !== oldest.id);
-      localStorage.setItem("vsfgm-rw-index", JSON.stringify(newIndex));
-      pruned++;
-    }
-    if (pruned > 0) {
-      showToast(`Rewind storage pruned — ${pruned} oldest checkpoint${pruned > 1 ? "s" : ""} removed to free space.`, "warning");
-    }
-  } catch {
-    // non-critical — never block gameplay
-  }
-}
+// Rewind retention is owned by the runtime storage writer.

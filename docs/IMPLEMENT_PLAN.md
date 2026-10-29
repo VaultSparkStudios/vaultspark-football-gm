@@ -1,18 +1,10 @@
-<!-- source: docs/AUDIT_2026-10-28.json · Session 126 -->
-# S126 resilient player loops
+<!-- source: docs/AUDIT_2026-10-29.json · Session 127 -->
+# S127 trustworthy franchise recovery
 
-FORGE/FB from local project status; L2 selected. No lifecycle transition.
+Local FORGE/FB remains unchanged. L2 selected for both outcomes.
 
-1. **Keep mobile decision controls usable without browser storage**. Guard storage access and retain the explicit mobile/full-view preference in this tab when reads or writes fail. Preserve stored preferences and viewport defaults. Verify getter/read/quota failures, both switch directions and actual mobile navigation in both themes. Readiness: accessibility, mobile parity and every supported theme. Done only with focused behavioral tests, actual browser evidence, required visual proof and independent diff review.
+1. **Restore the actual franchise and preserve the newest rewind checkpoints**. Apply the restored dashboard from the response state. Move byte-budget pruning into the local runtime owning rewind storage, remove page-side mutation, preserve newest checkpoints, keep index and payloads coherent, and cover worker persistence and actual restore then next action. Readiness: backup, recovery and rollback. Acceptance: focused behavioral tests, real browser journeys, before/after desktop/mobile images in both themes, independent review, exact-candidate staging and production proof.
 
-2. **Keep damaged optional predictions from interrupting dashboard updates**. Validate persisted prediction maps, entries, statistics and receipts before use. Discard malformed data without invented grades. Keep league/year/week isolation, engine input immutability and once-only grading. Prove dashboard hydration with corrupt optional storage and normal prediction submission/settlement. Readiness: core journeys and product correctness. Done only with focused behavioral tests, actual browser evidence, required visual proof and independent diff review.
+2. **Keep a damaged optional First Season Contract from crashing the Desk**. Validate stored contract records and season-close rows before use. Retain legitimate action marks and valid closed results, reject malformed rows and false completion, preserve franchise isolation and tab-only progress, then prove actual Desk hydration in both themes and viewport sizes. Readiness: core journeys and product correctness. Acceptance: focused behavioral tests, real browser journeys, before/after desktop/mobile images in both themes, independent review, exact-candidate staging and production proof.
 
-3. **Keep earned trophies during this tab after failed persistence**. Retain validated earned trophy records in tab memory when persistence fails. Deduplicate repeated events, keep browser-wide cross-franchise trophy semantics, restore durable data without losing tab awards, and explain temporary persistence truthfully in Trophy Case. Verify repeated events, malformed records, quota/read/getter failures and actual desktop/mobile renders in both themes. Readiness: backup, recovery and rollback. Done only with focused behavioral tests, actual browser evidence, required visual proof and independent diff review.
-
-Wave 1: startup and audit. Wave 2: selected repairs. Wave 3: staging, production, push and ordered closeout.
-
-## S126 accepted C2 delivery
-
-All three selected outcomes are verified by reports/s126-c2-release-acceptance.json at source `309bb0fa11f89b4fb643f1dd554dbcf860c3aff5`. The required landing-response repair passed the unchanged staging and production performance gates; the two failed C1 measurements remain historical evidence. This dependency repair does not add a fourth selected audit outcome.
-
-At this ordered closeout checkpoint, final metadata acceptance, containing publication, signed impact and owned cleanup remain separate. Current completion is recorded in context/LATEST_HANDOFF.md.
+Wave 1 startup/audit; Wave 2 implementation; Wave 3 release; Wave 4 ordered closeout and push.

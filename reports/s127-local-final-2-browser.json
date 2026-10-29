@@ -1,0 +1,441 @@
+{
+  "session": 127,
+  "phase": "local-final-2",
+  "origin": "http://localhost:4273",
+  "startedAt": "2026-10-29T02:35:39.968Z",
+  "completedAt": "2026-10-29T02:37:04.643Z",
+  "verified": true,
+  "results": [
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "contract": {
+        "done": 1,
+        "total": 5,
+        "completedNow": false,
+        "marks": {
+          "depth-chart": true
+        }
+      },
+      "closed": {
+        "done": 5,
+        "total": 5
+      },
+      "saved": {
+        "week": 1,
+        "team": "BUF",
+        "id": "manual-y2026-w1-1793241345094",
+        "kind": "worker"
+      },
+      "restored": {
+        "week": 1,
+        "team": "BUF"
+      },
+      "next": 2,
+      "errors": [],
+      "verified": true
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "contract": {
+        "done": 1,
+        "total": 5,
+        "completedNow": false,
+        "marks": {
+          "depth-chart": true
+        }
+      },
+      "closed": {
+        "done": 5,
+        "total": 5
+      },
+      "saved": {
+        "week": 1,
+        "team": "BUF",
+        "id": "manual-y2026-w1-1793241364693",
+        "kind": "worker"
+      },
+      "restored": {
+        "week": 1,
+        "team": "BUF"
+      },
+      "next": 2,
+      "errors": [],
+      "verified": true
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "contract": {
+        "done": 1,
+        "total": 5,
+        "completedNow": false,
+        "marks": {
+          "depth-chart": true
+        }
+      },
+      "closed": {
+        "done": 5,
+        "total": 5
+      },
+      "saved": {
+        "week": 1,
+        "team": "BUF",
+        "id": "manual-y2026-w1-1793241385925",
+        "kind": "worker"
+      },
+      "restored": {
+        "week": 1,
+        "team": "BUF"
+      },
+      "next": 2,
+      "errors": [],
+      "verified": true
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "contract": {
+        "done": 1,
+        "total": 5,
+        "completedNow": false,
+        "marks": {
+          "depth-chart": true
+        }
+      },
+      "closed": {
+        "done": 5,
+        "total": 5
+      },
+      "saved": {
+        "week": 1,
+        "team": "BUF",
+        "id": "manual-y2026-w1-1793241408011",
+        "kind": "worker"
+      },
+      "restored": {
+        "week": 1,
+        "team": "BUF"
+      },
+      "next": 2,
+      "errors": [],
+      "verified": true
+    }
+  ],
+  "captures": [
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "contract-recovered",
+      "file": ".cache/s127-local-final-2/contract-recovered-desktop-dark.png",
+      "sha256": "9ccdde998f61705ce8b580861d9af88663b86694c4a39595c41d4bf819523b16"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "contract-closed",
+      "file": ".cache/s127-local-final-2/contract-closed-desktop-dark.png",
+      "sha256": "765635c64980340664b73bc2e5f83860aee4cd8d8fe46beb02350ee349e3863c"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "rewind-checkpoint",
+      "file": ".cache/s127-local-final-2/rewind-checkpoint-desktop-dark.png",
+      "sha256": "1a17424a1949e7631897d0ba5ca630789bc35af5493ada35d10ccdbda694459d"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "rewind-restored",
+      "file": ".cache/s127-local-final-2/rewind-restored-desktop-dark.png",
+      "sha256": "791bed8676646c77a10e4f7f6e6a89c5b971a9530b59cb4acf99da639592b61b"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "status",
+      "file": ".cache/s127-local-final-2/status-desktop-dark.png",
+      "sha256": "4d47c74870fe61a0a4fd13f4e37b2238ff661fafba6d92672f2cc1fc58675c8b"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "contract-recovered",
+      "file": ".cache/s127-local-final-2/contract-recovered-desktop-light.png",
+      "sha256": "179877eb9a437727597d91965e2b744d155bf098db04f613cc0e36b253330bc0"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "contract-closed",
+      "file": ".cache/s127-local-final-2/contract-closed-desktop-light.png",
+      "sha256": "4bedd7633a034ce4dcc6e53f692b849802f85cf36412cca083bcafef68157a95"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "rewind-checkpoint",
+      "file": ".cache/s127-local-final-2/rewind-checkpoint-desktop-light.png",
+      "sha256": "adf608e2653676679f928eb89e27adb605deca67f4dffb43232f09d873090d86"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "rewind-restored",
+      "file": ".cache/s127-local-final-2/rewind-restored-desktop-light.png",
+      "sha256": "8a22049c0057f8e12d9d9630b61dfb86d116e45ad750b506120b2211f71c3aaf"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "status",
+      "file": ".cache/s127-local-final-2/status-desktop-light.png",
+      "sha256": "87568f3792b979890230fe2c80e29f5fbe810c7570eaaab88e5ef33c89becc78"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "contract-recovered",
+      "file": ".cache/s127-local-final-2/contract-recovered-mobile-dark.png",
+      "sha256": "38f8633d43681a8fa4f212c572aa8645f21adbeaa4b2683f3bf1cf388b43f3d0"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "contract-recovered-top",
+      "file": ".cache/s127-local-final-2/contract-recovered-top-mobile-dark.png",
+      "sha256": "aa1f70b914157460a119d2b67597616c4ef769fd86bd1aaa9c8de6176b8a0950"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "contract-closed",
+      "file": ".cache/s127-local-final-2/contract-closed-mobile-dark.png",
+      "sha256": "8b5e1506a8a7ed1e6a09fcb1df52db6ea6f084a9c0d7433509d2fb3bec5e7471"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "contract-closed-top",
+      "file": ".cache/s127-local-final-2/contract-closed-top-mobile-dark.png",
+      "sha256": "9dc4e1901a67b76aac8fd22fb65d403eff95cff41474d8717b2b10f30f72acbb"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "rewind-checkpoint",
+      "file": ".cache/s127-local-final-2/rewind-checkpoint-mobile-dark.png",
+      "sha256": "14aba5085268347ac3cc8854e248e7205950a91462fb9c5837a46ede8bc55bbd"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "rewind-restored",
+      "file": ".cache/s127-local-final-2/rewind-restored-mobile-dark.png",
+      "sha256": "3a2be56d099479e70762b745bc5a775607c7e5abea992218771c4efebe5ffee8"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "status",
+      "file": ".cache/s127-local-final-2/status-mobile-dark.png",
+      "sha256": "43fcab7ec2165e71c5b5391025920bf54a6bd9f65e6c3b60ae6f99ae9da545ce"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "contract-recovered",
+      "file": ".cache/s127-local-final-2/contract-recovered-mobile-light.png",
+      "sha256": "34e2876febfda0f55192629062580386b94eb936ee1ed02c85b85f7e0aba733c"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "contract-recovered-top",
+      "file": ".cache/s127-local-final-2/contract-recovered-top-mobile-light.png",
+      "sha256": "52b3768ff614d7a672822b4e1bc414b4c2fa7b3d5fe4926601e5ae0eef57c26b"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "contract-closed",
+      "file": ".cache/s127-local-final-2/contract-closed-mobile-light.png",
+      "sha256": "550b7829800603431446f92d0baf2cf3fb30c199459ba6a6c89fdf8eaa0796e4"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "contract-closed-top",
+      "file": ".cache/s127-local-final-2/contract-closed-top-mobile-light.png",
+      "sha256": "93ea90d7bac0a6c73b6210397fd49fe0b2692ac52e62898d775a06a354342cbb"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "rewind-checkpoint",
+      "file": ".cache/s127-local-final-2/rewind-checkpoint-mobile-light.png",
+      "sha256": "ceec89e7675b8841ea703a914f00ae2a1a13b7ebe9be397f0022912702cbfcd0"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "rewind-restored",
+      "file": ".cache/s127-local-final-2/rewind-restored-mobile-light.png",
+      "sha256": "014615056d26530b3fce816a0865317bf34e2f7d0f169433c78500bc543b95fe"
+    },
+    {
+      "phase": "local-final-2",
+      "origin": "http://localhost:4273",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "status",
+      "file": ".cache/s127-local-final-2/status-mobile-light.png",
+      "sha256": "9622b71006653770458483c457ef5e0847388a0dd5ab355a89d7d5fbd2a8e24a"
+    }
+  ],
+  "error": null
+}

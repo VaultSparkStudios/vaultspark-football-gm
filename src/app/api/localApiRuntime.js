@@ -2,6 +2,7 @@ import { deriveSessionGmArchetype } from "../../engine/gmArchetype.js";
 import { createHybridBrowserSaveStore } from "../../adapters/persistence/hybridSaveStore.js";
 import { buildIntegrityStamp, createPersistenceDescriptor, verifyIntegrityStamp } from "../../adapters/persistence/saveStoreShared.js";
 import { decodeSnapshot, encodeSnapshot } from "../../adapters/persistence/snapshotCodec.js";
+import { retainRewindCheckpoints } from "../../adapters/persistence/rewindRetention.js";
 import { getLeagueConfigCatalog, getLeagueConfigSummary, resolveLeagueSettings } from "../../config/leagueSetup.js";
 import { createLeagueBase } from "../../domain/teamFactory.js";
 import { GameSession, scoutedDraftResult } from "../../runtime/GameSession.js";
@@ -89,7 +90,8 @@ _loadPersistedSpeedrun();
 
 const REWIND_META_KEY = "vsfgm-rw-index";
 const REWIND_STATE_PREFIX = "vsfgm:rw-state:";
-const REWIND_MAX_SLOTS = 10;
+let lastRewindStamp = 0;
+const rewindWrites = new WeakMap();
 
 /**
  * Read the rewind index.
@@ -165,13 +167,6 @@ function _rwNote(metrics, result) {
   return result;
 }
 
-function _rwPruneOldest(storage, meta) {
-  while (meta.length >= REWIND_MAX_SLOTS) {
-    const oldest = meta.pop();
-    if (oldest?.id) storage.removeItem(REWIND_STATE_PREFIX + oldest.id);
-  }
-}
-
 /**
  * S101 — this wrote `JSON.stringify(session.toSnapshot())` raw while save slots
  * and backups went through `encodeSnapshot`, the 8.5x gzip+base64 codec written
@@ -181,8 +176,18 @@ function _rwPruneOldest(storage, meta) {
  * could not work in the client-only build. `decodeSnapshot` passes plain JSON
  * through unchanged, so rewind points written before this keep loading.
  */
-async function _rwTakeSnapshot(storage, session, trigger, label) {
-  const id = `${trigger}-y${session.currentYear}-w${session.currentWeek}-${Date.now()}`;
+function _rwTakeSnapshot(storage, session, trigger, label) {
+  const operation = (rewindWrites.get(storage) || Promise.resolve()).then(() =>
+    _rwWriteSnapshot(storage, session, trigger, label));
+  const tail = operation.then(() => {}, () => {});
+  rewindWrites.set(storage, tail);
+  void tail.then(() => { if (rewindWrites.get(storage) === tail) rewindWrites.delete(storage); });
+  return operation;
+}
+
+async function _rwWriteSnapshot(storage, session, trigger, label) {
+  lastRewindStamp = Math.max(Date.now(), lastRewindStamp + 1);
+  const id = `${trigger}-y${session.currentYear}-w${session.currentWeek}-${lastRewindStamp}`;
   const entry = {
     id, trigger, label,
     year: session.currentYear,
@@ -191,13 +196,33 @@ async function _rwTakeSnapshot(storage, session, trigger, label) {
     createdAt: new Date().toISOString()
   };
   try {
-    storage.setItem(REWIND_STATE_PREFIX + id, await encodeSnapshot(session.toSnapshot()));
-    const meta = _rwGetMeta(storage);
+    // Reclaim inherited over-budget runways before trying to add bytes. Retry
+    // quota failures oldest-first, always keeping one existing recovery point.
+    let meta = (await retainRewindCheckpoints(storage, _rwGetMeta(storage))).snapshots;
+    const encoded = await encodeSnapshot(session.toSnapshot());
+    while (true) {
+      try {
+        if (typeof storage.setItemAsync === "function") await storage.setItemAsync(REWIND_STATE_PREFIX + id, encoded);
+        else storage.setItem(REWIND_STATE_PREFIX + id, encoded);
+        break;
+      } catch (error) {
+        if (!(error?.name === "QuotaExceededError" || error?.code === 22 || error?.code === 1014) || meta.length <= 1) throw error;
+        meta = (await retainRewindCheckpoints(storage, meta, { maxSlots: meta.length - 1 })).snapshots;
+      }
+    }
     meta.unshift(entry);
-    _rwPruneOldest(storage, meta);
-    _rwSetMeta(storage, meta);
-    return { ok: true, entry, snapshots: meta };
+    const retained = await retainRewindCheckpoints(storage, meta, { newestId: id });
+    return { ok: true, entry, ...retained };
   } catch (e) {
+    // An unacknowledged index must not strand a fresh payload outside retention.
+    // If cleanup itself fails, keep the payload recoverable by reconciliation.
+    try {
+      const indexed = JSON.parse(storage.getItem(REWIND_META_KEY) || "[]");
+      if (Array.isArray(indexed) && !indexed.some(row => row?.id === id)) {
+        if (typeof storage.removeItemAsync === "function") await storage.removeItemAsync(REWIND_STATE_PREFIX + id);
+        else storage.removeItem(REWIND_STATE_PREFIX + id);
+      }
+    } catch { /* The primary failed write remains reported below. */ }
     return { ok: false, error: e?.message || "Snapshot failed (storage quota?)" };
   }
 }

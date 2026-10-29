@@ -1,0 +1,93 @@
+{
+  "session": 127,
+  "observedAt": "2026-10-29T02:39:06.436Z",
+  "sources": [
+    {
+      "path": "src/adapters/persistence/rewindRetention.js",
+      "sha256": "fa45f931976f6b1ac4697fa75e54db092a75f1b2aef89f9d104913fb5822899a"
+    },
+    {
+      "path": "src/app/api/localApiRuntime.js",
+      "sha256": "c0db333952922a553fc29729cd83ec41504a8ff42513a2d24c3073771bf4f70e"
+    },
+    {
+      "path": "public/lib/tabSettings.js",
+      "sha256": "84a361b4edacb6359537aadb953afba4f8c8fb86409219726e79567110a4879f"
+    },
+    {
+      "path": "public/lib/firstSeasonContract.js",
+      "sha256": "a0fdea0126fcbcd89601e4fc2f22ebad9958801de32b3eb45718aef4e8897960"
+    },
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "1962e29aed23a9319a3838ac747bb5363ffa49bafa5b3b846b156004852ff216"
+    },
+    {
+      "path": "public/app.js",
+      "sha256": "59bc345f65cb26435a5c661d74e9e7e93764b4822daa73e9d0be447a3761b8dd"
+    },
+    {
+      "path": "public/status.html",
+      "sha256": "fd7e2771dd5eed62b56232580ea8fa34981101fb6f49ece7654504267f9021c1"
+    },
+    {
+      "path": "scripts/run-test-shard.mjs",
+      "sha256": "73335c0faa45ea9709df43f27cf6141adf23dc0b82d4a5c0699fd688500090a4"
+    },
+    {
+      "path": "test/session127-first-season-contract.test.js",
+      "sha256": "302ca1c4880ebf375c0029f958b748c9e55293b3cbaf0e0dcadafd3ad8dc51a9"
+    },
+    {
+      "path": "test/session127-rewind-retention.test.js",
+      "sha256": "af1144fbb8a98fb0c604c45a3041b427e286655e488e33e5a4902516ec7aac8e"
+    }
+  ],
+  "implementationVerdict": "approve",
+  "reviews": [
+    {
+      "reviewer": "review_rewind",
+      "round": 1,
+      "verdict": "fix",
+      "findings": [
+        "Mixed missing dates could evict the newest dated checkpoint.",
+        "Full inherited storage needed cleanup before the new write.",
+        "Newly written checkpoint needed protection from future-dated metadata."
+      ]
+    },
+    {
+      "reviewer": "review_rewind",
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "evidence": "All three fixes were re-reviewed; actual future-date runtime repro retained the new payload."
+    },
+    {
+      "reviewer": "review_contract",
+      "round": 1,
+      "verdict": "approve",
+      "findings": [],
+      "evidence": "S12717 and existing S10911 passed independently. Legacy completion dates preserve the existing three-action convention."
+    }
+  ],
+  "browser": {
+    "path": "reports/s127-local-final-2-browser.json",
+    "sha256": "6452e6c0c52446cb8910e19821c9f8a7e8fc350facd66ac0950f8a8d1da7290f",
+    "verified": true
+  },
+  "visualReview": {
+    "reviewer": "review_contract",
+    "captures": 24,
+    "hashesVerified": true,
+    "verdict": "pass-selected-states",
+    "limitation": "Mobile rewind heading obscured by sticky header in element captures; actual entries and controls remain visible."
+  },
+  "historicalFailures": [
+    {
+      "path": "reports/s127-local-final-browser.json",
+      "kind": "test-harness",
+      "reason": "Async Playwright wait predicate returned a truthy Promise before restore settled. Instrumented actual dashboard updates remained correct; final synchronous wait passed all4."
+    }
+  ],
+  "releaseVerified": false
+}

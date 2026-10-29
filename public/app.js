@@ -222,8 +222,7 @@ import {
   hideTradeBreakdown,
   renderDynastyRecordsBoard,
   loadTeamArchetypes,
-  renderArchetypesTable,
-  checkAndPruneRewindStorage
+  renderArchetypesTable
 } from "./lib/engagementFeatures.js";
 
 function openManagedModal(modalId, onClose) {
@@ -456,7 +455,6 @@ async function refreshAfterWeeklyCommand(response) {
     onRetry: () => renderSeasonArcs().catch((retryError) => renderPanelError("seasonArcsContent", "Season arcs", retryError))
   }));
   checkAndShowFranchiseMoment().catch(presentActionError);
-  checkAndPruneRewindStorage();
   syncMobileLoopOverlay();
   // Reward beat + trophies: both derive from the receipted box score of the
   // week that just completed; a bye stays silent.

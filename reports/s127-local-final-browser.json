@@ -1,0 +1,51 @@
+{
+  "session": 127,
+  "phase": "local-final",
+  "origin": "http://localhost:4273",
+  "startedAt": "2026-10-29T02:32:46.315Z",
+  "completedAt": "2026-10-29T02:33:00.314Z",
+  "verified": false,
+  "results": [],
+  "captures": [
+    {
+      "phase": "local-final",
+      "origin": "http://localhost:4273",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "contract-recovered",
+      "file": ".cache/s127-local-final/contract-recovered-desktop-dark.png",
+      "sha256": "8935b23b59f09417be2ef2d7fa2179c1bb491841fc6b0292984cbbe192df5c10"
+    },
+    {
+      "phase": "local-final",
+      "origin": "http://localhost:4273",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "contract-closed",
+      "file": ".cache/s127-local-final/contract-closed-desktop-dark.png",
+      "sha256": "765635c64980340664b73bc2e5f83860aee4cd8d8fe46beb02350ee349e3863c"
+    },
+    {
+      "phase": "local-final",
+      "origin": "http://localhost:4273",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "rewind-checkpoint",
+      "file": ".cache/s127-local-final/rewind-checkpoint-desktop-dark.png",
+      "sha256": "79dadf52fe6d42d8ae1835b3de159c29ec336d4c2f1b426c0b0d1f4d8e54fa9b"
+    }
+  ],
+  "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n    team: 'BUF',\n+   week: 2\n-   week: 1\n  }\n"
+}

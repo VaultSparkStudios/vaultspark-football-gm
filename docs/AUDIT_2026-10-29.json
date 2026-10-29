@@ -1,0 +1,610 @@
+{
+  "schemaVersion": "2.1",
+  "date": "2026-10-29",
+  "session": 127,
+  "source": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
+  "project": {
+    "slug": "franchise-architect-football",
+    "type": "game",
+    "name": "Franchise Architect: Football"
+  },
+  "scope": "Fresh S127 arc: trustworthy rewind recovery and resilient first-season progress",
+  "profile": {
+    "rubric": "product",
+    "audience": "public-unlaunched",
+    "source": "Current source inspection plus independent game-loop audit"
+  },
+  "lifecycleFocus": {
+    "stage": "FB",
+    "recordedStage": "FB",
+    "display": "FORGE · BETA",
+    "audience": "public-unlaunched",
+    "health": "yellow",
+    "releaseTarget": null,
+    "mode": "public-beta-hardening",
+    "readiness": true,
+    "areas": [
+      "core journeys and product correctness",
+      "onboarding and identity/access",
+      "accessibility, mobile parity and every supported theme",
+      "performance and capacity",
+      "security, privacy, data integrity and abuse controls",
+      "backup, recovery and rollback",
+      "email and notifications where used",
+      "observability and actionable analytics",
+      "feedback, support and issue triage",
+      "branding, legal, contact and rights/provenance",
+      "human and agent access where applicable",
+      "staging, release evidence and truthful beta/release communication"
+    ],
+    "stageConflict": null,
+    "statusSource": "project-status",
+    "stageSource": "project-status"
+  },
+  "axes": {
+    "features-depth": 1.5,
+    "ui-ux-feedback": 3,
+    "gamification-immersion": 5,
+    "ai-intelligence": 1.5,
+    "security": 1,
+    "speed-organization-efficiency": 2,
+    "token-cost": 1,
+    "observability-honesty": 1,
+    "sil-debt": 1
+  },
+  "items": [
+    {
+      "id": 1,
+      "rank": 1,
+      "slug": "rewind-recovery-authority",
+      "title": "Restore the actual franchise and preserve the newest rewind checkpoints",
+      "axis": "features-depth",
+      "category": "features-depth",
+      "tier": "🔥",
+      "effortHours": 3,
+      "impact": 9,
+      "innovation": 3,
+      "priority": 17.44240060197242,
+      "status": "shipped",
+      "readinessArea": "backup, recovery and rollback",
+      "stageRationale": "Local FORGE/FB beta hardening prioritizes reproduced recovery and onboarding failures.",
+      "recipe": "Apply the restored dashboard from the response state. Move byte-budget pruning into the local runtime owning rewind storage, remove page-side mutation, preserve newest checkpoints, keep index and payloads coherent, and cover worker persistence and actual restore then next action.",
+      "premises": [
+        {
+          "claim": "Live source contains reproduced rewind-recovery-authority failure",
+          "adapter": "file-content",
+          "target": "public/lib/tabSettings.js",
+          "pattern": "if (data.state) applyDashboard(data);",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Fix only the immediate response or render exception."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Apply the restored dashboard from the response state. Move byte-budget pruning into the local runtime owning rewind storage, remove page-side mutation, preserve newest checkpoints, keep index and payloads coherent, and cover worker persistence and actual restore then next action."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Broader recovery redesign is outside this selection."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-10-29T02:39:06.643Z",
+          "status": "shipped",
+          "note": "Selected L2 implemented and independently approved. Local focused67/67 and final actual-worker browser4/4 accepted; exact-candidate hosted release remains separate.",
+          "evidence": [
+            {
+              "path": "reports/s127-local-final-2-browser.json",
+              "sha256": "6452e6c0c52446cb8910e19821c9f8a7e8fc350facd66ac0950f8a8d1da7290f"
+            },
+            {
+              "path": "reports/s127-implementation-review.json",
+              "sha256": "d55f58b36e58b8742e2ba317d68c1b96e982163ce8abef1e1b7f9d70846ee477"
+            }
+          ]
+        }
+      ],
+      "premise": "Apply the restored dashboard from the response state. Move byte-budget pruning into the local runtime owning rewind storage, remove page-side mutation, preserve newest checkpoints, keep index and payloads coherent, and cover worker persistence and actual restore then next action.",
+      "executionEvidence": "Local implementation: reports/s127-implementation-review.json and reports/s127-local-final-2-browser.json. Release pending."
+    },
+    {
+      "id": 2,
+      "rank": 2,
+      "slug": "first-season-contract-validation",
+      "title": "Keep a damaged optional First Season Contract from crashing the Desk",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "🔥",
+      "effortHours": 3,
+      "impact": 9,
+      "innovation": 3,
+      "priority": 34.88480120394484,
+      "status": "shipped",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "Local FORGE/FB beta hardening prioritizes reproduced recovery and onboarding failures.",
+      "recipe": "Validate stored contract records and season-close rows before use. Retain legitimate action marks and valid closed results, reject malformed rows and false completion, preserve franchise isolation and tab-only progress, then prove actual Desk hydration in both themes and viewport sizes.",
+      "premises": [
+        {
+          "claim": "Live source contains reproduced first-season-contract-validation failure",
+          "adapter": "file-content",
+          "target": "public/lib/firstSeasonContract.js",
+          "pattern": "finalized: parsed?.finalized ? JSON.parse(JSON.stringify(parsed.finalized)) : null",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Fix only the immediate response or render exception."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Validate stored contract records and season-close rows before use. Retain legitimate action marks and valid closed results, reject malformed rows and false completion, preserve franchise isolation and tab-only progress, then prove actual Desk hydration in both themes and viewport sizes."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Broader recovery redesign is outside this selection."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-10-29T02:39:06.945Z",
+          "status": "shipped",
+          "note": "Selected L2 implemented and independently approved. Local focused67/67 and final actual-worker browser4/4 accepted; exact-candidate hosted release remains separate.",
+          "evidence": [
+            {
+              "path": "reports/s127-local-final-2-browser.json",
+              "sha256": "6452e6c0c52446cb8910e19821c9f8a7e8fc350facd66ac0950f8a8d1da7290f"
+            },
+            {
+              "path": "reports/s127-implementation-review.json",
+              "sha256": "d55f58b36e58b8742e2ba317d68c1b96e982163ce8abef1e1b7f9d70846ee477"
+            }
+          ]
+        }
+      ],
+      "premise": "Validate stored contract records and season-close rows before use. Retain legitimate action marks and valid closed results, reject malformed rows and false completion, preserve franchise isolation and tab-only progress, then prove actual Desk hydration in both themes and viewport sizes.",
+      "executionEvidence": "Local implementation: reports/s127-implementation-review.json and reports/s127-local-final-2-browser.json. Release pending."
+    }
+  ],
+  "totals": {
+    "count": 2,
+    "priority": 52.327201805917255,
+    "top3": [
+      "rewind-recovery-authority",
+      "first-season-contract-validation"
+    ]
+  },
+  "axisCoverage": {
+    "features-depth": {
+      "surviving": [
+        "rewind-recovery-authority"
+      ],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-scenario-library",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "startScenarioContract already supplies named starting scenarios; recovery failures take precedence."
+        },
+        {
+          "slug": "recovery-diff-preview",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "Novel checkpoint change preview is useful but not required to restore the existing advertised journey."
+        }
+      ]
+    },
+    "ui-ux-feedback": {
+      "surviving": [
+        "first-season-contract-validation"
+      ],
+      "rejectedOnVerify": [
+        {
+          "slug": "theme-rewrite",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "themeCustomizer has keyboard groups and explicit modes; no styling rewrite needed for selected failures."
+        },
+        {
+          "slug": "recovery-tour",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "Novel contextual recovery practice tour is unselected until the existing restore control works."
+        }
+      ]
+    },
+    "gamification-immersion": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-contract-objectives",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "firstSeasonContract already has five action/dashboard objectives; validate their evidence before adding breadth."
+        },
+        {
+          "slug": "checkpoint-story-bookmark",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "Novel player-authored checkpoint story labels expand an existing manual label feature; no proven need."
+        }
+      ]
+    },
+    "ai-intelligence": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "paid-recovery-agent",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "Failures are deterministic response-shape and persistence errors; paid inference adds no repair value."
+        },
+        {
+          "slug": "advisor-replacement",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "frontOfficeAdvisor already explains evidence and limitations; no missing inference capability proved."
+        }
+      ]
+    },
+    "security": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "identity-policy-change",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "CANON-045 remains a separate known launch gap; selected local game repairs do not change auth."
+        },
+        {
+          "slug": "gist-token-persistence",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "gistCredentials already bounds tokens to session storage; retain existing policy."
+        }
+      ]
+    },
+    "speed-organization-efficiency": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-storage-framework",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "Existing local runtime, worker mirror and save codec provide the required ownership boundary."
+        },
+        {
+          "slug": "eager-tab-hydration",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "gameFlow lazy islands preserve initial boot budget; selected crash does not justify eager imports."
+        }
+      ]
+    },
+    "token-cost": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "recovery-api-service",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "Existing local runtime works on static hosting with no paid recovery requests."
+        },
+        {
+          "slug": "token-savings-claim",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "No measured token baseline exists for these local repairs; no savings claimed."
+        }
+      ]
+    },
+    "observability-honesty": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "retention-claim",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "No fresh real-player cohort; source review cannot establish retention."
+        },
+        {
+          "slug": "reuse-s126-release",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "S126 receipts bind a different source and cannot establish S127 deployment."
+        }
+      ]
+    },
+    "sil-debt": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "reuse-old-arc",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "Native goal is newly bound to S127 and requires fresh outcomes."
+        },
+        {
+          "slug": "rewrite-history",
+          "premise": "Considered against current source; unselected or disproven",
+          "evidence": "Append-only decision and SIL history must remain intact."
+        }
+      ]
+    }
+  },
+  "candidates": [
+    {
+      "axis": "features-depth",
+      "slug": "rewind-recovery-authority",
+      "disposition": "selected",
+      "evidence": "Apply the restored dashboard from the response state. Move byte-budget pruning into the local runtime owning rewind storage, remove page-side mutation, preserve newest checkpoints, keep index and payloads coherent, and cover worker persistence and actual restore then next action."
+    },
+    {
+      "axis": "ui-ux-feedback",
+      "slug": "first-season-contract-validation",
+      "disposition": "selected",
+      "evidence": "Validate stored contract records and season-close rows before use. Retain legitimate action marks and valid closed results, reject malformed rows and false completion, preserve franchise isolation and tab-only progress, then prove actual Desk hydration in both themes and viewport sizes."
+    },
+    {
+      "axis": "features-depth",
+      "slug": "new-scenario-library",
+      "disposition": "unselected",
+      "evidence": "startScenarioContract already supplies named starting scenarios; recovery failures take precedence.",
+      "novelConcept": false
+    },
+    {
+      "axis": "features-depth",
+      "slug": "recovery-diff-preview",
+      "disposition": "unselected",
+      "evidence": "Novel checkpoint change preview is useful but not required to restore the existing advertised journey.",
+      "novelConcept": true
+    },
+    {
+      "axis": "ui-ux-feedback",
+      "slug": "theme-rewrite",
+      "disposition": "unselected",
+      "evidence": "themeCustomizer has keyboard groups and explicit modes; no styling rewrite needed for selected failures.",
+      "novelConcept": false
+    },
+    {
+      "axis": "ui-ux-feedback",
+      "slug": "recovery-tour",
+      "disposition": "unselected",
+      "evidence": "Novel contextual recovery practice tour is unselected until the existing restore control works.",
+      "novelConcept": true
+    },
+    {
+      "axis": "gamification-immersion",
+      "slug": "new-contract-objectives",
+      "disposition": "unselected",
+      "evidence": "firstSeasonContract already has five action/dashboard objectives; validate their evidence before adding breadth.",
+      "novelConcept": false
+    },
+    {
+      "axis": "gamification-immersion",
+      "slug": "checkpoint-story-bookmark",
+      "disposition": "unselected",
+      "evidence": "Novel player-authored checkpoint story labels expand an existing manual label feature; no proven need.",
+      "novelConcept": true
+    },
+    {
+      "axis": "ai-intelligence",
+      "slug": "paid-recovery-agent",
+      "disposition": "unselected",
+      "evidence": "Failures are deterministic response-shape and persistence errors; paid inference adds no repair value.",
+      "novelConcept": false
+    },
+    {
+      "axis": "ai-intelligence",
+      "slug": "advisor-replacement",
+      "disposition": "unselected",
+      "evidence": "frontOfficeAdvisor already explains evidence and limitations; no missing inference capability proved.",
+      "novelConcept": false
+    },
+    {
+      "axis": "security",
+      "slug": "identity-policy-change",
+      "disposition": "unselected",
+      "evidence": "CANON-045 remains a separate known launch gap; selected local game repairs do not change auth.",
+      "novelConcept": false
+    },
+    {
+      "axis": "security",
+      "slug": "gist-token-persistence",
+      "disposition": "unselected",
+      "evidence": "gistCredentials already bounds tokens to session storage; retain existing policy.",
+      "novelConcept": false
+    },
+    {
+      "axis": "speed-organization-efficiency",
+      "slug": "new-storage-framework",
+      "disposition": "unselected",
+      "evidence": "Existing local runtime, worker mirror and save codec provide the required ownership boundary.",
+      "novelConcept": false
+    },
+    {
+      "axis": "speed-organization-efficiency",
+      "slug": "eager-tab-hydration",
+      "disposition": "unselected",
+      "evidence": "gameFlow lazy islands preserve initial boot budget; selected crash does not justify eager imports.",
+      "novelConcept": false
+    },
+    {
+      "axis": "token-cost",
+      "slug": "recovery-api-service",
+      "disposition": "unselected",
+      "evidence": "Existing local runtime works on static hosting with no paid recovery requests.",
+      "novelConcept": false
+    },
+    {
+      "axis": "token-cost",
+      "slug": "token-savings-claim",
+      "disposition": "unselected",
+      "evidence": "No measured token baseline exists for these local repairs; no savings claimed.",
+      "novelConcept": false
+    },
+    {
+      "axis": "observability-honesty",
+      "slug": "retention-claim",
+      "disposition": "unselected",
+      "evidence": "No fresh real-player cohort; source review cannot establish retention.",
+      "novelConcept": false
+    },
+    {
+      "axis": "observability-honesty",
+      "slug": "reuse-s126-release",
+      "disposition": "unselected",
+      "evidence": "S126 receipts bind a different source and cannot establish S127 deployment.",
+      "novelConcept": false
+    },
+    {
+      "axis": "sil-debt",
+      "slug": "reuse-old-arc",
+      "disposition": "unselected",
+      "evidence": "Native goal is newly bound to S127 and requires fresh outcomes.",
+      "novelConcept": false
+    },
+    {
+      "axis": "sil-debt",
+      "slug": "rewrite-history",
+      "disposition": "unselected",
+      "evidence": "Append-only decision and SIL history must remain intact.",
+      "novelConcept": false
+    }
+  ],
+  "innovationReserve": [],
+  "readinessAssessment": [
+    {
+      "area": "core journeys and product correctness",
+      "status": "fail",
+      "owner": "project release owner",
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
+      "observedAt": "2026-10-29T02:17:23.404Z",
+      "evidence": "Keep a damaged optional First Season Contract from crashing the Desk",
+      "nextAcceptanceCheck": "Focused regression and actual browser journeys for selected repairs; exact-source checks, staging, production readback and ordered closeout. Separate identity/email/launch gaps remain visible."
+    },
+    {
+      "area": "onboarding and identity/access",
+      "status": "unknown",
+      "owner": "project release owner",
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
+      "observedAt": "2026-10-29T02:17:23.404Z",
+      "evidence": "Historical S126 evidence exists; current S127 acceptance and broader launch readiness are not established.",
+      "nextAcceptanceCheck": "Focused regression and actual browser journeys for selected repairs; exact-source checks, staging, production readback and ordered closeout. Separate identity/email/launch gaps remain visible."
+    },
+    {
+      "area": "accessibility, mobile parity and every supported theme",
+      "status": "unknown",
+      "owner": "project release owner",
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
+      "observedAt": "2026-10-29T02:17:23.404Z",
+      "evidence": "Historical S126 evidence exists; current S127 acceptance and broader launch readiness are not established.",
+      "nextAcceptanceCheck": "Focused regression and actual browser journeys for selected repairs; exact-source checks, staging, production readback and ordered closeout. Separate identity/email/launch gaps remain visible."
+    },
+    {
+      "area": "performance and capacity",
+      "status": "unknown",
+      "owner": "project release owner",
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
+      "observedAt": "2026-10-29T02:17:23.404Z",
+      "evidence": "Historical S126 evidence exists; current S127 acceptance and broader launch readiness are not established.",
+      "nextAcceptanceCheck": "Focused regression and actual browser journeys for selected repairs; exact-source checks, staging, production readback and ordered closeout. Separate identity/email/launch gaps remain visible."
+    },
+    {
+      "area": "security, privacy, data integrity and abuse controls",
+      "status": "unknown",
+      "owner": "project release owner",
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
+      "observedAt": "2026-10-29T02:17:23.404Z",
+      "evidence": "Historical S126 evidence exists; current S127 acceptance and broader launch readiness are not established.",
+      "nextAcceptanceCheck": "Focused regression and actual browser journeys for selected repairs; exact-source checks, staging, production readback and ordered closeout. Separate identity/email/launch gaps remain visible."
+    },
+    {
+      "area": "backup, recovery and rollback",
+      "status": "fail",
+      "owner": "project release owner",
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
+      "observedAt": "2026-10-29T02:17:23.404Z",
+      "evidence": "Restore the actual franchise and preserve the newest rewind checkpoints",
+      "nextAcceptanceCheck": "Focused regression and actual browser journeys for selected repairs; exact-source checks, staging, production readback and ordered closeout. Separate identity/email/launch gaps remain visible."
+    },
+    {
+      "area": "email and notifications where used",
+      "status": "unknown",
+      "owner": "project release owner",
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
+      "observedAt": "2026-10-29T02:17:23.404Z",
+      "evidence": "Historical S126 evidence exists; current S127 acceptance and broader launch readiness are not established.",
+      "nextAcceptanceCheck": "Focused regression and actual browser journeys for selected repairs; exact-source checks, staging, production readback and ordered closeout. Separate identity/email/launch gaps remain visible."
+    },
+    {
+      "area": "observability and actionable analytics",
+      "status": "unknown",
+      "owner": "project release owner",
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
+      "observedAt": "2026-10-29T02:17:23.404Z",
+      "evidence": "Historical S126 evidence exists; current S127 acceptance and broader launch readiness are not established.",
+      "nextAcceptanceCheck": "Focused regression and actual browser journeys for selected repairs; exact-source checks, staging, production readback and ordered closeout. Separate identity/email/launch gaps remain visible."
+    },
+    {
+      "area": "feedback, support and issue triage",
+      "status": "unknown",
+      "owner": "project release owner",
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
+      "observedAt": "2026-10-29T02:17:23.404Z",
+      "evidence": "Historical S126 evidence exists; current S127 acceptance and broader launch readiness are not established.",
+      "nextAcceptanceCheck": "Focused regression and actual browser journeys for selected repairs; exact-source checks, staging, production readback and ordered closeout. Separate identity/email/launch gaps remain visible."
+    },
+    {
+      "area": "branding, legal, contact and rights/provenance",
+      "status": "unknown",
+      "owner": "project release owner",
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
+      "observedAt": "2026-10-29T02:17:23.404Z",
+      "evidence": "Historical S126 evidence exists; current S127 acceptance and broader launch readiness are not established.",
+      "nextAcceptanceCheck": "Focused regression and actual browser journeys for selected repairs; exact-source checks, staging, production readback and ordered closeout. Separate identity/email/launch gaps remain visible."
+    },
+    {
+      "area": "human and agent access where applicable",
+      "status": "unknown",
+      "owner": "project release owner",
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
+      "observedAt": "2026-10-29T02:17:23.404Z",
+      "evidence": "Historical S126 evidence exists; current S127 acceptance and broader launch readiness are not established.",
+      "nextAcceptanceCheck": "Focused regression and actual browser journeys for selected repairs; exact-source checks, staging, production readback and ordered closeout. Separate identity/email/launch gaps remain visible."
+    },
+    {
+      "area": "staging, release evidence and truthful beta/release communication",
+      "status": "unknown",
+      "owner": "project release owner",
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
+      "observedAt": "2026-10-29T02:17:23.404Z",
+      "evidence": "Historical S126 evidence exists; current S127 acceptance and broader launch readiness are not established.",
+      "nextAcceptanceCheck": "Focused regression and actual browser journeys for selected repairs; exact-source checks, staging, production readback and ordered closeout. Separate identity/email/launch gaps remain visible."
+    }
+  ],
+  "gameLoopReview": {
+    "scores": {
+      "loopTightness": 7,
+      "progression": 6,
+      "sessionEngagement": 7,
+      "retention": 5,
+      "soulFidelity": 7
+    },
+    "basis": "Live-source review, no fresh player cohort; restore and progress boundaries undermine repeat sessions.",
+    "nextMoves": [
+      "Restore the real dashboard and verify the next action",
+      "Keep newest valid checkpoints under storage pressure",
+      "Validate optional first-season evidence before showing progress"
+    ],
+    "evidence": [
+      "context/GAME_LOOP.md",
+      "public/lib/tabSettings.js",
+      "public/lib/firstSeasonContract.js",
+      "public/lib/engagementFeatures.js",
+      "src/app/api/localApiRuntime.js"
+    ]
+  },
+  "implementationComplete": true,
+  "releaseComplete": false,
+  "closeoutComplete": false,
+  "generatedAt": "2026-10-29T02:17:23.431Z",
+  "processLimitations": [
+    "Startup guard helper timed out launching nested PowerShell; invoking PowerShell applied and verified the same canonical User/Process guard values.",
+    "Initial canon-sync propagation timed out; explicit recipient-rooted drain completed with session-trailer-hook held-source-absent and39 queued deliveries. Adoption suggest/check passed; conformance has0 ABSOLUTE gaps and the known STRONG CANON-045 gap.",
+    "Local startup-recovery, premise-timing and review-recorder helpers are absent. Native goal binding, current writeback/start-sync, pre-edit premiseGate and pending bundle admission preserve available evidence; no missing helper is claimed executed.",
+    "Initial mobile baseline capture used wrong preference value and was recaptured before product edits. Original obscured attempt was replaced while baseline source was still intact.",
+    "The first fast final browser attempt failed due to an async harness predicate. Actual state tracing and the corrected synchronous final4 passed; failed report retained."
+  ]
+}

@@ -68,7 +68,7 @@ test("app shell imports and wires the mobile loop overlay", () => {
   assert.match(appSource, /setMobileModeEnabled\(e\.target\.checked\)/);
   assert.doesNotMatch(appSource, /typeof setMobileModeEnabled/);
   assert.doesNotMatch(appSource, /typeof initMobileLoop/);
-  assert.match(appSource, /checkAndPruneRewindStorage\(\);\s*syncMobileLoopOverlay\(\);/s);
+  assert.match(appSource, /syncMobileLoopOverlay\(\);/);
 });
 
 

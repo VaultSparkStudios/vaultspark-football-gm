@@ -1,58 +1,49 @@
 {
   "schemaVersion": 1,
-  "session": 126,
-  "kind": "current-c2-selected-visuals",
-  "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-  "artifactFingerprint": {
-    "algorithm": "sha256",
-    "digest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d"
-  },
-  "capturedAt": "2026-10-28T22:58:45.418Z",
-  "assembledAt": "2026-10-28T23:03:20.580Z",
+  "session": 127,
+  "capturedAt": "2026-10-29T02:37:04.643Z",
+  "kind": "local-working-tree-selected-surfaces",
+  "sourceRevision": "local-worktree",
   "sourceFiles": [
     {
-      "path": "public/lib/mobileLoop.js",
-      "sha256": "6101bf17edff16908983ca9f13b3bca49a8a650fb09f722307e2717af277dbd8"
+      "path": "src/adapters/persistence/rewindRetention.js",
+      "sha256": "fa45f931976f6b1ac4697fa75e54db092a75f1b2aef89f9d104913fb5822899a"
     },
     {
-      "path": "public/lib/spreadPredictions.js",
-      "sha256": "9b050094ac3396d463048b5d403af0112ac061f782b00d6c16897dfcd4539909"
+      "path": "src/app/api/localApiRuntime.js",
+      "sha256": "c0db333952922a553fc29729cd83ec41504a8ff42513a2d24c3073771bf4f70e"
     },
     {
-      "path": "public/lib/achievements.js",
-      "sha256": "312d506800d32150a214f21472b0186c9356f9d911b22688e614ed12bb1e670e"
+      "path": "public/lib/tabSettings.js",
+      "sha256": "84a361b4edacb6359537aadb953afba4f8c8fb86409219726e79567110a4879f"
+    },
+    {
+      "path": "public/lib/firstSeasonContract.js",
+      "sha256": "a0fdea0126fcbcd89601e4fc2f22ebad9958801de32b3eb45718aef4e8897960"
+    },
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "1962e29aed23a9319a3838ac747bb5363ffa49bafa5b3b846b156004852ff216"
+    },
+    {
+      "path": "public/app.js",
+      "sha256": "59bc345f65cb26435a5c661d74e9e7e93764b4822daa73e9d0be447a3761b8dd"
     },
     {
       "path": "public/status.html",
-      "sha256": "2a55ca64d2aba25c2deb82a32830318356c0df74cf8b93b4cee1395a467ec5cf"
+      "sha256": "fd7e2771dd5eed62b56232580ea8fa34981101fb6f49ece7654504267f9021c1"
     },
     {
-      "path": "public/index.html",
-      "sha256": "20dc7b2f2bc970df7b602cd3bb924d89ab17f58a0edd32db0cc6f6022105e6d4"
+      "path": "scripts/run-test-shard.mjs",
+      "sha256": "73335c0faa45ea9709df43f27cf6141adf23dc0b82d4a5c0699fd688500090a4"
     },
     {
-      "path": "public/lib/themeBoot.js",
-      "sha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f"
+      "path": "test/session127-first-season-contract.test.js",
+      "sha256": "302ca1c4880ebf375c0029f958b748c9e55293b3cbaf0e0dcadafd3ad8dc51a9"
     },
     {
-      "path": "public/styles.css",
-      "sha256": "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83"
-    },
-    {
-      "path": "public/site.css",
-      "sha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
-    },
-    {
-      "path": "public/images/screens/hero.jpg",
-      "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
-    },
-    {
-      "path": "scripts/lib/inline-public-entry.mjs",
-      "sha256": "af815788536e9af637ce1fb3ea93c248927246c6f8eb69d18c6533d70e5b0303"
-    },
-    {
-      "path": "scripts/build-pages.mjs",
-      "sha256": "58b5d0cd541efa564466a12d7b1f8e1a065e13f949570c5f2601c0f2af082e6f"
+      "path": "test/session127-rewind-retention.test.js",
+      "sha256": "af1144fbb8a98fb0c604c45a3041b427e286655e488e33e5a4902516ec7aac8e"
     }
   ],
   "themes": [
@@ -61,1407 +52,581 @@
   ],
   "captures": [
     {
-      "file": "s126-c2-before-original-mobile-controls-deck-desktop-dark.png",
-      "sha256": "5e7036f4fa748e1d976dde3245aa0c17d26888bac3efbf4b8c8ca928f1b1d2b5",
-      "phase": "before-original",
-      "group": "before-original",
-      "surface": "mobile-controls",
-      "state": "deck",
-      "device": "desktop",
+      "file": "s127-before-contract-desktop-dark.png",
+      "sha256": "278593e857d294c83a69902d294e168f4cc61f977d43abb2312cb8c757e5f7bd",
+      "phase": "before",
       "theme": "dark",
+      "device": "desktop",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "mobile-controls deck",
-      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "page": "contract",
       "inspected": true,
-      "original": {
-        "file": "docs/visual-qa/s126-mobile-before-desktop-dark-deck.png",
-        "observedPhase": "before"
-      }
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd"
     },
     {
-      "file": "s126-c2-before-original-mobile-controls-full-view-desktop-dark.png",
-      "sha256": "255395a0efe8b41b40d6c2f9806bda5e27ab68c30d268e9bd6fad34b67c6f779",
-      "phase": "before-original",
-      "group": "before-original",
-      "surface": "mobile-controls",
-      "state": "full-view",
+      "file": "s127-before-contract-desktop-light.png",
+      "sha256": "63c4b562686c661617c4138f0151664945cbe90dc36302901d636d96459058d5",
+      "phase": "before",
+      "theme": "light",
       "device": "desktop",
-      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "mobile-controls full-view",
-      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "page": "contract",
       "inspected": true,
-      "original": {
-        "file": "docs/visual-qa/s126-mobile-before-desktop-dark-full-view.png",
-        "observedPhase": "before"
-      }
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd"
     },
     {
-      "file": "s126-c2-before-original-mobile-controls-deck-desktop-light.png",
-      "sha256": "10ecbe7f1a7270eea81324f1de737e1fa8c3afab5306f8dc736710335582b1ce",
-      "phase": "before-original",
-      "group": "before-original",
-      "surface": "mobile-controls",
-      "state": "deck",
-      "device": "desktop",
+      "file": "s127-before-contract-mobile-dark.png",
+      "sha256": "cc7be1347aede8446511a216890f9017a7f7f33514b5d381f6c5abf05948580d",
+      "phase": "before",
+      "theme": "dark",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "contract",
+      "inspected": true,
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd"
+    },
+    {
+      "file": "s127-before-contract-mobile-light.png",
+      "sha256": "f9d889ee54714cf553317c02e6363cd789225d9b0e364770777304f80ace086d",
+      "phase": "before",
       "theme": "light",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "contract",
+      "inspected": true,
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd"
+    },
+    {
+      "file": "s127-before-rewind-desktop-dark.png",
+      "sha256": "71882ab455af4e85f4aa75f097b30f3b8c01981688c98a894328bd95b64668e6",
+      "phase": "before",
+      "theme": "dark",
+      "device": "desktop",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "mobile-controls deck",
-      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "page": "rewind",
       "inspected": true,
-      "original": {
-        "file": "docs/visual-qa/s126-mobile-before-desktop-light-deck.png",
-        "observedPhase": "before"
-      }
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd"
     },
     {
-      "file": "s126-c2-before-original-mobile-controls-full-view-desktop-light.png",
-      "sha256": "6cd9a0ef79373a3f8d989dcd6d41f36c76230f688e5f832057bd384d0ceec126",
-      "phase": "before-original",
-      "group": "before-original",
-      "surface": "mobile-controls",
-      "state": "full-view",
-      "device": "desktop",
+      "file": "s127-before-rewind-desktop-light.png",
+      "sha256": "f0116834f0bea10c48f6bae06dbb893aa37905d803be89223fe14d037619d55f",
+      "phase": "before",
       "theme": "light",
+      "device": "desktop",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "mobile-controls full-view",
-      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "page": "rewind",
       "inspected": true,
-      "original": {
-        "file": "docs/visual-qa/s126-mobile-before-desktop-light-full-view.png",
-        "observedPhase": "before"
-      }
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd"
     },
     {
-      "file": "s126-c2-before-original-mobile-controls-deck-mobile-dark.png",
-      "sha256": "6c7895cf6b4ad3281171493cc5402377be78b3b3055feb30bf10c586e77343c4",
-      "phase": "before-original",
-      "group": "before-original",
-      "surface": "mobile-controls",
-      "state": "deck",
-      "device": "mobile",
+      "file": "s127-before-rewind-mobile-dark.png",
+      "sha256": "137b86df5cb77f67aaf126a08762326e29f1c16ef943b57c9955ff4fa60a97ba",
+      "phase": "before",
       "theme": "dark",
+      "device": "mobile",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "mobile-controls deck",
-      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "page": "rewind",
       "inspected": true,
-      "original": {
-        "file": "docs/visual-qa/s126-mobile-before-mobile-dark-deck.png",
-        "observedPhase": "before"
-      }
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd"
     },
     {
-      "file": "s126-c2-before-original-mobile-controls-full-view-mobile-dark.png",
-      "sha256": "f00d34743755146833eb47f87285e977acdb2aa7f83ce6254b95dcf1fe4c3b47",
-      "phase": "before-original",
-      "group": "before-original",
-      "surface": "mobile-controls",
-      "state": "full-view",
+      "file": "s127-before-rewind-mobile-light.png",
+      "sha256": "626cd672de98c173f9ed8adc95771a3284c2b1d235eb5b8ff383c421d434b1e3",
+      "phase": "before",
+      "theme": "light",
       "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "rewind",
+      "inspected": true,
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd"
+    },
+    {
+      "file": "s127-before-status-desktop-dark.png",
+      "sha256": "dbe1aeadd512af488aade4561188cb7f1c881474d8df68ef0dd285a2dc405a6a",
+      "phase": "before",
       "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "mobile-controls full-view",
-      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
-      "inspected": true,
-      "original": {
-        "file": "docs/visual-qa/s126-mobile-before-mobile-dark-full-view.png",
-        "observedPhase": "before"
-      }
-    },
-    {
-      "file": "s126-c2-before-original-mobile-controls-deck-mobile-light.png",
-      "sha256": "74b102fcf6eeaabfc4596b7924e78c05829e0d8c3e41739dfab9f1a2c321312e",
-      "phase": "before-original",
-      "group": "before-original",
-      "surface": "mobile-controls",
-      "state": "deck",
-      "device": "mobile",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "mobile-controls deck",
-      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
-      "inspected": true,
-      "original": {
-        "file": "docs/visual-qa/s126-mobile-before-mobile-light-deck.png",
-        "observedPhase": "before"
-      }
-    },
-    {
-      "file": "s126-c2-before-original-mobile-controls-full-view-mobile-light.png",
-      "sha256": "0da85024cad77b2947c7cb97cbcc7ecbab5c08bc2294abfc2043e60c349e9a67",
-      "phase": "before-original",
-      "group": "before-original",
-      "surface": "mobile-controls",
-      "state": "full-view",
-      "device": "mobile",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "mobile-controls full-view",
-      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
-      "inspected": true,
-      "original": {
-        "file": "docs/visual-qa/s126-mobile-before-mobile-light-full-view.png",
-        "observedPhase": "before"
-      }
-    },
-    {
-      "file": "s126-c2-before-original-status-note-release-note-desktop-dark.png",
-      "sha256": "76569815a3b25d098d587ea373bbd5c772c41ef98c5ea218182a51ac76126ce9",
-      "phase": "before-original",
-      "group": "before-original",
-      "surface": "status-note",
-      "state": "release-note",
       "device": "desktop",
-      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "status-note release-note",
-      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "page": "status",
       "inspected": true,
-      "original": {
-        "file": "docs/visual-qa/s126-status-before-v2-desktop-dark.png",
-        "observedPhase": "before"
-      }
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd"
     },
     {
-      "file": "s126-c2-before-original-status-note-release-note-desktop-light.png",
-      "sha256": "73d3ddd10451271c45c147611ae6c18c9738e76e8194fbf3bef6f69fce8f6761",
-      "phase": "before-original",
-      "group": "before-original",
-      "surface": "status-note",
-      "state": "release-note",
-      "device": "desktop",
+      "file": "s127-before-status-desktop-light.png",
+      "sha256": "72448ac0e82dfabce450f3b98954a77bb56f577334b4e44ca05d7e59ed6ca954",
+      "phase": "before",
       "theme": "light",
+      "device": "desktop",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "status-note release-note",
-      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "page": "status",
       "inspected": true,
-      "original": {
-        "file": "docs/visual-qa/s126-status-before-v2-desktop-light.png",
-        "observedPhase": "before"
-      }
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd"
     },
     {
-      "file": "s126-c2-before-original-status-note-release-note-mobile-dark.png",
-      "sha256": "18ea1ccc4ab1c7755ab1d6d0ebf4d810af5f942ad9cfe2e5b3a4a31fa1c6cb10",
-      "phase": "before-original",
-      "group": "before-original",
-      "surface": "status-note",
-      "state": "release-note",
-      "device": "mobile",
+      "file": "s127-before-status-mobile-dark.png",
+      "sha256": "79f42681a436e5ec315237fa474273ce6cd3ba4c02300b3f0421ce365ec550e7",
+      "phase": "before",
       "theme": "dark",
+      "device": "mobile",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "status-note release-note",
-      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "page": "status",
       "inspected": true,
-      "original": {
-        "file": "docs/visual-qa/s126-status-before-v2-mobile-dark.png",
-        "observedPhase": "before"
-      }
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd"
     },
     {
-      "file": "s126-c2-before-original-status-note-release-note-mobile-light.png",
-      "sha256": "ce5d04f5d0b587ab01fdc0f1e6c9534641ec14171b4de10d0e6c95c1df9cafc3",
-      "phase": "before-original",
-      "group": "before-original",
-      "surface": "status-note",
-      "state": "release-note",
-      "device": "mobile",
+      "file": "s127-before-status-mobile-light.png",
+      "sha256": "2f53eb9daee9987d523eb14cb5a7f466700b8a065e95e36175b050e8a403d017",
+      "phase": "before",
       "theme": "light",
+      "device": "mobile",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "status-note release-note",
-      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "page": "status",
       "inspected": true,
-      "original": {
-        "file": "docs/visual-qa/s126-status-before-v2-mobile-light.png",
-        "observedPhase": "before"
-      }
+      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd"
     },
     {
-      "file": "s126-c2-before-original-trophy-case-quota-desktop-dark.png",
-      "sha256": "1d8756e55fcfdbfa2057ffd9319b1028debfa8cb2a610402fc44e70ece1ee2fd",
-      "phase": "before-original",
-      "group": "before-original",
-      "surface": "trophy-case",
-      "state": "quota",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "desktop",
-      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "trophy-case quota",
-      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "theme": "dark",
+      "state": "contract-recovered",
+      "file": "s127-after-contract-recovered-desktop-dark.png",
+      "sha256": "9ccdde998f61705ce8b580861d9af88663b86694c4a39595c41d4bf819523b16",
+      "page": "contract-recovered",
       "inspected": true,
-      "original": {
-        "file": "docs/visual-qa/s126-before-trophy-desktop-dark.png",
-        "observedPhase": "before"
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-before-original-trophy-case-quota-desktop-light.png",
-      "sha256": "d2247b18a507a025754759a47acbfc7fbbf100b95a7ec584f80c6958510d6c13",
-      "phase": "before-original",
-      "group": "before-original",
-      "surface": "trophy-case",
-      "state": "quota",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "desktop",
-      "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "trophy-case quota",
-      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
-      "inspected": true,
-      "original": {
-        "file": "docs/visual-qa/s126-before-trophy-desktop-light.png",
-        "observedPhase": "before"
-      }
-    },
-    {
-      "file": "s126-c2-before-original-trophy-case-quota-mobile-dark.png",
-      "sha256": "6d612f57cabcea4b3f1936f4422af0bbd4fcc08d93802e2d6b74e1b511f754b9",
-      "phase": "before-original",
-      "group": "before-original",
-      "surface": "trophy-case",
-      "state": "quota",
-      "device": "mobile",
       "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "trophy-case quota",
-      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "state": "contract-closed",
+      "file": "s127-after-contract-closed-desktop-dark.png",
+      "sha256": "765635c64980340664b73bc2e5f83860aee4cd8d8fe46beb02350ee349e3863c",
+      "page": "contract-closed",
       "inspected": true,
-      "original": {
-        "file": "docs/visual-qa/s126-before-trophy-mobile-dark.png",
-        "observedPhase": "before"
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-before-original-trophy-case-quota-mobile-light.png",
-      "sha256": "e6a30d42b4753686c4beb2f097d52c3eab2df94cbb5176eee49bc72195b245ca",
-      "phase": "before-original",
-      "group": "before-original",
-      "surface": "trophy-case",
-      "state": "quota",
-      "device": "mobile",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "trophy-case quota",
-      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
-      "inspected": true,
-      "original": {
-        "file": "docs/visual-qa/s126-before-trophy-mobile-light.png",
-        "observedPhase": "before"
-      }
-    },
-    {
-      "file": "s126-c2-entry-before-c1-entry-landing-desktop-dark.png",
-      "sha256": "0062ea0b98a4b82ee86dea05643cec879fb85feb902963b55615d0994fcbfa5c",
-      "phase": "entry-before",
-      "group": "entry-before-c1",
-      "surface": "entry",
-      "state": "landing",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "desktop",
-      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "entry landing",
-      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
-      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "theme": "dark",
+      "state": "rewind-checkpoint",
+      "file": "s127-after-rewind-checkpoint-desktop-dark.png",
+      "sha256": "1a17424a1949e7631897d0ba5ca630789bc35af5493ada35d10ccdbda694459d",
+      "page": "rewind-checkpoint",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-entry-before/desktop-dark.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-entry-before-c1-entry-landing-desktop-light.png",
-      "sha256": "b5a376b538702bc295a1743e9fe5718e9cdea880794c257fdbd44adb12dcb7ac",
-      "phase": "entry-before",
-      "group": "entry-before-c1",
-      "surface": "entry",
-      "state": "landing",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "desktop",
-      "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "entry landing",
-      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
-      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-entry-before/desktop-light.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-entry-before-c1-entry-landing-mobile-dark.png",
-      "sha256": "536e67de4db33c0c2c6582a93c772651e73411c207b2f87000e8eb2a77487d31",
-      "phase": "entry-before",
-      "group": "entry-before-c1",
-      "surface": "entry",
-      "state": "landing",
-      "device": "mobile",
       "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "entry landing",
-      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
-      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "state": "rewind-restored",
+      "file": "s127-after-rewind-restored-desktop-dark.png",
+      "sha256": "791bed8676646c77a10e4f7f6e6a89c5b971a9530b59cb4acf99da639592b61b",
+      "page": "rewind-restored",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-entry-before/mobile-dark.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-entry-before-c1-entry-landing-mobile-light.png",
-      "sha256": "4ddb81e38e5d847c421225c8e8da96cd55f91440a176dab00c9d29b309fe729e",
-      "phase": "entry-before",
-      "group": "entry-before-c1",
-      "surface": "entry",
-      "state": "landing",
-      "device": "mobile",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "entry landing",
-      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
-      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-entry-before/mobile-light.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-primary-staging-mobile-controls-deck-desktop-dark.png",
-      "sha256": "a2719ab86885356c6c8add3e6184d4c4428d37b99ee8a9e7e9e51b8ffd70c8f9",
-      "phase": "staging",
-      "group": "primary-staging",
-      "surface": "mobile-controls",
-      "state": "deck",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "desktop",
-      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "mobile-controls deck",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "theme": "dark",
+      "state": "status",
+      "file": "s127-after-status-desktop-dark.png",
+      "sha256": "4d47c74870fe61a0a4fd13f4e37b2238ff661fafba6d92672f2cc1fc58675c8b",
+      "page": "status",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-mobile-staging/desktop-dark-deck.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-primary-staging-mobile-controls-full-view-desktop-dark.png",
-      "sha256": "25318fb68c9724192b48a356471ecea911d2d290d684663e1570326f0b8b8db4",
-      "phase": "staging",
-      "group": "primary-staging",
-      "surface": "mobile-controls",
-      "state": "full-view",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "desktop",
-      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "mobile-controls full-view",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "theme": "light",
+      "state": "contract-recovered",
+      "file": "s127-after-contract-recovered-desktop-light.png",
+      "sha256": "179877eb9a437727597d91965e2b744d155bf098db04f613cc0e36b253330bc0",
+      "page": "contract-recovered",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-mobile-staging/desktop-dark-full-view.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-primary-staging-mobile-controls-deck-desktop-light.png",
-      "sha256": "38b717463e39400f1a6d9284b2ad91b088969bc184180a9ff8a3b078c0508e88",
-      "phase": "staging",
-      "group": "primary-staging",
-      "surface": "mobile-controls",
-      "state": "deck",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "desktop",
-      "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "mobile-controls deck",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "theme": "light",
+      "state": "contract-closed",
+      "file": "s127-after-contract-closed-desktop-light.png",
+      "sha256": "4bedd7633a034ce4dcc6e53f692b849802f85cf36412cca083bcafef68157a95",
+      "page": "contract-closed",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-mobile-staging/desktop-light-deck.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-primary-staging-mobile-controls-full-view-desktop-light.png",
-      "sha256": "1fadb4b4ca3a1a85bf6c3382fd78948f12c700bc7a91e0e33a99a3b2f28829fc",
-      "phase": "staging",
-      "group": "primary-staging",
-      "surface": "mobile-controls",
-      "state": "full-view",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "desktop",
-      "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "mobile-controls full-view",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-mobile-staging/desktop-light-full-view.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-primary-staging-mobile-controls-deck-mobile-dark.png",
-      "sha256": "0b526586110dc6df8f589aa0b18e7106de429ca955468c0bae8e31bfae77f0cf",
-      "phase": "staging",
-      "group": "primary-staging",
-      "surface": "mobile-controls",
-      "state": "deck",
-      "device": "mobile",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "mobile-controls deck",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-mobile-staging/mobile-dark-deck.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-primary-staging-mobile-controls-full-view-mobile-dark.png",
-      "sha256": "02e2ad71f5d71f7029e62477a854d023e151c4e32e57e834e522e5d871ae7253",
-      "phase": "staging",
-      "group": "primary-staging",
-      "surface": "mobile-controls",
-      "state": "full-view",
-      "device": "mobile",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "mobile-controls full-view",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-mobile-staging/mobile-dark-full-view.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-primary-staging-mobile-controls-deck-mobile-light.png",
-      "sha256": "ec1f4b05e237dc915cac2a7a0abdf46ba6cdd4517c8ae5227fcf39891404d717",
-      "phase": "staging",
-      "group": "primary-staging",
-      "surface": "mobile-controls",
-      "state": "deck",
-      "device": "mobile",
       "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "mobile-controls deck",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "state": "rewind-checkpoint",
+      "file": "s127-after-rewind-checkpoint-desktop-light.png",
+      "sha256": "adf608e2653676679f928eb89e27adb605deca67f4dffb43232f09d873090d86",
+      "page": "rewind-checkpoint",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-mobile-staging/mobile-light-deck.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-primary-staging-mobile-controls-full-view-mobile-light.png",
-      "sha256": "fabe4b451d6ece67da67029e933ca3083391c7ad2badc1b77509cc4503203827",
-      "phase": "staging",
-      "group": "primary-staging",
-      "surface": "mobile-controls",
-      "state": "full-view",
-      "device": "mobile",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "mobile-controls full-view",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-mobile-staging/mobile-light-full-view.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-primary-staging-trophy-case-quota-desktop-dark.png",
-      "sha256": "61d07f747b4c4578b71d125b2b83d05b250acb3a98a91c65c22833a8693d0c42",
-      "phase": "staging",
-      "group": "primary-staging",
-      "surface": "trophy-case",
-      "state": "quota",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "desktop",
-      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "trophy-case quota",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "theme": "light",
+      "state": "rewind-restored",
+      "file": "s127-after-rewind-restored-desktop-light.png",
+      "sha256": "8a22049c0057f8e12d9d9630b61dfb86d116e45ad750b506120b2211f71c3aaf",
+      "page": "rewind-restored",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-after-staging/trophy-desktop-dark.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-primary-staging-trophy-case-quota-desktop-light.png",
-      "sha256": "122dbfc7b0b1bc9940c28832ec73331a589ad471174327c11f193a5f11a10606",
-      "phase": "staging",
-      "group": "primary-staging",
-      "surface": "trophy-case",
-      "state": "quota",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "desktop",
-      "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "trophy-case quota",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-after-staging/trophy-desktop-light.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-primary-staging-trophy-case-quota-mobile-dark.png",
-      "sha256": "74bb39c50967278801fae0db270e0d0f30264f4d0803b7cd1ca0bd4b4bf939a7",
-      "phase": "staging",
-      "group": "primary-staging",
-      "surface": "trophy-case",
-      "state": "quota",
-      "device": "mobile",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "trophy-case quota",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-after-staging/trophy-mobile-dark.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-primary-staging-trophy-case-quota-mobile-light.png",
-      "sha256": "b9d80330b8c2e1bf3b7fc378a47c0c4c5cf24370c84635386173914366eeaaa8",
-      "phase": "staging",
-      "group": "primary-staging",
-      "surface": "trophy-case",
-      "state": "quota",
-      "device": "mobile",
       "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "trophy-case quota",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "state": "status",
+      "file": "s127-after-status-desktop-light.png",
+      "sha256": "87568f3792b979890230fe2c80e29f5fbe810c7570eaaab88e5ef33c89becc78",
+      "page": "status",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-after-staging/trophy-mobile-light.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-primary-staging-status-note-release-note-desktop-dark.png",
-      "sha256": "6c38f7107fef79b2b77a85609dd7e90792ae5ff5bcff9afdda47b7a3b75d847a",
-      "phase": "staging",
-      "group": "primary-staging",
-      "surface": "status-note",
-      "state": "release-note",
-      "device": "desktop",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "status-note release-note",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-status-staging-v2/desktop-dark.png",
-        "observedPhase": "staging"
-      }
-    },
-    {
-      "file": "s126-c2-primary-staging-status-note-release-note-desktop-light.png",
-      "sha256": "32a5b149ab3e3776023d023d403041c84d199502fa0b532559c19d253c69e151",
-      "phase": "staging",
-      "group": "primary-staging",
-      "surface": "status-note",
-      "state": "release-note",
-      "device": "desktop",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "status-note release-note",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-status-staging-v2/desktop-light.png",
-        "observedPhase": "staging"
-      }
-    },
-    {
-      "file": "s126-c2-primary-staging-status-note-release-note-mobile-dark.png",
-      "sha256": "c35e682e33359364eadcbaf6b42497ffad10fb2b9d4a78f9e43319ec3848f04b",
-      "phase": "staging",
-      "group": "primary-staging",
-      "surface": "status-note",
-      "state": "release-note",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
       "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "status-note release-note",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "state": "contract-recovered",
+      "file": "s127-after-contract-recovered-mobile-dark.png",
+      "sha256": "38f8633d43681a8fa4f212c572aa8645f21adbeaa4b2683f3bf1cf388b43f3d0",
+      "page": "contract-recovered",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-status-staging-v2/mobile-dark.png",
-        "observedPhase": "staging"
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-primary-staging-status-note-release-note-mobile-light.png",
-      "sha256": "1615fc777af7870aa2ad00648b9bbaad4955aad77f85862b13b0e2b219722151",
-      "phase": "staging",
-      "group": "primary-staging",
-      "surface": "status-note",
-      "state": "release-note",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "mobile",
-      "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "status-note release-note",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-status-staging-v2/mobile-light.png",
-        "observedPhase": "staging"
-      }
-    },
-    {
-      "file": "s126-c2-entry-staging-entry-landing-desktop-dark.png",
-      "sha256": "128d9a73d12e3616f87e7eede7ab845f3f579e6d2e1753bac1dc5767bbe2b63c",
-      "phase": "staging",
-      "group": "entry-staging",
-      "surface": "entry",
-      "state": "landing",
-      "device": "desktop",
       "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "entry landing",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "state": "contract-recovered-top",
+      "file": "s127-after-contract-recovered-top-mobile-dark.png",
+      "sha256": "aa1f70b914157460a119d2b67597616c4ef769fd86bd1aaa9c8de6176b8a0950",
+      "page": "contract-recovered-top",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-entry-staging/desktop-dark.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-entry-staging-entry-landing-desktop-light.png",
-      "sha256": "aa0ef636bd560e5e43c7164513dddbbd283d12a18a428db1ba16b359f9d749c1",
-      "phase": "staging",
-      "group": "entry-staging",
-      "surface": "entry",
-      "state": "landing",
-      "device": "desktop",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "entry landing",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-entry-staging/desktop-light.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-entry-staging-entry-landing-mobile-dark.png",
-      "sha256": "c765ad2ec20920015e7e9796858190e7c1807e88a9611f0b5fc7c27be1d43eb1",
-      "phase": "staging",
-      "group": "entry-staging",
-      "surface": "entry",
-      "state": "landing",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
       "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "entry landing",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "state": "contract-closed",
+      "file": "s127-after-contract-closed-mobile-dark.png",
+      "sha256": "8b5e1506a8a7ed1e6a09fcb1df52db6ea6f084a9c0d7433509d2fb3bec5e7471",
+      "page": "contract-closed",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-entry-staging/mobile-dark.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-entry-staging-entry-landing-mobile-light.png",
-      "sha256": "d01cdaa45615518cc4fee6b2a096ab206ba98345f8394d5a4f4d6795304139d3",
-      "phase": "staging",
-      "group": "entry-staging",
-      "surface": "entry",
-      "state": "landing",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "mobile",
-      "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "entry landing",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-entry-staging/mobile-light.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-primary-production-mobile-controls-deck-desktop-dark.png",
-      "sha256": "7e0fa7ce68472a4b19f5a8fcddbdc57506531febbfe784f9e3e5de9bddf22385",
-      "phase": "production",
-      "group": "primary-production",
-      "surface": "mobile-controls",
-      "state": "deck",
-      "device": "desktop",
       "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "mobile-controls deck",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "state": "contract-closed-top",
+      "file": "s127-after-contract-closed-top-mobile-dark.png",
+      "sha256": "9dc4e1901a67b76aac8fd22fb65d403eff95cff41474d8717b2b10f30f72acbb",
+      "page": "contract-closed-top",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-mobile-production/desktop-dark-deck.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-primary-production-mobile-controls-full-view-desktop-dark.png",
-      "sha256": "14080e18b3e571c95dcd50e06b4a186b7b474bd602c339e5bfcd72aa90d7bb0e",
-      "phase": "production",
-      "group": "primary-production",
-      "surface": "mobile-controls",
-      "state": "full-view",
-      "device": "desktop",
+      "phase": "after",
+      "origin": "http://localhost:4273",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
       "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "mobile-controls full-view",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "state": "rewind-checkpoint",
+      "file": "s127-after-rewind-checkpoint-mobile-dark.png",
+      "sha256": "14aba5085268347ac3cc8854e248e7205950a91462fb9c5837a46ede8bc55bbd",
+      "page": "rewind-checkpoint",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-mobile-production/desktop-dark-full-view.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-primary-production-mobile-controls-deck-desktop-light.png",
-      "sha256": "3aa555cc3ba4e51b0652d72f8ae5109bd268b56368fc793d4e118976b2a6ba1f",
-      "phase": "production",
-      "group": "primary-production",
-      "surface": "mobile-controls",
-      "state": "deck",
-      "device": "desktop",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "mobile-controls deck",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-mobile-production/desktop-light-deck.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-primary-production-mobile-controls-full-view-desktop-light.png",
-      "sha256": "739b5a6ebe2480ba8a8914d436405a94b55daabf1aa0f0c2864c2e6e2bc9c751",
-      "phase": "production",
-      "group": "primary-production",
-      "surface": "mobile-controls",
-      "state": "full-view",
-      "device": "desktop",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "mobile-controls full-view",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-mobile-production/desktop-light-full-view.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-primary-production-mobile-controls-deck-mobile-dark.png",
-      "sha256": "bb8fb5f0bb6b9e20e62a1de4716aff1449dd6b1cc51bea4b9e198961d5fb8da9",
-      "phase": "production",
-      "group": "primary-production",
-      "surface": "mobile-controls",
-      "state": "deck",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
       "theme": "dark",
+      "state": "rewind-restored",
+      "file": "s127-after-rewind-restored-mobile-dark.png",
+      "sha256": "3a2be56d099479e70762b745bc5a775607c7e5abea992218771c4efebe5ffee8",
+      "page": "rewind-restored",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4273",
+      "device": "mobile",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "mobile-controls deck",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-mobile-production/mobile-dark-deck.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-primary-production-mobile-controls-full-view-mobile-dark.png",
-      "sha256": "cd9443884ab63196d652d63d64df4576bb33ef2df763470dd1cfc84c9436daf8",
-      "phase": "production",
-      "group": "primary-production",
-      "surface": "mobile-controls",
-      "state": "full-view",
-      "device": "mobile",
       "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "mobile-controls full-view",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "state": "status",
+      "file": "s127-after-status-mobile-dark.png",
+      "sha256": "43fcab7ec2165e71c5b5391025920bf54a6bd9f65e6c3b60ae6f99ae9da545ce",
+      "page": "status",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-mobile-production/mobile-dark-full-view.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-primary-production-mobile-controls-deck-mobile-light.png",
-      "sha256": "4c1f37bdaf6824da07ab5b40ec941dff4bc1a799084917e7f46e29f9bc1c540c",
-      "phase": "production",
-      "group": "primary-production",
-      "surface": "mobile-controls",
-      "state": "deck",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "mobile",
-      "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "mobile-controls deck",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "theme": "light",
+      "state": "contract-recovered",
+      "file": "s127-after-contract-recovered-mobile-light.png",
+      "sha256": "34e2876febfda0f55192629062580386b94eb936ee1ed02c85b85f7e0aba733c",
+      "page": "contract-recovered",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-mobile-production/mobile-light-deck.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-primary-production-mobile-controls-full-view-mobile-light.png",
-      "sha256": "8a0f558597b3bc01211ba2543a7bf2bd1be9445061a22f8b4a4145bbefcd74fb",
-      "phase": "production",
-      "group": "primary-production",
-      "surface": "mobile-controls",
-      "state": "full-view",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "mobile",
-      "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "mobile-controls full-view",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-mobile-production/mobile-light-full-view.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-primary-production-trophy-case-quota-desktop-dark.png",
-      "sha256": "61d07f747b4c4578b71d125b2b83d05b250acb3a98a91c65c22833a8693d0c42",
-      "phase": "production",
-      "group": "primary-production",
-      "surface": "trophy-case",
-      "state": "quota",
-      "device": "desktop",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "trophy-case quota",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-after-production/trophy-desktop-dark.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-primary-production-trophy-case-quota-desktop-light.png",
-      "sha256": "c7b76dc499efd78877edb90cf9c255d946e9313aa5433de97f7f5c28a05e4e60",
-      "phase": "production",
-      "group": "primary-production",
-      "surface": "trophy-case",
-      "state": "quota",
-      "device": "desktop",
       "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "trophy-case quota",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "state": "contract-recovered-top",
+      "file": "s127-after-contract-recovered-top-mobile-light.png",
+      "sha256": "52b3768ff614d7a672822b4e1bc414b4c2fa7b3d5fe4926601e5ae0eef57c26b",
+      "page": "contract-recovered-top",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-after-production/trophy-desktop-light.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-primary-production-trophy-case-quota-mobile-dark.png",
-      "sha256": "731400c18710591728371ed8a4ccabec4766fee47b5073cca1f5390fd10cee76",
-      "phase": "production",
-      "group": "primary-production",
-      "surface": "trophy-case",
-      "state": "quota",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "mobile",
-      "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "trophy-case quota",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-after-production/trophy-mobile-dark.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-primary-production-trophy-case-quota-mobile-light.png",
-      "sha256": "664b751520e3cf7bf74b7d65e2994af07c5bcd2518f0af12e7a8b530d0bb6b78",
-      "phase": "production",
-      "group": "primary-production",
-      "surface": "trophy-case",
-      "state": "quota",
-      "device": "mobile",
       "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "trophy-case quota",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "state": "contract-closed",
+      "file": "s127-after-contract-closed-mobile-light.png",
+      "sha256": "550b7829800603431446f92d0baf2cf3fb30c199459ba6a6c89fdf8eaa0796e4",
+      "page": "contract-closed",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-after-production/trophy-mobile-light.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-primary-production-status-note-release-note-desktop-dark.png",
-      "sha256": "6c38f7107fef79b2b77a85609dd7e90792ae5ff5bcff9afdda47b7a3b75d847a",
-      "phase": "production",
-      "group": "primary-production",
-      "surface": "status-note",
-      "state": "release-note",
-      "device": "desktop",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "status-note release-note",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-status-production-v2/desktop-dark.png",
-        "observedPhase": "production"
-      }
-    },
-    {
-      "file": "s126-c2-primary-production-status-note-release-note-desktop-light.png",
-      "sha256": "32a5b149ab3e3776023d023d403041c84d199502fa0b532559c19d253c69e151",
-      "phase": "production",
-      "group": "primary-production",
-      "surface": "status-note",
-      "state": "release-note",
-      "device": "desktop",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "status-note release-note",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-status-production-v2/desktop-light.png",
-        "observedPhase": "production"
-      }
-    },
-    {
-      "file": "s126-c2-primary-production-status-note-release-note-mobile-dark.png",
-      "sha256": "c35e682e33359364eadcbaf6b42497ffad10fb2b9d4a78f9e43319ec3848f04b",
-      "phase": "production",
-      "group": "primary-production",
-      "surface": "status-note",
-      "state": "release-note",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "mobile",
-      "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "status-note release-note",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-status-production-v2/mobile-dark.png",
-        "observedPhase": "production"
-      }
-    },
-    {
-      "file": "s126-c2-primary-production-status-note-release-note-mobile-light.png",
-      "sha256": "1615fc777af7870aa2ad00648b9bbaad4955aad77f85862b13b0e2b219722151",
-      "phase": "production",
-      "group": "primary-production",
-      "surface": "status-note",
-      "state": "release-note",
-      "device": "mobile",
       "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "status-note release-note",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "state": "contract-closed-top",
+      "file": "s127-after-contract-closed-top-mobile-light.png",
+      "sha256": "93ea90d7bac0a6c73b6210397fd49fe0b2692ac52e62898d775a06a354342cbb",
+      "page": "contract-closed-top",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-status-production-v2/mobile-light.png",
-        "observedPhase": "production"
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-entry-production-entry-landing-desktop-dark.png",
-      "sha256": "128d9a73d12e3616f87e7eede7ab845f3f579e6d2e1753bac1dc5767bbe2b63c",
-      "phase": "production",
-      "group": "entry-production",
-      "surface": "entry",
-      "state": "landing",
-      "device": "desktop",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "entry landing",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-entry-production/desktop-dark.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-entry-production-entry-landing-desktop-light.png",
-      "sha256": "aa0ef636bd560e5e43c7164513dddbbd283d12a18a428db1ba16b359f9d749c1",
-      "phase": "production",
-      "group": "entry-production",
-      "surface": "entry",
-      "state": "landing",
-      "device": "desktop",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "entry landing",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-      "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-entry-production/desktop-light.png",
-        "observedPhase": null
-      }
-    },
-    {
-      "file": "s126-c2-entry-production-entry-landing-mobile-dark.png",
-      "sha256": "c765ad2ec20920015e7e9796858190e7c1807e88a9611f0b5fc7c27be1d43eb1",
-      "phase": "production",
-      "group": "entry-production",
-      "surface": "entry",
-      "state": "landing",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "mobile",
-      "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "entry landing",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "theme": "light",
+      "state": "rewind-checkpoint",
+      "file": "s127-after-rewind-checkpoint-mobile-light.png",
+      "sha256": "ceec89e7675b8841ea703a914f00ae2a1a13b7ebe9be397f0022912702cbfcd0",
+      "page": "rewind-checkpoint",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-entry-production/mobile-dark.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
     },
     {
-      "file": "s126-c2-entry-production-entry-landing-mobile-light.png",
-      "sha256": "d01cdaa45615518cc4fee6b2a096ab206ba98345f8394d5a4f4d6795304139d3",
-      "phase": "production",
-      "group": "entry-production",
-      "surface": "entry",
-      "state": "landing",
+      "phase": "after",
+      "origin": "http://localhost:4273",
       "device": "mobile",
-      "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "entry landing",
-      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
-      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "theme": "light",
+      "state": "rewind-restored",
+      "file": "s127-after-rewind-restored-mobile-light.png",
+      "sha256": "014615056d26530b3fce816a0865317bf34e2f7d0f169433c78500bc543b95fe",
+      "page": "rewind-restored",
       "inspected": true,
-      "original": {
-        "file": ".cache/s126-c2-entry-production/mobile-light.png",
-        "observedPhase": null
-      }
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4273",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "status",
+      "file": "s127-after-status-mobile-light.png",
+      "sha256": "9622b71006653770458483c457ef5e0847388a0dd5ab355a89d7d5fbd2a8e24a",
+      "page": "status",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
     }
   ],
   "inspection": {
     "renderedPixelsReviewed": true,
-    "reviewer": "game_audit; root",
+    "reviewer": "review_contract and session-agent",
+    "blockingDefectsOpen": 0,
     "findings": [
-      "Selected before/current source, phase, state, theme and device joins verified against actual independent image/report hashes.",
-      "Historical failed/occluded frames and C1 after/local/hosted/prototype evidence remain historical, not current acceptance."
+      "Selected contract, rewind controls and release note readable in both themes and viewport widths."
     ],
     "fixesApplied": [
-      "Mobile Full View recovery",
-      "Prediction corruption and once-only grading",
-      "Trophy tab continuity",
-      "Exact critical entry asset bundling; no image edits"
+      "Retained mobile contract top/bottom views to cover the tall panel without hiding the sticky header."
     ],
-    "blockingDefectsOpen": 0
+    "captureLimitations": [
+      "Baseline rewind images show empty timeline; contract screenshots show stale markup, not the thrown exception. Actual4baseline throws are recorded separately.",
+      "Mobile contract baseline top is behind sticky header. Final top/bottom pair covers all5rows.",
+      "Mobile rewind heading sits behind sticky header in element captures; checkpoint entries and controls are visible."
+    ]
   },
-  "inputs": [
-    {
-      "path": "docs/visual-qa/S126_LOCAL.json",
-      "sha256": "cbfa305ee541fd52e82c288d5ed74874ba5f4f1f1a864ad3bfa021ae301c123f"
-    },
-    {
-      "path": "reports/s126-local-visual-review.json",
-      "sha256": "3f245f2fdcf078e9615cd00aa164f89c399f240bc7fa318897cda68912bd0286"
-    },
-    {
-      "path": "reports/s126-entry-before-pixels.json",
-      "sha256": "75d414b2507aa1164cd3df54e10cf891f238c1bdb0ccef98cf532777df8c7c34"
-    },
-    {
-      "path": "docs/visual-qa/evidence/s126-c2-0cdd1964755327bd0ccb7768a77c623b9c9d091d409bfffea9fbd434cd3354fd.json",
-      "sha256": "0cdd1964755327bd0ccb7768a77c623b9c9d091d409bfffea9fbd434cd3354fd",
-      "originalPath": ".cache/s126-entry-before-review.json"
-    },
-    {
-      "path": "reports/s126-c2-staging-pixels.json",
-      "sha256": "b3b29404e9efbfa6fc656f716ea52333b61a903a1ccc6c65141810f35588e906"
-    },
-    {
-      "path": "reports/s126-c2-staging-visual-review.json",
-      "sha256": "8ecdb15b1abb80eb805d05c925ed8bb2417b003723bba685d641f21c7881b4ff"
-    },
-    {
-      "path": "reports/s126-c2-entry-staging-pixels.json",
-      "sha256": "19352b251797956b6464321a0a1620c04ed0214961ac6219a158c9c3a818e93f"
-    },
-    {
-      "path": "reports/s126-c2-entry-staging-visual-review.json",
-      "sha256": "e51c0b08aa78d5d86b068e3a0ce2f28f9561d02f9375d5a75d14167b656f31dc"
-    },
-    {
-      "path": "reports/s126-c2-production-pixels.json",
-      "sha256": "0c061916661f81d1396de6c54588f60fcfaf025be7185848812c61c864c25bf7"
-    },
-    {
-      "path": "reports/s126-c2-production-visual-review.json",
-      "sha256": "54a59c6449dcc5aea1744033370884e2c8d336f8c30bdadd7621554b5b382a29"
-    },
-    {
-      "path": "reports/s126-c2-entry-production-pixels.json",
-      "sha256": "4bb2ad669f499286632882b7fe040d1c58d4744dd24eb99118ddac495dad734a"
-    },
-    {
-      "path": "reports/s126-c2-entry-production-visual-review.json",
-      "sha256": "a749b7cab813eae4752450e313c76ee2d55b3049a619c30569c1d1ccb7e20094"
-    }
-  ],
-  "candidate": {
-    "path": ".cache/s126-c2-candidate.json",
-    "sha256": "ecbb349148ebb376c42c56e00263afc6eff85905eb9fe7fb29bee6992e6b0809"
+  "scope": "12 baseline plus24 final local selected-state images. Source hashes bind the implemented surfaces; this is not hosted-release or whole-product visual acceptance.",
+  "runtimeBaseline": {
+    "path": ".cache/s127-before.json",
+    "sha256": "dc0a4ac3352783dc3838ccb910c8cbd0eea07cbb50a3a10aebde8d9509064efd"
   },
-  "nativeProvenance": [
-    {
-      "path": "reports/s126-c2-staging-provenance.json",
-      "sha256": "d40ef7b4cecbf47144797997d42a2d5592ade227444bc5190c51ca0a8dacb4cc"
-    },
-    {
-      "path": "reports/s126-c2-production-provenance.json",
-      "sha256": "13b41bf460ca9b60aee50e6271febdb0729666b60436529b5221df9f8069c800"
-    }
-  ],
-  "supplementalEvidence": {
-    "predictions": {
-      "path": "docs/visual-qa/S126_C2_PREDICTIONS.json",
-      "sha256": "3853a93e3313df17a5d86d01a4284417a78a54c0ece88d0d43f3f67326ec3ea9",
-      "captures": 24
-    }
-  },
-  "captureCounts": {
-    "primary": 60,
-    "supplemental": 24,
-    "total": 84
-  },
-  "historicalOnly": [
-    "docs/visual-qa/S126_LOCAL.json (after-local16 not selected)",
-    "C1 stage/production pixel matrices",
-    "reports/s126-entry-local-visual-review.json (prototype before/after8)",
-    "Original failed/occluded capture attempts; original FIX reviews retained"
-  ],
-  "scope": "60 primary selected before/current rendered images plus24 prediction supplement. Current acceptance rows bind exact C2 source/D2; baseline rows retain their distinct historical identities. No full game, performance, lifecycle or launch claim."
+  "browserReport": {
+    "path": "reports/s127-local-final-2-browser.json",
+    "sha256": "6452e6c0c52446cb8910e19821c9f8a7e8fc350facd66ac0950f8a8d1da7290f"
+  }
 }

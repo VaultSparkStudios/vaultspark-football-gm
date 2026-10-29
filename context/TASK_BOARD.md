@@ -1,5 +1,12 @@
 # Task Board — Franchise Architect: Football
 
+## S127 Wave status
+
+- [x] Wave 1 — Fresh native goal S127 binding, startup checks, nine-axis audit and pre-edit candidate admission. Startup propagation held-source-absent and missing helper limits remain recorded.
+- [x] Wave 2 — Restore actual dashboard and runtime-owned retention; validate optional First Season Contract. Focused67/67, final actual-worker browser4/4 and24 reviewed selected captures passed; independent implementation reviews approved. Exact-candidate release remains separate.
+- [ ] Wave 3 — Freeze exact source, verify staging, required CI and actual frontend/API deployment.
+- [ ] Wave 4 — Ordered closeout, complete evidence, main publication/readback, signed impact and owned cleanup.
+
 ## S126 Wave status
 
 - [x] Wave 1 — Fresh startup, goal/session binding, nine-axis audit, pending admission and pre-implementation premise timing.
