@@ -1,0 +1,615 @@
+{
+  "session": 126,
+  "at": "2026-10-29T00:00:03.724Z",
+  "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "verified": true,
+  "verificationKind": "explicit archive-backed preservation check",
+  "nativeGuard": {
+    "ok": false,
+    "findings": [
+      {
+        "file": "docs/visual-qa/LATEST.json",
+        "issue": "content-wipe",
+        "ratio": 0.4258577921321191
+      }
+    ],
+    "rawReceipt": "reports/s126-c2-context-guard-before-publication.json",
+    "rawSha256": "e7cfda01bc0abe57703d1925677ad3b05f615f4a8a2242cc5a17df8c07a772a6",
+    "thresholdUnchanged": true
+  },
+  "disposition": "Specific false positive for a regenerated latest visual receipt. Native finding retained; no blanket threshold change or detector-conformance claim.",
+  "archive": {
+    "path": "docs/visual-qa/archive/LATEST-before-S126-C2-e61f31337ba20e3780788bff0985562fa21125b04a3c4ff37f4db2cf840003bb.json",
+    "sha256": "e61f31337ba20e3780788bff0985562fa21125b04a3c4ff37f4db2cf840003bb",
+    "bytes": 120134,
+    "exactPreimagePreserved": true,
+    "priorSession": 125,
+    "priorImages": [
+      {
+        "file": "docs/visual-qa/s125-client-before-desktop-dark-boot-getter.png",
+        "sha256": "a97b12df9543e1c4fe51f3faeb00419328ad2ad754b77884c2d7ac07781e6d21"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-before-desktop-dark-boot-quota.png",
+        "sha256": "9890f92f4abeaf04a7b13511f3919b9657cd9d9a542ca2f9ea274d61eb3a5d2c"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-before-desktop-dark-contract-mark.png",
+        "sha256": "7c51add0e248afb6431f132f7eb05ff1674dba16865d8a4dfb29c016a31147ae"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-before-desktop-light-boot-getter.png",
+        "sha256": "f8fd9dd0fd0b5a2baaa54afa6be20c91ee0b1322e351fbbd4ee3193e4afec8a7"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-before-desktop-light-boot-quota.png",
+        "sha256": "83494e68fbf7ecfbc0a3005f3d980047f1f4d5a74ac5cbd4d80127f66315f783"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-before-desktop-light-contract-mark.png",
+        "sha256": "93e7b7a2acab8a0f392df2c0b991c6863d5bab539038d4333294e8e9fa04d635"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-before-mobile-dark-boot-getter.png",
+        "sha256": "6371141207a233f0639eaad498bdcafb44a74e5c0aba6b0c48cb7d156bd2b0de"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-before-mobile-dark-boot-quota.png",
+        "sha256": "cef2397b2550a9eba0d67943082769d734a5132241b0f55caf93a5372826c08d"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-before-mobile-dark-contract-mark.png",
+        "sha256": "40c541cccc43c3617bc63e7f84fc7d7fcd8a01cd90c1fb3513bea68018830201"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-before-mobile-light-boot-getter.png",
+        "sha256": "04031db0bb52a1845dd03aeb37ade3ba30158ce3d49af356d3768f4a8ada2f12"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-before-mobile-light-boot-quota.png",
+        "sha256": "f48a31c8b3cc1973e63b122b1c5b7a45a5fbc2a80122de8bc9377d289e7c81fd"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-before-mobile-light-contract-mark.png",
+        "sha256": "a47019dce94254f18ffe9dc19f6b745e5213f5d672a2e4a9e6a30f1b4f0a4466"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-after-desktop-dark-boot-getter.png",
+        "sha256": "a1fc14ea692a48d8d8327a48987549587bd95bc4194d827fb1814d62235124db"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-after-desktop-dark-boot-quota.png",
+        "sha256": "7664c55ca183678ce9dae6ef488ceaf2b6eaf6f174f0681a1790f04446da8c38"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-after-desktop-dark-contract-mark.png",
+        "sha256": "a1b0ccf68505b67c13dde4388b8d24b16230b13724f8c1d2bac075bf2d6373b5"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-after-desktop-light-boot-getter.png",
+        "sha256": "ef6845fa9673b09e80fa02af54e47727c5948c85463902517ac901c5c67410d7"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-after-desktop-light-boot-quota.png",
+        "sha256": "a3522cf759082fac0a7d46fce7465fe9eebea3a92d86caa01ac17c314ce8b6d2"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-after-desktop-light-contract-mark.png",
+        "sha256": "974ca5ea68eef00f6983f8eb9db6a21e1514b237f344e188147c116b3849dc7d"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-after-mobile-dark-boot-getter.png",
+        "sha256": "6cb6c104a81e52b81c04b2cf41439f3b6e564043498b38fddb03a4dd396605d0"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-after-mobile-dark-boot-quota.png",
+        "sha256": "54cdc3788ad3c6aa2f97e48a8ef8f19035afb75210dc68054f738334de8e33bb"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-after-mobile-dark-contract-mark.png",
+        "sha256": "08233f148e89d98d447c416d38cb8cec8425990a38db1067be70da13e92bd39a"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-after-mobile-light-boot-getter.png",
+        "sha256": "a176fdcbc2b4b2e3c190c388e8e44c3240f36c7cad3363b1a65a19f2f9ce8603"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-after-mobile-light-boot-quota.png",
+        "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f"
+      },
+      {
+        "file": "docs/visual-qa/s125-client-after-mobile-light-contract-mark.png",
+        "sha256": "5a53396f3f0d887edb59a0321e19347ee6276d108c81fa9a60f9c947937a39e1"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-final-desktop-dark-boot-getter.png",
+        "sha256": "f2de55fb67b8603c5802cafd4928a8bf761f6cf396a47687b17745f8cf794cb6"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-final-desktop-dark-boot-quota.png",
+        "sha256": "acd636bc8683b3d81e3638fa7f77e822104485a3fa5fc2c7f844e163b808308d"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-final-desktop-dark-contract-mark.png",
+        "sha256": "a1b0ccf68505b67c13dde4388b8d24b16230b13724f8c1d2bac075bf2d6373b5"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-final-desktop-light-boot-getter.png",
+        "sha256": "ef6845fa9673b09e80fa02af54e47727c5948c85463902517ac901c5c67410d7"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-final-desktop-light-boot-quota.png",
+        "sha256": "3bb083d882be4edb426438ecb8375dba52c898df1b1523102e8b50a235b7825c"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-final-desktop-light-contract-mark.png",
+        "sha256": "974ca5ea68eef00f6983f8eb9db6a21e1514b237f344e188147c116b3849dc7d"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-final-mobile-dark-boot-getter.png",
+        "sha256": "b90890b046d17f5ef23b2371fe5ef1090b8dbf2f7229c58f8da6b5f691664f13"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-final-mobile-dark-boot-quota.png",
+        "sha256": "785e90cc69049da82ebfc8b418c3633ccda3c51c20ee141fb103c54b40b17e53"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-final-mobile-dark-contract-mark.png",
+        "sha256": "ed3adbbf8d8ef93f7743658b707aae99deecc835ebb6107224f81badb22b2838"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-final-mobile-light-boot-getter.png",
+        "sha256": "a176fdcbc2b4b2e3c190c388e8e44c3240f36c7cad3363b1a65a19f2f9ce8603"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-final-mobile-light-boot-quota.png",
+        "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-final-mobile-light-contract-mark.png",
+        "sha256": "6ae46c6847fd375905999ba9a0736207b9de7d43baf0d352d3b709ea70f54e9a"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-desktop-dark-dismissed.png",
+        "sha256": "5920df68cadd4efd72962ce62e202c174dd7a77d90a640bd5df86d4532dca2eb"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-desktop-dark-complete-first.png",
+        "sha256": "716d011330d360bf63f2b3187301db4b401f562ce64165dfd257d488f0ce6a77"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-desktop-dark-complete-revisit.png",
+        "sha256": "3b0ec2e26b5c28efdd428d765d0d9046db388d1ad30f1c60230318f840ac38b9"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-desktop-dark-finalized-2026.png",
+        "sha256": "712eaf59e4f84fcbc26ae77a34252a63161fcfa59341292d4376969b00f3dfa7"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-desktop-dark-finalized-2027.png",
+        "sha256": "780d41445b2e3d937abdc2190a7564f030c409b77c6dadf9ce77960ddd3f8696"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-desktop-light-dismissed.png",
+        "sha256": "8fc15cbb926ce3a617888b9adb7b9dfc26b6aab1e5ece1ec7a5791fd5a8c40ed"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-desktop-light-complete-first.png",
+        "sha256": "86158cd4e077a48bb936233f5114c2a8addda3e348d1691ec73fb505a7500504"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-desktop-light-complete-revisit.png",
+        "sha256": "724cf58bb61eb3aa50cbb1ca5a7bc12ce6cbdf49023aca230b34c76615480e26"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-desktop-light-finalized-2026.png",
+        "sha256": "f30331b7d8cb4ffe7b8c98dfbfe467c2a3796ca6eb198297d903eb6ce807d4ee"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-desktop-light-finalized-2027.png",
+        "sha256": "d0dac5b1857aeaee216eb147ed11ebf18af3dabd24bdc6129729a2f011108189"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-mobile-dark-dismissed.png",
+        "sha256": "589daf50c614e7865120814fcd699663f5742ee60c238faf5339bf39eaef2a5d"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-mobile-dark-complete-first.png",
+        "sha256": "1674696db51025733b928d970cbd6f343a12f16de7c89bf66cf277aaabb4b67e"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-mobile-dark-complete-revisit.png",
+        "sha256": "08abb691fb2ddb20396746eb74ae862a6ca64c0ee7025bad978f8edff0fa774e"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-mobile-dark-finalized-2026.png",
+        "sha256": "35ec2292e3f15f97bfa6e926541b5e151f8d142453a182b5189f38b37795fe7d"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-mobile-dark-finalized-2027.png",
+        "sha256": "070a8cad6d6bf9c1fbbba6d2d52e1aeac3141aae4573938921a647c3b8a77b07"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-mobile-light-dismissed.png",
+        "sha256": "4a749977a5b7acb9f79c6819858a9324d66c6abf87c22d14edecd091170eeb35"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-mobile-light-complete-first.png",
+        "sha256": "ee84921a8ca3dc9f76d2ccb2b1f952758195a885b612fdcdfda99bf993cfe69b"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-mobile-light-complete-revisit.png",
+        "sha256": "ee84921a8ca3dc9f76d2ccb2b1f952758195a885b612fdcdfda99bf993cfe69b"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-mobile-light-finalized-2026.png",
+        "sha256": "ee84921a8ca3dc9f76d2ccb2b1f952758195a885b612fdcdfda99bf993cfe69b"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-before-mobile-light-finalized-2027.png",
+        "sha256": "6574db6cc4f73d8560282411bb4114f6af90796f554a6aab2211971565ac91b3"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-desktop-dark-dismissed.png",
+        "sha256": "e83854e624a38377ace1479dcd2746d785619bb9886cda4210d733428cea880a"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-desktop-dark-complete-first.png",
+        "sha256": "968303b13e80d74b772b761d4145ba7cc31dfd4aa11343bd92d4bf9af341f37a"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-desktop-dark-complete-revisit.png",
+        "sha256": "a6019131d372a0ada50364d767071f6133354f886b7b5db589f43fde0e418361"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-desktop-dark-finalized-2026.png",
+        "sha256": "a58e2e48784d81f901cd2627750d83f502f7a0adf6b0f4371e36781b87a2e21e"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-desktop-dark-finalized-2027.png",
+        "sha256": "e1fe1c249773130bbafdf12f1f96e7de2053e26b4afcbe4ee288ea2eb4a40c5f"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-desktop-light-dismissed.png",
+        "sha256": "d2c3b8e016b0e15687020a8acfc303a8aaa929adb17affd95e0670b571fb7bc3"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-desktop-light-complete-first.png",
+        "sha256": "a4f1a9d2b765270b8110a9ad579bdff07c02c87179972491217d07b7f39a9199"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-desktop-light-complete-revisit.png",
+        "sha256": "68dd994a26ce1ca080e90ed25b2867f7c53413de6b3b64709c715101d146d9b5"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-desktop-light-finalized-2026.png",
+        "sha256": "9ae4458804f122c2c26a3aa20ca378b3d57cd6fb3cb96b1358cebed18d96496a"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-desktop-light-finalized-2027.png",
+        "sha256": "9bd2c661879fb491662b88a12794630e1ea405c41943ae1d4aeb37b165956bba"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-mobile-dark-dismissed.png",
+        "sha256": "154d535f472cce7bb9f6c184e56f0133396bae1081141fd3e6c3fdb68cae9a6f"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-mobile-dark-complete-first.png",
+        "sha256": "0fd7ccd3112270494139b9558290495e73c2b979a4622cb90bc411faea1085f3"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-mobile-dark-complete-revisit.png",
+        "sha256": "8301fc4e5f9448ddce88fec72e2176f63815032a20ec8683263cf6454f38c77c"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-mobile-dark-finalized-2026.png",
+        "sha256": "759c6321d54ee12f43a46451dbe4912f728f6656737cae982606397151ff5b64"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-mobile-dark-finalized-2027.png",
+        "sha256": "a8f16da02e9cdebd7748e2beb141d4b65a912c4746cebc186a4105833374da2f"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-mobile-light-dismissed.png",
+        "sha256": "8136303b7d17065cb3a30bf46b89c687b8f018f04473b3cbf958bc4c360a3714"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-mobile-light-complete-first.png",
+        "sha256": "5dba9aa27c2774a9fc7e93309443d4c06f2961f06927439c3ad24a72810671a4"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-mobile-light-complete-revisit.png",
+        "sha256": "c3484b6e7edfbca83688d1126f32bb1e9462dce5c977934ff2d3cfede2aae6fb"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-mobile-light-finalized-2026.png",
+        "sha256": "a3d058c258b574cef0d6236f9fcc6c1ae4fb89445291feab345b295d398f8f1d"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-after-mobile-light-finalized-2027.png",
+        "sha256": "a3d058c258b574cef0d6236f9fcc6c1ae4fb89445291feab345b295d398f8f1d"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-successor-desktop-dark-boot-getter.png",
+        "sha256": "bab93ba2c8a6d4ddc1fd99c145b3a49985f3742e3922c867627c6c8bfceb8767"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-successor-desktop-dark-boot-quota.png",
+        "sha256": "08ebe906dcca0c887e15eaa29c84f75bf31b561ae48d229b569725d32d119dfe"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-successor-desktop-dark-contract-mark.png",
+        "sha256": "98971a2838c6894d2ea9a900108ef5b2b6c8c57272a5d82441d4fe8dd3064634"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-successor-desktop-light-boot-getter.png",
+        "sha256": "ef6845fa9673b09e80fa02af54e47727c5948c85463902517ac901c5c67410d7"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-successor-desktop-light-boot-quota.png",
+        "sha256": "b71e0190df96a71e9dae6fa97939d1279e9c17afb79757377eb8f2de89a12793"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-successor-desktop-light-contract-mark.png",
+        "sha256": "974ca5ea68eef00f6983f8eb9db6a21e1514b237f344e188147c116b3849dc7d"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-successor-mobile-dark-boot-getter.png",
+        "sha256": "5da2c66410699f676bc4f48864217150ff09b0e854bc951e69753e52909c06a0"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-successor-mobile-dark-boot-quota.png",
+        "sha256": "7ec20c71ad0844b362dd82e86cd7641e8e86b86ed4ffa7daa3f5202bd2521a09"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-successor-mobile-dark-contract-mark.png",
+        "sha256": "7bdd393acc31ecf34ed863a7d05c90348d05486cd0e35b5af23e90142632bd2b"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-successor-mobile-light-boot-getter.png",
+        "sha256": "a176fdcbc2b4b2e3c190c388e8e44c3240f36c7cad3363b1a65a19f2f9ce8603"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-successor-mobile-light-boot-quota.png",
+        "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f"
+      },
+      {
+        "file": "docs/visual-qa/s125-staging-successor-mobile-light-contract-mark.png",
+        "sha256": "6ae46c6847fd375905999ba9a0736207b9de7d43baf0d352d3b709ea70f54e9a"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-desktop-dark-dismissed.png",
+        "sha256": "bd52cc48faf4186df7cf5ea83e446ab5934d72167584df9d93d5437f071f191d"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-desktop-dark-complete-first.png",
+        "sha256": "b640a651507d8ac995d53de19d31735992de8b2872716f3d959677a1d6f45f08"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-desktop-dark-complete-revisit.png",
+        "sha256": "25409ae4421700c45ff1f0a3f2f7c8cb437a47b6d9069c2222f792d2503e17ff"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-desktop-dark-finalized-2026.png",
+        "sha256": "a49c489377167e17d45554015c235e51dfec970e309935be6eea6dbd938a11e6"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-desktop-dark-finalized-2027.png",
+        "sha256": "d0719c2a307c5ada2e2170c557aa868f23239e34a91280c029a0f1e9b59bd6a9"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-desktop-light-dismissed.png",
+        "sha256": "4e5cb9b18f8b0f646f0ac95980299f9db14fe7fabf7d420def6a6e518210275d"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-desktop-light-complete-first.png",
+        "sha256": "8c028c2410cae6f2f857851456b95895a0603e63bc746d519c43518f74ccf56e"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-desktop-light-complete-revisit.png",
+        "sha256": "cb97f9fda273a6382dcf8be5376942a7130ceac0a33a3dc28ed99ae98aecf44e"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-desktop-light-finalized-2026.png",
+        "sha256": "9f5654cb6bcb9135a5f0e0e18070e8b940809b75d061c9185bd66faa642f0451"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-desktop-light-finalized-2027.png",
+        "sha256": "a9976ce21745c58c867559953cc345c118f2f2d297db0cff5d921fe458bd91af"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-mobile-dark-dismissed.png",
+        "sha256": "6af2d98dc5a59f87cdbe50f345dafe20930cf45e790ce7b475cb6b7af2f502ca"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-mobile-dark-complete-first.png",
+        "sha256": "0a9782a1442dcf00fc27673219897a491d1c4c4b36cce59a8d8b5a26b385822f"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-mobile-dark-complete-revisit.png",
+        "sha256": "94935b677bf9e03d7b66f560623272fec78fd7251bd6c48a6f0eb09471d7dba9"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-mobile-dark-finalized-2026.png",
+        "sha256": "0061f8cf9b27b423517657009190af30fa842e4fd26e0376b867cc7b4c0db891"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-mobile-dark-finalized-2027.png",
+        "sha256": "e6c53a8869388ce618d19e34cd5a24841618580f5c9a27f438117d6ea5c2b208"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-mobile-light-dismissed.png",
+        "sha256": "0bc5829975ab3a6841ba189399833eb0eba9bf05d4f67378dbe8d57a5695513e"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-mobile-light-complete-first.png",
+        "sha256": "14f49d6919938a18150da3932591058b8a4c2b95b12bc8d9f0d154a411510326"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-mobile-light-complete-revisit.png",
+        "sha256": "c3d4c4ee4a6a8538883f144ef6ed0390216c9ec5d3c2301302570e22cdb9bee6"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-mobile-light-finalized-2026.png",
+        "sha256": "0dcedff7fe2898fca24ab0858ab79353b571c32cad972c946cf6bba7cdfd0930"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-staging-successor-mobile-light-finalized-2027.png",
+        "sha256": "0dcedff7fe2898fca24ab0858ab79353b571c32cad972c946cf6bba7cdfd0930"
+      },
+      {
+        "file": "docs/visual-qa/s125-production-desktop-dark-boot-getter.png",
+        "sha256": "5012ea9be9b915e5bc13fbb3b93794e0f9d752baab4b205f8bef6ba940a404d3"
+      },
+      {
+        "file": "docs/visual-qa/s125-production-desktop-dark-boot-quota.png",
+        "sha256": "5c7e40fb19c854ca29d2e76b79ce883732be1f0d5298db449c58037f65dddaa9"
+      },
+      {
+        "file": "docs/visual-qa/s125-production-desktop-dark-contract-mark.png",
+        "sha256": "a1b0ccf68505b67c13dde4388b8d24b16230b13724f8c1d2bac075bf2d6373b5"
+      },
+      {
+        "file": "docs/visual-qa/s125-production-desktop-light-boot-getter.png",
+        "sha256": "ef6845fa9673b09e80fa02af54e47727c5948c85463902517ac901c5c67410d7"
+      },
+      {
+        "file": "docs/visual-qa/s125-production-desktop-light-boot-quota.png",
+        "sha256": "893ad94a60bb9e29cbb50d09a4b3e8e8f3b40b10a7d8b3212f4d92ef71355841"
+      },
+      {
+        "file": "docs/visual-qa/s125-production-desktop-light-contract-mark.png",
+        "sha256": "974ca5ea68eef00f6983f8eb9db6a21e1514b237f344e188147c116b3849dc7d"
+      },
+      {
+        "file": "docs/visual-qa/s125-production-mobile-dark-boot-getter.png",
+        "sha256": "e824ceb841b28de5265612bd8334a53bd00646da2ea01ec49774b08bcc634e68"
+      },
+      {
+        "file": "docs/visual-qa/s125-production-mobile-dark-boot-quota.png",
+        "sha256": "5b53a0da7921c4f414a2fc959ae5f50317d946960d44eb16883c5427a68d2c93"
+      },
+      {
+        "file": "docs/visual-qa/s125-production-mobile-dark-contract-mark.png",
+        "sha256": "158045bc389383d60f57fa9752255c0064308b882748ee1133df41c30eab36a7"
+      },
+      {
+        "file": "docs/visual-qa/s125-production-mobile-light-boot-getter.png",
+        "sha256": "a176fdcbc2b4b2e3c190c388e8e44c3240f36c7cad3363b1a65a19f2f9ce8603"
+      },
+      {
+        "file": "docs/visual-qa/s125-production-mobile-light-boot-quota.png",
+        "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f"
+      },
+      {
+        "file": "docs/visual-qa/s125-production-mobile-light-contract-mark.png",
+        "sha256": "5a53396f3f0d887edb59a0321e19347ee6276d108c81fa9a60f9c947937a39e1"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-desktop-dark-dismissed.png",
+        "sha256": "8a16368ed51db198c70595a1e9e92f712cce55f4371af0e9d4ae411e4c6ad431"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-desktop-dark-complete-first.png",
+        "sha256": "a98b91de7939d0717af9014600a9080f11c8972f64bc057f16cf12765c9b941a"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-desktop-dark-complete-revisit.png",
+        "sha256": "9f76038ed98498bbbb6637556c4fdcde39efe3088679e2ef01baf778a5749380"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-desktop-dark-finalized-2026.png",
+        "sha256": "adea4b46bdf07be7954ad1d027c6fe1848ac17564fd8021325ec2848b159ff6a"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-desktop-dark-finalized-2027.png",
+        "sha256": "12cb8952e35a827a9343e18746d70d951ce2a1162b3eebdeabeaba5f819138cf"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-desktop-light-dismissed.png",
+        "sha256": "e2332b6b58b0ae3372752eee1392a7fd58555aa3e5c9767912ac212f24633718"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-desktop-light-complete-first.png",
+        "sha256": "fa36ed92c9864cd24469657966e4b91d485f4f647bba156b62c7364e9be49f8a"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-desktop-light-complete-revisit.png",
+        "sha256": "f268ade2998dcddd1ce363bae8df9e3403c5910a32ea982a956f44f1ccc66af9"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-desktop-light-finalized-2026.png",
+        "sha256": "f556b24fc0eb9870efd2592e0c8772af78f786cb23477b213da59654a4ac97d3"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-desktop-light-finalized-2027.png",
+        "sha256": "8205862feeb5c1a4ebf5b71ead7bd6d62fffd61dbcfc785c96bcca757ac3dbb7"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-mobile-dark-dismissed.png",
+        "sha256": "81cd70622d57a2cc7d999a7a3dc73696da84d42ad3b72378a6e4c53d2576fe20"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-mobile-dark-complete-first.png",
+        "sha256": "ad220f2b9d54fe862b1b230a28cff3592b3ec874629bce1d6e8bafa6b9eb11e1"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-mobile-dark-complete-revisit.png",
+        "sha256": "f6c228feb798e682c3bd1a7f9e2c1d3cbf86f76ef058e6700d7c7d9fcc9e913f"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-mobile-dark-finalized-2026.png",
+        "sha256": "633fd5405a68c704a81232b8443a976d248333f5fa3bba2c4cce7b8064dd5a9d"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-mobile-dark-finalized-2027.png",
+        "sha256": "7aa53b5586ee4b0138e6c59b49d1ddeeaf7e5583d1feb4272d2b4cd82cbca96f"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-mobile-light-dismissed.png",
+        "sha256": "c8912ce85ad9f1f74e221cebbee3411e1f2e69cd1eb0e690c3f4e1546eed343c"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-mobile-light-complete-first.png",
+        "sha256": "5dba9aa27c2774a9fc7e93309443d4c06f2961f06927439c3ad24a72810671a4"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-mobile-light-complete-revisit.png",
+        "sha256": "12de6a178e5c5c8b69bcd1551eb069aa34f43e6d262554ce7b14460dd9870b8b"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-mobile-light-finalized-2026.png",
+        "sha256": "a3d058c258b574cef0d6236f9fcc6c1ae4fb89445291feab345b295d398f8f1d"
+      },
+      {
+        "file": "docs/visual-qa/s125-contract-production-mobile-light-finalized-2027.png",
+        "sha256": "a3d058c258b574cef0d6236f9fcc6c1ae4fb89445291feab345b295d398f8f1d"
+      }
+    ],
+    "allPriorImagesUnchanged": true
+  },
+  "current": {
+    "path": "docs/visual-qa/LATEST.json",
+    "sha256": "af33bb2b887a5c78ae0a83b63eb1a8222a4acc282bd58639e7253e705c7eaba7",
+    "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+    "primaryCaptures": 60,
+    "predictionSupplementCaptures": 24,
+    "inspection": {
+      "renderedPixelsReviewed": true,
+      "reviewer": "game_audit; root",
+      "findings": [
+        "Selected before/current source, phase, state, theme and device joins verified against actual independent image/report hashes.",
+        "Historical failed/occluded frames and C1 after/local/hosted/prototype evidence remain historical, not current acceptance."
+      ],
+      "fixesApplied": [
+        "Mobile Full View recovery",
+        "Prediction corruption and once-only grading",
+        "Trophy tab continuity",
+        "Exact critical entry asset bundling; no image edits"
+      ],
+      "blockingDefectsOpen": 0
+    }
+  },
+  "reviewer": "root",
+  "scope": "Only this generated pointer rotation; all prior receipt bytes and referenced raster bytes are preserved. Other native gates remain independently reported."
+}

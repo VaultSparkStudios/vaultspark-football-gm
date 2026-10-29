@@ -1,0 +1,99 @@
+{
+  "session": 126,
+  "phase": "entry-before",
+  "origin": "https://playfranchisearchitect.com",
+  "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+  "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+  "reviewedAt": "2026-10-28T20:24:42.306Z",
+  "reviewer": "game_audit",
+  "captureReport": "reports/s126-entry-before-pixels.json",
+  "captureReportSha256": "75d414b2507aa1164cd3df54e10cf891f238c1bdb0ccef98cf532777df8c7c34",
+  "verdict": "pass-baseline-entry-selected-states",
+  "inspectedImageCount": 4,
+  "inspected": [
+    {
+      "file": ".cache/s126-entry-before/desktop-dark.png",
+      "sha256": "0062ea0b98a4b82ee86dea05643cec879fb85feb902963b55615d0994fcbfa5c",
+      "device": "desktop",
+      "theme": "dark",
+      "actualTheme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Root landing before critical bundling",
+      "fullViewport": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true,
+      "method": "actual view_image pixel inspection",
+      "verdict": "pass-baseline-entry-state"
+    },
+    {
+      "file": ".cache/s126-entry-before/desktop-light.png",
+      "sha256": "b5a376b538702bc295a1743e9fe5718e9cdea880794c257fdbd44adb12dcb7ac",
+      "device": "desktop",
+      "theme": "light",
+      "actualTheme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Root landing before critical bundling",
+      "fullViewport": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true,
+      "method": "actual view_image pixel inspection",
+      "verdict": "pass-baseline-entry-state"
+    },
+    {
+      "file": ".cache/s126-entry-before/mobile-dark.png",
+      "sha256": "536e67de4db33c0c2c6582a93c772651e73411c207b2f87000e8eb2a77487d31",
+      "device": "mobile",
+      "theme": "dark",
+      "actualTheme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Root landing before critical bundling",
+      "fullViewport": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true,
+      "method": "actual view_image pixel inspection",
+      "verdict": "pass-baseline-entry-state"
+    },
+    {
+      "file": ".cache/s126-entry-before/mobile-light.png",
+      "sha256": "4ddb81e38e5d847c421225c8e8da96cd55f91440a176dab00c9d29b309fe729e",
+      "device": "mobile",
+      "theme": "light",
+      "actualTheme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Root landing before critical bundling",
+      "fullViewport": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true,
+      "method": "actual view_image pixel inspection",
+      "verdict": "pass-baseline-entry-state"
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "blockingDefectsOpen": 0
+  },
+  "findings": [
+    "Individually viewed desktop/mobile dark/light actual landing pages. Brand/title, start button, early-access label and unchanged hero screenshot are visible; copy wraps inside mobile gutters and no touched-state clipping or blank image is apparent."
+  ],
+  "limits": [
+    "Baseline pixel evidence for upcoming build-only critical-asset delivery change, not proof of a speed improvement or after-state parity.",
+    "Four viewport captures only; embedded game image is a scaled preview, not an assertion of readable screenshot details at mobile size.",
+    "No source changes, captures, installs or gate changes performed for this review."
+  ]
+}

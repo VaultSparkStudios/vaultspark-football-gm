@@ -10,3 +10,9 @@ FORGE/FB from local project status; L2 selected. No lifecycle transition.
 3. **Keep earned trophies during this tab after failed persistence**. Retain validated earned trophy records in tab memory when persistence fails. Deduplicate repeated events, keep browser-wide cross-franchise trophy semantics, restore durable data without losing tab awards, and explain temporary persistence truthfully in Trophy Case. Verify repeated events, malformed records, quota/read/getter failures and actual desktop/mobile renders in both themes. Readiness: backup, recovery and rollback. Done only with focused behavioral tests, actual browser evidence, required visual proof and independent diff review.
 
 Wave 1: startup and audit. Wave 2: selected repairs. Wave 3: staging, production, push and ordered closeout.
+
+## S126 accepted C2 delivery
+
+All three selected outcomes are verified by reports/s126-c2-release-acceptance.json at source `309bb0fa11f89b4fb643f1dd554dbcf860c3aff5`. The required landing-response repair passed the unchanged staging and production performance gates; the two failed C1 measurements remain historical evidence. This dependency repair does not add a fourth selected audit outcome.
+
+At this ordered closeout checkpoint, final metadata acceptance, containing publication, signed impact and owned cleanup remain separate. Current completion is recorded in context/LATEST_HANDOFF.md.

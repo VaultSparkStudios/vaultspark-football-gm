@@ -1,0 +1,24 @@
+{
+  "session": 126,
+  "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "observedAt": "2026-10-28T21:27:26.457Z",
+  "runId": 40771700611,
+  "jobId": 123110294509,
+  "jobConclusion": "success",
+  "summary": {
+    "valid": true,
+    "reason": null,
+    "tests": 398,
+    "pass": 398,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "verified": true,
+  "coverage": "Exact-source Studio shard only; full candidate CI remains a separate required gate.",
+  "rawLog": {
+    "path": ".cache/s126-c2-ci-job-123110294509.log",
+    "sha256": "b260e73d7a10d988bb8f24600bf1cbce8f392a43bc48b4d782ccd8b74e592868"
+  }
+}

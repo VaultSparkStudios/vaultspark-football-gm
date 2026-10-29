@@ -1,8 +1,8 @@
 <!-- truth-audit-version: 1.1 -->
 # Truth Audit
 
-Overall status: selected S125 technical production verified; final closeout publication pending; broader readiness partial
-Last reviewed: 2026-10-25
+Overall status: selected S126 technical production verified; final metadata/publication pending; broader readiness partial
+Last reviewed: 2026-10-28
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
 
@@ -119,3 +119,7 @@ S125: Three optional player-state repairs shipped and accepted at game/API1ad; t
 ---
 
 Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+## 2026-10-28 — Session 126 — Separate implementation, source checks and finalization
+
+Exact C2 source CI7/7; source Studio398/398; selected focused143/143 and entry37/37 separately, with overlap not summed. Actual C2 staging/production browser7/7 and native provenance14/14 per origin; 60 primary plus24 prediction images cover selected named states only. Native five-run desktop/mobile performance passed both origins; production LCP1472/1456ms, INP24ms and CLS0.0003/0.0131. Matching immutable C2 API image and ready database verified with existing database/routing preservation. Earlier C1 local/browser and failed performance observations remain historical. Aggregate application case count, actual-player outcomes and full launch readiness remain unmeasured. Primary60 and prediction supplemental24 images cover named selected states and themes only. Source Studio is not final metadata acceptance; full application test totals and real-player outcomes are not measured. Original failed fixture, quota-grade and transport observations remain retained. Exact frontend/API release: reports/s126-c2-release-acceptance.json. Final exact staged closing-metadata Studio acceptance, final security/supply-chain checks, containing main commit/push/readback, actual signed impact delivery and owned process/worktree/lock cleanup remain required. No final metadata, publication, Ark delivery, cleanup or native goal completion is claimed at this checkpoint.

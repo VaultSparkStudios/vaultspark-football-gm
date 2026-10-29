@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "unified-release-authority",
+  "observedAt": "2026-10-28T23:20:26.596Z",
+  "status": "verified",
+  "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "publicationRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "publicationDelta": null,
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d"
+  },
+  "identities": {
+    "staging": {
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d"
+    },
+    "production": {
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d"
+    },
+    "visual": {
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d"
+    },
+    "performance": {
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d"
+    }
+  },
+  "checks": [
+    {
+      "name": "staging verifier green",
+      "ok": true
+    },
+    {
+      "name": "production verifier green",
+      "ok": true
+    },
+    {
+      "name": "visual pixels reviewed",
+      "ok": true
+    },
+    {
+      "name": "hosted performance green",
+      "ok": true
+    },
+    {
+      "name": "one exact deployable source revision",
+      "ok": true
+    },
+    {
+      "name": "production source is candidate or verified receipt-only descendant",
+      "ok": true
+    },
+    {
+      "name": "one exact artifact fingerprint",
+      "ok": true
+    }
+  ],
+  "evidenceVerified": true,
+  "launchReady": false,
+  "blockerCodes": [
+    "email-delivery-unverified",
+    "founder-approval-unverified",
+    "lifecycle-authority-unverified"
+  ],
+  "backendAuthority": {
+    "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+    "verifiedAt": "2026-10-28T22:55:53.964Z",
+    "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
+  },
+  "receipts": {
+    "stagingSha256": "ace366d28a7087e50eb6df2bfb623398bae89d47bd761c6e038e347b7790e123",
+    "productionSha256": "3f4656d46930e7f3cae0212aedb3affdec1cc1bb9e332c1434b91c53b192054f",
+    "visualSha256": "2bb70cbfcd0cd77a4b18c683595e290d60f7c2e5d4c796463b6917962650cb0c",
+    "performanceSha256": "0fac7788eab520cfc183428c2f770ce6fa40f13e6f9bec5700936164f3886959"
+  },
+  "receiptSha256": "5e6d1ed44912c4cac0dbc4ef1356f4bc2a30a20e768e32d34d1827bf62eaef92"
+}

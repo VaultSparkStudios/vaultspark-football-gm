@@ -1,0 +1,1070 @@
+{
+  "schemaVersion": 1,
+  "session": 126,
+  "at": "2026-10-28T23:14:19.478Z",
+  "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+  "complete": true,
+  "verified": true,
+  "technicalReleaseVerified": true,
+  "closeoutComplete": false,
+  "launchApproved": false,
+  "ci": {
+    "ok": true,
+    "sha": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+    "runId": 40771700611,
+    "attempt": 1,
+    "requiredJobs": [
+      "unit-shards (core)",
+      "unit-shards (runtime)",
+      "unit-shards (sim:contract)",
+      "unit-shards (sim:realism)",
+      "unit-shards (long)",
+      "unit-shards (studio)",
+      "browser-gates"
+    ],
+    "lane": "hosted-exact-sha"
+  },
+  "images": {
+    "id": 40771700607,
+    "attempt": 1,
+    "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+    "verified": true,
+    "requiredJobs": [
+      "build-images (api)",
+      "build-images (play)"
+    ]
+  },
+  "sourceStudio": {
+    "passed": 398,
+    "total": 398,
+    "jobId": 123110294509,
+    "runId": 40771700611,
+    "scope": "Actual exact-C2 native Studio shard, not final closing-metadata acceptance or aggregate application count."
+  },
+  "focusedTests": {
+    "selected": {
+      "passed": 143,
+      "total": 143,
+      "receipt": "reports/s126-c2-candidate-checks.json"
+    },
+    "entry": {
+      "passed": 37,
+      "total": 37,
+      "receipt": "reports/s126-c2-local-checks.json",
+      "scope": "Retained local run whose14listed inputs match exact committedC2; not relabeled hosted CI."
+    },
+    "overlapNotSummed": true
+  },
+  "browserTests": {
+    "staging": 7,
+    "production": 7,
+    "skipped": 0,
+    "flaky": 0,
+    "scope": "Named hosted client checks only; C1 local browser evidence remains historical."
+  },
+  "visual": {
+    "primaryCaptures": 60,
+    "predictionSupplementCaptures": 24,
+    "totalScopedCaptures": 84,
+    "primaryStaging": 16,
+    "primaryProduction": 16,
+    "predictionStaging": 8,
+    "predictionProduction": 8,
+    "entryStaging": 4,
+    "entryProduction": 4,
+    "blockingDefectsOpen": 0,
+    "primary": {
+      "path": "docs/visual-qa/S126_C2_PRIMARY.json",
+      "sha256": "af33bb2b887a5c78ae0a83b63eb1a8222a4acc282bd58639e7253e705c7eaba7",
+      "bytes": 51160
+    },
+    "predictionSupplement": {
+      "path": "docs/visual-qa/S126_C2_PREDICTIONS.json",
+      "sha256": "3853a93e3313df17a5d86d01a4284417a78a54c0ece88d0d43f3f67326ec3ea9",
+      "bytes": 24011
+    },
+    "scope": "Actual named before/current component and entry states; no whole-product/real-player claim."
+  },
+  "performance": {
+    "status": "verified",
+    "nativeReceiptHashVerified": true,
+    "defaultEvaluatorUnchanged": true,
+    "profilesPerPhase": 2,
+    "runsPerProfile": 5,
+    "candidateReferenceLocation": "outer attempt records only"
+  },
+  "frontend": {
+    "verified": true,
+    "deploymentId": "acb0b9ed-f10e-44eb-a7c2-d4eff581bf4c",
+    "rollback": {
+      "available": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f"
+    }
+  },
+  "backend": {
+    "verified": true,
+    "imageId": "sha256:eeba71390337d5302dc4cfc7411d7bc97c94d0a8de8131ab4f572fa635be27f9",
+    "imageRef": "ghcr.io/vaultsparkstudios/franchise-architect-football-api:309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+    "preservationVerified": true,
+    "previousImage": "ghcr.io/vaultsparkstudios/franchise-architect-football-api:1c73ef673ea2dc4e86b49f0b5d4cac846868b911"
+  },
+  "api": {
+    "verified": true,
+    "origin": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
+    "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+    "database": "ready",
+    "observedAt": "2026-10-28T23:14:19.482Z"
+  },
+  "live": [
+    {
+      "phase": "staging",
+      "schemaVersion": "1.1",
+      "generatedBy": "scripts/verify-staging-receipt.mjs",
+      "checkedAt": "2026-10-28T23:14:17.360Z",
+      "baseUrl": "https://staging.playfranchisearchitect.com",
+      "expectedRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "summary": {
+        "status": "verified",
+        "checksPassed": 14,
+        "checksTotal": 14
+      },
+      "checks": [
+        {
+          "name": "health stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "manifest stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "style asset stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "health reachable",
+          "ok": true
+        },
+        {
+          "name": "manifest reachable",
+          "ok": true
+        },
+        {
+          "name": "style asset reachable",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset reachable",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset identity",
+          "ok": true,
+          "expected": "community-stats.25f97e0a1e.js",
+          "observed": "community-stats.25f97e0a1e.js"
+        },
+        {
+          "name": "source revision",
+          "ok": true,
+          "expected": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+          "observed": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5"
+        },
+        {
+          "name": "artifact fingerprint",
+          "ok": true,
+          "expected": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+          "observed": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d"
+        },
+        {
+          "name": "style asset identity",
+          "ok": true,
+          "expected": "styles.c4075a9e38.css",
+          "observed": "styles.c4075a9e38.css"
+        },
+        {
+          "name": "repository identity",
+          "ok": true,
+          "expected": "VaultSparkStudios/vaultspark-football-gm",
+          "observed": "VaultSparkStudios/vaultspark-football-gm"
+        },
+        {
+          "name": "launch truth separation",
+          "ok": true,
+          "expected": false,
+          "observed": false
+        }
+      ],
+      "stagingContract": {
+        "sameOriginRequired": true,
+        "healthSchemaRequired": true,
+        "exactDeployIdentityRequired": true,
+        "declaredBootAssetsRequired": true
+      }
+    },
+    {
+      "phase": "production",
+      "schemaVersion": "1.1",
+      "generatedBy": "scripts/verify-staging-receipt.mjs",
+      "checkedAt": "2026-10-28T23:14:17.922Z",
+      "baseUrl": "https://playfranchisearchitect.com",
+      "expectedRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "summary": {
+        "status": "verified",
+        "checksPassed": 14,
+        "checksTotal": 14
+      },
+      "checks": [
+        {
+          "name": "health stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "manifest stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "style asset stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "health reachable",
+          "ok": true
+        },
+        {
+          "name": "manifest reachable",
+          "ok": true
+        },
+        {
+          "name": "style asset reachable",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset reachable",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset identity",
+          "ok": true,
+          "expected": "community-stats.25f97e0a1e.js",
+          "observed": "community-stats.25f97e0a1e.js"
+        },
+        {
+          "name": "source revision",
+          "ok": true,
+          "expected": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+          "observed": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5"
+        },
+        {
+          "name": "artifact fingerprint",
+          "ok": true,
+          "expected": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+          "observed": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d"
+        },
+        {
+          "name": "style asset identity",
+          "ok": true,
+          "expected": "styles.c4075a9e38.css",
+          "observed": "styles.c4075a9e38.css"
+        },
+        {
+          "name": "repository identity",
+          "ok": true,
+          "expected": "VaultSparkStudios/vaultspark-football-gm",
+          "observed": "VaultSparkStudios/vaultspark-football-gm"
+        },
+        {
+          "name": "launch truth separation",
+          "ok": true,
+          "expected": false,
+          "observed": false
+        }
+      ],
+      "stagingContract": {
+        "sameOriginRequired": true,
+        "healthSchemaRequired": true,
+        "exactDeployIdentityRequired": true,
+        "declaredBootAssetsRequired": true
+      }
+    }
+  ],
+  "history": {
+    "originalAudit": {
+      "path": "reports/s126-c2-audit-before-closeout.json",
+      "sha256": "d29da0b847b282332b29aabeac8cdd688897da9eb653c57dcd62a180b416a4c9",
+      "bytes": 32510,
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "originalPath": "docs/AUDIT_2026-10-28.json"
+    },
+    "originalAdmission": {
+      "path": "reports/s126-audit-admission.json",
+      "sha256": "cf9fbe3fcf066fe505427947e8d542a83822119abd330f3ae48cd8f838dee783",
+      "bytes": 1590
+    },
+    "originalStartHead": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+    "c1SourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+    "failedPerformanceReceipts": [
+      {
+        "path": "reports/s126-production-performance.json",
+        "sha256": "48335fcc61be7ca92bdbccc97cb71086bc39b02373e125dfd377f780afd96b4c",
+        "bytes": 94812
+      },
+      {
+        "path": "reports/s126-production-performance-followup.json",
+        "sha256": "79656f0ab45a6d5acd70a6fd84ee2728408be2e6bf28201e6e87e19a71b728be",
+        "bytes": 94805
+      }
+    ],
+    "scope": "Prior observations and original fresh-invocation evidence retained as history, not C2 current gate success."
+  },
+  "receipts": [
+    {
+      "path": "reports/s126-c2-audit-before-closeout.json",
+      "sha256": "d29da0b847b282332b29aabeac8cdd688897da9eb653c57dcd62a180b416a4c9",
+      "bytes": 32510
+    },
+    {
+      "path": "reports/s126-audit-admission.json",
+      "sha256": "cf9fbe3fcf066fe505427947e8d542a83822119abd330f3ae48cd8f838dee783",
+      "bytes": 1590
+    },
+    {
+      "path": "reports/s126-independent-review.json",
+      "sha256": "2b5505f38e502abf3988e37e62e8a322ab756ac83d17e75738847991b465701c",
+      "bytes": 6828
+    },
+    {
+      "path": "reports/s126-local-checks.json",
+      "sha256": "1831a47b268df7cd28874809b6fb0899778774a34b8f65fb2398a02549e4814a",
+      "bytes": 2942
+    },
+    {
+      "path": "reports/s126-local-browser.json",
+      "sha256": "2189ea29cdb8b66e06c1095825abb972b2418e1034fe7b68d7c014e8f5242bc9",
+      "bytes": 1070
+    },
+    {
+      "path": "reports/s126-production-performance.json",
+      "sha256": "48335fcc61be7ca92bdbccc97cb71086bc39b02373e125dfd377f780afd96b4c",
+      "bytes": 94812
+    },
+    {
+      "path": "reports/s126-production-performance-followup.json",
+      "sha256": "79656f0ab45a6d5acd70a6fd84ee2728408be2e6bf28201e6e87e19a71b728be",
+      "bytes": 94805
+    },
+    {
+      "path": "reports/s126-entry-code-review.json",
+      "sha256": "ea0b21ce1ebe7b332703a8966e0463312a0ac919e394d430a87713f6cc81ba6f",
+      "bytes": 1238
+    },
+    {
+      "path": "reports/s126-c2-local-checks.json",
+      "sha256": "f6d74c7f159578411208632a9b5cc18d4ea09d10a4550d49460b7ef356dde999",
+      "bytes": 2680
+    },
+    {
+      "path": "reports/s126-c2-candidate-checks.json",
+      "sha256": "6f874e8be7e2281ac71c1588f45cb68ea14129fab8e4e4805db449654e4d00c6",
+      "bytes": 3131
+    },
+    {
+      "path": "reports/s126-c2-ci.json",
+      "sha256": "4a168fd5b6c85d4e41919b3b18a7d2ab91e102ec44470cf41807a1947f3eec81",
+      "bytes": 463
+    },
+    {
+      "path": "reports/s126-c2-ci-studio.json",
+      "sha256": "38bbd68fd92244638429b87a75d5e43f4c701e7a9e4b3835fce8e0c2732186d9",
+      "bytes": 644
+    },
+    {
+      "path": "reports/s126-c2-staging-authority.json",
+      "sha256": "1b630bc9c1e783024f976564c785a95ddf32f825f5c2d3b9aeccba1a66745004",
+      "bytes": 63055
+    },
+    {
+      "path": "reports/s126-c2-upload-inventory.json",
+      "sha256": "377c8a29a3a6124bc9622cd5f6de9c7b12288c056b55be0ebd0faa9c710c8a45",
+      "bytes": 1162
+    },
+    {
+      "path": "reports/s126-c2-frontend-deployment.json",
+      "sha256": "90a4438d1e4f980f43466d215dd7a5e91da761d93982bed9b04125161f6da3eb",
+      "bytes": 1619
+    },
+    {
+      "path": "reports/s126-c2-backend-deployment.json",
+      "sha256": "ddca2fce1f0356c586e2b2d513eeac0184706620076c4d95558025109a70cf03",
+      "bytes": 3668
+    },
+    {
+      "path": "reports/s126-c2-image-producer.json",
+      "sha256": "34b776a86a70519152481183698f2ff55766b5ba81013a7a4ed87d985b865519",
+      "bytes": 514
+    },
+    {
+      "path": "reports/s126-c2-source-publication.json",
+      "sha256": "534679b09df77090dcedb7bd62d6523cb6cead49661af928c3be7a16bc17e8b0",
+      "bytes": 263
+    },
+    {
+      "path": "reports/s126-c2-working-security.json",
+      "sha256": "7f5c75a2bcb92e054be9fcbb3c95490803a21088acfee6a17f0b434cdcd77328",
+      "bytes": 396
+    },
+    {
+      "path": "reports/s126-c2-staged-security.json",
+      "sha256": "379e0adf12b872a7fdb6d0a11d3dd13598d6b780cf5240cead385c76f5347d34",
+      "bytes": 395
+    },
+    {
+      "path": "reports/s126-c2-supply-chain.json",
+      "sha256": "1761494cb0bedbf200394ab9316bdce1d4b775e18b87a0c5eedba68c9978a828",
+      "bytes": 1025
+    },
+    {
+      "path": "reports/s126-c2-staging-provenance.json",
+      "sha256": "d40ef7b4cecbf47144797997d42a2d5592ade227444bc5190c51ca0a8dacb4cc",
+      "bytes": 2225
+    },
+    {
+      "path": "reports/s126-c2-staging-browser.json",
+      "sha256": "505d1e0817cea712cde0773f1dd981a17193d0f76978606ed57deb4c17826dae",
+      "bytes": 1746
+    },
+    {
+      "path": "reports/s126-c2-staging-performance.json",
+      "sha256": "6effc155d361aae00eb7502cf3bf43f3ced3c37f7e873b13812015d4eca54578",
+      "bytes": 95116
+    },
+    {
+      "path": ".cache/s126-c2-staging-performance-attempt.json",
+      "sha256": "13dfe2c1d968a4d462facb6e33c4ba52f75af85a69223c92acf1eea11d380ba0",
+      "bytes": 715
+    },
+    {
+      "path": "reports/s126-c2-staging-pixels.json",
+      "sha256": "b3b29404e9efbfa6fc656f716ea52333b61a903a1ccc6c65141810f35588e906",
+      "bytes": 7512
+    },
+    {
+      "path": "reports/s126-c2-staging-visual-review.json",
+      "sha256": "8ecdb15b1abb80eb805d05c925ed8bb2417b003723bba685d641f21c7881b4ff",
+      "bytes": 10409
+    },
+    {
+      "path": "reports/s126-c2-prediction-staging-pixels.json",
+      "sha256": "b678700ce5d7acaf872d3f1d733ef91a512c0a60f3e7e09c1c9dcc9390964c52",
+      "bytes": 18399
+    },
+    {
+      "path": "reports/s126-c2-prediction-staging-visual-review.json",
+      "sha256": "0a1761636550a0e88164d729a042a4a2a077e55f336f0c0c862f116ea6a7ba4c",
+      "bytes": 10678
+    },
+    {
+      "path": "reports/s126-c2-entry-staging-verification.json",
+      "sha256": "88a15dd67ffa55e7e7af4cc564c1df086d3df962f28af0a556f944416c16e004",
+      "bytes": 6143
+    },
+    {
+      "path": "reports/s126-c2-entry-staging-pixels.json",
+      "sha256": "19352b251797956b6464321a0a1620c04ed0214961ac6219a158c9c3a818e93f",
+      "bytes": 84362
+    },
+    {
+      "path": "reports/s126-c2-entry-staging-visual-review.json",
+      "sha256": "e51c0b08aa78d5d86b068e3a0ce2f28f9561d02f9375d5a75d14167b656f31dc",
+      "bytes": 4626
+    },
+    {
+      "path": "reports/s126-c2-production-provenance.json",
+      "sha256": "13b41bf460ca9b60aee50e6271febdb0729666b60436529b5221df9f8069c800",
+      "bytes": 2217
+    },
+    {
+      "path": "reports/s126-c2-production-browser.json",
+      "sha256": "a4c05a28ba664be867e1657e3fefeb7f045b5d29b8025878cbdafb3913fd0f5a",
+      "bytes": 1744
+    },
+    {
+      "path": "reports/s126-c2-production-performance.json",
+      "sha256": "7478b630d9103c3321ce19562eaac109e9227752f0ff6e419dd8116002e4c992",
+      "bytes": 94786
+    },
+    {
+      "path": ".cache/s126-c2-production-performance-attempt.json",
+      "sha256": "27500f93aff4240876007bf42b1d44af8c252987d1727046f8924d11b5b6e258",
+      "bytes": 721
+    },
+    {
+      "path": "reports/s126-c2-production-pixels.json",
+      "sha256": "0c061916661f81d1396de6c54588f60fcfaf025be7185848812c61c864c25bf7",
+      "bytes": 7567
+    },
+    {
+      "path": "reports/s126-c2-production-visual-review.json",
+      "sha256": "54a59c6449dcc5aea1744033370884e2c8d336f8c30bdadd7621554b5b382a29",
+      "bytes": 10560
+    },
+    {
+      "path": "reports/s126-c2-prediction-production-pixels.json",
+      "sha256": "ece0dea03affa9d8f6c403ff4740355621f903962430c8b95e3e6c9f92472d38",
+      "bytes": 18466
+    },
+    {
+      "path": "reports/s126-c2-prediction-production-visual-review.json",
+      "sha256": "3e3190d346d822e2fef33f8a6f1adf8c54c87af1005fe2b3d0908428823e8f41",
+      "bytes": 10814
+    },
+    {
+      "path": "reports/s126-c2-entry-production-verification.json",
+      "sha256": "cf0dcb5d9faf580c95556f63419da2f1b1af2b4e85817a92b5d66ad30ff4a215",
+      "bytes": 6146
+    },
+    {
+      "path": "reports/s126-c2-entry-production-pixels.json",
+      "sha256": "4bb2ad669f499286632882b7fe040d1c58d4744dd24eb99118ddac495dad734a",
+      "bytes": 84372
+    },
+    {
+      "path": "reports/s126-c2-entry-production-visual-review.json",
+      "sha256": "a749b7cab813eae4752450e313c76ee2d55b3049a619c30569c1d1ccb7e20094",
+      "bytes": 4651
+    },
+    {
+      "path": "docs/visual-qa/S126_C2_PRIMARY.json",
+      "sha256": "af33bb2b887a5c78ae0a83b63eb1a8222a4acc282bd58639e7253e705c7eaba7",
+      "bytes": 51160
+    },
+    {
+      "path": "docs/visual-qa/S126_C2_PREDICTIONS.json",
+      "sha256": "3853a93e3313df17a5d86d01a4284417a78a54c0ece88d0d43f3f67326ec3ea9",
+      "bytes": 24011
+    },
+    {
+      "path": "docs/visual-qa/LATEST.json",
+      "sha256": "af33bb2b887a5c78ae0a83b63eb1a8222a4acc282bd58639e7253e705c7eaba7",
+      "bytes": 51160
+    },
+    {
+      "path": "static/deploy-manifest.json",
+      "sha256": "153a01e14ed554ee527ee1d8061e282dc0e1df2fca7199a14cedc6c55a820ee3",
+      "bytes": 63174
+    },
+    {
+      "path": ".cache/s126-c2-candidate.json",
+      "sha256": "ecbb349148ebb376c42c56e00263afc6eff85905eb9fe7fb29bee6992e6b0809",
+      "bytes": 62339
+    },
+    {
+      "path": ".cache/s126-c2-source-candidate.json",
+      "sha256": "c377ffbd79c37b814d086fded9680a64a4af4d5ac5e85f2293cba47eebaa2518",
+      "bytes": 1095
+    },
+    {
+      "path": ".cache/s126-c2-backend-images.json",
+      "sha256": "34b776a86a70519152481183698f2ff55766b5ba81013a7a4ed87d985b865519",
+      "bytes": 514
+    },
+    {
+      "path": ".cache/s126-c2-court-live-1793229256874-staging-1.json",
+      "sha256": "7d4a7f673ead1b96490529819e314408972edd67f9e6c9e12fa12a6e43f67e22",
+      "bytes": 2225
+    },
+    {
+      "path": ".cache/s126-c2-court-live-1793229256874-production-1.json",
+      "sha256": "9f7ba35b74fbaef19335fd51c3b922294ed7ef563c34312044ebd2878c6b3452",
+      "bytes": 2217
+    },
+    {
+      "path": ".cache/s126-c2-candidate-checks.log",
+      "sha256": "57d64c219aad5446ab3eed13cbf4d5fd689718c76cabb5925adf500bb126aa2e",
+      "bytes": 12713
+    },
+    {
+      "path": ".cache/s126-c2-local-checks-full37.log",
+      "sha256": "4e04fd41a5d34450bc0fe068e10e76d73210cd4ec092b95c13b50813a33f6c1a",
+      "bytes": 3769
+    },
+    {
+      "path": ".cache/s126-c2-ci-job-123110294509.log",
+      "sha256": "b260e73d7a10d988bb8f24600bf1cbce8f392a43bc48b4d782ccd8b74e592868",
+      "bytes": 66047
+    },
+    {
+      "path": ".cache/s126-c2-staging-browser.raw.json",
+      "sha256": "ccfeb86b9f1e8211aab7c126edbe5d9add51e8a3a069a72396114a83e9b44af8",
+      "bytes": 10448
+    },
+    {
+      "path": ".cache/s126-c2-production-browser.raw.json",
+      "sha256": "8d08d5df2db51eb9e5a9a4c6fbb1e55cb6e1576dbe257adfffe110b7a762bd2d",
+      "bytes": 10447
+    },
+    {
+      "path": "docs/visual-qa/S126_LOCAL.json",
+      "sha256": "cbfa305ee541fd52e82c288d5ed74874ba5f4f1f1a864ad3bfa021ae301c123f",
+      "bytes": 14407
+    },
+    {
+      "path": "reports/s126-local-visual-review.json",
+      "sha256": "3f245f2fdcf078e9615cd00aa164f89c399f240bc7fa318897cda68912bd0286",
+      "bytes": 34055
+    },
+    {
+      "path": "reports/s126-entry-before-pixels.json",
+      "sha256": "75d414b2507aa1164cd3df54e10cf891f238c1bdb0ccef98cf532777df8c7c34",
+      "bytes": 6756
+    },
+    {
+      "path": ".cache/s126-entry-before-review.json",
+      "sha256": "0cdd1964755327bd0ccb7768a77c623b9c9d091d409bfffea9fbd434cd3354fd",
+      "bytes": 4035
+    },
+    {
+      "path": "reports/s126-prediction-before-production-pixels.json",
+      "sha256": "a3f422715485823fa966acc6d3b1031a2f6da2804bf1f51546e195e50ab35dcc",
+      "bytes": 17448
+    },
+    {
+      "path": "reports/s126-prediction-preproduction-visual-review.json",
+      "sha256": "736b522aebe07e18eec63d25b0aeff02e193a216ec21b309caaff8491e060fec",
+      "bytes": 25415
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-before-original-mobile-controls-deck-desktop-dark.png",
+      "sha256": "5e7036f4fa748e1d976dde3245aa0c17d26888bac3efbf4b8c8ca928f1b1d2b5",
+      "bytes": 88179
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-before-original-mobile-controls-full-view-desktop-dark.png",
+      "sha256": "255395a0efe8b41b40d6c2f9806bda5e27ab68c30d268e9bd6fad34b67c6f779",
+      "bytes": 87922
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-before-original-mobile-controls-deck-desktop-light.png",
+      "sha256": "10ecbe7f1a7270eea81324f1de737e1fa8c3afab5306f8dc736710335582b1ce",
+      "bytes": 92259
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-before-original-mobile-controls-full-view-desktop-light.png",
+      "sha256": "6cd9a0ef79373a3f8d989dcd6d41f36c76230f688e5f832057bd384d0ceec126",
+      "bytes": 90968
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-before-original-mobile-controls-deck-mobile-dark.png",
+      "sha256": "6c7895cf6b4ad3281171493cc5402377be78b3b3055feb30bf10c586e77343c4",
+      "bytes": 70221
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-before-original-mobile-controls-full-view-mobile-dark.png",
+      "sha256": "f00d34743755146833eb47f87285e977acdb2aa7f83ce6254b95dcf1fe4c3b47",
+      "bytes": 67696
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-before-original-mobile-controls-deck-mobile-light.png",
+      "sha256": "74b102fcf6eeaabfc4596b7924e78c05829e0d8c3e41739dfab9f1a2c321312e",
+      "bytes": 74888
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-before-original-mobile-controls-full-view-mobile-light.png",
+      "sha256": "0da85024cad77b2947c7cb97cbcc7ecbab5c08bc2294abfc2043e60c349e9a67",
+      "bytes": 73473
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-before-original-status-note-release-note-desktop-dark.png",
+      "sha256": "76569815a3b25d098d587ea373bbd5c772c41ef98c5ea218182a51ac76126ce9",
+      "bytes": 625801
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-before-original-status-note-release-note-desktop-light.png",
+      "sha256": "73d3ddd10451271c45c147611ae6c18c9738e76e8194fbf3bef6f69fce8f6761",
+      "bytes": 670416
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-before-original-status-note-release-note-mobile-dark.png",
+      "sha256": "18ea1ccc4ab1c7755ab1d6d0ebf4d810af5f942ad9cfe2e5b3a4a31fa1c6cb10",
+      "bytes": 162766
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-before-original-status-note-release-note-mobile-light.png",
+      "sha256": "ce5d04f5d0b587ab01fdc0f1e6c9534641ec14171b4de10d0e6c95c1df9cafc3",
+      "bytes": 154309
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-before-original-trophy-case-quota-desktop-dark.png",
+      "sha256": "1d8756e55fcfdbfa2057ffd9319b1028debfa8cb2a610402fc44e70ece1ee2fd",
+      "bytes": 194857
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-before-original-trophy-case-quota-desktop-light.png",
+      "sha256": "d2247b18a507a025754759a47acbfc7fbbf100b95a7ec584f80c6958510d6c13",
+      "bytes": 166167
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-before-original-trophy-case-quota-mobile-dark.png",
+      "sha256": "6d612f57cabcea4b3f1936f4422af0bbd4fcc08d93802e2d6b74e1b511f754b9",
+      "bytes": 223444
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-before-original-trophy-case-quota-mobile-light.png",
+      "sha256": "e6a30d42b4753686c4beb2f097d52c3eab2df94cbb5176eee49bc72195b245ca",
+      "bytes": 209482
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-entry-before-c1-entry-landing-desktop-dark.png",
+      "sha256": "0062ea0b98a4b82ee86dea05643cec879fb85feb902963b55615d0994fcbfa5c",
+      "bytes": 961162
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-entry-before-c1-entry-landing-desktop-light.png",
+      "sha256": "b5a376b538702bc295a1743e9fe5718e9cdea880794c257fdbd44adb12dcb7ac",
+      "bytes": 936447
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-entry-before-c1-entry-landing-mobile-dark.png",
+      "sha256": "536e67de4db33c0c2c6582a93c772651e73411c207b2f87000e8eb2a77487d31",
+      "bytes": 269607
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-entry-before-c1-entry-landing-mobile-light.png",
+      "sha256": "4ddb81e38e5d847c421225c8e8da96cd55f91440a176dab00c9d29b309fe729e",
+      "bytes": 226161
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-staging-mobile-controls-deck-desktop-dark.png",
+      "sha256": "a2719ab86885356c6c8add3e6184d4c4428d37b99ee8a9e7e9e51b8ffd70c8f9",
+      "bytes": 87814
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-staging-mobile-controls-full-view-desktop-dark.png",
+      "sha256": "25318fb68c9724192b48a356471ecea911d2d290d684663e1570326f0b8b8db4",
+      "bytes": 600180
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-staging-mobile-controls-deck-desktop-light.png",
+      "sha256": "38b717463e39400f1a6d9284b2ad91b088969bc184180a9ff8a3b078c0508e88",
+      "bytes": 92172
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-staging-mobile-controls-full-view-desktop-light.png",
+      "sha256": "1fadb4b4ca3a1a85bf6c3382fd78948f12c700bc7a91e0e33a99a3b2f28829fc",
+      "bytes": 539822
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-staging-mobile-controls-deck-mobile-dark.png",
+      "sha256": "0b526586110dc6df8f589aa0b18e7106de429ca955468c0bae8e31bfae77f0cf",
+      "bytes": 70109
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-staging-mobile-controls-full-view-mobile-dark.png",
+      "sha256": "02e2ad71f5d71f7029e62477a854d023e151c4e32e57e834e522e5d871ae7253",
+      "bytes": 160353
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-staging-mobile-controls-deck-mobile-light.png",
+      "sha256": "ec1f4b05e237dc915cac2a7a0abdf46ba6cdd4517c8ae5227fcf39891404d717",
+      "bytes": 74611
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-staging-mobile-controls-full-view-mobile-light.png",
+      "sha256": "fabe4b451d6ece67da67029e933ca3083391c7ad2badc1b77509cc4503203827",
+      "bytes": 156823
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-staging-trophy-case-quota-desktop-dark.png",
+      "sha256": "61d07f747b4c4578b71d125b2b83d05b250acb3a98a91c65c22833a8693d0c42",
+      "bytes": 208143
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-staging-trophy-case-quota-desktop-light.png",
+      "sha256": "122dbfc7b0b1bc9940c28832ec73331a589ad471174327c11f193a5f11a10606",
+      "bytes": 174162
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-staging-trophy-case-quota-mobile-dark.png",
+      "sha256": "74bb39c50967278801fae0db270e0d0f30264f4d0803b7cd1ca0bd4b4bf939a7",
+      "bytes": 224995
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-staging-trophy-case-quota-mobile-light.png",
+      "sha256": "b9d80330b8c2e1bf3b7fc378a47c0c4c5cf24370c84635386173914366eeaaa8",
+      "bytes": 214020
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-staging-status-note-release-note-desktop-dark.png",
+      "sha256": "6c38f7107fef79b2b77a85609dd7e90792ae5ff5bcff9afdda47b7a3b75d847a",
+      "bytes": 581150
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-staging-status-note-release-note-desktop-light.png",
+      "sha256": "32a5b149ab3e3776023d023d403041c84d199502fa0b532559c19d253c69e151",
+      "bytes": 634640
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-staging-status-note-release-note-mobile-dark.png",
+      "sha256": "c35e682e33359364eadcbaf6b42497ffad10fb2b9d4a78f9e43319ec3848f04b",
+      "bytes": 152365
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-staging-status-note-release-note-mobile-light.png",
+      "sha256": "1615fc777af7870aa2ad00648b9bbaad4955aad77f85862b13b0e2b219722151",
+      "bytes": 153331
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-entry-staging-entry-landing-desktop-dark.png",
+      "sha256": "128d9a73d12e3616f87e7eede7ab845f3f579e6d2e1753bac1dc5767bbe2b63c",
+      "bytes": 970154
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-entry-staging-entry-landing-desktop-light.png",
+      "sha256": "aa0ef636bd560e5e43c7164513dddbbd283d12a18a428db1ba16b359f9d749c1",
+      "bytes": 945862
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-entry-staging-entry-landing-mobile-dark.png",
+      "sha256": "c765ad2ec20920015e7e9796858190e7c1807e88a9611f0b5fc7c27be1d43eb1",
+      "bytes": 270796
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-entry-staging-entry-landing-mobile-light.png",
+      "sha256": "d01cdaa45615518cc4fee6b2a096ab206ba98345f8394d5a4f4d6795304139d3",
+      "bytes": 227153
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-production-mobile-controls-deck-desktop-dark.png",
+      "sha256": "7e0fa7ce68472a4b19f5a8fcddbdc57506531febbfe784f9e3e5de9bddf22385",
+      "bytes": 87637
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-production-mobile-controls-full-view-desktop-dark.png",
+      "sha256": "14080e18b3e571c95dcd50e06b4a186b7b474bd602c339e5bfcd72aa90d7bb0e",
+      "bytes": 600172
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-production-mobile-controls-deck-desktop-light.png",
+      "sha256": "3aa555cc3ba4e51b0652d72f8ae5109bd268b56368fc793d4e118976b2a6ba1f",
+      "bytes": 92182
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-production-mobile-controls-full-view-desktop-light.png",
+      "sha256": "739b5a6ebe2480ba8a8914d436405a94b55daabf1aa0f0c2864c2e6e2bc9c751",
+      "bytes": 540889
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-production-mobile-controls-deck-mobile-dark.png",
+      "sha256": "bb8fb5f0bb6b9e20e62a1de4716aff1449dd6b1cc51bea4b9e198961d5fb8da9",
+      "bytes": 69773
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-production-mobile-controls-full-view-mobile-dark.png",
+      "sha256": "cd9443884ab63196d652d63d64df4576bb33ef2df763470dd1cfc84c9436daf8",
+      "bytes": 160028
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-production-mobile-controls-deck-mobile-light.png",
+      "sha256": "4c1f37bdaf6824da07ab5b40ec941dff4bc1a799084917e7f46e29f9bc1c540c",
+      "bytes": 74802
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-production-mobile-controls-full-view-mobile-light.png",
+      "sha256": "8a0f558597b3bc01211ba2543a7bf2bd1be9445061a22f8b4a4145bbefcd74fb",
+      "bytes": 157459
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-production-trophy-case-quota-desktop-dark.png",
+      "sha256": "61d07f747b4c4578b71d125b2b83d05b250acb3a98a91c65c22833a8693d0c42",
+      "bytes": 208143
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-production-trophy-case-quota-desktop-light.png",
+      "sha256": "c7b76dc499efd78877edb90cf9c255d946e9313aa5433de97f7f5c28a05e4e60",
+      "bytes": 171004
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-production-trophy-case-quota-mobile-dark.png",
+      "sha256": "731400c18710591728371ed8a4ccabec4766fee47b5073cca1f5390fd10cee76",
+      "bytes": 230923
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-production-trophy-case-quota-mobile-light.png",
+      "sha256": "664b751520e3cf7bf74b7d65e2994af07c5bcd2518f0af12e7a8b530d0bb6b78",
+      "bytes": 209926
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-production-status-note-release-note-desktop-dark.png",
+      "sha256": "6c38f7107fef79b2b77a85609dd7e90792ae5ff5bcff9afdda47b7a3b75d847a",
+      "bytes": 581150
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-production-status-note-release-note-desktop-light.png",
+      "sha256": "32a5b149ab3e3776023d023d403041c84d199502fa0b532559c19d253c69e151",
+      "bytes": 634640
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-production-status-note-release-note-mobile-dark.png",
+      "sha256": "c35e682e33359364eadcbaf6b42497ffad10fb2b9d4a78f9e43319ec3848f04b",
+      "bytes": 152365
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-primary-production-status-note-release-note-mobile-light.png",
+      "sha256": "1615fc777af7870aa2ad00648b9bbaad4955aad77f85862b13b0e2b219722151",
+      "bytes": 153331
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-entry-production-entry-landing-desktop-dark.png",
+      "sha256": "128d9a73d12e3616f87e7eede7ab845f3f579e6d2e1753bac1dc5767bbe2b63c",
+      "bytes": 970154
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-entry-production-entry-landing-desktop-light.png",
+      "sha256": "aa0ef636bd560e5e43c7164513dddbbd283d12a18a428db1ba16b359f9d749c1",
+      "bytes": 945862
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-entry-production-entry-landing-mobile-dark.png",
+      "sha256": "c765ad2ec20920015e7e9796858190e7c1807e88a9611f0b5fc7c27be1d43eb1",
+      "bytes": 270796
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-entry-production-entry-landing-mobile-light.png",
+      "sha256": "d01cdaa45615518cc4fee6b2a096ab206ba98345f8394d5a4f4d6795304139d3",
+      "bytes": 227153
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-before-production-predictions-malformed-grade-desktop-dark.png",
+      "sha256": "3bd18c9c1b171b16bcd295d2be7f7a2bd96926d3768d7845df0d1b9c3a3fffe1",
+      "bytes": 11345
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-before-production-predictions-valid-recovered-desktop-dark.png",
+      "sha256": "3e0ff7259f972daf60c0ca78d8d55b6ac4b553fc3f4bdf935a51252e4d25dfe9",
+      "bytes": 18099
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-before-production-predictions-malformed-grade-desktop-light.png",
+      "sha256": "3a0b68a987364cc7581f428a0c89b85bcda954ff10a52afb214888af761f5f16",
+      "bytes": 11673
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-before-production-predictions-valid-recovered-desktop-light.png",
+      "sha256": "ca0b747088c5a8f629339f0384cb26835eab4dfef10c11773a5da2d316baac51",
+      "bytes": 18238
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-before-production-predictions-malformed-grade-mobile-dark.png",
+      "sha256": "a376b06975f2ce88de30f0dfca3068939d4810d977d0d71270c03f0462d9094d",
+      "bytes": 12939
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-before-production-predictions-valid-recovered-mobile-dark.png",
+      "sha256": "ba3d553bdcea19457e80ba948229861eba08253a30ab70931c340585b41bb531",
+      "bytes": 18458
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-before-production-predictions-malformed-grade-mobile-light.png",
+      "sha256": "2d168e754bf0dbbb96107392886089d7be3945612aca22e66779a54395adad4a",
+      "bytes": 13573
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-before-production-predictions-valid-recovered-mobile-light.png",
+      "sha256": "e852fe82d64f80dc85364a73e1b8ddbe47491500bf24a74bd5a814209c361bbf",
+      "bytes": 18616
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-staging-predictions-malformed-grade-desktop-dark.png",
+      "sha256": "f61d2bee14af36d5dd80673b8f23a185a73feb66ab5212ef711c3ac57154c00a",
+      "bytes": 9992
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-staging-predictions-valid-recovered-desktop-dark.png",
+      "sha256": "0dba2bc8a448e7e7ac68818451565a279ced7b26ddf38b50b29bdb8e66c9a8e1",
+      "bytes": 17603
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-staging-predictions-malformed-grade-desktop-light.png",
+      "sha256": "b575cebc814ff82dbc4296107d80e70e53ae95f293615f896dae784f9e5fa22d",
+      "bytes": 10044
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-staging-predictions-valid-recovered-desktop-light.png",
+      "sha256": "9822fdc8d963a10d2de4c965d734a4261f12adfedc1b080799d402ff61aca3b3",
+      "bytes": 17784
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-staging-predictions-malformed-grade-mobile-dark.png",
+      "sha256": "2cbf18a98205793b035f940b48e749f747aa1f7fd1accc61e9e2a0d3ecef8617",
+      "bytes": 10444
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-staging-predictions-valid-recovered-mobile-dark.png",
+      "sha256": "5667600fcc986342a64ef67b5888c2c28e88d8ab58f863d2a82ead9e41aa513d",
+      "bytes": 17741
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-staging-predictions-malformed-grade-mobile-light.png",
+      "sha256": "a925dac6433e2d2ee9d9bee89ff4632fc263d042084bf1e204987459e789f51a",
+      "bytes": 10614
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-staging-predictions-valid-recovered-mobile-light.png",
+      "sha256": "a09ccd456da32557d5d6afee99f3935081035a08858ea552cd3cf1a203ffd464",
+      "bytes": 17925
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-production-predictions-malformed-grade-desktop-dark.png",
+      "sha256": "f61d2bee14af36d5dd80673b8f23a185a73feb66ab5212ef711c3ac57154c00a",
+      "bytes": 9992
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-production-predictions-valid-recovered-desktop-dark.png",
+      "sha256": "0dba2bc8a448e7e7ac68818451565a279ced7b26ddf38b50b29bdb8e66c9a8e1",
+      "bytes": 17603
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-production-predictions-malformed-grade-desktop-light.png",
+      "sha256": "b575cebc814ff82dbc4296107d80e70e53ae95f293615f896dae784f9e5fa22d",
+      "bytes": 10044
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-production-predictions-valid-recovered-desktop-light.png",
+      "sha256": "9822fdc8d963a10d2de4c965d734a4261f12adfedc1b080799d402ff61aca3b3",
+      "bytes": 17784
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-production-predictions-malformed-grade-mobile-dark.png",
+      "sha256": "76519aff410fce8eaf186b5851ae69050117a1e91512cbcb07e75644d125aa26",
+      "bytes": 10421
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-production-predictions-valid-recovered-mobile-dark.png",
+      "sha256": "9515ff42941a413ea605b39c7cf9d889451812450a5a6ea8165682d90fcbcdcc",
+      "bytes": 17731
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-production-predictions-malformed-grade-mobile-light.png",
+      "sha256": "37ef99b5042b6433ac9eb32214953a4382e0cf4fa0852d5025c2a773945012b7",
+      "bytes": 10594
+    },
+    {
+      "path": "docs/visual-qa/s126-c2-prediction-production-predictions-valid-recovered-mobile-light.png",
+      "sha256": "a09ccd456da32557d5d6afee99f3935081035a08858ea552cd3cf1a203ffd464",
+      "bytes": 17925
+    }
+  ],
+  "limits": [
+    "Accepted selected technical release only. Canonical closeout, exact closing-metadata tests, containing publication, signed impact, owned cleanup and native goal completion remain separate.",
+    "CI job success and named source/hosted counts are not an aggregate application test total. No actual-player, full accessibility/device, capacity, restore, lifecycle, email/identity or public-launch readiness claim."
+  ]
+}

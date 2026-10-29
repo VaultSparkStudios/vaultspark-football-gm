@@ -1,0 +1,96 @@
+{
+  "session": 126,
+  "phase": "production",
+  "origin": "https://playfranchisearchitect.com",
+  "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+  "reviewer": "root",
+  "reviewedAt": "2026-10-28T22:59:09.115Z",
+  "verdict": "pass-hosted-production-selected-states",
+  "captureReport": "reports/s126-c2-entry-production-pixels.json",
+  "captureReportSha256": "4bb2ad669f499286632882b7fe040d1c58d4744dd24eb99118ddac495dad734a",
+  "inspectedImageCount": 4,
+  "inspected": [
+    {
+      "file": ".cache/s126-c2-entry-production/desktop-dark.png",
+      "sha256": "128d9a73d12e3616f87e7eede7ab845f3f579e6d2e1753bac1dc5767bbe2b63c",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Actual hosted C2 root entry",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "sourceStatus": "exact C2 candidate observed at selected stable origin",
+      "gitHead": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "manifestSourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "verdict": "pass-hosted-production-selected-state",
+      "finding": "Heading, start action, navigation and original preview remain legible and contained in the actual device/theme viewport; no clipping or broken image observed."
+    },
+    {
+      "file": ".cache/s126-c2-entry-production/desktop-light.png",
+      "sha256": "aa0ef636bd560e5e43c7164513dddbbd283d12a18a428db1ba16b359f9d749c1",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Actual hosted C2 root entry",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "sourceStatus": "exact C2 candidate observed at selected stable origin",
+      "gitHead": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "manifestSourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "verdict": "pass-hosted-production-selected-state",
+      "finding": "Heading, start action, navigation and original preview remain legible and contained in the actual device/theme viewport; no clipping or broken image observed."
+    },
+    {
+      "file": ".cache/s126-c2-entry-production/mobile-dark.png",
+      "sha256": "c765ad2ec20920015e7e9796858190e7c1807e88a9611f0b5fc7c27be1d43eb1",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Actual hosted C2 root entry",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "sourceStatus": "exact C2 candidate observed at selected stable origin",
+      "gitHead": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "manifestSourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "verdict": "pass-hosted-production-selected-state",
+      "finding": "Heading, start action, navigation and original preview remain legible and contained in the actual device/theme viewport; no clipping or broken image observed."
+    },
+    {
+      "file": ".cache/s126-c2-entry-production/mobile-light.png",
+      "sha256": "d01cdaa45615518cc4fee6b2a096ab206ba98345f8394d5a4f4d6795304139d3",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Actual hosted C2 root entry",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "sourceStatus": "exact C2 candidate observed at selected stable origin",
+      "gitHead": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "manifestSourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "verdict": "pass-hosted-production-selected-state",
+      "finding": "Heading, start action, navigation and original preview remain legible and contained in the actual device/theme viewport; no clipping or broken image observed."
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "blockingDefectsOpen": 0
+  },
+  "scope": "Four actual individually opened entry images only. Does not assert whole-site visual coverage."
+}

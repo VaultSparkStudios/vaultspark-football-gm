@@ -1,5 +1,14 @@
 # Agent Memory
 
+## Session 126 durable patterns
+
+- Valid JSON can still have an invalid container or entry shape; optional state must not block authoritative dashboard hydration.
+- A discarded stale record needs an in-tab tombstone when durable writes fail, or the next read can resurrect it.
+- Recover optional state by rereading and merging durable neighbors before retrying pending writes; never overwrite an unreadable store.
+- Count focused tests, source Studio, hosted browser checks and scoped pixels separately; none establishes real-player outcomes or full launch readiness.
+- Preserve nonpassing performance attempts. Change the actual critical loading path, then measure the same route and limits; keep native receipt bodies intact.
+
+
 ## Session 125 durable patterns
 
 - Optional observability cannot block play, but authoritative recovery denial must never silently create fresh authority.

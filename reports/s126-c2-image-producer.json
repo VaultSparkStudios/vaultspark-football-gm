@@ -1,0 +1,22 @@
+{
+  "session": 126,
+  "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "observedAt": "2026-10-28T22:11:15.781Z",
+  "readOnly": true,
+  "runId": 40771700607,
+  "attempt": 1,
+  "event": "push",
+  "status": "completed",
+  "conclusion": "success",
+  "verified": true,
+  "producer": {
+    "id": 40771700607,
+    "attempt": 1,
+    "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+    "verified": true,
+    "requiredJobs": [
+      "build-images (api)",
+      "build-images (play)"
+    ]
+  }
+}

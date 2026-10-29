@@ -111,3 +111,11 @@ Routine exact-source promotion reuses existing bounded founder authorization. Me
 ---
 
 Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+## 2026-10-28 — Session 126 — Validated optional state and durable truth
+
+Validate prediction containers and resolved grades before interpreting them. A discarded contradictory grade keeps an in-tab tombstone when persistence fails; pending writes merge with reread durable neighbors. Mobile mode choices and earned trophy feedback remain usable in this tab without claiming reload persistence. Preserve existing browser-wide cross-franchise trophies. No identity/trust-policy, license, rights, lifecycle, spending or public-launch change.
+
+Two retained production measurements missed the unchanged entry performance bar. The required C2 repair inlines the existing root theme script, two stylesheets and original preview image into the first response, preserving exact content, native CSP hashes, external assets and the existing performance limits. New native staging and production measurements pass.
+
+Exact technical release is accepted by reports/s126-c2-release-acceptance.json; closing records, final metadata and containing publication have distinct evidence boundaries. Final exact staged closing-metadata Studio acceptance, final security/supply-chain checks, containing main commit/push/readback, actual signed impact delivery and owned process/worktree/lock cleanup remain required. No final metadata, publication, Ark delivery, cleanup or native goal completion is claimed at this checkpoint.

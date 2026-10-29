@@ -1,0 +1,141 @@
+{
+  "session": 126,
+  "phase": "production",
+  "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "sourceStatus": "exact committed C2 candidate artifact; hosted readback requires completed pixels report",
+  "gitHead": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "manifestSourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+  "candidate": {
+    "path": ".cache/s126-c2-source-candidate.json",
+    "sha256": "c377ffbd79c37b814d086fded9680a64a4af4d5ac5e85f2293cba47eebaa2518"
+  },
+  "indexSha256": "4db07886902f0134b6586de9be2c01265320111f97d768cfeaa09612a69ca706",
+  "indexBytes": 458050,
+  "headerSha256": "bfb73560f89678d5c2446b30b05842821571191daf5f3fa23f2c043146880c64",
+  "primaryFilesVerified": 362,
+  "decodedJpeg": {
+    "bytes": 154408,
+    "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8",
+    "unchanged": true
+  },
+  "trustedBodyHashes": {
+    "themeBoot": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f",
+    "styles": "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83",
+    "siteStyles": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+  },
+  "externalAssetsRetained": true,
+  "aliases": [
+    {
+      "mount": "/",
+      "indexSha256": "4db07886902f0134b6586de9be2c01265320111f97d768cfeaa09612a69ca706",
+      "nativeCspInherited": true
+    },
+    {
+      "mount": "/franchise-architect-football/",
+      "indexSha256": "4db07886902f0134b6586de9be2c01265320111f97d768cfeaa09612a69ca706",
+      "nativeCspInherited": true
+    },
+    {
+      "mount": "/vaultspark-football-gm/",
+      "indexSha256": "4db07886902f0134b6586de9be2c01265320111f97d768cfeaa09612a69ca706",
+      "nativeCspInherited": true
+    },
+    {
+      "mount": "/franchise-architect/",
+      "indexSha256": "4db07886902f0134b6586de9be2c01265320111f97d768cfeaa09612a69ca706",
+      "nativeCspInherited": true
+    },
+    {
+      "mount": "/games/vaultspark-football-gm/",
+      "indexSha256": "4db07886902f0134b6586de9be2c01265320111f97d768cfeaa09612a69ca706",
+      "nativeCspInherited": true
+    },
+    {
+      "mount": "/games/franchise-architect/",
+      "indexSha256": "4db07886902f0134b6586de9be2c01265320111f97d768cfeaa09612a69ca706",
+      "nativeCspInherited": true
+    },
+    {
+      "mount": "/games/franchise-architect-football/",
+      "indexSha256": "4db07886902f0134b6586de9be2c01265320111f97d768cfeaa09612a69ca706",
+      "nativeCspInherited": true
+    }
+  ],
+  "sourceHashes": [
+    {
+      "path": "scripts/lib/inline-public-entry.mjs",
+      "sha256": "af815788536e9af637ce1fb3ea93c248927246c6f8eb69d18c6533d70e5b0303"
+    },
+    {
+      "path": "scripts/build-pages.mjs",
+      "sha256": "58b5d0cd541efa564466a12d7b1f8e1a065e13f949570c5f2601c0f2af082e6f"
+    },
+    {
+      "path": "public/index.html",
+      "sha256": "20dc7b2f2bc970df7b602cd3bb924d89ab17f58a0edd32db0cc6f6022105e6d4"
+    },
+    {
+      "path": "public/lib/themeBoot.js",
+      "sha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f"
+    },
+    {
+      "path": "public/styles.css",
+      "sha256": "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83"
+    },
+    {
+      "path": "public/site.css",
+      "sha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+    },
+    {
+      "path": "public/images/screens/hero.jpg",
+      "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
+    }
+  ],
+  "sourceCommitProof": [
+    {
+      "path": "scripts/lib/inline-public-entry.mjs",
+      "workingSha256": "af815788536e9af637ce1fb3ea93c248927246c6f8eb69d18c6533d70e5b0303",
+      "normalizedSha256": "af815788536e9af637ce1fb3ea93c248927246c6f8eb69d18c6533d70e5b0303",
+      "committedNormalizedSha256": "af815788536e9af637ce1fb3ea93c248927246c6f8eb69d18c6533d70e5b0303"
+    },
+    {
+      "path": "scripts/build-pages.mjs",
+      "workingSha256": "58b5d0cd541efa564466a12d7b1f8e1a065e13f949570c5f2601c0f2af082e6f",
+      "normalizedSha256": "58b5d0cd541efa564466a12d7b1f8e1a065e13f949570c5f2601c0f2af082e6f",
+      "committedNormalizedSha256": "58b5d0cd541efa564466a12d7b1f8e1a065e13f949570c5f2601c0f2af082e6f"
+    },
+    {
+      "path": "public/index.html",
+      "workingSha256": "20dc7b2f2bc970df7b602cd3bb924d89ab17f58a0edd32db0cc6f6022105e6d4",
+      "normalizedSha256": "20dc7b2f2bc970df7b602cd3bb924d89ab17f58a0edd32db0cc6f6022105e6d4",
+      "committedNormalizedSha256": "20dc7b2f2bc970df7b602cd3bb924d89ab17f58a0edd32db0cc6f6022105e6d4"
+    },
+    {
+      "path": "public/lib/themeBoot.js",
+      "workingSha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f",
+      "normalizedSha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f",
+      "committedNormalizedSha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f"
+    },
+    {
+      "path": "public/styles.css",
+      "workingSha256": "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83",
+      "normalizedSha256": "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83",
+      "committedNormalizedSha256": "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83"
+    },
+    {
+      "path": "public/site.css",
+      "workingSha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a",
+      "normalizedSha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a",
+      "committedNormalizedSha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+    },
+    {
+      "path": "public/images/screens/hero.jpg",
+      "workingSha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8",
+      "normalizedSha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8",
+      "committedNormalizedSha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
+    }
+  ],
+  "verified": true,
+  "boundary": "Scoped candidate artifact proof only. Hosted status is proved separately by completed capture/health/actual DOM checks; no full smoke/performance acceptance claim."
+}

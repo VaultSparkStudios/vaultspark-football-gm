@@ -1,5 +1,13 @@
 # Current State
 
+## 2026-10-28 — Session 126 — Resilient player loops
+
+- 2026-10-28: Session 126 shipped three selected player-state repairs. S126: Mobile and Full View controls remain usable when browser storage fails, damaged optional predictions cannot interrupt dashboard updates or invent graded picks, and earned trophies remain visible in this tab after failed persistence. The landing page also combines its existing theme, layout and preview in the initial response to satisfy the unchanged performance gate.
+- Source `309bb0fa11f89b4fb643f1dd554dbcf860c3aff5`; artifact `30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d`; reports/s126-c2-release-acceptance.json.
+- Exact C2 source CI7/7; source Studio398/398; selected focused143/143 and entry37/37 separately, with overlap not summed. Actual C2 staging/production browser7/7 and native provenance14/14 per origin; 60 primary plus24 prediction images cover selected named states only. Native five-run desktop/mobile performance passed both origins; production LCP1472/1456ms, INP24ms and CLS0.0003/0.0131. Matching immutable C2 API image and ready database verified with existing database/routing preservation. Earlier C1 local/browser and failed performance observations remain historical. Aggregate application case count, actual-player outcomes and full launch readiness remain unmeasured.
+- Final exact staged closing-metadata Studio acceptance, final security/supply-chain checks, containing main commit/push/readback, actual signed impact delivery and owned process/worktree/lock cleanup remain required. No final metadata, publication, Ark delivery, cleanup or native goal completion is claimed at this checkpoint.
+
+
 ## 2026-10-27 — Session 125 — Optional player state
 
 - S125: Optional journey notes no longer interrupt play, Inbox storage denial is guarded, and First Season Contract progress stays in this tab when persistence fails.

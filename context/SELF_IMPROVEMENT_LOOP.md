@@ -3,11 +3,11 @@
 
 
 <!-- rolling-status-start -->
-Last session: 125 (2026-10-28) | Total: 505/1000 | Velocity: 3 | Debt: →
-Avgs — 3: 505 | 5: 572.8 | 10: 693.4 | 25: 831.5 | all: 941
+Last session: 126 (2026-10-28) | Total: 532/1000 | Velocity: 3 | Debt: →
+Avgs — 3: 515.7 | 5: 506.4 | 10: 660.8 | 25: 814.6 | all: 935.9
 Sparkline: ▁▁▁▁▁
-Intent rate: 60% (3/5 last 5)
-SIL delta: 510 → 505 (-5). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 79 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+Intent rate: 40% (2/5 last 5)
+SIL delta: 505 → 532 (+27). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 80 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
 > Older entries S112 live verbatim in `context/archive/SELF_IMPROVEMENT_LOOP_S112-S112.md`.
@@ -180,3 +180,26 @@ GAME/API 1ad07d9919f75d0a8ccfb024c7f42b7f58f62937 remains independently accepted
 ---
 
 Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+## 2026-10-28 — Session 126 — Resilient player loops
+
+SIL v3.0: **532 / 1000** (Dev Health 92, Creative Alignment 70, Momentum 65, Engagement 45, Process Quality 60, Cross-Repo Coherence 60, Security Posture 60, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 60). Intent outcome: **Partial** at this ordered-record checkpoint: selected product and technical release are verified; final metadata/publication/impact/cleanup remain required. Scores are reviewed engineering judgment, not measured player or financial outcomes.
+
+Exact C2 source CI7/7; source Studio398/398; selected focused143/143 and entry37/37 separately, with overlap not summed. Actual C2 staging/production browser7/7 and native provenance14/14 per origin; 60 primary plus24 prediction images cover selected named states only. Native five-run desktop/mobile performance passed both origins; production LCP1472/1456ms, INP24ms and CLS0.0003/0.0131. Matching immutable C2 API image and ready database verified with existing database/routing preservation. Earlier C1 local/browser and failed performance observations remain historical. Aggregate application case count, actual-player outcomes and full launch readiness remain unmeasured.
+
+Velocity: 3 selected product outcomes, excluding SIL/meta tasks. No new debt trend is asserted without the task-board measurement.
+
+- Dev Health: Exact CI7 and actual accepted production: three reproduced failures have focused, real-client and hosted regression evidence. Broader application case totals remain unmeasured.
+- Creative Alignment: Preserves the football decision loop, optional predictions and browser-wide trophy identity without unauthorized feature or creative scope changes.
+- Momentum: Three selected player outcomes delivered; release and evidence recovery took additional effort. Final publication is still pending at this ordered-record checkpoint.
+- Engagement: Continuity and trophy feedback improve implementation behavior, but actual-player engagement and retention remain unmeasured. No increase over prior judgment.
+- Process Quality: Fresh binding, admission and recorded pre-implementation timing plus independent review caught malformed grades and quota invalidation before release. Failed fixture/transport observations remain preserved; final metadata is not yet passing evidence.
+- Cross-Repo Coherence: Canonical gateway, existing identity contracts and recipient-owned evidence retained. No recipient adoption or portfolio-wide improvement claimed.
+- Security Posture: Storage corruption is isolated from authoritative dashboard hydration; no identity, trust-policy, data-handling or rights change. Existing independent launch holds remain.
+- Ecosystem Integration: No newly proven identity/email integration; preserve prior credit and current launch holds.
+- Capital Efficiency: No measured financial or unit-economics result; retain prior zero rubric credit without implying financial loss.
+- Automation Coverage: Registered fault-injection and actual-client browser checks improve bounded regression coverage. Private task adapters are not claimed as shipped reusable automation.
+
+Brainstorm: Valid JSON can still have an invalid container or entry shape; optional state must not block authoritative dashboard hydration. A discarded stale record needs an in-tab tombstone when durable writes fail, or the next read can resurrect it. Recover optional state by rereading and merging durable neighbors before retrying pending writes; never overwrite an unreadable store. Count focused tests, source Studio, hosted browser checks and scoped pixels separately; none establishes real-player outcomes or full launch readiness. Preserve nonpassing performance attempts. Change the actual critical loading path, then measure the same route and limits; keep native receipt bodies intact. Future [SIL:126] discipline items remain unselected and do not expand current scope.
+
+Final exact staged closing-metadata Studio acceptance, final security/supply-chain checks, containing main commit/push/readback, actual signed impact delivery and owned process/worktree/lock cleanup remain required. No final metadata, publication, Ark delivery, cleanup or native goal completion is claimed at this checkpoint.

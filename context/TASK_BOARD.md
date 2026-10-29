@@ -4,9 +4,15 @@
 
 - [x] Wave 1 — Fresh startup, goal/session binding, nine-axis audit, pending admission and pre-implementation premise timing.
 - [x] Wave 2 — Mobile control recovery, prediction corruption safety and trophy continuity; local143/143 focused, client7/7 browser,32 selected final images and independent reviews accepted.
-- [ ] Wave 3 — Exact candidate staging, required checks, production, push and ordered closeout.
+- [x] Wave 3a — Exact source staging, required CI, main source publication and actual frontend/API technical production accepted.
+- [ ] Wave 3b — Final closing-metadata acceptance, containing receipt publication/readback, signed impact and owned cleanup remain required.
 
-Release dependency: candidate `1c73ef6` passed all seven CI jobs and is live on the frontend/API, with production provenance14/14, browser7/7 and selected-state visuals accepted. Desktop entry LCP missed the unchanged1,800ms limit in two native runs (1,824ms and2,088ms). Entry-only bundling of existing critical assets is now required before release acceptance and closeout. Baseline4 and pre-implementation evidence are recorded in reports/s126-entry-performance-premise.json; a new exact candidate and fresh staging/production evidence remain required.
+Historical release dependency — resolved by C2: candidate `1c73ef6` passed all seven CI jobs and was deployed to the frontend/API, but desktop entry LCP missed the unchanged1,800ms limit in two native runs (1,824ms and2,088ms). The required entry-only bundling repair is now accepted at exact C2 source `309bb0f`, deployed to both frontend and API, with CI7/7, provenance14/14 and browser7/7 at each origin, and passing five-run desktop/mobile performance. See reports/s126-c2-release-acceptance.json. Baseline4, pre-implementation evidence and both C1 misses remain historical in reports/s126-entry-performance-premise.json and the original performance receipts. Only the Wave3b finalization remains open.
+
+## S126 future discipline — unselected follow-ups
+
+- [ ] [SIL:126] Verify container shapes and resolved grade fields together; include quota-failed invalidation before accepting optional-state recovery.
+- [ ] [SIL:126] Bind pixel matrices to source hashes and actual themes before cutting the candidate; keep captured fixture failures distinct from product defects.
 
 ## S125 Wave status
 

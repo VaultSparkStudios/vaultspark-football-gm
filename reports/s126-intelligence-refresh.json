@@ -1,0 +1,37 @@
+{
+  "session": 126,
+  "observedAt": "2026-10-28T23:22:24.145Z",
+  "subject": "franchise-architect-football",
+  "verified": true,
+  "scoring": {
+    "ok": true,
+    "score": 43733,
+    "tier": "FORGE",
+    "project": "franchise-architect-football",
+    "sourceFingerprint": "8245650f272322e2b70425b270fe49ff15b381d74208998fb26e20554c6e932e",
+    "historyHash": "df274d2a80505ac1766449ca8a7df1615c57b38be81cdb85b5f35df2cfb2e218",
+    "mindHash": "19b943fab81186de90948c39c3eef7a2e4579274309a4e64ebfcf08a1a6cf92b",
+    "scorerSource": "registry"
+  },
+  "steps": [
+    {
+      "name": "compute-entropy",
+      "exitCode": 0,
+      "subject": "franchise-architect-football",
+      "logSha256": "e214b87fabec8748cfb9977359f63f0fb2e9bc066bdd12fc0f190c70489495b0"
+    },
+    {
+      "name": "append-genome-snapshot",
+      "exitCode": 0,
+      "subject": "franchise-architect-football",
+      "logSha256": "6c5c2f3bbba394d7e35dc3a7fb3699cf823c772f37963942df75724a55e98489"
+    },
+    {
+      "name": "render-state-vector",
+      "exitCode": 0,
+      "subject": "franchise-architect-football",
+      "logSha256": "593fd5784bedcc15ace6d8225fbdfdc6c22e4290a86e38fce83839cc4371b0da"
+    }
+  ],
+  "scope": "One recipient-owned project score and explicitly targeted local entropy/genome/state-vector derivations. No ecosystem rescore or sibling adoption claim."
+}

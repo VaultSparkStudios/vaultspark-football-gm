@@ -1,0 +1,3200 @@
+{
+  "session": 126,
+  "phase": "c2-entry-production",
+  "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "sourceStatus": "exact C2 candidate observed at selected stable origin",
+  "gitHead": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "manifestSourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+  "sourceHashes": [
+    {
+      "path": "scripts/lib/inline-public-entry.mjs",
+      "sha256": "af815788536e9af637ce1fb3ea93c248927246c6f8eb69d18c6533d70e5b0303"
+    },
+    {
+      "path": "scripts/build-pages.mjs",
+      "sha256": "58b5d0cd541efa564466a12d7b1f8e1a065e13f949570c5f2601c0f2af082e6f"
+    },
+    {
+      "path": "public/index.html",
+      "sha256": "20dc7b2f2bc970df7b602cd3bb924d89ab17f58a0edd32db0cc6f6022105e6d4"
+    },
+    {
+      "path": "public/lib/themeBoot.js",
+      "sha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f"
+    },
+    {
+      "path": "public/styles.css",
+      "sha256": "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83"
+    },
+    {
+      "path": "public/site.css",
+      "sha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+    },
+    {
+      "path": "public/images/screens/hero.jpg",
+      "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
+    }
+  ],
+  "startedAt": "2026-10-28T22:57:10.096Z",
+  "captures": [
+    {
+      "file": ".cache/s126-c2-entry-production/desktop-dark.png",
+      "sha256": "128d9a73d12e3616f87e7eede7ab845f3f579e6d2e1753bac1dc5767bbe2b63c",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Actual hosted C2 root entry",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "sourceStatus": "exact C2 candidate observed at selected stable origin",
+      "gitHead": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "manifestSourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": false
+    },
+    {
+      "file": ".cache/s126-c2-entry-production/desktop-light.png",
+      "sha256": "aa0ef636bd560e5e43c7164513dddbbd283d12a18a428db1ba16b359f9d749c1",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Actual hosted C2 root entry",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "sourceStatus": "exact C2 candidate observed at selected stable origin",
+      "gitHead": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "manifestSourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": false
+    },
+    {
+      "file": ".cache/s126-c2-entry-production/mobile-dark.png",
+      "sha256": "c765ad2ec20920015e7e9796858190e7c1807e88a9611f0b5fc7c27be1d43eb1",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Actual hosted C2 root entry",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "sourceStatus": "exact C2 candidate observed at selected stable origin",
+      "gitHead": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "manifestSourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": false
+    },
+    {
+      "file": ".cache/s126-c2-entry-production/mobile-light.png",
+      "sha256": "d01cdaa45615518cc4fee6b2a096ab206ba98345f8394d5a4f4d6795304139d3",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Actual hosted C2 root entry",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "sourceStatus": "exact C2 candidate observed at selected stable origin",
+      "gitHead": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "manifestSourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": false
+    }
+  ],
+  "results": [
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "actualTheme": "dark",
+      "savedTheme": "dark",
+      "savedMode": "dark",
+      "themeButtonWorks": true,
+      "hero": {
+        "scheme": "data:image/jpeg;base64",
+        "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8",
+        "bytes": 154408,
+        "complete": true,
+        "naturalWidth": 1440,
+        "naturalHeight": 900
+      },
+      "inlineScriptHashes": [
+        "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f",
+        "3dc09d4e41a7e68185a1604a0dd7421b332aea9dc22364f37802dfdab19ad78d",
+        "a005016cf2fd5e67859e142701c5bcb6b20d81f54fc9db784288bf0f61278ad7"
+      ],
+      "inlineStyleHashes": [
+        "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83",
+        "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+      ],
+      "cspViolations": [],
+      "requests": [
+        {
+          "path": "/",
+          "type": "document"
+        },
+        {
+          "path": "/lib/api/createApiClient.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/apiContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/challengeCodes.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/clientDiagnostics.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/clientRecoveryUi.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/themeCustomizer.js",
+          "type": "script"
+        },
+        {
+          "path": "/images/franchise-architect-mark.svg",
+          "type": "image"
+        },
+        {
+          "path": "/setup.js",
+          "type": "script"
+        },
+        {
+          "path": "/community-stats.25f97e0a1e.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/communityTelemetry.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/api/workerTransport.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/api/localRuntimeWorker.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/extractCommunityEvents.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/communityEventContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/cdn-cgi/rum",
+          "type": "xhr"
+        },
+        {
+          "path": "/favicon.svg",
+          "type": "other"
+        },
+        {
+          "path": "/lib/api/recoverySnapshotState.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/app/api/localApiRuntime.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gmArchetype.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/hybridSaveStore.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/saveStoreShared.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/snapshotCodec.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/config/leagueSetup.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/teamFactory.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/GameSession.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/applyLeagueSetup.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/utils/rng.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/utils/rngStreams.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gmLegacyScore.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/rivalryDNA.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/draftCombine.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/speedrunChallenge.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/fanSentiment.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/advanceWeekCommand.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/snapshotMigration.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/franchiseAuthority.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/handlers/architectThesisHandler.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/handlers/tradeOffersHandler.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/handlers/franchiseMomentHandler.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/rivalGmPersona.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/teamRecord.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/multiplayerSession.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/admittedInjuryPayroll.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/offseasonMedicalCalendar.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/weekResultProjection.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/statSnapshot.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/measurementProvenanceSnapshot.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/pensionServiceSnapshot.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/identityMetadataSnapshot.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerVisualIdentity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/practiceContracts.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/standardElevations.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/admittedInjuryContinuation.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/activeInactiveHistory.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/postseasonMedicalClock.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/reserveLists.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/architectMasteryPortfolio.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/gameOutcome.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gmDecisionConsequences.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gmDecisionAuthority.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/tacticalFilmRoom.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/architectLedger.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/architectThesis.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/weeklyTactic.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/jsonLayouts.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/browserSaveStore.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/config.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/rules.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerFactory.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/capCompliance.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/talentDistribution.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/contracts.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/ratings.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflSalaryCap.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/pensionService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/regularMedicalRecovery.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/teamLabel.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/livingPotential.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerIdentity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerMeasurements.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/practiceSquadEligibility.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflPracticeSalary.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/footballGameReference.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/cpuStandardElevations.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/elevationInjuryPay.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/preRolloverMedicalCalendar.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/injuryClaimNegotiation.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/regularInjuryAccrual.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflPostseasonSalary.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/undraftedFreeAgency.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/draftCohort.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerWorkouts.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/offseasonSimulator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/offseasonDevelopmentReport.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/situationalCalls.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/depthChartUsage.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/developmentEnvironment.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/facilityInvestment.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/ticketDemand.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/ownerEconomy.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/facilityMarket.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/aiTeamStrategy.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/seasonSimulator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/weeklySimulator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/matchReadiness.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/statBook.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/approximateValue.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/scoreline.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/gameImpact.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/realismCalibrator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/profiles/pfrRecentWeightedProfile.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/profiles/pfrCareerWeightedProfile.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/gmReportCard.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/progressionParity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/modules/sessionModules.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/index.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/architectFocusReview.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/injurySystem.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/beatReporter.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/timeCapsule.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/adaptiveDifficulty.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/capAlerts.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/startScenarioContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/pressConference.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/narrativeEvents.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/continuityLedger.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/veteranMentorship.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/ownerConfidence.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/rivalTradeOffers.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/cpuTradeMarket.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/onClockTradeMarket.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/pressRoom.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/coachingMarket.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/coachingTree.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/staffGeneration.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/leagueIdentity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/whatIfReplay.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/leagueLens.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/operatingStatement.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/registry.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/calendarContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/playerAgentAI.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/statSchema.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/practiceContractTerm.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflElevationSalary.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerFamilyIdentity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflSalaryMinimum.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/earnedPracticeCap.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/injurySalaryClaims.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/annualElevationInjuryResolution.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/admittedPostseasonRecovery.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/gameplayNavigation.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/applyGameStats.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflEliteDensityBaseline.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/rivalFrontOffice.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/ContractService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/CoachingService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/TradeService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/index.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/standings.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gameDayRoster.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/physiqueGeometryContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/capCarryover.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/tradePlan.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/calendar.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/competition.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gameSimulator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/potentialReversion.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/playerDemographicBaseline.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerDemographicModel.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/playerFamilyHeritage.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/appearancePalette.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/portraitAppearanceContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/schedule.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/postseason.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/playCalling.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/matchupEdge.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/overtime.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/playerSurfaceLighting.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/competitionContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/api/clientSessionRecovery.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/api/recoverySnapshotState.js",
+          "type": "script"
+        }
+      ],
+      "forbiddenCriticalRequests": [],
+      "pageErrors": [],
+      "cspSha256": "d72e44693f308d88178d7c582f5084dc0db0a8727f7d4fd35d3ca419c32ce9f2"
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "actualTheme": "light",
+      "savedTheme": "light",
+      "savedMode": "light",
+      "themeButtonWorks": true,
+      "hero": {
+        "scheme": "data:image/jpeg;base64",
+        "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8",
+        "bytes": 154408,
+        "complete": true,
+        "naturalWidth": 1440,
+        "naturalHeight": 900
+      },
+      "inlineScriptHashes": [
+        "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f",
+        "3dc09d4e41a7e68185a1604a0dd7421b332aea9dc22364f37802dfdab19ad78d",
+        "a005016cf2fd5e67859e142701c5bcb6b20d81f54fc9db784288bf0f61278ad7"
+      ],
+      "inlineStyleHashes": [
+        "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83",
+        "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+      ],
+      "cspViolations": [],
+      "requests": [
+        {
+          "path": "/",
+          "type": "document"
+        },
+        {
+          "path": "/lib/api/createApiClient.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/apiContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/challengeCodes.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/clientDiagnostics.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/clientRecoveryUi.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/themeCustomizer.js",
+          "type": "script"
+        },
+        {
+          "path": "/images/franchise-architect-mark.svg",
+          "type": "image"
+        },
+        {
+          "path": "/setup.js",
+          "type": "script"
+        },
+        {
+          "path": "/community-stats.25f97e0a1e.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/communityTelemetry.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/api/workerTransport.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/extractCommunityEvents.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/communityEventContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/api/localRuntimeWorker.js",
+          "type": "script"
+        },
+        {
+          "path": "/cdn-cgi/rum",
+          "type": "xhr"
+        },
+        {
+          "path": "/favicon.svg",
+          "type": "other"
+        },
+        {
+          "path": "/lib/api/recoverySnapshotState.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/app/api/localApiRuntime.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gmArchetype.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/hybridSaveStore.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/saveStoreShared.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/snapshotCodec.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/config/leagueSetup.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/teamFactory.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/GameSession.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/applyLeagueSetup.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/utils/rng.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/utils/rngStreams.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gmLegacyScore.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/rivalryDNA.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/draftCombine.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/speedrunChallenge.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/fanSentiment.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/advanceWeekCommand.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/snapshotMigration.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/franchiseAuthority.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/handlers/architectThesisHandler.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/handlers/tradeOffersHandler.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/handlers/franchiseMomentHandler.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/rivalGmPersona.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/teamRecord.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/multiplayerSession.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/browserSaveStore.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/admittedInjuryPayroll.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/offseasonMedicalCalendar.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/weekResultProjection.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/statSnapshot.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/measurementProvenanceSnapshot.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/pensionServiceSnapshot.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/identityMetadataSnapshot.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerVisualIdentity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/practiceContracts.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/standardElevations.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/admittedInjuryContinuation.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/activeInactiveHistory.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/postseasonMedicalClock.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/reserveLists.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/jsonLayouts.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/gameOutcome.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gmDecisionConsequences.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gmDecisionAuthority.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/tacticalFilmRoom.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/architectLedger.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/architectThesis.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/weeklyTactic.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/config.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/rules.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerFactory.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/capCompliance.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/talentDistribution.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/contracts.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/ratings.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflSalaryCap.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/architectMasteryPortfolio.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/injurySystem.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/elevationInjuryPay.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/statSchema.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/pensionService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflPracticeSalary.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/practiceSquadEligibility.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflSalaryMinimum.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/registry.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/earnedPracticeCap.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/injurySalaryClaims.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/annualElevationInjuryResolution.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/practiceContractTerm.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/footballGameReference.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflElevationSalary.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerFamilyIdentity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/regularMedicalRecovery.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/teamLabel.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/livingPotential.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerIdentity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerMeasurements.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/cpuStandardElevations.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/preRolloverMedicalCalendar.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/injuryClaimNegotiation.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/regularInjuryAccrual.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflPostseasonSalary.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/undraftedFreeAgency.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/draftCohort.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerWorkouts.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/offseasonSimulator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/offseasonDevelopmentReport.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/situationalCalls.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/depthChartUsage.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/developmentEnvironment.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/facilityInvestment.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/ticketDemand.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/ownerEconomy.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/facilityMarket.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/aiTeamStrategy.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/seasonSimulator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/weeklySimulator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/matchReadiness.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/statBook.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/approximateValue.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/scoreline.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/gameImpact.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/realismCalibrator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/profiles/pfrRecentWeightedProfile.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/profiles/pfrCareerWeightedProfile.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/gmReportCard.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/progressionParity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/modules/sessionModules.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/index.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/architectFocusReview.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/beatReporter.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/timeCapsule.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/adaptiveDifficulty.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/capAlerts.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/startScenarioContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/pressConference.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/narrativeEvents.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/continuityLedger.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/veteranMentorship.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/ownerConfidence.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/rivalTradeOffers.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/cpuTradeMarket.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/onClockTradeMarket.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/pressRoom.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/coachingMarket.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/coachingTree.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/staffGeneration.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/leagueIdentity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/whatIfReplay.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/leagueLens.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/operatingStatement.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/calendarContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/playerAgentAI.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/admittedPostseasonRecovery.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/gameplayNavigation.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/index.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/playerDemographicBaseline.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerDemographicModel.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/playerFamilyHeritage.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/appearancePalette.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/portraitAppearanceContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/physiqueGeometryContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gameDayRoster.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/potentialReversion.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/capCarryover.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/applyGameStats.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/standings.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/ContractService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/CoachingService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/TradeService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/rivalFrontOffice.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflEliteDensityBaseline.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/calendar.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/competition.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gameSimulator.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/playerSurfaceLighting.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/tradePlan.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/schedule.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/postseason.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/playCalling.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/matchupEdge.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/overtime.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/competitionContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/api/clientSessionRecovery.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/api/recoverySnapshotState.js",
+          "type": "script"
+        }
+      ],
+      "forbiddenCriticalRequests": [],
+      "pageErrors": [],
+      "cspSha256": "d72e44693f308d88178d7c582f5084dc0db0a8727f7d4fd35d3ca419c32ce9f2"
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "actualTheme": "dark",
+      "savedTheme": "dark",
+      "savedMode": "dark",
+      "themeButtonWorks": true,
+      "hero": {
+        "scheme": "data:image/jpeg;base64",
+        "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8",
+        "bytes": 154408,
+        "complete": true,
+        "naturalWidth": 1440,
+        "naturalHeight": 900
+      },
+      "inlineScriptHashes": [
+        "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f",
+        "3dc09d4e41a7e68185a1604a0dd7421b332aea9dc22364f37802dfdab19ad78d",
+        "a005016cf2fd5e67859e142701c5bcb6b20d81f54fc9db784288bf0f61278ad7"
+      ],
+      "inlineStyleHashes": [
+        "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83",
+        "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+      ],
+      "cspViolations": [],
+      "requests": [
+        {
+          "path": "/",
+          "type": "document"
+        },
+        {
+          "path": "/lib/api/createApiClient.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/apiContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/challengeCodes.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/clientDiagnostics.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/clientRecoveryUi.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/themeCustomizer.js",
+          "type": "script"
+        },
+        {
+          "path": "/images/franchise-architect-mark.svg",
+          "type": "image"
+        },
+        {
+          "path": "/setup.js",
+          "type": "script"
+        },
+        {
+          "path": "/community-stats.25f97e0a1e.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/communityTelemetry.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/api/workerTransport.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/extractCommunityEvents.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/communityEventContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/api/localRuntimeWorker.js",
+          "type": "script"
+        },
+        {
+          "path": "/cdn-cgi/rum",
+          "type": "xhr"
+        },
+        {
+          "path": "/favicon.svg",
+          "type": "other"
+        },
+        {
+          "path": "/lib/api/recoverySnapshotState.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/app/api/localApiRuntime.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gmArchetype.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/hybridSaveStore.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/saveStoreShared.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/snapshotCodec.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/config/leagueSetup.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/teamFactory.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/GameSession.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/applyLeagueSetup.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/utils/rng.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/utils/rngStreams.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gmLegacyScore.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/rivalryDNA.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/draftCombine.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/speedrunChallenge.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/fanSentiment.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/advanceWeekCommand.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/snapshotMigration.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/franchiseAuthority.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/handlers/architectThesisHandler.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/handlers/tradeOffersHandler.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/handlers/franchiseMomentHandler.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/rivalGmPersona.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/teamRecord.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/multiplayerSession.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/browserSaveStore.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/config.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/rules.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerFactory.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/capCompliance.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/talentDistribution.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/contracts.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/ratings.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflSalaryCap.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/practiceContracts.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/jsonLayouts.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gmDecisionConsequences.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gmDecisionAuthority.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/tacticalFilmRoom.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/architectLedger.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/architectThesis.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/weeklyTactic.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/admittedInjuryPayroll.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/offseasonMedicalCalendar.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/weekResultProjection.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/statSnapshot.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/measurementProvenanceSnapshot.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/pensionServiceSnapshot.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/identityMetadataSnapshot.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerVisualIdentity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/standardElevations.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/admittedInjuryContinuation.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/activeInactiveHistory.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/postseasonMedicalClock.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/reserveLists.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/architectMasteryPortfolio.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/gameOutcome.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/pensionService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/regularMedicalRecovery.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/teamLabel.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/livingPotential.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerIdentity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerMeasurements.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/practiceSquadEligibility.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflPracticeSalary.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/footballGameReference.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/cpuStandardElevations.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/elevationInjuryPay.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/preRolloverMedicalCalendar.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/injuryClaimNegotiation.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/regularInjuryAccrual.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflPostseasonSalary.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/undraftedFreeAgency.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/draftCohort.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerWorkouts.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/offseasonSimulator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/offseasonDevelopmentReport.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/situationalCalls.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/depthChartUsage.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/developmentEnvironment.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/facilityInvestment.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/ticketDemand.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/ownerEconomy.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/facilityMarket.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/aiTeamStrategy.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/seasonSimulator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/weeklySimulator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/matchReadiness.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/statBook.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/approximateValue.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/scoreline.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/gameImpact.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/realismCalibrator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/profiles/pfrRecentWeightedProfile.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/profiles/pfrCareerWeightedProfile.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/gmReportCard.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/progressionParity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/modules/sessionModules.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/index.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/architectFocusReview.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/injurySystem.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/beatReporter.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/timeCapsule.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/adaptiveDifficulty.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/capAlerts.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/startScenarioContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/pressConference.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/narrativeEvents.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/continuityLedger.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/veteranMentorship.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/ownerConfidence.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/rivalTradeOffers.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/cpuTradeMarket.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/onClockTradeMarket.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/pressRoom.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/coachingMarket.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/coachingTree.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/staffGeneration.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/leagueIdentity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/whatIfReplay.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/leagueLens.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/operatingStatement.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/registry.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/calendarContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/playerAgentAI.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflSalaryMinimum.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/statSchema.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/earnedPracticeCap.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/injurySalaryClaims.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/annualElevationInjuryResolution.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/gameplayNavigation.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/practiceContractTerm.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/admittedPostseasonRecovery.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflElevationSalary.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerFamilyIdentity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/potentialReversion.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/capCarryover.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/applyGameStats.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/standings.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflEliteDensityBaseline.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/ContractService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/CoachingService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/TradeService.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/physiqueGeometryContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/playerDemographicBaseline.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerDemographicModel.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/playerFamilyHeritage.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/appearancePalette.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/portraitAppearanceContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gameDayRoster.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/rivalFrontOffice.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/index.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/tradePlan.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/playerSurfaceLighting.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/calendar.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/competition.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gameSimulator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/schedule.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/postseason.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/playCalling.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/matchupEdge.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/overtime.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/competitionContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/api/clientSessionRecovery.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/api/recoverySnapshotState.js",
+          "type": "script"
+        }
+      ],
+      "forbiddenCriticalRequests": [],
+      "pageErrors": [],
+      "cspSha256": "d72e44693f308d88178d7c582f5084dc0db0a8727f7d4fd35d3ca419c32ce9f2"
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "actualTheme": "light",
+      "savedTheme": "light",
+      "savedMode": "light",
+      "themeButtonWorks": true,
+      "hero": {
+        "scheme": "data:image/jpeg;base64",
+        "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8",
+        "bytes": 154408,
+        "complete": true,
+        "naturalWidth": 1440,
+        "naturalHeight": 900
+      },
+      "inlineScriptHashes": [
+        "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f",
+        "3dc09d4e41a7e68185a1604a0dd7421b332aea9dc22364f37802dfdab19ad78d",
+        "a005016cf2fd5e67859e142701c5bcb6b20d81f54fc9db784288bf0f61278ad7"
+      ],
+      "inlineStyleHashes": [
+        "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83",
+        "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+      ],
+      "cspViolations": [],
+      "requests": [
+        {
+          "path": "/",
+          "type": "document"
+        },
+        {
+          "path": "/lib/api/createApiClient.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/apiContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/challengeCodes.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/clientDiagnostics.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/clientRecoveryUi.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/themeCustomizer.js",
+          "type": "script"
+        },
+        {
+          "path": "/images/franchise-architect-mark.svg",
+          "type": "image"
+        },
+        {
+          "path": "/setup.js",
+          "type": "script"
+        },
+        {
+          "path": "/community-stats.25f97e0a1e.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/communityTelemetry.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/api/workerTransport.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/extractCommunityEvents.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/communityEventContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/api/localRuntimeWorker.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/api/recoverySnapshotState.js",
+          "type": "script"
+        },
+        {
+          "path": "/cdn-cgi/rum",
+          "type": "xhr"
+        },
+        {
+          "path": "/favicon.svg",
+          "type": "other"
+        },
+        {
+          "path": "/src/app/api/localApiRuntime.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gmArchetype.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/hybridSaveStore.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/saveStoreShared.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/snapshotCodec.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/config/leagueSetup.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/teamFactory.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/GameSession.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/applyLeagueSetup.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/utils/rng.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/utils/rngStreams.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gmLegacyScore.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/rivalryDNA.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/draftCombine.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/speedrunChallenge.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/fanSentiment.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/advanceWeekCommand.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/snapshotMigration.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/franchiseAuthority.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/handlers/architectThesisHandler.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/handlers/tradeOffersHandler.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/handlers/franchiseMomentHandler.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/rivalGmPersona.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/teamRecord.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/multiplayerSession.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/browserSaveStore.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/adapters/persistence/jsonLayouts.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/admittedInjuryPayroll.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/offseasonMedicalCalendar.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/weekResultProjection.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/statSnapshot.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/measurementProvenanceSnapshot.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/pensionServiceSnapshot.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/identityMetadataSnapshot.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerVisualIdentity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/practiceContracts.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/standardElevations.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/admittedInjuryContinuation.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/activeInactiveHistory.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/postseasonMedicalClock.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/reserveLists.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/architectMasteryPortfolio.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/gameOutcome.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gmDecisionConsequences.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gmDecisionAuthority.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/tacticalFilmRoom.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/architectLedger.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/architectThesis.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/weeklyTactic.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/config.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/rules.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerFactory.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/capCompliance.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/talentDistribution.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/contracts.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/ratings.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflSalaryCap.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/pensionService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/regularMedicalRecovery.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/teamLabel.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/livingPotential.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerIdentity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerMeasurements.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/practiceSquadEligibility.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflPracticeSalary.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/footballGameReference.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/cpuStandardElevations.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/elevationInjuryPay.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/preRolloverMedicalCalendar.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/injuryClaimNegotiation.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/regularInjuryAccrual.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflPostseasonSalary.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/undraftedFreeAgency.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/draftCohort.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerWorkouts.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/offseasonSimulator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/offseasonDevelopmentReport.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/situationalCalls.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/depthChartUsage.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/developmentEnvironment.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/facilityInvestment.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/ticketDemand.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/ownerEconomy.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/facilityMarket.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/aiTeamStrategy.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/seasonSimulator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/weeklySimulator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/matchReadiness.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/statBook.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/approximateValue.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/scoreline.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/gameImpact.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/realismCalibrator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/profiles/pfrRecentWeightedProfile.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/profiles/pfrCareerWeightedProfile.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/gmReportCard.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/progressionParity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/modules/sessionModules.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/index.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/architectFocusReview.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/injurySystem.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/beatReporter.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/timeCapsule.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/adaptiveDifficulty.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/capAlerts.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/startScenarioContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/pressConference.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/narrativeEvents.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/continuityLedger.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/veteranMentorship.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/ownerConfidence.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/rivalTradeOffers.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/cpuTradeMarket.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/onClockTradeMarket.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/pressRoom.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/coachingMarket.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/coachingTree.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/staffGeneration.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/leagueIdentity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/whatIfReplay.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/leagueLens.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/operatingStatement.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/registry.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/calendarContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/playerAgentAI.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflSalaryMinimum.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/earnedPracticeCap.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/injurySalaryClaims.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/annualElevationInjuryResolution.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflElevationSalary.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/admittedPostseasonRecovery.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/practiceContractTerm.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/statSchema.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/gameplayNavigation.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerFamilyIdentity.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gameDayRoster.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/stats/applyGameStats.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/playerDemographicBaseline.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/playerDemographicModel.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/playerFamilyHeritage.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/appearancePalette.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/portraitAppearanceContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/physiqueGeometryContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/ContractService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/CoachingService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/TradeService.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/index.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/rivalFrontOffice.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/standings.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/data/nflEliteDensityBaseline.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/potentialReversion.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/domain/capCarryover.js",
+          "type": "script"
+        },
+        {
+          "path": "/public/lib/playerSurfaceLighting.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/runtime/services/tradePlan.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/calendar.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/competition.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/gameSimulator.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/playCalling.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/matchupEdge.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/overtime.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/engine/schedule.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/football/postseason.js",
+          "type": "script"
+        },
+        {
+          "path": "/src/sport/competitionContract.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/api/clientSessionRecovery.js",
+          "type": "script"
+        },
+        {
+          "path": "/lib/api/recoverySnapshotState.js",
+          "type": "script"
+        }
+      ],
+      "forbiddenCriticalRequests": [],
+      "pageErrors": [],
+      "cspSha256": "d72e44693f308d88178d7c582f5084dc0db0a8727f7d4fd35d3ca419c32ce9f2"
+    }
+  ],
+  "completed": true,
+  "inspected": false,
+  "verification": {
+    "path": "reports/s126-c2-entry-production-verification.json",
+    "sha256": "cf0dcb5d9faf580c95556f63419da2f1b1af2b4e85817a92b5d66ad30ff4a215"
+  },
+  "boundary": "Actual stable hosted C2 root entry with native policy. No dev server/sourceOverrides/interception/style injection. Service workers blocked solely for cold HTTP request visibility. Native saved theme/mode set before first load; Customize theme dialog opens, opposite Appearance selected, original restored and dialog closed before full-viewport capture. Scoped visual/behavior proof only, not performance acceptance.",
+  "origin": "https://playfranchisearchitect.com",
+  "before": {
+    "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+    "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+    "observedAt": "2026-10-28T22:57:10.751Z"
+  },
+  "after": {
+    "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+    "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+    "observedAt": "2026-10-28T22:57:39.795Z"
+  },
+  "completedAt": "2026-10-28T22:57:40.398Z",
+  "browserClosed": true
+}

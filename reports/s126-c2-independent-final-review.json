@@ -1,0 +1,37 @@
+{
+  "session": 126,
+  "at": "2026-10-29T00:28:16.442Z",
+  "reviewer": "studio_reviewer",
+  "freshContext": true,
+  "sourceRange": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f..309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "reviewedStagedTree": "d39d0c1e1ca2aec7464535cd2f60d4043c4ce94f",
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "fix",
+      "findings": 2,
+      "fixed": 0
+    },
+    {
+      "round": 2,
+      "verdict": "pass",
+      "priorFindingsResolved": 2,
+      "newFindings": 0
+    }
+  ],
+  "separateBoundedTests": {
+    "passed": 63,
+    "total": 63,
+    "notAddedToOtherCounts": true
+  },
+  "frozenReleaseReferencesVerified": 147,
+  "preservedPriorRasterHashesVerified": 140,
+  "judged": {
+    "craft": 82,
+    "judgement": 84,
+    "honesty": 92,
+    "efficiency": 65,
+    "learning": 85
+  },
+  "scope": "Actual fresh source/metadata review and local-receipt verification; no independent network checks. Subsequent one-line canonical checkpoint heading correction is driven by the retained failed native suite; it does not claim final publication/goal completion."
+}

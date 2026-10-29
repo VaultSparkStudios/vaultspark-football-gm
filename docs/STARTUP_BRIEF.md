@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-10-28 (Session 125 closeout) -->
+<!-- generated-at: 2026-10-28 (Session 126 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: 06c3f662e849c4b7 -->
 <!-- genius-authority-fingerprint: 227d768c2f18f67d -->
-<!-- session-authority: committed=S125 · SIL=S125 · status=S125 · handoff=S125; divergent=false -->
+<!-- session-authority: committed=S126 · SIL=S126 · status=S126 · handoff=S?; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 125 closeout · 2026-10-28.
+> **Fast-boot brief** — generated at Session 126 closeout · 2026-10-28.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,12 +17,12 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 126 · 2026-10-28 · BUILDER MODE                         ║
+║  Session 127 · 2026-10-28 · BUILDER MODE                         ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S125) - WHAT SHIPPED ══════════════════════════╗
-║  S125: Three optional player-state repairs shipped and accepted  ║
+╔══ LAST SESSION (S126) - WHAT SHIPPED ══════════════════════════╗
+║  S126: Mobile and Full View controls remain usable when browser  ║
 ║  Tests Unverified for this session                               ║
 ║  Deploy —                                                        ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -40,36 +40,35 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    505/1000   ████████████░░░░░░░░░░░░   51%                     ║
-║    SIL v3.0  ·  Avg3: 505  ·  Velocity 3→                        ║
-║    Active 0d · closeout 1d · source: newest SIL/status/handoff   ║
+║    532/1000   ████████████░░░░░░░░░░░░   53%                     ║
+║    SIL v3.0  ·  Avg3: 515.7  ·  Velocity 3→                      ║
+║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
 ║    Trend  ▁▁▁▁▁  →  (last 5 sessions)                            ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
 ║    ─────────────── ────── ────────── ──────── ─                  ║
-║    Dev Health        90    █████████░  —        →                ║
+║    Dev Health        92    █████████░  —        →                ║
 ║    Alignment         70    ███████░░░  —        →                ║
-║    Momentum          60    ██████░░░░  —        →                ║
+║    Momentum          65    ███████░░░  —        →                ║
 ║    Engagement        45    █████░░░░░  —        →                ║
-║    Process Qual      45    █████░░░░░  —        →                ║
+║    Process Qual      60    ██████░░░░  —        →                ║
 ║    Coherence         60    ██████░░░░  ········ →                ║
 ║    Security          60    ██████░░░░  ········ →                ║
 ║    Ecosystem         20    ██░░░░░░░░  ········ →                ║
 ║    Capital            0    ░░░░░░░░░░  ········ →                ║
-║    Automation        55    ██████░░░░  ········ →                ║
+║    Automation        60    ██████░░░░  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 125 ═══════════════════════════╗
-║  Shipped:  S125: Three optional player-state repairs shipped an  ║
+╔══ WHERE WE LEFT OFF  ·  Session 126 ═══════════════════════════╗
+║  Shipped:  S126: Mobile and Full View controls remain usable wh  ║
 ║  Tests: Unverified for this session                              ║
-║  Deploy: S125 current frontend note12a8/d541 and API/GAME1ad ar  ║
+║  Deploy: S126 C2 frontend acb0b9ed/source309bb0f/artifact30742d  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    4% used                          ║
-║     10,811 / 272,000 tok  ·  codex/codex-272k  ·  heuristic      ║
-║     ~5,406 tok/turn  ·  cache 50%  ·  44 turns to compact        ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
+║     33,246 / 1,000,000 tok  ·  codex  ·  heuristic-stale         ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -79,17 +78,17 @@
 ║  ✓  Velocity      3   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ✓  IGNIS         43029 FORGE  ·  1d old                         ║
-║  ⛔  Truth         selected S125 technical production verified;   ║
+║  ✓  IGNIS         43733 FORGE  ·  0d old                         ║
+║  ⛔  Truth         selected S126 technical production verified;   ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
-║  ✓  Entropy       0.058  (healthy)                               ║
+║  ✓  Entropy       0.015  (healthy)                               ║
 ║  ✓  CDR           no gap detected                                ║
 ║  ✓  Patterns      no recurring pressure detected                 ║
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⛔  Doctor        9/12 (75%)  ·  3 failing                       ║
+║  ✓  Doctor        12/12 (100%)  ·  2026-10-28  ✓                 ║
 ║  ✓  Cost          Max flat-rate · $0.00/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -108,7 +107,7 @@
 
 ╔══ MOMENTUM METER ══════════════════════════════════════════════╗
 ║  Velocity:   ▁▁▁▁▁  3→  (last 5 sessions)                        ║
-║  Intent:     60% achieved last 5                                 ║
+║  Intent:     40% achieved last 5                                 ║
 ║  Streak:     — (last intent not achieved)                        ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -122,5 +121,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 125 closeout · 2026-10-28*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 126 closeout · 2026-10-28*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

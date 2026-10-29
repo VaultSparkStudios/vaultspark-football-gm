@@ -1,0 +1,289 @@
+{
+  "session": 126,
+  "phase": "staging",
+  "origin": "https://staging.playfranchisearchitect.com",
+  "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+  "candidateReference": {
+    "path": ".cache/s126-c2-candidate.json",
+    "sha256": "ecbb349148ebb376c42c56e00263afc6eff85905eb9fe7fb29bee6992e6b0809"
+  },
+  "captureReport": "reports/s126-c2-prediction-staging-pixels.json",
+  "captureReportSha256": "b678700ce5d7acaf872d3f1d733ef91a512c0a60f3e7e09c1c9dcc9390964c52",
+  "reviewedAt": "2026-10-28T21:27:37.319Z",
+  "reviewer": "game_audit",
+  "verdict": "pass-hosted-staging-prediction-selected-states",
+  "inspectedImageCount": 8,
+  "inspected": [
+    {
+      "file": ".cache/s126-c2-prediction-staging/desktop-dark-malformed-grade-clear-heading-attempt1.png",
+      "sha256": "f61d2bee14af36d5dd80673b8f23a185a73feb66ab5212ef711c3ac57154c00a",
+      "phase": "staging",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "boundingBox": {
+        "x": 270.59375,
+        "y": 446.921875,
+        "width": 560.609375,
+        "height": 107
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-c2-prediction-staging/desktop-dark-malformed-grade-clear-heading-attempt1.png",
+          "sha256": "f61d2bee14af36d5dd80673b8f23a185a73feb66ab5212ef711c3ac57154c00a",
+          "bytes": 9992
+        }
+      ],
+      "fixtureOcclusionTreatment": "none",
+      "inspected": true,
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-staging-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-prediction-staging/desktop-dark-valid-recovered-clear-heading-attempt1.png",
+      "sha256": "0dba2bc8a448e7e7ac68818451565a279ced7b26ddf38b50b29bdb8e66c9a8e1",
+      "phase": "staging",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "boundingBox": {
+        "x": 270.59375,
+        "y": 426.921875,
+        "width": 560.609375,
+        "height": 146
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-c2-prediction-staging/desktop-dark-valid-recovered-clear-heading-attempt1.png",
+          "sha256": "0dba2bc8a448e7e7ac68818451565a279ced7b26ddf38b50b29bdb8e66c9a8e1",
+          "bytes": 17603
+        }
+      ],
+      "fixtureOcclusionTreatment": "none",
+      "inspected": true,
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-staging-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-prediction-staging/desktop-light-malformed-grade-clear-heading-attempt1.png",
+      "sha256": "b575cebc814ff82dbc4296107d80e70e53ae95f293615f896dae784f9e5fa22d",
+      "phase": "staging",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "boundingBox": {
+        "x": 270.59375,
+        "y": 445.921875,
+        "width": 560.609375,
+        "height": 107
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-c2-prediction-staging/desktop-light-malformed-grade-clear-heading-attempt1.png",
+          "sha256": "b575cebc814ff82dbc4296107d80e70e53ae95f293615f896dae784f9e5fa22d",
+          "bytes": 10044
+        }
+      ],
+      "fixtureOcclusionTreatment": "none",
+      "inspected": true,
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-staging-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-prediction-staging/desktop-light-valid-recovered-clear-heading-attempt1.png",
+      "sha256": "9822fdc8d963a10d2de4c965d734a4261f12adfedc1b080799d402ff61aca3b3",
+      "phase": "staging",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "boundingBox": {
+        "x": 270.59375,
+        "y": 426.921875,
+        "width": 560.609375,
+        "height": 146
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-c2-prediction-staging/desktop-light-valid-recovered-clear-heading-attempt1.png",
+          "sha256": "9822fdc8d963a10d2de4c965d734a4261f12adfedc1b080799d402ff61aca3b3",
+          "bytes": 17784
+        }
+      ],
+      "fixtureOcclusionTreatment": "none",
+      "inspected": true,
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-staging-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-prediction-staging/mobile-dark-malformed-grade-clear-heading-attempt1.png",
+      "sha256": "2cbf18a98205793b035f940b48e749f747aa1f7fd1accc61e9e2a0d3ecef8617",
+      "phase": "staging",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "boundingBox": {
+        "x": 34.59375,
+        "y": 353.1875,
+        "width": 320.8125,
+        "height": 137
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-c2-prediction-staging/mobile-dark-malformed-grade-clear-heading-attempt1.png",
+          "sha256": "2cbf18a98205793b035f940b48e749f747aa1f7fd1accc61e9e2a0d3ecef8617",
+          "bytes": 10444
+        }
+      ],
+      "fixtureOcclusionTreatment": "none",
+      "inspected": true,
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-staging-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-prediction-staging/mobile-dark-valid-recovered-clear-heading-attempt1.png",
+      "sha256": "5667600fcc986342a64ef67b5888c2c28e88d8ab58f863d2a82ead9e41aa513d",
+      "phase": "staging",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "boundingBox": {
+        "x": 34.59375,
+        "y": 302.1875,
+        "width": 320.8125,
+        "height": 239
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-c2-prediction-staging/mobile-dark-valid-recovered-clear-heading-attempt1.png",
+          "sha256": "5667600fcc986342a64ef67b5888c2c28e88d8ab58f863d2a82ead9e41aa513d",
+          "bytes": 17741
+        }
+      ],
+      "fixtureOcclusionTreatment": "Unrelated fixed .game-topbar visibility hidden; native panel unchanged",
+      "inspected": true,
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-staging-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-prediction-staging/mobile-light-malformed-grade-clear-heading-attempt1.png",
+      "sha256": "a925dac6433e2d2ee9d9bee89ff4632fc263d042084bf1e204987459e789f51a",
+      "phase": "staging",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "boundingBox": {
+        "x": 34.59375,
+        "y": 352.96875,
+        "width": 320.8125,
+        "height": 137
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-c2-prediction-staging/mobile-light-malformed-grade-clear-heading-attempt1.png",
+          "sha256": "a925dac6433e2d2ee9d9bee89ff4632fc263d042084bf1e204987459e789f51a",
+          "bytes": 10614
+        }
+      ],
+      "fixtureOcclusionTreatment": "none",
+      "inspected": true,
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-staging-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-prediction-staging/mobile-light-valid-recovered-clear-heading-attempt1.png",
+      "sha256": "a09ccd456da32557d5d6afee99f3935081035a08858ea552cd3cf1a203ffd464",
+      "phase": "staging",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "boundingBox": {
+        "x": 34.59375,
+        "y": 302.96875,
+        "width": 320.8125,
+        "height": 239
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-c2-prediction-staging/mobile-light-valid-recovered-clear-heading-attempt1.png",
+          "sha256": "a09ccd456da32557d5d6afee99f3935081035a08858ea552cd3cf1a203ffd464",
+          "bytes": 17925
+        }
+      ],
+      "fixtureOcclusionTreatment": "Unrelated fixed .game-topbar visibility hidden; native panel unchanged",
+      "inspected": true,
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-staging-selected-state"
+    }
+  ],
+  "modules": [
+    {
+      "path": "lib/spreadPredictions.js",
+      "sha256": "9b050094ac3396d463048b5d403af0112ac061f782b00d6c16897dfcd4539909"
+    },
+    {
+      "path": "lib/predictionPanel.js",
+      "sha256": "25e6a578537f1b77e47619098115a03396d1c130306ce14202c203119aa06b63"
+    },
+    {
+      "path": "lib/tabOverview.js",
+      "sha256": "d8dc8476510703d2dbbbab3fd35ddce5376bcb102d8f265bb93ce2ad4a7bd1d9"
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "blockingDefectsOpen": 0
+  },
+  "openCaptureDefects": 0,
+  "stagingVerified": true,
+  "productionVerified": false,
+  "findings": [
+    "Individually viewed all eight native prediction panel PNGs. Both themes/devices have clear panel headings, visible no-prediction malformed state and single correct + exact-margin recovered result. No blank panel, occluded title, horizontal clipping or unreadable touched-state control was visible."
+  ],
+  "limits": [
+    "Selected synthetic hosted client states only; no real-player outcome, complete-game or performance acceptance claim.",
+    "Native Predictions panel component captures only; surrounding full Desk is outside this selected capture boundary.",
+    "Mobile recovered prediction component captures hide the unrelated fixed .game-topbar through visibility only; the panel remains native and unchanged. No source replacement, route interception or CSP relaxation.",
+    "Exact C2 staging evidence only; no production claim."
+  ]
+}

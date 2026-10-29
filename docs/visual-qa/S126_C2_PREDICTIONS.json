@@ -1,0 +1,609 @@
+{
+  "schemaVersion": 1,
+  "session": 126,
+  "kind": "current-c2-prediction-visual-supplement",
+  "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d"
+  },
+  "capturedAt": "2026-10-28T23:00:38.316Z",
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "captures": [
+    {
+      "file": "s126-c2-prediction-before-production-predictions-malformed-grade-desktop-dark.png",
+      "sha256": "3bd18c9c1b171b16bcd295d2be7f7a2bd96926d3768d7845df0d1b9c3a3fffe1",
+      "phase": "before-production",
+      "group": "prediction-before-production",
+      "surface": "predictions",
+      "state": "malformed-grade",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "predictions malformed-grade",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-prediction-before-production/desktop-dark-malformed-grade.png",
+        "observedPhase": "before-production"
+      }
+    },
+    {
+      "file": "s126-c2-prediction-before-production-predictions-valid-recovered-desktop-dark.png",
+      "sha256": "3e0ff7259f972daf60c0ca78d8d55b6ac4b553fc3f4bdf935a51252e4d25dfe9",
+      "phase": "before-production",
+      "group": "prediction-before-production",
+      "surface": "predictions",
+      "state": "valid-recovered",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "predictions valid-recovered",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-prediction-before-production/desktop-dark-valid-recovered.png",
+        "observedPhase": "before-production"
+      }
+    },
+    {
+      "file": "s126-c2-prediction-before-production-predictions-malformed-grade-desktop-light.png",
+      "sha256": "3a0b68a987364cc7581f428a0c89b85bcda954ff10a52afb214888af761f5f16",
+      "phase": "before-production",
+      "group": "prediction-before-production",
+      "surface": "predictions",
+      "state": "malformed-grade",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "predictions malformed-grade",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-prediction-before-production/desktop-light-malformed-grade.png",
+        "observedPhase": "before-production"
+      }
+    },
+    {
+      "file": "s126-c2-prediction-before-production-predictions-valid-recovered-desktop-light.png",
+      "sha256": "ca0b747088c5a8f629339f0384cb26835eab4dfef10c11773a5da2d316baac51",
+      "phase": "before-production",
+      "group": "prediction-before-production",
+      "surface": "predictions",
+      "state": "valid-recovered",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "predictions valid-recovered",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-prediction-before-production/desktop-light-valid-recovered.png",
+        "observedPhase": "before-production"
+      }
+    },
+    {
+      "file": "s126-c2-prediction-before-production-predictions-malformed-grade-mobile-dark.png",
+      "sha256": "a376b06975f2ce88de30f0dfca3068939d4810d977d0d71270c03f0462d9094d",
+      "phase": "before-production",
+      "group": "prediction-before-production",
+      "surface": "predictions",
+      "state": "malformed-grade",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "predictions malformed-grade",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-prediction-before-production/mobile-dark-malformed-grade.png",
+        "observedPhase": "before-production"
+      }
+    },
+    {
+      "file": "s126-c2-prediction-before-production-predictions-valid-recovered-mobile-dark.png",
+      "sha256": "ba3d553bdcea19457e80ba948229861eba08253a30ab70931c340585b41bb531",
+      "phase": "before-production",
+      "group": "prediction-before-production",
+      "surface": "predictions",
+      "state": "valid-recovered",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "predictions valid-recovered",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-prediction-before-production/mobile-dark-valid-recovered-clear-heading-attempt1.png",
+        "observedPhase": "before-production"
+      },
+      "fixtureOcclusionTreatment": "Unrelated fixed .game-topbar visibility hidden; native panel unchanged"
+    },
+    {
+      "file": "s126-c2-prediction-before-production-predictions-malformed-grade-mobile-light.png",
+      "sha256": "2d168e754bf0dbbb96107392886089d7be3945612aca22e66779a54395adad4a",
+      "phase": "before-production",
+      "group": "prediction-before-production",
+      "surface": "predictions",
+      "state": "malformed-grade",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "predictions malformed-grade",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-prediction-before-production/mobile-light-malformed-grade.png",
+        "observedPhase": "before-production"
+      }
+    },
+    {
+      "file": "s126-c2-prediction-before-production-predictions-valid-recovered-mobile-light.png",
+      "sha256": "e852fe82d64f80dc85364a73e1b8ddbe47491500bf24a74bd5a814209c361bbf",
+      "phase": "before-production",
+      "group": "prediction-before-production",
+      "surface": "predictions",
+      "state": "valid-recovered",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "predictions valid-recovered",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-prediction-before-production/mobile-light-valid-recovered-clear-heading-attempt1.png",
+        "observedPhase": "before-production"
+      },
+      "fixtureOcclusionTreatment": "Unrelated fixed .game-topbar visibility hidden; native panel unchanged"
+    },
+    {
+      "file": "s126-c2-prediction-staging-predictions-malformed-grade-desktop-dark.png",
+      "sha256": "f61d2bee14af36d5dd80673b8f23a185a73feb66ab5212ef711c3ac57154c00a",
+      "phase": "staging",
+      "group": "prediction-staging",
+      "surface": "predictions",
+      "state": "malformed-grade",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "predictions malformed-grade",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-prediction-staging/desktop-dark-malformed-grade-clear-heading-attempt1.png",
+        "observedPhase": "staging"
+      },
+      "fixtureOcclusionTreatment": "none"
+    },
+    {
+      "file": "s126-c2-prediction-staging-predictions-valid-recovered-desktop-dark.png",
+      "sha256": "0dba2bc8a448e7e7ac68818451565a279ced7b26ddf38b50b29bdb8e66c9a8e1",
+      "phase": "staging",
+      "group": "prediction-staging",
+      "surface": "predictions",
+      "state": "valid-recovered",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "predictions valid-recovered",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-prediction-staging/desktop-dark-valid-recovered-clear-heading-attempt1.png",
+        "observedPhase": "staging"
+      },
+      "fixtureOcclusionTreatment": "none"
+    },
+    {
+      "file": "s126-c2-prediction-staging-predictions-malformed-grade-desktop-light.png",
+      "sha256": "b575cebc814ff82dbc4296107d80e70e53ae95f293615f896dae784f9e5fa22d",
+      "phase": "staging",
+      "group": "prediction-staging",
+      "surface": "predictions",
+      "state": "malformed-grade",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "predictions malformed-grade",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-prediction-staging/desktop-light-malformed-grade-clear-heading-attempt1.png",
+        "observedPhase": "staging"
+      },
+      "fixtureOcclusionTreatment": "none"
+    },
+    {
+      "file": "s126-c2-prediction-staging-predictions-valid-recovered-desktop-light.png",
+      "sha256": "9822fdc8d963a10d2de4c965d734a4261f12adfedc1b080799d402ff61aca3b3",
+      "phase": "staging",
+      "group": "prediction-staging",
+      "surface": "predictions",
+      "state": "valid-recovered",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "predictions valid-recovered",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-prediction-staging/desktop-light-valid-recovered-clear-heading-attempt1.png",
+        "observedPhase": "staging"
+      },
+      "fixtureOcclusionTreatment": "none"
+    },
+    {
+      "file": "s126-c2-prediction-staging-predictions-malformed-grade-mobile-dark.png",
+      "sha256": "2cbf18a98205793b035f940b48e749f747aa1f7fd1accc61e9e2a0d3ecef8617",
+      "phase": "staging",
+      "group": "prediction-staging",
+      "surface": "predictions",
+      "state": "malformed-grade",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "predictions malformed-grade",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-prediction-staging/mobile-dark-malformed-grade-clear-heading-attempt1.png",
+        "observedPhase": "staging"
+      },
+      "fixtureOcclusionTreatment": "none"
+    },
+    {
+      "file": "s126-c2-prediction-staging-predictions-valid-recovered-mobile-dark.png",
+      "sha256": "5667600fcc986342a64ef67b5888c2c28e88d8ab58f863d2a82ead9e41aa513d",
+      "phase": "staging",
+      "group": "prediction-staging",
+      "surface": "predictions",
+      "state": "valid-recovered",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "predictions valid-recovered",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-prediction-staging/mobile-dark-valid-recovered-clear-heading-attempt1.png",
+        "observedPhase": "staging"
+      },
+      "fixtureOcclusionTreatment": "Unrelated fixed .game-topbar visibility hidden; native panel unchanged"
+    },
+    {
+      "file": "s126-c2-prediction-staging-predictions-malformed-grade-mobile-light.png",
+      "sha256": "a925dac6433e2d2ee9d9bee89ff4632fc263d042084bf1e204987459e789f51a",
+      "phase": "staging",
+      "group": "prediction-staging",
+      "surface": "predictions",
+      "state": "malformed-grade",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "predictions malformed-grade",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-prediction-staging/mobile-light-malformed-grade-clear-heading-attempt1.png",
+        "observedPhase": "staging"
+      },
+      "fixtureOcclusionTreatment": "none"
+    },
+    {
+      "file": "s126-c2-prediction-staging-predictions-valid-recovered-mobile-light.png",
+      "sha256": "a09ccd456da32557d5d6afee99f3935081035a08858ea552cd3cf1a203ffd464",
+      "phase": "staging",
+      "group": "prediction-staging",
+      "surface": "predictions",
+      "state": "valid-recovered",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "predictions valid-recovered",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-prediction-staging/mobile-light-valid-recovered-clear-heading-attempt1.png",
+        "observedPhase": "staging"
+      },
+      "fixtureOcclusionTreatment": "Unrelated fixed .game-topbar visibility hidden; native panel unchanged"
+    },
+    {
+      "file": "s126-c2-prediction-production-predictions-malformed-grade-desktop-dark.png",
+      "sha256": "f61d2bee14af36d5dd80673b8f23a185a73feb66ab5212ef711c3ac57154c00a",
+      "phase": "production",
+      "group": "prediction-production",
+      "surface": "predictions",
+      "state": "malformed-grade",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "predictions malformed-grade",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-prediction-production/desktop-dark-malformed-grade-clear-heading-attempt1.png",
+        "observedPhase": "production"
+      },
+      "fixtureOcclusionTreatment": "none"
+    },
+    {
+      "file": "s126-c2-prediction-production-predictions-valid-recovered-desktop-dark.png",
+      "sha256": "0dba2bc8a448e7e7ac68818451565a279ced7b26ddf38b50b29bdb8e66c9a8e1",
+      "phase": "production",
+      "group": "prediction-production",
+      "surface": "predictions",
+      "state": "valid-recovered",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "predictions valid-recovered",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-prediction-production/desktop-dark-valid-recovered-clear-heading-attempt1.png",
+        "observedPhase": "production"
+      },
+      "fixtureOcclusionTreatment": "none"
+    },
+    {
+      "file": "s126-c2-prediction-production-predictions-malformed-grade-desktop-light.png",
+      "sha256": "b575cebc814ff82dbc4296107d80e70e53ae95f293615f896dae784f9e5fa22d",
+      "phase": "production",
+      "group": "prediction-production",
+      "surface": "predictions",
+      "state": "malformed-grade",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "predictions malformed-grade",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-prediction-production/desktop-light-malformed-grade-clear-heading-attempt1.png",
+        "observedPhase": "production"
+      },
+      "fixtureOcclusionTreatment": "none"
+    },
+    {
+      "file": "s126-c2-prediction-production-predictions-valid-recovered-desktop-light.png",
+      "sha256": "9822fdc8d963a10d2de4c965d734a4261f12adfedc1b080799d402ff61aca3b3",
+      "phase": "production",
+      "group": "prediction-production",
+      "surface": "predictions",
+      "state": "valid-recovered",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "predictions valid-recovered",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-prediction-production/desktop-light-valid-recovered-clear-heading-attempt1.png",
+        "observedPhase": "production"
+      },
+      "fixtureOcclusionTreatment": "none"
+    },
+    {
+      "file": "s126-c2-prediction-production-predictions-malformed-grade-mobile-dark.png",
+      "sha256": "76519aff410fce8eaf186b5851ae69050117a1e91512cbcb07e75644d125aa26",
+      "phase": "production",
+      "group": "prediction-production",
+      "surface": "predictions",
+      "state": "malformed-grade",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "predictions malformed-grade",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-prediction-production/mobile-dark-malformed-grade-clear-heading-attempt1.png",
+        "observedPhase": "production"
+      },
+      "fixtureOcclusionTreatment": "none"
+    },
+    {
+      "file": "s126-c2-prediction-production-predictions-valid-recovered-mobile-dark.png",
+      "sha256": "9515ff42941a413ea605b39c7cf9d889451812450a5a6ea8165682d90fcbcdcc",
+      "phase": "production",
+      "group": "prediction-production",
+      "surface": "predictions",
+      "state": "valid-recovered",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "predictions valid-recovered",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-prediction-production/mobile-dark-valid-recovered-clear-heading-attempt1.png",
+        "observedPhase": "production"
+      },
+      "fixtureOcclusionTreatment": "Unrelated fixed .game-topbar visibility hidden; native panel unchanged"
+    },
+    {
+      "file": "s126-c2-prediction-production-predictions-malformed-grade-mobile-light.png",
+      "sha256": "37ef99b5042b6433ac9eb32214953a4382e0cf4fa0852d5025c2a773945012b7",
+      "phase": "production",
+      "group": "prediction-production",
+      "surface": "predictions",
+      "state": "malformed-grade",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "predictions malformed-grade",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-prediction-production/mobile-light-malformed-grade-clear-heading-attempt1.png",
+        "observedPhase": "production"
+      },
+      "fixtureOcclusionTreatment": "none"
+    },
+    {
+      "file": "s126-c2-prediction-production-predictions-valid-recovered-mobile-light.png",
+      "sha256": "a09ccd456da32557d5d6afee99f3935081035a08858ea552cd3cf1a203ffd464",
+      "phase": "production",
+      "group": "prediction-production",
+      "surface": "predictions",
+      "state": "valid-recovered",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "predictions valid-recovered",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-prediction-production/mobile-light-valid-recovered-clear-heading-attempt1.png",
+        "observedPhase": "production"
+      },
+      "fixtureOcclusionTreatment": "Unrelated fixed .game-topbar visibility hidden; native panel unchanged"
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "game_audit; root",
+    "findings": [
+      "Selected before/current source, phase, state, theme and device joins verified against actual independent image/report hashes.",
+      "Historical failed/occluded frames and C1 after/local/hosted/prototype evidence remain historical, not current acceptance."
+    ],
+    "fixesApplied": [
+      "Mobile Full View recovery",
+      "Prediction corruption and once-only grading",
+      "Trophy tab continuity",
+      "Exact critical entry asset bundling; no image edits"
+    ],
+    "blockingDefectsOpen": 0
+  },
+  "inputs": [
+    {
+      "path": "reports/s126-prediction-before-production-pixels.json",
+      "sha256": "a3f422715485823fa966acc6d3b1031a2f6da2804bf1f51546e195e50ab35dcc"
+    },
+    {
+      "path": "reports/s126-prediction-preproduction-visual-review.json",
+      "sha256": "736b522aebe07e18eec63d25b0aeff02e193a216ec21b309caaff8491e060fec"
+    },
+    {
+      "path": "reports/s126-c2-prediction-staging-pixels.json",
+      "sha256": "b678700ce5d7acaf872d3f1d733ef91a512c0a60f3e7e09c1c9dcc9390964c52"
+    },
+    {
+      "path": "reports/s126-c2-prediction-staging-visual-review.json",
+      "sha256": "0a1761636550a0e88164d729a042a4a2a077e55f336f0c0c862f116ea6a7ba4c"
+    },
+    {
+      "path": "reports/s126-c2-prediction-production-pixels.json",
+      "sha256": "ece0dea03affa9d8f6c403ff4740355621f903962430c8b95e3e6c9f92472d38"
+    },
+    {
+      "path": "reports/s126-c2-prediction-production-visual-review.json",
+      "sha256": "3e3190d346d822e2fef33f8a6f1adf8c54c87af1005fe2b3d0908428823e8f41"
+    }
+  ],
+  "primaryPath": "docs/visual-qa/S126_C2_PRIMARY.json",
+  "limits": [
+    "Named synthetic local-only predictions; not real-player outcomes.",
+    "Mobile recovered component hides unrelated fixed topbar as documented by the actual capture reports."
+  ]
+}

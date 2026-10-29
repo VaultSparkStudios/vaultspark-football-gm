@@ -1,0 +1,124 @@
+{
+  "session": 126,
+  "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+  "observedAt": "2026-10-28T23:16:25.691Z",
+  "initialCourt": {
+    "verified": false,
+    "receiptEmitted": false,
+    "reason": "Fresh staging native14 readback was nonpassing."
+  },
+  "diagnostic": {
+    "staging": {
+      "status": "blocked",
+      "checksPassed": 5,
+      "checksTotal": 14
+    },
+    "production": {
+      "status": "verified",
+      "checksPassed": 14,
+      "checksTotal": 14
+    }
+  },
+  "recoveredTransport": {
+    "session": 126,
+    "observedAt": "2026-10-28T23:11:00.087Z",
+    "timeoutMs": 7000,
+    "rows": [
+      {
+        "path": "/_health",
+        "ok": true,
+        "statusCode": 200,
+        "detail": "HTTP 200",
+        "chain": [
+          {
+            "url": "https://staging.playfranchisearchitect.com/_health",
+            "statusCode": 200
+          }
+        ],
+        "server": "cloudflare",
+        "cfRay": "a51d9dc068ccd816-ARN",
+        "cache": "DYNAMIC",
+        "type": "application/octet-stream",
+        "metadata": {
+          "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+          "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d"
+        }
+      },
+      {
+        "path": "/deploy-manifest.json",
+        "ok": true,
+        "statusCode": 200,
+        "detail": "HTTP 200",
+        "chain": [
+          {
+            "url": "https://staging.playfranchisearchitect.com/deploy-manifest.json",
+            "statusCode": 200
+          }
+        ],
+        "server": "cloudflare",
+        "cfRay": "a51d9dc6a9acd816-ARN",
+        "cache": "DYNAMIC",
+        "type": "application/json",
+        "metadata": {
+          "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+          "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d"
+        }
+      },
+      {
+        "path": "/styles.c4075a9e38.css",
+        "ok": true,
+        "statusCode": 200,
+        "detail": "HTTP 200",
+        "chain": [
+          {
+            "url": "https://staging.playfranchisearchitect.com/styles.c4075a9e38.css",
+            "statusCode": 200
+          }
+        ],
+        "server": "cloudflare",
+        "cfRay": "a51d9dd79a14d816-ARN",
+        "cache": "HIT",
+        "type": "text/css; charset=utf-8"
+      },
+      {
+        "path": "/community-stats.25f97e0a1e.js",
+        "ok": true,
+        "statusCode": 200,
+        "detail": "HTTP 200",
+        "chain": [
+          {
+            "url": "https://staging.playfranchisearchitect.com/community-stats.25f97e0a1e.js",
+            "statusCode": 200
+          }
+        ],
+        "server": "cloudflare",
+        "cfRay": "a51d9dea7d27d816-ARN",
+        "cache": "HIT",
+        "type": "application/javascript"
+      }
+    ]
+  },
+  "acceptedFresh": [
+    {
+      "phase": "staging",
+      "checkedAt": "2026-10-28T23:14:17.360Z",
+      "summary": {
+        "status": "verified",
+        "checksPassed": 14,
+        "checksTotal": 14
+      }
+    },
+    {
+      "phase": "production",
+      "checkedAt": "2026-10-28T23:14:17.922Z",
+      "summary": {
+        "status": "verified",
+        "checksPassed": 14,
+        "checksTotal": 14
+      }
+    }
+  ],
+  "classification": "Transient reachability observation; no revision drift was observed after recovery. A specific network cause was not established. Failed observations are retained, not relabeled green.",
+  "scope": "Provenance GET observations only; performance measurements, source, deployment and fourteen required checks were not changed for recovery."
+}

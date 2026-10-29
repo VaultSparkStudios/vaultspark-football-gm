@@ -1,0 +1,291 @@
+{
+  "session": 126,
+  "phase": "production",
+  "origin": "https://playfranchisearchitect.com",
+  "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+  "candidateReference": {
+    "path": ".cache/s126-c2-candidate.json",
+    "sha256": "ecbb349148ebb376c42c56e00263afc6eff85905eb9fe7fb29bee6992e6b0809"
+  },
+  "captureReport": "reports/s126-c2-production-pixels.json",
+  "captureReportSha256": "0c061916661f81d1396de6c54588f60fcfaf025be7185848812c61c864c25bf7",
+  "reviewedAt": "2026-10-28T23:00:00.541Z",
+  "reviewer": "game_audit",
+  "verdict": "pass-hosted-production-selected-states",
+  "inspectedImageCount": 16,
+  "inspected": [
+    {
+      "file": ".cache/s126-c2-mobile-production/desktop-dark-deck.png",
+      "sha256": "7e0fa7ce68472a4b19f5a8fcddbdc57506531febbfe784f9e3e5de9bddf22385",
+      "device": "desktop",
+      "theme": "dark",
+      "state": "deck",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": true,
+      "page": "mobile deck",
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-production-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-mobile-production/desktop-dark-full-view.png",
+      "sha256": "14080e18b3e571c95dcd50e06b4a186b7b474bd602c339e5bfcd72aa90d7bb0e",
+      "device": "desktop",
+      "theme": "dark",
+      "state": "full-view",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": true,
+      "page": "mobile full-view",
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-production-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-mobile-production/desktop-light-deck.png",
+      "sha256": "3aa555cc3ba4e51b0652d72f8ae5109bd268b56368fc793d4e118976b2a6ba1f",
+      "device": "desktop",
+      "theme": "light",
+      "state": "deck",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": true,
+      "page": "mobile deck",
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-production-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-mobile-production/desktop-light-full-view.png",
+      "sha256": "739b5a6ebe2480ba8a8914d436405a94b55daabf1aa0f0c2864c2e6e2bc9c751",
+      "device": "desktop",
+      "theme": "light",
+      "state": "full-view",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": true,
+      "page": "mobile full-view",
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-production-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-mobile-production/mobile-dark-deck.png",
+      "sha256": "bb8fb5f0bb6b9e20e62a1de4716aff1449dd6b1cc51bea4b9e198961d5fb8da9",
+      "device": "mobile",
+      "theme": "dark",
+      "state": "deck",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "inspected": true,
+      "page": "mobile deck",
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-production-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-mobile-production/mobile-dark-full-view.png",
+      "sha256": "cd9443884ab63196d652d63d64df4576bb33ef2df763470dd1cfc84c9436daf8",
+      "device": "mobile",
+      "theme": "dark",
+      "state": "full-view",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "inspected": true,
+      "page": "mobile full-view",
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-production-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-mobile-production/mobile-light-deck.png",
+      "sha256": "4c1f37bdaf6824da07ab5b40ec941dff4bc1a799084917e7f46e29f9bc1c540c",
+      "device": "mobile",
+      "theme": "light",
+      "state": "deck",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "inspected": true,
+      "page": "mobile deck",
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-production-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-mobile-production/mobile-light-full-view.png",
+      "sha256": "8a0f558597b3bc01211ba2543a7bf2bd1be9445061a22f8b4a4145bbefcd74fb",
+      "device": "mobile",
+      "theme": "light",
+      "state": "full-view",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "inspected": true,
+      "page": "mobile full-view",
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-production-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-after-production/trophy-desktop-dark.png",
+      "sha256": "61d07f747b4c4578b71d125b2b83d05b250acb3a98a91c65c22833a8693d0c42",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": true,
+      "page": "Trophy Case quota recovery",
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-production-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-after-production/trophy-desktop-light.png",
+      "sha256": "c7b76dc499efd78877edb90cf9c255d946e9313aa5433de97f7f5c28a05e4e60",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": true,
+      "page": "Trophy Case quota recovery",
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-production-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-after-production/trophy-mobile-dark.png",
+      "sha256": "731400c18710591728371ed8a4ccabec4766fee47b5073cca1f5390fd10cee76",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "inspected": true,
+      "page": "Trophy Case quota recovery",
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-production-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-after-production/trophy-mobile-light.png",
+      "sha256": "664b751520e3cf7bf74b7d65e2994af07c5bcd2518f0af12e7a8b530d0bb6b78",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "inspected": true,
+      "page": "Trophy Case quota recovery",
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-production-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-status-production-v2/desktop-dark.png",
+      "phase": "production",
+      "theme": "dark",
+      "actualTheme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "status",
+      "sha256": "6c38f7107fef79b2b77a85609dd7e90792ae5ff5bcff9afdda47b7a3b75d847a",
+      "inspected": true,
+      "device": "desktop",
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-production-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-status-production-v2/desktop-light.png",
+      "phase": "production",
+      "theme": "light",
+      "actualTheme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "status",
+      "sha256": "32a5b149ab3e3776023d023d403041c84d199502fa0b532559c19d253c69e151",
+      "inspected": true,
+      "device": "desktop",
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-production-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-status-production-v2/mobile-dark.png",
+      "phase": "production",
+      "theme": "dark",
+      "actualTheme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "status",
+      "sha256": "c35e682e33359364eadcbaf6b42497ffad10fb2b9d4a78f9e43319ec3848f04b",
+      "inspected": true,
+      "device": "mobile",
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-production-selected-state"
+    },
+    {
+      "file": ".cache/s126-c2-status-production-v2/mobile-light.png",
+      "phase": "production",
+      "theme": "light",
+      "actualTheme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "status",
+      "sha256": "1615fc777af7870aa2ad00648b9bbaad4955aad77f85862b13b0e2b219722151",
+      "inspected": true,
+      "device": "mobile",
+      "method": "Individual actual view_image rendered pixel inspection",
+      "verdict": "pass-hosted-production-selected-state"
+    }
+  ],
+  "modules": [
+    {
+      "path": "lib/mobileLoop.js",
+      "sha256": "6101bf17edff16908983ca9f13b3bca49a8a650fb09f722307e2717af277dbd8"
+    },
+    {
+      "path": "lib/achievements.js",
+      "sha256": "312d506800d32150a214f21472b0186c9356f9d911b22688e614ed12bb1e670e"
+    },
+    {
+      "path": "lib/spreadPredictions.js",
+      "sha256": "9b050094ac3396d463048b5d403af0112ac061f782b00d6c16897dfcd4539909"
+    },
+    {
+      "path": "status.html",
+      "sha256": "fb4cd1ad6148b3cf85819f16fb19e2a8660656e40e613d5dc3eb1d36eebce429"
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "blockingDefectsOpen": 0
+  },
+  "openCaptureDefects": 0,
+  "productionVerified": true,
+  "findings": [
+    "Individually viewed all sixteen actual production PNGs: desktop/mobile dark/light decision decks and exited Full View, Trophy Case quota recovery, and Status & Updates. Full View removes the deck overlay, retained trophy and tab-only copy are visible, and the status prose wraps inside mobile gutters. No new blocking clipping, blank content or theme contrast defect was visible."
+  ],
+  "limits": [
+    "Selected synthetic hosted client states only; no real-player outcome, complete-game or performance acceptance claim.",
+    "Full viewport images show the visible scroll region; longer content continues below it. Trophy Case is a full native component capture, with unrelated fixed topbar/toast hidden using permitted visibility attributes. Locked trophy rows intentionally retain the existing dimmed appearance.",
+    "Exact C2 production selected-state evidence only; broader release and whole-application claims are outside this review."
+  ]
+}

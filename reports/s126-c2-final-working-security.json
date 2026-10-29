@@ -1,0 +1,22 @@
+{
+  "session": 126,
+  "at": "2026-10-29T00:12:05.324Z",
+  "mode": "working",
+  "scanned": 63,
+  "findings": [],
+  "settings": {
+    "passing": true,
+    "findings": 0
+  },
+  "gatewayAudit": {
+    "session": 126,
+    "at": "2026-10-29T00:10:20.887Z",
+    "exitCode": 0,
+    "resolvedThroughCanonicalGateway": true,
+    "advisory": true,
+    "scope": "Canonical capability inventory resolution only; legacy --audit flag is ignored by the owner CLI. Provider action health is not inferred from presence.",
+    "parseable": true,
+    "rawLog": ".cache/s126-c2-final-gateway-advisory.log"
+  },
+  "scope": "Current project changed bytes through canonical detector, excludes binary captures."
+}

@@ -1,0 +1,35 @@
+{
+  "session": 126,
+  "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "primaryDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+  "completeUploadDigest": "20d7d286e53fe0500efef5a1e0eee083d7d9fe0cfa476a8601e20aedd37a5d4a",
+  "completeUploadFiles": 3650,
+  "completeUploadExclusions": [],
+  "allPathsAndBytesVerified": true,
+  "rootMetadata": {
+    "_health": {
+      "path": "_health",
+      "bytes": 872,
+      "sha256": "5a22d05845e3561d18b622b4f077df8119fc8993730523dc88c612ca76a44807"
+    },
+    "deploy-manifest.json": {
+      "path": "deploy-manifest.json",
+      "bytes": 63174,
+      "sha256": "153a01e14ed554ee527ee1d8061e282dc0e1df2fca7199a14cedc6c55a820ee3"
+    },
+    "edge-policy-receipt.json": {
+      "path": "edge-policy-receipt.json",
+      "bytes": 1712,
+      "sha256": "93600b5bc52fd9aab95c7696da7fde5115f626950e39670d35fef4e3191f570a"
+    }
+  },
+  "publishedMounts": [
+    "/",
+    "/franchise-architect-football/",
+    "/vaultspark-football-gm/",
+    "/franchise-architect/",
+    "/games/vaultspark-football-gm/",
+    "/games/franchise-architect/",
+    "/games/franchise-architect-football/"
+  ]
+}

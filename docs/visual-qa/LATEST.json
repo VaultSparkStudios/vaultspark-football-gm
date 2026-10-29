@@ -1,21 +1,58 @@
 {
   "schemaVersion": 1,
-  "session": 125,
-  "capturedAt": "2026-10-27T17:13:18.299Z",
-  "kind": "client-runtime-optional-state-and-authoritative-recovery",
-  "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "session": 126,
+  "kind": "current-c2-selected-visuals",
+  "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d"
+  },
+  "capturedAt": "2026-10-28T22:58:45.418Z",
+  "assembledAt": "2026-10-28T23:03:20.580Z",
   "sourceFiles": [
     {
-      "path": "public/lib/playtestJourney.js",
-      "sha256": "bb3f8aeae0814da8cb820a0e9e7ad22e7a770c2cc463345fae82e501eca0e050"
+      "path": "public/lib/mobileLoop.js",
+      "sha256": "6101bf17edff16908983ca9f13b3bca49a8a650fb09f722307e2717af277dbd8"
     },
     {
-      "path": "public/lib/engagementFeatures.js",
-      "sha256": "e8454234db472d0aec39398766c9de88f194eb3b048a2475c6a9cfdba03a4915"
+      "path": "public/lib/spreadPredictions.js",
+      "sha256": "9b050094ac3396d463048b5d403af0112ac061f782b00d6c16897dfcd4539909"
     },
     {
-      "path": "public/lib/firstSeasonContract.js",
-      "sha256": "d8228f2cc832301db9310093df35cdb5f814e93ae67ccf0026d7dad2da66625d"
+      "path": "public/lib/achievements.js",
+      "sha256": "312d506800d32150a214f21472b0186c9356f9d911b22688e614ed12bb1e670e"
+    },
+    {
+      "path": "public/status.html",
+      "sha256": "2a55ca64d2aba25c2deb82a32830318356c0df74cf8b93b4cee1395a467ec5cf"
+    },
+    {
+      "path": "public/index.html",
+      "sha256": "20dc7b2f2bc970df7b602cd3bb924d89ab17f58a0edd32db0cc6f6022105e6d4"
+    },
+    {
+      "path": "public/lib/themeBoot.js",
+      "sha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f"
+    },
+    {
+      "path": "public/styles.css",
+      "sha256": "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83"
+    },
+    {
+      "path": "public/site.css",
+      "sha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+    },
+    {
+      "path": "public/images/screens/hero.jpg",
+      "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
+    },
+    {
+      "path": "scripts/lib/inline-public-entry.mjs",
+      "sha256": "af815788536e9af637ce1fb3ea93c248927246c6f8eb69d18c6533d70e5b0303"
+    },
+    {
+      "path": "scripts/build-pages.mjs",
+      "sha256": "58b5d0cd541efa564466a12d7b1f8e1a065e13f949570c5f2601c0f2af082e6f"
     }
   ],
   "themes": [
@@ -24,3145 +61,1407 @@
   ],
   "captures": [
     {
-      "file": "s125-client-before-desktop-dark-boot-getter.png",
-      "sha256": "a97b12df9543e1c4fe51f3faeb00419328ad2ad754b77884c2d7ac07781e6d21",
-      "phase": "client-before",
+      "file": "s126-c2-before-original-mobile-controls-deck-desktop-dark.png",
+      "sha256": "5e7036f4fa748e1d976dde3245aa0c17d26888bac3efbf4b8c8ca928f1b1d2b5",
+      "phase": "before-original",
+      "group": "before-original",
+      "surface": "mobile-controls",
+      "state": "deck",
+      "device": "desktop",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "boot-getter",
+      "page": "mobile-controls deck",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
       "inspected": true,
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af"
+      "original": {
+        "file": "docs/visual-qa/s126-mobile-before-desktop-dark-deck.png",
+        "observedPhase": "before"
+      }
     },
     {
-      "file": "s125-client-before-desktop-dark-boot-quota.png",
-      "sha256": "9890f92f4abeaf04a7b13511f3919b9657cd9d9a542ca2f9ea274d61eb3a5d2c",
-      "phase": "client-before",
+      "file": "s126-c2-before-original-mobile-controls-full-view-desktop-dark.png",
+      "sha256": "255395a0efe8b41b40d6c2f9806bda5e27ab68c30d268e9bd6fad34b67c6f779",
+      "phase": "before-original",
+      "group": "before-original",
+      "surface": "mobile-controls",
+      "state": "full-view",
+      "device": "desktop",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "boot-quota",
+      "page": "mobile-controls full-view",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
       "inspected": true,
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af"
+      "original": {
+        "file": "docs/visual-qa/s126-mobile-before-desktop-dark-full-view.png",
+        "observedPhase": "before"
+      }
     },
     {
-      "file": "s125-client-before-desktop-dark-contract-mark.png",
-      "sha256": "7c51add0e248afb6431f132f7eb05ff1674dba16865d8a4dfb29c016a31147ae",
-      "phase": "client-before",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af"
-    },
-    {
-      "file": "s125-client-before-desktop-light-boot-getter.png",
-      "sha256": "f8fd9dd0fd0b5a2baaa54afa6be20c91ee0b1322e351fbbd4ee3193e4afec8a7",
-      "phase": "client-before",
+      "file": "s126-c2-before-original-mobile-controls-deck-desktop-light.png",
+      "sha256": "10ecbe7f1a7270eea81324f1de737e1fa8c3afab5306f8dc736710335582b1ce",
+      "phase": "before-original",
+      "group": "before-original",
+      "surface": "mobile-controls",
+      "state": "deck",
+      "device": "desktop",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "boot-getter",
+      "page": "mobile-controls deck",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
       "inspected": true,
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af"
+      "original": {
+        "file": "docs/visual-qa/s126-mobile-before-desktop-light-deck.png",
+        "observedPhase": "before"
+      }
     },
     {
-      "file": "s125-client-before-desktop-light-boot-quota.png",
-      "sha256": "83494e68fbf7ecfbc0a3005f3d980047f1f4d5a74ac5cbd4d80127f66315f783",
-      "phase": "client-before",
+      "file": "s126-c2-before-original-mobile-controls-full-view-desktop-light.png",
+      "sha256": "6cd9a0ef79373a3f8d989dcd6d41f36c76230f688e5f832057bd384d0ceec126",
+      "phase": "before-original",
+      "group": "before-original",
+      "surface": "mobile-controls",
+      "state": "full-view",
+      "device": "desktop",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "boot-quota",
+      "page": "mobile-controls full-view",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
       "inspected": true,
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af"
+      "original": {
+        "file": "docs/visual-qa/s126-mobile-before-desktop-light-full-view.png",
+        "observedPhase": "before"
+      }
     },
     {
-      "file": "s125-client-before-desktop-light-contract-mark.png",
-      "sha256": "93e7b7a2acab8a0f392df2c0b991c6863d5bab539038d4333294e8e9fa04d635",
-      "phase": "client-before",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af"
-    },
-    {
-      "file": "s125-client-before-mobile-dark-boot-getter.png",
-      "sha256": "6371141207a233f0639eaad498bdcafb44a74e5c0aba6b0c48cb7d156bd2b0de",
-      "phase": "client-before",
+      "file": "s126-c2-before-original-mobile-controls-deck-mobile-dark.png",
+      "sha256": "6c7895cf6b4ad3281171493cc5402377be78b3b3055feb30bf10c586e77343c4",
+      "phase": "before-original",
+      "group": "before-original",
+      "surface": "mobile-controls",
+      "state": "deck",
+      "device": "mobile",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "boot-getter",
+      "page": "mobile-controls deck",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
       "inspected": true,
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af"
+      "original": {
+        "file": "docs/visual-qa/s126-mobile-before-mobile-dark-deck.png",
+        "observedPhase": "before"
+      }
     },
     {
-      "file": "s125-client-before-mobile-dark-boot-quota.png",
-      "sha256": "cef2397b2550a9eba0d67943082769d734a5132241b0f55caf93a5372826c08d",
-      "phase": "client-before",
+      "file": "s126-c2-before-original-mobile-controls-full-view-mobile-dark.png",
+      "sha256": "f00d34743755146833eb47f87285e977acdb2aa7f83ce6254b95dcf1fe4c3b47",
+      "phase": "before-original",
+      "group": "before-original",
+      "surface": "mobile-controls",
+      "state": "full-view",
+      "device": "mobile",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "boot-quota",
+      "page": "mobile-controls full-view",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
       "inspected": true,
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af"
+      "original": {
+        "file": "docs/visual-qa/s126-mobile-before-mobile-dark-full-view.png",
+        "observedPhase": "before"
+      }
     },
     {
-      "file": "s125-client-before-mobile-dark-contract-mark.png",
-      "sha256": "40c541cccc43c3617bc63e7f84fc7d7fcd8a01cd90c1fb3513bea68018830201",
-      "phase": "client-before",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af"
-    },
-    {
-      "file": "s125-client-before-mobile-light-boot-getter.png",
-      "sha256": "04031db0bb52a1845dd03aeb37ade3ba30158ce3d49af356d3768f4a8ada2f12",
-      "phase": "client-before",
+      "file": "s126-c2-before-original-mobile-controls-deck-mobile-light.png",
+      "sha256": "74b102fcf6eeaabfc4596b7924e78c05829e0d8c3e41739dfab9f1a2c321312e",
+      "phase": "before-original",
+      "group": "before-original",
+      "surface": "mobile-controls",
+      "state": "deck",
+      "device": "mobile",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "boot-getter",
+      "page": "mobile-controls deck",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
       "inspected": true,
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af"
+      "original": {
+        "file": "docs/visual-qa/s126-mobile-before-mobile-light-deck.png",
+        "observedPhase": "before"
+      }
     },
     {
-      "file": "s125-client-before-mobile-light-boot-quota.png",
-      "sha256": "f48a31c8b3cc1973e63b122b1c5b7a45a5fbc2a80122de8bc9377d289e7c81fd",
-      "phase": "client-before",
+      "file": "s126-c2-before-original-mobile-controls-full-view-mobile-light.png",
+      "sha256": "0da85024cad77b2947c7cb97cbcc7ecbab5c08bc2294abfc2043e60c349e9a67",
+      "phase": "before-original",
+      "group": "before-original",
+      "surface": "mobile-controls",
+      "state": "full-view",
+      "device": "mobile",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "boot-quota",
+      "page": "mobile-controls full-view",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
       "inspected": true,
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af"
+      "original": {
+        "file": "docs/visual-qa/s126-mobile-before-mobile-light-full-view.png",
+        "observedPhase": "before"
+      }
     },
     {
-      "file": "s125-client-before-mobile-light-contract-mark.png",
-      "sha256": "a47019dce94254f18ffe9dc19f6b745e5213f5d672a2e4a9e6a30f1b4f0a4466",
-      "phase": "client-before",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af"
-    },
-    {
-      "file": "s125-client-after-desktop-dark-boot-getter.png",
-      "sha256": "a1fc14ea692a48d8d8327a48987549587bd95bc4194d827fb1814d62235124db",
-      "phase": "client-after",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "boot-getter",
-      "inspected": true,
-      "sourceRevision": "b794ba83dc8ec9e59477287ed7b5e488379f2316"
-    },
-    {
-      "file": "s125-client-after-desktop-dark-boot-quota.png",
-      "sha256": "7664c55ca183678ce9dae6ef488ceaf2b6eaf6f174f0681a1790f04446da8c38",
-      "phase": "client-after",
+      "file": "s126-c2-before-original-status-note-release-note-desktop-dark.png",
+      "sha256": "76569815a3b25d098d587ea373bbd5c772c41ef98c5ea218182a51ac76126ce9",
+      "phase": "before-original",
+      "group": "before-original",
+      "surface": "status-note",
+      "state": "release-note",
+      "device": "desktop",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "boot-quota",
+      "page": "status-note release-note",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
       "inspected": true,
-      "sourceRevision": "b794ba83dc8ec9e59477287ed7b5e488379f2316"
+      "original": {
+        "file": "docs/visual-qa/s126-status-before-v2-desktop-dark.png",
+        "observedPhase": "before"
+      }
     },
     {
-      "file": "s125-client-after-desktop-dark-contract-mark.png",
-      "sha256": "a1b0ccf68505b67c13dde4388b8d24b16230b13724f8c1d2bac075bf2d6373b5",
-      "phase": "client-after",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "sourceRevision": "b794ba83dc8ec9e59477287ed7b5e488379f2316"
-    },
-    {
-      "file": "s125-client-after-desktop-light-boot-getter.png",
-      "sha256": "ef6845fa9673b09e80fa02af54e47727c5948c85463902517ac901c5c67410d7",
-      "phase": "client-after",
+      "file": "s126-c2-before-original-status-note-release-note-desktop-light.png",
+      "sha256": "73d3ddd10451271c45c147611ae6c18c9738e76e8194fbf3bef6f69fce8f6761",
+      "phase": "before-original",
+      "group": "before-original",
+      "surface": "status-note",
+      "state": "release-note",
+      "device": "desktop",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "boot-getter",
+      "page": "status-note release-note",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
       "inspected": true,
-      "sourceRevision": "b794ba83dc8ec9e59477287ed7b5e488379f2316"
+      "original": {
+        "file": "docs/visual-qa/s126-status-before-v2-desktop-light.png",
+        "observedPhase": "before"
+      }
     },
     {
-      "file": "s125-client-after-desktop-light-boot-quota.png",
-      "sha256": "a3522cf759082fac0a7d46fce7465fe9eebea3a92d86caa01ac17c314ce8b6d2",
-      "phase": "client-after",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "boot-quota",
-      "inspected": true,
-      "sourceRevision": "b794ba83dc8ec9e59477287ed7b5e488379f2316"
-    },
-    {
-      "file": "s125-client-after-desktop-light-contract-mark.png",
-      "sha256": "974ca5ea68eef00f6983f8eb9db6a21e1514b237f344e188147c116b3849dc7d",
-      "phase": "client-after",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "sourceRevision": "b794ba83dc8ec9e59477287ed7b5e488379f2316"
-    },
-    {
-      "file": "s125-client-after-mobile-dark-boot-getter.png",
-      "sha256": "6cb6c104a81e52b81c04b2cf41439f3b6e564043498b38fddb03a4dd396605d0",
-      "phase": "client-after",
+      "file": "s126-c2-before-original-status-note-release-note-mobile-dark.png",
+      "sha256": "18ea1ccc4ab1c7755ab1d6d0ebf4d810af5f942ad9cfe2e5b3a4a31fa1c6cb10",
+      "phase": "before-original",
+      "group": "before-original",
+      "surface": "status-note",
+      "state": "release-note",
+      "device": "mobile",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "boot-getter",
+      "page": "status-note release-note",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
       "inspected": true,
-      "sourceRevision": "b794ba83dc8ec9e59477287ed7b5e488379f2316"
+      "original": {
+        "file": "docs/visual-qa/s126-status-before-v2-mobile-dark.png",
+        "observedPhase": "before"
+      }
     },
     {
-      "file": "s125-client-after-mobile-dark-boot-quota.png",
-      "sha256": "54cdc3788ad3c6aa2f97e48a8ef8f19035afb75210dc68054f738334de8e33bb",
-      "phase": "client-after",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "boot-quota",
-      "inspected": true,
-      "sourceRevision": "b794ba83dc8ec9e59477287ed7b5e488379f2316"
-    },
-    {
-      "file": "s125-client-after-mobile-dark-contract-mark.png",
-      "sha256": "08233f148e89d98d447c416d38cb8cec8425990a38db1067be70da13e92bd39a",
-      "phase": "client-after",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "sourceRevision": "b794ba83dc8ec9e59477287ed7b5e488379f2316"
-    },
-    {
-      "file": "s125-client-after-mobile-light-boot-getter.png",
-      "sha256": "a176fdcbc2b4b2e3c190c388e8e44c3240f36c7cad3363b1a65a19f2f9ce8603",
-      "phase": "client-after",
+      "file": "s126-c2-before-original-status-note-release-note-mobile-light.png",
+      "sha256": "ce5d04f5d0b587ab01fdc0f1e6c9534641ec14171b4de10d0e6c95c1df9cafc3",
+      "phase": "before-original",
+      "group": "before-original",
+      "surface": "status-note",
+      "state": "release-note",
+      "device": "mobile",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "boot-getter",
+      "page": "status-note release-note",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
       "inspected": true,
-      "sourceRevision": "b794ba83dc8ec9e59477287ed7b5e488379f2316"
+      "original": {
+        "file": "docs/visual-qa/s126-status-before-v2-mobile-light.png",
+        "observedPhase": "before"
+      }
     },
     {
-      "file": "s125-client-after-mobile-light-boot-quota.png",
-      "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f",
-      "phase": "client-after",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "boot-quota",
-      "inspected": true,
-      "sourceRevision": "b794ba83dc8ec9e59477287ed7b5e488379f2316"
-    },
-    {
-      "file": "s125-client-after-mobile-light-contract-mark.png",
-      "sha256": "5a53396f3f0d887edb59a0321e19347ee6276d108c81fa9a60f9c947937a39e1",
-      "phase": "client-after",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "sourceRevision": "b794ba83dc8ec9e59477287ed7b5e488379f2316"
-    },
-    {
-      "file": "s125-staging-final-desktop-dark-boot-getter.png",
-      "sha256": "f2de55fb67b8603c5802cafd4928a8bf761f6cf396a47687b17745f8cf794cb6",
-      "phase": "staging-final",
+      "file": "s126-c2-before-original-trophy-case-quota-desktop-dark.png",
+      "sha256": "1d8756e55fcfdbfa2057ffd9319b1028debfa8cb2a610402fc44e70ece1ee2fd",
+      "phase": "before-original",
+      "group": "before-original",
+      "surface": "trophy-case",
+      "state": "quota",
+      "device": "desktop",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "boot-getter",
+      "page": "trophy-case quota",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
       "inspected": true,
-      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
+      "original": {
+        "file": "docs/visual-qa/s126-before-trophy-desktop-dark.png",
+        "observedPhase": "before"
+      }
     },
     {
-      "file": "s125-staging-final-desktop-dark-boot-quota.png",
-      "sha256": "acd636bc8683b3d81e3638fa7f77e822104485a3fa5fc2c7f844e163b808308d",
-      "phase": "staging-final",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "boot-quota",
-      "inspected": true,
-      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
-    },
-    {
-      "file": "s125-staging-final-desktop-dark-contract-mark.png",
-      "sha256": "a1b0ccf68505b67c13dde4388b8d24b16230b13724f8c1d2bac075bf2d6373b5",
-      "phase": "staging-final",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
-    },
-    {
-      "file": "s125-staging-final-desktop-light-boot-getter.png",
-      "sha256": "ef6845fa9673b09e80fa02af54e47727c5948c85463902517ac901c5c67410d7",
-      "phase": "staging-final",
+      "file": "s126-c2-before-original-trophy-case-quota-desktop-light.png",
+      "sha256": "d2247b18a507a025754759a47acbfc7fbbf100b95a7ec584f80c6958510d6c13",
+      "phase": "before-original",
+      "group": "before-original",
+      "surface": "trophy-case",
+      "state": "quota",
+      "device": "desktop",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "boot-getter",
+      "page": "trophy-case quota",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
       "inspected": true,
-      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
+      "original": {
+        "file": "docs/visual-qa/s126-before-trophy-desktop-light.png",
+        "observedPhase": "before"
+      }
     },
     {
-      "file": "s125-staging-final-desktop-light-boot-quota.png",
-      "sha256": "3bb083d882be4edb426438ecb8375dba52c898df1b1523102e8b50a235b7825c",
-      "phase": "staging-final",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "boot-quota",
-      "inspected": true,
-      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
-    },
-    {
-      "file": "s125-staging-final-desktop-light-contract-mark.png",
-      "sha256": "974ca5ea68eef00f6983f8eb9db6a21e1514b237f344e188147c116b3849dc7d",
-      "phase": "staging-final",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
-    },
-    {
-      "file": "s125-staging-final-mobile-dark-boot-getter.png",
-      "sha256": "b90890b046d17f5ef23b2371fe5ef1090b8dbf2f7229c58f8da6b5f691664f13",
-      "phase": "staging-final",
+      "file": "s126-c2-before-original-trophy-case-quota-mobile-dark.png",
+      "sha256": "6d612f57cabcea4b3f1936f4422af0bbd4fcc08d93802e2d6b74e1b511f754b9",
+      "phase": "before-original",
+      "group": "before-original",
+      "surface": "trophy-case",
+      "state": "quota",
+      "device": "mobile",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "boot-getter",
+      "page": "trophy-case quota",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
       "inspected": true,
-      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
+      "original": {
+        "file": "docs/visual-qa/s126-before-trophy-mobile-dark.png",
+        "observedPhase": "before"
+      }
     },
     {
-      "file": "s125-staging-final-mobile-dark-boot-quota.png",
-      "sha256": "785e90cc69049da82ebfc8b418c3633ccda3c51c20ee141fb103c54b40b17e53",
-      "phase": "staging-final",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "boot-quota",
-      "inspected": true,
-      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
-    },
-    {
-      "file": "s125-staging-final-mobile-dark-contract-mark.png",
-      "sha256": "ed3adbbf8d8ef93f7743658b707aae99deecc835ebb6107224f81badb22b2838",
-      "phase": "staging-final",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
-    },
-    {
-      "file": "s125-staging-final-mobile-light-boot-getter.png",
-      "sha256": "a176fdcbc2b4b2e3c190c388e8e44c3240f36c7cad3363b1a65a19f2f9ce8603",
-      "phase": "staging-final",
+      "file": "s126-c2-before-original-trophy-case-quota-mobile-light.png",
+      "sha256": "e6a30d42b4753686c4beb2f097d52c3eab2df94cbb5176eee49bc72195b245ca",
+      "phase": "before-original",
+      "group": "before-original",
+      "surface": "trophy-case",
+      "state": "quota",
+      "device": "mobile",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "boot-getter",
+      "page": "trophy-case quota",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
       "inspected": true,
-      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
+      "original": {
+        "file": "docs/visual-qa/s126-before-trophy-mobile-light.png",
+        "observedPhase": "before"
+      }
     },
     {
-      "file": "s125-staging-final-mobile-light-boot-quota.png",
-      "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f",
-      "phase": "staging-final",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "boot-quota",
-      "inspected": true,
-      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
-    },
-    {
-      "file": "s125-staging-final-mobile-light-contract-mark.png",
-      "sha256": "6ae46c6847fd375905999ba9a0736207b9de7d43baf0d352d3b709ea70f54e9a",
-      "phase": "staging-final",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
-    },
-    {
-      "file": "s125-contract-before-desktop-dark-dismissed.png",
-      "path": "docs/visual-qa/s125-contract-before-desktop-dark-dismissed.png",
-      "sha256": "5920df68cadd4efd72962ce62e202c174dd7a77d90a640bd5df86d4532dca2eb",
-      "phase": "before",
+      "file": "s126-c2-entry-before-c1-entry-landing-desktop-dark.png",
+      "sha256": "0062ea0b98a4b82ee86dea05643cec879fb85feb902963b55615d0994fcbfa5c",
+      "phase": "entry-before",
+      "group": "entry-before-c1",
+      "surface": "entry",
+      "state": "landing",
+      "device": "desktop",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "state": "dismissed",
+      "page": "entry landing",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
       "inspected": true,
-      "capturedAt": "2026-10-27T04:35:54.006Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5830,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
+      "original": {
+        "file": ".cache/s126-entry-before/desktop-dark.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-before-desktop-dark-complete-first.png",
-      "path": "docs/visual-qa/s125-contract-before-desktop-dark-complete-first.png",
-      "sha256": "716d011330d360bf63f2b3187301db4b401f562ce64165dfd257d488f0ce6a77",
-      "phase": "before",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "complete-first",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:36:04.964Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5831,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-before-desktop-dark-complete-revisit.png",
-      "path": "docs/visual-qa/s125-contract-before-desktop-dark-complete-revisit.png",
-      "sha256": "3b0ec2e26b5c28efdd428d765d0d9046db388d1ad30f1c60230318f840ac38b9",
-      "phase": "before",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "complete-revisit",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:36:09.930Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5832,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-before-desktop-dark-finalized-2026.png",
-      "path": "docs/visual-qa/s125-contract-before-desktop-dark-finalized-2026.png",
-      "sha256": "712eaf59e4f84fcbc26ae77a34252a63161fcfa59341292d4376969b00f3dfa7",
-      "phase": "before",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "finalized-2026",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:36:17.370Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5833,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-before-desktop-dark-finalized-2027.png",
-      "path": "docs/visual-qa/s125-contract-before-desktop-dark-finalized-2027.png",
-      "sha256": "780d41445b2e3d937abdc2190a7564f030c409b77c6dadf9ce77960ddd3f8696",
-      "phase": "before",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "finalized-2027",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:36:22.618Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5834,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-before-desktop-light-dismissed.png",
-      "path": "docs/visual-qa/s125-contract-before-desktop-light-dismissed.png",
-      "sha256": "8fc15cbb926ce3a617888b9adb7b9dfc26b6aab1e5ece1ec7a5791fd5a8c40ed",
-      "phase": "before",
+      "file": "s126-c2-entry-before-c1-entry-landing-desktop-light.png",
+      "sha256": "b5a376b538702bc295a1743e9fe5718e9cdea880794c257fdbd44adb12dcb7ac",
+      "phase": "entry-before",
+      "group": "entry-before-c1",
+      "surface": "entry",
+      "state": "landing",
+      "device": "desktop",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "state": "dismissed",
+      "page": "entry landing",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
       "inspected": true,
-      "capturedAt": "2026-10-27T04:36:26.207Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5835,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
+      "original": {
+        "file": ".cache/s126-entry-before/desktop-light.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-before-desktop-light-complete-first.png",
-      "path": "docs/visual-qa/s125-contract-before-desktop-light-complete-first.png",
-      "sha256": "86158cd4e077a48bb936233f5114c2a8addda3e348d1691ec73fb505a7500504",
-      "phase": "before",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "complete-first",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:36:36.180Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5836,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-before-desktop-light-complete-revisit.png",
-      "path": "docs/visual-qa/s125-contract-before-desktop-light-complete-revisit.png",
-      "sha256": "724cf58bb61eb3aa50cbb1ca5a7bc12ce6cbdf49023aca230b34c76615480e26",
-      "phase": "before",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "complete-revisit",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:36:41.099Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5837,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-before-desktop-light-finalized-2026.png",
-      "path": "docs/visual-qa/s125-contract-before-desktop-light-finalized-2026.png",
-      "sha256": "f30331b7d8cb4ffe7b8c98dfbfe467c2a3796ca6eb198297d903eb6ce807d4ee",
-      "phase": "before",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "finalized-2026",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:36:46.010Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5838,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-before-desktop-light-finalized-2027.png",
-      "path": "docs/visual-qa/s125-contract-before-desktop-light-finalized-2027.png",
-      "sha256": "d0dac5b1857aeaee216eb147ed11ebf18af3dabd24bdc6129729a2f011108189",
-      "phase": "before",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "finalized-2027",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:36:54.444Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5839,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-before-mobile-dark-dismissed.png",
-      "path": "docs/visual-qa/s125-contract-before-mobile-dark-dismissed.png",
-      "sha256": "589daf50c614e7865120814fcd699663f5742ee60c238faf5339bf39eaef2a5d",
-      "phase": "before",
+      "file": "s126-c2-entry-before-c1-entry-landing-mobile-dark.png",
+      "sha256": "536e67de4db33c0c2c6582a93c772651e73411c207b2f87000e8eb2a77487d31",
+      "phase": "entry-before",
+      "group": "entry-before-c1",
+      "surface": "entry",
+      "state": "landing",
+      "device": "mobile",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "state": "dismissed",
+      "page": "entry landing",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
       "inspected": true,
-      "capturedAt": "2026-10-27T04:36:58.446Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5840,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
+      "original": {
+        "file": ".cache/s126-entry-before/mobile-dark.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-before-mobile-dark-complete-first.png",
-      "path": "docs/visual-qa/s125-contract-before-mobile-dark-complete-first.png",
-      "sha256": "1674696db51025733b928d970cbd6f343a12f16de7c89bf66cf277aaabb4b67e",
-      "phase": "before",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "complete-first",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:37:06.027Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5841,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-before-mobile-dark-complete-revisit.png",
-      "path": "docs/visual-qa/s125-contract-before-mobile-dark-complete-revisit.png",
-      "sha256": "08abb691fb2ddb20396746eb74ae862a6ca64c0ee7025bad978f8edff0fa774e",
-      "phase": "before",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "complete-revisit",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:37:12.073Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5842,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-before-mobile-dark-finalized-2026.png",
-      "path": "docs/visual-qa/s125-contract-before-mobile-dark-finalized-2026.png",
-      "sha256": "35ec2292e3f15f97bfa6e926541b5e151f8d142453a182b5189f38b37795fe7d",
-      "phase": "before",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "finalized-2026",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:37:17.536Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5843,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-before-mobile-dark-finalized-2027.png",
-      "path": "docs/visual-qa/s125-contract-before-mobile-dark-finalized-2027.png",
-      "sha256": "070a8cad6d6bf9c1fbbba6d2d52e1aeac3141aae4573938921a647c3b8a77b07",
-      "phase": "before",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "finalized-2027",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:37:22.510Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5844,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-before-mobile-light-dismissed.png",
-      "path": "docs/visual-qa/s125-contract-before-mobile-light-dismissed.png",
-      "sha256": "4a749977a5b7acb9f79c6819858a9324d66c6abf87c22d14edecd091170eeb35",
-      "phase": "before",
+      "file": "s126-c2-entry-before-c1-entry-landing-mobile-light.png",
+      "sha256": "4ddb81e38e5d847c421225c8e8da96cd55f91440a176dab00c9d29b309fe729e",
+      "phase": "entry-before",
+      "group": "entry-before-c1",
+      "surface": "entry",
+      "state": "landing",
+      "device": "mobile",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "state": "dismissed",
+      "page": "entry landing",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
       "inspected": true,
-      "capturedAt": "2026-10-27T04:37:27.374Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5845,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
+      "original": {
+        "file": ".cache/s126-entry-before/mobile-light.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-before-mobile-light-complete-first.png",
-      "path": "docs/visual-qa/s125-contract-before-mobile-light-complete-first.png",
-      "sha256": "ee84921a8ca3dc9f76d2ccb2b1f952758195a885b612fdcdfda99bf993cfe69b",
-      "phase": "before",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "complete-first",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:37:37.575Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5846,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-before-mobile-light-complete-revisit.png",
-      "path": "docs/visual-qa/s125-contract-before-mobile-light-complete-revisit.png",
-      "sha256": "ee84921a8ca3dc9f76d2ccb2b1f952758195a885b612fdcdfda99bf993cfe69b",
-      "phase": "before",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "complete-revisit",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:37:43.038Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5847,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-before-mobile-light-finalized-2026.png",
-      "path": "docs/visual-qa/s125-contract-before-mobile-light-finalized-2026.png",
-      "sha256": "ee84921a8ca3dc9f76d2ccb2b1f952758195a885b612fdcdfda99bf993cfe69b",
-      "phase": "before",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "finalized-2026",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:37:48.460Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5848,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-before-mobile-light-finalized-2027.png",
-      "path": "docs/visual-qa/s125-contract-before-mobile-light-finalized-2027.png",
-      "sha256": "6574db6cc4f73d8560282411bb4114f6af90796f554a6aab2211971565ac91b3",
-      "phase": "before",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "finalized-2027",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:37:53.963Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5849,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original baselinef402 FirstSeasonContract module rendered in historical4a2 shell/template/styles; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-after-desktop-dark-dismissed.png",
-      "path": "docs/visual-qa/s125-contract-after-desktop-dark-dismissed.png",
-      "sha256": "e83854e624a38377ace1479dcd2746d785619bb9886cda4210d733428cea880a",
-      "phase": "after",
+      "file": "s126-c2-primary-staging-mobile-controls-deck-desktop-dark.png",
+      "sha256": "a2719ab86885356c6c8add3e6184d4c4428d37b99ee8a9e7e9e51b8ffd70c8f9",
+      "phase": "staging",
+      "group": "primary-staging",
+      "surface": "mobile-controls",
+      "state": "deck",
+      "device": "desktop",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "state": "dismissed",
+      "page": "mobile-controls deck",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T04:39:55.207Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5850,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
+      "original": {
+        "file": ".cache/s126-c2-mobile-staging/desktop-dark-deck.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-after-desktop-dark-complete-first.png",
-      "path": "docs/visual-qa/s125-contract-after-desktop-dark-complete-first.png",
-      "sha256": "968303b13e80d74b772b761d4145ba7cc31dfd4aa11343bd92d4bf9af341f37a",
-      "phase": "after",
+      "file": "s126-c2-primary-staging-mobile-controls-full-view-desktop-dark.png",
+      "sha256": "25318fb68c9724192b48a356471ecea911d2d290d684663e1570326f0b8b8db4",
+      "phase": "staging",
+      "group": "primary-staging",
+      "surface": "mobile-controls",
+      "state": "full-view",
+      "device": "desktop",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "state": "complete-first",
+      "page": "mobile-controls full-view",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T04:39:57.794Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5851,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
+      "original": {
+        "file": ".cache/s126-c2-mobile-staging/desktop-dark-full-view.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-after-desktop-dark-complete-revisit.png",
-      "path": "docs/visual-qa/s125-contract-after-desktop-dark-complete-revisit.png",
-      "sha256": "a6019131d372a0ada50364d767071f6133354f886b7b5db589f43fde0e418361",
-      "phase": "after",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "complete-revisit",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:40:00.473Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5852,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-after-desktop-dark-finalized-2026.png",
-      "path": "docs/visual-qa/s125-contract-after-desktop-dark-finalized-2026.png",
-      "sha256": "a58e2e48784d81f901cd2627750d83f502f7a0adf6b0f4371e36781b87a2e21e",
-      "phase": "after",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "finalized-2026",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:40:03.231Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5853,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-after-desktop-dark-finalized-2027.png",
-      "path": "docs/visual-qa/s125-contract-after-desktop-dark-finalized-2027.png",
-      "sha256": "e1fe1c249773130bbafdf12f1f96e7de2053e26b4afcbe4ee288ea2eb4a40c5f",
-      "phase": "after",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "finalized-2027",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:40:06.073Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5854,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-after-desktop-light-dismissed.png",
-      "path": "docs/visual-qa/s125-contract-after-desktop-light-dismissed.png",
-      "sha256": "d2c3b8e016b0e15687020a8acfc303a8aaa929adb17affd95e0670b571fb7bc3",
-      "phase": "after",
+      "file": "s126-c2-primary-staging-mobile-controls-deck-desktop-light.png",
+      "sha256": "38b717463e39400f1a6d9284b2ad91b088969bc184180a9ff8a3b078c0508e88",
+      "phase": "staging",
+      "group": "primary-staging",
+      "surface": "mobile-controls",
+      "state": "deck",
+      "device": "desktop",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "state": "dismissed",
+      "page": "mobile-controls deck",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T04:40:08.730Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5855,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
+      "original": {
+        "file": ".cache/s126-c2-mobile-staging/desktop-light-deck.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-after-desktop-light-complete-first.png",
-      "path": "docs/visual-qa/s125-contract-after-desktop-light-complete-first.png",
-      "sha256": "a4f1a9d2b765270b8110a9ad579bdff07c02c87179972491217d07b7f39a9199",
-      "phase": "after",
+      "file": "s126-c2-primary-staging-mobile-controls-full-view-desktop-light.png",
+      "sha256": "1fadb4b4ca3a1a85bf6c3382fd78948f12c700bc7a91e0e33a99a3b2f28829fc",
+      "phase": "staging",
+      "group": "primary-staging",
+      "surface": "mobile-controls",
+      "state": "full-view",
+      "device": "desktop",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "state": "complete-first",
+      "page": "mobile-controls full-view",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T04:40:11.588Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5856,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
+      "original": {
+        "file": ".cache/s126-c2-mobile-staging/desktop-light-full-view.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-after-desktop-light-complete-revisit.png",
-      "path": "docs/visual-qa/s125-contract-after-desktop-light-complete-revisit.png",
-      "sha256": "68dd994a26ce1ca080e90ed25b2867f7c53413de6b3b64709c715101d146d9b5",
-      "phase": "after",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "complete-revisit",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:40:14.190Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5857,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-after-desktop-light-finalized-2026.png",
-      "path": "docs/visual-qa/s125-contract-after-desktop-light-finalized-2026.png",
-      "sha256": "9ae4458804f122c2c26a3aa20ca378b3d57cd6fb3cb96b1358cebed18d96496a",
-      "phase": "after",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "finalized-2026",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:40:16.583Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5858,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-after-desktop-light-finalized-2027.png",
-      "path": "docs/visual-qa/s125-contract-after-desktop-light-finalized-2027.png",
-      "sha256": "9bd2c661879fb491662b88a12794630e1ea405c41943ae1d4aeb37b165956bba",
-      "phase": "after",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "finalized-2027",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:40:19.234Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5859,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-after-mobile-dark-dismissed.png",
-      "path": "docs/visual-qa/s125-contract-after-mobile-dark-dismissed.png",
-      "sha256": "154d535f472cce7bb9f6c184e56f0133396bae1081141fd3e6c3fdb68cae9a6f",
-      "phase": "after",
+      "file": "s126-c2-primary-staging-mobile-controls-deck-mobile-dark.png",
+      "sha256": "0b526586110dc6df8f589aa0b18e7106de429ca955468c0bae8e31bfae77f0cf",
+      "phase": "staging",
+      "group": "primary-staging",
+      "surface": "mobile-controls",
+      "state": "deck",
+      "device": "mobile",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "state": "dismissed",
+      "page": "mobile-controls deck",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T04:40:22.027Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5860,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
+      "original": {
+        "file": ".cache/s126-c2-mobile-staging/mobile-dark-deck.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-after-mobile-dark-complete-first.png",
-      "path": "docs/visual-qa/s125-contract-after-mobile-dark-complete-first.png",
-      "sha256": "0fd7ccd3112270494139b9558290495e73c2b979a4622cb90bc411faea1085f3",
-      "phase": "after",
+      "file": "s126-c2-primary-staging-mobile-controls-full-view-mobile-dark.png",
+      "sha256": "02e2ad71f5d71f7029e62477a854d023e151c4e32e57e834e522e5d871ae7253",
+      "phase": "staging",
+      "group": "primary-staging",
+      "surface": "mobile-controls",
+      "state": "full-view",
+      "device": "mobile",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "state": "complete-first",
+      "page": "mobile-controls full-view",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T04:40:24.415Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5861,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
+      "original": {
+        "file": ".cache/s126-c2-mobile-staging/mobile-dark-full-view.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-after-mobile-dark-complete-revisit.png",
-      "path": "docs/visual-qa/s125-contract-after-mobile-dark-complete-revisit.png",
-      "sha256": "8301fc4e5f9448ddce88fec72e2176f63815032a20ec8683263cf6454f38c77c",
-      "phase": "after",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "complete-revisit",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:40:27.440Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5862,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-after-mobile-dark-finalized-2026.png",
-      "path": "docs/visual-qa/s125-contract-after-mobile-dark-finalized-2026.png",
-      "sha256": "759c6321d54ee12f43a46451dbe4912f728f6656737cae982606397151ff5b64",
-      "phase": "after",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "finalized-2026",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:40:30.257Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5863,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-after-mobile-dark-finalized-2027.png",
-      "path": "docs/visual-qa/s125-contract-after-mobile-dark-finalized-2027.png",
-      "sha256": "a8f16da02e9cdebd7748e2beb141d4b65a912c4746cebc186a4105833374da2f",
-      "phase": "after",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "finalized-2027",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:40:33.577Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5864,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-after-mobile-light-dismissed.png",
-      "path": "docs/visual-qa/s125-contract-after-mobile-light-dismissed.png",
-      "sha256": "8136303b7d17065cb3a30bf46b89c687b8f018f04473b3cbf958bc4c360a3714",
-      "phase": "after",
+      "file": "s126-c2-primary-staging-mobile-controls-deck-mobile-light.png",
+      "sha256": "ec1f4b05e237dc915cac2a7a0abdf46ba6cdd4517c8ae5227fcf39891404d717",
+      "phase": "staging",
+      "group": "primary-staging",
+      "surface": "mobile-controls",
+      "state": "deck",
+      "device": "mobile",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "state": "dismissed",
+      "page": "mobile-controls deck",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T04:40:36.111Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5865,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
+      "original": {
+        "file": ".cache/s126-c2-mobile-staging/mobile-light-deck.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-after-mobile-light-complete-first.png",
-      "path": "docs/visual-qa/s125-contract-after-mobile-light-complete-first.png",
-      "sha256": "5dba9aa27c2774a9fc7e93309443d4c06f2961f06927439c3ad24a72810671a4",
-      "phase": "after",
+      "file": "s126-c2-primary-staging-mobile-controls-full-view-mobile-light.png",
+      "sha256": "fabe4b451d6ece67da67029e933ca3083391c7ad2badc1b77509cc4503203827",
+      "phase": "staging",
+      "group": "primary-staging",
+      "surface": "mobile-controls",
+      "state": "full-view",
+      "device": "mobile",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "state": "complete-first",
+      "page": "mobile-controls full-view",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T04:40:38.903Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5866,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
+      "original": {
+        "file": ".cache/s126-c2-mobile-staging/mobile-light-full-view.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-after-mobile-light-complete-revisit.png",
-      "path": "docs/visual-qa/s125-contract-after-mobile-light-complete-revisit.png",
-      "sha256": "c3484b6e7edfbca83688d1126f32bb1e9462dce5c977934ff2d3cfede2aae6fb",
-      "phase": "after",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "complete-revisit",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:40:42.039Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5867,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-after-mobile-light-finalized-2026.png",
-      "path": "docs/visual-qa/s125-contract-after-mobile-light-finalized-2026.png",
-      "sha256": "a3d058c258b574cef0d6236f9fcc6c1ae4fb89445291feab345b295d398f8f1d",
-      "phase": "after",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "finalized-2026",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:40:44.407Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5868,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-contract-after-mobile-light-finalized-2027.png",
-      "path": "docs/visual-qa/s125-contract-after-mobile-light-finalized-2027.png",
-      "sha256": "a3d058c258b574cef0d6236f9fcc6c1ae4fb89445291feab345b295d398f8f1d",
-      "phase": "after",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "finalized-2027",
-      "inspected": true,
-      "capturedAt": "2026-10-27T04:40:46.684Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5869,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "historicalShellSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
-      "byteEquivalentSuccessor": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "byteEquivalenceReceipt": "reports/s125-successor-local-equivalence.json",
-      "sourceScope": "Original historical4a2 rendered capture; exact successor product-byte equivalence is separate, no new capture inferred.",
-      "reviewReceipt": "reports/s125-contract-state-review.json"
-    },
-    {
-      "file": "s125-staging-successor-desktop-dark-boot-getter.png",
-      "sha256": "bab93ba2c8a6d4ddc1fd99c145b3a49985f3742e3922c867627c6c8bfceb8767",
-      "phase": "staging-successor",
+      "file": "s126-c2-primary-staging-trophy-case-quota-desktop-dark.png",
+      "sha256": "61d07f747b4c4578b71d125b2b83d05b250acb3a98a91c65c22833a8693d0c42",
+      "phase": "staging",
+      "group": "primary-staging",
+      "surface": "trophy-case",
+      "state": "quota",
+      "device": "desktop",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "boot-getter",
+      "page": "trophy-case quota",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T06:19:22.471Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
+      "original": {
+        "file": ".cache/s126-c2-after-staging/trophy-desktop-dark.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-staging-successor-desktop-dark-boot-quota.png",
-      "sha256": "08ebe906dcca0c887e15eaa29c84f75bf31b561ae48d229b569725d32d119dfe",
-      "phase": "staging-successor",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "boot-quota",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:19:26.387Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-staging-successor-desktop-dark-contract-mark.png",
-      "sha256": "98971a2838c6894d2ea9a900108ef5b2b6c8c57272a5d82441d4fe8dd3064634",
-      "phase": "staging-successor",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:19:29.740Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-staging-successor-desktop-light-boot-getter.png",
-      "sha256": "ef6845fa9673b09e80fa02af54e47727c5948c85463902517ac901c5c67410d7",
-      "phase": "staging-successor",
+      "file": "s126-c2-primary-staging-trophy-case-quota-desktop-light.png",
+      "sha256": "122dbfc7b0b1bc9940c28832ec73331a589ad471174327c11f193a5f11a10606",
+      "phase": "staging",
+      "group": "primary-staging",
+      "surface": "trophy-case",
+      "state": "quota",
+      "device": "desktop",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "boot-getter",
+      "page": "trophy-case quota",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T06:19:33.030Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
+      "original": {
+        "file": ".cache/s126-c2-after-staging/trophy-desktop-light.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-staging-successor-desktop-light-boot-quota.png",
-      "sha256": "b71e0190df96a71e9dae6fa97939d1279e9c17afb79757377eb8f2de89a12793",
-      "phase": "staging-successor",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "boot-quota",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:19:38.482Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-staging-successor-desktop-light-contract-mark.png",
-      "sha256": "974ca5ea68eef00f6983f8eb9db6a21e1514b237f344e188147c116b3849dc7d",
-      "phase": "staging-successor",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:19:44.112Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-staging-successor-mobile-dark-boot-getter.png",
-      "sha256": "5da2c66410699f676bc4f48864217150ff09b0e854bc951e69753e52909c06a0",
-      "phase": "staging-successor",
+      "file": "s126-c2-primary-staging-trophy-case-quota-mobile-dark.png",
+      "sha256": "74bb39c50967278801fae0db270e0d0f30264f4d0803b7cd1ca0bd4b4bf939a7",
+      "phase": "staging",
+      "group": "primary-staging",
+      "surface": "trophy-case",
+      "state": "quota",
+      "device": "mobile",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "boot-getter",
+      "page": "trophy-case quota",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T06:19:47.096Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
+      "original": {
+        "file": ".cache/s126-c2-after-staging/trophy-mobile-dark.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-staging-successor-mobile-dark-boot-quota.png",
-      "sha256": "7ec20c71ad0844b362dd82e86cd7641e8e86b86ed4ffa7daa3f5202bd2521a09",
-      "phase": "staging-successor",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "boot-quota",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:19:51.653Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-staging-successor-mobile-dark-contract-mark.png",
-      "sha256": "7bdd393acc31ecf34ed863a7d05c90348d05486cd0e35b5af23e90142632bd2b",
-      "phase": "staging-successor",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:19:56.629Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-staging-successor-mobile-light-boot-getter.png",
-      "sha256": "a176fdcbc2b4b2e3c190c388e8e44c3240f36c7cad3363b1a65a19f2f9ce8603",
-      "phase": "staging-successor",
+      "file": "s126-c2-primary-staging-trophy-case-quota-mobile-light.png",
+      "sha256": "b9d80330b8c2e1bf3b7fc378a47c0c4c5cf24370c84635386173914366eeaaa8",
+      "phase": "staging",
+      "group": "primary-staging",
+      "surface": "trophy-case",
+      "state": "quota",
+      "device": "mobile",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "boot-getter",
+      "page": "trophy-case quota",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T06:19:58.740Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
+      "original": {
+        "file": ".cache/s126-c2-after-staging/trophy-mobile-light.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-staging-successor-mobile-light-boot-quota.png",
-      "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f",
-      "phase": "staging-successor",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "boot-quota",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:20:01.701Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-staging-successor-mobile-light-contract-mark.png",
-      "sha256": "6ae46c6847fd375905999ba9a0736207b9de7d43baf0d352d3b709ea70f54e9a",
-      "phase": "staging-successor",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:20:04.650Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-contract-staging-successor-desktop-dark-dismissed.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-desktop-dark-dismissed.png",
-      "sha256": "bd52cc48faf4186df7cf5ea83e446ab5934d72167584df9d93d5437f071f191d",
-      "phase": "staging-successor",
+      "file": "s126-c2-primary-staging-status-note-release-note-desktop-dark.png",
+      "sha256": "6c38f7107fef79b2b77a85609dd7e90792ae5ff5bcff9afdda47b7a3b75d847a",
+      "phase": "staging",
+      "group": "primary-staging",
+      "surface": "status-note",
+      "state": "release-note",
+      "device": "desktop",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "state": "dismissed",
+      "page": "status-note release-note",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T06:21:10.018Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5914,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
+      "original": {
+        "file": ".cache/s126-c2-status-staging-v2/desktop-dark.png",
+        "observedPhase": "staging"
+      }
     },
     {
-      "file": "s125-contract-staging-successor-desktop-dark-complete-first.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-desktop-dark-complete-first.png",
-      "sha256": "b640a651507d8ac995d53de19d31735992de8b2872716f3d959677a1d6f45f08",
-      "phase": "staging-successor",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "complete-first",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:21:15.414Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5915,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-contract-staging-successor-desktop-dark-complete-revisit.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-desktop-dark-complete-revisit.png",
-      "sha256": "25409ae4421700c45ff1f0a3f2f7c8cb437a47b6d9069c2222f792d2503e17ff",
-      "phase": "staging-successor",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "complete-revisit",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:21:19.068Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5916,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-contract-staging-successor-desktop-dark-finalized-2026.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-desktop-dark-finalized-2026.png",
-      "sha256": "a49c489377167e17d45554015c235e51dfec970e309935be6eea6dbd938a11e6",
-      "phase": "staging-successor",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "finalized-2026",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:21:23.968Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5917,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-contract-staging-successor-desktop-dark-finalized-2027.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-desktop-dark-finalized-2027.png",
-      "sha256": "d0719c2a307c5ada2e2170c557aa868f23239e34a91280c029a0f1e9b59bd6a9",
-      "phase": "staging-successor",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "finalized-2027",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:21:29.815Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5918,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-contract-staging-successor-desktop-light-dismissed.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-desktop-light-dismissed.png",
-      "sha256": "4e5cb9b18f8b0f646f0ac95980299f9db14fe7fabf7d420def6a6e518210275d",
-      "phase": "staging-successor",
+      "file": "s126-c2-primary-staging-status-note-release-note-desktop-light.png",
+      "sha256": "32a5b149ab3e3776023d023d403041c84d199502fa0b532559c19d253c69e151",
+      "phase": "staging",
+      "group": "primary-staging",
+      "surface": "status-note",
+      "state": "release-note",
+      "device": "desktop",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "state": "dismissed",
+      "page": "status-note release-note",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T06:21:34.627Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5919,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
+      "original": {
+        "file": ".cache/s126-c2-status-staging-v2/desktop-light.png",
+        "observedPhase": "staging"
+      }
     },
     {
-      "file": "s125-contract-staging-successor-desktop-light-complete-first.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-desktop-light-complete-first.png",
-      "sha256": "8c028c2410cae6f2f857851456b95895a0603e63bc746d519c43518f74ccf56e",
-      "phase": "staging-successor",
+      "file": "s126-c2-primary-staging-status-note-release-note-mobile-dark.png",
+      "sha256": "c35e682e33359364eadcbaf6b42497ffad10fb2b9d4a78f9e43319ec3848f04b",
+      "phase": "staging",
+      "group": "primary-staging",
+      "surface": "status-note",
+      "state": "release-note",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "status-note release-note",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-status-staging-v2/mobile-dark.png",
+        "observedPhase": "staging"
+      }
+    },
+    {
+      "file": "s126-c2-primary-staging-status-note-release-note-mobile-light.png",
+      "sha256": "1615fc777af7870aa2ad00648b9bbaad4955aad77f85862b13b0e2b219722151",
+      "phase": "staging",
+      "group": "primary-staging",
+      "surface": "status-note",
+      "state": "release-note",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "status-note release-note",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-status-staging-v2/mobile-light.png",
+        "observedPhase": "staging"
+      }
+    },
+    {
+      "file": "s126-c2-entry-staging-entry-landing-desktop-dark.png",
+      "sha256": "128d9a73d12e3616f87e7eede7ab845f3f579e6d2e1753bac1dc5767bbe2b63c",
+      "phase": "staging",
+      "group": "entry-staging",
+      "surface": "entry",
+      "state": "landing",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "entry landing",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-entry-staging/desktop-dark.png",
+        "observedPhase": null
+      }
+    },
+    {
+      "file": "s126-c2-entry-staging-entry-landing-desktop-light.png",
+      "sha256": "aa0ef636bd560e5e43c7164513dddbbd283d12a18a428db1ba16b359f9d749c1",
+      "phase": "staging",
+      "group": "entry-staging",
+      "surface": "entry",
+      "state": "landing",
+      "device": "desktop",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "state": "complete-first",
+      "page": "entry landing",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T06:21:39.253Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5920,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
+      "original": {
+        "file": ".cache/s126-c2-entry-staging/desktop-light.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-staging-successor-desktop-light-complete-revisit.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-desktop-light-complete-revisit.png",
-      "sha256": "cb97f9fda273a6382dcf8be5376942a7130ceac0a33a3dc28ed99ae98aecf44e",
-      "phase": "staging-successor",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "complete-revisit",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:21:44.126Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5921,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-contract-staging-successor-desktop-light-finalized-2026.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-desktop-light-finalized-2026.png",
-      "sha256": "9f5654cb6bcb9135a5f0e0e18070e8b940809b75d061c9185bd66faa642f0451",
-      "phase": "staging-successor",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "finalized-2026",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:21:49.614Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5922,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-contract-staging-successor-desktop-light-finalized-2027.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-desktop-light-finalized-2027.png",
-      "sha256": "a9976ce21745c58c867559953cc345c118f2f2d297db0cff5d921fe458bd91af",
-      "phase": "staging-successor",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "finalized-2027",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:21:54.659Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5923,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-contract-staging-successor-mobile-dark-dismissed.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-mobile-dark-dismissed.png",
-      "sha256": "6af2d98dc5a59f87cdbe50f345dafe20930cf45e790ce7b475cb6b7af2f502ca",
-      "phase": "staging-successor",
+      "file": "s126-c2-entry-staging-entry-landing-mobile-dark.png",
+      "sha256": "c765ad2ec20920015e7e9796858190e7c1807e88a9611f0b5fc7c27be1d43eb1",
+      "phase": "staging",
+      "group": "entry-staging",
+      "surface": "entry",
+      "state": "landing",
+      "device": "mobile",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "state": "dismissed",
+      "page": "entry landing",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T06:22:00.068Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5924,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
+      "original": {
+        "file": ".cache/s126-c2-entry-staging/mobile-dark.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-staging-successor-mobile-dark-complete-first.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-mobile-dark-complete-first.png",
-      "sha256": "0a9782a1442dcf00fc27673219897a491d1c4c4b36cce59a8d8b5a26b385822f",
-      "phase": "staging-successor",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "complete-first",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:22:04.387Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5925,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-contract-staging-successor-mobile-dark-complete-revisit.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-mobile-dark-complete-revisit.png",
-      "sha256": "94935b677bf9e03d7b66f560623272fec78fd7251bd6c48a6f0eb09471d7dba9",
-      "phase": "staging-successor",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "complete-revisit",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:22:09.435Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5926,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-contract-staging-successor-mobile-dark-finalized-2026.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-mobile-dark-finalized-2026.png",
-      "sha256": "0061f8cf9b27b423517657009190af30fa842e4fd26e0376b867cc7b4c0db891",
-      "phase": "staging-successor",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "finalized-2026",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:22:13.923Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5927,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-contract-staging-successor-mobile-dark-finalized-2027.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-mobile-dark-finalized-2027.png",
-      "sha256": "e6c53a8869388ce618d19e34cd5a24841618580f5c9a27f438117d6ea5c2b208",
-      "phase": "staging-successor",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "finalized-2027",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:22:18.268Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5928,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-contract-staging-successor-mobile-light-dismissed.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-mobile-light-dismissed.png",
-      "sha256": "0bc5829975ab3a6841ba189399833eb0eba9bf05d4f67378dbe8d57a5695513e",
-      "phase": "staging-successor",
+      "file": "s126-c2-entry-staging-entry-landing-mobile-light.png",
+      "sha256": "d01cdaa45615518cc4fee6b2a096ab206ba98345f8394d5a4f4d6795304139d3",
+      "phase": "staging",
+      "group": "entry-staging",
+      "surface": "entry",
+      "state": "landing",
+      "device": "mobile",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "state": "dismissed",
+      "page": "entry landing",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T06:22:26.860Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5929,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
+      "original": {
+        "file": ".cache/s126-c2-entry-staging/mobile-light.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-staging-successor-mobile-light-complete-first.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-mobile-light-complete-first.png",
-      "sha256": "14f49d6919938a18150da3932591058b8a4c2b95b12bc8d9f0d154a411510326",
-      "phase": "staging-successor",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "complete-first",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:22:31.374Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5930,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-contract-staging-successor-mobile-light-complete-revisit.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-mobile-light-complete-revisit.png",
-      "sha256": "c3d4c4ee4a6a8538883f144ef6ed0390216c9ec5d3c2301302570e22cdb9bee6",
-      "phase": "staging-successor",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "complete-revisit",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:22:36.233Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5931,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-contract-staging-successor-mobile-light-finalized-2026.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-mobile-light-finalized-2026.png",
-      "sha256": "0dcedff7fe2898fca24ab0858ab79353b571c32cad972c946cf6bba7cdfd0930",
-      "phase": "staging-successor",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "finalized-2026",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:22:40.852Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5932,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-contract-staging-successor-mobile-light-finalized-2027.png",
-      "path": "docs/visual-qa/s125-contract-staging-successor-mobile-light-finalized-2027.png",
-      "sha256": "0dcedff7fe2898fca24ab0858ab79353b571c32cad972c946cf6bba7cdfd0930",
-      "phase": "staging-successor",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "finalized-2027",
-      "inspected": true,
-      "capturedAt": "2026-10-27T06:22:45.349Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5933,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-staging-successor-review.json"
-    },
-    {
-      "file": "s125-production-desktop-dark-boot-getter.png",
-      "sha256": "5012ea9be9b915e5bc13fbb3b93794e0f9d752baab4b205f8bef6ba940a404d3",
+      "file": "s126-c2-primary-production-mobile-controls-deck-desktop-dark.png",
+      "sha256": "7e0fa7ce68472a4b19f5a8fcddbdc57506531febbfe784f9e3e5de9bddf22385",
       "phase": "production",
+      "group": "primary-production",
+      "surface": "mobile-controls",
+      "state": "deck",
+      "device": "desktop",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "boot-getter",
+      "page": "mobile-controls deck",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T17:04:26.846Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
+      "original": {
+        "file": ".cache/s126-c2-mobile-production/desktop-dark-deck.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-production-desktop-dark-boot-quota.png",
-      "sha256": "5c7e40fb19c854ca29d2e76b79ce883732be1f0d5298db449c58037f65dddaa9",
+      "file": "s126-c2-primary-production-mobile-controls-full-view-desktop-dark.png",
+      "sha256": "14080e18b3e571c95dcd50e06b4a186b7b474bd602c339e5bfcd72aa90d7bb0e",
       "phase": "production",
+      "group": "primary-production",
+      "surface": "mobile-controls",
+      "state": "full-view",
+      "device": "desktop",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "boot-quota",
+      "page": "mobile-controls full-view",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T17:04:33.599Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
+      "original": {
+        "file": ".cache/s126-c2-mobile-production/desktop-dark-full-view.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-production-desktop-dark-contract-mark.png",
-      "sha256": "a1b0ccf68505b67c13dde4388b8d24b16230b13724f8c1d2bac075bf2d6373b5",
+      "file": "s126-c2-primary-production-mobile-controls-deck-desktop-light.png",
+      "sha256": "3aa555cc3ba4e51b0652d72f8ae5109bd268b56368fc793d4e118976b2a6ba1f",
       "phase": "production",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:04:40.867Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-production-desktop-light-boot-getter.png",
-      "sha256": "ef6845fa9673b09e80fa02af54e47727c5948c85463902517ac901c5c67410d7",
-      "phase": "production",
+      "group": "primary-production",
+      "surface": "mobile-controls",
+      "state": "deck",
+      "device": "desktop",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "boot-getter",
+      "page": "mobile-controls deck",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T17:04:44.140Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
+      "original": {
+        "file": ".cache/s126-c2-mobile-production/desktop-light-deck.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-production-desktop-light-boot-quota.png",
-      "sha256": "893ad94a60bb9e29cbb50d09a4b3e8e8f3b40b10a7d8b3212f4d92ef71355841",
+      "file": "s126-c2-primary-production-mobile-controls-full-view-desktop-light.png",
+      "sha256": "739b5a6ebe2480ba8a8914d436405a94b55daabf1aa0f0c2864c2e6e2bc9c751",
       "phase": "production",
+      "group": "primary-production",
+      "surface": "mobile-controls",
+      "state": "full-view",
+      "device": "desktop",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "boot-quota",
+      "page": "mobile-controls full-view",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T17:04:49.951Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
+      "original": {
+        "file": ".cache/s126-c2-mobile-production/desktop-light-full-view.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-production-desktop-light-contract-mark.png",
-      "sha256": "974ca5ea68eef00f6983f8eb9db6a21e1514b237f344e188147c116b3849dc7d",
+      "file": "s126-c2-primary-production-mobile-controls-deck-mobile-dark.png",
+      "sha256": "bb8fb5f0bb6b9e20e62a1de4716aff1449dd6b1cc51bea4b9e198961d5fb8da9",
       "phase": "production",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:04:56.219Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-production-mobile-dark-boot-getter.png",
-      "sha256": "e824ceb841b28de5265612bd8334a53bd00646da2ea01ec49774b08bcc634e68",
-      "phase": "production",
+      "group": "primary-production",
+      "surface": "mobile-controls",
+      "state": "deck",
+      "device": "mobile",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "boot-getter",
+      "page": "mobile-controls deck",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T17:05:00.288Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
+      "original": {
+        "file": ".cache/s126-c2-mobile-production/mobile-dark-deck.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-production-mobile-dark-boot-quota.png",
-      "sha256": "5b53a0da7921c4f414a2fc959ae5f50317d946960d44eb16883c5427a68d2c93",
+      "file": "s126-c2-primary-production-mobile-controls-full-view-mobile-dark.png",
+      "sha256": "cd9443884ab63196d652d63d64df4576bb33ef2df763470dd1cfc84c9436daf8",
       "phase": "production",
+      "group": "primary-production",
+      "surface": "mobile-controls",
+      "state": "full-view",
+      "device": "mobile",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "boot-quota",
+      "page": "mobile-controls full-view",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T17:05:09.100Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
+      "original": {
+        "file": ".cache/s126-c2-mobile-production/mobile-dark-full-view.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-production-mobile-dark-contract-mark.png",
-      "sha256": "158045bc389383d60f57fa9752255c0064308b882748ee1133df41c30eab36a7",
+      "file": "s126-c2-primary-production-mobile-controls-deck-mobile-light.png",
+      "sha256": "4c1f37bdaf6824da07ab5b40ec941dff4bc1a799084917e7f46e29f9bc1c540c",
       "phase": "production",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:05:15.943Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-production-mobile-light-boot-getter.png",
-      "sha256": "a176fdcbc2b4b2e3c190c388e8e44c3240f36c7cad3363b1a65a19f2f9ce8603",
-      "phase": "production",
+      "group": "primary-production",
+      "surface": "mobile-controls",
+      "state": "deck",
+      "device": "mobile",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "boot-getter",
+      "page": "mobile-controls deck",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T17:05:19.003Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
+      "original": {
+        "file": ".cache/s126-c2-mobile-production/mobile-light-deck.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-production-mobile-light-boot-quota.png",
-      "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f",
+      "file": "s126-c2-primary-production-mobile-controls-full-view-mobile-light.png",
+      "sha256": "8a0f558597b3bc01211ba2543a7bf2bd1be9445061a22f8b4a4145bbefcd74fb",
       "phase": "production",
+      "group": "primary-production",
+      "surface": "mobile-controls",
+      "state": "full-view",
+      "device": "mobile",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "boot-quota",
+      "page": "mobile-controls full-view",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T17:05:23.994Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
+      "original": {
+        "file": ".cache/s126-c2-mobile-production/mobile-light-full-view.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-production-mobile-light-contract-mark.png",
-      "sha256": "5a53396f3f0d887edb59a0321e19347ee6276d108c81fa9a60f9c947937a39e1",
+      "file": "s126-c2-primary-production-trophy-case-quota-desktop-dark.png",
+      "sha256": "61d07f747b4c4578b71d125b2b83d05b250acb3a98a91c65c22833a8693d0c42",
       "phase": "production",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "contract-mark",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:05:30.178Z",
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-contract-production-desktop-dark-dismissed.png",
-      "path": "docs/visual-qa/s125-contract-production-desktop-dark-dismissed.png",
-      "sha256": "8a16368ed51db198c70595a1e9e92f712cce55f4371af0e9d4ae411e4c6ad431",
-      "phase": "production",
+      "group": "primary-production",
+      "surface": "trophy-case",
+      "state": "quota",
+      "device": "desktop",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "state": "dismissed",
+      "page": "trophy-case quota",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T17:06:50.561Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5946,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
+      "original": {
+        "file": ".cache/s126-c2-after-production/trophy-desktop-dark.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-production-desktop-dark-complete-first.png",
-      "path": "docs/visual-qa/s125-contract-production-desktop-dark-complete-first.png",
-      "sha256": "a98b91de7939d0717af9014600a9080f11c8972f64bc057f16cf12765c9b941a",
+      "file": "s126-c2-primary-production-trophy-case-quota-desktop-light.png",
+      "sha256": "c7b76dc499efd78877edb90cf9c255d946e9313aa5433de97f7f5c28a05e4e60",
       "phase": "production",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "complete-first",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:06:58.796Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5947,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-contract-production-desktop-dark-complete-revisit.png",
-      "path": "docs/visual-qa/s125-contract-production-desktop-dark-complete-revisit.png",
-      "sha256": "9f76038ed98498bbbb6637556c4fdcde39efe3088679e2ef01baf778a5749380",
-      "phase": "production",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "complete-revisit",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:07:05.023Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5948,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-contract-production-desktop-dark-finalized-2026.png",
-      "path": "docs/visual-qa/s125-contract-production-desktop-dark-finalized-2026.png",
-      "sha256": "adea4b46bdf07be7954ad1d027c6fe1848ac17564fd8021325ec2848b159ff6a",
-      "phase": "production",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "finalized-2026",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:07:09.018Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5949,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-contract-production-desktop-dark-finalized-2027.png",
-      "path": "docs/visual-qa/s125-contract-production-desktop-dark-finalized-2027.png",
-      "sha256": "12cb8952e35a827a9343e18746d70d951ce2a1162b3eebdeabeaba5f819138cf",
-      "phase": "production",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "finalized-2027",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:07:17.658Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5950,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-contract-production-desktop-light-dismissed.png",
-      "path": "docs/visual-qa/s125-contract-production-desktop-light-dismissed.png",
-      "sha256": "e2332b6b58b0ae3372752eee1392a7fd58555aa3e5c9767912ac212f24633718",
-      "phase": "production",
+      "group": "primary-production",
+      "surface": "trophy-case",
+      "state": "quota",
+      "device": "desktop",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "state": "dismissed",
+      "page": "trophy-case quota",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T17:07:24.107Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5951,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
+      "original": {
+        "file": ".cache/s126-c2-after-production/trophy-desktop-light.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-production-desktop-light-complete-first.png",
-      "path": "docs/visual-qa/s125-contract-production-desktop-light-complete-first.png",
-      "sha256": "fa36ed92c9864cd24469657966e4b91d485f4f647bba156b62c7364e9be49f8a",
+      "file": "s126-c2-primary-production-trophy-case-quota-mobile-dark.png",
+      "sha256": "731400c18710591728371ed8a4ccabec4766fee47b5073cca1f5390fd10cee76",
       "phase": "production",
+      "group": "primary-production",
+      "surface": "trophy-case",
+      "state": "quota",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "trophy-case quota",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-after-production/trophy-mobile-dark.png",
+        "observedPhase": null
+      }
+    },
+    {
+      "file": "s126-c2-primary-production-trophy-case-quota-mobile-light.png",
+      "sha256": "664b751520e3cf7bf74b7d65e2994af07c5bcd2518f0af12e7a8b530d0bb6b78",
+      "phase": "production",
+      "group": "primary-production",
+      "surface": "trophy-case",
+      "state": "quota",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "trophy-case quota",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-after-production/trophy-mobile-light.png",
+        "observedPhase": null
+      }
+    },
+    {
+      "file": "s126-c2-primary-production-status-note-release-note-desktop-dark.png",
+      "sha256": "6c38f7107fef79b2b77a85609dd7e90792ae5ff5bcff9afdda47b7a3b75d847a",
+      "phase": "production",
+      "group": "primary-production",
+      "surface": "status-note",
+      "state": "release-note",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "status-note release-note",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-status-production-v2/desktop-dark.png",
+        "observedPhase": "production"
+      }
+    },
+    {
+      "file": "s126-c2-primary-production-status-note-release-note-desktop-light.png",
+      "sha256": "32a5b149ab3e3776023d023d403041c84d199502fa0b532559c19d253c69e151",
+      "phase": "production",
+      "group": "primary-production",
+      "surface": "status-note",
+      "state": "release-note",
+      "device": "desktop",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "state": "complete-first",
+      "page": "status-note release-note",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T17:07:29.158Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5952,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
+      "original": {
+        "file": ".cache/s126-c2-status-production-v2/desktop-light.png",
+        "observedPhase": "production"
+      }
     },
     {
-      "file": "s125-contract-production-desktop-light-complete-revisit.png",
-      "path": "docs/visual-qa/s125-contract-production-desktop-light-complete-revisit.png",
-      "sha256": "f268ade2998dcddd1ce363bae8df9e3403c5910a32ea982a956f44f1ccc66af9",
+      "file": "s126-c2-primary-production-status-note-release-note-mobile-dark.png",
+      "sha256": "c35e682e33359364eadcbaf6b42497ffad10fb2b9d4a78f9e43319ec3848f04b",
       "phase": "production",
+      "group": "primary-production",
+      "surface": "status-note",
+      "state": "release-note",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "status-note release-note",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-status-production-v2/mobile-dark.png",
+        "observedPhase": "production"
+      }
+    },
+    {
+      "file": "s126-c2-primary-production-status-note-release-note-mobile-light.png",
+      "sha256": "1615fc777af7870aa2ad00648b9bbaad4955aad77f85862b13b0e2b219722151",
+      "phase": "production",
+      "group": "primary-production",
+      "surface": "status-note",
+      "state": "release-note",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "status-note release-note",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-status-production-v2/mobile-light.png",
+        "observedPhase": "production"
+      }
+    },
+    {
+      "file": "s126-c2-entry-production-entry-landing-desktop-dark.png",
+      "sha256": "128d9a73d12e3616f87e7eede7ab845f3f579e6d2e1753bac1dc5767bbe2b63c",
+      "phase": "production",
+      "group": "entry-production",
+      "surface": "entry",
+      "state": "landing",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "entry landing",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "original": {
+        "file": ".cache/s126-c2-entry-production/desktop-dark.png",
+        "observedPhase": null
+      }
+    },
+    {
+      "file": "s126-c2-entry-production-entry-landing-desktop-light.png",
+      "sha256": "aa0ef636bd560e5e43c7164513dddbbd283d12a18a428db1ba16b359f9d749c1",
+      "phase": "production",
+      "group": "entry-production",
+      "surface": "entry",
+      "state": "landing",
+      "device": "desktop",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "state": "complete-revisit",
+      "page": "entry landing",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T17:07:34.901Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5953,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
+      "original": {
+        "file": ".cache/s126-c2-entry-production/desktop-light.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-production-desktop-light-finalized-2026.png",
-      "path": "docs/visual-qa/s125-contract-production-desktop-light-finalized-2026.png",
-      "sha256": "f556b24fc0eb9870efd2592e0c8772af78f786cb23477b213da59654a4ac97d3",
+      "file": "s126-c2-entry-production-entry-landing-mobile-dark.png",
+      "sha256": "c765ad2ec20920015e7e9796858190e7c1807e88a9611f0b5fc7c27be1d43eb1",
       "phase": "production",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "finalized-2026",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:07:38.237Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5954,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-contract-production-desktop-light-finalized-2027.png",
-      "path": "docs/visual-qa/s125-contract-production-desktop-light-finalized-2027.png",
-      "sha256": "8205862feeb5c1a4ebf5b71ead7bd6d62fffd61dbcfc785c96bcca757ac3dbb7",
-      "phase": "production",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "state": "finalized-2027",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:07:42.378Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5955,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-contract-production-mobile-dark-dismissed.png",
-      "path": "docs/visual-qa/s125-contract-production-mobile-dark-dismissed.png",
-      "sha256": "81cd70622d57a2cc7d999a7a3dc73696da84d42ad3b72378a6e4c53d2576fe20",
-      "phase": "production",
+      "group": "entry-production",
+      "surface": "entry",
+      "state": "landing",
+      "device": "mobile",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "state": "dismissed",
+      "page": "entry landing",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T17:07:47.943Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5956,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
+      "original": {
+        "file": ".cache/s126-c2-entry-production/mobile-dark.png",
+        "observedPhase": null
+      }
     },
     {
-      "file": "s125-contract-production-mobile-dark-complete-first.png",
-      "path": "docs/visual-qa/s125-contract-production-mobile-dark-complete-first.png",
-      "sha256": "ad220f2b9d54fe862b1b230a28cff3592b3ec874629bce1d6e8bafa6b9eb11e1",
+      "file": "s126-c2-entry-production-entry-landing-mobile-light.png",
+      "sha256": "d01cdaa45615518cc4fee6b2a096ab206ba98345f8394d5a4f4d6795304139d3",
       "phase": "production",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "complete-first",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:07:51.489Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5957,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-contract-production-mobile-dark-complete-revisit.png",
-      "path": "docs/visual-qa/s125-contract-production-mobile-dark-complete-revisit.png",
-      "sha256": "f6c228feb798e682c3bd1a7f9e2c1d3cbf86f76ef058e6700d7c7d9fcc9e913f",
-      "phase": "production",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "complete-revisit",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:07:54.743Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5958,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-contract-production-mobile-dark-finalized-2026.png",
-      "path": "docs/visual-qa/s125-contract-production-mobile-dark-finalized-2026.png",
-      "sha256": "633fd5405a68c704a81232b8443a976d248333f5fa3bba2c4cce7b8064dd5a9d",
-      "phase": "production",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "finalized-2026",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:08:00.099Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5959,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-contract-production-mobile-dark-finalized-2027.png",
-      "path": "docs/visual-qa/s125-contract-production-mobile-dark-finalized-2027.png",
-      "sha256": "7aa53b5586ee4b0138e6c59b49d1ddeeaf7e5583d1feb4272d2b4cd82cbca96f",
-      "phase": "production",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "finalized-2027",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:08:03.653Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5960,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-contract-production-mobile-light-dismissed.png",
-      "path": "docs/visual-qa/s125-contract-production-mobile-light-dismissed.png",
-      "sha256": "c8912ce85ad9f1f74e221cebbee3411e1f2e69cd1eb0e690c3f4e1546eed343c",
-      "phase": "production",
+      "group": "entry-production",
+      "surface": "entry",
+      "state": "landing",
+      "device": "mobile",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "state": "dismissed",
+      "page": "entry landing",
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
       "inspected": true,
-      "capturedAt": "2026-10-27T17:08:08.934Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5961,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-contract-production-mobile-light-complete-first.png",
-      "path": "docs/visual-qa/s125-contract-production-mobile-light-complete-first.png",
-      "sha256": "5dba9aa27c2774a9fc7e93309443d4c06f2961f06927439c3ad24a72810671a4",
-      "phase": "production",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "complete-first",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:08:13.626Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5962,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-contract-production-mobile-light-complete-revisit.png",
-      "path": "docs/visual-qa/s125-contract-production-mobile-light-complete-revisit.png",
-      "sha256": "12de6a178e5c5c8b69bcd1551eb069aa34f43e6d262554ce7b14460dd9870b8b",
-      "phase": "production",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "complete-revisit",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:08:17.368Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5963,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-contract-production-mobile-light-finalized-2026.png",
-      "path": "docs/visual-qa/s125-contract-production-mobile-light-finalized-2026.png",
-      "sha256": "a3d058c258b574cef0d6236f9fcc6c1ae4fb89445291feab345b295d398f8f1d",
-      "phase": "production",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "finalized-2026",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:08:22.072Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5964,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
-    },
-    {
-      "file": "s125-contract-production-mobile-light-finalized-2027.png",
-      "path": "docs/visual-qa/s125-contract-production-mobile-light-finalized-2027.png",
-      "sha256": "a3d058c258b574cef0d6236f9fcc6c1ae4fb89445291feab345b295d398f8f1d",
-      "phase": "production",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "state": "finalized-2027",
-      "inspected": true,
-      "capturedAt": "2026-10-27T17:08:27.382Z",
-      "ledger": {
-        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
-        "bound": true,
-        "result": {
-          "added": 1,
-          "revised": 0,
-          "total": 5965,
-          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
-        }
-      },
-      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-      "reviewReceipt": "reports/s125-production-visual-review.json"
+      "original": {
+        "file": ".cache/s126-c2-entry-production/mobile-light.png",
+        "observedPhase": null
+      }
     }
   ],
-  "previousReceipt": {
-    "path": "reports/s125-evidence-history/LATEST-410e2d4951152176f0cdebf29ce92f1a2b56e731bdc5138c3d3a9608f98319ef.json",
-    "sha256": "410e2d4951152176f0cdebf29ce92f1a2b56e731bdc5138c3d3a9608f98319ef"
-  },
   "inspection": {
     "renderedPixelsReviewed": true,
-    "reviewer": "independent studio-reviewer",
-    "verdict": "pass",
-    "blockingDefectsOpen": 0,
-    "findings": [],
-    "fixesApplied": [
-      "Corrected runtime scope and preserved authoritative fail-closed recovery.",
-      "Framed changed mobile message below sticky chrome."
+    "reviewer": "game_audit; root",
+    "findings": [
+      "Selected before/current source, phase, state, theme and device joins verified against actual independent image/report hashes.",
+      "Historical failed/occluded frames and C1 after/local/hosted/prototype evidence remain historical, not current acceptance."
     ],
-    "method": "Independent rendered-image inspection of complete source-bound before/after and exact-candidate staging/production matrices;36historical+40local+32staging+32production images, with all original receipt hashes preserved."
+    "fixesApplied": [
+      "Mobile Full View recovery",
+      "Prediction corruption and once-only grading",
+      "Trophy tab continuity",
+      "Exact critical entry asset bundling; no image edits"
+    ],
+    "blockingDefectsOpen": 0
   },
-  "scope": {
-    "optionalJourney": "Explicit client mode reaches Ready under per-journey-key read/quota faults; bounded relative recording remains usable.",
-    "authoritativeRecovery": "Whole sessionStorage getter denial requires visible recovery alert, checkpoint-read message and notReady. The recovery module is unchanged.",
-    "contract": "Marks remain within the tab after failed persistence and the temporary-tracking label is readable."
-  },
-  "limitations": [
-    "Original local boot images used dev-server runtime and did not prove client boot under total storage denial. Preserve those images and reports as historical server-only evidence.",
-    "Mobile contract frames cover the changed heading/message/objective; lower objectives remain below the viewport.",
-    "Contract uses an isolated actual-template synthetic fixture. No real-user/cohort or production claim.",
-    "Historical client-before manifest has no completed/verified fields; preserved as independently reviewed original baseline pixels, never promoted into runtime acceptance.",
-    "Source2 staging captures remain explicitly historical. Local40 remain historical4a2 under exact product-byte equivalence. Current fresh staging and production reviews bind successor1ad and the exact shared artifact.",
-    "Synthetic contract components use actual templates/styles. These checks do not prove player retention, full-season comprehension or field performance."
-  ],
-  "hostedReviews": {
-    "staging": {
-      "path": "reports/s125-staging-successor-review.json",
-      "sha256": "4b22f4788db55d5255da825a22502a1fb9e584679987f4c6713f236fe2342124"
+  "inputs": [
+    {
+      "path": "docs/visual-qa/S126_LOCAL.json",
+      "sha256": "cbfa305ee541fd52e82c288d5ed74874ba5f4f1f1a864ad3bfa021ae301c123f"
     },
-    "production": {
-      "path": "reports/s125-production-visual-review.json",
-      "sha256": "b474bf23a0529310cb80371e3d9e1ac74e8071b89291348462b135beba3ebb14"
+    {
+      "path": "reports/s126-local-visual-review.json",
+      "sha256": "3f245f2fdcf078e9615cd00aa164f89c399f240bc7fa318897cda68912bd0286"
+    },
+    {
+      "path": "reports/s126-entry-before-pixels.json",
+      "sha256": "75d414b2507aa1164cd3df54e10cf891f238c1bdb0ccef98cf532777df8c7c34"
+    },
+    {
+      "path": "docs/visual-qa/evidence/s126-c2-0cdd1964755327bd0ccb7768a77c623b9c9d091d409bfffea9fbd434cd3354fd.json",
+      "sha256": "0cdd1964755327bd0ccb7768a77c623b9c9d091d409bfffea9fbd434cd3354fd",
+      "originalPath": ".cache/s126-entry-before-review.json"
+    },
+    {
+      "path": "reports/s126-c2-staging-pixels.json",
+      "sha256": "b3b29404e9efbfa6fc656f716ea52333b61a903a1ccc6c65141810f35588e906"
+    },
+    {
+      "path": "reports/s126-c2-staging-visual-review.json",
+      "sha256": "8ecdb15b1abb80eb805d05c925ed8bb2417b003723bba685d641f21c7881b4ff"
+    },
+    {
+      "path": "reports/s126-c2-entry-staging-pixels.json",
+      "sha256": "19352b251797956b6464321a0a1620c04ed0214961ac6219a158c9c3a818e93f"
+    },
+    {
+      "path": "reports/s126-c2-entry-staging-visual-review.json",
+      "sha256": "e51c0b08aa78d5d86b068e3a0ce2f28f9561d02f9375d5a75d14167b656f31dc"
+    },
+    {
+      "path": "reports/s126-c2-production-pixels.json",
+      "sha256": "0c061916661f81d1396de6c54588f60fcfaf025be7185848812c61c864c25bf7"
+    },
+    {
+      "path": "reports/s126-c2-production-visual-review.json",
+      "sha256": "54a59c6449dcc5aea1744033370884e2c8d336f8c30bdadd7621554b5b382a29"
+    },
+    {
+      "path": "reports/s126-c2-entry-production-pixels.json",
+      "sha256": "4bb2ad669f499286632882b7fe040d1c58d4744dd24eb99118ddac495dad734a"
+    },
+    {
+      "path": "reports/s126-c2-entry-production-visual-review.json",
+      "sha256": "a749b7cab813eae4752450e313c76ee2d55b3049a619c30569c1d1ccb7e20094"
+    }
+  ],
+  "candidate": {
+    "path": ".cache/s126-c2-candidate.json",
+    "sha256": "ecbb349148ebb376c42c56e00263afc6eff85905eb9fe7fb29bee6992e6b0809"
+  },
+  "nativeProvenance": [
+    {
+      "path": "reports/s126-c2-staging-provenance.json",
+      "sha256": "d40ef7b4cecbf47144797997d42a2d5592ade227444bc5190c51ca0a8dacb4cc"
+    },
+    {
+      "path": "reports/s126-c2-production-provenance.json",
+      "sha256": "13b41bf460ca9b60aee50e6271febdb0729666b60436529b5221df9f8069c800"
+    }
+  ],
+  "supplementalEvidence": {
+    "predictions": {
+      "path": "docs/visual-qa/S126_C2_PREDICTIONS.json",
+      "sha256": "3853a93e3313df17a5d86d01a4284417a78a54c0ece88d0d43f3f67326ec3ea9",
+      "captures": 24
     }
   },
-  "artifactFingerprint": {
-    "algorithm": "sha256",
-    "digest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
+  "captureCounts": {
+    "primary": 60,
+    "supplemental": 24,
+    "total": 84
   },
-  "historicalReceipts": [
-    {
-      "path": "reports/s125-browser-client-before.json",
-      "sha256": "70be9e2351716b47ae83485ffa282f5fe1e3a8599d92eca8218b500326c86485"
-    },
-    {
-      "path": "reports/s125-browser-client-after.json",
-      "sha256": "2ad4975e530a80c28a54a95c1121c1e384a9d8e0d6d87bb3befc19726f56232e"
-    },
-    {
-      "path": "reports/s125-browser-staging-final.json",
-      "sha256": "c944708939748659a0534bc5cef1a71ac3875c5723bcfb68d852bef866883509"
-    },
-    {
-      "path": "reports/s125-client-acceptance-correction.json",
-      "sha256": "3f85b0217e1143ae5566e0334d5b3dfe7e70f6366fd3912f28e60770ad135e4f"
-    },
-    {
-      "path": "reports/s125-staging-browser-review.json",
-      "sha256": "0fe38e74faae7f76e0d1abf1bd3e2666fe56a145b707f2b751bd482d1715c08f"
-    }
+  "historicalOnly": [
+    "docs/visual-qa/S126_LOCAL.json (after-local16 not selected)",
+    "C1 stage/production pixel matrices",
+    "reports/s126-entry-local-visual-review.json (prototype before/after8)",
+    "Original failed/occluded capture attempts; original FIX reviews retained"
   ],
-  "contractStateReview": {
-    "path": "reports/s125-contract-state-review.json",
-    "sha256": "18c4186e9a2f7d6e58d7b02c4ff76e41c348d114db9e1bcd636565bad9e5b7a9"
-  },
-  "historicalLocalEquivalence": {
-    "path": "reports/s125-successor-local-equivalence.json",
-    "sha256": "6ca31654e8308520168947f9e9d8992cd8b560e0ca21d223ddfc62427d294779"
-  }
+  "scope": "60 primary selected before/current rendered images plus24 prediction supplement. Current acceptance rows bind exact C2 source/D2; baseline rows retain their distinct historical identities. No full game, performance, lifecycle or launch claim."
 }

@@ -1,0 +1,88 @@
+{
+  "session": 126,
+  "observedAt": "2026-10-28T23:52:43.994Z",
+  "subject": "franchise-architect-football",
+  "verified": false,
+  "results": {
+    "coherence": {
+      "ok": true,
+      "claimed": 126,
+      "latestDurable": 126,
+      "surfaces": {
+        "sil": 126,
+        "handoff": 126,
+        "workLog": 126,
+        "closeoutBrief": 126
+      },
+      "missing": [],
+      "reason": "closeout write-back coherent for S126",
+      "foreignBriefs": [
+        {
+          "name": "CLOSEOUT_BRIEF_S14_2026-06-04.md",
+          "claimed": "vaultspark-football-gm"
+        }
+      ]
+    },
+    "freshness": {
+      "ok": true,
+      "expected": 126,
+      "sil": 126,
+      "handoff": 126,
+      "stale": [],
+      "reason": "session numbers coherent at S126"
+    },
+    "summary": {
+      "ok": true,
+      "expected": 126,
+      "actual": 126,
+      "reason": "lastSessionSummary coherent at S126"
+    },
+    "contextPreservation": {
+      "ok": false,
+      "findings": [
+        {
+          "file": "docs/visual-qa/LATEST.json",
+          "issue": "content-wipe",
+          "ratio": 0.4258577921321191
+        }
+      ]
+    },
+    "writebackCurrency": {
+      "ok": true,
+      "inFlight": true,
+      "unmeasured": false,
+      "debtCount": 2,
+      "ageHours": 6.5,
+      "staleHours": 12,
+      "anchor": {
+        "sha": "ef9f43d6",
+        "subject": "chore: complete S125 verified closeout",
+        "isoDate": "2026-10-27T22:55:48-04:00"
+      },
+      "newest": {
+        "sha": "309bb0fa",
+        "subject": "perf: bundle landing assets in the first response (S126)",
+        "isoDate": "2026-10-28T17:15:31-04:00"
+      },
+      "oldest": {
+        "sha": "1c73ef67",
+        "subject": "fix: recover mobile controls, predictions and trophies (S126)",
+        "isoDate": "2026-10-28T13:20:29-04:00"
+      },
+      "debt": [
+        {
+          "sha": "309bb0fa",
+          "subject": "perf: bundle landing assets in the first response (S126)",
+          "isoDate": "2026-10-28T17:15:31-04:00"
+        },
+        {
+          "sha": "1c73ef67",
+          "subject": "fix: recover mobile controls, predictions and trophies (S126)",
+          "isoDate": "2026-10-28T13:20:29-04:00"
+        }
+      ],
+      "reason": "2 substantive commit(s) since last closeout write-back (ef9f43d6), oldest 6.5h old — session likely in flight"
+    }
+  },
+  "scope": "Read-only native coherence and preservation checks, explicitly rooted in this recipient. Does not substitute for source CI, final metadata suite, security, push or deployment."
+}
