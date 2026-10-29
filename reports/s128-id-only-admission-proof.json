@@ -1,0 +1,41 @@
+{
+  "session": 128,
+  "at": "2026-10-29T07:00:20.490Z",
+  "baselineSource": "258fd5560f8cb402e24c8018323e5da21cf98584",
+  "baseline": {
+    "added": 0,
+    "unread": 0,
+    "items": [
+      {
+        "type": "",
+        "headline": "",
+        "detail": "",
+        "quote": "",
+        "id": "same",
+        "inboxKey": "id:same",
+        "tier": "FLAVOR",
+        "receivedAt": 0,
+        "resolvedAt": null
+      }
+    ]
+  },
+  "correctedSource": "local-worktree",
+  "corrected": {
+    "added": 1,
+    "unread": 1,
+    "items": [
+      {
+        "type": "injury",
+        "headline": "Starter out for season",
+        "detail": "",
+        "quote": "",
+        "id": "same",
+        "inboxKey": "id:same",
+        "tier": "CRITICAL",
+        "receivedAt": 100,
+        "resolvedAt": null
+      }
+    ]
+  },
+  "verified": true
+}

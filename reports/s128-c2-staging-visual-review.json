@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "session": 128,
+  "phase": "staging",
+  "origin": "https://staging.playfranchisearchitect.com",
+  "sourceRevision": "258fd5560f8cb402e24c8018323e5da21cf98584",
+  "artifactDigest": "204a906912ad7da96c357842697d4a067f6b451fe692581c0c95b0ed9d684ba8",
+  "captureReport": "reports/s128-staging-browser.json",
+  "captureReportSha256": "8a02b7a299be6bec97a6261738cb90d14e79a661f4b0ac369cebfad754fa68f1",
+  "reviewedAt": "2026-10-29T06:53:20.482Z",
+  "reviewer": "independent review_playtest agent and session agent",
+  "verdict": "pass-selected-surfaces-with-capture-limitations",
+  "inspectedImageCount": 18,
+  "inspected": [
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "inbox",
+      "file": ".cache/s128-c2-staging/inbox-desktop-dark.png",
+      "sha256": "52a02028f14c5f0e50efb371fb652be827f9be6a839946904027833eb0506426",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "inbox-resolved",
+      "file": ".cache/s128-c2-staging/inbox-resolved-desktop-dark.png",
+      "sha256": "30335639e549e8883bf18aa59f01fb8e364dae55699ab418d4ea39c79856762f",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "playtest",
+      "file": ".cache/s128-c2-staging/playtest-desktop-dark.png",
+      "sha256": "f644f7beb34dc3bcb4505845d680c5ddc021888a4813ce2d4f4accbf9c44687d",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "status",
+      "file": ".cache/s128-c2-staging/status-desktop-dark.png",
+      "sha256": "5c16948e0281f3115a1ae03873dcb2ed3074b0c4ffb0eb49dabe68b03a631d66",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "inbox",
+      "file": ".cache/s128-c2-staging/inbox-desktop-light.png",
+      "sha256": "272c84f2365d46423c0c08ea747bc436d56fdb25dfa2aa0465693e6290cffdcd",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "inbox-resolved",
+      "file": ".cache/s128-c2-staging/inbox-resolved-desktop-light.png",
+      "sha256": "8ac36acf3d69a90913e522ce2ac6e8f6baf3f7b6006eb11d063f80ae9997b596",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "playtest",
+      "file": ".cache/s128-c2-staging/playtest-desktop-light.png",
+      "sha256": "bfe75624ae1d508a04f4b986117ba630b8fde66ef9ab22bcf5b09eef685f16d7",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "status",
+      "file": ".cache/s128-c2-staging/status-desktop-light.png",
+      "sha256": "33d215650ad37c915a3d8e97995492ad25bd0765ad7cd963c7ea55d2c55beeb7",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "inbox",
+      "file": ".cache/s128-c2-staging/inbox-mobile-dark.png",
+      "sha256": "f78dca5dbcc5eaeba63d84379c96f3a6ab47883719e9a8b9f0b11ec0bc6483e3",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "inbox-resolved",
+      "file": ".cache/s128-c2-staging/inbox-resolved-mobile-dark.png",
+      "sha256": "930c034aeb4db3d362b9e16a2d7df435f116c408be843d7d69cf9bd7f6539619",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "playtest-top",
+      "file": ".cache/s128-c2-staging/playtest-top-mobile-dark.png",
+      "sha256": "0a48f6f5fe8e3b5b6c5d34df865b458b77af3b6b0caeafadf8e21917f14655bd",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "playtest-bottom",
+      "file": ".cache/s128-c2-staging/playtest-bottom-mobile-dark.png",
+      "sha256": "3d166b97e86786765b69367c3e62d77b9f0f120af11c09d5bd886fc7cf37e63b",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "status",
+      "file": ".cache/s128-c2-staging/status-mobile-dark.png",
+      "sha256": "4043bcf7ce0ac05ab68f263ff8c7bad86fdea9cf5781a72d91d39a489792ed7c",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "inbox",
+      "file": ".cache/s128-c2-staging/inbox-mobile-light.png",
+      "sha256": "1f504dc8d5871fb01c017c50fb681481e49dbdc275f695b329bce5419e610f13",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "inbox-resolved",
+      "file": ".cache/s128-c2-staging/inbox-resolved-mobile-light.png",
+      "sha256": "e1f0ae8641a2b5f64a6cb434d725909b57aae1652fe4defbf7abd1ffea740d17",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "playtest-top",
+      "file": ".cache/s128-c2-staging/playtest-top-mobile-light.png",
+      "sha256": "fbf048aa4eefadf894e730cfa94cde39a75483aeff0ab8280c071d998b49e784",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "playtest-bottom",
+      "file": ".cache/s128-c2-staging/playtest-bottom-mobile-light.png",
+      "sha256": "e0b7ef7261a3a148b90c0829950a9b0c1921a9a25756d3d8b232076c2d64ff4c",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "status",
+      "file": ".cache/s128-c2-staging/status-mobile-light.png",
+      "sha256": "ad8324d99e246a48daaed733c2cc4c1aaa96c65c594e1b86c62a5acc603385d6",
+      "inspected": true,
+      "verdict": "pass-selected-content-with-recorded-capture-limits"
+    }
+  ],
+  "sourceBinding": {
+    "reportBeforeAfterMatch": true,
+    "allImageDigestsMatch": true
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "blockingDefectsOpen": 0,
+    "findings": [
+      "Selected Inbox, resolved-action, note controls/disclosures and dated status note readable in both themes and viewport sizes."
+    ]
+  },
+  "captureLimitations": [
+    "Selected states only; mobile note top/bottom pairs cover the tall panel. Element captures do not prove every viewport or whole-product layout.",
+    "Status element captures clip unrelated sticky-header/title/early-access badge; the selected dated release note remains readable."
+  ],
+  "scope": "Actual18-image rendered-pixel review. Browser behavior, source CI, production promotion and broad launch readiness are separate."
+}

@@ -1,0 +1,43 @@
+{
+  "session": 128,
+  "sourceRevision": "258fd5560f8cb402e24c8018323e5da21cf98584",
+  "reason": "Required id-only cache repair supersedes C2 before production",
+  "scope": "Relocated historical receipts retain their exact bytes. Use this mapping for paths embedded in historical receipts; they are not current candidate evidence.",
+  "mappings": [
+    {
+      "original": "reports/s128-candidate-security.json",
+      "archived": "reports/s128-c2-candidate-security.json",
+      "sha256": "10e2fd9e67473f1824df956929175458c46f31426e9eff74ba11acfc65915131"
+    },
+    {
+      "original": "reports/s128-isolated-studio.json",
+      "archived": "reports/s128-c2-isolated-studio.json",
+      "sha256": "9fc32debd61e9b6b148c9a71f9e13fd72644332049a2d3d9f9ef27c397213dfb"
+    },
+    {
+      "original": "reports/s128-source-publication.json",
+      "archived": "reports/s128-c2-source-publication.json",
+      "sha256": "9aaa9ff056e055efb5e585d03a7f3dfe46910f231106f81561ae22cca3a74cd9"
+    },
+    {
+      "original": "reports/s128-staging-browser.json",
+      "archived": "reports/s128-c2-staging-browser.json",
+      "sha256": "8a02b7a299be6bec97a6261738cb90d14e79a661f4b0ac369cebfad754fa68f1"
+    },
+    {
+      "original": "reports/s128-staging-performance.json",
+      "archived": "reports/s128-c2-staging-performance.json",
+      "sha256": "48a881ad1f2afeee226ae85b898d4b9bcdc9d2987a6c6e08e48f95f07ffdf63f"
+    },
+    {
+      "original": "reports/s128-staging-provenance.json",
+      "archived": "reports/s128-c2-staging-provenance.json",
+      "sha256": "415c07d9126c53f030d992a20c1748d5e6abc208740cd3536485202027cc5d2e"
+    },
+    {
+      "original": "reports/s128-staging-visual-review.json",
+      "archived": "reports/s128-c2-staging-visual-review.json",
+      "sha256": "0b696234119d58ddd1a292dd11cbb09664195aaff15ca527bf1fed4fa065c281"
+    }
+  ]
+}

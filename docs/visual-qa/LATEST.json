@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "session": 128,
-  "capturedAt": "2026-10-29T06:16:45.861Z",
-  "kind": "selected-inbox-feedback-local",
+  "capturedAt": "2026-10-29T07:02:02.951Z",
+  "kind": "selected-inbox-feedback-C3-local",
   "sourceRevision": "local-worktree",
   "sourceFiles": [
     {
       "path": "public/lib/engagementFeatures.js",
-      "sha256": "a6cd680d2d904a41ef6118f63180f800ffaf4f45b705c8b2951d8c5e679e9945"
+      "sha256": "917d7ab9342be8f503c613122fa8a4768701cec03bc82c9d055be4e765bc97cd"
     },
     {
       "path": "public/lib/playtestReceipts.js",
@@ -161,8 +161,8 @@
       },
       "theme": "dark",
       "state": "inbox",
-      "file": "s128-after-inbox-desktop-dark.png",
-      "sha256": "bd87648a19ff456dfa3c2b304c967ec8f6995272360158f757f2e18a33be893c",
+      "file": "s128-c3-after-inbox-desktop-dark.png",
+      "sha256": "258e5c6f314e98c5a7d592195271f52b99d9b68a8e7153763ae9bbf899c8ac1a",
       "page": "inbox",
       "inspected": true,
       "sourceRevision": "local-worktree"
@@ -177,8 +177,8 @@
       },
       "theme": "dark",
       "state": "inbox-resolved",
-      "file": "s128-after-inbox-resolved-desktop-dark.png",
-      "sha256": "1097ca16e6457d50ccd2adfd84ee909fc0c607ce59e12d62562f6fc348e92e02",
+      "file": "s128-c3-after-inbox-resolved-desktop-dark.png",
+      "sha256": "bc637eac3b0548ca6e90ac709af9a4d331425b8f7a221b04ebc9fd2ad140a21f",
       "page": "inbox-resolved",
       "inspected": true,
       "sourceRevision": "local-worktree"
@@ -193,7 +193,7 @@
       },
       "theme": "dark",
       "state": "playtest",
-      "file": "s128-after-playtest-desktop-dark.png",
+      "file": "s128-c3-after-playtest-desktop-dark.png",
       "sha256": "f644f7beb34dc3bcb4505845d680c5ddc021888a4813ce2d4f4accbf9c44687d",
       "page": "playtest",
       "inspected": true,
@@ -209,7 +209,7 @@
       },
       "theme": "dark",
       "state": "status",
-      "file": "s128-after-status-desktop-dark.png",
+      "file": "s128-c3-after-status-desktop-dark.png",
       "sha256": "40f2b91cf7c3b8112fa8e9aa459e7b4777bf518c0f9954365d709b4eafd8ccf1",
       "page": "status",
       "inspected": true,
@@ -225,8 +225,8 @@
       },
       "theme": "light",
       "state": "inbox",
-      "file": "s128-after-inbox-desktop-light.png",
-      "sha256": "713e6c33c37d3dc6cce6532bb72134fcd5dda88364a54907d67ca2ac2edbd8af",
+      "file": "s128-c3-after-inbox-desktop-light.png",
+      "sha256": "ebffbbf4aa3698b6a8aba5ff90119b949d4d002ee16cfb432d66ad222b72a328",
       "page": "inbox",
       "inspected": true,
       "sourceRevision": "local-worktree"
@@ -241,8 +241,8 @@
       },
       "theme": "light",
       "state": "inbox-resolved",
-      "file": "s128-after-inbox-resolved-desktop-light.png",
-      "sha256": "53ed386aa808edd0e161cb9d759dc7642c5018cd2fc292359f9c835f8d49f997",
+      "file": "s128-c3-after-inbox-resolved-desktop-light.png",
+      "sha256": "370438c8b5c9fb0154223c24e5ba354565915a04d0e24cf907c01cb86c6b1bdf",
       "page": "inbox-resolved",
       "inspected": true,
       "sourceRevision": "local-worktree"
@@ -257,7 +257,7 @@
       },
       "theme": "light",
       "state": "playtest",
-      "file": "s128-after-playtest-desktop-light.png",
+      "file": "s128-c3-after-playtest-desktop-light.png",
       "sha256": "bfe75624ae1d508a04f4b986117ba630b8fde66ef9ab22bcf5b09eef685f16d7",
       "page": "playtest",
       "inspected": true,
@@ -273,7 +273,7 @@
       },
       "theme": "light",
       "state": "status",
-      "file": "s128-after-status-desktop-light.png",
+      "file": "s128-c3-after-status-desktop-light.png",
       "sha256": "69b0762410aecf62b60d82b45de29c261e1e9179ad50a27cde2198a2777455a1",
       "page": "status",
       "inspected": true,
@@ -289,8 +289,8 @@
       },
       "theme": "dark",
       "state": "inbox",
-      "file": "s128-after-inbox-mobile-dark.png",
-      "sha256": "7693b46c2ea304a72b421be4a3ebff32da3ba6e037082f06fd8cf5366c0541ff",
+      "file": "s128-c3-after-inbox-mobile-dark.png",
+      "sha256": "a29433059876dc87401efad1a9c5f2886fbef9d132f6fe365b4f9ad1afc433d9",
       "page": "inbox",
       "inspected": true,
       "sourceRevision": "local-worktree"
@@ -305,8 +305,8 @@
       },
       "theme": "dark",
       "state": "inbox-resolved",
-      "file": "s128-after-inbox-resolved-mobile-dark.png",
-      "sha256": "7564a652a9a19656151eff5f2f3b5d0e9ea3a77774ecebc8eb6405edf2703187",
+      "file": "s128-c3-after-inbox-resolved-mobile-dark.png",
+      "sha256": "e9f7fb5c748cc362aff05c7079bcaea4aa3f7b694eb1185c32098553ff0ed4dd",
       "page": "inbox-resolved",
       "inspected": true,
       "sourceRevision": "local-worktree"
@@ -321,7 +321,7 @@
       },
       "theme": "dark",
       "state": "playtest-top",
-      "file": "s128-after-playtest-top-mobile-dark.png",
+      "file": "s128-c3-after-playtest-top-mobile-dark.png",
       "sha256": "0a48f6f5fe8e3b5b6c5d34df865b458b77af3b6b0caeafadf8e21917f14655bd",
       "page": "playtest-top",
       "inspected": true,
@@ -337,7 +337,7 @@
       },
       "theme": "dark",
       "state": "playtest-bottom",
-      "file": "s128-after-playtest-bottom-mobile-dark.png",
+      "file": "s128-c3-after-playtest-bottom-mobile-dark.png",
       "sha256": "3d166b97e86786765b69367c3e62d77b9f0f120af11c09d5bd886fc7cf37e63b",
       "page": "playtest-bottom",
       "inspected": true,
@@ -353,7 +353,7 @@
       },
       "theme": "dark",
       "state": "status",
-      "file": "s128-after-status-mobile-dark.png",
+      "file": "s128-c3-after-status-mobile-dark.png",
       "sha256": "cf267f913721ad6fc5024ba8a03142fdb1d1b645c474d602eef2d67277345d7d",
       "page": "status",
       "inspected": true,
@@ -369,8 +369,8 @@
       },
       "theme": "light",
       "state": "inbox",
-      "file": "s128-after-inbox-mobile-light.png",
-      "sha256": "b1a00f7005eedc27de3b56da6caa4a40f810e88042839dc70dfa444ffcf33997",
+      "file": "s128-c3-after-inbox-mobile-light.png",
+      "sha256": "7c0f048f1798552ddf9431b40eb60835fd329d272d36dda353815a656f4967f2",
       "page": "inbox",
       "inspected": true,
       "sourceRevision": "local-worktree"
@@ -385,8 +385,8 @@
       },
       "theme": "light",
       "state": "inbox-resolved",
-      "file": "s128-after-inbox-resolved-mobile-light.png",
-      "sha256": "9f161e267acfba6c9fa92aaf7b36fe2a124a1e65fdd87b994457b1fa5713a0a5",
+      "file": "s128-c3-after-inbox-resolved-mobile-light.png",
+      "sha256": "9542359f23beb94ce0b9c37ef60be5bfb538007f3a1176e8aee7ab1de3558453",
       "page": "inbox-resolved",
       "inspected": true,
       "sourceRevision": "local-worktree"
@@ -401,7 +401,7 @@
       },
       "theme": "light",
       "state": "playtest-top",
-      "file": "s128-after-playtest-top-mobile-light.png",
+      "file": "s128-c3-after-playtest-top-mobile-light.png",
       "sha256": "fbf048aa4eefadf894e730cfa94cde39a75483aeff0ab8280c071d998b49e784",
       "page": "playtest-top",
       "inspected": true,
@@ -417,7 +417,7 @@
       },
       "theme": "light",
       "state": "playtest-bottom",
-      "file": "s128-after-playtest-bottom-mobile-light.png",
+      "file": "s128-c3-after-playtest-bottom-mobile-light.png",
       "sha256": "e0b7ef7261a3a148b90c0829950a9b0c1921a9a25756d3d8b232076c2d64ff4c",
       "page": "playtest-bottom",
       "inspected": true,
@@ -433,7 +433,7 @@
       },
       "theme": "light",
       "state": "status",
-      "file": "s128-after-status-mobile-light.png",
+      "file": "s128-c3-after-status-mobile-light.png",
       "sha256": "afb4062cd1b80d8c5c98295728cbf534905e72a17e481ea1cf99dcc384512830",
       "page": "status",
       "inspected": true,
@@ -445,16 +445,16 @@
     "reviewer": "independent review_playtest agent and session agent",
     "blockingDefectsOpen": 0,
     "findings": [
-      "Inbox messages and action history readable; notes reject invalid ratings and show the correct count; status note readable."
+      "Fresh critical source message is visible after rejecting an ID-only damaged cache row. Selected Inbox/action and note controls readable in both themes and sizes."
     ],
     "fixesApplied": [
-      "Captured mobile note top/bottom with sticky-header clearance, no transient toast, and extra clearance above floating Feedback control."
+      "Mobile note top/bottom captures clear the sticky header, toast and floating feedback control."
     ],
     "captureLimitations": [
-      "Baseline Inbox screenshots show the underlying Desk after the caught exception; exception evidence is recorded in the baseline browser report.",
-      "Baseline mobile note header/disclaimer are partly obscured by sticky header/toast; final pairs cover them.",
-      "Selected state coverage only; this is not whole-product visual acceptance."
+      "Baseline Inbox captures show the underlying Desk after the caught exception; baseline mobile note header/disclaimer are partly obscured.",
+      "Status element shots clip unrelated header/title/badge content; selected dated notes are visible.",
+      "Local runtime kind is not recorded; hosted worker evidence remains separate."
     ]
   },
-  "scope": "8 baseline and18 final local source-bound selected-state captures; actual action resolution, note copying, next week and returning reload are behavior-checked separately in the browser report."
+  "scope": "8 baseline and18 C3 local reviewed images. Earlier C1/C2 receipts and their limitations remain historical."
 }

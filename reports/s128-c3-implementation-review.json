@@ -1,0 +1,39 @@
+{
+  "session": 128,
+  "candidate": "C3-local",
+  "at": "2026-10-29T18:25:21.498Z",
+  "verdict": "pass",
+  "findingsOpen": 0,
+  "reviewer": "independent review_playtest agent and session agent",
+  "subjects": [
+    "inbox-cache-admission",
+    "playtest-receipt-integrity"
+  ],
+  "sources": [
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "917d7ab9342be8f503c613122fa8a4768701cec03bc82c9d055be4e765bc97cd"
+    },
+    {
+      "path": "public/lib/playtestReceipts.js",
+      "sha256": "219783e865a96feb88717ee4b9401212a65b4f83d339a90ffdb5b214cf9b538e"
+    },
+    {
+      "path": "public/status.html",
+      "sha256": "c4048362737325643e5d50158bf705becdc5dbacc3cb60ded8d0b92b509e27fc"
+    }
+  ],
+  "evidence": {
+    "focused": {
+      "path": "reports/s128-c3-focused-checks.json",
+      "sha256": "f1a5bf4c6d6206e50213d065d0902bf444f18cd0e8173565110003e099e77304",
+      "pass": 49
+    },
+    "browser": {
+      "path": "reports/s128-local-c3-browser.json",
+      "sha256": "a09c0a596245eda697d0c3f95c10875b3d5704b13635abbf715e76d66de5d1e0",
+      "journeys": 4
+    }
+  },
+  "boundary": "Local browser journeys and source hashes. Runtime kind is not recorded by this local harness version; hosted worker journeys remain separately required. No release or actual-player outcome is inferred."
+}

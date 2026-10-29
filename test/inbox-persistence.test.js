@@ -32,6 +32,22 @@ test("inbox scope is stable per franchise and team", () => {
   assert.equal(inboxItemKey(severeInjury), "id:evt-1");
 });
 
+test("an id-only damaged cache cannot suppress a fresh critical source message", () => {
+  const storage = new MemoryStorage();
+  const scope = inboxScopeFromDashboard(franchiseA);
+  storage.setItem(`fa-inbox-v1:${scope}`, JSON.stringify({ version: 1, scope, items: [{ id: "evt-1" }] }));
+  resetInboxForTests();
+  syncInboxScope(franchiseA, storage);
+  assert.deepEqual(getInboxSnapshot().items, []);
+  assert.equal(ingestNewsIntoInbox([severeInjury], { dashboard: franchiseA, storage, now: () => 100 }), 1);
+  assert.equal(getUnreadCount({ dashboard: franchiseA, storage }), 1);
+  assert.equal(getInboxSnapshot().items[0].headline, severeInjury.headline);
+  assert.equal(resolveInboxItem("id:evt-1", { storage, now: () => 120 }), true);
+  resetInboxForTests();
+  syncInboxScope(franchiseA, storage);
+  assert.equal(getInboxSnapshot().items[0].resolvedAt, 120);
+});
+
 test("priority inbox reconstructs idempotently after reload", () => {
   const storage = new MemoryStorage();
   resetInboxForTests();

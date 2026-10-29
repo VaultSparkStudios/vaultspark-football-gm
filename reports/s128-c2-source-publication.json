@@ -1,0 +1,10 @@
+{
+  "session": 128,
+  "sourceRevision": "258fd5560f8cb402e24c8018323e5da21cf98584",
+  "publishedAt": "2026-10-29T06:53:54.317Z",
+  "remote": "origin/main",
+  "remoteRevision": "258fd5560f8cb402e24c8018323e5da21cf98584",
+  "verified": true,
+  "stagingReceiptSha256": "f55e08d42fb7a01bfe3848f4af48645e00c427335761c1268068f5d2cbd0103c",
+  "boundary": "Authorized non-force source push after exact staging provenance and actual worker browser acceptance. Production and full candidate CI remain separate."
+}

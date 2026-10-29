@@ -121,3 +121,7 @@ Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. N
 ## 2026-10-29 — S128 candidate record correction
 
 C1 source0059051c passed focused48/48, staging native14/14, actual staging browser4/4 and hosted performance, but its isolated Studio suite passed397/398: the newly appended decision session exposed overdue ledger retention. Canonical ledger-roll moved older entries verbatim into archives; the focused retention suite then passed10/10. C1 was never pushed or promoted to production. Its evidence remains separately named; the corrected candidate must pass fresh exact-source checks and staging.
+
+## 2026-10-29 — S128 C3 Inbox admission correction
+
+Final independent review reproduced an ID-only cache row reserving the key of later critical source news. Require meaningful message content even when an ID exists; the new regression verifies admission, unread count and persistent resolution. C3 focused49/49 and local browser4/4 pass, with18 inspected captures and explicit clipboard/week/reload evidence. C2 passed its native Studio398/398 but was superseded before production; its three obsolete push workflows received cancellation requests. Preserve their actual dispositions and all earlier evidence. Local reports before the hosted worker-kind assertion are browser evidence, not proof of runtime kind.

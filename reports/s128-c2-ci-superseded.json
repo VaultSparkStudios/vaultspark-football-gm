@@ -1,0 +1,35 @@
+{
+  "session": 128,
+  "at": "2026-10-29T07:00:13.404Z",
+  "sourceRevision": "258fd5560f8cb402e24c8018323e5da21cf98584",
+  "reason": "Superseded by a required Inbox id-only cache admission repair before production. No production deployment performed for C2.",
+  "runs": [
+    {
+      "id": 40831990191,
+      "path": ".github/workflows/ci.yml",
+      "status": "in_progress",
+      "conclusion": null,
+      "sourceRevision": "258fd5560f8cb402e24c8018323e5da21cf98584",
+      "cancelHttpStatus": 202,
+      "action": "cancel-request-accepted"
+    },
+    {
+      "id": 40831990155,
+      "path": ".github/workflows/deploy-backend.yml",
+      "status": "in_progress",
+      "conclusion": null,
+      "sourceRevision": "258fd5560f8cb402e24c8018323e5da21cf98584",
+      "cancelHttpStatus": 202,
+      "action": "cancel-request-accepted"
+    },
+    {
+      "id": 40831990197,
+      "path": ".github/workflows/deploy-pages.yml",
+      "status": "in_progress",
+      "conclusion": null,
+      "sourceRevision": "258fd5560f8cb402e24c8018323e5da21cf98584",
+      "cancelHttpStatus": 202,
+      "action": "cancel-request-accepted"
+    }
+  ]
+}

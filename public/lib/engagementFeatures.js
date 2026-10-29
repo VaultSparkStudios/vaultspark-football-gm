@@ -61,7 +61,7 @@ function normalizeInboxItem(value, { cached = false, receivedAt = 0 } = {}) {
     quote: text(value.quote)
   };
   if (id != null) item.id = id;
-  if (id == null && ![item.type, item.headline, item.detail].some((field) => field.trim())) return null;
+  if (![item.type, item.headline, item.detail].some((field) => field.trim())) return null;
   for (const field of ["year", "week"]) {
     if (typeof value[field] === "number" && Number.isFinite(value[field]) && value[field] >= 0) item[field] = value[field];
   }

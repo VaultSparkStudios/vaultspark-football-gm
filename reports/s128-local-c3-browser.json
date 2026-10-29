@@ -1,0 +1,390 @@
+{
+  "session": 128,
+  "harnessSha256": "7ebc768411557bd52b848b5358eb75563e9a7444e2699fdaeec05fc9e3cec9c7",
+  "phase": "local-c3",
+  "origin": "http://localhost:4278",
+  "sourceRevision": "local-worktree",
+  "artifactDigest": null,
+  "before": null,
+  "after": null,
+  "sources": [
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "917d7ab9342be8f503c613122fa8a4768701cec03bc82c9d055be4e765bc97cd"
+    },
+    {
+      "path": "public/lib/playtestReceipts.js",
+      "sha256": "219783e865a96feb88717ee4b9401212a65b4f83d339a90ffdb5b214cf9b538e"
+    },
+    {
+      "path": "public/status.html",
+      "sha256": "c4048362737325643e5d50158bf705becdc5dbacc3cb60ded8d0b92b509e27fc"
+    }
+  ],
+  "observedModules": [],
+  "at": "2026-10-29T07:02:02.951Z",
+  "verified": true,
+  "results": [
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "inbox": {
+        "threw": false,
+        "unread": 3,
+        "items": 3,
+        "freshAdded": 1,
+        "freshTier": "CRITICAL"
+      },
+      "notes": {
+        "count": 1,
+        "export": "{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt-pack\",\"count\":1,\"receipts\":[{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt\",\"receiptId\":\"playtest-2026-10-29T07:00:00.069Z-BUF\",\"createdAt\":\"2026-10-29T07:00:00.069Z\",\"context\":{\"year\":2026,\"week\":1,\"phase\":\"unknown\",\"teamId\":\"BUF\",\"openingContractStatus\":\"not-observed\",\"evidenceMoment\":\"manual\"},\"ratings\":{\"clarity\":4,\"agency\":5,\"pace\":3,\"returnIntent\":4},\"note\":\"Useful draft choice.\",\"privacy\":{\"localOnlyUntilShared\":true,\"personalIdentifiersCollected\":false,\"savePayloadIncluded\":false}}],\"journey\":{\"schemaVersion\":\"1.1\",\"kind\":\"local-playtest-journey\",\"eventCount\":0,\"durationMs\":0,\"events\":[],\"planningFriction\":{\"status\":\"not-observed\",\"reviewed\":false,\"revisionRequested\":false,\"deferred\":false,\"elapsedToReviewMs\":null,\"elapsedToCommitMs\":null,\"elapsedToDebriefMs\":null,\"evidenceBoundary\":\"Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality.\"},\"privacy\":{\"localOnlyUntilShared\":true,\"relativeTimeOnly\":true,\"accountIdentifierIncluded\":false,\"savePayloadIncluded\":false,\"cohortClaimPermitted\":false}},\"privacy\":\"Only the playtest notes you saved and relative play-progress checkpoints; no account identifier or save payload is included; no token or absolute journey timestamp is included. This small, self-selected sample cannot support cohort, retention, comprehension, or causal claims.\"}",
+        "trend": {
+          "available": false,
+          "count": 0,
+          "minimum": 3,
+          "warning": "Small, self-selected local sample; ratings describe recorded moments and do not prove player-wide impact or causality."
+        }
+      },
+      "nextWeek": {
+        "before": 1,
+        "after": 2
+      },
+      "reload": {
+        "resolved": 1793257195325,
+        "notes": 2
+      },
+      "copiedCount": 2,
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "inbox": {
+        "threw": false,
+        "unread": 3,
+        "items": 3,
+        "freshAdded": 1,
+        "freshTier": "CRITICAL"
+      },
+      "notes": {
+        "count": 1,
+        "export": "{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt-pack\",\"count\":1,\"receipts\":[{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt\",\"receiptId\":\"playtest-2026-10-29T07:00:32.263Z-BUF\",\"createdAt\":\"2026-10-29T07:00:32.263Z\",\"context\":{\"year\":2026,\"week\":1,\"phase\":\"unknown\",\"teamId\":\"BUF\",\"openingContractStatus\":\"not-observed\",\"evidenceMoment\":\"manual\"},\"ratings\":{\"clarity\":4,\"agency\":5,\"pace\":3,\"returnIntent\":4},\"note\":\"Useful draft choice.\",\"privacy\":{\"localOnlyUntilShared\":true,\"personalIdentifiersCollected\":false,\"savePayloadIncluded\":false}}],\"journey\":{\"schemaVersion\":\"1.1\",\"kind\":\"local-playtest-journey\",\"eventCount\":0,\"durationMs\":0,\"events\":[],\"planningFriction\":{\"status\":\"not-observed\",\"reviewed\":false,\"revisionRequested\":false,\"deferred\":false,\"elapsedToReviewMs\":null,\"elapsedToCommitMs\":null,\"elapsedToDebriefMs\":null,\"evidenceBoundary\":\"Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality.\"},\"privacy\":{\"localOnlyUntilShared\":true,\"relativeTimeOnly\":true,\"accountIdentifierIncluded\":false,\"savePayloadIncluded\":false,\"cohortClaimPermitted\":false}},\"privacy\":\"Only the playtest notes you saved and relative play-progress checkpoints; no account identifier or save payload is included; no token or absolute journey timestamp is included. This small, self-selected sample cannot support cohort, retention, comprehension, or causal claims.\"}",
+        "trend": {
+          "available": false,
+          "count": 0,
+          "minimum": 3,
+          "warning": "Small, self-selected local sample; ratings describe recorded moments and do not prove player-wide impact or causality."
+        }
+      },
+      "nextWeek": {
+        "before": 1,
+        "after": 2
+      },
+      "reload": {
+        "resolved": 1793257227419,
+        "notes": 2
+      },
+      "copiedCount": 2,
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "inbox": {
+        "threw": false,
+        "unread": 3,
+        "items": 3,
+        "freshAdded": 1,
+        "freshTier": "CRITICAL"
+      },
+      "notes": {
+        "count": 1,
+        "export": "{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt-pack\",\"count\":1,\"receipts\":[{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt\",\"receiptId\":\"playtest-2026-10-29T07:01:07.418Z-BUF\",\"createdAt\":\"2026-10-29T07:01:07.418Z\",\"context\":{\"year\":2026,\"week\":1,\"phase\":\"unknown\",\"teamId\":\"BUF\",\"openingContractStatus\":\"not-observed\",\"evidenceMoment\":\"manual\"},\"ratings\":{\"clarity\":4,\"agency\":5,\"pace\":3,\"returnIntent\":4},\"note\":\"Useful draft choice.\",\"privacy\":{\"localOnlyUntilShared\":true,\"personalIdentifiersCollected\":false,\"savePayloadIncluded\":false}}],\"journey\":{\"schemaVersion\":\"1.1\",\"kind\":\"local-playtest-journey\",\"eventCount\":0,\"durationMs\":0,\"events\":[],\"planningFriction\":{\"status\":\"not-observed\",\"reviewed\":false,\"revisionRequested\":false,\"deferred\":false,\"elapsedToReviewMs\":null,\"elapsedToCommitMs\":null,\"elapsedToDebriefMs\":null,\"evidenceBoundary\":\"Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality.\"},\"privacy\":{\"localOnlyUntilShared\":true,\"relativeTimeOnly\":true,\"accountIdentifierIncluded\":false,\"savePayloadIncluded\":false,\"cohortClaimPermitted\":false}},\"privacy\":\"Only the playtest notes you saved and relative play-progress checkpoints; no account identifier or save payload is included; no token or absolute journey timestamp is included. This small, self-selected sample cannot support cohort, retention, comprehension, or causal claims.\"}",
+        "trend": {
+          "available": false,
+          "count": 0,
+          "minimum": 3,
+          "warning": "Small, self-selected local sample; ratings describe recorded moments and do not prove player-wide impact or causality."
+        }
+      },
+      "nextWeek": {
+        "before": 1,
+        "after": 2
+      },
+      "reload": {
+        "resolved": 1793257262445,
+        "notes": 2
+      },
+      "copiedCount": 2,
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "inbox": {
+        "threw": false,
+        "unread": 3,
+        "items": 3,
+        "freshAdded": 1,
+        "freshTier": "CRITICAL"
+      },
+      "notes": {
+        "count": 1,
+        "export": "{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt-pack\",\"count\":1,\"receipts\":[{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt\",\"receiptId\":\"playtest-2026-10-29T07:01:41.542Z-BUF\",\"createdAt\":\"2026-10-29T07:01:41.542Z\",\"context\":{\"year\":2026,\"week\":1,\"phase\":\"unknown\",\"teamId\":\"BUF\",\"openingContractStatus\":\"not-observed\",\"evidenceMoment\":\"manual\"},\"ratings\":{\"clarity\":4,\"agency\":5,\"pace\":3,\"returnIntent\":4},\"note\":\"Useful draft choice.\",\"privacy\":{\"localOnlyUntilShared\":true,\"personalIdentifiersCollected\":false,\"savePayloadIncluded\":false}}],\"journey\":{\"schemaVersion\":\"1.1\",\"kind\":\"local-playtest-journey\",\"eventCount\":0,\"durationMs\":0,\"events\":[],\"planningFriction\":{\"status\":\"not-observed\",\"reviewed\":false,\"revisionRequested\":false,\"deferred\":false,\"elapsedToReviewMs\":null,\"elapsedToCommitMs\":null,\"elapsedToDebriefMs\":null,\"evidenceBoundary\":\"Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality.\"},\"privacy\":{\"localOnlyUntilShared\":true,\"relativeTimeOnly\":true,\"accountIdentifierIncluded\":false,\"savePayloadIncluded\":false,\"cohortClaimPermitted\":false}},\"privacy\":\"Only the playtest notes you saved and relative play-progress checkpoints; no account identifier or save payload is included; no token or absolute journey timestamp is included. This small, self-selected sample cannot support cohort, retention, comprehension, or causal claims.\"}",
+        "trend": {
+          "available": false,
+          "count": 0,
+          "minimum": 3,
+          "warning": "Small, self-selected local sample; ratings describe recorded moments and do not prove player-wide impact or causality."
+        }
+      },
+      "nextWeek": {
+        "before": 1,
+        "after": 2
+      },
+      "reload": {
+        "resolved": 1793257296744,
+        "notes": 2
+      },
+      "copiedCount": 2,
+      "errors": []
+    }
+  ],
+  "captures": [
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "inbox",
+      "file": ".cache/s128-local-c3/inbox-desktop-dark.png",
+      "sha256": "258e5c6f314e98c5a7d592195271f52b99d9b68a8e7153763ae9bbf899c8ac1a"
+    },
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "inbox-resolved",
+      "file": ".cache/s128-local-c3/inbox-resolved-desktop-dark.png",
+      "sha256": "bc637eac3b0548ca6e90ac709af9a4d331425b8f7a221b04ebc9fd2ad140a21f"
+    },
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "playtest",
+      "file": ".cache/s128-local-c3/playtest-desktop-dark.png",
+      "sha256": "f644f7beb34dc3bcb4505845d680c5ddc021888a4813ce2d4f4accbf9c44687d"
+    },
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "status",
+      "file": ".cache/s128-local-c3/status-desktop-dark.png",
+      "sha256": "40f2b91cf7c3b8112fa8e9aa459e7b4777bf518c0f9954365d709b4eafd8ccf1"
+    },
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "inbox",
+      "file": ".cache/s128-local-c3/inbox-desktop-light.png",
+      "sha256": "ebffbbf4aa3698b6a8aba5ff90119b949d4d002ee16cfb432d66ad222b72a328"
+    },
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "inbox-resolved",
+      "file": ".cache/s128-local-c3/inbox-resolved-desktop-light.png",
+      "sha256": "370438c8b5c9fb0154223c24e5ba354565915a04d0e24cf907c01cb86c6b1bdf"
+    },
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "playtest",
+      "file": ".cache/s128-local-c3/playtest-desktop-light.png",
+      "sha256": "bfe75624ae1d508a04f4b986117ba630b8fde66ef9ab22bcf5b09eef685f16d7"
+    },
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "status",
+      "file": ".cache/s128-local-c3/status-desktop-light.png",
+      "sha256": "69b0762410aecf62b60d82b45de29c261e1e9179ad50a27cde2198a2777455a1"
+    },
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "inbox",
+      "file": ".cache/s128-local-c3/inbox-mobile-dark.png",
+      "sha256": "a29433059876dc87401efad1a9c5f2886fbef9d132f6fe365b4f9ad1afc433d9"
+    },
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "inbox-resolved",
+      "file": ".cache/s128-local-c3/inbox-resolved-mobile-dark.png",
+      "sha256": "e9f7fb5c748cc362aff05c7079bcaea4aa3f7b694eb1185c32098553ff0ed4dd"
+    },
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "playtest-top",
+      "file": ".cache/s128-local-c3/playtest-top-mobile-dark.png",
+      "sha256": "0a48f6f5fe8e3b5b6c5d34df865b458b77af3b6b0caeafadf8e21917f14655bd"
+    },
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "playtest-bottom",
+      "file": ".cache/s128-local-c3/playtest-bottom-mobile-dark.png",
+      "sha256": "3d166b97e86786765b69367c3e62d77b9f0f120af11c09d5bd886fc7cf37e63b"
+    },
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "status",
+      "file": ".cache/s128-local-c3/status-mobile-dark.png",
+      "sha256": "cf267f913721ad6fc5024ba8a03142fdb1d1b645c474d602eef2d67277345d7d"
+    },
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "inbox",
+      "file": ".cache/s128-local-c3/inbox-mobile-light.png",
+      "sha256": "7c0f048f1798552ddf9431b40eb60835fd329d272d36dda353815a656f4967f2"
+    },
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "inbox-resolved",
+      "file": ".cache/s128-local-c3/inbox-resolved-mobile-light.png",
+      "sha256": "9542359f23beb94ce0b9c37ef60be5bfb538007f3a1176e8aee7ab1de3558453"
+    },
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "playtest-top",
+      "file": ".cache/s128-local-c3/playtest-top-mobile-light.png",
+      "sha256": "fbf048aa4eefadf894e730cfa94cde39a75483aeff0ab8280c071d998b49e784"
+    },
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "playtest-bottom",
+      "file": ".cache/s128-local-c3/playtest-bottom-mobile-light.png",
+      "sha256": "e0b7ef7261a3a148b90c0829950a9b0c1921a9a25756d3d8b232076c2d64ff4c"
+    },
+    {
+      "phase": "local-c3",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "status",
+      "file": ".cache/s128-local-c3/status-mobile-light.png",
+      "sha256": "afb4062cd1b80d8c5c98295728cbf534905e72a17e481ea1cf99dcc384512830"
+    }
+  ],
+  "error": null
+}

@@ -3,7 +3,7 @@
 ## S128 Wave status
 
 - [x] Wave 1: fresh startup, bound goal, live audit and candidate admission.
-- [x] Wave 2: both selected repairs; focused48/48, actual worker browser4/4, independent code/pixel review. Hosted acceptance remains separate.
+- [x] Wave 2: both selected repairs; C3 focused49/49, local browser4/4 and independent code/pixel review; fresh critical news admission included. Hosted acceptance remains separate.
 - [ ] Wave 3: exact candidate staging/production, full ordered closeout and push.
 
 ## S127 Wave status

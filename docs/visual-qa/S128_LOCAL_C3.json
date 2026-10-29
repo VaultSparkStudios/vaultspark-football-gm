@@ -1,0 +1,460 @@
+{
+  "schemaVersion": 1,
+  "session": 128,
+  "capturedAt": "2026-10-29T07:02:02.951Z",
+  "kind": "selected-inbox-feedback-C3-local",
+  "sourceRevision": "local-worktree",
+  "sourceFiles": [
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "917d7ab9342be8f503c613122fa8a4768701cec03bc82c9d055be4e765bc97cd"
+    },
+    {
+      "path": "public/lib/playtestReceipts.js",
+      "sha256": "219783e865a96feb88717ee4b9401212a65b4f83d339a90ffdb5b214cf9b538e"
+    },
+    {
+      "path": "public/status.html",
+      "sha256": "c4048362737325643e5d50158bf705becdc5dbacc3cb60ded8d0b92b509e27fc"
+    }
+  ],
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "captures": [
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "inbox",
+      "file": "s128-before-inbox-desktop-dark.png",
+      "sha256": "e503d2d96ed5709867c68433c2cdf29d34673ff9ef463f47a1d88a60f6eb8a1d",
+      "page": "inbox",
+      "inspected": true,
+      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090"
+    },
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "playtest",
+      "file": "s128-before-playtest-desktop-dark.png",
+      "sha256": "7b2d5c1e57b90d3a353df2a8f0652f3dbe6ed05c56dcdb807fd446d90d12bfbf",
+      "page": "playtest",
+      "inspected": true,
+      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090"
+    },
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "inbox",
+      "file": "s128-before-inbox-desktop-light.png",
+      "sha256": "af7f22c50f28fdf7acb72cfa74204c4476282cfdf62ed67c6d52722885e65658",
+      "page": "inbox",
+      "inspected": true,
+      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090"
+    },
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "playtest",
+      "file": "s128-before-playtest-desktop-light.png",
+      "sha256": "d62d11525507f88449b13623e6ae234241c9e62c7aa29856e42ee38a4b81dea5",
+      "page": "playtest",
+      "inspected": true,
+      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090"
+    },
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "inbox",
+      "file": "s128-before-inbox-mobile-dark.png",
+      "sha256": "20483ef2d01c30462dfd6a1b98e5384cd07a88aef40194372cf7d7ebd74fe719",
+      "page": "inbox",
+      "inspected": true,
+      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090"
+    },
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "playtest",
+      "file": "s128-before-playtest-mobile-dark.png",
+      "sha256": "d7feb67b0324643aead75e6e24cce9ea9b57f29300f438c38005317603d3b5e0",
+      "page": "playtest",
+      "inspected": true,
+      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090"
+    },
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "inbox",
+      "file": "s128-before-inbox-mobile-light.png",
+      "sha256": "e482943640e002c5f6d7f0e1125428e8ae387592904e1f227c0d280657587f34",
+      "page": "inbox",
+      "inspected": true,
+      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090"
+    },
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "playtest",
+      "file": "s128-before-playtest-mobile-light.png",
+      "sha256": "bf5230468c682cad6a9b3b2f875318da1b7648e95bb281c8dc639538dd2f9063",
+      "page": "playtest",
+      "inspected": true,
+      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "inbox",
+      "file": "s128-c3-after-inbox-desktop-dark.png",
+      "sha256": "258e5c6f314e98c5a7d592195271f52b99d9b68a8e7153763ae9bbf899c8ac1a",
+      "page": "inbox",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "inbox-resolved",
+      "file": "s128-c3-after-inbox-resolved-desktop-dark.png",
+      "sha256": "bc637eac3b0548ca6e90ac709af9a4d331425b8f7a221b04ebc9fd2ad140a21f",
+      "page": "inbox-resolved",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "playtest",
+      "file": "s128-c3-after-playtest-desktop-dark.png",
+      "sha256": "f644f7beb34dc3bcb4505845d680c5ddc021888a4813ce2d4f4accbf9c44687d",
+      "page": "playtest",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "status",
+      "file": "s128-c3-after-status-desktop-dark.png",
+      "sha256": "40f2b91cf7c3b8112fa8e9aa459e7b4777bf518c0f9954365d709b4eafd8ccf1",
+      "page": "status",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "inbox",
+      "file": "s128-c3-after-inbox-desktop-light.png",
+      "sha256": "ebffbbf4aa3698b6a8aba5ff90119b949d4d002ee16cfb432d66ad222b72a328",
+      "page": "inbox",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "inbox-resolved",
+      "file": "s128-c3-after-inbox-resolved-desktop-light.png",
+      "sha256": "370438c8b5c9fb0154223c24e5ba354565915a04d0e24cf907c01cb86c6b1bdf",
+      "page": "inbox-resolved",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "playtest",
+      "file": "s128-c3-after-playtest-desktop-light.png",
+      "sha256": "bfe75624ae1d508a04f4b986117ba630b8fde66ef9ab22bcf5b09eef685f16d7",
+      "page": "playtest",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "status",
+      "file": "s128-c3-after-status-desktop-light.png",
+      "sha256": "69b0762410aecf62b60d82b45de29c261e1e9179ad50a27cde2198a2777455a1",
+      "page": "status",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "inbox",
+      "file": "s128-c3-after-inbox-mobile-dark.png",
+      "sha256": "a29433059876dc87401efad1a9c5f2886fbef9d132f6fe365b4f9ad1afc433d9",
+      "page": "inbox",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "inbox-resolved",
+      "file": "s128-c3-after-inbox-resolved-mobile-dark.png",
+      "sha256": "e9f7fb5c748cc362aff05c7079bcaea4aa3f7b694eb1185c32098553ff0ed4dd",
+      "page": "inbox-resolved",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "playtest-top",
+      "file": "s128-c3-after-playtest-top-mobile-dark.png",
+      "sha256": "0a48f6f5fe8e3b5b6c5d34df865b458b77af3b6b0caeafadf8e21917f14655bd",
+      "page": "playtest-top",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "playtest-bottom",
+      "file": "s128-c3-after-playtest-bottom-mobile-dark.png",
+      "sha256": "3d166b97e86786765b69367c3e62d77b9f0f120af11c09d5bd886fc7cf37e63b",
+      "page": "playtest-bottom",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "status",
+      "file": "s128-c3-after-status-mobile-dark.png",
+      "sha256": "cf267f913721ad6fc5024ba8a03142fdb1d1b645c474d602eef2d67277345d7d",
+      "page": "status",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "inbox",
+      "file": "s128-c3-after-inbox-mobile-light.png",
+      "sha256": "7c0f048f1798552ddf9431b40eb60835fd329d272d36dda353815a656f4967f2",
+      "page": "inbox",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "inbox-resolved",
+      "file": "s128-c3-after-inbox-resolved-mobile-light.png",
+      "sha256": "9542359f23beb94ce0b9c37ef60be5bfb538007f3a1176e8aee7ab1de3558453",
+      "page": "inbox-resolved",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "playtest-top",
+      "file": "s128-c3-after-playtest-top-mobile-light.png",
+      "sha256": "fbf048aa4eefadf894e730cfa94cde39a75483aeff0ab8280c071d998b49e784",
+      "page": "playtest-top",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "playtest-bottom",
+      "file": "s128-c3-after-playtest-bottom-mobile-light.png",
+      "sha256": "e0b7ef7261a3a148b90c0829950a9b0c1921a9a25756d3d8b232076c2d64ff4c",
+      "page": "playtest-bottom",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    },
+    {
+      "phase": "after",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "status",
+      "file": "s128-c3-after-status-mobile-light.png",
+      "sha256": "afb4062cd1b80d8c5c98295728cbf534905e72a17e481ea1cf99dcc384512830",
+      "page": "status",
+      "inspected": true,
+      "sourceRevision": "local-worktree"
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "independent review_playtest agent and session agent",
+    "blockingDefectsOpen": 0,
+    "findings": [
+      "Fresh critical source message is visible after rejecting an ID-only damaged cache row. Selected Inbox/action and note controls readable in both themes and sizes."
+    ],
+    "fixesApplied": [
+      "Mobile note top/bottom captures clear the sticky header, toast and floating feedback control."
+    ],
+    "captureLimitations": [
+      "Baseline Inbox captures show the underlying Desk after the caught exception; baseline mobile note header/disclaimer are partly obscured.",
+      "Status element shots clip unrelated header/title/badge content; selected dated notes are visible.",
+      "Local runtime kind is not recorded; hosted worker evidence remains separate."
+    ]
+  },
+  "scope": "8 baseline and18 C3 local reviewed images. Earlier C1/C2 receipts and their limitations remain historical."
+}

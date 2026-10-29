@@ -8,7 +8,7 @@
     "type": "game",
     "name": "Franchise Architect: Football"
   },
-  "scope": "S128 selected Inbox and playtest repairs verified locally; exact-candidate release and full closeout pending.",
+  "scope": "S128 selected outcomes verified on corrected C3 local source. C2 was superseded before production; C3 staging, CI, frontend/API deployment and closeout remain pending.",
   "profile": {
     "rubric": "product",
     "audience": "public-unlaunched",
@@ -104,10 +104,21 @@
               "sha256": "717acfdb0397e1982ea1c28706448740774c32daa17b6149077898325e771379"
             }
           ]
+        },
+        {
+          "at": "2026-10-29T18:25:29.452Z",
+          "status": "shipped",
+          "note": "C3 local source-bound focused49/49 and browser4/4 with18 independently inspected captures; ID-only cache admission repaired. Exact-source hosted acceptance remains pending.",
+          "evidence": [
+            {
+              "path": "reports/s128-c3-implementation-review.json",
+              "sha256": "0f26407415ca177f485feabfb74388a4e1d3e619dff2f90aa4a29424666fe615"
+            }
+          ]
         }
       ],
       "premise": "Live source retains unvalidated inbox-cache-admission",
-      "executionEvidence": "Independent code review, focused48/48 and final source-bound actual worker browser4/4 with18 inspected captures; hosted release remains pending."
+      "executionEvidence": "C3 local source-bound focused49/49 and browser4/4 with18 independently inspected captures; ID-only cache admission repaired. Exact-source hosted acceptance remains pending."
     },
     {
       "id": 2,
@@ -160,10 +171,21 @@
               "sha256": "717acfdb0397e1982ea1c28706448740774c32daa17b6149077898325e771379"
             }
           ]
+        },
+        {
+          "at": "2026-10-29T18:25:29.684Z",
+          "status": "shipped",
+          "note": "C3 local source-bound focused49/49 and browser4/4 with18 independently inspected captures; ID-only cache admission repaired. Exact-source hosted acceptance remains pending.",
+          "evidence": [
+            {
+              "path": "reports/s128-c3-implementation-review.json",
+              "sha256": "0f26407415ca177f485feabfb74388a4e1d3e619dff2f90aa4a29424666fe615"
+            }
+          ]
         }
       ],
       "premise": "Live source retains unvalidated playtest-receipt-integrity",
-      "executionEvidence": "Independent code review, focused48/48 and final source-bound actual worker browser4/4 with18 inspected captures; hosted release remains pending."
+      "executionEvidence": "C3 local source-bound focused49/49 and browser4/4 with18 independently inspected captures; ID-only cache admission repaired. Exact-source hosted acceptance remains pending."
     }
   ],
   "totals": {

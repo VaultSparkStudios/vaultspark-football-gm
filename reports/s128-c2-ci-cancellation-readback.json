@@ -1,0 +1,27 @@
+{
+  "session": 128,
+  "at": "2026-10-29T18:27:13.032Z",
+  "sourceRevision": "258fd5560f8cb402e24c8018323e5da21cf98584",
+  "readOnly": true,
+  "allTerminal": true,
+  "runs": [
+    {
+      "id": 40831990191,
+      "sourceRevision": "258fd5560f8cb402e24c8018323e5da21cf98584",
+      "status": "completed",
+      "conclusion": "cancelled"
+    },
+    {
+      "id": 40831990155,
+      "sourceRevision": "258fd5560f8cb402e24c8018323e5da21cf98584",
+      "status": "completed",
+      "conclusion": "cancelled"
+    },
+    {
+      "id": 40831990197,
+      "sourceRevision": "258fd5560f8cb402e24c8018323e5da21cf98584",
+      "status": "completed",
+      "conclusion": "cancelled"
+    }
+  ]
+}
