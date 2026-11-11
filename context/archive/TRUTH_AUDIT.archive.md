@@ -1050,3 +1050,30 @@ Accepted portrait changes are scoped foundations, including the face sculpt and 
 Verification: full core attempt 712/713; the historical modern grooming comparison was corrected to its immutable pre-sculpt authority and its focused rerun passed 3/3. No full-core green rerun is claimed. Runtime timed out at 45 minutes and independently reproduces a 16.2 MB six-week raw snapshot against the unchanged 16 MB bar. Visual QA retains one blocking craft defect. Fresh final 30-season GM verification and remaining NFL benefits/policy scope are pending.
 
 Deploy: deferred because applicable checks are nonpassing. Cloudflare credential discovery is READY; this is agent verification work, not a missing-credential or founder-approval dependency. No release gate override, production promotion, public launch, or completed-goal claim. Evidence: docs/visual-qa/PLAYER_PARTIAL_CLOSEOUT_2026-10-08.json.
+
+## 2026-10-22 — S118 — Candidate evidence remains distinct from delivery
+
+Focused character, family and save checks pass; full engine/browser and exact deployment acceptance remain pending. Characters remain stylized, and modeled body volume does not prove complete physical tissue mass or population calibration. Emulated mobile captures do not prove physical-device frame rates. Historical golden and visual records remain historical. New test inventory gaps are repaired without removing assertions; interrupted and failed runs are not counted as full acceptance. The public status preview describes implemented candidate behavior and does not establish production delivery.
+
+
+<!-- s118-final:truth -->
+## 2026-10-22 — Session 118 — Release verified, limits and failed evidence preserved
+
+Exact application candidate 863ea60e61398fa149d0e5715f15341a57337df5; artifact 2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737. CI39796952874 verified all six canonical unit shards and the complete browser job/test step. Pages39797016574 and backend39797029101 promoted the exact candidate. Stable staging14/14 and production14/14 provenance passed; hosted performance passed desktop/mobile. Provider/public source identities match. Previous Pages deployment and API image are available for rollback. Database container, image/start/mount identity and routing files/service identity are unchanged. No aggregate core/runtime case count is invented from truncated TAP output.
+
+The old browser235pass/28fail/3skip diagnostic and first-candidate262pass/5fail/3skip and second-candidate266pass/1fail/3skip remain historical nonpassing runs. Core/runtime successful executed test steps are verified, but their missing/truncated aggregate TAP counts remain unmeasured. Current visual receipt includes preserved history and fresh actual hosted pixels; identical source hashes do not manufacture new image inspections. Synthetic fixtures never become actual-user career or played-injury evidence.
+
+The shared closeout-autopilot target flag does not isolate every child writer; it was not run and is not labeled passed. Native project-only equivalents preserve the actual checks. The legacy check-secrets --audit alias only performs advisory capability discovery, not independent gateway health certification; actual staging deployment exercised the gateway.
+
+Characters remain stylized procedural art and movement studies; no photorealism, motion capture, complete physical tissue-mass calibration, physical-device frame-rate or actual-user long-career proof is claimed. Existing expanded-mobile Desk/card right-edge clipping remains recorded and does not obstruct the tested save-restoration controls. Broader S117 benefits/policy and actual-user career work remain outside this selected three-item scope. Technical promotion does not authorize a public launch or lifecycle transition; launch/email holds remain independent.
+
+
+<!-- s118-final-publication -->
+S118 selected character/family outcomes and full exact-candidate production delivery are complete. Closeout commit eb0ed0a6dfb018c2fd21aef090bb4f4325572186 is on remote main; independent review passed after one corrected receipt label. All seven CI jobs passed; hosted browser267pass/0fail/3existing opt-in skips and responsive327captures/312required passed. Actual production motion, family reload, save restoration and lab performance passed. Ark summary 01K5IB7Q1U348173B7DFE7C352 was shipped; delivery, application and recipient verification are not asserted. No configured session beacon exists. The containing receipt commit must be verified on origin/main after an ordinary push; native goal completion is withheld until that readback.
+
+## 2026-10-23 — S119 — S118's "all seven CI jobs passed" was true of its candidate, not of main
+
+- S118 recorded seven green CI jobs for candidate 863ea60e. Its own closeout commits (eb0ed0a6, 6e5b2351) then failed CI (studio: unregistered AGENT_MEMORY ledger; browser: one recovery case), and no surface recorded it. Corrected in S119; c0ce44b4 is green on all seven.
+- The TASK_BOARD "reproducible 16.2 MB" payload regression no longer reproduced (15.305 MB); closed by measurement.
+- The passer rating recorded as "pinned as shipped" in test/stat-schema-contract.test.js was a known deviation from the NFL formula; now corrected and attributed in docs/GOLDEN_BASELINE_S119.json.
+- Backend host-level container/routing identity was not re-read over SSH in S119; workflow exact-SHA health and external health are the recorded evidence.

@@ -1628,3 +1628,12 @@ Keep the original S116 golden fixture immutable and adopt a separately versioned
 Seven executed exact-candidate CI jobs/test steps are the release contract. Preserve every failed attempt and reject promotion until all required jobs succeed. Scope backend deployment to the application container; compare database and routing identity before/after and retain rollback images.
 
 Use the native bounded closeout ceremony because shared autopilot child scripts would write another repository despite its target flag. No foreign process mutation, --force, hook bypass or fabricated aggregate test count. Characters remain stylized procedural art and movement studies; no photorealism, motion capture, complete physical tissue-mass calibration, physical-device frame-rate or actual-user long-career proof is claimed. Existing expanded-mobile Desk/card right-edge clipping remains recorded and does not obstruct the tested save-restoration controls. Broader S117 benefits/policy and actual-user career work remain outside this selected three-item scope. Technical promotion does not authorize a public launch or lifecycle transition; launch/email holds remain independent.
+
+## 2026-10-23 — S119 — Fix layout and stat truth at their sources; repair main before promoting
+
+- Fix the shared .team-mode-switch, not the Desk column: hiding the overflow with minmax(0,1fr) would have clipped the switch instead of fixing it. The fit-content width keeps the single-row look wherever it fits.
+- The passer rating lives once, in the stat schema; the engine imports it and the browser copy is held equal by published reference lines. The golden-master change is deliberate, attributed and versioned (s119-v3); prior fixtures stay byte-identical.
+- The carried 16.2 MB task is closed by measurement, not by a fix; payload compaction is deferred until it is measured again, because gzip already absorbs the repeated recipe seeds in storage.
+- A red main blocks every release. Register an accumulating ledger the session it crosses the population gate; never raise the threshold.
+- Do not commit a script change after a staged candidate to fix an evidence tool: run a reviewed .cache copy, so HEAD stays covered by the publication.
+- A visual receipt inherits review only from byte-identical images of an earlier reviewed receipt; none qualified, so all 214 were inspected.

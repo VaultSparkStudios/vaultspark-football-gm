@@ -1,31 +1,3 @@
-## S117 — 2026-10-08 — Explicit partial closeout
-
-Founder requested “finish up and /closeout and deploy.” Demographic research and the implementation plan now cover probabilistic birthplace/background, diaspora and mixed heritage; correlated skin, hair and eye appearance; varied grooming; and body proportions tied to saved measurements. Race/background never determines gameplay ability. Population datasets retain their country-specific instruments and limitations.
-
-Accepted portrait changes are scoped foundations, including the face sculpt and modern eyes; they do not establish whole-person naturalism. The unadopted trunk experiment is preserved in agent scratch storage, outside production and portable tests.
-
-Verification: full core attempt 712/713; the historical modern grooming comparison was corrected to its immutable pre-sculpt authority and its focused rerun passed 3/3. No full-core green rerun is claimed. Runtime timed out at 45 minutes and independently reproduces a 16.2 MB six-week raw snapshot against the unchanged 16 MB bar. Visual QA retains one blocking craft defect. Fresh final 30-season GM verification and remaining NFL benefits/policy scope are pending.
-
-Deploy: deferred because applicable checks are nonpassing. Cloudflare credential discovery is READY; this is agent verification work, not a missing-credential or founder-approval dependency. No release gate override, production promotion, public launch, or completed-goal claim. Evidence: docs/visual-qa/PLAYER_PARTIAL_CLOSEOUT_2026-10-08.json.
-
-
-<!-- s118-final:worklog -->
-## 2026-10-22 — Session 118 — Measured characters, family continuity and exact production delivery
-
-Measured character v5 contours, garment relief, articulated feet and softer face/eye treatment are integrated into the actual player dossier. Saved height/weight continue to distinguish real roster players. Six athletic studies support motion, pause/resume and reduced motion. Explicit family authority shares racial/background category, heritage and natural pigment channels while retaining individual faces, recorded measurements and football random streams; generated brothers and reload persistence were exercised in the actual default client worker.
-
-Exact application candidate 863ea60e61398fa149d0e5715f15341a57337df5; artifact 2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737. CI39796952874 verified all six canonical unit shards and the complete browser job/test step. Pages39797016574 and backend39797029101 promoted the exact candidate. Stable staging14/14 and production14/14 provenance passed; hosted performance passed desktop/mobile. Provider/public source identities match. Previous Pages deployment and API image are available for rollback. Database container, image/start/mount identity and routing files/service identity are unchanged. No aggregate core/runtime case count is invented from truncated TAP output.
-
-The first candidate4721b342 had six passing unit shards but browser262pass/5fail/3existing opt-in skips. Two fixture dependencies were made portable with exact historical bytes and provenance; two finite-markup checks now exclude opaque PNG base64 while retaining geometry assertions and an invalid-value control. All five cases passed a clean-checkout build/test run. The second candidate11816546 had browser266pass/1fail/3skips: a transient cut-phase caption polling alias. Actual caption mutations are now latched, the required phase and15second limit retained, and visible GPU advance/pause verified; ten repeated focused runs passed. Both failed/cancelled promotion attempts remain nonpassing history. The third candidateadb9b228 passed all seven CI jobs and its separate267-case Pages browser suite, then failed responsive artifact capture because its harness imported renderFreeAgency from the retired owner. Only the capture import/call was corrected to tabContracts; full local327capture/312required responsive coverage passed without runtime errors. Its backend was genuinely promoted and verified; its frontend publication was skipped. A concurrent Dependabot Playwright1.64.1 patch was preserved by ordinary merge, with live registry signatures, lock integrity and maintainer continuity verified before install. The final exact candidate retains those changes; no force push or gate bypass was used. The golden update retains the immutable original and adds the attributed S118v2 authority; actual repeated payloads matched, without dropping sections or numeric bars.
-
-Characters remain stylized procedural art and movement studies; no photorealism, motion capture, complete physical tissue-mass calibration, physical-device frame-rate or actual-user long-career proof is claimed. Existing expanded-mobile Desk/card right-edge clipping remains recorded and does not obstruct the tested save-restoration controls. Broader S117 benefits/policy and actual-user career work remain outside this selected three-item scope. Technical promotion does not authorize a public launch or lifecycle transition; launch/email holds remain independent.
-
-The shared closeout autopilot was not executed: independent source review found unconditional child writes to Studio Ops despite --project. The bounded native ceremony preserves all project gates and the ten writebacks; no autopilot pass or forced override is claimed. Final closeout publication is pending.
-
-
-<!-- s118-final-publication -->
-S118 selected character/family outcomes and full exact-candidate production delivery are complete. Closeout commit eb0ed0a6dfb018c2fd21aef090bb4f4325572186 is on remote main; independent review passed after one corrected receipt label. All seven CI jobs passed; hosted browser267pass/0fail/3existing opt-in skips and responsive327captures/312required passed. Actual production motion, family reload, save restoration and lab performance passed. Ark summary 01K5IB7Q1U348173B7DFE7C352 was shipped; delivery, application and recipient verification are not asserted. No configured session beacon exists. The containing receipt commit must be verified on origin/main after an ordinary push; native goal completion is withheld until that readback.
-
 ## 2026-10-23 — Session 119 — The phone Desk fits, one passer rating, and a red main repaired
 
 Fresh audit (docs/AUDIT_2026-10-22.json, premises 6/6 live-verified, plan admission ok). Shipped:
@@ -111,11 +83,6 @@ Two selected outcomes. Exact-source hosted CI7/7, source Studio398/398 and corre
 
 Proof: reports/s127-closeout-completion.json. SIL remains536/1000; selected outcome count remains2.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `logs/archive/WORK_LOG.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
 ## 2026-10-29 — Session 128
 
 S128 shipped reliable Inbox recovery and trustworthy playtest notes. Usable cached messages retain history while empty identities cannot suppress fresh critical news. Valid playtest notes survive reload and export only disclosed fields. Matching frontend/API production is verified; final closeout remains pending. Technical source `812fd52b5ea01d1e0ef3d4037d383f311998aaa5`; reports/s128-release-acceptance.json. Two selected outcomes; ordered checkpoint only, finalization pending.
@@ -127,3 +94,19 @@ S128 metadata acceptance395/398 retained; two record-format defects diagnosed an
 The unchanged native Studio suite passed398/398 at ordered-checkpoint staged tree 5a2a137c89deb5bc20dea32130a4e113576cf647. First containing metadata commit 8ef2050062a4c2c8c89e1c331d25da8e18c934e3 was pushed and read back. Signed impact 01K64MNHEAF6081E99DCEF4F13 was shipped and HMAC verified; recipient adoption is not asserted. The owned C3 checkout was removed with raw/patch evidence preserved, and the recorded post-cleanup census found zero owned jobs/listeners. This is same-session finalization, no new session, score increment or additional product outcome. Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with a fresh zero-owned-jobs observation; then release ONLY the original goal-bound S128 lock (start 2026-10-29T05:57:59.205Z, startHead a8220ea9736da857b0d1d558f70e52d769fef090). This receipt cannot attest to its own containing publication or lock release.
 
 Proof: reports/s128-closeout-completion.json. Same approved SIL532/1000 and two outcomes, counted once.
+
+## 2026-11-11 — Session 129
+<!-- s129-closeout -->
+
+S129 was cut off mid-implement (no lock, no closeout, work uncommitted). The recovery run committed that work alone as c2e5a5ca, then continued the same S129 audit. Shipped to main (not yet deployed to staging or production): a drag/keyboard depth chart with autosave, Undo, Best Lineup and per-row grades; a weekly challenge every browser agrees on with no server, plus shareable challenge links; a root llms.txt documenting challenge links, the co-gm-briefing shape and the headless CLI; a Pages build that ships no developer runtime controls; and football playing styles with earned Elite/Strong signature abilities on player profiles. Rival depth-chart merit no longer leaks true potential.
+
+Commits: c2e5a5ca (recovered S129 work, isolated from later edits with a temporary index and -U0 hunk filtering; the mixed GameSession blob was rebuilt by exact removal and matched S129's original diff), 51701878 (this run's work).
+
+Evidence: attribute-categories 8/8, weekly-challenge 6/6, player-profile-narrative 13/13, shard-coverage 3/3; Playwright depth-chart-reorder 7/7, weekly-challenge 4/4, app.spec depth 1/1, standard-elevation 1/1, player-position-traits + dossier-layout 2/2; check-public-truth OK; build-pages + static smoke-pages green; boot budget 649883/650000 (117 bytes headroom). Suite: canonical core shard timed out at 90 min on a host saturated by other projects (736 passed, 0 failed before termination, partial and not a receipt); focused 17-file run 128/129 after a stale-build preload red was cleared by rebuilding; the remaining red is local-only (gitignored private file). public-compliance has one local-only red: a gitignored private creative-direction file exists in this checkout (never committed; CI unaffected).
+
+Not done, recorded honestly: staging deploy and production promotion (production unchanged); site-truth releaseLabel and single-sourced Community Stats privacy; player-identity personality/college/hometown and roster/depth display; depth-chart menu entry; 14 other audit items remain pending in docs/AUDIT_2026-11-10.json.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `logs/archive/WORK_LOG.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

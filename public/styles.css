@@ -1012,10 +1012,10 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
   border: 1px solid transparent;
 }
 
-.depth-rating--elite { border-color: currentColor; color: var(--success, #1f9d55); }
-.depth-rating--good { color: var(--success, #1f9d55); }
+.depth-rating--elite { border-color: currentColor; color: var(--success); }
+.depth-rating--good { color: var(--success); }
 .depth-rating--fair { color: inherit; }
-.depth-rating--low { color: var(--danger, #c0392b); }
+.depth-rating--low { color: var(--danger); }
 
 .depth-board td.depth-abilities {
   min-width: 9rem;
@@ -1043,7 +1043,7 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
 }
 
 .depth-status--out {
-  color: var(--danger, #c0392b);
+  color: var(--danger);
   font-weight: 600;
 }
 

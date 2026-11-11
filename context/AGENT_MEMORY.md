@@ -106,16 +106,6 @@ S126 closeout lesson: canonical handoff headings carry session authority. Preser
 - Evidence tools that need a local fix after staging run from a reviewed `.cache` copy, so HEAD stays covered by the publication.
 
 <!-- s118-final:memory -->
-## Session 118 durable patterns
-
-- Family authority inherits appearance context, never ratings or football RNG; preserve natural pigment resemblance and individual face seeds across restoration.
-- Historical accepted geometry and deliberate new anatomy need separate immutable authorities. Keep strict mesh/save budgets and attribute golden changes explicitly.
-- Version scratch-generated fixtures before CI, hash exact decoded bytes and test from a clean checkout with the built artifact.
-- Do not scan PNG base64 for numeric geometry errors; retain actual geometry validation and a negative control.
-- Verify child-script mutation roots independently of an outer project flag. Native bounded closeout is preferable to an unsafe cross-repository ceremony.
-- Successful exact CI jobs/test steps are valid execution evidence; missing TAP summary counts remain unmeasured.
-
-<!-- s112-closeout:memory -->
 
 <!-- ledger-roll:pointer -->
 ---

@@ -2,6 +2,29 @@
 
 Append-only archive of entries rolled out of the live ledger. Verbatim; newest first. See `context/TASK_BOARD.md` for the working set.
 
+## Session 116 — Multi-sport platform: guardrails and the first six seams (2026-10-04)
+
+- [x] Phase 0: football golden master (scripts/golden-master.mjs; a real behavior change flips 94 sections) and the sport conformance kit (determinism, score, period and stat closure, trademark vocabulary; fails closed).
+- [x] Step 1: sport rules registry (src/sport/registry.js); no NFL constants are read by core code with a league in scope.
+- [x] Step 2: the match engine returns statDeltas, appearances and snapCounts, and the core applies them (src/stats/applyGameStats.js).
+- [x] Step 3: football stats become a pack schema; statBook.js names no football category.
+- [x] Step 4: the season calendar and offseason stages become pack data.
+- [x] Steps 5–6: schedule and postseason become pack competition; registerSport lets a runtime pack join.
+- [x] Verify and deliver: Source d913b9f9c0043d00131506c0d4271034a15fc169. All six shards green at this commit, run shard by shard and in runtime chunks under host memory pressure (studio 365, sim-contract 122, sim-realism 9, long 3, core 290, runtime 1013). Football golden master identical at every extraction step. Stable staging 14/14 (artifact b4acf986…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37200292923 success, production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Public launch remains HOLD.
+
+### Next (Phase 1 continues — see the approved multi-sport plan)
+- [ ] Championship data key: rename superBowl to championship with a snapshot migration and aliases for old saves, and give conferences display names that are not the real NFL's (AFC/NFC are stored ids).
+- [ ] Step 7: position/roster catalog. Step 8: rating model. Step 9: value metric and calibration. Step 10: week event bus.
+- [ ] Client shell versus pack UI islands, then the physical move to packages/core and packages/sport-football.
+- [x] Passer rating clamps before scaling (89.3 instead of the real formula's 99.3 on a 300/450, 3500-yard, 25 TD, 10 INT line). Fixed S119 as a deliberate golden-master change (golden s119-v3); guarded by test/passer-rating.test.js. Closed S120.
+- [x] weeklySimulator still builds weekly standings with literal AFC/NFC keys. S120: built from the sport pack's structure.conferences; a pack with none emits `overall` only (test/competition-contract.test.js, red on the literal version).
+- [x] Inbound project email: added the Cloudflare routing rule football@ → founder@vaultsparkstudios.com; test (3) delivered and the founder replied from Zoho (2026-10-05).
+- [ ] Reply-as football@ (Zoho Send Mail As through Brevo SMTP, or the founder's custom email studio project): deferred by founder direction. Then build the project-email-round-trip receipt and rerun scripts/launch-evidence-report.mjs.
+- [x] Founder applied S0→FB in vaultspark-studio-ops on 2026-10-06; registry-change cargo shipped; lifecycle coherence PASS (registry FORGE = local FORGE).
+- [ ] Before S1 (public release): announcement on the current URL, a release receipt (product, identity, email, operations, release, posting), and a founder GO. The registry liveUrl and staging fields are stale.
+- [ ] Studio-ops gaps: Analytica feed (baton 2026-10-02), Obelisk OIDC (handoff 2026-10-01), Studio OS map 14/15; decide hello@ (studio standard) vs football@.
+<!-- /s116-closeout:tasks -->
+
 ## Session 115 — Situational calls, archetype drafting and a parallel deploy gate (2026-10-03)
 
 - [x] Situational calls: a standing 4th-down and two-minute posture for the controlled club. Defaults are byte-identical to the previous engine over 36 seeded games, every posture uses one draw per decision, and the measured go rate is 0.078 / 0.125 / 0.188 with 245 vs 373 two-minute plays. Desk card, both transports, 2-MIN replay tag.

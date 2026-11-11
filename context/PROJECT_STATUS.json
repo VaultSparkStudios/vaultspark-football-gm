@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S128 repaired damaged Inbox message admission and playtest receipt integrity. Valid message history and actions survive malformed cache rows; fresh critical source news remains actionable. Playtest exports admit only disclosed fields and invalid ratings do not create trend evidence. Matching frontend/API technical release and same-session formal evidence are verified, subject to final containing receipt publication and original-lock guards.",
-  "nextMilestone": "Verify final S128 containing receipt publication/readback and canonical derived surfaces, then release only the original bound lock; independent identity/email/public-launch holds remain separate.",
+  "currentFocus": "S129 recovered its cut-off depth-chart rebuild (c2e5a5ca) and shipped to main a weekly challenge with shareable links, a root llms.txt, football playing styles with earned signature abilities, and a Pages build without developer runtime controls (51701878). Not yet deployed: production is unchanged.",
+  "nextMilestone": "Release S129: deploy the main candidate to staging, verify, then promote through the release protocol. Then continue docs/AUDIT_2026-11-10.json: player-identity L2, site-truth releaseLabel/privacy single source, and the pending items. Independent identity/email/public-launch holds remain separate.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -70,19 +70,19 @@
   "silScoreLegacy500": null,
   "silScore": 532,
   "silCategoriesV3": {
-    "devHealth": 93,
-    "creativeAlignment": 70,
-    "momentum": 63,
-    "engagement": 45,
-    "processQuality": 58,
+    "devHealth": 88,
+    "creativeAlignment": 72,
+    "momentum": 65,
+    "engagement": 47,
+    "processQuality": 55,
     "crossRepoCoherence": 60,
-    "securityPosture": 61,
+    "securityPosture": 62,
     "ecosystemIntegration": 20,
     "capitalEfficiency": 0,
-    "automationCoverage": 62
+    "automationCoverage": 63
   },
-  "currentSession": 128,
-  "lastAgent": "codex",
+  "currentSession": 129,
+  "lastAgent": "claude-code",
   "sessionMode": "builder",
   "lastVerification": {
     "session": 128,
@@ -120,17 +120,24 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 501,
+  "silHealth": 495,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 0,
+    "blockingFailing": 1,
     "total": 12,
-    "failing": 0,
-    "score": 100,
-    "date": "2026-11-10",
-    "passing": 12,
+    "failing": 1,
+    "score": 92,
+    "date": "2026-11-11",
+    "passing": 11,
     "warning": 0,
-    "checks": []
+    "checks": [
+      {
+        "id": "release-authority-git-head-covered-by-publication",
+        "status": "failing",
+        "blocking": true,
+        "detail": "HEAD 51701878ff7df8cbde816afc306d040f06da265c is not covered by live production 812fd52b5ea01d1e0ef3d4037d383f311998aaa5"
+      }
+    ]
   },
   "complianceScore": 37,
   "complianceTotal": 37,
@@ -141,7 +148,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.008,
   "entropyLastComputed": "2026-10-29",
-  "lastSessionSummary": "S128 repaired damaged Inbox message admission and playtest receipt integrity. Valid message history and actions survive malformed cache rows; fresh critical source news remains actionable. Playtest exports admit only disclosed fields and invalid ratings do not create trend evidence. Matching frontend/API technical release and same-session formal evidence are verified, subject to final containing receipt publication and original-lock guards.",
+  "lastSessionSummary": "S129 recovered its cut-off depth-chart rebuild (c2e5a5ca) and shipped to main a weekly challenge with shareable links, a root llms.txt, football playing styles with earned signature abilities, and a Pages build without developer runtime controls (51701878). Not yet deployed: production is unchanged.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -162,8 +169,8 @@
       "lastChecked": "2026-10-26"
     }
   ],
-  "lastSession": 128,
-  "silLastSession": 128,
+  "lastSession": 129,
+  "silLastSession": 129,
   "bootAmortization": {
     "ratio": 6.78,
     "verdict": "excellent",
@@ -2262,21 +2269,21 @@
   "launchReady": false,
   "sil": {
     "version": "3.0",
-    "session": 128,
+    "session": 129,
     "silScore": 532,
     "categories": {
-      "devHealth": 93,
-      "creativeAlignment": 70,
-      "momentum": 63,
-      "engagement": 45,
-      "processQuality": 58,
+      "devHealth": 88,
+      "creativeAlignment": 72,
+      "momentum": 65,
+      "engagement": 47,
+      "processQuality": 55,
       "crossRepoCoherence": 60,
-      "securityPosture": 61,
+      "securityPosture": 62,
       "ecosystemIntegration": 20,
       "capitalEfficiency": 0,
-      "automationCoverage": 62
+      "automationCoverage": 63
     },
-    "date": "2026-10-29"
+    "date": "2026-11-11"
   },
   "silRollingAverages": {
     "3": 737.3,
@@ -2288,10 +2295,10 @@
   "session112Summary": "S112 completed ten audit items and five second-order outcomes. Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD.",
   "sessionState": {
     "version": 1,
-    "durableSession": 128,
-    "currentFocus": "S128 repaired damaged Inbox message admission and playtest receipt integrity. Valid message history and actions survive malformed cache rows; fresh critical source news remains actionable. Playtest exports admit only disclosed fields and invalid ratings do not create trend evidence. Matching frontend/API technical release and same-session formal evidence are verified, subject to final containing receipt publication and original-lock guards.",
-    "nextMilestone": "Verify final S128 containing receipt publication/readback and canonical derived surfaces, then release only the original bound lock; independent identity/email/public-launch holds remain separate.",
-    "lastSessionSummary": "S128 repaired damaged Inbox message admission and playtest receipt integrity. Valid message history and actions survive malformed cache rows; fresh critical source news remains actionable. Playtest exports admit only disclosed fields and invalid ratings do not create trend evidence. Matching frontend/API technical release and same-session formal evidence are verified, subject to final containing receipt publication and original-lock guards."
+    "durableSession": 129,
+    "currentFocus": "S129 recovered its cut-off depth-chart rebuild (c2e5a5ca) and shipped to main a weekly challenge with shareable links, a root llms.txt, football playing styles with earned signature abilities, and a Pages build without developer runtime controls (51701878). Not yet deployed: production is unchanged.",
+    "nextMilestone": "Release S129: deploy the main candidate to staging, verify, then promote through the release protocol. Then continue docs/AUDIT_2026-11-10.json: player-identity L2, site-truth releaseLabel/privacy single source, and the pending items. Independent identity/email/public-launch holds remain separate.",
+    "lastSessionSummary": "S129 recovered its cut-off depth-chart rebuild (c2e5a5ca) and shipped to main a weekly challenge with shareable links, a root llms.txt, football playing styles with earned signature abilities, and a Pages build without developer runtime controls (51701878). Not yet deployed: production is unchanged."
   },
   "partialCloseout": {
     "session": 117,
@@ -2651,7 +2658,7 @@
       "One week is advanced in each isolated local browser franchise; no analytics consent is granted, account created or share transmitted."
     ]
   },
-  "velocity": 2,
+  "velocity": 5,
   "technicalDebtTrend": "decreasing",
   "closeoutExecution": {
     "session": 128,
@@ -2679,7 +2686,7 @@
     "finalContainingReceiptPublicationVerified": false,
     "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with a fresh zero-owned-jobs observation; then release ONLY the original goal-bound S128 lock (start 2026-10-29T05:57:59.205Z, startHead a8220ea9736da857b0d1d558f70e52d769fef090). This receipt cannot attest to its own containing publication or lock release."
   },
-  "silVelocity": 2,
+  "silVelocity": 5,
   "historicalTestShardReceipt": {
     "canonicalCommand": "npm test",
     "shards": [
@@ -2879,7 +2886,7 @@
   },
   "silScoreBasis": "Root-reviewed engineering judgment; player and financial outcomes remain unmeasured.",
   "silDebt": "→",
-  "testsLastRun": "2026-10-25",
+  "testsLastRun": "2026-11-11",
   "ignisProof": {
     "session": 124,
     "verified": true,
@@ -2920,7 +2927,7 @@
     "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact f39 staging/frontend/API identity, terminal receipt-only CI with no observed executed failure, zero owned transient jobs/processes, and release only the original S124 lock."
   },
   "silDebtTrend": "→",
-  "silLastUpdated": "2026-10-29",
+  "silLastUpdated": "2026-11-11",
   "lastDeployStatus": "S128 matching frontend/API812fd52b accepted; corrected closing metadata398, first containing publication/readback, signed impact and owned cleanup verified. Final containing receipt publication/readback and original bound-lock release remain guarded.",
   "previousBackendDeployment": {
     "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
@@ -2986,17 +2993,17 @@
     "completion": "reports/s123-closeout-completion.json",
     "nativeCompletionGuard": "Verify this final containing receipt commit on remote main, reconfirm live490 staging/frontend/API, zero owned running jobs and release only the original S123 lock before native goal completion."
   },
-  "sessionIntentAchieved": true,
-  "sessionIntentDisposition": "verified-phases-final-containing-publication-and-original-lock-guards",
+  "sessionIntentAchieved": false,
+  "sessionIntentDisposition": "partial-selected-outcomes-on-main-release-deferred",
   "silSparkline": [
-    838,
     856,
     863,
     864,
     485,
     500,
     510,
-    505
+    505,
+    532
   ],
   "historicalCloseoutRecords": [
     {
@@ -3063,5 +3070,14 @@
     "session": 128,
     "receipt": "reports/s128-final-staged-security.json",
     "scope": "Actual initial containing closing-metadata staged blobs/settings checked. Final formal-receipt descendants require their own fresh staged scan before publication."
+  },
+  "s129Closeout": {
+    "session": 129,
+    "recoveryCommit": "c2e5a5ca",
+    "implementationCommit": "51701878",
+    "audit": "docs/AUDIT_2026-11-10.json",
+    "suite": "canonical core shard timed out at 90 min on a host saturated by other projects (736 passed, 0 failed before termination, partial and not a receipt); focused 17-file run 128/129 after a stale-build preload red was cleared by rebuilding; the remaining red is local-only (gitignored private file)",
+    "deployed": false,
+    "note": "Main carries the code; staging and production were not deployed this session."
   }
 }

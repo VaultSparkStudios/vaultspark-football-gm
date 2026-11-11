@@ -2026,3 +2026,34 @@ SIL v3.0: **655 / 1000** (Dev Health 55, Creative Alignment 75, Momentum 60, Eng
 - Avoid concurrent expensive shard runs on a pressured host; timeout evidence remains nonpassing until a complete source-bound rerun.
 - Prototype tests depending on scratch files must stay outside portable release tests.
 - Explicit closeout carries unfinished scope without a goal-complete claim.
+
+## 2026-10-22 — S118 — Active verification checkpoint, unscored
+
+The character implementation is under complete verification. Three crown/memory failures were repaired within existing limits; the scouting click collision was corrected; the claim lazy-load check now observes actual responses; ten omitted tests were added to the inventory. No final score or completed-session record is assigned while full acceptance and deployment remain pending. The latest closed-session score below remains S117.
+
+
+<!-- s118-final:sil -->
+## 2026-10-22 — Session 118 — Character delivery with evidence that survives a clean checkout
+
+SIL v3.0: **838 / 1000** (Dev Health 90, Creative Alignment 88, Momentum 70, Engagement 80, Process Quality 60, Cross-Repo Coherence 90, Security Posture 92, Ecosystem Integration 85, Capital Efficiency 95, Automation Coverage 88). Intent outcome: Achieved for the three selected implementation/production outcomes; canonical closeout publication is finalizing. Velocity: 3 selected outcomes. Debt: ↓ repaired save budget, browser portability and release acceptance; broader historical debt retained. These are engineering assessments, not measured player retention or a physical realism certification.
+
+Process and momentum remain reduced for repeated local repairs, an initially nonportable browser suite and long duplicate hosted verification. No paid inference or new dependency was introduced for the character system.
+
+- [SIL] A focused pass in a populated workspace does not establish portable CI: exercise the committed fixture and built client from a clean checkout.
+- [SIL] Binary image payloads are opaque; validate numeric geometry separately and retain a real invalid-value control.
+- [SIL] An outer --project flag does not make script-rooted child writers safe. Verify each mutation boundary before invoking a shared closeout tool.
+
+Characters remain stylized procedural art and movement studies; no photorealism, motion capture, complete physical tissue-mass calibration, physical-device frame-rate or actual-user long-career proof is claimed. Existing expanded-mobile Desk/card right-edge clipping remains recorded and does not obstruct the tested save-restoration controls. Broader S117 benefits/policy and actual-user career work remain outside this selected three-item scope. Technical promotion does not authorize a public launch or lifecycle transition; launch/email holds remain independent.
+
+
+<!-- s118-final-publication -->
+S118 selected character/family outcomes and full exact-candidate production delivery are complete. Closeout commit eb0ed0a6dfb018c2fd21aef090bb4f4325572186 is on remote main; independent review passed after one corrected receipt label. All seven CI jobs passed; hosted browser267pass/0fail/3existing opt-in skips and responsive327captures/312required passed. Actual production motion, family reload, save restoration and lab performance passed. Ark summary 01K5IB7Q1U348173B7DFE7C352 was shipped; delivery, application and recipient verification are not asserted. No configured session beacon exists. The containing receipt commit must be verified on origin/main after an ordinary push; native goal completion is withheld until that readback.
+
+## 2026-10-23 — Session 119 — Fixes measured to their source, and the red main nobody read
+
+SIL v3.0: **856 / 1000** (Dev Health 92, Creative Alignment 90, Momentum 76, Engagement 82, Process Quality 66, Cross-Repo Coherence 91, Security Posture 92, Ecosystem Integration 84, Capital Efficiency 95, Automation Coverage 88). Intent outcome: Achieved — three selected outcomes implemented, verified and live on production c0ce44b4. Velocity: 3 selected outcomes plus one unplanned release blocker. Debt: ↓ two long-recorded defects (mobile Desk clipping since S117; passer rating since the stat schema move) and a red main. These are engineering assessments, not measured player retention.
+
+Process quality stays reduced: the session started a candidate without reading main's CI, which had been red since S118's closeout, costing one full candidate cycle. Local suite evidence was partial (memory reaping; ignored local files), so CI is the full receipt.
+
+- [SIL] Read CI on main at /start; a docs-only closeout can redden the next candidate's gate.
+- [SIL] Measure a layout defect with a min-content probe before choosing a fix; the cause was one widget, not the column.

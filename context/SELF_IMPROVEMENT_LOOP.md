@@ -3,45 +3,14 @@
 
 
 <!-- rolling-status-start -->
-Last session: 128 (2026-10-29) | Total: 532/1000 | Velocity: 2 | Debt: →
-Avgs — 3: 533.3 | 5: 523 | 10: 618.3 | 25: 780.6 | all: 926.1
+Last session: 129 (2026-11-11) | Total: 532/1000 | Velocity: 2 | Debt: →
+Avgs — 3: 533.3 | 5: 527.4 | 10: 585.9 | 25: 763.4 | all: 921.3
 Sparkline: ▁▁▁▁▁
 Intent rate: 60% (3/5 last 5)
-SIL delta: 536 → 532 (-4). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 82 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 532 → 532 (+0). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 83 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
 > Older entries S112 live verbatim in `context/archive/SELF_IMPROVEMENT_LOOP_S112-S112.md`.
-
-## 2026-10-22 — S118 — Active verification checkpoint, unscored
-
-The character implementation is under complete verification. Three crown/memory failures were repaired within existing limits; the scouting click collision was corrected; the claim lazy-load check now observes actual responses; ten omitted tests were added to the inventory. No final score or completed-session record is assigned while full acceptance and deployment remain pending. The latest closed-session score below remains S117.
-
-
-<!-- s118-final:sil -->
-## 2026-10-22 — Session 118 — Character delivery with evidence that survives a clean checkout
-
-SIL v3.0: **838 / 1000** (Dev Health 90, Creative Alignment 88, Momentum 70, Engagement 80, Process Quality 60, Cross-Repo Coherence 90, Security Posture 92, Ecosystem Integration 85, Capital Efficiency 95, Automation Coverage 88). Intent outcome: Achieved for the three selected implementation/production outcomes; canonical closeout publication is finalizing. Velocity: 3 selected outcomes. Debt: ↓ repaired save budget, browser portability and release acceptance; broader historical debt retained. These are engineering assessments, not measured player retention or a physical realism certification.
-
-Process and momentum remain reduced for repeated local repairs, an initially nonportable browser suite and long duplicate hosted verification. No paid inference or new dependency was introduced for the character system.
-
-- [SIL] A focused pass in a populated workspace does not establish portable CI: exercise the committed fixture and built client from a clean checkout.
-- [SIL] Binary image payloads are opaque; validate numeric geometry separately and retain a real invalid-value control.
-- [SIL] An outer --project flag does not make script-rooted child writers safe. Verify each mutation boundary before invoking a shared closeout tool.
-
-Characters remain stylized procedural art and movement studies; no photorealism, motion capture, complete physical tissue-mass calibration, physical-device frame-rate or actual-user long-career proof is claimed. Existing expanded-mobile Desk/card right-edge clipping remains recorded and does not obstruct the tested save-restoration controls. Broader S117 benefits/policy and actual-user career work remain outside this selected three-item scope. Technical promotion does not authorize a public launch or lifecycle transition; launch/email holds remain independent.
-
-
-<!-- s118-final-publication -->
-S118 selected character/family outcomes and full exact-candidate production delivery are complete. Closeout commit eb0ed0a6dfb018c2fd21aef090bb4f4325572186 is on remote main; independent review passed after one corrected receipt label. All seven CI jobs passed; hosted browser267pass/0fail/3existing opt-in skips and responsive327captures/312required passed. Actual production motion, family reload, save restoration and lab performance passed. Ark summary 01K5IB7Q1U348173B7DFE7C352 was shipped; delivery, application and recipient verification are not asserted. No configured session beacon exists. The containing receipt commit must be verified on origin/main after an ordinary push; native goal completion is withheld until that readback.
-
-## 2026-10-23 — Session 119 — Fixes measured to their source, and the red main nobody read
-
-SIL v3.0: **856 / 1000** (Dev Health 92, Creative Alignment 90, Momentum 76, Engagement 82, Process Quality 66, Cross-Repo Coherence 91, Security Posture 92, Ecosystem Integration 84, Capital Efficiency 95, Automation Coverage 88). Intent outcome: Achieved — three selected outcomes implemented, verified and live on production c0ce44b4. Velocity: 3 selected outcomes plus one unplanned release blocker. Debt: ↓ two long-recorded defects (mobile Desk clipping since S117; passer rating since the stat schema move) and a red main. These are engineering assessments, not measured player retention.
-
-Process quality stays reduced: the session started a candidate without reading main's CI, which had been red since S118's closeout, costing one full candidate cycle. Local suite evidence was partial (memory reaping; ignored local files), so CI is the full receipt.
-
-- [SIL] Read CI on main at /start; a docs-only closeout can redden the next candidate's gate.
-- [SIL] Measure a layout defect with a min-content probe before choosing a fix; the cause was one widget, not the column.
 
 ## 2026-10-23 — Session 120 — Tell the player what moved, and give a flaky gate its cause
 
@@ -216,11 +185,6 @@ The corrected closing metadata passed the unchanged native Studio suite398/398 a
 
 Proof: reports/s127-closeout-completion.json. Existing two unselected future-discipline items remain unselected; no additional work is authorized by this record.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
 ## 2026-10-29 — Session 128 — Reliable Inbox and trustworthy playtest notes
 
 SIL v3.0: **532 / 1000** (Dev Health 93, Creative Alignment 70, Momentum 63, Engagement 45, Process Quality 58, Cross-Repo Coherence 60, Security Posture 61, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 62). Classification: **Partial — finalization pending** at this ordered checkpoint. Prior536; delta-4. Scores are root-reviewed engineering judgment, not measured player or financial outcomes.
@@ -260,3 +224,31 @@ Two selected outcomes. C3 focused49/49, exact-source CI7/7, source Studio398/398
 The unchanged native Studio suite passed398/398 at ordered-checkpoint staged tree 5a2a137c89deb5bc20dea32130a4e113576cf647. First containing metadata commit 8ef2050062a4c2c8c89e1c331d25da8e18c934e3 was pushed and read back. Signed impact 01K64MNHEAF6081E99DCEF4F13 was shipped and HMAC verified; recipient adoption is not asserted. The owned C3 checkout was removed with raw/patch evidence preserved, and the recorded post-cleanup census found zero owned jobs/listeners. This is same-session finalization, no new session, score increment or additional product outcome. Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with a fresh zero-owned-jobs observation; then release ONLY the original goal-bound S128 lock (start 2026-10-29T05:57:59.205Z, startHead a8220ea9736da857b0d1d558f70e52d769fef090). This receipt cannot attest to its own containing publication or lock release.
 
 Proof: reports/s128-closeout-completion.json. Both future SIL discipline items remain unselected and current-arc unauthorized.
+
+## 2026-11-11 — Session 129
+<!-- s129-closeout -->
+
+SIL v3.0: **532 / 1000** (Dev Health 88, Creative Alignment 72, Momentum 65, Engagement 47, Process Quality 55, Cross-Repo Coherence 60, Security Posture 62, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 63).
+
+- Dev Health: 88, down 5. Focused suites green, but the canonical suite did not complete;  canonical core shard timed out at 90 min on a host saturated by other projects (736 passed, 0 failed before termination, partial and not a receipt); focused 17-file run 128/129 after a stale-build preload red was cleared by rebuilding; the remaining red is local-only (gitignored private file)
+- Creative Alignment: 72, up 2. Football language replaces abstract archetype nouns. The weekly challenge deepens the deterministic-seed promise.
+- Momentum: 65, up 2. Four audit items reached main (two full, two reduced) plus the recovered rebuild. Nothing was released.
+- Engagement: 47, up 2. A weekly shared league and one-click challenge links are retention hooks; player return is unmeasured.
+- Process Quality: 55, down 3. The prior run died without committing or locking, and it left a new test outside every shard. The boundary was rebuilt cleanly, but it should not have been needed.
+- Cross-Repo Coherence: 60, unchanged.
+- Security Posture: 62, up 1. Rival depth merit no longer carries true potential, and the production HTML ships no developer runtime controls.
+- Ecosystem Integration: 20, unchanged.
+- Capital Efficiency: 0, unchanged. Nothing measured.
+- Automation Coverage: 63, up 1. Static smoke now asserts zero developer controls and a root llms.txt; shard coverage is restored.
+
+Brainstorm: A dead session's tree is evidence. Commit it alone before the first new edit, because rebuilding that boundary afterward costs a temporary index and hunk surgery. A boot budget with 117 bytes left will reject the next small feature, and the remedy is structural (projection or lazy import), never raising the target. A derived value whose table the browser needs only for display belongs in the domain and on the DTO.
+
+- [SIL:129] Boot budget headroom: move a static island behind a dynamic import before the next boot-path change.
+- [SIL:129] Checkpoint before you continue: commit a cut-off session's tree on its own before the first new edit.
+
+Intent outcome: Partial. The selected outcomes reached main with their tests. Release was deferred, and three items shipped at reduced scope as recorded in the audit execution log. Velocity: 4 audit outcomes + 1 recovered outcome.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

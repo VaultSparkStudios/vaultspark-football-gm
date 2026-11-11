@@ -2,6 +2,17 @@
 
 Append-only archive of entries rolled out of the live ledger. Verbatim; newest first. See `context/AGENT_MEMORY.md` for the working set.
 
+## Session 118 durable patterns
+
+- Family authority inherits appearance context, never ratings or football RNG; preserve natural pigment resemblance and individual face seeds across restoration.
+- Historical accepted geometry and deliberate new anatomy need separate immutable authorities. Keep strict mesh/save budgets and attribute golden changes explicitly.
+- Version scratch-generated fixtures before CI, hash exact decoded bytes and test from a clean checkout with the built artifact.
+- Do not scan PNG base64 for numeric geometry errors; retain actual geometry validation and a negative control.
+- Verify child-script mutation roots independently of an outer project flag. Native bounded closeout is preferable to an unsafe cross-repository ceremony.
+- Successful exact CI jobs/test steps are valid execution evidence; missing TAP summary counts remain unmeasured.
+
+<!-- s112-closeout:memory -->
+
 ## Session 112 durable patterns
 
 - Reserve the save slot before reading previous bytes; serialization spans compression, publication, rollback, load migration and deletion.

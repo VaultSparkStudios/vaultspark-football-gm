@@ -1,15 +1,27 @@
-# Session 128 Closeout — verified phase evidence
+# Session 129 Closeout — recovered cut-off run, four audit outcomes on main
 
-## Where We Left Off (Session 128)
+## Where We Left Off (Session 129)
 
-Session Intent: Selected repairs, actual matching frontend/API release and formal closeout phase evidence are verified. Final containing receipt publication/readback and original bound lock release remain native guards.
+Session Intent: recover the cut-off S129 run, then continue its audit (docs/AUDIT_2026-11-10.json) through implement and closeout. Outcome: Partial. The selected outcomes reached main with focused tests. Release was not attempted.
 
-S128 repaired damaged Inbox message admission and playtest receipt integrity. Valid message history and actions survive malformed cache rows; fresh critical source news remains actionable. Playtest exports admit only disclosed fields and invalid ratings do not create trend evidence. Matching frontend/API technical release and same-session formal evidence are verified, subject to final containing receipt publication and original-lock guards.
+S129 first ran /start and its audit, then died mid-implement with no session lock, no commit and no closeout. The recovery invocation continued the same session number, because nothing labelled S129 had been committed. It verified the recovered tree before any new edit, then committed that work alone as `c2e5a5ca`. The four files later edited by the recovery run were split with a temporary index and -U0 hunk filtering, and the rebuilt GameSession blob matched the dead run's original diff exactly.
 
-Two selected outcomes. C3 focused49/49, exact-source CI7/7, source Studio398/398 and corrected closing-metadata Studio398/398 are separate checks, never an aggregate application count. Staging and production each have four desktop/mobile dark/light actual worker journeys,18 independently reviewed captures, native provenance14/14 and five-run performance on both profiles. Matching API source/database readiness and preservation are accepted by reports/s128-release-acceptance.json. Final visual62 preserves baseline8/local-C3 18/staging18/production18 and capture limits. No actual-player, financial, restore-drill, broad launch readiness or lifecycle outcome is inferred.
+Shipped to main in `51701878`:
+- **Weekly challenge** (implemented): one league per ISO week (UTC) that every browser agrees on with no server. `?challenge=weekly` and `?challenge=<code>` links fill in the start page, pasted links work, and a damaged link is reported. The in-game copy button now copies a link.
+- **Agent surface** (implemented): `/llms.txt` at the root is built from the single `.well-known` source and documents challenge links, the co-gm-briefing shape and the headless CLI export. agents.json links it.
+- **Site truth** (reduced): the Pages build ships no developer runtime option or Data Paths block, and static smoke asserts zero dev controls.
+- **Player identity L1** (reduced): football playing styles projected from each player's real archetype (src/domain/playingStyle.js), and Elite/Strong signature abilities only when earned. Prospects show neither.
+- **Recovered depth chart** (c2e5a5ca, reduced): drag/keyboard reorder, autosave, Undo, Best Lineup and per-row grades. Rival merit no longer carries true potential.
 
-Source `812fd52b5ea01d1e0ef3d4037d383f311998aaa5`; artifact `86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553`; reports/s128-release-acceptance.json.
+Evidence: focused unit and Playwright suites for every changed surface pass (see logs/WORK_LOG.md). check-public-truth OK; build-pages and static smoke-pages green; boot budget 649883/650000.
 
-The unchanged native Studio suite passed398/398 at ordered-checkpoint staged tree 5a2a137c89deb5bc20dea32130a4e113576cf647. First containing metadata commit 8ef2050062a4c2c8c89e1c331d25da8e18c934e3 was pushed and read back. Signed impact 01K64MNHEAF6081E99DCEF4F13 was shipped and HMAC verified; recipient adoption is not asserted. The owned C3 checkout was removed with raw/patch evidence preserved, and the recorded post-cleanup census found zero owned jobs/listeners. This is same-session finalization, no new session, score increment or additional product outcome. Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with a fresh zero-owned-jobs observation; then release ONLY the original goal-bound S128 lock (start 2026-10-29T05:57:59.205Z, startHead a8220ea9736da857b0d1d558f70e52d769fef090). This receipt cannot attest to its own containing publication or lock release.
+The canonical core shard did **not** complete. It timed out at 90 minutes on a host saturated by other projects' suites, with 736 passed and 0 failed before termination. That is partial evidence, not a green receipt. public-compliance has one local-only red: a gitignored private creative-direction file exists in this checkout.
 
-Completion: reports/s128-closeout-completion.json. Three-wave scaffold reconciled; two selected outcomes counted once. CDR reviewed: no new creative direction. Independent identity/email/lifecycle/public-launch holds remain. Prior ordered Partial handoff preserved verbatim: context/archive/LATEST_HANDOFF_S128_ORDERED_CHECKPOINT_8645355b7ee8256da78a694ed240ce3c79e186d651b146439f1fe2ce885675c8.md.
+## Next session
+
+1. On a quiet host, run `npm test` (or core + runtime + studio) at main and record a source-bound receipt.
+2. Release: deploy main to staging, verify, then promote per docs/RELEASE_PROMOTION_PROTOCOL.md. Production is unchanged and still serves S128's `812fd52b`.
+3. Boot budget has 117 bytes of headroom. Move a static island behind a dynamic import before any boot-path change.
+4. Continue docs/AUDIT_2026-11-10.json: player-identity L2, site-truth releaseLabel and privacy single source, the depth-chart menu entry, and the 14 pending items.
+
+Independent identity, email and public-launch holds remain. CDR reviewed: no new founder creative direction this session.

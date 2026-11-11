@@ -1,5 +1,17 @@
 # Current State
 
+## 2026-11-11 — Session 129 — Recovered cut-off session, weekly challenge, agent surface, playing styles
+<!-- s129-closeout -->
+
+- 2026-11-11: Session 129 recovered its cut-off depth-chart rebuild (c2e5a5ca) and shipped weekly challenges, challenge links, a root llms.txt, playing styles and a Pages build without developer controls to main. Not deployed.
+
+S129 was cut off mid-implement (no lock, no closeout, work uncommitted). The recovery run committed that work alone as c2e5a5ca, then continued the same S129 audit. Shipped to main (not yet deployed to staging or production): a drag/keyboard depth chart with autosave, Undo, Best Lineup and per-row grades; a weekly challenge every browser agrees on with no server, plus shareable challenge links; a root llms.txt documenting challenge links, the co-gm-briefing shape and the headless CLI; a Pages build that ships no developer runtime controls; and football playing styles with earned Elite/Strong signature abilities on player profiles. Rival depth-chart merit no longer leaks true potential.
+
+Evidence: attribute-categories 8/8, weekly-challenge 6/6, player-profile-narrative 13/13, shard-coverage 3/3; Playwright depth-chart-reorder 7/7, weekly-challenge 4/4, app.spec depth 1/1, standard-elevation 1/1, player-position-traits + dossier-layout 2/2; check-public-truth OK; build-pages + static smoke-pages green; boot budget 649883/650000 (117 bytes headroom). Suite: canonical core shard timed out at 90 min on a host saturated by other projects (736 passed, 0 failed before termination, partial and not a receipt); focused 17-file run 128/129 after a stale-build preload red was cleared by rebuilding; the remaining red is local-only (gitignored private file). public-compliance has one local-only red: a gitignored private creative-direction file exists in this checkout (never committed; CI unaffected).
+
+Not done, recorded honestly: staging deploy and production promotion (production unchanged); site-truth releaseLabel and single-sourced Community Stats privacy; player-identity personality/college/hometown and roster/depth display; depth-chart menu entry; 14 other audit items remain pending in docs/AUDIT_2026-11-10.json.
+
+
 ## 2026-10-29 — Session 128 — Verified finalization checkpoint
 
 S128 repaired damaged Inbox message admission and playtest receipt integrity. Valid message history and actions survive malformed cache rows; fresh critical source news remains actionable. Playtest exports admit only disclosed fields and invalid ratings do not create trend evidence. Matching frontend/API technical release and same-session formal evidence are verified, subject to final containing receipt publication and original-lock guards.
@@ -96,14 +108,6 @@ Four selected S121 outcomes are implemented and live at5410b8b5: persistent sess
 <!-- /s116-closeout:state -->
 
 <!-- s115-closeout:state -->
-- 2026-10-03: Session 115 Situational calls let the GM set standing 4th-down (Conservative / By the book / Aggressive) and two-minute (Protect the ball / Standard / Hurry-up) orders from a Desk card. They work through the engine's existing aggression and play-call seams, and the defaults are byte-identical to the previous engine. Rival clubs now draft by GM archetype; the first, strategy-profile version measured as a no-op and was re-keyed. The deploy gate runs as four parallel legs. Source 80125a0a5609be8a9fd7c01399e176ffe1b8e052. Six-shard suite 1765/1765 at this commit (core 290, runtime 1013, sim-contract 85, sim-realism 9, long 3 in one run; studio 365 re-run after the first run was stopped by host memory pressure). Stable staging 14/14 (artifact b4506762…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37141977109 success with the gate as four parallel legs (about 7.5 minutes, was about 23), production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt 214 captures bound to 80125a0. Public launch remains HOLD.
-<!-- /s115-closeout:state -->
-
-<!-- s114-closeout:state -->
-- 2026-10-02: Session 114 The S113 release note is live on the status page. Engine headlines (trades, signings, streaks, ultimatums, titles, retired numbers) and four client panels now name clubs by their fictional codes. src/server.js shrank from 2,243 to 538 lines: 129 routes moved verbatim into 11 domain modules, the text readers use scripts/lib/server-source.mjs, API parity stays 129/129, and a 142-request side-by-side replay matched the pre-split server. Splitting styles.css was measured and retired: 31 KB brotli, cached after the first visit, so the saving does not justify the risk. Source 1c57a3beeb420001d6ba1611e027043df76f7d57. Direct six-shard suite 1752/1752 (core 290, runtime 1000, sim-contract 85, sim-realism 9, long 3, studio 365), exit 0. Stable staging 14/14 (artifact a878e519…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37054296649 success after run 37050905781 hit the gate job's 25-minute timeout on a slower runner, production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt 214 captures bound to 1c57a3b. Public launch remains HOLD.
-<!-- /s114-closeout:state -->
-
-<!-- s113-closeout:state -->
 
 <!-- ledger-roll:pointer -->
 ---

@@ -6,15 +6,6 @@ Public-safe decisions only. Detailed internal decision history is maintained pri
 
 > Older entries S112 live verbatim in `context/archive/DECISIONS_S112-S112.md`.
 
-## 2026-10-23 — S119 — Fix layout and stat truth at their sources; repair main before promoting
-
-- Fix the shared .team-mode-switch, not the Desk column: hiding the overflow with minmax(0,1fr) would have clipped the switch instead of fixing it. The fit-content width keeps the single-row look wherever it fits.
-- The passer rating lives once, in the stat schema; the engine imports it and the browser copy is held equal by published reference lines. The golden-master change is deliberate, attributed and versioned (s119-v3); prior fixtures stay byte-identical.
-- The carried 16.2 MB task is closed by measurement, not by a fix; payload compaction is deferred until it is measured again, because gzip already absorbs the repeated recipe seeds in storage.
-- A red main blocks every release. Register an accumulating ledger the session it crosses the population gate; never raise the threshold.
-- Do not commit a script change after a staged candidate to fix an evidence tool: run a reviewed .cache copy, so HEAD stays covered by the publication.
-- A visual receipt inherits review only from byte-identical images of an earlier reviewed receipt; none qualified, so all 214 were inspected.
-
 ## 2026-10-23 — S120 — Announce what changed in a player's own save, and fix a flaky gate rather than rerun it
 
 - The S119 passer-rating change moves numbers in existing saves, so the note states the direction and range with its exception instead of a single figure; a reviewer's recomputation set the wording.
@@ -113,11 +104,6 @@ Preserve valid Inbox history and local playtest notes while validating damaged o
 
 The local premise checker verified both original problem markers before edits but lacks canonical --record support. A supplemental pre-edit source snapshot is preserved; a later canonical recorder cannot retroactively prove gate timing and will be recorded as a deviation.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
 ## 2026-10-29 — S128 candidate record correction
 
 C1 source0059051c passed focused48/48, staging native14/14, actual staging browser4/4 and hosted performance, but its isolated Studio suite passed397/398: the newly appended decision session exposed overdue ledger retention. Canonical ledger-roll moved older entries verbatim into archives; the focused retention suite then passed10/10. C1 was never pushed or promoted to production. Its evidence remains separately named; the corrected candidate must pass fresh exact-source checks and staging.
@@ -143,3 +129,21 @@ S128 first closing-metadata attempt returned395/398, preserved in reports/s128-f
 Preserve the truthful ordered Partial checkpoint verbatim. Append same-session verified finalization only after actual corrected closing-metadata398, containing publication/readback, signed transport, owned cleanup and independent review. Keep the same approved score and two outcomes; no new session, lifecycle change, actual-player measurement or recipient adoption is inferred.
 
 The unchanged native Studio suite passed398/398 at ordered-checkpoint staged tree 5a2a137c89deb5bc20dea32130a4e113576cf647. First containing metadata commit 8ef2050062a4c2c8c89e1c331d25da8e18c934e3 was pushed and read back. Signed impact 01K64MNHEAF6081E99DCEF4F13 was shipped and HMAC verified; recipient adoption is not asserted. The owned C3 checkout was removed with raw/patch evidence preserved, and the recorded post-cleanup census found zero owned jobs/listeners. This is same-session finalization, no new session, score increment or additional product outcome. Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with a fresh zero-owned-jobs observation; then release ONLY the original goal-bound S128 lock (start 2026-10-29T05:57:59.205Z, startHead a8220ea9736da857b0d1d558f70e52d769fef090). This receipt cannot attest to its own containing publication or lock release.
+
+## 2026-11-11 — Session 129
+<!-- s129-closeout -->
+
+Session identity: the cut-off run had claimed S129 in its startup brief and audit but never closed out, and no S129 label was committed. This recovery invocation continues as S129 instead of opening S130, so the audit, records and score belong to one session. The audit was refreshed by re-running its premises against live code rather than regenerated.
+
+Recovery boundary: the cut-off work is committed alone (c2e5a5ca) even though this run had already edited four of the same files. Splitting by hunk, rather than one combined commit, keeps "what the dead session did" separable from "what the recovery did".
+
+Weekly challenge: the week's league is derived from the ISO week (UTC) alone and travels as an ordinary challenge code. No server, no stored state. Everyone in the same week agrees, and a link from any week still opens the exact league it names.
+
+Playing style lives in src/domain/playingStyle.js and is projected onto DTOs. The browser never declares the table. That keeps it single-source and off the boot bundle, which had 117 bytes of headroom.
+
+Release deferred: main carries the code, and production is unchanged (a main push never republishes production). Staging verification and promotion are left for a session that can run the full release protocol.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
