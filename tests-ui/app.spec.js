@@ -213,13 +213,13 @@ test("depth chart controls and game guide modal are operational", async ({ page 
   await page.click("#loadDepthBtn");
   await waitGameReady(page);
 
-  const firstPlayer = (await page.locator("#depthTable tr:nth-child(2) td:nth-child(3)").textContent())?.trim();
-  const secondPlayer = (await page.locator("#depthTable tr:nth-child(3) td:nth-child(3)").textContent())?.trim();
+  const firstPlayer = (await page.locator("#depthTable tr[data-depth-row] [data-depth-player-name] .link-btn").nth(0).textContent())?.trim();
+  const secondPlayer = (await page.locator("#depthTable tr[data-depth-row] [data-depth-player-name] .link-btn").nth(1).textContent())?.trim();
   expect(firstPlayer).toBeTruthy();
   expect(secondPlayer).toBeTruthy();
 
   await page.locator('#depthTable button[data-depth-move="down"]').first().click();
-  await expect(page.locator("#depthTable tr:nth-child(2) td:nth-child(3)")).toContainText(secondPlayer || "");
+  await expect(page.locator("#depthTable tr[data-depth-row] [data-depth-player-name] .link-btn").nth(0)).toHaveText(secondPlayer || "");
 
   const firstShareInput = page.locator('#depthTable input[data-depth-share-input]').first();
   await firstShareInput.fill("85");

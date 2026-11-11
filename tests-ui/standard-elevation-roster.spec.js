@@ -74,7 +74,7 @@ test('roster previews and declares a scheduled elevation with visible compensati
   expect(player.standardElevation.remainingRegular).toBe(2);
   await page.locator('#rosterTab [data-team-mode="depthTab"]').click();
   await page.click('#loadDepthBtn');
-  await expect(page.locator('#depthTable th')).toHaveCount(12);
+  await expect(page.locator('#depthTable th')).toHaveCount(13);
   await expect(page.locator('#depthTable .depth-share-input').first()).toBeVisible();
   await capture('depth');
   const pool = await (await page.request.get('/api/free-agents?limit=220')).json();

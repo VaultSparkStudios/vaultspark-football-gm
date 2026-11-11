@@ -120,150 +120,16 @@ export function renderRoster() {
   }
 }
 
-export function depthManualShareMap(position) {
-  return state.depthManualShares?.[position] || {};
-}
-
-export function depthDefaultShares(position) {
-  return state.depthDefaultShares?.[position] || [];
-}
-
-export function formatDepthSharePercent(value) {
-  const numeric = Number(value);
-  if (!Number.isFinite(numeric)) return "-";
-  return `${Math.round(numeric * 100)}%`;
-}
-
-export function roundDepthShare(value) {
-  return Number(Math.max(0, Math.min(1, value || 0)).toFixed(3));
-}
-
-export function totalDepthShares(values = []) {
-  return values.reduce((sum, value) => sum + value, 0);
-}
-
-export function resolveDepthShareValues(ids, defaults, manualShares) {
-  const baseShares = ids.map((_, index) => roundDepthShare(defaults[index] ?? 0.02));
-  const targetTotal = Number(totalDepthShares(baseShares).toFixed(3));
-  const manualIndexes = [];
-  const shares = baseShares.slice();
-
-  for (const [index, playerId] of ids.entries()) {
-    const manualShare = Number(manualShares?.[playerId]);
-    if (!Number.isFinite(manualShare)) continue;
-    manualIndexes.push(index);
-    shares[index] = roundDepthShare(manualShare);
-  }
-
-  if (!manualIndexes.length) return baseShares;
-
-  let manualTotal = totalDepthShares(manualIndexes.map((index) => shares[index]));
-  if (manualTotal > targetTotal && manualTotal > 0) {
-    const scale = targetTotal / manualTotal;
-    for (const index of manualIndexes) shares[index] = roundDepthShare(shares[index] * scale);
-    manualTotal = totalDepthShares(manualIndexes.map((index) => shares[index]));
-  }
-
-  const autoIndexes = ids.map((_, index) => index).filter((index) => !manualIndexes.includes(index));
-  const autoTarget = Math.max(0, Number((targetTotal - manualTotal).toFixed(3)));
-  if (autoIndexes.length) {
-    const autoBaseTotal = totalDepthShares(autoIndexes.map((index) => baseShares[index]));
-    const autoFallback = autoIndexes.length ? autoTarget / autoIndexes.length : 0;
-    for (const index of autoIndexes) {
-      shares[index] =
-        autoBaseTotal > 0
-          ? roundDepthShare(baseShares[index] * (autoTarget / autoBaseTotal))
-          : roundDepthShare(autoFallback);
-    }
-  }
-
-  if (totalDepthShares(shares) <= 0.001) return baseShares;
-
-  const rounded = shares.map((value) => roundDepthShare(value));
-  const delta = Number((targetTotal - totalDepthShares(rounded)).toFixed(3));
-  if (Math.abs(delta) >= 0.001) {
-    const adjustmentIndex = [...autoIndexes, ...manualIndexes].reverse().find((index) => rounded[index] + delta >= 0);
-    if (Number.isInteger(adjustmentIndex)) rounded[adjustmentIndex] = roundDepthShare(rounded[adjustmentIndex] + delta);
-  }
-  return rounded;
-}
-
-export function updateDepthShare(position, playerId, rawValue) {
-  if (!state.depthManualShares[position]) state.depthManualShares[position] = {};
-  const defaultShare = depthDefaultShares(position)[state.depthOrder.indexOf(playerId)] ?? 0.02;
-  if (rawValue == null || rawValue === "") {
-    delete state.depthManualShares[position][playerId];
-    return;
-  }
-  const parsed = Number(rawValue);
-  if (!Number.isFinite(parsed)) return;
-  const normalized = Math.max(0, Math.min(100, parsed)) / 100;
-  if (Math.abs(normalized - defaultShare) < 0.001) {
-    delete state.depthManualShares[position][playerId];
-    return;
-  }
-  state.depthManualShares[position][playerId] = Number(normalized.toFixed(3));
-}
-
+// The depth chart lives in its own module, loaded the first time it is shown,
+// so the roster screen stays inside its size budget.
 export function renderDepthChart() {
-  const position = document.getElementById("depthPositionSelect")?.value;
-  const exclusiveRole = ["QB", "K", "P"].includes(position);
-  const ids = state.depthOrder?.length ? state.depthOrder : state.depthChart?.[position] || [];
-  const shareRows = state.depthSnapShare?.[position] || [];
-  const rosterById = new Map(state.depthRoster.map((player) => [player.id, player]));
-  const defaults = depthDefaultShares(position);
-  const manualShares = depthManualShareMap(position);
-  const resolvedShares = resolveDepthShareValues(ids, defaults, manualShares);
-  const table = document.getElementById("depthTable");
-  if (!table) return;
-  if (!ids.length) {
-    table.innerHTML = "<tr><td>No players loaded for this position</td></tr>";
-    document.getElementById("depthStatusText").textContent = "No players loaded for this position";
-    return;
-  }
-  table.innerHTML = `
-  <tr>${['Rank', 'Role', 'Player', 'Pos', 'OVR', 'POT', 'Merit', 'Available', 'Mode', 'Snap Share', 'Default', 'Move'].map(label => `<th>${label}</th>`).join('')}</tr>
-  ${ids
-  .map((playerId, index) => {
-  const player = rosterById.get(playerId);
-  const defaultShare = defaults[index] ?? shareRows[index]?.defaultSnapShare ?? shareRows[index]?.snapShare ?? 0.02;
-  const manualShare = manualShares[playerId];
-  const effectiveShare = resolvedShares[index] ?? shareRows[index]?.snapShare ?? defaultShare;
-  return `
-  <tr>
-  <td>${index + 1}</td>
-  <td>${escapeHtml(shareRows[index]?.role || `${position}${index + 1}`)}</td>
-  <td><button class="link-btn" data-player-id="${escapeHtml(playerId)}">${escapeHtml(player?.name || "Unknown")}</button></td>
-  <td>${escapeHtml(player?.pos || position)}</td>
-  <td>${escapeHtml(player?.overall ?? "")}</td>
-  <td>${escapeHtml(player?.potential ?? shareRows[index]?.potential ?? "")}</td>
-  <td>${escapeHtml(shareRows[index]?.meritScore ?? "-")}</td>
-  <td>${shareRows[index]?.available === false ? "Out" : "Ready"}</td>
-  <td>${exclusiveRole ? "Auto locked" : Number.isFinite(manualShare) ? "Manual" : "Auto"}</td>
-  <td>
-  <div class="depth-share-cell">
-  <input class="depth-share-input" type="number" min="0" max="100" step="1"
-  value="${escapeHtml(Math.round(effectiveShare * 100))}" data-depth-share-input="${escapeHtml(playerId)}" ${exclusiveRole ? "disabled" : ""} />
-  <span class="small">%</span>
-  <button data-depth-share-reset="${escapeHtml(playerId)}" ${exclusiveRole ? "disabled" : ""}>Auto</button>
-  </div>
-  </td>
-  <td>${escapeHtml(formatDepthSharePercent(defaultShare))}</td>
-  <td>
-  <div class="depth-action-group">
-  <button data-depth-move="up" data-depth-player-id="${escapeHtml(playerId)}" ${index === 0 ? "disabled" : ""}>Up</button>
-  <button data-depth-move="down" data-depth-player-id="${escapeHtml(playerId)}" ${index === ids.length - 1 ? "disabled" : ""}>Down</button>
-  </div>
-  </td>
-  </tr>`;
-  })
-  .join("")}
-  `;
-  document.getElementById("depthStatusText").textContent = ids.length
-    ? exclusiveRole
-      ? `${position} is availability-locked: the healthy ${position}1 receives 100%, and the next ready player inherits the role during injury.`
-      : `Adjusting ${position} for ${document.getElementById("depthTeamSelect")?.value || state.dashboard?.controlledTeamId || "BUF"} · auto shares blend OVR, POT, fit, and morale.`
-    : "No players loaded for this position";
+  return import("./depthBoard.js")
+    .then((board) => board.renderDepthBoard())
+    .catch((error) => {
+      const status = document.getElementById("depthStatusText");
+      if (status) status.textContent = "The depth chart could not load. Reload the page to try again.";
+      throw error;
+    });
 }
 
 export async function renderVeteranMentorshipPanel() {

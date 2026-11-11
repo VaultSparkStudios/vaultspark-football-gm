@@ -96,6 +96,7 @@ import {
   rotationMeritScore
 } from "../engine/depthChartUsage.js";
 import { coverageDepthRating, positionRatingKeys, GROWTH_WINDOW_MAX_AGE, PLAYER_DEVELOPMENT_PROFILE } from "../domain/ratings.js";
+import { playerAttributeSummary } from "../domain/attributeCategories.js";
 import {
   DEVELOPMENT_ENVIRONMENT_PROFILE,
   developmentEnvironmentTilt,
@@ -5041,7 +5042,11 @@ export class GameSession {
           player: includePlayers ? player?.name || null : null,
           overall: includePlayers ? player?.overall || null : null,
           potential: includePlayers ? this.visiblePotential(player) || null : null,
-          meritScore: includePlayers && player ? rotationMeritScore(player) : null,
+          // Merit is shown to the viewer, so it reads the potential the viewer is
+          // allowed to see. A rival club's true ceiling must not arrive through it.
+          meritScore: includePlayers && player
+            ? rotationMeritScore({ ...player, potential: this.visiblePotential(player) ?? player.overall })
+            : null,
           available: includePlayers
             ? Boolean(
                 player &&
@@ -7744,6 +7749,8 @@ export class GameSession {
       motivation: player.motivation,
       reinjuryRisk: Number((player.reinjuryRisk || 0).toFixed(2)),
       devTrait: player.developmentTrait,
+      archetype: player.archetype || null,
+      attributes: playerAttributeSummary(player.position, player.ratings),
       rosterSlot: player.rosterSlot,
       reserveStatus: describeReserveReturn(this.league, player, { ...reserveContextForSession(this), practiceSettings: this.getLeagueSettings() }),
       standardElevation: player.rosterSlot === 'practice' || player.standardElevations ? {

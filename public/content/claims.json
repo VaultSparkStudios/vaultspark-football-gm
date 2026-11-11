@@ -3,7 +3,7 @@
   "title": "Franchise Architect: Football",
   "statusLabel": "Free early access",
   "statusLine": "Franchise Architect: Football is free to play in early access. It is complete enough to run a franchise for decades, and it changes often; every change is dated in the changelog.",
-  "heroSubline": "No account, no install, no server. It runs in your browser.",
+  "heroSubline": "No account and no install. Your league runs and saves in your browser.",
   "privacyLine": "Your league is saved in this browser. Nothing leaves it unless you turn on anonymous Community Stats or choose GitHub Gist sync.",
   "intelligenceLine": "No AI services and no paid APIs. Every rival, every Advisor call and every headline is worked out by the game's own rules from your league's data.",
   "heroImage": {
@@ -38,7 +38,7 @@
     },
     {
       "label": "Accounts",
-      "value": "None. No account, no install, no server. Saves live in the browser, with optional export and GitHub Gist sync."
+      "value": "None. No account and no install. Saves live in the browser, with optional export and GitHub Gist sync."
     },
     {
       "label": "League",

@@ -428,10 +428,12 @@
               <button id="loadDepthBtn" data-testid="load-depth-btn">Load Depth</button>
             </div>
             <div class="row">
-              <span id="depthStatusText" class="chip">Use move controls to change playing-time order</span>
+              <button id="depthBestLineupBtn" type="button" data-testid="depth-best-lineup-btn">Best Lineup</button>
               <button id="saveDepthBtn" data-testid="save-depth-btn">Save Depth Chart</button>
+              <button id="depthUndoBtn" type="button" data-testid="depth-undo-btn" hidden>Undo</button>
+              <span id="depthStatusText" class="chip" role="status" aria-live="polite">Drag a row to reorder</span>
             </div>
-            <div class="small">Automatic shares blend overall, potential, scheme fit, morale, personnel packages, and depth intent. Healthy QB1, K1, and P1 own 100% of their role; backups inherit it while the starter is unavailable. Other rooms can still use manual targets.</div>
+            <div class="small">Drag a row, or use its arrows, to set who plays first. Your own club's chart saves as you go. ATH, TEC, IQ and INS grade each player's athleticism, technique, football IQ and instincts for his position. The top healthy quarterback, kicker and punter play every snap; other groups split snaps by order unless you type a share.</div>
             <div class="table-wrap"><table id="depthTable" data-testid="depth-table"></table></div>
           </div>
         </section>

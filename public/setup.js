@@ -125,7 +125,7 @@ function applyRuntimeModeUi() {
   if (description) {
     description.textContent = serverAvailable
       ? "Browser mode stores leagues in this browser and does not use filesystem path imports."
-      : "Your league lives in this browser — no account, no server, no install.";
+      : "Your league runs and saves in this browser. No account, no install.";
   }
 }
 

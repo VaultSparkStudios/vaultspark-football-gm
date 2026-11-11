@@ -943,6 +943,173 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
   text-align: right;
 }
 
+.depth-board th,
+.depth-board td {
+  vertical-align: middle;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+}
+
+#depthTable .depth-grip {
+  cursor: grab;
+  touch-action: none;
+  min-width: 2rem;
+  min-height: 2rem;
+  padding: 0.15rem 0.4rem;
+  font-size: 1.05rem;
+  line-height: 1;
+  letter-spacing: -0.1em;
+}
+
+.depth-board--dragging,
+.depth-board--dragging .depth-grip {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.depth-steps {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.depth-step {
+  padding: 0.1rem 0.3rem;
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+.depth-row--dragging {
+  outline: 2px solid var(--accent, currentColor);
+  outline-offset: -2px;
+  opacity: 0.85;
+}
+
+.depth-row--out .depth-player-cell .link-btn {
+  opacity: 0.7;
+}
+
+.depth-num {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.depth-role,
+.depth-meta {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.75;
+  white-space: nowrap;
+}
+
+.depth-rating {
+  display: inline-block;
+  min-width: 2.1rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.35rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  border: 1px solid transparent;
+}
+
+.depth-rating--elite { border-color: currentColor; color: var(--success, #1f9d55); }
+.depth-rating--good { color: var(--success, #1f9d55); }
+.depth-rating--fair { color: inherit; }
+.depth-rating--low { color: var(--danger, #c0392b); }
+
+.depth-board td.depth-abilities {
+  min-width: 9rem;
+  max-width: 12rem;
+  white-space: normal;
+}
+
+.depth-board .depth-share-input {
+  width: 54px;
+}
+
+.depth-ability {
+  display: inline-block;
+  margin: 0.1rem 0.25rem 0.1rem 0;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.depth-status {
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.depth-status--out {
+  color: var(--danger, #c0392b);
+  font-weight: 600;
+}
+
+@media (max-width: 720px) {
+  .depth-board,
+  .depth-board tbody {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .depth-board tr:first-child {
+    display: none;
+  }
+
+  .depth-board tr[data-depth-row] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.6rem;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.6rem 0.4rem;
+    border-bottom: 1px solid color-mix(in srgb, currentColor 15%, transparent);
+  }
+
+  .depth-board tr[data-depth-row] > td {
+    flex: 0 0 auto;
+    border: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 0.8rem;
+  }
+
+  .depth-board tr[data-depth-row] > .depth-player-cell {
+    flex: 1 1 0;
+    min-width: 0;
+    font-size: 1rem;
+    /* A long name wraps inside its card instead of widening the row. */
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .depth-board .depth-player-cell .link-btn {
+    text-align: left;
+    white-space: normal;
+  }
+
+  .depth-board .depth-meta {
+    white-space: normal;
+  }
+
+  .depth-board td[data-label]:not([data-label="Rank"])::before {
+    content: attr(data-label) " ";
+    font-size: 0.68rem;
+    opacity: 0.65;
+    text-transform: uppercase;
+  }
+
+  .depth-board tr[data-depth-row] > .depth-abilities,
+  .depth-board tr[data-depth-row] > td[data-label="Snap share"] {
+    flex: 1 1 100%;
+    min-width: 0;
+    white-space: normal;
+  }
+}
 .side-menu {
   display: grid;
   gap: 0.45rem;

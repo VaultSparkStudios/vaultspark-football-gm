@@ -321,11 +321,11 @@ function loadedIslandActions(name, exportNames) {
 }
 
 const {
-  updateDepthShare, renderDepthChart, renderVeteranMentorshipPanel,
+  renderDepthChart, renderVeteranMentorshipPanel,
   assignMentorshipFromPanel, clearMentorshipFromPanel,
   getSelectedDesignationPlayer, setSelectedDesignationPlayer
 } = loadedIslandActions("roster", [
-  "updateDepthShare", "renderDepthChart", "renderVeteranMentorshipPanel",
+  "renderDepthChart", "renderVeteranMentorshipPanel",
   "assignMentorshipFromPanel", "clearMentorshipFromPanel",
   "getSelectedDesignationPlayer", "setSelectedDesignationPlayer"
 ]);
@@ -1293,52 +1293,11 @@ function bindEvents() {
   });
   document.getElementById("saveDepthBtn").addEventListener("click", () =>
     runAction(async () => {
-      const position = document.getElementById("depthPositionSelect").value;
-      await api("/api/depth-chart", {
-        method: "POST",
-        body: {
-          teamId: document.getElementById("depthTeamSelect").value,
-          position,
-          playerIds: state.depthOrder,
-          snapShares: state.depthOrder.reduce((acc, playerId) => {
-            const manualShare = state.depthManualShares?.[position]?.[playerId];
-            if (Number.isFinite(manualShare)) acc[playerId] = manualShare;
-            return acc;
-          }, {})
-        }
-      });
-      await loadDepthChart();
-      await markFirstSeasonObjective("depth-chart");
+      const board = await import("./lib/depthBoard.js");
+      await board.saveDepthBoard();
     }, "Saving depth chart...")
   );
-  document.getElementById("depthTable").addEventListener("click", (event) => {
-    const button = event.target.closest("button[data-depth-move]");
-    if (button) {
-      const playerId = button.dataset.depthPlayerId;
-      const delta = button.dataset.depthMove === "up" ? -1 : 1;
-      state.depthOrder = moveIdWithinList(state.depthOrder, playerId, delta);
-      renderDepthChart();
-      return;
-    }
-    const resetButton = event.target.closest("button[data-depth-share-reset]");
-    if (!resetButton) return;
-    const position = document.getElementById("depthPositionSelect").value;
-    delete state.depthManualShares?.[position]?.[resetButton.dataset.depthShareReset];
-    renderDepthChart();
-  });
-  document.getElementById("depthTable").addEventListener("input", (event) => {
-    const input = event.target.closest("input[data-depth-share-input]");
-    if (!input) return;
-    const position = document.getElementById("depthPositionSelect").value;
-    updateDepthShare(position, input.dataset.depthShareInput, input.value);
-  });
-  document.getElementById("depthTable").addEventListener("change", (event) => {
-    const input = event.target.closest("input[data-depth-share-input]");
-    if (!input) return;
-    const position = document.getElementById("depthPositionSelect").value;
-    updateDepthShare(position, input.dataset.depthShareInput, input.value);
-    renderDepthChart();
-  });
+  document.getElementById("depthTable").addEventListener("depth-saved", () => markFirstSeasonObjective("depth-chart"));
 
   document.getElementById("prepareDraftBtn").addEventListener("click", () =>
     runAction(async () => {

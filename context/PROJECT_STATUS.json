@@ -9,7 +9,7 @@
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-10-29",
+  "lastUpdated": "2026-11-11",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "type": "game",
@@ -120,14 +120,14 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 508,
+  "silHealth": 501,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
     "score": 100,
-    "date": "2026-10-29",
+    "date": "2026-11-10",
     "passing": 12,
     "warning": 0,
     "checks": []
