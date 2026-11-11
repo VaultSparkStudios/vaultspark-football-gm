@@ -2305,19 +2305,23 @@ function renderSpeedrunPanel() {
   const rivalHtml = rival?.rivalSeasons
     ? `<div class="speedrun-rival">🎯 Challenge target: beat <strong>${rival.rivalSeasons} season${rival.rivalSeasons === 1 ? "" : "s"}</strong>${rival.rivalName ? ` by ${escapeHtml(rival.rivalName)}` : ""}</div>`
     : "";
+  const weekly = state.speedrunWeeklyWeek;
+  const weeklyHtml = weekly
+    ? `<div class="speedrun-rival">📅 This is the <strong>Week ${weekly.week}</strong> challenge league. Everyone who played it that week started from the same roster.</div>`
+    : "";
   if (ch && ch.active) {
     statusEl.innerHTML = `<div class="speedrun-status-card">
       <span class="speedrun-active-badge">ACTIVE</span>
       <div class="speedrun-stat"><strong>Team:</strong> ${escapeHtml(teamCode(ch.teamId))}</div>
       <div class="speedrun-stat"><strong>Seasons:</strong> ${ch.seasonsElapsed}</div>
-    </div>${rivalHtml}`;
+    </div>${weeklyHtml}${rivalHtml}`;
     actionsEl.innerHTML = `<button id="copyChallengeCodeBtn" class="btn btn-sm">Copy Challenge Code</button>
       <button id="abandonSpeedrunBtn" class="btn btn-sm btn-danger">Abandon Run</button>`;
     document.getElementById("abandonSpeedrunBtn")?.addEventListener("click", () =>
       runAction(abandonSpeedrunChallenge, "Abandoning run...")
     );
   } else {
-    statusEl.innerHTML = `<p style="opacity:0.7">No active challenge. Start one to begin tracking.</p>${rivalHtml}`;
+    statusEl.innerHTML = `<p style="opacity:0.7">No active challenge. Start one to begin tracking.</p>${weeklyHtml}${rivalHtml}`;
     actionsEl.innerHTML = `<button id="startSpeedrunBtn" class="btn btn-sm btn-accent">Start Challenge</button>
       ${state.speedrunLeagueMeta?.seed != null ? `<button id="copyChallengeCodeBtn" class="btn btn-sm">Copy Challenge Code</button>` : ""}`;
     document.getElementById("startSpeedrunBtn")?.addEventListener("click", () =>
@@ -2354,11 +2358,13 @@ async function copyChallengeCode() {
     rivalName: bestYou?.playerName ?? null
   });
   if (!code) { showToast("Could not build challenge code"); return; }
+  const { challengeLink } = await import("./lib/weeklyChallenge.js");
+  const link = challengeLink(code, new URL("./", location.href).href);
   try {
-    await navigator.clipboard.writeText(code);
+    await navigator.clipboard.writeText(link);
     showToast(bestYou
-      ? `Challenge code copied — dare a friend to beat ${bestYou.seasons} seasons!`
-      : "Challenge code copied — share your league seed!");
+      ? `Challenge link copied — dare a friend to beat ${bestYou.seasons} seasons!`
+      : "Challenge link copied — a friend who opens it starts your league.");
   } catch (error) {
     recordClientDiagnostic({
       surface: "action",
@@ -2367,7 +2373,7 @@ async function copyChallengeCode() {
       authorityKey: dashboardAuthorityKey(state.dashboard),
       severity: "error"
     });
-    prompt("Copy your challenge code:", code);
+    prompt("Copy your challenge link:", link);
   }
 }
 
@@ -2381,6 +2387,15 @@ async function loadSpeedrunStatus() {
     const res = await api("/api/speedrun/leaderboard");
     state.speedrunLeaderboard = res.entries || [];
   } catch { state.speedrunLeaderboard = []; }
+  state.speedrunWeeklyWeek = null;
+  if (state.speedrunLeagueMeta?.seed != null) {
+    try {
+      const { weeklyChallengeWeekForSeed } = await import("./lib/weeklyChallenge.js");
+      state.speedrunWeeklyWeek = weeklyChallengeWeekForSeed(state.speedrunLeagueMeta.seed);
+    } catch (error) {
+      recordClientDiagnostic({ surface: "speedrun", operation: "load-weekly-challenge", error, severity: "warning" });
+    }
+  }
   renderSpeedrunPanel();
 }
 

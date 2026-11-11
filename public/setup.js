@@ -6,7 +6,10 @@ import {
   setRuntimeMode,
   warmLocalRuntime
 } from "./lib/api/createApiClient.js";
-import { decodeChallengeCode, saveRivalTarget } from "./lib/challengeCodes.js";
+import { saveRivalTarget } from "./lib/challengeCodes.js";
+// Weekly challenges and challenge links load after first paint; nothing on the
+// start page needs them to render.
+const loadWeeklyChallenge = () => import("./lib/weeklyChallenge.js");
 import { observeBackgroundTask } from "./lib/clientDiagnostics.js";
 import { mountClientRecoveryUi, flushLocalSessionCheckpoint } from "./lib/clientRecoveryUi.js";
 
@@ -30,7 +33,7 @@ let navigationInFlight = false;
 let pendingNavigation = false;
 
 function setNavigationControlsDisabled(disabled) {
-  document.querySelectorAll("#runtimeModeSelect, #instantStartBtn, #createLeagueBtn, #presetModernBtn, #presetBalancedBtn, #presetLegacyBtn, #continueActiveBtn, #resumeLatestBtn, #applyChallengeCodeBtn, #teamSelect, #eraProfileInput, #franchiseArchetypeInput, #rulesPresetInput, #difficultyPresetInput, #challengeModeInput, #ownerModeInput, #narrativesInput, #compPicksInput, #chemistryInput, [data-resume], [data-backup-resume]")
+  document.querySelectorAll("#runtimeModeSelect, #instantStartBtn, #createLeagueBtn, #presetModernBtn, #presetBalancedBtn, #presetLegacyBtn, #continueActiveBtn, #resumeLatestBtn, #applyChallengeCodeBtn, #weeklyChallengeBtn, #teamSelect, #eraProfileInput, #franchiseArchetypeInput, #rulesPresetInput, #difficultyPresetInput, #challengeModeInput, #ownerModeInput, #narrativesInput, #compPicksInput, #chemistryInput, [data-resume], [data-backup-resume]")
     .forEach((button) => { button.disabled = disabled; });
 }
 
@@ -112,6 +115,10 @@ function applyRuntimeModeUi() {
   select.value = mode;
   const serverOption = select.querySelector('option[value="server"]');
   if (serverOption) serverOption.disabled = !serverAvailable;
+  // With only one place a league can run there is nothing to choose; keep the
+  // explanation and hide the one-option picker.
+  const runtimeLabel = select.closest(".setup-runtime-label");
+  if (runtimeLabel) runtimeLabel.hidden = !serverAvailable;
   // Filesystem data paths only exist on the dev server; hide the whole section
   // on the deployed client-only build instead of showing inert inputs.
   const dataPaths = document.getElementById("dataPathsSection");
@@ -452,6 +459,7 @@ async function loadSetup(retryCount = 0) {
   if (!startYearInput.value) startYearInput.value = init.currentYear;
 
   renderTeams();
+  observeBackgroundTask(renderWeeklyChallenge, { surface: "setup", operation: "render-weekly-challenge", authorityKey: getRuntimeMode() });
   renderActiveLeague(init.activeLeague);
   renderConfigCatalog(init.configCatalog || null, init.settings || {});
   renderSaves();
@@ -501,8 +509,9 @@ async function createLeague() {
         enableCompPicks: document.getElementById("compPicksInput").checked,
         enableChemistry: document.getElementById("chemistryInput").checked,
         controlledTeamId: resolveControlledTeamId(),
-        pfrPath: document.getElementById("pfrPathInput").value.trim() || null,
-        realismProfilePath: document.getElementById("profilePathInput").value.trim() || null
+        // The Pages build ships without these developer-only inputs.
+        pfrPath: document.getElementById("pfrPathInput")?.value.trim() || null,
+        realismProfilePath: document.getElementById("profilePathInput")?.value.trim() || null
       }
     });
   });
@@ -617,25 +626,34 @@ function bindEvents() {
   });
 
   // Challenge code redemption: prefill the exact league a rival played.
-  document.getElementById("applyChallengeCodeBtn")?.addEventListener("click", () => {
+  document.getElementById("applyChallengeCodeBtn")?.addEventListener("click", async () => {
+    const { challengeFromSearch, decodeChallengeInput } = await loadWeeklyChallenge();
     const input = document.getElementById("challengeCodeInput");
-    const decoded = decodeChallengeCode(input?.value || "");
+    const text = input?.value || "";
+    // A pasted weekly link means this week's league, not a fixed code.
+    try {
+      if (challengeFromSearch(new URL(text.trim()).search)?.weekly) {
+        await applyWeeklyChallenge();
+        return;
+      }
+    } catch { /* not a link — read it as a code */ }
+    const decoded = decodeChallengeInput(text);
     if (!decoded) {
       setStatus("Invalid challenge code — check for typos and try again.");
       return;
     }
-    document.getElementById("seedInput").value = decoded.seed;
-    document.getElementById("startYearInput").value = decoded.startYear;
-    const teamSelect = document.getElementById("teamSelect");
-    if (teamSelect && [...teamSelect.options].some((o) => o.value === decoded.teamId)) {
-      teamSelect.value = decoded.teamId;
+    applyChallenge(decoded);
+  });
+  document.getElementById("weeklyChallengeBtn")?.addEventListener("click", () => applyWeeklyChallenge());
+  document.getElementById("copyWeeklyChallengeLinkBtn")?.addEventListener("click", async () => {
+    const { challengeLink, WEEKLY_CHALLENGE_VALUE } = await loadWeeklyChallenge();
+    const link = challengeLink(WEEKLY_CHALLENGE_VALUE, location.href);
+    try {
+      await navigator.clipboard.writeText(link);
+      setStatus("Link copied. Anyone who opens it this week gets the same league.");
+    } catch {
+      prompt("Copy this week's challenge link:", link);
     }
-    saveRivalTarget(decoded);
-    setStatus(
-      decoded.rivalSeasons
-        ? `Challenge accepted — beat ${decoded.rivalSeasons} season${decoded.rivalSeasons === 1 ? "" : "s"}${decoded.rivalName ? ` set by ${decoded.rivalName}` : ""}. Create the league to begin.`
-        : "Challenge league loaded — create the league to begin."
-    );
   });
 
   document.getElementById("continueActiveBtn").addEventListener("click", async () => {
@@ -732,6 +750,61 @@ function bindEvents() {
   });
 }
 
+function applyChallenge(decoded, message = null) {
+  document.getElementById("seedInput").value = decoded.seed;
+  document.getElementById("startYearInput").value = decoded.startYear;
+  const teamSelect = document.getElementById("teamSelect");
+  if (teamSelect && [...teamSelect.options].some((o) => o.value === decoded.teamId)) {
+    teamSelect.value = decoded.teamId;
+  }
+  saveRivalTarget(decoded.rivalSeasons ? decoded : null);
+  setStatus(
+    message ||
+      (decoded.rivalSeasons
+        ? `Challenge accepted — beat ${decoded.rivalSeasons} season${decoded.rivalSeasons === 1 ? "" : "s"}${decoded.rivalName ? ` set by ${decoded.rivalName}` : ""}. Create the league to begin.`
+        : "Challenge league loaded — create the league to begin.")
+  );
+  document.getElementById("createLeagueBtn")?.scrollIntoView?.({ block: "center", behavior: "smooth" });
+}
+
+async function currentWeeklyChallenge() {
+  const { weeklyChallenge } = await loadWeeklyChallenge();
+  return weeklyChallenge(state.teams.map((team) => team.id));
+}
+
+function weeklyClubLabel(challenge) {
+  const team = state.teams.find((entry) => String(entry.id).toUpperCase() === challenge.teamId);
+  return team ? `${teamCode(team)} ${team.name}` : challenge.teamId;
+}
+
+async function renderWeeklyChallenge() {
+  const text = document.getElementById("weeklyChallengeText");
+  const challenge = await currentWeeklyChallenge();
+  if (!text || !challenge) return;
+  text.textContent = `Week ${challenge.week}: take over the ${weeklyClubLabel(challenge)} and win a title in as few seasons as you can. Everyone who plays this week starts the same league.`;
+}
+
+async function applyWeeklyChallenge() {
+  const challenge = await currentWeeklyChallenge();
+  if (!challenge) {
+    setStatus("League data is still loading. Try again in a moment.");
+    return;
+  }
+  applyChallenge(challenge, `Week ${challenge.week} challenge loaded: the ${weeklyClubLabel(challenge)}. Create the league to begin.`);
+}
+
+// A shared link (?challenge=weekly or ?challenge=<code>) sets up its league as
+// soon as the club list is ready, so the person who opens it is one click away.
+async function applyChallengeFromUrl() {
+  if (!new URLSearchParams(location.search).has("challenge")) return;
+  const { challengeFromSearch } = await loadWeeklyChallenge();
+  const request = challengeFromSearch(location.search);
+  if (!request) return;
+  if (request.weekly) await applyWeeklyChallenge();
+  else if (request.decoded) applyChallenge(request.decoded);
+  else setStatus("That challenge link is damaged. Ask for the link again, or paste the code below.");
+}
+
 async function init() {
   mountClientRecoveryUi({
     onCheckpointReady: async () => {
@@ -741,6 +814,7 @@ async function init() {
   bindEvents();
   setNavigationControlsDisabled(true);
   await loadSetup();
+  observeBackgroundTask(applyChallengeFromUrl, { surface: "setup", operation: "apply-challenge-link", authorityKey: getRuntimeMode() });
 }
 
 init();

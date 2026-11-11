@@ -212,7 +212,7 @@ export function renderPlayerProfileHero(profile) {
             <h3>${escapeHtml(narrative.headline)}</h3>
             <p>${escapeHtml(narrative.bio)}</p>
             <div class="profile-signature-row">
-              ${narrative.signature.map((trait) => `<span><strong>${escapeHtml(trait.value)}</strong> ${escapeHtml(trait.name)}</span>`).join("")}
+              ${narrative.signature.map((trait) => `<span${trait.tier ? ` class="signature-trait--${escapeHtml(trait.tier.toLowerCase())}"` : ""}><strong>${escapeHtml(trait.value)}</strong> ${trait.tier ? `${escapeHtml(trait.tier)} ` : ""}${escapeHtml(trait.name)}</span>`).join("")}
             </div>
           </article>
           <article class="player-story-card">

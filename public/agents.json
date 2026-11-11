@@ -14,6 +14,13 @@
     "activation": "Player-initiated copy or download",
     "privacy": "Only franchise information already visible in the game; excludes save payloads, credentials, personal identifiers, and hidden simulation state"
   },
+  "llms": "https://playfranchisearchitect.com/llms.txt",
+  "challengeLinks": {
+    "weekly": "https://playfranchisearchitect.com/?challenge=weekly",
+    "code": "https://playfranchisearchitect.com/?challenge={VSFC1 challenge code}",
+    "behavior": "Fills in the start page with that league; the visitor still creates it. Nothing is sent to a server.",
+    "documentation": "https://playfranchisearchitect.com/llms.txt"
+  },
   "entrypoints": [
     {
       "label": "Play",

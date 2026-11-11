@@ -1,0 +1,1294 @@
+{
+  "schemaVersion": "2.1",
+  "date": "2026-11-10",
+  "session": 129,
+  "source": "656200d9724dce7c4aff664db5d4cc988fd5088d",
+  "project": {
+    "slug": "franchise-architect-football",
+    "type": "game",
+    "name": "Franchise Architect: Football"
+  },
+  "scope": "Full-scope S129 audit toward public beta: game depth, player identity, depth chart, positional balance, football language, public site, feedback, security, speed.",
+  "profile": {
+    "rubric": "product",
+    "audience": "public-unlaunched",
+    "source": "Three read-only source surveys (public site, game app, depth chart/ratings/profiles) plus partial competitor research"
+  },
+  "lifecycleFocus": {
+    "stage": "FB",
+    "recordedStage": "FB",
+    "display": "FORGE · BETA",
+    "audience": "public-unlaunched",
+    "health": "yellow",
+    "releaseTarget": null,
+    "mode": "public-beta-hardening",
+    "readiness": true,
+    "statusSource": "project-status",
+    "stageSource": "project-status"
+  },
+  "items": [
+    {
+      "id": 13,
+      "slug": "weekly-challenge",
+      "title": "Weekly Challenge and shareable challenge links",
+      "axis": "gamification-immersion",
+      "category": "gamification-immersion",
+      "tier": "⚡",
+      "effortHours": 6,
+      "impact": 8,
+      "innovation": 8,
+      "priority": 21.3,
+      "status": "implemented",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Seed one challenge per calendar week from the existing challenge-code system and accept a challenge code from the URL, with no backend.",
+      "acceptance": "Two browsers on the same week get the same challenge; a shared link starts it.",
+      "premise": "Challenge codes exist to build on",
+      "premises": [
+        {
+          "claim": "Challenge codes exist to build on",
+          "adapter": "file-exists",
+          "target": "public/lib/challengeCodes.js",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 6,
+          "recipe": "Seed one challenge per calendar week from the existing challenge-code system and accept a challenge code from the URL, with no backend."
+        },
+        "L3": {
+          "effortHours": 12,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [],
+      "rank": 1,
+      "executionEvidence": "public/lib/weeklyChallenge.js: ISO-week (UTC) seed + sorted-club pick, ?challenge=weekly and ?challenge=<code> links, pasted links accepted, damaged link reported; in-game copy now copies a link; speedrun panel recognises a weekly league. weekly-challenge.test 6/6; weekly-challenge.spec 4/4 (two separate browser contexts agree)."
+    },
+    {
+      "id": 2,
+      "slug": "player-identity",
+      "title": "Player identity: archetypes, traits, signature abilities, personality, college and hometown",
+      "axis": "features-depth",
+      "category": "features-depth",
+      "tier": "🔥",
+      "effortHours": 12,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 18.9,
+      "status": "implemented-reduced",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Add a derived identity module (derivedRng from the player's existing seed, zero save growth) and show archetype, tiered signature abilities, personality, fictional college and hometown on roster, depth chart and profile.",
+      "acceptance": "Same seed yields the same traits; an old save loads and shows them; save-payload budget test unchanged.",
+      "premise": "Profile bio uses abstract jargon templates",
+      "premises": [
+        {
+          "claim": "Profile bio uses abstract jargon templates",
+          "adapter": "grep",
+          "target": "public/lib/playerProfileNarrative.js",
+          "pattern": "pocket architect",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 4,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 12,
+          "recipe": "Add a derived identity module (derivedRng from the player's existing seed, zero save growth) and show archetype, tiered signature abilities, personality, fictional college and hometown on roster, depth chart and profile."
+        },
+        "L3": {
+          "effortHours": 24,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [],
+      "rank": 2,
+      "executionEvidence": "L1: src/domain/playingStyle.js maps every factory archetype to a football playing style projected on profile + roster DTOs (prospects get none); profile bio/headline use it instead of abstract nouns; signature abilities use football labels with Elite (90+) / Strong (80+) tiers only when earned. player-profile-narrative.test 13/13, player-position-traits.spec + dossier-layout 2/2. Not done: personality, fictional college, hometown, roster/depth display."
+    },
+    {
+      "id": 1,
+      "slug": "position-balance",
+      "title": "Realistic positional balance and CPU roster building",
+      "axis": "gamification-immersion",
+      "category": "gamification-immersion",
+      "tier": "🔥",
+      "effortHours": 14,
+      "impact": 10,
+      "innovation": 7,
+      "priority": 17.5,
+      "status": "pending",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Measured first (see measurement). Diagnose which of progression, draft intake and retirement drives the rise in 85+ players at quarterback and tight end, then fix that cause; add surplus penalties to CPU draft, free agency and trade value so stars do not pile up in one room; gate per-position elite composition and same-position stacking with negative controls.",
+      "acceptance": "Probe on the same seeds and windows before and after; new gates fail on the pre-fix engine and pass after; talent-distribution, progression-parity and decade tests pass.",
+      "premise": "CPU trade value ignores position surplus",
+      "premises": [
+        {
+          "claim": "CPU trade value ignores position surplus",
+          "adapter": "grep",
+          "target": "src/runtime/GameSession.js",
+          "pattern": "playerTradeValueForTeam",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "No balance probe existed before this audit",
+          "adapter": "file-exists",
+          "target": "scripts/probe-position-balance.mjs",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 5,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 14,
+          "recipe": "Measured first (see measurement). Diagnose which of progression, draft intake and retirement drives the rise in 85+ players at quarterback and tight end, then fix that cause; add surplus penalties to CPU draft, free agency and trade value so stars do not pile up in one room; gate per-position elite composition and same-position stacking with negative controls."
+        },
+        "L3": {
+          "effortHours": 28,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [],
+      "rank": 3,
+      "measurement": {
+        "tool": "scripts/probe-position-balance.mjs",
+        "population": "active-roster players on a club; practice squad excluded",
+        "seeds": [
+          117,
+          2026,
+          20260306
+        ],
+        "window": "seasons 0, 3, 6 and 10 on the canonical session path",
+        "observedAt": "2026-11-11T01:25:02.316Z",
+        "readings": {
+          "quarterbacksAt85Plus": {
+            "season0": [
+              7,
+              12,
+              5
+            ],
+            "season3": [
+              11,
+              18,
+              17
+            ],
+            "season6": [
+              17,
+              27,
+              23
+            ],
+            "season10": [
+              19,
+              25,
+              25
+            ]
+          },
+          "clubsWithTwoOrMoreQuarterbacksAt85Plus": {
+            "season0": [
+              0,
+              0,
+              0
+            ],
+            "season3": [
+              0,
+              3,
+              1
+            ],
+            "season6": [
+              1,
+              4,
+              3
+            ],
+            "season10": [
+              3,
+              3,
+              5
+            ]
+          },
+          "mostQuarterbacksAt85PlusOnOneClub": {
+            "season0": [
+              1,
+              1,
+              1
+            ],
+            "season6": [
+              2,
+              3,
+              2
+            ]
+          },
+          "weakestClubBestQuarterback": {
+            "season0": [
+              75,
+              73,
+              72
+            ],
+            "season6": [
+              72,
+              80,
+              79
+            ]
+          },
+          "tightEndsAt85Plus": {
+            "season0": [
+              10,
+              8,
+              11
+            ],
+            "season6": [
+              12,
+              19,
+              24
+            ],
+            "season10": [
+              20,
+              18,
+              24
+            ]
+          },
+          "offensiveLinemenAt85Plus": {
+            "season0": [
+              41,
+              48,
+              61
+            ],
+            "season6": [
+              63,
+              71,
+              65
+            ]
+          },
+          "linebackersAt85Plus": {
+            "season0": [
+              24,
+              36,
+              32
+            ],
+            "season6": [
+              47,
+              42,
+              38
+            ]
+          },
+          "defensiveBacksAt85Plus": {
+            "season0": [
+              38,
+              40,
+              44
+            ],
+            "season6": [
+              50,
+              61,
+              50
+            ]
+          },
+          "medianQuarterbackOverall": {
+            "season0": [
+              75,
+              75,
+              75
+            ],
+            "season10": [
+              77,
+              80,
+              80
+            ]
+          },
+          "runningBacksAt85Plus": {
+            "season0": [
+              11,
+              12,
+              10
+            ],
+            "season10": [
+              20,
+              16,
+              24
+            ]
+          },
+          "clubsWithTwoOrMoreRunningBacksAt85Plus": {
+            "season0": [
+              1,
+              0,
+              0
+            ],
+            "season10": [
+              4,
+              1,
+              4
+            ]
+          },
+          "wideReceiversAt85Plus": {
+            "season0": [
+              24,
+              35,
+              26
+            ],
+            "season10": [
+              40,
+              38,
+              55
+            ]
+          }
+        },
+        "finding": "League creation does not stack a position: no club starts with two 85+ quarterbacks. The defect arrives with time. By season 6, and holding through season 10, the number of 85+ quarterbacks is two to four times the starting count, up to four clubs hold two or more, and one club holds three. Tight ends, offensive linemen, linebackers and defensive backs inflate as well. The cause is therefore growth in elite count over seasons (progression and intake) with stacking as its consequence, not creation-time distribution.",
+        "limits": "Three seeds and ten seasons. Counts level off between seasons 6 and 10, which suggests a raised steady state rather than unbounded growth; a season-20 reading would confirm it. No per-position real-football baseline has been set for these counts yet."
+      }
+    },
+    {
+      "id": 4,
+      "slug": "player-profile-redesign",
+      "title": "Player profile: grouped ratings, scouting report, comparable player, rating history, game log",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "🔥",
+      "effortHours": 10,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 15.6,
+      "status": "pending",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Group ratings into Athleticism, Technique, Football IQ and Instincts with position-relevant keys first; write a football-language scouting report; add a plays-like comparison and a season rating history.",
+      "acceptance": "Profile renders grouped ratings and report for a rostered player, a rival and a prospect; fog tests cover every carrier.",
+      "premise": "Profile ratings table is sorted alphabetically",
+      "premises": [
+        {
+          "claim": "Profile ratings table is sorted alphabetically",
+          "adapter": "grep",
+          "target": "public/lib/appCore.js",
+          "pattern": "localeCompare",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 10,
+          "recipe": "Group ratings into Athleticism, Technique, Football IQ and Instincts with position-relevant keys first; write a football-language scouting report; add a plays-like comparison and a season rating history."
+        },
+        "L3": {
+          "effortHours": 20,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [],
+      "rank": 4
+    },
+    {
+      "id": 3,
+      "slug": "depth-chart-rebuild",
+      "title": "Depth chart: drag rows, autosave, best lineup, and decision data on every row",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "🔥",
+      "effortHours": 10,
+      "impact": 9,
+      "innovation": 6,
+      "priority": 15.1,
+      "status": "implemented-reduced",
+      "readinessArea": "accessibility, mobile parity and every supported theme",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Replace Up/Down with pointer-event row dragging plus Alt+Arrow keyboard moves in a lazily imported module; autosave with Undo; add Best Lineup; show age, experience, category scores, top abilities, status and contract; card layout on phones; add a menu entry.",
+      "acceptance": "Playwright: mouse drag, touch drag at 390 and 320 px, keyboard reorder, undo; session-actions, local-api-runtime and API parity pass; roster island keeps 15% byte headroom.",
+      "premise": "Depth chart reorders with Up/Down buttons",
+      "premises": [
+        {
+          "claim": "Depth chart reorders with Up/Down buttons",
+          "adapter": "grep",
+          "target": "public/lib/tabRoster.js",
+          "pattern": "data-depth-move",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 10,
+          "recipe": "Replace Up/Down with pointer-event row dragging plus Alt+Arrow keyboard moves in a lazily imported module; autosave with Undo; add Best Lineup; show age, experience, category scores, top abilities, status and contract; card layout on phones; add a menu entry."
+        },
+        "L3": {
+          "effortHours": 20,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-11-11T01:26:39.971Z",
+          "session": 129,
+          "result": "implemented, not released",
+          "shipped": "Drag rows (mouse, touch, keyboard), autosave with Undo for the club you run, Best Lineup, age/experience/size, four category scores, top three strengths, injury status, contract, phone card layout. Pending saves are flushed when leaving a position; typed snap shares survive a reload.",
+          "verification": "tests-ui/depth-chart-reorder.spec.js 7/7, tests-ui/app.spec.js depth test, tests-ui/standard-elevation-roster.spec.js, test/attribute-categories.test.js 8/8 with a negative control on the merit fog fix, boot budget 648100/730000.",
+          "notDone": [
+            "Depth Chart entry in the side menu",
+            "Fogged category scores on rival clubs' charts (they read true ratings, as rival profiles already do)"
+          ]
+        }
+      ],
+      "rank": 5,
+      "executionEvidence": "Recovered from the cut-off run. Drag (pointer + touch at 390/320 px), arrow-key reorder from the grip, autosave for the controlled club, Undo, Best Lineup, ATH/TEC/IQ/INS + top abilities + status + contract per row; rival merit no longer carries true potential. depth-chart-reorder.spec 7/7, app.spec depth 1/1, standard-elevation 1/1, attribute-categories 8/8. Not done: menu entry, phone card layout beyond fit-to-width."
+    },
+    {
+      "id": 8,
+      "slug": "faster-first-week",
+      "title": "Faster first week",
+      "axis": "gamification-immersion",
+      "category": "gamification-immersion",
+      "tier": "⚡",
+      "effortHours": 5,
+      "impact": 8,
+      "innovation": 5,
+      "priority": 14.2,
+      "status": "pending",
+      "readinessArea": "onboarding and identity/access",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Collapse the three onboarding layers into one path so a new player reaches a simulated week in about four clicks; defer the pre-week review to week two.",
+      "acceptance": "Playwright journey counts clicks from landing to the first week result on desktop and phone.",
+      "premise": "First plan passes through a rehearsal modal",
+      "premises": [
+        {
+          "claim": "First plan passes through a rehearsal modal",
+          "adapter": "grep",
+          "target": "public/game.html",
+          "pattern": "architectRehearsalTitle",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 5,
+          "recipe": "Collapse the three onboarding layers into one path so a new player reaches a simulated week in about four clicks; defer the pre-week review to week two."
+        },
+        "L3": {
+          "effortHours": 10,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [],
+      "rank": 6
+    },
+    {
+      "id": 12,
+      "slug": "new-pages",
+      "title": "New pages: Beta hub, Guide and Glossary, Accessibility, Showcase League tour",
+      "axis": "features-depth",
+      "category": "features-depth",
+      "tier": "⚡",
+      "effortHours": 8,
+      "impact": 7,
+      "innovation": 6,
+      "priority": 12.6,
+      "status": "pending",
+      "readinessArea": "feedback, support and issue triage",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Add the four pages; generate the Guide, how-to-play and in-app guide from one source; build the tour from the existing showcase league file.",
+      "acceptance": "Pages build, pass check-public-truth, appear in footer manifest and sitemap.",
+      "premise": "Showcase league data already exists",
+      "premises": [
+        {
+          "claim": "Showcase league data already exists",
+          "adapter": "file-exists",
+          "target": "public/showcase-league.json",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "No beta hub page exists",
+          "adapter": "file-exists",
+          "target": "public/beta.html",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "Add the four pages; generate the Guide, how-to-play and in-app guide from one source; build the tour from the existing showcase league file."
+        },
+        "L3": {
+          "effortHours": 16,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [],
+      "rank": 7
+    },
+    {
+      "id": 6,
+      "slug": "site-truth-pass",
+      "title": "Public site truth pass",
+      "axis": "observability-honesty",
+      "category": "observability-honesty",
+      "tier": "🔥",
+      "effortHours": 4,
+      "impact": 8,
+      "innovation": 4,
+      "priority": 12.4,
+      "status": "implemented-reduced",
+      "readinessArea": "staging, release evidence and truthful beta/release communication",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Update roadmap and features to current shipped state, replace the no-server claim, remove dev controls from production HTML, single-source Community Stats privacy, add one releaseLabel in claims.json.",
+      "acceptance": "build-pages and check-public-truth pass; staging origin read back and matches.",
+      "premise": "Roadmap still lists shipped power rankings",
+      "premises": [
+        {
+          "claim": "Roadmap still lists shipped power rankings",
+          "adapter": "grep",
+          "target": "public/roadmap.html",
+          "pattern": "[Pp]ower rankings",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "Dev-server controls still ship in the landing page markup",
+          "adapter": "grep",
+          "target": "public/index.html",
+          "pattern": "Dev server \\(advanced\\)",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Update roadmap and features to current shipped state, replace the no-server claim, remove dev controls from production HTML, single-source Community Stats privacy, add one releaseLabel in claims.json."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-11-11T01:26:39.971Z",
+          "session": 129,
+          "result": "partial, not released",
+          "shipped": "Replaced the no-server claim on the landing page, press sheet, setup text and claims.json; rewrote the roadmap with a recently-shipped list; fixed the empty Still to come section on Features.",
+          "verification": "build-pages and check-public-truth pass; public-compliance 13 of 14 (the one failure is a pre-existing local gitignored file).",
+          "notDone": [
+            "Remove dev controls from production HTML",
+            "Single-source Community Stats privacy",
+            "releaseLabel in claims.json",
+            "Features page refresh for October additions",
+            "Community header link"
+          ]
+        }
+      ],
+      "rank": 8,
+      "executionEvidence": "Roadmap/features moved to shipped state (S129 run); no-server claim replaced; Pages build strips the developer runtime option and Data Paths block (smoke-pages asserts zero dev controls; static smoke green); FAQ documents links. Not done: releaseLabel and single-sourced Community Stats privacy line."
+    },
+    {
+      "id": 5,
+      "slug": "football-language",
+      "title": "Football-language pass with a lint that keeps it fixed",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "🔥",
+      "effortHours": 8,
+      "impact": 8,
+      "innovation": 5,
+      "priority": 12,
+      "status": "pending",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Apply one glossary across player-facing strings (receipt, ledger, thesis, committed, evidence, degraded) and extend check-public-truth to client UI strings and stats-surface.json.",
+      "acceptance": "Vocabulary lint passes; tests-ui specs, helpers and responsive evidence updated in the same change.",
+      "premise": "Operator wording is visible to players",
+      "premises": [
+        {
+          "claim": "Operator wording is visible to players",
+          "adapter": "grep",
+          "target": "public/game.html",
+          "pattern": "Retry Degraded Panels",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "Pre-week review is named in process language",
+          "adapter": "grep",
+          "target": "public/game.html",
+          "pattern": "Architect's Red Team",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "Apply one glossary across player-facing strings (receipt, ledger, thesis, committed, evidence, degraded) and extend check-public-truth to client UI strings and stats-surface.json."
+        },
+        "L3": {
+          "effortHours": 16,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [],
+      "rank": 9
+    },
+    {
+      "id": 7,
+      "slug": "feedback-and-whats-new",
+      "title": "Feedback without a GitHub account, plus in-app What's New",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "⚡",
+      "effortHours": 8,
+      "impact": 8,
+      "innovation": 5,
+      "priority": 12,
+      "status": "pending",
+      "readinessArea": "feedback, support and issue triage",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Add a Turnstile-protected feedback endpoint to the Community API, point both in-app feedback surfaces at one form, keep GitHub as a secondary link, and show the latest release notes in-app.",
+      "acceptance": "A feedback note sent from staging is stored and readable by the operator; rate limit and Turnstile rejection verified.",
+      "premise": "In-app feedback opens a GitHub issue",
+      "premises": [
+        {
+          "claim": "In-app feedback opens a GitHub issue",
+          "adapter": "grep",
+          "target": "public/lib/betaFeedback.js",
+          "pattern": "github\\.com",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "Add a Turnstile-protected feedback endpoint to the Community API, point both in-app feedback surfaces at one form, keep GitHub as a secondary link, and show the latest release notes in-app."
+        },
+        "L3": {
+          "effortHours": 16,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [],
+      "rank": 10
+    },
+    {
+      "id": 14,
+      "slug": "injury-statuses",
+      "title": "Questionable, Doubtful and Out statuses with season wear",
+      "axis": "features-depth",
+      "category": "features-depth",
+      "tier": "💡",
+      "effortHours": 8,
+      "impact": 7,
+      "innovation": 5,
+      "priority": 10.5,
+      "status": "pending",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Add weekly game statuses and usage-based wear, shown on the depth chart; ship in the engine wave so the golden master moves once.",
+      "acceptance": "Status appears on the depth chart and changes game-day availability; engine tests pass.",
+      "premise": "Depth chart availability is only Ready or Out",
+      "premises": [
+        {
+          "claim": "Depth chart availability is only Ready or Out",
+          "adapter": "grep",
+          "target": "public/lib/tabRoster.js",
+          "pattern": "Ready",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "Add weekly game statuses and usage-based wear, shown on the depth chart; ship in the engine wave so the golden master moves once."
+        },
+        "L3": {
+          "effortHours": 16,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [],
+      "rank": 11
+    },
+    {
+      "id": 11,
+      "slug": "site-renovation",
+      "title": "Site renovation: one layout, imagery, structured data",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "⚡",
+      "effortHours": 8,
+      "impact": 6,
+      "innovation": 5,
+      "priority": 9,
+      "status": "pending",
+      "readinessArea": "branding, legal, contact and rights/provenance",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Move every page to one layout, add imagery to the seven text-only pages, add FAQPage and Article structured data and per-page share images.",
+      "acceptance": "Rendered desktop and phone captures in both themes for every page; structured data validates.",
+      "premise": "About uses the legal-page wrapper",
+      "premises": [
+        {
+          "claim": "About uses the legal-page wrapper",
+          "adapter": "grep",
+          "target": "public/about.html",
+          "pattern": "legal-wrap",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "Move every page to one layout, add imagery to the seven text-only pages, add FAQPage and Article structured data and per-page share images."
+        },
+        "L3": {
+          "effortHours": 16,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [],
+      "rank": 12
+    },
+    {
+      "id": 18,
+      "slug": "agent-surface",
+      "title": "Agent surface: root llms.txt, documented league export, CLI page",
+      "axis": "ai-intelligence",
+      "category": "ai-intelligence",
+      "tier": "💡",
+      "effortHours": 3,
+      "impact": 5,
+      "innovation": 4,
+      "priority": 8.6,
+      "status": "implemented",
+      "readinessArea": "human and agent access where applicable",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Serve llms.txt at the root, document the league export shape and the headless CLI on a public page.",
+      "acceptance": "Files resolve on staging; agents.json links to them.",
+      "premise": "llms.txt is not served at the site root",
+      "premises": [
+        {
+          "claim": "llms.txt is not served at the site root",
+          "adapter": "file-exists",
+          "target": "public/llms.txt",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Serve llms.txt at the root, document the league export shape and the headless CLI on a public page."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [],
+      "rank": 13,
+      "executionEvidence": "llms.txt documents challenge links, the co-gm-briefing shape and the headless CLI export; build copies .well-known/llms.txt to /llms.txt from one source; agents.json links it; smoke-pages asserts /llms.txt; check-public-truth green. Staging read-back pending deploy."
+    },
+    {
+      "id": 19,
+      "slug": "player-dto-extraction",
+      "title": "Extract player response shapes from GameSession",
+      "axis": "token-cost",
+      "category": "token-cost",
+      "tier": "⚡",
+      "effortHours": 5,
+      "impact": 6,
+      "innovation": 4,
+      "priority": 8.5,
+      "status": "pending",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Move roster, free-agent, profile and depth-chart player shapes into one module used by every caller. Measurement: bytes an agent must read to change a player field, before and after.",
+      "acceptance": "API parity check passes; golden master byte-identical for this step.",
+      "premise": "Depth-chart response is built inside GameSession",
+      "premises": [
+        {
+          "claim": "Depth-chart response is built inside GameSession",
+          "adapter": "grep",
+          "target": "src/runtime/GameSession.js",
+          "pattern": "getDepthChartSnapShare",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 5,
+          "recipe": "Move roster, free-agent, profile and depth-chart player shapes into one module used by every caller. Measurement: bytes an agent must read to change a player field, before and after."
+        },
+        "L3": {
+          "effortHours": 10,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-11-11T01:26:39.971Z",
+          "session": 129,
+          "result": "started",
+          "shipped": "src/domain/attributeCategories.js is the single source for category scores and top abilities; roster rows carry it.",
+          "notDone": [
+            "Move roster, free-agent, profile and depth-chart player shapes out of GameSession"
+          ]
+        }
+      ],
+      "rank": 14
+    },
+    {
+      "id": 10,
+      "slug": "in-app-consolidation",
+      "title": "One home each for news, leaders, trophies and commissioner tools",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "⚡",
+      "effortHours": 8,
+      "impact": 7,
+      "innovation": 4,
+      "priority": 8.4,
+      "status": "pending",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Merge five news surfaces, three leader surfaces, three trophy surfaces and three Commissioner panels; relabel same-device multiplayer honestly; hide runtime text from players.",
+      "acceptance": "Each data type has one primary surface; boot budget passes; UI specs updated.",
+      "premise": "Same-device lobby is labelled async multiplayer",
+      "premises": [
+        {
+          "claim": "Same-device lobby is labelled async multiplayer",
+          "adapter": "grep",
+          "target": "public/game.html",
+          "pattern": "Async multiplayer",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "Settings exposes a QA-named panel",
+          "adapter": "grep",
+          "target": "public/game.html",
+          "pattern": "Saves & QA",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "Merge five news surfaces, three leader surfaces, three trophy surfaces and three Commissioner panels; relabel same-device multiplayer honestly; hide runtime text from players."
+        },
+        "L3": {
+          "effortHours": 16,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [],
+      "rank": 15
+    },
+    {
+      "id": 9,
+      "slug": "security-hardening",
+      "title": "Community API and fog hardening",
+      "axis": "security",
+      "category": "security",
+      "tier": "🔥",
+      "effortHours": 5,
+      "impact": 7,
+      "innovation": 3,
+      "priority": 7.5,
+      "status": "pending",
+      "readinessArea": "security, privacy, data integrity and abuse controls",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Confirm proxy topology and set trusted client-IP handling, persist the signing key across restarts, make the runtime image default safe, and close the three fog carriers.",
+      "acceptance": "Rate limit keys on the real client IP on staging; tokens survive a restart; fog tests cover ratings, development trait and merit score.",
+      "premise": "Runtime image defaults to the unauthenticated game server",
+      "premises": [
+        {
+          "claim": "Runtime image defaults to the unauthenticated game server",
+          "adapter": "grep",
+          "target": "Dockerfile.runtime",
+          "pattern": "src/server.js",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "Compose file does not set proxy trust",
+          "adapter": "grep",
+          "target": "ops/deploy-backend.docker-compose.yml",
+          "pattern": "COMMUNITY_TRUST_PROXY",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 5,
+          "recipe": "Confirm proxy topology and set trusted client-IP handling, persist the signing key across restarts, make the runtime image default safe, and close the three fog carriers."
+        },
+        "L3": {
+          "effortHours": 10,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [],
+      "rank": 16
+    },
+    {
+      "id": 15,
+      "slug": "module-minification",
+      "title": "Minify shipped modules",
+      "axis": "speed-organization-efficiency",
+      "category": "speed-organization-efficiency",
+      "tier": "⚡",
+      "effortHours": 4,
+      "impact": 6,
+      "innovation": 3,
+      "priority": 7,
+      "status": "pending",
+      "readinessArea": "performance and capacity",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Minify each module at build time without bundling, using one pinned and trust-checked dependency; measure transfer size and hosted performance before and after.",
+      "acceptance": "Recorded byte and hosted LCP/INP comparison; boot budget passes.",
+      "premise": "Modules ship unminified",
+      "premises": [
+        {
+          "claim": "Modules ship unminified",
+          "adapter": "grep",
+          "target": "scripts/lib/service-worker.mjs",
+          "pattern": "unminified",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Minify each module at build time without bundling, using one pinned and trust-checked dependency; measure transfer size and hosted performance before and after."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [],
+      "rank": 17
+    },
+    {
+      "id": 16,
+      "slug": "accessibility-tests",
+      "title": "Automated accessibility tests",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "⚡",
+      "effortHours": 4,
+      "impact": 6,
+      "innovation": 3,
+      "priority": 7,
+      "status": "pending",
+      "readinessArea": "accessibility, mobile parity and every supported theme",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Add axe checks to the Playwright suite for the main tabs in both themes.",
+      "acceptance": "Axe run passes or lists accepted exceptions for each main tab.",
+      "premise": "No axe dependency is installed",
+      "premises": [
+        {
+          "claim": "No axe dependency is installed",
+          "adapter": "grep",
+          "target": "package.json",
+          "pattern": "axe",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Add axe checks to the Playwright suite for the main tabs in both themes."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [],
+      "rank": 18
+    },
+    {
+      "id": 17,
+      "slug": "full-test-receipt-and-candidate",
+      "title": "Full test receipt and a beta candidate on staging",
+      "axis": "speed-organization-efficiency",
+      "category": "speed-organization-efficiency",
+      "tier": "🔥",
+      "effortHours": 3,
+      "impact": 8,
+      "innovation": 2,
+      "priority": 6.9,
+      "status": "pending",
+      "readinessArea": "staging, release evidence and truthful beta/release communication",
+      "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
+      "recipe": "Run the full canonical suite in the foreground on a quiet machine, then stage the exact candidate and record the readiness matrix.",
+      "acceptance": "Full npm test receipt bound to the candidate source; staging acceptance receipt.",
+      "premise": "Canonical test entry exists",
+      "premises": [
+        {
+          "claim": "Canonical test entry exists",
+          "adapter": "file-exists",
+          "target": "package.json",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Smallest player-visible slice of the recipe."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Run the full canonical suite in the foreground on a quiet machine, then stage the exact candidate and record the readiness matrix."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Full depth including the optional extensions named in the approved plan."
+        }
+      },
+      "executionLog": [],
+      "rank": 19
+    }
+  ],
+  "totals": {
+    "count": 19,
+    "priority": 225,
+    "top3": [
+      "weekly-challenge",
+      "player-identity",
+      "position-balance"
+    ]
+  },
+  "innovationReserve": [
+    {
+      "slug": "online-leagues",
+      "reason": "Real online multiplayer needs accounts and a backend; founder decision after beta."
+    },
+    {
+      "slug": "league-file-editor",
+      "reason": "Customisation parity with Football GM and Draft Day Sports; after beta."
+    },
+    {
+      "slug": "staff-abilities",
+      "reason": "Coach and trainer abilities; after player identity lands."
+    },
+    {
+      "slug": "compare-page",
+      "reason": "Needs a durable competitor file first (run /studio-market)."
+    }
+  ],
+  "preverifiedSkips": [
+    {
+      "slug": "day-one-qb-stacking",
+      "reason": "Disproven at league creation: seed 117 shows at most one 85+ QB per club at season 0. Stacking, if any, arrives over seasons; the probe measures that."
+    },
+    {
+      "slug": "runtime-llm-narrative",
+      "reason": "The game markets that it never calls an AI service; narrative stays procedural."
+    },
+    {
+      "slug": "api-token-reduction",
+      "reason": "No runtime AI spend exists to reduce; the token-cost item targets agent read cost instead."
+    }
+  ],
+  "readinessAssessment": [
+    {
+      "area": "core journeys and product correctness",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "656200d9724dce7c4aff664db5d4cc988fd5088d",
+      "observedAt": "2026-11-10T23:56:14.050Z",
+      "evidence": "Core loop ships; depth chart, player identity, balance gating and language gaps recorded as items.",
+      "nextAcceptanceCheck": "Items 1-5 accepted on staging."
+    },
+    {
+      "area": "onboarding and identity/access",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "656200d9724dce7c4aff664db5d4cc988fd5088d",
+      "observedAt": "2026-11-10T23:56:14.050Z",
+      "evidence": "No accounts by design; first week takes about nine clicks through three onboarding layers.",
+      "nextAcceptanceCheck": "Click-count journey test."
+    },
+    {
+      "area": "accessibility, mobile parity and every supported theme",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "656200d9724dce7c4aff664db5d4cc988fd5088d",
+      "observedAt": "2026-11-10T23:56:14.050Z",
+      "evidence": "Keyboard tabs, ARIA and themes exist; no automated accessibility test; depth chart has no phone layout.",
+      "nextAcceptanceCheck": "Axe run and phone depth-chart captures."
+    },
+    {
+      "area": "performance and capacity",
+      "status": "stale",
+      "owner": "project release owner",
+      "sourceRevision": "656200d9724dce7c4aff664db5d4cc988fd5088d",
+      "observedAt": "2026-11-10T23:56:14.050Z",
+      "evidence": "Hosted performance last verified at an October source; modules ship unminified.",
+      "nextAcceptanceCheck": "Fresh hosted run on the beta candidate."
+    },
+    {
+      "area": "security, privacy, data integrity and abuse controls",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "656200d9724dce7c4aff664db5d4cc988fd5088d",
+      "observedAt": "2026-11-10T23:56:14.050Z",
+      "evidence": "Strong Pages CSP; Community API proxy trust unconfirmed, signing key per process, three fog carriers.",
+      "nextAcceptanceCheck": "Item security-hardening accepted."
+    },
+    {
+      "area": "backup, recovery and rollback",
+      "status": "unknown",
+      "owner": "project release owner",
+      "sourceRevision": "656200d9724dce7c4aff664db5d4cc988fd5088d",
+      "observedAt": "2026-11-10T23:56:14.050Z",
+      "evidence": "Restore journeys shipped in S127; no restore drill recorded.",
+      "nextAcceptanceCheck": "Restore drill on staging."
+    },
+    {
+      "area": "email and notifications where used",
+      "status": "fail",
+      "owner": "project release owner",
+      "sourceRevision": "656200d9724dce7c4aff664db5d4cc988fd5088d",
+      "observedAt": "2026-11-10T23:56:14.050Z",
+      "evidence": "football@ delivery is unverified and is a recorded launch hold.",
+      "nextAcceptanceCheck": "Real received-message receipt (founder-owned)."
+    },
+    {
+      "area": "observability and actionable analytics",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "656200d9724dce7c4aff664db5d4cc988fd5088d",
+      "observedAt": "2026-11-10T23:56:14.050Z",
+      "evidence": "Opt-in community telemetry exists; no error reporting; consent toggle absent from game Settings.",
+      "nextAcceptanceCheck": "Consent toggle in Settings; decide on error reporting."
+    },
+    {
+      "area": "feedback, support and issue triage",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "656200d9724dce7c4aff664db5d4cc988fd5088d",
+      "observedAt": "2026-11-10T23:56:14.050Z",
+      "evidence": "Both feedback paths require a GitHub account and disagree on destination.",
+      "nextAcceptanceCheck": "Item feedback-and-whats-new accepted."
+    },
+    {
+      "area": "branding, legal, contact and rights/provenance",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "656200d9724dce7c4aff664db5d4cc988fd5088d",
+      "observedAt": "2026-11-10T23:56:14.050Z",
+      "evidence": "Legal pages exist; site names the NFL and Pro Football Reference beside a no-affiliation notice (legal review).",
+      "nextAcceptanceCheck": "Founder legal review of real-world names."
+    },
+    {
+      "area": "human and agent access where applicable",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "656200d9724dce7c4aff664db5d4cc988fd5088d",
+      "observedAt": "2026-11-10T23:56:14.050Z",
+      "evidence": "agents.json, well-known llms.txt and a headless CLI exist; no root llms.txt or export documentation.",
+      "nextAcceptanceCheck": "Item agent-surface accepted."
+    },
+    {
+      "area": "staging, release evidence and truthful beta/release communication",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "656200d9724dce7c4aff664db5d4cc988fd5088d",
+      "observedAt": "2026-11-10T23:56:14.050Z",
+      "evidence": "Per-session release receipts are current; full test receipt dates from 2026-10-02; site copy is behind the changelog.",
+      "nextAcceptanceCheck": "Full npm test receipt and site truth pass on the candidate."
+    }
+  ],
+  "marketKit": {
+    "status": "absent",
+    "note": "docs/market/MARKET.json does not exist; competitor facts in the plan come from a partial web search. Run /studio-market before publishing comparisons."
+  },
+  "implementationComplete": false,
+  "releaseComplete": false,
+  "closeoutComplete": false,
+  "generatedAt": "2026-11-10T23:56:14.050Z"
+}

@@ -236,6 +236,12 @@ function injectHtmlDefaults(html, pagePath) {
   // are for the source tree, not view-source on the product), and is always
   // LF-normalized so Windows and Linux builds emit identical bytes.
   let next = html.replace(/\r\n/g, "\n").replace(/<!--[\s\S]*?-->/g, "");
+  // A build with no server ships no way to pick one: the developer runtime
+  // option is removed from the markup rather than shown disabled to players.
+  if (serverAvailable !== "true") {
+    next = next.replace(/\n[ \t]*<option value="server"[^>]*>[^<]*<\/option>/g, "");
+    next = next.replace(/\n[ \t]*<details id="dataPathsSection"[\s\S]*?<\/details>/, "");
+  }
   if (!next.includes("<base ")) {
     next = next.replace("<head>", `<head>\n    <base href=\"${assetBasePath}\" />`);
   }
@@ -593,6 +599,9 @@ async function main() {
   // The sitemap is copied, not rendered, so its comments need their own strip.
   const sitemapSource = path.join(outDir, "sitemap.xml");
   await fs.writeFile(sitemapSource, stripXmlComments(await fs.readFile(sitemapSource, "utf8")), "utf8");
+  // Agents look for llms.txt at the root as well as under .well-known. One
+  // source file serves both, so the two copies cannot drift apart.
+  await fs.copyFile(path.join(outDir, ".well-known", "llms.txt"), path.join(outDir, "llms.txt"));
   await copyBrowserModules();
   await emitHashedStylesheet();
   await emitHashedSiteStylesheet();

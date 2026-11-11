@@ -204,6 +204,8 @@ export const SHARDS = {
     "test/button-action-contracts.test.js",
     "test/league-story-export.test.js",
     "test/challenge-codes.test.js",
+    "test/weekly-challenge.test.js",
+    "test/attribute-categories.test.js",
     "test/coaching-lineage-authority.test.js",
     "test/create-api-client.test.js",
     "test/community-event-contract.test.js",

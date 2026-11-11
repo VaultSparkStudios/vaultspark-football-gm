@@ -11,6 +11,11 @@ const POSITION_IDENTITY = {
   P: { noun: "field-position specialist", craft: "flipping the field, controlling return space, and pinning offenses deep" }
 };
 
+// A signature ability is only named "elite" or "strong" when the rating earns it.
+function abilityTier(value) {
+  return value >= 90 ? "Elite" : value >= 80 ? "Strong" : null;
+}
+
 const PRIMARY_CATEGORY = {
   QB: "passing",
   RB: "rushing",
@@ -102,7 +107,11 @@ export function buildPlayerProfileNarrative(profile = {}) {
   const familyFacts = relative && ['son','brother'].includes(relative.relation) && typeof relative.anchorName === 'string'
     ? [`Family: ${relative.relation} of ${relative.anchorName}`] : [];
   const position = player.position || "ATH";
-  const identity = POSITION_IDENTITY[position] || { noun: "roster competitor", craft: "turning preparation into dependable snaps" };
+  const projected = player.isDraftProspect ? null : player.playingStyle;
+  const style = projected?.label && projected?.craft ? projected.label : null;
+  const identity = style
+    ? { noun: style, craft: projected.craft }
+    : POSITION_IDENTITY[position] || { noun: "roster competitor", craft: "turning preparation into dependable snaps" };
   const category = PRIMARY_CATEGORY[position] || "snaps";
   const career = profile.career?.[category] || {};
   if (player.isDraftProspect) {
@@ -132,7 +141,10 @@ export function buildPlayerProfileNarrative(profile = {}) {
   const ratings = Object.entries(player.ratings || {})
     .filter(([key, value]) => (!relevantRatings || relevantRatings.has(key)) && Number.isFinite(Number(value)))
     .sort((a, b) => Number(b[1]) - Number(a[1]) || a[0].localeCompare(b[0]));
-  const signature = ratings.slice(0, 3).map(([name, value]) => ({ name: titleCase(name), value: Number(value) }));
+  const graded = Array.isArray(player.attributes?.topAbilities) ? player.attributes.topAbilities : null;
+  const signature = graded
+    ? graded.slice(0, 3).map((ability) => ({ name: ability.label, value: Number(ability.value), tier: abilityTier(Number(ability.value)) }))
+    : ratings.slice(0, 3).map(([name, value]) => ({ name: titleCase(name), value: Number(value), tier: abilityTier(Number(value)) }));
   const best = signature[0] || { name: "Competitive Readiness", value: player.overall || 0 };
   const overall = Number(player.overall || 0);
   const potential = Number(player.potential ?? overall);
@@ -173,7 +185,8 @@ export function buildPlayerProfileNarrative(profile = {}) {
   const facts = [
     ...familyFacts,
     `Age ${age || "—"} · ${player.experience || 0} years of experience · ${seasonCount} recorded season${seasonCount === 1 ? "" : "s"}`,
-    `Signature trait: ${best.name} ${best.value}`,
+    `Signature trait: ${best.tier ? `${best.tier} ` : ""}${best.name} ${best.value}`,
+    ...(style ? [`Playing style: ${titleCase(style)}`] : []),
     `Career production: ${careerLine(position, career)}`,
     `Development: ${player.developmentTrait || "Steady"} · ${overall} OVR · ${potential} POT · ${ceilingGap >= 0 ? "+" : ""}${ceilingGap} runway${runwaySeasons == null ? "" : ` · ${runwaySeasons} growth season${runwaySeasons === 1 ? "" : "s"} left`}`,
     availability

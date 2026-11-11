@@ -19,10 +19,10 @@ test('actual OL dossier shows positional signature traits at desktop and mobile'
  await page.locator('#rosterTable button[data-player-id]').first().click();
  await expect(page.locator('#playerModal')).not.toHaveClass(/hidden/);
  const bio=page.locator('.player-story-card--bio');
- await expect(bio).toContainText('pocket architect');
+ await expect(bio).toContainText(/pass protector|road grader|balanced lineman/);
  if(phase!=='before'){
   await expect(bio.locator('.profile-signature-row')).not.toContainText(/Throw/i);
-  await expect(bio.locator('.profile-signature-row')).toContainText('Pass Blocking');
+  await expect(bio.locator('.profile-signature-row')).toContainText(/Pass Protection|Run Blocking/);
  }
  await fs.mkdir('output/playwright',{recursive:true});await page.emulateMedia({reducedMotion:'reduce'});
  for(const [viewport,width,height]of[['desktop',1440,1000],['mobile',390,844]]){

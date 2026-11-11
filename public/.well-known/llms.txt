@@ -26,3 +26,16 @@ Useful paths:
 - /stats - human-readable Community Stats
 - https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/snapshot - machine-readable aggregate snapshot
 - /stats-surface.json - stats contract and methodology descriptor
+- /llms.txt - this file (also at /.well-known/llms.txt)
+
+Starting a league from a link:
+- /?challenge=weekly - this calendar week's shared league. Everyone who opens it in the same ISO week (UTC) gets the same seed and the same club.
+- /?challenge=<code> - one exact league from a challenge code. A code looks like VSFC1.<base64url JSON>.<4-character checksum>; the JSON holds s (seed), y (start year), t (club id) and, optionally, rs (seasons to a title to beat) and rn (challenger name). A code with a wrong checksum is rejected, not repaired.
+The link fills in the start page; the visitor still presses Create League. Nothing is sent to a server.
+
+Reading a running franchise (co-gm-briefing, version 1.0):
+The player can copy or download a briefing of their franchise from the in-game Co-GM panel (/game.html#coGmBriefPanel). It is JSON with kind "co-gm-briefing" and these top-level fields: authority (teamId, teamName, year, week, phase, record), currentCommand (the decision the game is waiting on), pressure (ownerMandate, ownerTrend, ownerHeat, capSpace, controlledTeamInjuries, rosterNeeds, leagueHeadline), architectThesis (the player's stated plan and any pending adaptation) and a record of recent decisions. It carries only what the player can already see in the game: no save data, no hidden ratings, no personal details. Nothing is exported unless the player asks.
+
+Headless simulation (for developers and agents with the source):
+node src/index.js --years <seasons> --seed <integer> --startYear <year> --export --outDir <folder>
+runs whole seasons without the browser. The same seed gives the same league. With --export it writes league-summary.json (meta, champions, history), team-season-table.json, player-season-tables.json, player-career-tables.json, records.json, players-active.json and players-retired.json.

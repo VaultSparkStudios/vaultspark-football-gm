@@ -144,8 +144,9 @@ async function main() {
     await page.waitForSelector("#createLeagueBtn");
     const runtimeMode = await page.$eval("#runtimeModeSelect", (el) => el.value);
     if (runtimeMode !== "client") throw new Error(`Expected client runtime default, received ${runtimeMode}`);
-    const serverDisabled = await page.$eval("#runtimeModeSelect option[value=\"server\"]", (el) => el.disabled);
-    if (!serverDisabled) throw new Error("Expected server-backed runtime option to be disabled in the Pages build.");
+    // The Pages build has no server, so it ships no developer runtime controls at all.
+    const devControls = await page.$$eval("#runtimeModeSelect option[value=\"server\"], #dataPathsSection, #pfrPathInput", (els) => els.length);
+    if (devControls !== 0) throw new Error(`Expected no developer runtime controls in the Pages build, found ${devControls}.`);
     const runtimeDescription = await page.$eval("#runtimeModeDescription", (el) => el.textContent || "");
     if (!runtimeDescription.includes("in this browser")) {
       throw new Error(`Expected Pages runtime description to explain browser-local persistence, received: ${runtimeDescription}`);
@@ -171,6 +172,7 @@ async function main() {
     await assertStaticPath(`/terms.html`, /All rights reserved/);
     await assertStaticPath(`/agents.json`, /Proprietary - All Rights Reserved/);
     await assertStaticPath(`/.well-known/llms.txt`, /Franchise Architect: Football/);
+    await assertStaticPath(`/llms.txt`, /\?challenge=weekly/);
     await assertStaticPath(`/sitemap.xml`, /contact\.html/);
     await assertStaticPath(`/_health`, /"launchReady": false/);
     await assertStaticPath(`/deploy-manifest.json`, /"repository": "VaultSparkStudios\/vaultspark-football-gm"/);
@@ -186,6 +188,7 @@ async function main() {
     await assertStaticFile(`${slug}/terms.html`, /All rights reserved/);
     await assertStaticFile(`${slug}/agents.json`, /Proprietary - All Rights Reserved/);
     await assertStaticFile(`${slug}/.well-known/llms.txt`, /Franchise Architect: Football/);
+    await assertStaticFile(`${slug}/llms.txt`, /\?challenge=weekly/);
     await assertStaticFile(`${slug}/sitemap.xml`, /contact\.html/);
     await assertStaticFile(`${slug}/_health`, /"styleAsset": "styles\.[a-f0-9]{10}\.css"/);
     await assertStaticFile(`${slug}/deploy-manifest.json`, /"sourceRevision":/);

@@ -170,11 +170,16 @@
 
         <div class="challenge-code-row">
           <label class="sr-only" for="challengeCodeInput">Challenge code</label>
-          <input id="challengeCodeInput" data-testid="challenge-code-input" type="text" maxlength="512"
-                 placeholder="Have a challenge code? Paste it here to accept a friend's duel" autocomplete="off" aria-describedby="challengeCodeHelp" />
+          <input id="challengeCodeInput" data-testid="challenge-code-input" type="text" maxlength="768"
+                 placeholder="Have a challenge code or link? Paste it here to accept a friend's duel" autocomplete="off" aria-describedby="challengeCodeHelp" />
           <button id="applyChallengeCodeBtn" data-testid="apply-challenge-code-btn" class="btn-ghost">Accept Challenge</button>
         </div>
-        <span id="challengeCodeHelp" class="setup-help">A challenge code starts the same league a friend is playing, from the same seed. <a href="./faq.html#challenge-codes">How challenge codes work</a></span>
+        <div class="challenge-code-row weekly-challenge-row">
+          <button id="weeklyChallengeBtn" data-testid="weekly-challenge-btn" class="btn-ghost" type="button">This Week's Challenge</button>
+          <button id="copyWeeklyChallengeLinkBtn" data-testid="copy-weekly-challenge-link-btn" class="btn-ghost" type="button">Copy Link</button>
+          <span id="weeklyChallengeText" data-testid="weekly-challenge-text" class="setup-help">Everyone who plays this week starts the same league with the same club.</span>
+        </div>
+        <span id="challengeCodeHelp" class="setup-help">A challenge code or link starts the same league a friend is playing, from the same seed. <a href="./faq.html#challenge-codes">How challenge codes work</a></span>
       </section>
 
       <!-- ── COMMUNITY PULSE ── -->

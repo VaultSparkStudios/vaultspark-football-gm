@@ -97,6 +97,7 @@ import {
 } from "../engine/depthChartUsage.js";
 import { coverageDepthRating, positionRatingKeys, GROWTH_WINDOW_MAX_AGE, PLAYER_DEVELOPMENT_PROFILE } from "../domain/ratings.js";
 import { playerAttributeSummary } from "../domain/attributeCategories.js";
+import { playingStyleFor } from "../domain/playingStyle.js";
 import {
   DEVELOPMENT_ENVIRONMENT_PROFILE,
   developmentEnvironmentTilt,
@@ -7245,6 +7246,11 @@ export class GameSession {
         visualFrame: playerFrame(prospect ? { ...player, ratings: { strength: 70 } } : player),
         ratings: prospect ? {} : player.ratings,
         positionRatingKeys: positionRatingKeys(player.position),
+        // Playing style and grouped grades are derived from the ratings above,
+        // so an unsigned prospect (whose ratings are hidden) carries neither.
+        archetype: prospect ? null : player.archetype || null,
+        playingStyle: prospect ? null : playingStyleFor(player.position, player.archetype),
+        attributes: prospect ? null : playerAttributeSummary(player.position, player.ratings),
         contract: prospect ? { salary: 0, baseSalary: 0, signingBonus: 0, guaranteed: 0, yearsRemaining: 0 } : normalizeContract(player.contract)
       },
       developmentOutlook: prospect ? { trajectory: 'scouting estimate', headroom: null, fit: null, fitLabel: 'unknown', developmentBonus: 0, focusRatings: [] }
@@ -7750,6 +7756,7 @@ export class GameSession {
       reinjuryRisk: Number((player.reinjuryRisk || 0).toFixed(2)),
       devTrait: player.developmentTrait,
       archetype: player.archetype || null,
+      playingStyle: playingStyleFor(player.position, player.archetype),
       attributes: playerAttributeSummary(player.position, player.ratings),
       rosterSlot: player.rosterSlot,
       reserveStatus: describeReserveReturn(this.league, player, { ...reserveContextForSession(this), practiceSettings: this.getLeagueSettings() }),

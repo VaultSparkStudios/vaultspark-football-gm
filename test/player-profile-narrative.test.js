@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { buildPlayerProfileNarrative } from "../public/lib/playerProfileNarrative.js";
+import { playingStyleFor } from "../src/domain/playingStyle.js";
 import { createSession } from "../src/runtime/bootstrap.js";
 import { positionRatingKeys } from "../src/domain/ratings.js";
 
@@ -64,3 +65,39 @@ for (const [index, position] of positions.entries()) {
     assert.ok(first.milestones.every((milestone) => milestone.progress >= 0 && milestone.progress <= 100));
   });
 }
+
+test("a rostered player's playing style comes from his archetype, and only earned grades are called elite or strong", () => {
+  const profile = {
+    player: {
+      id: "style-1", name: "Test Back", position: "RB", archetype: "Power", playingStyle: playingStyleFor("RB", "Power"), age: 25, overall: 80, potential: 84,
+      attributes: { topAbilities: [
+        { key: "trucking", label: "Power Running", value: 93 },
+        { key: "breakTackle", label: "Break Tackle", value: 84 },
+        { key: "carrying", label: "Ball Security", value: 72 }
+      ] }
+    },
+    career: {}, timeline: []
+  };
+  const narrative = buildPlayerProfileNarrative(profile);
+  assert.equal(narrative.archetype, "power back");
+  assert.match(narrative.bio, /power back/);
+  assert.deepEqual(narrative.signature.map((trait) => trait.tier), ["Elite", "Strong", null]);
+  assert.ok(narrative.facts.includes("Signature trait: Elite Power Running 93"));
+  assert.ok(narrative.facts.includes("Playing style: Power Back"));
+  // A prospect's archetype is never shown: his ratings are hidden.
+  const prospect = buildPlayerProfileNarrative({ player: { ...profile.player, isDraftProspect: true } });
+  assert.doesNotMatch(JSON.stringify(prospect), /power back/i);
+});
+
+test("every archetype the player factory can roll has a playing style, and unknown ones have none", async () => {
+  const source = await import("node:fs").then((fs) => fs.readFileSync(new URL("../src/domain/playerFactory.js", import.meta.url), "utf8"));
+  const table = source.match(/const POSITION_ARCHETYPES = \{([\s\S]*?)\};/)[1];
+  for (const [, position, list] of table.matchAll(/(\w+): \[([^\]]*)\]/g)) {
+    for (const archetype of list.match(/"([^"]+)"/g).map((entry) => entry.slice(1, -1))) {
+      const style = playingStyleFor(position, archetype);
+      assert.ok(style?.label && style?.craft, `${position} ${archetype} has a playing style`);
+    }
+  }
+  assert.equal(playingStyleFor("QB", "Unknown"), null);
+  assert.equal(playingStyleFor(null, null), null);
+});
