@@ -87,7 +87,17 @@ for (const worker of [true, false]) {
       // The held command still belongs to the actual client runtime.
       await page.evaluate(() => {
         document.querySelector('meta[name="vsfgm-server-available"]').content = "true";
-        document.querySelector('#runtimeModeSelect option[value="server"]').disabled = false;
+        // The static Pages build strips the server option entirely (S129), so
+        // add it the way a server-capable build ships it.
+        const select = document.querySelector("#runtimeModeSelect");
+        let option = select.querySelector('option[value="server"]');
+        if (!option) {
+          option = document.createElement("option");
+          option.value = "server";
+          option.textContent = "Server";
+          select.append(option);
+        }
+        option.disabled = false;
       });
       if (worker) await installWorkerCheckpointGate(page);
       else await installCompressionGate(page);

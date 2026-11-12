@@ -1002,10 +1002,36 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
   white-space: nowrap;
 }
 
+/* The age/year line may wrap: a wider fallback font (Linux has no Bahnschrift)
+   must not push the snap-share column off a 1280 px laptop panel. */
+.depth-board .depth-meta,
+.depth-board td[data-label="Status"],
+.depth-board td[data-label="Contract"] {
+  white-space: normal;
+}
+
+.depth-board .depth-status {
+  white-space: normal;
+}
+
+.depth-board .depth-ability {
+  padding: 0.05rem 0.3rem;
+  font-size: 0.7rem;
+}
+
+.depth-board .depth-share-cell {
+  gap: 0.2rem;
+}
+
+.depth-board [data-depth-share-reset] {
+  padding: 0.15rem 0.35rem;
+  font-size: 0.75rem;
+}
+
 .depth-rating {
   display: inline-block;
-  min-width: 2.1rem;
-  padding: 0.1rem 0.3rem;
+  min-width: 1.9rem;
+  padding: 0.1rem 0.25rem;
   border-radius: 0.35rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
@@ -1018,7 +1044,7 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
 .depth-rating--low { color: var(--danger); }
 
 .depth-board td.depth-abilities {
-  min-width: 9rem;
+  min-width: 7.5rem;
   max-width: 12rem;
   white-space: normal;
 }
