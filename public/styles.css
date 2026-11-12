@@ -1051,6 +1051,17 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
 
 .depth-board .depth-share-input {
   width: 54px;
+  padding-left: 0.35rem;
+  padding-right: 0.35rem;
+  /* No spinner: it ate the room "100" needs and clipped it to "10(". */
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.depth-board .depth-share-input::-webkit-inner-spin-button,
+.depth-board .depth-share-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .depth-ability {
@@ -1105,7 +1116,9 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
   }
 
   .depth-board tr[data-depth-row] > .depth-player-cell {
-    flex: 1 1 0;
+    /* A real basis keeps the name on a readable line; with a zero basis the
+       rating chips claimed the row and squeezed names to one letter wide. */
+    flex: 1 1 10rem;
     min-width: 0;
     font-size: 1rem;
     /* A long name wraps inside its card instead of widening the row. */
