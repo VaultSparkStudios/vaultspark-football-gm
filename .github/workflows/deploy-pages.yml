@@ -26,6 +26,8 @@ on:
       - "scripts/build-pages.mjs"
       - "scripts/check-browser-module-reachability.mjs"
       - "scripts/responsive-evidence.mjs"
+      - "scripts/aggregate-responsive-evidence.mjs"
+      - "scripts/lib/responsive-evidence-*.mjs"
       - "src/**"
 
 permissions:
@@ -84,6 +86,8 @@ jobs:
     needs: gate
     runs-on: ubuntu-latest
     timeout-minutes: 300
+    outputs:
+      candidate-artifact-name: ${{ steps.candidate-name.outputs.name }}
     permissions:
       contents: read
       pages: write
@@ -139,17 +143,100 @@ jobs:
         timeout-minutes: 180
         run: npm run test:ui
 
+      - name: Name the immutable candidate artifact
+        id: candidate-name
+        run: echo "name=pages-candidate-${{ github.run_id }}-${{ github.run_attempt }}" >> "$GITHUB_OUTPUT"
+      - name: Upload immutable candidate for responsive shards
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1, Node 24
+        with:
+          name: ${{ steps.candidate-name.outputs.name }}
+          path: static/
+          include-hidden-files: true
+          if-no-files-found: error
+
+  responsive-capture:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        viewport: [mobile, tablet, desktop]
+    permissions:
+      contents: read
+      actions: read
+    env:
+      PLAYWRIGHT_CHANNEL: chrome
+      EVIDENCE_VIEWPORT: ${{ matrix.viewport }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.candidate_revision || github.sha }}
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "24.14.0"
+          cache: npm
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+      - name: Download the exact built candidate
+        run: gh run download "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" --name "${{ needs.build.outputs.candidate-artifact-name }}" --dir static
+      - name: Verify installed browser
+        run: google-chrome --version
       - name: Capture responsive artifact evidence
         timeout-minutes: 8
         run: npm run evidence:responsive
-
-      - name: Upload responsive evidence
+      - name: Preserve responsive shard evidence and partial diagnostics
+        if: ${{ always() }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1, Node 24
         with:
-          name: responsive-evidence-${{ github.sha }}
+          name: responsive-evidence-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.viewport }}
           path: output/playwright/responsive-*/
           if-no-files-found: error
 
+  publish:
+    needs: [build, responsive-capture]
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+      actions: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_REVISION: ${{ github.event_name == 'workflow_dispatch' && inputs.candidate_revision || github.sha }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.candidate_revision || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "24.14.0"
+          cache: npm
+      - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0, Node 24
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+      - name: Download the exact built candidate and all responsive profiles
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh run download "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" --name "${{ needs.build.outputs.candidate-artifact-name }}" --dir static
+          for viewport in mobile tablet desktop; do
+            artifact_name="$(gh api --paginate "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" --jq ".artifacts[] | select(.expired == false) | .name | select(test(\"^responsive-evidence-${GITHUB_RUN_ID}-[0-9]+-${viewport}$\"))" | sort -V | tail -n 1)"
+            test -n "$artifact_name"
+            gh run download "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" --name "$artifact_name" --dir "output/playwright/responsive-shards/$viewport"
+          done
+      - name: Require exact complete responsive evidence before publication
+        run: node scripts/aggregate-responsive-evidence.mjs --input output/playwright/responsive-shards --expected static/deploy-manifest.json --output output/playwright/responsive-aggregate
+      - name: Preserve aggregate responsive evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1, Node 24
+        with:
+          name: responsive-evidence-${{ github.run_id }}-${{ github.run_attempt }}-aggregate
+          path: output/playwright/responsive-aggregate/
+          if-no-files-found: error
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -205,7 +292,7 @@ jobs:
         run: node scripts/verify-live-origin.mjs
 
   deploy:
-    needs: build
+    needs: publish
     if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     environment:

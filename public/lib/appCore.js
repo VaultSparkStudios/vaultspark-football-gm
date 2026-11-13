@@ -140,7 +140,6 @@ export function renderPlayerProfileHero(profile) {
   const latestSeasonRow = buildProfileSeasonRows(profile).slice().sort((a, b) => (b.season || 0) - (a.season || 0))[0] || null;
   const latestAv = latestSeasonRow?.av ?? 0;
   const contract = player.contract || {};
-  const injury = player.injury?.type ? `${player.injury.type}${player.injury.weeksRemaining ? ` (${player.injury.weeksRemaining}w)` : ""}` : "Healthy";
   const contractLabel = contract.yearsRemaining
     ? `${fmtMoney(contract.salary || 0)} salary | ${contract.yearsRemaining} yrs left`
     : "No active long-term deal";
@@ -152,13 +151,15 @@ export function renderPlayerProfileHero(profile) {
     identity.footballUpbringing ? `Football upbringing: ${identity.footballUpbringing}` : null,
     identity.heritage?.length ? `Family heritage: ${identity.heritage.join(" · ")}` : "Family heritage not disclosed"
   ].filter(Boolean) : [];
+  const rosterSlot = typeof player.rosterSlot === "string" && player.rosterSlot.trim() ? player.rosterSlot : null;
+  const rosterStatus = typeof player.status === "string" && player.status.trim() ? player.status : rosterSlot || "Unknown";
   const badges = [
     `${teamCode(player.teamId)} ${player.position}`,
     `#${player.jerseyNumber ?? "--"}`,
     `OVR ${player.overall ?? "-"}${player.overallIsEstimate ? " (scouted)" : ""}`,
     `Potential ${player.potential ?? "-"}${player.isDraftProspect || (player.teamId && player.teamId !== state.dashboard?.controlledTeamId && player.status !== "retired") ? " (scouted)" : ""}`,
     `${player.developmentTrait || "Steady"} Dev`,
-    player.isDraftProspect ? "Unsigned Prospect" : `${player.rosterSlot || "active"} Slot`
+    player.isDraftProspect ? "Unsigned Prospect" : rosterSlot ? `${rosterSlot} Slot` : "Roster slot unknown"
   ];
 
   return `
@@ -192,8 +193,8 @@ export function renderPlayerProfileHero(profile) {
           </div>
           <div class="player-meta-card">
             <strong>Availability</strong>
-            <div>${escapeHtml(injury)}</div>
-            <div class="small">Status ${escapeHtml(player.status || player.rosterSlot || "active")} | Morale ${escapeHtml(player.morale || "-")}</div>
+            <div>${escapeHtml(narrative.availability)}</div>
+            <div class="small">Status ${escapeHtml(rosterStatus)} | Morale ${escapeHtml(player.morale || "-")}</div>
           </div>
           <div class="player-meta-card">
             <strong>Career Resume</strong>

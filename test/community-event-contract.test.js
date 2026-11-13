@@ -252,4 +252,10 @@ test("participation controls distinguish pending, failed, and acknowledged delet
   const success = communityParticipationPresentation({ pending: false, outcome: { status: "success" } });
   assert.equal(success.deletionStatus, "success");
   assert.match(success.heading, /confirmed/i);
+  const refused = communityParticipationPresentation({ participationFailed: true });
+  assert.match(refused.heading, /sharing is off/i);
+  assert.match(refused.detail, /storage/i);
+  assert.doesNotMatch(refused.heading, /contributing/i);
+  assert.match(communityParticipationPresentation({ participating: true, participationFailed: true }).heading, /contributing/i);
+  assert.match(communityParticipationPresentation({ pending: true, participationFailed: true }).heading, /deletion pending/i);
 });

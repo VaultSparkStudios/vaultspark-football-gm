@@ -101,8 +101,43 @@ function careerMilestones(position, row = {}) {
   return primary.label === starts.label ? [primary] : [primary, starts];
 }
 
+// Describe projected facts, not a promise of game-day selection. List placement,
+// medical recovery and suspension can coexist; none clears the others.
+export function playerAvailabilitySummary(player = {}) {
+  const flags = player.designations || {};
+  const facts = [];
+  const offRoster = player.isDraftProspect || player.status === "draft-prospect" ? "Unsigned prospect"
+    : player.status === "retired" || player.teamId === "RET" ? "Retired player"
+      : player.status === "free-agent" || player.teamId === "FA" ? "Free agent"
+        : player.status === "waiver" || player.teamId === "WAIVER" ? "On waivers"
+          : player.status === "unsigned" ? "Unsigned player" : null;
+  const lists = [["ir", "Injured reserve"], ["pup", "Physically unable to perform (PUP)"],
+    ["nfi", "Non-football injury (NFI)"], ["ps-injured", "Practice Squad/Injured"],
+    ["exemptCommissioner", "Commissioner's exempt list"]].filter(([key]) => flags[key] === true);
+  if (offRoster) facts.push(`${offRoster}; not on an active roster.`);
+  else if (player.rosterSlot === "practice") facts.push("Practice squad; game-day elevation must be confirmed separately.");
+  else if (lists.length || player.rosterSlot === "reserve") facts.push("Reserve placement; activation is not confirmed.");
+  else if (player.status === "active" && player.rosterSlot === "active" && typeof player.teamId === "string" && player.teamId.trim()) {
+    facts.push("Active-roster player; game-day selection remains separate.");
+  } else facts.push("Active-roster eligibility is not established by this profile.");
+  for (const [, label] of lists) facts.push(`${label}.`);
+  if (flags.gameDayInactive === true) facts.push("Game-day inactive.");
+  if (typeof player.suspensionWeeks === "number" && Number.isFinite(player.suspensionWeeks) && player.suspensionWeeks > 0) {
+    facts.push(`Suspended: ${player.suspensionWeeks} week(s) remaining.`);
+  } else if (!offRoster && !(Number.isFinite(player.suspensionWeeks) && player.suspensionWeeks === 0)) facts.push("Suspension status not established.");
+  const injury = player.injury;
+  const injuryName = typeof injury?.type === "string" && injury.type.trim() ? injury.type.trim() : "injury";
+  if (injury === null) facts.push("No current injury recorded.");
+  else if (typeof injury?.weeksRemaining === "number" && Number.isFinite(injury.weeksRemaining) && injury.weeksRemaining > 0) {
+    facts.push(`Medical restriction: ${injuryName}, ${injury.weeksRemaining} week(s) remaining.`);
+  } else if (injury?.weeksRemaining === 0) facts.push(`Recovered ${injuryName}; no recovery weeks remain.`);
+  else facts.push("Medical recovery status not established.");
+  return facts.join(" ");
+}
+
 export function buildPlayerProfileNarrative(profile = {}) {
   const player = profile.player || {};
+  const availability = playerAvailabilitySummary(player);
   const relative = player.profile?.familyRelationship;
   const familyFacts = relative && ['son','brother'].includes(relative.relation) && typeof relative.anchorName === 'string'
     ? [`Family: ${relative.relation} of ${relative.anchorName}`] : [];
@@ -123,13 +158,14 @@ export function buildPlayerProfileNarrative(profile = {}) {
       headline: `Draft Prospect ${titleCase(identity.noun)}`,
       bio: `${player.name || "This prospect"} is being evaluated for ${identity.craft}. Scouting estimates: ${readiness}, ${potential}. These estimates do not establish a true ceiling or guarantee development.`,
       signature: [],
+      availability,
       facts: [
         ...familyFacts,
         `Age ${player.age ?? "—"} · Draft class ${player.draftYear ?? "—"}`,
         `Scouted readiness: ${readiness}`,
         `Scouted potential: ${potential}`,
         "Detailed skills and development outlook remain unconfirmed.",
-        player.injury?.type ? `Medical watch: ${player.injury.type}` : "Unsigned prospect; not on an active roster."
+        availability
       ],
       achievements: ["Awaiting entry into the league"],
       milestones: []
@@ -178,10 +214,6 @@ export function buildPlayerProfileNarrative(profile = {}) {
     : ceilingGap >= 3
       ? `At ${overall} OVR with ${potential} POT, refinement matters more than reinvention.${seasonsClause}`
       : `The ${overall} OVR / ${potential} POT profile is near its modeled ceiling, making role fit and consistency decisive.`;
-  const availability = player.injury?.type
-    ? `Availability watch: ${player.injury.type}${player.injury.weeksRemaining ? `, ${player.injury.weeksRemaining} week(s) remaining` : ""}.`
-    : "Currently healthy and available for the active rotation.";
-
   const facts = [
     ...familyFacts,
     `Age ${age || "—"} · ${player.experience || 0} years of experience · ${seasonCount} recorded season${seasonCount === 1 ? "" : "s"}`,
@@ -207,6 +239,7 @@ export function buildPlayerProfileNarrative(profile = {}) {
     headline: `${titleCase(phase)} ${titleCase(identity.noun)}`,
     bio: `${opening} ${trajectory} ${availability}`,
     signature,
+    availability,
     facts,
     achievements,
     milestones

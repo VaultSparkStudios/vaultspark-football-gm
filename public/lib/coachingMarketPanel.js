@@ -9,6 +9,9 @@
  */
 
 import { escapeHtml, teamCode } from "./appCore.js";
+import { state, api } from "./appState.js";
+import { applyDashboard, callUiIsland } from "./gameFlow.js";
+export { initCoachingMarketPanel } from "./coachingMarketActions.js";
 
 const PANEL_ID = "coachingMarketPanel";
 
@@ -92,22 +95,56 @@ export function renderCoachingMarketPanel(market) {
   `;
 }
 
-/**
- * Wire the market once. Delegated so re-renders never need re-binding.
- * @param {(payload: {action: string, role: string, candidateId: string|null}) => void} onAction
- */
-export function initCoachingMarketPanel(onAction) {
-  const node = document.getElementById(PANEL_ID);
-  if (!node || node.dataset.wired === "1") return;
-  node.dataset.wired = "1";
-  node.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-coach-action]");
-    if (!button || button.disabled) return;
-    node.querySelectorAll("[data-coach-action]").forEach((el) => { el.disabled = true; });
-    onAction({
-      action: button.dataset.coachAction,
-      role: button.dataset.role,
-      candidateId: button.dataset.candidate || null
-    });
+// The team is captured at the click boundary, before this module is fetched.
+export async function applyCoachingMarketAction({ teamId, action, role, candidateId }) {
+  const payload = await api("/api/coaching-market", {
+    method: "POST", body: { teamId, role, action, candidateId }
   });
+  applyDashboard(payload.state);
+  await loadStaff();
+}
+
+const selectedStaffTeam = () => document.getElementById("staffTeamSelect")?.value || state.dashboard?.controlledTeamId;
+
+export async function loadStaff() {
+  const render = renderCoachingMarketPanel;
+  const teamId = selectedStaffTeam() || "BUF";
+  const controlledTeamId = state.dashboard?.controlledTeamId || null;
+  render({
+    ok: false,
+    error: teamId !== controlledTeamId
+      ? `You control ${teamCode(controlledTeamId)}. ${teamCode(teamId)}'s staff is visible, but only its own front office can change it.`
+      : "Loading the coaching market…"
+  });
+  const payload = await api(`/api/staff?team=${encodeURIComponent(teamId)}`);
+  const currentTeamId = selectedStaffTeam() || "BUF";
+  if (currentTeamId !== teamId) return;
+  state.staffState = payload.staff || null;
+  callUiIsland("settings", "renderStaff");
+  await loadCoachingMarket(teamId);
+}
+// Hiring is controlled-club only; rival staff sheets remain viewable.
+export async function loadCoachingMarket(teamId = null) {
+  const render = renderCoachingMarketPanel;
+  const team = teamId || selectedStaffTeam();
+  const role = document.getElementById("staffRoleSelect")?.value || "headCoach";
+  if (team && state.dashboard?.controlledTeamId && team !== state.dashboard.controlledTeamId) {
+    render({
+      ok: false,
+      error: `You control ${teamCode(state.dashboard.controlledTeamId)}. ${teamCode(team)}'s staff is visible, but only its own front office can change it.`
+    });
+    return;
+  }
+  try {
+    const market = await api(
+      `/api/coaching-market?team=${encodeURIComponent(team)}&role=${encodeURIComponent(role)}`
+    );
+    const currentTeam = selectedStaffTeam();
+    const currentRole = document.getElementById("staffRoleSelect")?.value || "headCoach";
+    if (currentTeam !== team || currentRole !== role) return;
+    render(market);
+  } catch (error) {
+    if (selectedStaffTeam() !== team || (document.getElementById("staffRoleSelect")?.value || "headCoach") !== role) return;
+    render({ ok: false, error: error?.message || "Coaching market unavailable." });
+  }
 }

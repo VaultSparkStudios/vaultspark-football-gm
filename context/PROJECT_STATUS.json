@@ -22,7 +22,7 @@
     "protocol": "oidc-authorization-code-s256-pkce",
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
-  "truthAuditStatus": "Selected S128 technical release and formal closeout phase evidence verified; final containing receipt publication/readback and original bound lock release remain native guards; broader launch readiness partial.",
+  "truthAuditStatus": "Recovery evidence published; active arc audit and full release parity remain incomplete.",
   "truthAuditLastRun": "2026-10-29",
   "ignisScore": 42318,
   "ignisGrade": "FORGE",
@@ -82,7 +82,7 @@
     "automationCoverage": 63
   },
   "currentSession": 129,
-  "lastAgent": "claude-code",
+  "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
     "session": 128,
@@ -126,10 +126,10 @@
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
-    "score": 83,
+    "score": 75,
     "date": "2026-11-13",
-    "passing": 10,
-    "warning": 2,
+    "passing": 9,
+    "warning": 3,
     "checks": [
       {
         "id": "release-authority-checked-publication-current",
@@ -142,6 +142,12 @@
         "status": "warning",
         "blocking": false,
         "detail": "release source 812fd52b5ea01d1e0ef3d4037d383f311998aaa5 · live staging 74683a5746ce384518aff84977243e8728799f09"
+      },
+      {
+        "id": "release-authority-git-head-covered-by-publication",
+        "status": "warning",
+        "blocking": false,
+        "detail": "HEAD c5290c3d26e6117e7ae99f1381b05bbbef342814 is not covered by live production 74683a5746ce384518aff84977243e8728799f09"
       }
     ]
   },
@@ -154,7 +160,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.008,
   "entropyLastComputed": "2026-10-29",
-  "lastSessionSummary": "S129 recovered its cut-off depth-chart rebuild (c2e5a5ca) and shipped to main a weekly challenge with shareable links, a root llms.txt, football playing styles with earned signature abilities, and a Pages build without developer runtime controls (51701878). Not yet deployed: production is unchanged.",
+  "lastSessionSummary": "S129 recovery published and read back at c5290c3d: current Studio 398/398, recovered application hosted CI 7/7 and frontend provenance verified separately. API parity remains pending.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -2333,7 +2339,7 @@
     "durableSession": 129,
     "currentFocus": "S129 recovery: the two depth-chart fixes are written back; current Studio398/398 and recovered application hosted CI7/7 are separately verified. Frontend staging/production74683a57 provenance14/14 each is verified, while API health still reports812fd52b. Screenshot retention and local authority repairs are recorded. Full new arc and release parity remain pending.",
     "nextMilestone": "Finish S129 recovery and its evidence reconciliation, then run the new goal’s full startup, audit, implement, closeout and authorized staging/production release.",
-    "lastSessionSummary": "S129 recovered its cut-off depth-chart rebuild (c2e5a5ca) and shipped to main a weekly challenge with shareable links, a root llms.txt, football playing styles with earned signature abilities, and a Pages build without developer runtime controls (51701878). Not yet deployed: production is unchanged."
+    "lastSessionSummary": "S129 recovery published and read back at c5290c3d: current Studio 398/398, recovered application hosted CI 7/7 and frontend provenance verified separately. API parity remains pending."
   },
   "partialCloseout": {
     "session": 117,
@@ -2909,15 +2915,18 @@
     "receiptSha256": "9d22b69f8ab81adc0e355ff661a193350750cda24bf71ff067338a3743606476"
   },
   "activeArc": {
-    "session": 128,
-    "audit": "docs/AUDIT_2026-10-29-S128.json",
-    "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
-    "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
-    "status": "selected-outcomes-and-closeout-phase-evidence-verified-final-native-guards-pending",
-    "productionVerified": true,
-    "acceptance": "reports/s128-release-acceptance.json",
-    "closeoutComplete": true,
-    "completion": "reports/s128-closeout-completion.json"
+    "session": 130,
+    "phase": "candidate-preparation",
+    "startHead": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+    "complete": false,
+    "selected": [
+      "boot-headroom",
+      "community-consent-revocation",
+      "player-availability-truth",
+      "co-gm-export-integrity",
+      "responsive-capture-shards"
+    ],
+    "localOutcomesVerified": 4
   },
   "silScoreBasis": "Root-reviewed engineering judgment; player and financial outcomes remain unmeasured.",
   "silDebt": "→",
@@ -2963,7 +2972,7 @@
   },
   "silDebtTrend": "→",
   "silLastUpdated": "2026-11-11",
-  "lastDeployStatus": "S128 matching frontend/API812fd52b accepted; corrected closing metadata398, first containing publication/readback, signed impact and owned cleanup verified. Final containing receipt publication/readback and original bound-lock release remain guarded.",
+  "lastDeployStatus": "Observed frontend staging/production 74683a57; API health still 812fd52b. Full release parity pending.",
   "previousBackendDeployment": {
     "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
     "workflowRun": 40135991113,
@@ -3123,10 +3132,10 @@
   },
   "currentTestRun": {
     "status": "passed",
-    "scope": "Studio only",
-    "passed": 398,
-    "total": 398,
-    "receipt": "reports/s129-recovery-studio-pass.json"
+    "scope": "S130 complete local Studio shard only; exact-candidate full CI pending",
+    "passed": 441,
+    "total": 441,
+    "receipt": "reports/s130-studio-candidate.json"
   },
   "historicalTestVerification": {
     "session": 128,
@@ -3150,5 +3159,6 @@
   "s129StudioRepair": "reports/s129-recovery-studio-repair.json",
   "s129RecoveryBackendObservation": "reports/s129-recovery-backend-observation.json",
   "s129PropagationFeedback": "reports/s129-propagation-feedback.json",
-  "s129RecoveryCheckpoint": "reports/s129-recovery-checkpoint.json"
+  "s129RecoveryCheckpoint": "reports/s129-recovery-checkpoint.json",
+  "currentImplementationProgress": "reports/s130-implementation-progress.json"
 }

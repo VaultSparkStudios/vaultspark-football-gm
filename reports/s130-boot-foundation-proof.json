@@ -1,0 +1,25 @@
+{
+  "session": 130,
+  "observedAt": "2026-11-13T06:15:13.928Z",
+  "kind": "isolated-foundation-countercheck",
+  "baseRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+  "baseline": {
+    "bytes": 649881,
+    "modules": 52
+  },
+  "foundation": {
+    "bytes": 644656,
+    "modules": 52,
+    "headroom": 5344,
+    "ok": true,
+    "findings": []
+  },
+  "unchangedManifest": true,
+  "historicalMeasurement": {
+    "path": ".cache/s130-boot-foundation.json",
+    "sha256": "6e541c7fe1812eccdf92c36b395128a9b76ed942c7909995c05b6b50aaeea00a",
+    "bytes": 645880,
+    "headroom": 4120
+  },
+  "scope": "Fresh isolated countercheck from committed baseline with only current coaching refactor, including its hydration recovery reorder. Other selected repairs are absent. Git-extracted baseline uses committed line endings, so its byte count is a separately declared boundary, not a reproduction of the original Windows worktree bytes. Original earlier foundation measurement is preserved separately; no historical timestamp/source identity is fabricated."
+}

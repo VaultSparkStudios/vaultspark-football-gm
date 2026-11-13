@@ -10,6 +10,34 @@ const report = { expectedRevision: revision, summary: { status: "verified" }, ch
 const visual = { sourceRevision: revision, artifactFingerprint: { digest }, inspection: { renderedPixelsReviewed: true, blockingDefectsOpen: 0 } };
 const performance = { sourceRevision: revision, artifactFingerprint: { digest }, evaluation: { status: "verified" } };
 
+function workflowJob(source, id) {
+  const lines = source.split(/\r?\n/);
+  const start = lines.indexOf(`  ${id}:`);
+  assert.ok(start >= 0, `required publication job ${id} is missing`);
+  let end = start + 1;
+  while (end < lines.length && !/^ {2}\S/.test(lines[end])) end += 1;
+  return lines.slice(start, end).join("\n");
+}
+
+function assertCompletePagesPublicationChain(source) {
+  const build = workflowJob(source, "build");
+  const capture = workflowJob(source, "responsive-capture");
+  const publish = workflowJob(source, "publish");
+  const deploy = workflowJob(source, "deploy");
+  assert.match(build, /^ {4}needs: gate$/m, "build keeps its complete behavior gate");
+  assert.match(capture, /^ {4}needs: build$/m, "capture uses the gated built candidate");
+  const rawNeeds = publish.match(/^ {4}needs:\s*\[([^\]]+)\]$/m)?.[1];
+  const needs = rawNeeds?.split(",").map((value) => value.trim()) || [];
+  assert.ok(needs.includes("build") && needs.includes("responsive-capture"), "publication needs both the built candidate and all responsive jobs");
+  const aggregate = publish.indexOf("node scripts/aggregate-responsive-evidence.mjs");
+  assert.ok(aggregate >= 0, "publication executes the complete responsive aggregate gate");
+  for (const mutation of ["- name: Upload Pages artifact", "- name: Publish to Cloudflare Pages"]) {
+    assert.ok(publish.indexOf(mutation) > aggregate, `${mutation} must follow complete aggregate acceptance`);
+  }
+  assert.match(deploy, /^ {4}needs: publish$/m, "GitHub Pages deployment cannot bypass final publication checks");
+  assert.match(deploy, /^ {4}if: \$\{\{ github\.event_name == 'workflow_dispatch' \}\}$/m, "GitHub Pages deployment remains explicit");
+}
+
 test("unified release authority requires exact staging, production, visual, and performance identity", () => {
   const authority = deriveReleaseAuthority({ stagingReport: report, productionReport: report, visualReceipt: visual, performanceReceipt: performance });
   assert.equal(authority.status, "verified");
@@ -80,8 +108,17 @@ test("Pages production publication is explicit and bound to exact stable-staging
   assert.match(workflow, /Verify stable staging serves the exact promotion candidate[\s\S]*verify-staging-receipt\.mjs/);
   assert.match(workflow, /name: Publish to Cloudflare Pages \(live origin\)\s+if: \$\{\{ github\.event_name == 'workflow_dispatch' \}\}/);
   assert.match(workflow, /name: Verify the live origin serves this build\s+if: \$\{\{ github\.event_name == 'workflow_dispatch' \}\}/);
-  assert.match(workflow, /deploy:\s+needs: build\s+if: \$\{\{ github\.event_name == 'workflow_dispatch' \}\}/);
+  assertCompletePagesPublicationChain(workflow);
   assert.doesNotMatch(workflow, /--commit-hash="\$\{GITHUB_SHA\}"/);
+});
+
+test("Pages publication-chain guard rejects bypassed capture, aggregation and final deployment dependencies", () => {
+  const workflow = readFileSync(new URL("../.github/workflows/deploy-pages.yml", import.meta.url), "utf8").replace(/\r\n/g, "\n");
+  for (const bypass of [
+    workflow.replace("needs: [build, responsive-capture]", "needs: build"),
+    workflow.replace("node scripts/aggregate-responsive-evidence.mjs", "node scripts/not-the-aggregate-gate.mjs"),
+    workflow.replace("  deploy:\n    needs: publish", "  deploy:\n    needs: build")
+  ]) assert.throws(() => assertCompletePagesPublicationChain(bypass));
 });
 
 test("release currency distinguishes current evidence, stale claims, safe receipt descendants, and unknown live state", () => {

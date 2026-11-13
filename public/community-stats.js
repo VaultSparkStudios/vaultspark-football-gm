@@ -53,6 +53,7 @@ let activePeriod = "30d";
 let latestSnapshot = null;
 let latestSnapshotEtag = "";
 let latestDeletionOutcome = getPendingCommunityDeletion() ? { status: "pending", reason: "retrying" } : null;
+let latestParticipationFailure = false;
 let refreshTimer = null;
 let snapshotRequest = null;
 let snapshotFailureCount = 0;
@@ -106,7 +107,7 @@ function freshness(snapshot) {
   return `Updated ${Math.max(1, Math.round(seconds / 60))}m ago`;
 }
 
-export function communityParticipationPresentation({ participating = false, pending = false, outcome = null } = {}) {
+export function communityParticipationPresentation({ participating = false, pending = false, outcome = null, participationFailed = false } = {}) {
   const deletionStatus = pending ? (outcome?.status === "failed" ? "failed" : "pending") : (outcome?.status === "success" ? "success" : "idle");
   const heading = participating
     ? "You're contributing"
@@ -116,7 +117,7 @@ export function communityParticipationPresentation({ participating = false, pend
         ? "Sharing is off — deletion pending"
         : deletionStatus === "success"
           ? "Sharing stopped — deletion confirmed"
-          : "Help bring these numbers to life";
+          : participationFailed ? "Sharing is off — could not enable sharing" : "Help bring these numbers to life";
   const detail = participating
     ? "Thanks—only game choices and results are shared. Your save stays on this device."
     : deletionStatus === "failed"
@@ -125,14 +126,17 @@ export function communityParticipationPresentation({ participating = false, pend
         ? "No new activity is being shared. The prior anonymous receipts will be deleted when the service acknowledges the request."
         : deletionStatus === "success"
           ? "The service acknowledged deletion of receipts tied to this browser identifier."
-          : "Share game choices and results without sharing your save, names, notes, or private details.";
+          : participationFailed
+            ? "This browser could not save your participation choice. Check storage access and try again; sharing stays off."
+            : "Share game choices and results without sharing your save, names, notes, or private details.";
   return { deletionStatus, heading, detail };
 }
 
 function participationMarkup() {
   const participating = getCommunityParticipation();
   const pending = Boolean(getPendingCommunityDeletion());
-  const { deletionStatus, heading, detail } = communityParticipationPresentation({ participating, pending, outcome: latestDeletionOutcome });
+  const { deletionStatus, heading, detail } = communityParticipationPresentation({ participating, pending,
+    outcome: latestDeletionOutcome, participationFailed: latestParticipationFailure });
   return `<div class="community-consent" data-participating="${participating}" data-deletion-status="${deletionStatus}">
     <div role="status" aria-live="polite"><strong>${heading}</strong><span>${detail}</span></div>
     <button type="button" class="${participating ? "btn-ghost" : "btn-primary"}" ${pending ? "data-community-delete-retry" : "data-community-consent"}>${pending ? "Retry deletion" : participating ? "Stop sharing & delete mine" : "Share anonymous game stats"}</button>
@@ -301,11 +305,14 @@ function bindConsent(scope = document) {
   scope.querySelectorAll("[data-community-consent], [data-community-delete-retry]").forEach((button) => {
     button.addEventListener("click", async () => {
       button.disabled = true;
+      latestParticipationFailure = false;
       if (button.hasAttribute("data-community-delete-retry")) {
         latestDeletionOutcome = await retryPendingCommunityDeletion();
       } else {
-        const result = await setCommunityParticipation(!getCommunityParticipation());
+        const requested = !getCommunityParticipation();
+        const result = await setCommunityParticipation(requested);
         latestDeletionOutcome = result.deletion;
+        latestParticipationFailure = requested && !result.participating && !getPendingCommunityDeletion();
       }
       renderPulse(latestSnapshot);
       renderAtlas(latestSnapshot);

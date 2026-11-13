@@ -1,0 +1,172 @@
+{
+  "session": 130,
+  "receiptSelfHashExcluded": true,
+  "checkedAt": "2026-11-13T06:56:13.912Z",
+  "scope": "Actual staged text checkpoint before writing this receipt; PNGs and deleted blobs excluded. The receipt does not hash itself; native outgoing hook scans final containing publication.",
+  "scanner": "Canonical scanContent imported without owner CLI/ledger mutation",
+  "scanned": 41,
+  "findings": [],
+  "count": 0,
+  "paths": [
+    {
+      "file": ".github/workflows/deploy-pages.yml",
+      "sha256": "61618328e55b7903c3bf81c7d4a2745e328993043190460dfb5351146dd6f4e3"
+    },
+    {
+      "file": "context/LATEST_HANDOFF.compact.md",
+      "sha256": "0258cd69fe2e826146628fdbc6ecb5e68716fe4f9164ccafe72c8ddfb572afe7"
+    },
+    {
+      "file": "context/LATEST_HANDOFF.md",
+      "sha256": "0559fb0597393faaff231f8d97e33abdc8f8f6a3faa804fa88dd2a6274024365"
+    },
+    {
+      "file": "context/PROJECT_STATUS.json",
+      "sha256": "e0d4cdbbed11d87e93e04f68921976c8e74b8bc7f401c5699e71d664d15bc84b"
+    },
+    {
+      "file": "context/TASK_BOARD.md",
+      "sha256": "e1385d5949e676924247bb79e68cf97929f78cd40ec8bc19c1bc88f786a3016f"
+    },
+    {
+      "file": "docs/AUDIT_2026-11-13.json",
+      "sha256": "386671a8c7279231a9d3c721ad06a3b30f2039bae63a728b756ccde88b6991be"
+    },
+    {
+      "file": "docs/AUDIT_2026-11-13.md",
+      "sha256": "523a8f7e9ff5e33b67daca22b29d12669ee9d09ed4ba5af4deaa219362a8be7e"
+    },
+    {
+      "file": "docs/IMPLEMENT_PLAN.md",
+      "sha256": "b01604ac838432004bb717272e713dcf6015fe0ecfe27ecc3548fd64721f6394"
+    },
+    {
+      "file": "docs/STARTUP_BRIEF.md",
+      "sha256": "90d62e2ee713c56d00923185c721bb6acb2509faa69dd47ec41f629c60bc111e"
+    },
+    {
+      "file": "docs/visual-qa/CAPTURE_LEDGER.json",
+      "sha256": "63f0d54837b16ef3188520085afb51909d44a386f46f8230bde5325253d3c009"
+    },
+    {
+      "file": "docs/visual-qa/LATEST.json",
+      "sha256": "c181aa1adf68bb96040f71a3df0658c4f8af05b87e954e772d335941fb259a41"
+    },
+    {
+      "file": "public/app.js",
+      "sha256": "248b9caec000f62c3c7a7cc5df0e385632d6b89184c151c5538ff6c2b327c613"
+    },
+    {
+      "file": "public/community-stats.js",
+      "sha256": "6debb4a69ec7d52110b474beb033319d1f590cad67217206d380d6a345621056"
+    },
+    {
+      "file": "public/lib/appCore.js",
+      "sha256": "13c19bb177143690bb5adef982dbbf7b2b5a651abdf1cc09946185884ae64be7"
+    },
+    {
+      "file": "public/lib/coGmBriefPanel.js",
+      "sha256": "cfb33ec4f1d28723fb5721efa10ff1d7ac29ec234aba746379d86173fc4584ec"
+    },
+    {
+      "file": "public/lib/coGmBriefing.js",
+      "sha256": "90c1c798daaa4f765608cf5aaad6b09227a4f231606eb24a3654afd7a297df47"
+    },
+    {
+      "file": "public/lib/coachingMarketActions.js",
+      "sha256": "2b119e3fe4a5da33b7b6c8f001b8293fa706b027f1554bf3a8f67751829ad318"
+    },
+    {
+      "file": "public/lib/coachingMarketPanel.js",
+      "sha256": "81f802dd703000e99fda12686ef38fd48ae686dff246ea87a5462a0b3d2b6410"
+    },
+    {
+      "file": "public/lib/communityTelemetry.js",
+      "sha256": "8797c75193dda3ec3ee88c912a4fbf8ba06172b4d1d1f57b4a8197f2261252d9"
+    },
+    {
+      "file": "public/lib/gameFlow.js",
+      "sha256": "104e96751d241c0f6b86a9ce0b075b97942191753f0d7c97212cb44b8dcfb8d2"
+    },
+    {
+      "file": "public/lib/playerProfileNarrative.js",
+      "sha256": "6f3b09786673a807e4044b69b86e2d19b77d51c5882d16fb87e9cbf8de4d4e50"
+    },
+    {
+      "file": "public/styles.css",
+      "sha256": "a71a5560d96a9e52ed501a02cb49f8d15b72d50c6286a812af0a9587a3c0d9dd"
+    },
+    {
+      "file": "reports/s130-boot-foundation-proof.json",
+      "sha256": "b7907ca5c9586b57f0389d5612ffc8b102feec980998fe9b0419b9a6a7800cdf"
+    },
+    {
+      "file": "reports/s130-browser-acceptance.json",
+      "sha256": "43f40544c611ceddcb6284f71c6597aed2e95d77c9979124ab7be7e5dae09059"
+    },
+    {
+      "file": "reports/s130-focused-tests.json",
+      "sha256": "0a19c9e21641450714ebcdd5b76944714c4f405d7458e762121294292e0ac5c7"
+    },
+    {
+      "file": "reports/s130-implementation-progress.json",
+      "sha256": "49db26bd1a5ed8079457d03b0145f609a9a130252b36018b18165ad395f70b54"
+    },
+    {
+      "file": "reports/s130-studio-candidate.json",
+      "sha256": "a79814d1577d07a2be9272f6546762ec17b02b51a3915f259196c61ef420b0f9"
+    },
+    {
+      "file": "scripts/aggregate-responsive-evidence.mjs",
+      "sha256": "a44221b444c5cf3d7cba9b3a8c45b9eb6bb3b4853b72416911f6d1e98d009054"
+    },
+    {
+      "file": "scripts/lib/responsive-evidence-aggregate.mjs",
+      "sha256": "ddf888a1c3b2cce263c629b3a11cdb6af63ba19b17572a29869e3994a407891e"
+    },
+    {
+      "file": "scripts/lib/responsive-evidence-contract.mjs",
+      "sha256": "216bc2ddadda4c7a86f795b084572a9e4171d3d5b08f375a6827fce5e07c9717"
+    },
+    {
+      "file": "scripts/responsive-evidence.mjs",
+      "sha256": "afbc0f218aac72ecd805e70f88d259cbcea7a886199c6c9be390e72f1455cf2f"
+    },
+    {
+      "file": "scripts/run-test-shard.mjs",
+      "sha256": "f9e678e70f87299a1634789b943627d531952208ad8207d55aac6b4b7d221085"
+    },
+    {
+      "file": "test/co-gm-briefing.test.js",
+      "sha256": "e969210c9961b48b0d6e2b6b32cff81e0348fce2c875ca14a2c129332f5f79d7"
+    },
+    {
+      "file": "test/community-event-contract.test.js",
+      "sha256": "a1a366f489e64b94106893bef88acf9c49ba857f3a0cee2ef88b2988e23572cb"
+    },
+    {
+      "file": "test/community-telemetry-consent.test.js",
+      "sha256": "051706bbb796a0d0b788b43fc04f46a87517b8e51df16f53d12b697d1dd6219d"
+    },
+    {
+      "file": "test/player-profile-narrative.test.js",
+      "sha256": "9dc6f8d9bc2ea211de1d3899e0b47381a14613e10c4023fa8af747826e9a8d1a"
+    },
+    {
+      "file": "test/release-authority.test.js",
+      "sha256": "144750a77d2d66b155bdd3b80415b20ca25c2fdb9123ec32939dfbf6fc49c260"
+    },
+    {
+      "file": "test/responsive-evidence-shards.test.js",
+      "sha256": "b750d18170faaf4a48a5ef847c826e670f4421aa556484c23ae84acd36194ad3"
+    },
+    {
+      "file": "test/ui-islands.test.js",
+      "sha256": "2b02aeff3be6cab43c718fe0deb0cf837bc8afb86b93857e394df32ed3aeedc1"
+    },
+    {
+      "file": "tests-ui/s130-beta-hardening.spec.js",
+      "sha256": "ac894b36d7003c9d8347ec7ad1fd45143f374b90166591ab1b4344714703dc76"
+    }
+  ]
+}

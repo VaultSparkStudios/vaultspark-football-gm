@@ -1,0 +1,989 @@
+{
+  "schemaVersion": "2.1",
+  "date": "2026-11-13",
+  "session": 130,
+  "source": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+  "project": {
+    "slug": "franchise-architect-football",
+    "type": "game",
+    "name": "Franchise Architect: Football"
+  },
+  "scope": "Full fresh nine-axis S130 audit and readiness assessment; five selected L2 outcomes plus authorized exact-candidate staging/production release and full closeout. Other candidacies remain explicitly unselected.",
+  "profile": {
+    "rubric": "product",
+    "audience": "public-unlaunched",
+    "source": "Current post-start source reads, bounded native sample, independently revalidated source surveys, and mock-only premise reproductions.",
+    "type": "game",
+    "staging": "independent Cloudflare Pages project; stable staging domain"
+  },
+  "lifecycleFocus": {
+    "stage": "FB",
+    "recordedStage": "FB",
+    "display": "FORGE · BETA",
+    "audience": "public-unlaunched",
+    "health": "yellow",
+    "releaseTarget": null,
+    "mode": "public-beta-hardening",
+    "readiness": true,
+    "areas": [
+      "core journeys and product correctness",
+      "onboarding and identity/access",
+      "accessibility, mobile parity and every supported theme",
+      "performance and capacity",
+      "security, privacy, data integrity and abuse controls",
+      "backup, recovery and rollback",
+      "email and notifications where used",
+      "observability and actionable analytics",
+      "feedback, support and issue triage",
+      "branding, legal, contact and rights/provenance",
+      "human and agent access where applicable",
+      "staging, release evidence and truthful beta/release communication"
+    ],
+    "stageConflict": null,
+    "statusSource": "project-status",
+    "stageSource": "project-status"
+  },
+  "axes": {
+    "features-depth": 1.5,
+    "ui-ux-feedback": 3,
+    "gamification-immersion": 5,
+    "ai-intelligence": 1.5,
+    "security": 1,
+    "speed-organization-efficiency": 2,
+    "token-cost": 1,
+    "observability-honesty": 1,
+    "sil-debt": 1
+  },
+  "items": [
+    {
+      "id": 2,
+      "slug": "co-gm-export-integrity",
+      "title": "Export truthful and recoverable Co-GM briefings",
+      "axis": "ai-intelligence",
+      "category": "ai-intelligence",
+      "tier": "⚡",
+      "impact": 8,
+      "innovation": 6,
+      "effortHours": 3,
+      "priority": 31.008712181284302,
+      "status": "shipped",
+      "readinessArea": "human and agent access where applicable",
+      "stageRationale": "FORGE/FB beta hardening: repair a reproduced product failure or measured release prerequisite within the existing authorized arc.",
+      "recipe": "Admit finite numeric values and intentional numeric strings without coercing absent/boolean values. Filter malformed optional rows while preserving bounded valid data and disclosure. Reuse action-error reporting around copy/download import and build, retain clipboard fallback, retry and download cleanup.",
+      "acceptance": "Unknown remains null; real zero survives; malformed rows preserve valid peers; secret/save fields remain excluded. Browser copy/download failures are visible and retry succeeds in every touched theme/viewport.",
+      "premises": [
+        {
+          "claim": "Reproduced unknown year/week/cap becoming zero and null injury rows throwing; app click handlers import/build outside their existing error boundary.",
+          "adapter": "file-content",
+          "target": "public/lib/coGmBriefing.js",
+          "pattern": "const normalized = Number(value);",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Repair the immediate failure while retaining existing behavior; reduced depth is not the selected acceptance."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Admit finite numeric values and intentional numeric strings without coercing absent/boolean values. Filter malformed optional rows while preserving bounded valid data and disclosure. Reuse action-error reporting around copy/download import and build, retain clipboard fallback, retry and download cleanup."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Optional broader redesign is unselected; complete the declared L2 acceptance without widening scope."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-11-13T06:43:19.948Z",
+          "status": "shipped",
+          "note": "L2 local acceptance verified: unknown/null, real zero, malformed peers, bounded disclosure and safe identities pass. Four-profile copy/import/build/clipboard/download failure and valid retry checks pass; native cleanup and scoped diagnostic recovery preserve unrelated warnings. reports/s130-focused-tests.json and reports/s130-browser-acceptance.json. Deployment and exact-candidate integration remain separately pending."
+        }
+      ],
+      "evidence": "Reproduced unknown year/week/cap becoming zero and null injury rows throwing; app click handlers import/build outside their existing error boundary.",
+      "insight": "The assistant currently receives invented zeroes for missing fields, and damaged rows can stop export. Preserve known data and expose recoverable export failures.",
+      "rank": 1,
+      "premise": "Reproduced unknown year/week/cap becoming zero and null injury rows throwing; app click handlers import/build outside their existing error boundary.",
+      "executionEvidence": "L2 local acceptance verified: unknown/null, real zero, malformed peers, bounded disclosure and safe identities pass. Four-profile copy/import/build/clipboard/download failure and valid retry checks pass; native cleanup and scoped diagnostic recovery preserve unrelated warnings. reports/s130-focused-tests.json and reports/s130-browser-acceptance.json. Deployment and exact-candidate integration remain separately pending."
+    },
+    {
+      "id": 4,
+      "slug": "responsive-capture-shards",
+      "title": "Capture every responsive state within bounded release jobs",
+      "axis": "speed-organization-efficiency",
+      "category": "speed-organization-efficiency",
+      "tier": "🔥",
+      "impact": 9,
+      "innovation": 4,
+      "effortHours": 4,
+      "priority": 27.853402120886994,
+      "status": "pending",
+      "readinessArea": "staging, release evidence and truthful beta/release communication",
+      "stageRationale": "FORGE/FB beta hardening: repair a reproduced product failure or measured release prerequisite within the existing authorized arc.",
+      "recipe": "Reuse the three existing viewport profiles as independent bounded jobs with distinct output paths/artifacts. Aggregate exact required-name coverage, themes, source revision and artifact digest before publication. Reject missing/duplicate/mismatched/invalid profiles; retain partial failure diagnostics and per-viewport timings. Preserve every capture and assertion and the eight-minute per-job bound.",
+      "acceptance": "All existing states and themes retained. Missing viewport/capture, wrong source/digest, duplicate profile and failed shard must refuse publication. Actual full three-viewport run and hosted successful capture jobs with complete aggregate evidence.",
+      "premises": [
+        {
+          "claim": "Executed Pages43149099241 exceeded its eight-minute step after printing327 captures. Source runs all viewports serially and each invocation clears one shared revision directory.",
+          "adapter": "file-content",
+          "target": "scripts/responsive-evidence.mjs",
+          "pattern": "for (const viewport of viewports)",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Repair the immediate failure while retaining existing behavior; reduced depth is not the selected acceptance."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Reuse the three existing viewport profiles as independent bounded jobs with distinct output paths/artifacts. Aggregate exact required-name coverage, themes, source revision and artifact digest before publication. Reject missing/duplicate/mismatched/invalid profiles; retain partial failure diagnostics and per-viewport timings. Preserve every capture and assertion and the eight-minute per-job bound."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "Optional broader redesign is unselected; complete the declared L2 acceptance without widening scope."
+        }
+      },
+      "executionLog": [],
+      "evidence": "Executed Pages43149099241 exceeded its eight-minute step after printing327 captures. Source runs all viewports serially and each invocation clears one shared revision directory.",
+      "insight": "One slow serial image run currently blocks release. Capture the existing viewports independently and require their exact source-bound union before publishing.",
+      "rank": 2,
+      "premise": "Executed Pages43149099241 exceeded its eight-minute step after printing327 captures. Source runs all viewports serially and each invocation clears one shared revision directory.",
+      "executionEvidence": "Local capture guards60/60 and independent source review pass. Actual full327capture and successful hosted three-profile complete aggregate remain pending."
+    },
+    {
+      "id": 3,
+      "slug": "player-availability-truth",
+      "title": "Describe player availability from actual eligibility facts",
+      "axis": "features-depth",
+      "category": "features-depth",
+      "tier": "⚡",
+      "impact": 7,
+      "innovation": 5,
+      "effortHours": 2,
+      "priority": 26.25,
+      "status": "shipped",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB beta hardening: repair a reproduced product failure or measured release prerequisite within the existing authorized arc.",
+      "recipe": "Use existing projected suspension, reserve, practice, inactive and medical facts before healthy prose. Preserve concurrent restrictions, explain current availability without inventing eligibility, and handle recovered or malformed optional injury data.",
+      "acceptance": "Pure cases for healthy, suspension, practice, IR/PUP/NFI, inactive, recovered injury and concurrent restrictions; real dossier renders desktop/mobile in dark/light.",
+      "premises": [
+        {
+          "claim": "Reproduced a suspended reserve profile receiving the healthy/available sentence; the runtime projects eligibility restrictions already.",
+          "adapter": "file-content",
+          "target": "public/lib/playerProfileNarrative.js",
+          "pattern": "Currently healthy and available for the active rotation.",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Repair the immediate failure while retaining existing behavior; reduced depth is not the selected acceptance."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Use existing projected suspension, reserve, practice, inactive and medical facts before healthy prose. Preserve concurrent restrictions, explain current availability without inventing eligibility, and handle recovered or malformed optional injury data."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "Optional broader redesign is unselected; complete the declared L2 acceptance without widening scope."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-11-13T06:43:19.948Z",
+          "status": "shipped",
+          "note": "L2 local acceptance verified:18pure/projected healthy, suspended, practice, reserve, inactive, recovered and concurrent restriction cases; actual dossier/Availability renders inspected desktop/mobile dark/light. reports/s130-focused-tests.json and docs/visual-qa/LATEST.json. Deployment and exact-candidate integration remain separately pending."
+        }
+      ],
+      "evidence": "Reproduced a suspended reserve profile receiving the healthy/available sentence; the runtime projects eligibility restrictions already.",
+      "insight": "Availability prose must follow projected roster and medical facts. Reserve, suspension and inactivity must remain visible in the player dossier.",
+      "rank": 3,
+      "premise": "Reproduced a suspended reserve profile receiving the healthy/available sentence; the runtime projects eligibility restrictions already.",
+      "executionEvidence": "L2 local acceptance verified:18pure/projected healthy, suspended, practice, reserve, inactive, recovered and concurrent restriction cases; actual dossier/Availability renders inspected desktop/mobile dark/light. reports/s130-focused-tests.json and docs/visual-qa/LATEST.json. Deployment and exact-candidate integration remain separately pending."
+    },
+    {
+      "id": 1,
+      "slug": "community-consent-revocation",
+      "title": "Keep Community Stats sharing off after decline",
+      "axis": "security",
+      "category": "security",
+      "tier": "🔥",
+      "impact": 10,
+      "innovation": 6,
+      "effortHours": 3,
+      "priority": 25.840593484403584,
+      "status": "shipped",
+      "readinessArea": "security, privacy, data integrity and abuse controls",
+      "stageRationale": "FORGE/FB beta hardening: repair a reproduced product failure or measured release prerequisite within the existing authorized arc.",
+      "recipe": "Use a fail-closed volatile consent decision and generation-bound event admission. Bound capability/mutation requests, cancel stale event sends, and preserve purpose-bound deletion tombstones and retry. Keep opt-in honest when persistence fails.",
+      "acceptance": "Fault-injected decline write, delayed capability then decline, stale response after renewed opt-in, hung event/delete request, successful deletion retry; real settings states in desktop/mobile and both themes.",
+      "premises": [
+        {
+          "claim": "Reproduced: a refused decline write returns false while getCommunityParticipation still returns true. Async capability admission also lacks a consent-generation check.",
+          "adapter": "file-content",
+          "target": "public/lib/communityTelemetry.js",
+          "pattern": "storage()?.setItem(COMMUNITY_CONSENT_KEY, \"declined\")",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Repair the immediate failure while retaining existing behavior; reduced depth is not the selected acceptance."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Use a fail-closed volatile consent decision and generation-bound event admission. Bound capability/mutation requests, cancel stale event sends, and preserve purpose-bound deletion tombstones and retry. Keep opt-in honest when persistence fails."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Optional broader redesign is unselected; complete the declared L2 acceptance without widening scope."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-11-13T06:43:19.948Z",
+          "status": "shipped",
+          "note": "L2 local acceptance verified: fail-closed storage, stale capability/event generations, hung deadlines and retained ID-only deletion retry fixtures pass; sharing-off and retry-first states inspected across four profiles. Browser evidence keeps its original consent artifact separate. reports/s130-focused-tests.json and reports/s130-browser-acceptance.json. Deployment and exact-candidate integration remain separately pending."
+        }
+      ],
+      "evidence": "Reproduced: a refused decline write returns false while getCommunityParticipation still returns true. Async capability admission also lacks a consent-generation check.",
+      "insight": "Declining sharing must stop collection even when storage or a request fails. Keep deletion retryable while refusing stale event sends.",
+      "rank": 4,
+      "premise": "Reproduced: a refused decline write returns false while getCommunityParticipation still returns true. Async capability admission also lacks a consent-generation check.",
+      "executionEvidence": "L2 local acceptance verified: fail-closed storage, stale capability/event generations, hung deadlines and retained ID-only deletion retry fixtures pass; sharing-off and retry-first states inspected across four profiles. Browser evidence keeps its original consent artifact separate. reports/s130-focused-tests.json and reports/s130-browser-acceptance.json. Deployment and exact-candidate integration remain separately pending."
+    },
+    {
+      "id": 5,
+      "slug": "boot-headroom",
+      "title": "Remove coaching rendering from the initial boot graph",
+      "axis": "speed-organization-efficiency",
+      "category": "speed-organization-efficiency",
+      "tier": "⚡",
+      "impact": 8,
+      "innovation": 2,
+      "effortHours": 2,
+      "priority": 16,
+      "status": "shipped",
+      "readinessArea": "performance and capacity",
+      "stageRationale": "FORGE/FB beta hardening: repair a reproduced product failure or measured release prerequisite within the existing authorized arc.",
+      "recipe": "Separate the minimal delegated action binding from coaching rendering and dynamically load the renderer through existing staff-loading owners. Preserve hydration authority, early loading/error states, controlled-club guards and retries. Do not alter any byte/module/island budget.",
+      "acceptance": "Create at least4KiB headroom before other boot-path repairs; final source remains within every unchanged budget. Focused load/action races and actual staff selection/hire/refusal journeys, desktop/mobile and themes, preserve behavior.",
+      "premises": [
+        {
+          "claim": "Native current baseline649883/650000 decoded bytes leaves117 bytes. Both app event binding and gameFlow eagerly import the coaching renderer although staff loading is async and intent-owned.",
+          "adapter": "file-content",
+          "target": "public/lib/gameFlow.js",
+          "pattern": "import { renderCoachingMarketPanel } from \"./coachingMarketPanel.js\";",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Repair the immediate failure while retaining existing behavior; reduced depth is not the selected acceptance."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Separate the minimal delegated action binding from coaching rendering and dynamically load the renderer through existing staff-loading owners. Preserve hydration authority, early loading/error states, controlled-club guards and retries. Do not alter any byte/module/island budget."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "Optional broader redesign is unselected; complete the declared L2 acceptance without widening scope."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-11-13T06:43:19.947Z",
+          "status": "shipped",
+          "note": "L2 local acceptance verified: isolated baseline plus coaching-only graph644656/650000 gives5344bytes headroom; final integrated647545/650000 unchanged budget. Actual four-profile coaching hire/refusal, stale reads, disabled-control restoration, import failure/retry and44px/mobile containment passed. reports/s130-boot-foundation-proof.json and reports/s130-browser-acceptance.json. Deployment and exact-candidate integration remain separately pending."
+        }
+      ],
+      "evidence": "Native current baseline649883/650000 decoded bytes leaves117 bytes. Both app event binding and gameFlow eagerly import the coaching renderer although staff loading is async and intent-owned.",
+      "insight": "Coaching-market rendering belongs to staff intent. Keep event binding small and preserve loading and retry behavior under the existing boot cap.",
+      "rank": 5,
+      "premise": "Native current baseline649883/650000 decoded bytes leaves117 bytes. Both app event binding and gameFlow eagerly import the coaching renderer although staff loading is async and intent-owned.",
+      "executionEvidence": "L2 local acceptance verified: isolated baseline plus coaching-only graph644656/650000 gives5344bytes headroom; final integrated647545/650000 unchanged budget. Actual four-profile coaching hire/refusal, stale reads, disabled-control restoration, import failure/retry and44px/mobile containment passed. reports/s130-boot-foundation-proof.json and reports/s130-browser-acceptance.json. Deployment and exact-candidate integration remain separately pending."
+    }
+  ],
+  "axisCoverage": {
+    "features-depth": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "missing-depth-controls",
+          "premise": "Depth ordering and Best Lineup are absent.",
+          "evidence": "public/lib/depthBoard.js already implements drag/keyboard ordering, autosave and Best Lineup; S129 shipped them."
+        }
+      ]
+    },
+    "ui-ux-feedback": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "missing-action-error-surface",
+          "premise": "There is no reusable action error mechanism.",
+          "evidence": "public/app.js imports presentActionError and uses runAction elsewhere; selected Co-GM outcome reuses it."
+        },
+        {
+          "slug": "missing-settings-retry",
+          "premise": "All cold settings panels lack loading/error/retry.",
+          "evidence": "public/lib/uiIslands.js and gameFlow.js already own skeleton, busy state and retry; existing Studio contracts verify these."
+        }
+      ]
+    },
+    "gamification-immersion": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "missing-weekly-links",
+          "premise": "No shared weekly league exists.",
+          "evidence": "public/lib/weeklyChallenge.js implements deterministic weekly links and app.js displays them."
+        },
+        {
+          "slug": "missing-dynasty-loop",
+          "premise": "No persistent decision or season loop exists.",
+          "evidence": "context/GAME_LOOP.md and existing architect ledger/season chapter surfaces define and project the loop; actual retention remains unmeasured."
+        }
+      ]
+    },
+    "ai-intelligence": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "paid-co-gm-backend",
+          "premise": "Co-GM export requires a paid model backend.",
+          "evidence": "public/lib/coGmBriefing.js creates a bounded local user export and excludes saves/credentials/hidden state."
+        }
+      ]
+    },
+    "security": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "participation-default-on",
+          "premise": "Sharing starts enabled by default.",
+          "evidence": "getCommunityParticipation requires an explicit stored participating value; the reproduced problem is revocation under faults."
+        }
+      ]
+    },
+    "speed-organization-efficiency": {
+      "surviving": [
+        "responsive-capture-shards"
+      ],
+      "rejectedOnVerify": [
+        {
+          "slug": "missing-source-bound-capture",
+          "premise": "Responsive evidence has no source/coverage guard.",
+          "evidence": "responsive-evidence.mjs already binds artifact identity and verifies required capture names. Selected work preserves and composes those guards."
+        }
+      ]
+    },
+    "token-cost": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "missing-bounded-context-reader",
+          "premise": "There is no bounded context projection.",
+          "evidence": "scripts/task-slice.mjs and sample-codebase.mjs ran this invocation and emit bounded native projections."
+        },
+        {
+          "slug": "new-ai-subscription",
+          "premise": "A model API is necessary for the selected fixes.",
+          "evidence": "Selected repairs use existing local JavaScript and native browser tools; no model service or paid dependency is needed."
+        }
+      ]
+    },
+    "observability-honesty": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "missing-exact-ci",
+          "premise": "Production lacks exact-candidate CI gating.",
+          "evidence": "scripts/wait-for-candidate-ci.mjs and existing workflow promotion gates require all seven actual jobs at exact SHA."
+        },
+        {
+          "slug": "missing-native-provenance",
+          "premise": "Frontend release identity cannot be measured.",
+          "evidence": "verify-release-provenance.mjs passed14/14 at both existing origins during recovery. New-candidate acceptance remains pending."
+        }
+      ]
+    },
+    "sil-debt": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "missing-goal-binding",
+          "premise": "Repeated goals cannot be distinguished from prior arcs.",
+          "evidence": "arc-goal-binding.mjs bound this native goal to actual S130/startHead; recovery was separately published."
+        },
+        {
+          "slug": "missing-recipient-authority",
+          "premise": "There is no recipient authority contract.",
+          "evidence": "context/PROJECT_AUTHORITY_CONTRACT.json catches forbidden helpers. The propagator owner adoption gap remains separate and is not falsely called fixed."
+        }
+      ]
+    }
+  },
+  "candidateAssessments": [
+    {
+      "axis": "features-depth",
+      "slug": "player-identity-l2",
+      "status": "deferred",
+      "evidence": "Existing S129 reduced identity outcome is queued; selected work prioritizes current eligibility truth over added biography."
+    },
+    {
+      "axis": "ui-ux-feedback",
+      "slug": "depth-exit-save-guard",
+      "status": "unproved-deferred",
+      "evidence": "700ms save debounce is visible; immediate-exit data loss has not been reproduced."
+    },
+    {
+      "axis": "ui-ux-feedback",
+      "slug": "feedback-without-github",
+      "status": "deferred",
+      "evidence": "Existing queued feedback task remains; current selected export failure is repaired through Co-GM outcome."
+    },
+    {
+      "axis": "gamification-immersion",
+      "slug": "weekly-provenance",
+      "status": "deferred",
+      "evidence": "Source seed-only recognition and four-week window remain real follow-up candidates; no fairness/retention improvement is claimed this arc."
+    },
+    {
+      "axis": "token-cost",
+      "slug": "capture-step-manifest",
+      "status": "deferred",
+      "evidence": "Possible execution/coverage reuse must prove reduced drift and comparable read/edit costs before any savings claim."
+    },
+    {
+      "axis": "token-cost",
+      "slug": "bounded-release-projection",
+      "status": "deferred",
+      "evidence": "Existing bounded native readers are available; no current token-per-outcome measurement justifies another projection."
+    },
+    {
+      "axis": "observability-honesty",
+      "slug": "backend-parity",
+      "status": "covered-by-goal-release",
+      "evidence": "The explicit full deployment objective requires actual frontend/API parity independently of the five code outcomes."
+    },
+    {
+      "axis": "sil-debt",
+      "slug": "development-tooling-consistency",
+      "status": "external-owner-followup",
+      "evidence": "Development-tooling consistency remains an external dependency; adoption has not been verified in this product repository."
+    },
+    {
+      "axis": "features-depth",
+      "slug": "studio-market",
+      "status": "unmeasured-deferred",
+      "evidence": "docs/market/MARKET.json is absent. Run /studio-market as a separately selected follow-up; no competitor facts or broad launch-readiness claim are fabricated."
+    }
+  ],
+  "readinessAssessment": [
+    {
+      "area": "core journeys and product correctness",
+      "status": "fail",
+      "evidence": "Fresh source reproduction: restricted profiles claim availability; malformed optional Co-GM rows throw.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Selected focused/browser acceptance, exact-source candidate checks, current staging/production parity and scoped closeout; broader unknowns remain visible."
+    },
+    {
+      "area": "onboarding and identity/access",
+      "status": "partial",
+      "evidence": "Historical client journeys exist; Obelisk integration remains a recorded gap. No new account-bearing flow is selected.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Selected focused/browser acceptance, exact-source candidate checks, current staging/production parity and scoped closeout; broader unknowns remain visible."
+    },
+    {
+      "area": "accessibility, mobile parity and every supported theme",
+      "status": "partial",
+      "evidence": "Prior image evidence exists, but selected current changes require new before/after desktop/mobile dark/light inspection.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Selected focused/browser acceptance, exact-source candidate checks, current staging/production parity and scoped closeout; broader unknowns remain visible."
+    },
+    {
+      "area": "performance and capacity",
+      "status": "partial",
+      "evidence": "Current native boot649883/650000 measured; current hosted LCP/interaction proof remains unmeasured.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Selected focused/browser acceptance, exact-source candidate checks, current staging/production parity and scoped closeout; broader unknowns remain visible."
+    },
+    {
+      "area": "security, privacy, data integrity and abuse controls",
+      "status": "fail",
+      "evidence": "Fresh mock-only reproduction shows decline returns false while subsequent consent read remains true after storage refusal.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Selected focused/browser acceptance, exact-source candidate checks, current staging/production parity and scoped closeout; broader unknowns remain visible."
+    },
+    {
+      "area": "backup, recovery and rollback",
+      "status": "unknown",
+      "evidence": "API database health ready is observed; it does not prove restore behavior. New candidate rollback baseline must be retained.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Selected focused/browser acceptance, exact-source candidate checks, current staging/production parity and scoped closeout; broader unknowns remain visible."
+    },
+    {
+      "area": "email and notifications where used",
+      "status": "unknown",
+      "evidence": "Email delivery/reply proof remains unverified; no notification feature change is selected.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Selected focused/browser acceptance, exact-source candidate checks, current staging/production parity and scoped closeout; broader unknowns remain visible."
+    },
+    {
+      "area": "observability and actionable analytics",
+      "status": "fail",
+      "evidence": "Frontend74683a57 and API812fd52b differ. Actual new release parity and analytics participation correctness require proof.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Selected focused/browser acceptance, exact-source candidate checks, current staging/production parity and scoped closeout; broader unknowns remain visible."
+    },
+    {
+      "area": "feedback, support and issue triage",
+      "status": "partial",
+      "evidence": "Existing GitHub/contact paths and local export surfaces exist; real player feedback/comprehension evidence is absent.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Selected focused/browser acceptance, exact-source candidate checks, current staging/production parity and scoped closeout; broader unknowns remain visible."
+    },
+    {
+      "area": "branding, legal, contact and rights/provenance",
+      "status": "partial",
+      "evidence": "Public source contains proprietary branding/legal/contact surfaces; physical mail reply path remains unproved. No policy or license change selected.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Selected focused/browser acceptance, exact-source candidate checks, current staging/production parity and scoped closeout; broader unknowns remain visible."
+    },
+    {
+      "area": "human and agent access where applicable",
+      "status": "fail",
+      "evidence": "Discovery files exist; source-bound Co-GM data-quality/export failures reproduced.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Selected focused/browser acceptance, exact-source candidate checks, current staging/production parity and scoped closeout; broader unknowns remain visible."
+    },
+    {
+      "area": "staging, release evidence and truthful beta/release communication",
+      "status": "fail",
+      "evidence": "S129 Pages capture step failed; new exact-source checks, staging, frontend/API production readback and rollback remain required.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Selected focused/browser acceptance, exact-source candidate checks, current staging/production parity and scoped closeout; broader unknowns remain visible."
+    }
+  ],
+  "gameLoopReview": {
+    "scope": "Source engineering assessment; no actual-player retention/fun/comprehension evidence",
+    "loopTightness": 7,
+    "progression": 7,
+    "sessionEngagement": 6,
+    "retention": 5,
+    "soulFidelity": null,
+    "soulReason": "Only public-safe SOUL summary is available; private creative fidelity is not inferred.",
+    "nextMoves": [
+      "Keep actual availability legible",
+      "Make exported decision context truthful and recoverable",
+      "Verify historical weekly provenance in a future selected outcome"
+    ]
+  },
+  "premiseReproduction": ".cache/s130-premise-reproductions.json",
+  "novelCandidates": [
+    "community-consent-revocation",
+    "co-gm-export-integrity",
+    "player-availability-truth"
+  ],
+  "totals": {
+    "count": 5,
+    "priority": 126.95270778657488,
+    "top3": [
+      "co-gm-export-integrity",
+      "responsive-capture-shards",
+      "player-availability-truth"
+    ]
+  },
+  "generatedAt": "2026-11-13T04:52:30.908Z",
+  "premiseGate": {
+    "schema": "premise-gate/v1",
+    "at": "2026-11-13T04:54:50.256Z",
+    "head": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+    "sidecar": "docs/AUDIT_2026-11-13.json",
+    "selectionMode": "explicit",
+    "recordPathPolicy": "project",
+    "strict": true,
+    "exit": 0,
+    "verified": 5,
+    "contradicted": 0,
+    "unverified": 0,
+    "premiseDigest": "3af49a66e78a8da116b91d67ca9ed1375ad461c44a5587848e3f808bdfe14862",
+    "implementationDirty": []
+  },
+  "admissionSnapshot": {
+    "at": "2026-11-13T04:54:50.256Z",
+    "axisCoverage": {
+      "features-depth": {
+        "surviving": [
+          "player-availability-truth"
+        ],
+        "rejectedOnVerify": [
+          {
+            "slug": "missing-depth-controls",
+            "premise": "Depth ordering and Best Lineup are absent.",
+            "evidence": "public/lib/depthBoard.js already implements drag/keyboard ordering, autosave and Best Lineup; S129 shipped them."
+          }
+        ]
+      },
+      "ui-ux-feedback": {
+        "surviving": [],
+        "rejectedOnVerify": [
+          {
+            "slug": "missing-action-error-surface",
+            "premise": "There is no reusable action error mechanism.",
+            "evidence": "public/app.js imports presentActionError and uses runAction elsewhere; selected Co-GM outcome reuses it."
+          },
+          {
+            "slug": "missing-settings-retry",
+            "premise": "All cold settings panels lack loading/error/retry.",
+            "evidence": "public/lib/uiIslands.js and gameFlow.js already own skeleton, busy state and retry; existing Studio contracts verify these."
+          }
+        ]
+      },
+      "gamification-immersion": {
+        "surviving": [],
+        "rejectedOnVerify": [
+          {
+            "slug": "missing-weekly-links",
+            "premise": "No shared weekly league exists.",
+            "evidence": "public/lib/weeklyChallenge.js implements deterministic weekly links and app.js displays them."
+          },
+          {
+            "slug": "missing-dynasty-loop",
+            "premise": "No persistent decision or season loop exists.",
+            "evidence": "context/GAME_LOOP.md and existing architect ledger/season chapter surfaces define and project the loop; actual retention remains unmeasured."
+          }
+        ]
+      },
+      "ai-intelligence": {
+        "surviving": [
+          "co-gm-export-integrity"
+        ],
+        "rejectedOnVerify": [
+          {
+            "slug": "paid-co-gm-backend",
+            "premise": "Co-GM export requires a paid model backend.",
+            "evidence": "public/lib/coGmBriefing.js creates a bounded local user export and excludes saves/credentials/hidden state."
+          }
+        ]
+      },
+      "security": {
+        "surviving": [
+          "community-consent-revocation"
+        ],
+        "rejectedOnVerify": [
+          {
+            "slug": "participation-default-on",
+            "premise": "Sharing starts enabled by default.",
+            "evidence": "getCommunityParticipation requires an explicit stored participating value; the reproduced problem is revocation under faults."
+          }
+        ]
+      },
+      "speed-organization-efficiency": {
+        "surviving": [
+          "responsive-capture-shards",
+          "boot-headroom"
+        ],
+        "rejectedOnVerify": [
+          {
+            "slug": "missing-source-bound-capture",
+            "premise": "Responsive evidence has no source/coverage guard.",
+            "evidence": "responsive-evidence.mjs already binds artifact identity and verifies required capture names. Selected work preserves and composes those guards."
+          }
+        ]
+      },
+      "token-cost": {
+        "surviving": [],
+        "rejectedOnVerify": [
+          {
+            "slug": "missing-bounded-context-reader",
+            "premise": "There is no bounded context projection.",
+            "evidence": "scripts/task-slice.mjs and sample-codebase.mjs ran this invocation and emit bounded native projections."
+          },
+          {
+            "slug": "new-ai-subscription",
+            "premise": "A model API is necessary for the selected fixes.",
+            "evidence": "Selected repairs use existing local JavaScript and native browser tools; no model service or paid dependency is needed."
+          }
+        ]
+      },
+      "observability-honesty": {
+        "surviving": [],
+        "rejectedOnVerify": [
+          {
+            "slug": "missing-exact-ci",
+            "premise": "Production lacks exact-candidate CI gating.",
+            "evidence": "scripts/wait-for-candidate-ci.mjs and existing workflow promotion gates require all seven actual jobs at exact SHA."
+          },
+          {
+            "slug": "missing-native-provenance",
+            "premise": "Frontend release identity cannot be measured.",
+            "evidence": "verify-release-provenance.mjs passed14/14 at both existing origins during recovery. New-candidate acceptance remains pending."
+          }
+        ]
+      },
+      "sil-debt": {
+        "surviving": [],
+        "rejectedOnVerify": [
+          {
+            "slug": "missing-goal-binding",
+            "premise": "Repeated goals cannot be distinguished from prior arcs.",
+            "evidence": "arc-goal-binding.mjs bound this native goal to actual S130/startHead; recovery was separately published."
+          },
+          {
+            "slug": "missing-recipient-authority",
+            "premise": "There is no recipient authority contract.",
+            "evidence": "context/PROJECT_AUTHORITY_CONTRACT.json catches forbidden helpers. The propagator owner adoption gap remains separate and is not falsely called fixed."
+          }
+        ]
+      }
+    },
+    "selected": [
+      "co-gm-export-integrity",
+      "responsive-capture-shards",
+      "player-availability-truth",
+      "community-consent-revocation",
+      "boot-headroom"
+    ],
+    "premiseGate": {
+      "schema": "premise-gate/v1",
+      "at": "2026-11-13T04:54:50.256Z",
+      "head": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "sidecar": "docs/AUDIT_2026-11-13.json",
+      "selectionMode": "explicit",
+      "recordPathPolicy": "project",
+      "strict": true,
+      "exit": 0,
+      "verified": 5,
+      "contradicted": 0,
+      "unverified": 0,
+      "premiseDigest": "3af49a66e78a8da116b91d67ca9ed1375ad461c44a5587848e3f808bdfe14862",
+      "implementationDirty": []
+    }
+  },
+  "executionScope": {
+    "localOutcomesVerified": 4,
+    "pipelineOutcomePending": "Native327capture and actual hosted complete three-profile aggregate required; no release completion claim."
+  },
+  "skipped": [
+    {
+      "slug": "missing-depth-controls",
+      "premise": "Depth ordering and Best Lineup are absent.",
+      "evidence": "public/lib/depthBoard.js already implements drag/keyboard ordering, autosave and Best Lineup; S129 shipped them.",
+      "axis": "features-depth",
+      "reason": "public/lib/depthBoard.js already implements drag/keyboard ordering, autosave and Best Lineup; S129 shipped them."
+    },
+    {
+      "slug": "missing-action-error-surface",
+      "premise": "There is no reusable action error mechanism.",
+      "evidence": "public/app.js imports presentActionError and uses runAction elsewhere; selected Co-GM outcome reuses it.",
+      "axis": "ui-ux-feedback",
+      "reason": "public/app.js imports presentActionError and uses runAction elsewhere; selected Co-GM outcome reuses it."
+    },
+    {
+      "slug": "missing-settings-retry",
+      "premise": "All cold settings panels lack loading/error/retry.",
+      "evidence": "public/lib/uiIslands.js and gameFlow.js already own skeleton, busy state and retry; existing Studio contracts verify these.",
+      "axis": "ui-ux-feedback",
+      "reason": "public/lib/uiIslands.js and gameFlow.js already own skeleton, busy state and retry; existing Studio contracts verify these."
+    },
+    {
+      "slug": "missing-weekly-links",
+      "premise": "No shared weekly league exists.",
+      "evidence": "public/lib/weeklyChallenge.js implements deterministic weekly links and app.js displays them.",
+      "axis": "gamification-immersion",
+      "reason": "public/lib/weeklyChallenge.js implements deterministic weekly links and app.js displays them."
+    },
+    {
+      "slug": "missing-dynasty-loop",
+      "premise": "No persistent decision or season loop exists.",
+      "evidence": "context/GAME_LOOP.md and existing architect ledger/season chapter surfaces define and project the loop; actual retention remains unmeasured.",
+      "axis": "gamification-immersion",
+      "reason": "context/GAME_LOOP.md and existing architect ledger/season chapter surfaces define and project the loop; actual retention remains unmeasured."
+    },
+    {
+      "slug": "paid-co-gm-backend",
+      "premise": "Co-GM export requires a paid model backend.",
+      "evidence": "public/lib/coGmBriefing.js creates a bounded local user export and excludes saves/credentials/hidden state.",
+      "axis": "ai-intelligence",
+      "reason": "public/lib/coGmBriefing.js creates a bounded local user export and excludes saves/credentials/hidden state."
+    },
+    {
+      "slug": "participation-default-on",
+      "premise": "Sharing starts enabled by default.",
+      "evidence": "getCommunityParticipation requires an explicit stored participating value; the reproduced problem is revocation under faults.",
+      "axis": "security",
+      "reason": "getCommunityParticipation requires an explicit stored participating value; the reproduced problem is revocation under faults."
+    },
+    {
+      "slug": "missing-source-bound-capture",
+      "premise": "Responsive evidence has no source/coverage guard.",
+      "evidence": "responsive-evidence.mjs already binds artifact identity and verifies required capture names. Selected work preserves and composes those guards.",
+      "axis": "speed-organization-efficiency",
+      "reason": "responsive-evidence.mjs already binds artifact identity and verifies required capture names. Selected work preserves and composes those guards."
+    },
+    {
+      "slug": "missing-bounded-context-reader",
+      "premise": "There is no bounded context projection.",
+      "evidence": "scripts/task-slice.mjs and sample-codebase.mjs ran this invocation and emit bounded native projections.",
+      "axis": "token-cost",
+      "reason": "scripts/task-slice.mjs and sample-codebase.mjs ran this invocation and emit bounded native projections."
+    },
+    {
+      "slug": "new-ai-subscription",
+      "premise": "A model API is necessary for the selected fixes.",
+      "evidence": "Selected repairs use existing local JavaScript and native browser tools; no model service or paid dependency is needed.",
+      "axis": "token-cost",
+      "reason": "Selected repairs use existing local JavaScript and native browser tools; no model service or paid dependency is needed."
+    },
+    {
+      "slug": "missing-exact-ci",
+      "premise": "Production lacks exact-candidate CI gating.",
+      "evidence": "scripts/wait-for-candidate-ci.mjs and existing workflow promotion gates require all seven actual jobs at exact SHA.",
+      "axis": "observability-honesty",
+      "reason": "scripts/wait-for-candidate-ci.mjs and existing workflow promotion gates require all seven actual jobs at exact SHA."
+    },
+    {
+      "slug": "missing-native-provenance",
+      "premise": "Frontend release identity cannot be measured.",
+      "evidence": "verify-release-provenance.mjs passed14/14 at both existing origins during recovery. New-candidate acceptance remains pending.",
+      "axis": "observability-honesty",
+      "reason": "verify-release-provenance.mjs passed14/14 at both existing origins during recovery. New-candidate acceptance remains pending."
+    },
+    {
+      "slug": "missing-goal-binding",
+      "premise": "Repeated goals cannot be distinguished from prior arcs.",
+      "evidence": "arc-goal-binding.mjs bound this native goal to actual S130/startHead; recovery was separately published.",
+      "axis": "sil-debt",
+      "reason": "arc-goal-binding.mjs bound this native goal to actual S130/startHead; recovery was separately published."
+    },
+    {
+      "slug": "missing-recipient-authority",
+      "premise": "There is no recipient authority contract.",
+      "evidence": "context/PROJECT_AUTHORITY_CONTRACT.json catches forbidden helpers. The propagator owner adoption gap remains separate and is not falsely called fixed.",
+      "axis": "sil-debt",
+      "reason": "context/PROJECT_AUTHORITY_CONTRACT.json catches forbidden helpers. The propagator owner adoption gap remains separate and is not falsely called fixed."
+    }
+  ],
+  "phantomsRejected": [
+    {
+      "slug": "missing-depth-controls",
+      "reason": "public/lib/depthBoard.js already implements drag/keyboard ordering, autosave and Best Lineup; S129 shipped them.",
+      "evidence": "public/lib/depthBoard.js already implements drag/keyboard ordering, autosave and Best Lineup; S129 shipped them.",
+      "axis": "features-depth"
+    },
+    {
+      "slug": "missing-action-error-surface",
+      "reason": "public/app.js imports presentActionError and uses runAction elsewhere; selected Co-GM outcome reuses it.",
+      "evidence": "public/app.js imports presentActionError and uses runAction elsewhere; selected Co-GM outcome reuses it.",
+      "axis": "ui-ux-feedback"
+    },
+    {
+      "slug": "missing-settings-retry",
+      "reason": "public/lib/uiIslands.js and gameFlow.js already own skeleton, busy state and retry; existing Studio contracts verify these.",
+      "evidence": "public/lib/uiIslands.js and gameFlow.js already own skeleton, busy state and retry; existing Studio contracts verify these.",
+      "axis": "ui-ux-feedback"
+    },
+    {
+      "slug": "missing-weekly-links",
+      "reason": "public/lib/weeklyChallenge.js implements deterministic weekly links and app.js displays them.",
+      "evidence": "public/lib/weeklyChallenge.js implements deterministic weekly links and app.js displays them.",
+      "axis": "gamification-immersion"
+    },
+    {
+      "slug": "missing-dynasty-loop",
+      "reason": "context/GAME_LOOP.md and existing architect ledger/season chapter surfaces define and project the loop; actual retention remains unmeasured.",
+      "evidence": "context/GAME_LOOP.md and existing architect ledger/season chapter surfaces define and project the loop; actual retention remains unmeasured.",
+      "axis": "gamification-immersion"
+    },
+    {
+      "slug": "paid-co-gm-backend",
+      "reason": "public/lib/coGmBriefing.js creates a bounded local user export and excludes saves/credentials/hidden state.",
+      "evidence": "public/lib/coGmBriefing.js creates a bounded local user export and excludes saves/credentials/hidden state.",
+      "axis": "ai-intelligence"
+    },
+    {
+      "slug": "participation-default-on",
+      "reason": "getCommunityParticipation requires an explicit stored participating value; the reproduced problem is revocation under faults.",
+      "evidence": "getCommunityParticipation requires an explicit stored participating value; the reproduced problem is revocation under faults.",
+      "axis": "security"
+    },
+    {
+      "slug": "missing-source-bound-capture",
+      "reason": "responsive-evidence.mjs already binds artifact identity and verifies required capture names. Selected work preserves and composes those guards.",
+      "evidence": "responsive-evidence.mjs already binds artifact identity and verifies required capture names. Selected work preserves and composes those guards.",
+      "axis": "speed-organization-efficiency"
+    },
+    {
+      "slug": "missing-bounded-context-reader",
+      "reason": "scripts/task-slice.mjs and sample-codebase.mjs ran this invocation and emit bounded native projections.",
+      "evidence": "scripts/task-slice.mjs and sample-codebase.mjs ran this invocation and emit bounded native projections.",
+      "axis": "token-cost"
+    },
+    {
+      "slug": "new-ai-subscription",
+      "reason": "Selected repairs use existing local JavaScript and native browser tools; no model service or paid dependency is needed.",
+      "evidence": "Selected repairs use existing local JavaScript and native browser tools; no model service or paid dependency is needed.",
+      "axis": "token-cost"
+    },
+    {
+      "slug": "missing-exact-ci",
+      "reason": "scripts/wait-for-candidate-ci.mjs and existing workflow promotion gates require all seven actual jobs at exact SHA.",
+      "evidence": "scripts/wait-for-candidate-ci.mjs and existing workflow promotion gates require all seven actual jobs at exact SHA.",
+      "axis": "observability-honesty"
+    },
+    {
+      "slug": "missing-native-provenance",
+      "reason": "verify-release-provenance.mjs passed14/14 at both existing origins during recovery. New-candidate acceptance remains pending.",
+      "evidence": "verify-release-provenance.mjs passed14/14 at both existing origins during recovery. New-candidate acceptance remains pending.",
+      "axis": "observability-honesty"
+    },
+    {
+      "slug": "missing-goal-binding",
+      "reason": "arc-goal-binding.mjs bound this native goal to actual S130/startHead; recovery was separately published.",
+      "evidence": "arc-goal-binding.mjs bound this native goal to actual S130/startHead; recovery was separately published.",
+      "axis": "sil-debt"
+    },
+    {
+      "slug": "missing-recipient-authority",
+      "reason": "context/PROJECT_AUTHORITY_CONTRACT.json catches forbidden helpers. The propagator owner adoption gap remains separate and is not falsely called fixed.",
+      "evidence": "context/PROJECT_AUTHORITY_CONTRACT.json catches forbidden helpers. The propagator owner adoption gap remains separate and is not falsely called fixed.",
+      "axis": "sil-debt"
+    }
+  ]
+}

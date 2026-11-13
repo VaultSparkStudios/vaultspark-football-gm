@@ -3,7 +3,7 @@ const recoveryUi = () => import("./lib/clientRecoveryUi.js");
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
 import { maybeShowReturnDigest, recordReturnBoundary } from "./lib/returnDigest.js";
 import { initPressRoomPanel } from "./lib/pressRoomPanel.js";
-import { initCoachingMarketPanel } from "./lib/coachingMarketPanel.js";
+import { initCoachingMarketPanel } from "./lib/coachingMarketActions.js";
 import {
   initMobileLoop,
   isMobileModeEnabled,
@@ -706,7 +706,11 @@ function bindEvents() {
   });
   // The brief's builder is a lazy island (lib/coGmBriefPanel.js), loaded on first use.
   const loadCoGmBrief = () => Promise.all([import("./lib/coGmBriefPanel.js"), import("./lib/coGmBriefing.js")]);
-  document.getElementById("coGmCopyBtn")?.addEventListener("click", async () => {
+  const coGmAction = (action) => () => action().then(() => {
+    resolveClientDiagnostic({ surface: "action", operation: "co-gm-export" });
+    setStatus("Ready");
+  }).catch((error) => presentActionError({ message: formatActionError(error), reasonCode: "co-gm-export" }));
+  document.getElementById("coGmCopyBtn")?.addEventListener("click", coGmAction(async () => {
     const [{ currentCoGmBriefingPacket }, { serializeCoGmBriefingPacket }] = await loadCoGmBrief();
     const serialized = serializeCoGmBriefingPacket(currentCoGmBriefingPacket());
     try {
@@ -715,20 +719,24 @@ function bindEvents() {
     } catch {
       showToast("Clipboard access was unavailable. Download the briefing instead.");
     }
-  });
-  document.getElementById("coGmDownloadBtn")?.addEventListener("click", async () => {
+  }));
+  document.getElementById("coGmDownloadBtn")?.addEventListener("click", coGmAction(async () => {
     const [{ currentCoGmBriefingPacket }, { serializeCoGmBriefingPacket, coGmBriefingFilename }] = await loadCoGmBrief();
     const packet = currentCoGmBriefingPacket();
     const url = URL.createObjectURL(new Blob([serializeCoGmBriefingPacket(packet)], { type: "application/json" }));
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = coGmBriefingFilename(packet);
-    document.body.append(anchor);
-    anchor.click();
-    anchor.remove();
-    URL.revokeObjectURL(url);
+    let anchor;
+    try {
+      anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = coGmBriefingFilename(packet);
+      document.body.append(anchor);
+      anchor.click();
+    } finally {
+      anchor?.remove();
+      URL.revokeObjectURL(url);
+    }
     showToast("Assistant brief downloaded. It contains only your franchise summary, no save data.");
-  });
+  }));
   document.getElementById("franchiseArchitecture")?.addEventListener("click", (event) => {
     const focusAction = event.target.closest?.("[data-architect-save-focus]");
     const adaptationAction = event.target.closest?.("[data-architect-adaptation]");
@@ -1681,21 +1689,13 @@ function bindEvents() {
     runAction(() => loadCoachingMarket(), "Loading coaching market...")
   );
 
-  initCoachingMarketPanel(({ action, role, candidateId }) =>
-    runAction(async () => {
-      const payload = await api("/api/coaching-market", {
-        method: "POST",
-        body: {
-          teamId: document.getElementById("staffTeamSelect").value || state.dashboard?.controlledTeamId,
-          role,
-          action,
-          candidateId
-        }
-      });
-      applyDashboard(payload.state);
-      await loadStaff();
-    }, action === "fire" ? "Parting ways..." : "Hiring...")
-  );
+  initCoachingMarketPanel(({ action, role, candidateId }) => {
+    const teamId = document.getElementById("staffTeamSelect").value || state.dashboard?.controlledTeamId;
+    return runAction(async () => {
+      const { applyCoachingMarketAction } = await import("./lib/coachingMarketPanel.js");
+      await applyCoachingMarketAction({ teamId, action, role, candidateId });
+    }, action === "fire" ? "Parting ways..." : "Hiring...");
+  });
 
   document.getElementById("startSimJobBtn").addEventListener("click", () =>
     runAction(async () => {

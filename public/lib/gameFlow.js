@@ -13,7 +13,6 @@ import { maybeMountContextualFeedback } from "./contextualFeedback.js";
 import { dashboardAuthorityKey } from "./franchiseScope.js";
 import { planRehearsalEvidence } from "./architectPlanRehearsal.js";
 import { createTabHydrationAuthority } from "./tabHydration.js";
-import { renderCoachingMarketPanel } from "./coachingMarketPanel.js";
 import { recordReturnBoundary } from "./returnDigest.js";
 import { recordAchievementEvent, renderTrophyRoad } from "./achievements.js";
 import { resolveDashboardPredictions } from "./spreadPredictions.js";
@@ -32,7 +31,7 @@ function commitHydration(token, key, callback) {
   return committed;
 }
 
-function callUiIsland(name, exportName, ...args) {
+export function callUiIsland(name, exportName, ...args) {
   const loaded = getLoadedUiIsland(name);
   if (loaded) {
     const handler = loaded[exportName];
@@ -244,12 +243,12 @@ export function activateTab(tabId) {
         { surface: "dev-surface-visibility", operation: tabId }
       );
     }
-    if (receipt.failures.length) {
-      throw new Error(`Tab ${tabId} hydration failed: ${receipt.failures.map((row) => row.name).join(", ")}`);
-    }
     if (state.activeTab === tabId && panel) {
       panel.inert = false;
       panel.removeAttribute("aria-busy");
+    }
+    if (receipt.failures.length) {
+      throw new Error(`Tab ${tabId} hydration failed: ${receipt.failures.map((row) => row.name).join(", ")}`);
     }
     return receipt;
   };
@@ -395,44 +394,19 @@ export async function loadSettings() {
   });
 }
 
-export async function loadStaff() {
-  const teamId = document.getElementById("staffTeamSelect").value || state.dashboard?.controlledTeamId || "BUF";
-  const controlledTeamId = state.dashboard?.controlledTeamId || null;
-  renderCoachingMarketPanel({
-    ok: false,
-    error: teamId !== controlledTeamId
-      ? `You control ${teamCode(controlledTeamId)}. ${teamCode(teamId)}'s staff is visible, but only its own front office can change it.`
-      : "Loading the coaching market…"
+const coachingPanel = () => import("./coachingMarketPanel.js").catch((error) => {
+  renderPanelError("coachingMarketPanel", "Coaching market", error, {
+    onRetry: () => observeBackgroundTask(loadStaff, { surface: "coaching-market", operation: "retry-load" })
   });
-  const payload = await api(`/api/staff?team=${encodeURIComponent(teamId)}`);
-  const currentTeamId = document.getElementById("staffTeamSelect").value || state.dashboard?.controlledTeamId || "BUF";
-  if (currentTeamId !== teamId) return;
-  state.staffState = payload.staff || null;
-  callUiIsland("settings", "renderStaff");
-  await loadCoachingMarket(teamId);
+  throw error;
+});
+
+export async function loadStaff() {
+  return (await coachingPanel()).loadStaff();
 }
-// Hiring is controlled-club only; rival staff sheets remain viewable.
+
 export async function loadCoachingMarket(teamId = null) {
-  const team = teamId || document.getElementById("staffTeamSelect")?.value || state.dashboard?.controlledTeamId;
-  const role = document.getElementById("staffRoleSelect")?.value || "headCoach";
-  if (team && state.dashboard?.controlledTeamId && team !== state.dashboard.controlledTeamId) {
-    renderCoachingMarketPanel({
-      ok: false,
-      error: `You control ${teamCode(state.dashboard.controlledTeamId)}. ${teamCode(team)}'s staff is visible, but only its own front office can change it.`
-    });
-    return;
-  }
-  try {
-    const market = await api(
-      `/api/coaching-market?team=${encodeURIComponent(team)}&role=${encodeURIComponent(role)}`
-    );
-    const currentTeam = document.getElementById("staffTeamSelect")?.value || state.dashboard?.controlledTeamId;
-    const currentRole = document.getElementById("staffRoleSelect")?.value || "headCoach";
-    if (currentTeam !== team || currentRole !== role) return;
-    renderCoachingMarketPanel(market);
-  } catch (error) {
-    renderCoachingMarketPanel({ ok: false, error: error?.message || "Coaching market unavailable." });
-  }
+  return (await coachingPanel()).loadCoachingMarket(teamId);
 }
 
 export async function loadOwner() {

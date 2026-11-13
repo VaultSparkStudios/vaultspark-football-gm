@@ -8,9 +8,12 @@ import fs from "node:fs/promises";
 import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 import { chromium } from "@playwright/test";
 import { resolveVisualGameReceipt } from "./lib/visual-game-receipt.mjs";
 import { parseArtifactHeaderRules, resolveArtifactHeaders } from "./lib/edge-security-policy.mjs";
+import { selectResponsiveViewports, selectResponsiveScope, expectedResponsiveNames, responsiveCaptureFailures } from "./lib/responsive-evidence-contract.mjs";
+import { prepareResponsiveOutputDirectory, publishResponsiveAggregateReport } from "./lib/responsive-evidence-aggregate.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(scriptDir, "..");
@@ -23,7 +26,7 @@ const configuredViewports = [
   { name: "desktop", width: 1440, height: 1000 }
 ];
 const evidenceThemes = ["dark", "light"];
-const lazyStyleOnly = process.env.EVIDENCE_SCOPE === "lazy-style";
+let lazyStyleOnly = false;
 const iterationEvidence = process.env.EVIDENCE_ITERATION === "1";
 const lazyStyleSurfaces = ["tutorial-skip", "tutorial-identity", "tutorial-pressure", "tutorial-first-call", "tutorial-receipt", "advisor", "dynasty-timeline", "first-debrief", "moment-card", "return-digest"];
 const evidenceTabs = [
@@ -41,9 +44,15 @@ const evidenceTabs = [
   ["boardroomTab", "boardroom"],
   ["settingsTab", "settings"]
 ];
-const viewports = process.env.EVIDENCE_VIEWPORT
-  ? configuredViewports.filter((viewport) => viewport.name === process.env.EVIDENCE_VIEWPORT)
-  : configuredViewports;
+// Validate at execution time so --help remains a no-browser, no-write path.
+let viewports = configuredViewports;
+let persistProgress = async () => {};
+
+async function recordCapture(records, entry, outputDir) {
+  const bytes = await fs.readFile(path.join(outputDir, entry.file));
+  records.push({ ...entry, sha256: createHash('sha256').update(bytes).digest('hex'), bytes: bytes.length, capturedAt: new Date().toISOString() });
+  await persistProgress();
+}
 const contentTypes = {
   ".html": "text/html; charset=utf-8", ".js": "application/javascript; charset=utf-8",
   ".css": "text/css; charset=utf-8", ".json": "application/json; charset=utf-8",
@@ -189,14 +198,14 @@ async function capture(page, outputDir, name, selectors, records) {
   const audit = await inspectSurface(page, selectors);
   const file = `${name}.png`;
   await page.screenshot({ path: path.join(outputDir, file), fullPage: true });
-  records.push({ name, file, url: page.url(), ...audit });
+  await recordCapture(records, { name, file, url: page.url(), ...audit }, outputDir);
 }
 
 async function captureViewport(page, outputDir, name, selectors, records) {
   const audit = await inspectSurface(page, selectors);
   const file = `${name}.png`;
   await page.screenshot({ path: path.join(outputDir, file), fullPage: false });
-  records.push({ name, file, url: page.url(), viewportCapture: true, ...audit });
+  await recordCapture(records, { name, file, url: page.url(), viewportCapture: true, ...audit }, outputDir);
 }
 
 async function captureElement(page, outputDir, name, selector, records) {
@@ -232,7 +241,7 @@ async function captureElement(page, outputDir, name, selector, records) {
       delete candidate.dataset.evidenceCaptureHidden;
     }));
   }
-  records.push({ name, file, url: page.url(), elementCapture: selector, ...audit });
+  await recordCapture(records, { name, file, url: page.url(), elementCapture: selector, ...audit }, outputDir);
 }
 
 async function measureSelectedTutorialTextContrast(page, screenshotPath) {
@@ -343,6 +352,7 @@ async function captureStyledSurface(page, outputDir, name, selector, records, { 
     ...(layout.actionReachable === false ? [`${action} is occluded`] : []),
     ...record.smallTextContrast.filter((item) => !item.ok).map((item) => `${item.selector} small-text contrast ${item.minimumContrast.toFixed(3)}:1 is below ${item.requiredContrast}:1`)
   ];
+  await persistProgress();
 }
 
 const tutorialStyleChecks = [
@@ -494,19 +504,71 @@ async function selectGameTab(page, tabId) {
   await page.waitForFunction((id) => !document.getElementById(id)?.hasAttribute("aria-busy"), tabId);
 }
 
+let activeAttempt = null;
 async function main() {
+  try { await runEvidence(); }
+  catch (error) {
+    if (activeAttempt) {
+      await persistProgress({ status: 'failed', complete: false, failures: [...activeAttempt.failures, error.message || 'Responsive capture interrupted'], errorReceipt: error.receipt || null });
+    }
+    throw error;
+  }
+}
+
+async function runEvidence() {
+  viewports = selectResponsiveViewports(process.env.EVIDENCE_VIEWPORT);
+  lazyStyleOnly = selectResponsiveScope(process.env.EVIDENCE_SCOPE) === 'lazy-style';
   const identity = await sourceIdentity();
   const revision = identity.sourceRevision;
-  const outputDir = path.join(outputRoot, `responsive-${revision.replace(/[^a-z0-9._-]/gi, "-")}${lazyStyleOnly ? "-lazy-style" : ""}${iterationEvidence ? "-iteration" : ""}`);
+  const shard = process.env.EVIDENCE_VIEWPORT === undefined ? null : { viewport: viewports[0].name, expectedShards: 3 };
+  const outputDir = path.join(outputRoot, `responsive-${revision.replace(/[^a-z0-9._-]/gi, "-")}${shard ? `-${shard.viewport}` : ''}${lazyStyleOnly ? "-lazy-style" : ""}${iterationEvidence ? "-iteration" : ""}`);
+  const outputRelative = path.relative(outputRoot, path.resolve(outputDir));
+  if (!outputRelative || path.isAbsolute(outputRelative) || outputRelative === '..' || outputRelative.startsWith(`..${path.sep}`)) throw new Error('Responsive output escaped its in-project evidence directory.');
+  await prepareResponsiveOutputDirectory(outputDir);
   await fs.rm(outputDir, { recursive: true, force: true });
   await fs.mkdir(outputDir, { recursive: true });
-  const { server, baseUrl, artifactHeaderRules, policyWitnesses } = await createServer();
-  const browser = await chromium.launch({ headless: true, ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}) });
   const records = [];
   const runtimeErrors = [];
+  const started = Date.now();
+  const timings = { startedAt: new Date(started).toISOString(), completedAt: null, durationMs: 0, viewports: [] };
+  const requiredNames = viewports.flatMap((viewport) => expectedResponsiveNames(viewport.name, { scope: lazyStyleOnly ? 'lazy-style' : 'full' }));
+  activeAttempt = {
+    schemaVersion: '1.0', kind: iterationEvidence ? 'provisional-rendered-evidence' : 'immutable-rendered-evidence',
+    sourceRevision: revision, artifact: 'static', artifactFingerprint: identity.artifactFingerprint, shard,
+    viewports, timings, captures: records, runtimeErrors, policyWitnesses: [], failures: [], status: 'running', complete: false,
+    coverage: { scope: lazyStyleOnly ? 'lazy-style' : 'full', themes: evidenceThemes, tabs: evidenceTabs.map(([id, label]) => ({ id, label })), requiredCaptures: requiredNames.length, completedRequiredCaptures: 0 }
+  };
+  persistProgress = async (patch = {}) => {
+    Object.assign(activeAttempt, patch);
+    const observedAt = Date.now();
+    timings.durationMs = observedAt - started;
+    if (activeAttempt.status !== 'running') timings.completedAt = new Date(observedAt).toISOString();
+    for (const timing of timings.viewports) if (!timing.complete) timing.durationMs = observedAt - Date.parse(timing.startedAt);
+    const seen = new Set(records.map((record) => record.name));
+    activeAttempt.coverage.completedRequiredCaptures = requiredNames.filter((name) => seen.has(name)).length;
+    activeAttempt.generatedAt = new Date().toISOString();
+    await publishResponsiveAggregateReport(outputDir, activeAttempt);
+  };
+  await persistProgress();
+  const { server, baseUrl, artifactHeaderRules, policyWitnesses } = await createServer();
+  let browser;
+  try {
+    activeAttempt.policyWitnesses = policyWitnesses;
+    await persistProgress();
+    browser = await chromium.launch({ headless: true, ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}) });
+  }
+  catch (error) { await new Promise((resolve) => server.close(resolve)); throw error; }
 
   try {
     for (const viewport of viewports) {
+      const viewportStarted = Date.now();
+      const viewportTiming = { name: viewport.name, startedAt: new Date(viewportStarted).toISOString(), durationMs: 0, complete: false };
+      const finishViewportTiming = () => {
+        const completed = Date.now();
+        Object.assign(viewportTiming, { durationMs: completed - viewportStarted, completedAt: new Date(completed).toISOString(), complete: true });
+      };
+      timings.viewports.push(viewportTiming);
+      await persistProgress();
       const context = await browser.newContext({ viewport });
       await monitorArtifactPolicy(context);
       const page = await context.newPage();
@@ -554,6 +616,8 @@ async function main() {
         await captureReturnDigestFixture(page, viewport, outputDir, records);
         await context.close();
         await captureTutorialCompletion(browser, viewport, baseUrl, outputDir, records, runtimeErrors);
+        finishViewportTiming();
+        await persistProgress();
         continue;
       }
 
@@ -974,6 +1038,7 @@ async function main() {
         controls: [],
         undersizedControls: []
       });
+      await persistProgress();
       await page.evaluate(
         async (gameId) => (await import("./lib/simWatchDirector.js")).runSimWatch(gameId),
         simWatchReceipt.gameId
@@ -1047,51 +1112,18 @@ async function main() {
       await captureLazyStyleFixtures(page, viewport, outputDir, records);
       await context.close();
       await captureTutorialCompletion(browser, viewport, baseUrl, outputDir, records, runtimeErrors);
+      finishViewportTiming();
+      await persistProgress();
     }
   } finally {
-    await browser.close();
-    await new Promise((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
+    try { await browser.close(); }
+    finally { await new Promise((resolve, reject) => server.close((error) => error ? reject(error) : resolve())); }
   }
 
-  const requiredCaptureNames = viewports.flatMap((viewport) => lazyStyleOnly
-    ? evidenceThemes.flatMap((theme) => lazyStyleSurfaces.map((surface) => `${viewport.name}-${surface}-${theme}`))
-    : [
-    ...evidenceThemes.flatMap((theme) => lazyStyleSurfaces.filter((surface) => surface !== "return-digest").map((surface) => `${viewport.name}-${surface}-${theme}`)),
-    ...evidenceThemes.map((theme) => `${viewport.name}-game-dialog-${theme}`),
-    ...evidenceThemes.map((theme) => viewport.name + "-draft-trade-review-" + theme),
-    ...evidenceThemes.map((theme) => viewport.name + "-architect-objective-" + theme),
-    ...evidenceThemes.map((theme) => `${viewport.name}-setup-${theme}`),
-    ...(viewport.name === "mobile" ? evidenceThemes.map((theme) => `${viewport.name}-game-loop-${theme}`) : []),
-    ...(viewport.name !== "desktop" ? evidenceThemes.map((theme) => `${viewport.name}-nav-drawer-${theme}`) : []),
-    ...evidenceThemes.map((theme) => `${viewport.name}-return-digest-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-gm-persona-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-cap-pressure-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-trophy-road-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-sim-watch-reel-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-progression-receipt-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-room-watch-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-integrity-receipt-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-architect-cut-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-guide-modal-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-rival-coaching-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-roster-window-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-waiver-identity-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-mentorship-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-draft-market-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-hall-ballot-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-franchise-legends-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-decision-archive-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-co-gm-brief-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-architect-signature-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-exact-command-center-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-exact-command-target-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-prediction-receipt-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-agent-negotiation-${theme}`),
-    ...evidenceThemes.map((theme) => `${viewport.name}-hof-ceremony-${theme}`),
-    ...evidenceThemes.flatMap((theme) => evidenceTabs.map(([, label]) => `${viewport.name}-game-${label}-${theme}`))
-  ]);
+  const requiredCaptureNames = requiredNames;
   const capturedNames = new Set(records.map((record) => record.name));
   const failures = [
+    ...responsiveCaptureFailures(records, requiredCaptureNames),
     ...requiredCaptureNames.filter((name) => !capturedNames.has(name)).map((name) => `${name}: required capture missing`),
     ...records.filter((record) => record.overflowX).map((record) => `${record.name}: horizontal overflow (${record.documentWidth}px > ${record.viewport.width}px); suspects ${record.overflowElements.map((item) => item.selector).join(", ")}`),
     ...records.filter((record) => record.bodyContrast < 4.5).map((record) => `${record.name}: body contrast ${record.bodyContrast}:1`),
@@ -1106,6 +1138,8 @@ async function main() {
     kind: iterationEvidence ? "provisional-rendered-evidence" : "immutable-rendered-evidence",
     artifact: "static",
     artifactFingerprint: identity.artifactFingerprint,
+    shard,
+    timings,
     policySource: "static/_headers",
     contentSecurityPolicy: resolveArtifactHeaders(artifactHeaderRules, "/game.html")["content-security-policy"],
     policyWitnesses,
@@ -1120,10 +1154,11 @@ async function main() {
     },
     captures: records,
     runtimeErrors,
+    complete: !iterationEvidence && failures.length === 0,
     status: iterationEvidence ? (failures.length ? "iteration-failed" : "iteration-passed") : (failures.length ? "failed" : "passed"),
     failures
   };
-  await fs.writeFile(path.join(outputDir, "responsive-evidence.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
+  await persistProgress(report);
   if (failures.length) throw new Error(`Responsive evidence failed:\n- ${failures.join("\n- ")}\nReport: ${path.join(outputDir, "responsive-evidence.json")}`);
   console.log(`Responsive evidence ${report.status}: ${records.length} captures in ${outputDir}`);
 }

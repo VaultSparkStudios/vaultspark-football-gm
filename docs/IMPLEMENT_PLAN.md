@@ -1,20 +1,48 @@
-<!-- source: docs/AUDIT_2026-10-29-S128.json · Session 128 -->
-# S128 resilient Inbox and trustworthy feedback
+<!-- Source: docs/AUDIT_2026-11-13.json · Session 130 -->
+# S130 implementation plan
 
-Local FORGE/FB unchanged. L2 selected for both outcomes.
+Live focus: FORGE/FB beta hardening, public-unlaunched, product rubric. Five L2 outcomes are selected within the startup velocity-based cap6. No lifecycle transition, model API or paid dependency is selected.
 
-1. **Recover a damaged Inbox without losing valid messages**. Validate cached messages before installing Inbox state; retain legitimate historical messages, read/resolution state and deduplication, normalize timestamps, reject invalid row shapes, and prove fresh news plus the next actual week remain usable. Readiness: core journeys and product correctness. Acceptance: focused behavioral regressions, actual worker browser journeys, before/after desktop/mobile dark/light images, independent review, exact-candidate staging and production proof.
+## 1. Remove coaching rendering from the initial boot graph (`boot-headroom`)
 
-2. **Validate playtest notes and copy only disclosed fields**. Normalize stored and caller-supplied notes to the existing documented fields, validate ratings before trend calculations, remove unknown nested fields from copied packets, preserve valid notes and explicit attachment selection, and verify Save Note and Copy All Notes in the real browser. Readiness: feedback, support and issue triage. Acceptance: focused behavioral regressions, actual worker browser journeys, before/after desktop/mobile dark/light images, independent review, exact-candidate staging and production proof.
+Readiness: performance and capacity.
 
-Wave1 startup/audit; Wave2 implementation; Wave3 release and ordered closeout.
+Separate the minimal delegated action binding from coaching rendering and dynamically load the renderer through existing staff-loading owners. Preserve hydration authority, early loading/error states, controlled-club guards and retries. Do not alter any byte/module/island budget.
 
-## S128 ordered closeout checkpoint
+Acceptance: Create at least4KiB headroom before other boot-path repairs; final source remains within every unchanged budget. Focused load/action races and actual staff selection/hire/refusal journeys, desktop/mobile and themes, preserve behavior.
 
-Both selected outcomes and exact technical frontend/API release accepted by reports/s128-release-acceptance.json. Source `812fd52b5ea01d1e0ef3d4037d383f311998aaa5`; artifact `86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553`. Waves1–2 complete; Wave3 remains open for final closeout, publication and owned cleanup. Final exact staged closing-metadata Studio acceptance, final staged security/supply-chain checks, containing metadata commit/push/readback, actual signed impact and owned process/worktree/lock cleanup remain required. This ordered checkpoint does not prove full closeout, final publication or native goal completion.
+## 2. Keep Community Stats sharing off after decline (`community-consent-revocation`)
 
-## 2026-10-29 — Session 128 — Verified finalization checkpoint
+Readiness: security, privacy, data integrity and abuse controls.
 
-Waves1–3 phase evidence verified for the same two outcomes. This is no additional outcome or session. The unchanged native Studio suite passed398/398 at ordered-checkpoint staged tree 5a2a137c89deb5bc20dea32130a4e113576cf647. First containing metadata commit 8ef2050062a4c2c8c89e1c331d25da8e18c934e3 was pushed and read back. Signed impact 01K64MNHEAF6081E99DCEF4F13 was shipped and HMAC verified; recipient adoption is not asserted. The owned C3 checkout was removed with raw/patch evidence preserved, and the recorded post-cleanup census found zero owned jobs/listeners. This is same-session finalization, no new session, score increment or additional product outcome. Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with a fresh zero-owned-jobs observation; then release ONLY the original goal-bound S128 lock (start 2026-10-29T05:57:59.205Z, startHead a8220ea9736da857b0d1d558f70e52d769fef090). This receipt cannot attest to its own containing publication or lock release.
+Use a fail-closed volatile consent decision and generation-bound event admission. Bound capability/mutation requests, cancel stale event sends, and preserve purpose-bound deletion tombstones and retry. Keep opt-in honest when persistence fails.
 
-Completion: reports/s128-closeout-completion.json. Earlier pending statements remain historical checkpoints.
+Acceptance: Fault-injected decline write, delayed capability then decline, stale response after renewed opt-in, hung event/delete request, successful deletion retry; real settings states in desktop/mobile and both themes.
+
+## 3. Describe player availability from actual eligibility facts (`player-availability-truth`)
+
+Readiness: core journeys and product correctness.
+
+Use existing projected suspension, reserve, practice, inactive and medical facts before healthy prose. Preserve concurrent restrictions, explain current availability without inventing eligibility, and handle recovered or malformed optional injury data.
+
+Acceptance: Pure cases for healthy, suspension, practice, IR/PUP/NFI, inactive, recovered injury and concurrent restrictions; real dossier renders desktop/mobile in dark/light.
+
+## 4. Export truthful and recoverable Co-GM briefings (`co-gm-export-integrity`)
+
+Readiness: human and agent access where applicable.
+
+Admit finite numeric values and intentional numeric strings without coercing absent/boolean values. Filter malformed optional rows while preserving bounded valid data and disclosure. Reuse action-error reporting around copy/download import and build, retain clipboard fallback, retry and download cleanup.
+
+Acceptance: Unknown remains null; real zero survives; malformed rows preserve valid peers; secret/save fields remain excluded. Browser copy/download failures are visible and retry succeeds in every touched theme/viewport.
+
+## 5. Capture every responsive state within bounded release jobs (`responsive-capture-shards`)
+
+Readiness: staging, release evidence and truthful beta/release communication.
+
+Reuse the three existing viewport profiles as independent bounded jobs with distinct output paths/artifacts. Aggregate exact required-name coverage, themes, source revision and artifact digest before publication. Reject missing/duplicate/mismatched/invalid profiles; retain partial failure diagnostics and per-viewport timings. Preserve every capture and assertion and the eight-minute per-job bound.
+
+Acceptance: All existing states and themes retained. Missing viewport/capture, wrong source/digest, duplicate profile and failed shard must refuse publication. Actual full three-viewport run and hosted successful capture jobs with complete aggregate evidence.
+
+## Release and closeout
+
+Preserve fixed budgets and every test/capture. Run focused meaningful regressions, inspect real before/after pixels for all touched states in desktop/mobile dark/light, independent review, current complete acceptance and exact-candidate CI. Verify staging first, then production frontend/API parity using existing authorization. Retain the true rollback source/image and database/routing baseline. Run full ordered closeout, scoped SIL scoring, final staged security/supply-chain checks, direct main push and remote readback. Broader email/identity/market/restore unknowns do not become passing or a public launch.

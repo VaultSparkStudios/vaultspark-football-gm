@@ -1,3 +1,13 @@
+## S130 Wave status
+
+Session Intent: /arc then I authorize a direct push/commit to main/remote and fully deploy to staging & production
+
+- [x] Wave 0: S129 recovery published and read back at c5290c3d; scoped Studio 398/398, application hosted CI 7/7 and frontend provenance are separate evidence.
+- [x] Wave 1: Full S130 startup and native goal binding; canon reconciliation, offline conformance, adoption, radar, credentials discovery and validated startup brief. Beacon unconfigured; owner propagation exclusions remain unverified.
+- [x] Wave 2: Fresh nine-axis audit, readiness matrix, five strict premises, pre-implementation timing and fixture/real admission verified.
+- [ ] Wave 3: Four local outcomes verified; responsive-pipeline native327 and hosted complete aggregate remain pending.
+- [ ] Wave 4: Verify staging, production frontend/API parity, rollback, full closeout and remote publication.
+
 # Task Board — Franchise Architect: Football
 
 ## S129 Wave status

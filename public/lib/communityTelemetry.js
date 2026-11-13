@@ -12,13 +12,18 @@ const MAX_QUEUE = 240;
 const CAPABILITY_EXPIRY_SKEW_MS = 5_000;
 const DELETION_RETRY_MIN_MS = 5_000;
 const DELETION_RETRY_MAX_MS = 5 * 60_000;
+const REQUEST_TIMEOUT_MS = 10_000;
 
 let capabilityLease = null;
 let capabilityRequest = null;
 let pendingDeletionRequest = null;
 let pendingDeletionRetryTimer = null;
 let pendingDeletionRetryCount = 0;
-let volatilePendingDeletion = "";
+let volatilePendingDeletion = null;
+let participationBlocked = false;
+let consentGeneration = 0;
+let discardStoredQueue = false;
+const eventRequests = new Set();
 
 function storage() {
   try { return window.localStorage; } catch { return null; }
@@ -32,23 +37,33 @@ function readJson(key, fallback) {
 }
 
 function writeJson(key, value) {
-  try { storage()?.setItem(key, JSON.stringify(value)); return true; } catch { return false; }
+  try {
+    const saved = storage(), serialized = JSON.stringify(value);
+    saved?.setItem(key, serialized);
+    return Boolean(saved) && saved.getItem(key) === serialized;
+  } catch { return false; }
 }
 
 function remove(key) {
   try { storage()?.removeItem(key); } catch { /* local storage is optional */ }
 }
 
+function persistDecline() {
+  try { storage()?.setItem(COMMUNITY_CONSENT_KEY, "declined"); } catch { remove(COMMUNITY_CONSENT_KEY); }
+}
+
 export function getCommunityParticipation() {
+  if (participationBlocked) return false;
   try { return storage()?.getItem(COMMUNITY_CONSENT_KEY) === "participating"; } catch { return false; }
 }
 
 function participantId({ create = false } = {}) {
   try {
     let value = storage()?.getItem(COMMUNITY_PARTICIPANT_KEY) || "";
-    if (!value && create) {
+    if (create && (!value || value === getPendingCommunityDeletion())) {
       value = globalThis.crypto?.randomUUID?.() || `browser_${Date.now()}_${Math.random().toString(36).slice(2)}`;
       storage()?.setItem(COMMUNITY_PARTICIPANT_KEY, value);
+      if (storage()?.getItem(COMMUNITY_PARTICIPANT_KEY) !== value) return "";
     }
     return value;
   } catch { return ""; }
@@ -71,7 +86,8 @@ function emitDeletionChange(deletion) {
 }
 
 export function getPendingCommunityDeletion() {
-  try { return storage()?.getItem(COMMUNITY_PENDING_DELETION_KEY) || volatilePendingDeletion; } catch { return volatilePendingDeletion; }
+  if (volatilePendingDeletion !== null) return volatilePendingDeletion;
+  try { return storage()?.getItem(COMMUNITY_PENDING_DELETION_KEY) || ""; } catch { return ""; }
 }
 
 function writePendingCommunityDeletion(browserId) {
@@ -85,7 +101,8 @@ function writePendingCommunityDeletion(browserId) {
   } catch { return false; }
 }
 
-function clearPendingCommunityDeletion() {
+function clearPendingCommunityDeletion(browserId) {
+  if (getPendingCommunityDeletion() !== browserId) return;
   remove(COMMUNITY_PENDING_DELETION_KEY);
   volatilePendingDeletion = "";
   pendingDeletionRetryCount = 0;
@@ -93,9 +110,9 @@ function clearPendingCommunityDeletion() {
   pendingDeletionRetryTimer = null;
 }
 
-function clearCapability() {
-  capabilityLease = null;
-  capabilityRequest = null;
+function clearCapability(browserId) {
+  if (!browserId || capabilityLease?.participantId === browserId) capabilityLease = null;
+  if (!browserId || capabilityRequest?.participantId === browserId) capabilityRequest = null;
 }
 
 function schedulePendingDeletionRetry() {
@@ -108,8 +125,29 @@ function schedulePendingDeletionRetry() {
   }, delay);
 }
 
+async function request(path, init, eventRequest = false) {
+  const controller = new AbortController();
+  if (eventRequest) eventRequests.add(controller);
+  const stopped = new Promise((_, reject) => controller.signal.addEventListener("abort", () => reject(new Error("Community request stopped or timed out.")), { once: true }));
+  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  try {
+    return await Promise.race([stopped, (async () => {
+      const response = await fetch(statsEndpoint(path), { ...init, signal: controller.signal });
+      let body = null;
+      if (response.ok) {
+        try { body = await response.json(); } catch { /* mutation count receipts are optional */ }
+      }
+      return { response, body };
+    })()]);
+  } finally {
+    clearTimeout(timeout);
+    eventRequests.delete(controller);
+    controller.abort();
+  }
+}
+
 async function requestCapability(browserId) {
-  const response = await fetch(statsEndpoint("capability"), {
+  const { response, body } = await request("capability", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ schemaVersion: "1.0", participantId: browserId }),
@@ -117,8 +155,7 @@ async function requestCapability(browserId) {
     credentials: "omit"
   });
   if (!response.ok) throw new Error(`Community participation capability unavailable (HTTP ${response.status}).`);
-  const body = await response.json();
-  if (!body?.capability || !Number.isFinite(Date.parse(body.expiresAt))) throw new Error("Community participation capability response is invalid.");
+  if (typeof body?.capability !== "string" || !body.capability || !(Date.parse(body.expiresAt) > Date.now())) throw new Error("Community participation capability response is invalid.");
   return {
     participantId: browserId,
     capability: body.capability,
@@ -131,32 +168,36 @@ async function ensureCapability(browserId, { force = false } = {}) {
   const current = capabilityLease;
   if (!force && current?.participantId === browserId && current.remainingUses > 0 &&
       Date.parse(current.expiresAt) - Date.now() > CAPABILITY_EXPIRY_SKEW_MS) return current;
-  if (force) clearCapability();
-  if (!capabilityRequest) {
-    capabilityRequest = requestCapability(browserId)
-      .then((lease) => { capabilityLease = lease; return lease; })
-      .finally(() => { capabilityRequest = null; });
+  if (force) clearCapability(browserId);
+  if (capabilityRequest?.participantId !== browserId) {
+    const pending = { participantId: browserId };
+    pending.promise = requestCapability(browserId)
+      .then((lease) => { if (capabilityRequest === pending) capabilityLease = lease; return lease; })
+      .finally(() => { if (capabilityRequest === pending) capabilityRequest = null; });
+    capabilityRequest = pending;
   }
-  return capabilityRequest;
+  return capabilityRequest.promise;
 }
 
-async function capabilityMutation(path, browserId, payload, init = {}) {
-  let response = null;
+async function capabilityMutation(path, browserId, payload, init = {}, admitted = null) {
+  let result = null;
   for (let attempt = 0; attempt < 2; attempt += 1) {
+    if (admitted && !admitted()) throw new Error("Community sharing stopped.");
     const lease = await ensureCapability(browserId, { force: attempt > 0 });
+    if (admitted && !admitted()) throw new Error("Community sharing stopped.");
     lease.remainingUses = Math.max(0, lease.remainingUses - 1);
-    response = await fetch(statsEndpoint(path), {
+    result = await request(path, {
       ...init,
       method: init.method || "POST",
       headers: { "Content-Type": "application/json", ...(init.headers || {}) },
       body: JSON.stringify({ ...payload, capability: lease.capability }),
       mode: "cors",
       credentials: "omit"
-    });
-    if (response.status !== 401) return response;
-    clearCapability();
+    }, Boolean(admitted));
+    if (result.response.status !== 401) return result;
+    clearCapability(browserId);
   }
-  return response;
+  return result;
 }
 
 export async function retryPendingCommunityDeletion() {
@@ -171,7 +212,7 @@ export async function retryPendingCommunityDeletion() {
 
   pendingDeletionRequest = (async () => {
     try {
-      const response = await capabilityMutation("participation", browserId, {
+      const { response, body } = await capabilityMutation("participation", browserId, {
         schemaVersion: "1.0",
         participantId: browserId
       }, { method: "DELETE", keepalive: true });
@@ -182,16 +223,11 @@ export async function retryPendingCommunityDeletion() {
         schedulePendingDeletionRetry();
         return outcome;
       }
-      let receipt = {};
-      try {
-        receipt = await response.json();
-      } catch {
-        // A successful DELETE acknowledgement is authoritative even when an
-        // intermediary strips the optional JSON count receipt.
-      }
-      const outcome = { status: "success", deleted: Math.max(0, Number(receipt.deleted) || 0) };
-      clearPendingCommunityDeletion();
-      clearCapability();
+      // HTTP acknowledgement remains authoritative when its optional count is absent.
+      const outcome = { status: "success", deleted: Math.max(0, Number(body?.deleted) || 0) };
+      clearPendingCommunityDeletion(browserId);
+      clearCapability(browserId);
+      schedulePendingDeletionRetry();
       emitDeletionChange(outcome);
       return outcome;
     } catch {
@@ -210,9 +246,37 @@ export async function retryPendingCommunityDeletion() {
 export async function setCommunityParticipation(participating) {
   const wasParticipating = getCommunityParticipation();
   const existingId = participantId();
+  consentGeneration += 1;
+  participationBlocked = true;
+  for (const controller of eventRequests) controller.abort();
   if (participating) {
-    try { storage()?.setItem(COMMUNITY_CONSENT_KEY, "participating"); } catch { /* non-persistent consent stays false */ }
+    if (!wasParticipating) discardStoredQueue = true;
+    if (getPendingCommunityDeletion()) {
+      // Finish this identifier first; deletion state retains only one identifier.
+      discardStoredQueue = true;
+      persistDecline();
+      const deletion = { status: "pending", deleted: null, reason: "deletion-pending" };
+      emitParticipationChange(false);
+      emitDeletionChange(deletion);
+      return { participating: false, deletion };
+    }
+    try {
+      const saved = storage();
+      saved?.setItem(COMMUNITY_CONSENT_KEY, "participating");
+      participationBlocked = !saved || saved.getItem(COMMUNITY_CONSENT_KEY) !== "participating";
+    } catch { /* failed persistence stays off */ }
+    if (participationBlocked) {
+      persistDecline();
+      emitParticipationChange(false);
+      return { participating: false, deletion: { status: "not-requested", deleted: null } };
+    }
     const browserId = participantId({ create: true });
+    if (!browserId) {
+      participationBlocked = true;
+      persistDecline();
+      emitParticipationChange(false);
+      return { participating: false, deletion: { status: "not-requested", deleted: null } };
+    }
     emitParticipationChange(true);
     if (browserId && typeof fetch === "function") {
       observeBackgroundTask(
@@ -228,7 +292,8 @@ export async function setCommunityParticipation(participating) {
     return { participating: true, deletion: { status: "not-requested", deleted: null } };
   }
 
-  try { storage()?.setItem(COMMUNITY_CONSENT_KEY, "declined"); } catch { /* ignore */ }
+  discardStoredQueue = true;
+  persistDecline();
   // Decline is immediate and collection stays off even if remote deletion is
   // temporarily unavailable. Only the identifier moves into a retry tombstone.
   if (existingId) writePendingCommunityDeletion(existingId);
@@ -289,38 +354,47 @@ function recordLocally(events) {
 
 function queueEvents(events) {
   if (!events.length || !getCommunityParticipation()) return;
-  const queued = readJson(COMMUNITY_QUEUE_KEY, []);
+  const queued = readQueue();
   const next = [...queued, ...events].slice(-MAX_QUEUE);
-  writeJson(COMMUNITY_QUEUE_KEY, next);
+  if (writeJson(COMMUNITY_QUEUE_KEY, next)) discardStoredQueue = false;
+}
+
+function readQueue() {
+  const queue = discardStoredQueue ? [] : readJson(COMMUNITY_QUEUE_KEY, []);
+  return Array.isArray(queue) ? queue : [];
 }
 
 let flushing = null;
 export async function flushCommunityQueue() {
-  if (flushing) return flushing;
+  if (flushing?.generation === consentGeneration) return flushing.promise;
   if (!getCommunityParticipation() || typeof fetch !== "function") return { sent: 0 };
   const browserId = participantId({ create: true });
   if (!browserId) return { sent: 0 };
-  flushing = (async () => {
+  const generation = consentGeneration;
+  const admitted = () => generation === consentGeneration && getCommunityParticipation() && participantId() === browserId;
+  const pending = { generation };
+  pending.promise = (async () => {
     let sent = 0;
-    while (getCommunityParticipation()) {
-      const queue = readJson(COMMUNITY_QUEUE_KEY, []);
+    while (admitted()) {
+      const queue = readQueue();
       if (!queue.length) break;
       const batch = queue.slice(0, COMMUNITY_BATCH_LIMIT);
       let response;
       try {
-        response = await capabilityMutation("events", browserId, { schemaVersion: "1.0", participantId: browserId, events: batch }, {
+        ({ response } = await capabilityMutation("events", browserId, { schemaVersion: "1.0", participantId: browserId, events: batch }, {
           keepalive: batch.length <= 8
-        });
+        }, admitted));
       } catch { break; }
-      if (!response.ok) break;
-      const latest = readJson(COMMUNITY_QUEUE_KEY, []);
+      if (!admitted() || !response.ok) break;
+      const latest = readQueue();
       const ids = new Set(batch.map((row) => row.eventId));
-      writeJson(COMMUNITY_QUEUE_KEY, latest.filter((row) => !ids.has(row.eventId)));
       sent += batch.length;
+      if (!writeJson(COMMUNITY_QUEUE_KEY, latest.filter((row) => !ids.has(row.eventId)))) break;
     }
     return { sent };
-  })().finally(() => { flushing = null; });
-  return flushing;
+  })().finally(() => { if (flushing === pending) flushing = null; });
+  flushing = pending;
+  return pending.promise;
 }
 
 export function observeCommunityApiReceipt({ method, path, body, response, runtime }) {
@@ -334,6 +408,14 @@ export function observeCommunityApiReceipt({ method, path, body, response, runti
 
 export function initCommunityTelemetry() {
   if (typeof window === "undefined") return;
+  window.addEventListener("storage", (event) => {
+    if (event.key === COMMUNITY_PENDING_DELETION_KEY) volatilePendingDeletion = null;
+    if (event.key === COMMUNITY_CONSENT_KEY || event.key === COMMUNITY_PARTICIPANT_KEY) {
+      consentGeneration += 1;
+      discardStoredQueue = true;
+      for (const controller of eventRequests) controller.abort();
+    }
+  });
   window.addEventListener("online", () => {
     if (getPendingCommunityDeletion()) void retryPendingCommunityDeletion();
     if (getCommunityParticipation()) void flushCommunityQueue();

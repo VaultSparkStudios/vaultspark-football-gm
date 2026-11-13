@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildPlayerProfileNarrative } from "../public/lib/playerProfileNarrative.js";
+import { buildPlayerProfileNarrative, playerAvailabilitySummary } from "../public/lib/playerProfileNarrative.js";
 import { playingStyleFor } from "../src/domain/playingStyle.js";
 import { createSession } from "../src/runtime/bootstrap.js";
 import { positionRatingKeys } from "../src/domain/ratings.js";
@@ -100,4 +100,95 @@ test("every archetype the player factory can roll has a playing style, and unkno
   }
   assert.equal(playingStyleFor("QB", "Unknown"), null);
   assert.equal(playingStyleFor(null, null), null);
+});
+
+const availableProjection = () => ({
+  id: "availability-fixture", name: "Projected Player", position: "QB", age: 25,
+  overall: 75, potential: 80, teamId: "BUF", status: "active", rosterSlot: "active",
+  suspensionWeeks: 0, injury: null,
+  designations: { ir: false, pup: false, nfi: false, gameDayInactive: false }
+});
+
+test("availability preserves concurrent restrictions instead of declaring an uninjured player eligible", () => {
+  const player = { ...availableProjection(), suspensionWeeks: 3, rosterSlot: "reserve",
+    designations: { ir: true, pup: true, nfi: true, gameDayInactive: true },
+    injury: { type: "Hamstring", weeksRemaining: 2 } };
+  const result = buildPlayerProfileNarrative({ player });
+  for (const fact of [/Suspended: 3/, /Injured reserve/, /Physically unable to perform/, /Non-football injury/,
+    /Game-day inactive/, /Medical restriction: Hamstring, 2/, /activation is not confirmed/]) {
+    assert.match(result.availability, fact);
+    assert.match(result.bio, fact);
+  }
+  assert.ok(result.facts.includes(result.availability));
+  assert.doesNotMatch(result.bio, /healthy and available|available for the active rotation/i);
+});
+
+test("roster membership and game-day participation stay distinct", () => {
+  const cases = [
+    [{ suspensionWeeks: 3 }, /Suspended: 3/],
+    [{ rosterSlot: "practice" }, /Practice squad; game-day elevation must be confirmed separately/],
+    [{ rosterSlot: "reserve" }, /Reserve placement; activation is not confirmed/],
+    [{ status: "free-agent", teamId: "FA" }, /Free agent; not on an active roster/],
+    [{ status: "waiver", teamId: "WAIVER" }, /On waivers; not on an active roster/],
+    [{ status: "unsigned" }, /Unsigned player; not on an active roster/],
+    [{ status: "retired", teamId: "RET" }, /Retired player; not on an active roster/],
+    [{ isDraftProspect: true }, /Unsigned prospect; not on an active roster/],
+    [{ designations: { "ps-injured": true } }, /Practice Squad\/Injured/],
+    [{ designations: { exemptCommissioner: true } }, /Commissioner's exempt list/]
+  ];
+  for (const [fields, expected] of cases) {
+    const result = buildPlayerProfileNarrative({ player: { ...availableProjection(), ...fields } });
+    assert.match(result.availability, expected);
+    assert.doesNotMatch(result.availability, /healthy and available|available for the active rotation/i);
+  }
+  assert.match(playerAvailabilitySummary(availableProjection()), /game-day selection remains separate/);
+  const practiceRestricted = playerAvailabilitySummary({ ...availableProjection(), rosterSlot: "practice",
+    suspensionWeeks: 2, designations: { ir: true }, injury: { type: "Knee", weeksRemaining: 1 } });
+  for (const fact of [/Practice squad/, /Injured reserve/, /Suspended: 2/, /Medical restriction: Knee, 1/]) assert.match(practiceRestricted, fact);
+});
+
+test("recovered injury does not hide an independent suspension or reserve placement", () => {
+  const player = { ...availableProjection(), suspensionWeeks: 1, rosterSlot: "reserve",
+    designations: { ir: true }, injury: { type: "Ankle", weeksRemaining: 0 } };
+  const result = playerAvailabilitySummary(player);
+  assert.match(result, /Recovered Ankle; no recovery weeks remain/);
+  assert.match(result, /Injured reserve/);
+  assert.match(result, /Suspended: 1/);
+  assert.doesNotMatch(result, /Medical restriction:|healthy and available/);
+});
+
+test("unknown context or medical duration cannot become an active-rotation promise", () => {
+  for (const fields of [{}, { teamId: "BUF" }, { status: "active", injury: null },
+    { status: "active", rosterSlot: "active", teamId: "BUF", injury: { type: "Knee" } },
+    { ...availableProjection(), injury: { type: "Knee", weeksRemaining: null }, suspensionWeeks: null }]) {
+    const result = playerAvailabilitySummary(fields);
+    assert.doesNotMatch(result, /healthy and available|available for the active rotation/i);
+    assert.match(result, /not established|game-day selection remains separate/);
+  }
+  assert.match(playerAvailabilitySummary({ ...availableProjection(), injury: { weeksRemaining: 4 } }), /Medical restriction: injury, 4/);
+});
+
+test("actual runtime profile projections carry simultaneous availability facts into the dossier", () => {
+  const session = createSession({ seed: 20260306, startYear: 2026, controlledTeamId: "BUF" });
+  const player = session.league.players.find(row => row.teamId === "BUF" && row.status === "active");
+  player.suspensionWeeks = 3;
+  player.injury = null;
+  const uninjuredSuspended = buildPlayerProfileNarrative(session.getPlayerProfile(player.id));
+  assert.match(uninjuredSuspended.bio, /Suspended: 3/);
+  assert.doesNotMatch(uninjuredSuspended.bio, /healthy and available/);
+  player.rosterSlot = "reserve";
+  player.designations = { ir: true, pup: false, nfi: false, gameDayInactive: true };
+  player.injury = { type: "Shoulder", weeksRemaining: 2 };
+  const projected = session.getPlayerProfile(player.id);
+  assert.equal(projected.player.suspensionWeeks, 3);
+  assert.equal(projected.player.rosterSlot, "reserve");
+  assert.equal(projected.player.designations.ir, true);
+  const result = buildPlayerProfileNarrative(projected);
+  for (const fact of [/Suspended: 3/, /Injured reserve/, /Game-day inactive/, /Medical restriction: Shoulder, 2/]) assert.match(result.bio, fact);
+  player.injury.weeksRemaining = 0;
+  const recovered = buildPlayerProfileNarrative(session.getPlayerProfile(player.id));
+  assert.match(recovered.bio, /Recovered Shoulder/);
+  assert.match(recovered.bio, /Suspended: 3/);
+  assert.match(recovered.bio, /Injured reserve/);
+  assert.doesNotMatch(recovered.bio, /healthy and available/);
 });

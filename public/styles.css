@@ -1308,13 +1308,15 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
 .toast-stack {
   position: fixed;
   right: 1rem;
-  bottom: 1rem;
+  bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+  max-width: calc(100vw - 2rem);
   display: grid;
   gap: 0.4rem;
   z-index: 80;
 }
 
 .toast {
+  overflow-wrap: anywhere;
   border: 1px solid var(--line);
   background: var(--inset);
   border-radius: 10px;
@@ -4017,13 +4019,26 @@ body.mobile-loop-active .mobile-loop-overlay {
 .inbox-empty { padding: 24px 16px; color: var(--muted); font-size: 0.82rem; text-align: center; }
 .panel-error-state {
   display: grid;
+  min-width: 0;
+  overflow-wrap: anywhere;
   gap: 0.5rem;
   padding: 0.85rem 1rem;
   border: 1px solid rgba(208, 92, 92, 0.45);
   border-radius: 8px;
   background: rgba(208, 92, 92, 0.09);
-  color: var(--text);
+  color: var(--ink);
   font-size: 0.85rem;
+}
+
+.panel-error-state button {
+  min-height: 44px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--raised);
+}
+
+.panel-error-state strong {
+  color: inherit;
 }
 
 .panel-error-state span {

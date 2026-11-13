@@ -1,0 +1,117 @@
+{
+  "session": 130,
+  "observedAt": "2026-11-13T06:28:04.134Z",
+  "sourceRevision": "local-worktree",
+  "scope": "118 focused native assertions, including the complete60-case responsive pipeline contract; not a full-suite or release claim.",
+  "rawLog": {
+    "file": ".cache/s130-focused-source-final.log",
+    "sha256": "858e656768a232c79df8fc08f5130411ef8f331e15b3ae1505bdd11cff0b43ce"
+  },
+  "summary": {
+    "tests": 118,
+    "pass": 118,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "sources": [
+    {
+      "file": "public/app.js",
+      "sha256": "248b9caec000f62c3c7a7cc5df0e385632d6b89184c151c5538ff6c2b327c613"
+    },
+    {
+      "file": "public/community-stats.js",
+      "sha256": "6debb4a69ec7d52110b474beb033319d1f590cad67217206d380d6a345621056"
+    },
+    {
+      "file": "public/lib/appCore.js",
+      "sha256": "13c19bb177143690bb5adef982dbbf7b2b5a651abdf1cc09946185884ae64be7"
+    },
+    {
+      "file": "public/lib/coGmBriefPanel.js",
+      "sha256": "cfb33ec4f1d28723fb5721efa10ff1d7ac29ec234aba746379d86173fc4584ec"
+    },
+    {
+      "file": "public/lib/coGmBriefing.js",
+      "sha256": "90c1c798daaa4f765608cf5aaad6b09227a4f231606eb24a3654afd7a297df47"
+    },
+    {
+      "file": "public/lib/coachingMarketActions.js",
+      "sha256": "2b119e3fe4a5da33b7b6c8f001b8293fa706b027f1554bf3a8f67751829ad318"
+    },
+    {
+      "file": "public/lib/coachingMarketPanel.js",
+      "sha256": "81f802dd703000e99fda12686ef38fd48ae686dff246ea87a5462a0b3d2b6410"
+    },
+    {
+      "file": "public/lib/communityTelemetry.js",
+      "sha256": "8797c75193dda3ec3ee88c912a4fbf8ba06172b4d1d1f57b4a8197f2261252d9"
+    },
+    {
+      "file": "public/lib/gameFlow.js",
+      "sha256": "104e96751d241c0f6b86a9ce0b075b97942191753f0d7c97212cb44b8dcfb8d2"
+    },
+    {
+      "file": "public/lib/playerProfileNarrative.js",
+      "sha256": "6f3b09786673a807e4044b69b86e2d19b77d51c5882d16fb87e9cbf8de4d4e50"
+    },
+    {
+      "file": "scripts/responsive-evidence.mjs",
+      "sha256": "ed0dd9f16a8acb152663e7ff647be4d6f8b5d7f79eacab9fc4b44702fe2177e4"
+    },
+    {
+      "file": "scripts/lib/responsive-evidence-contract.mjs",
+      "sha256": "216bc2ddadda4c7a86f795b084572a9e4171d3d5b08f375a6827fce5e07c9717"
+    },
+    {
+      "file": "scripts/lib/responsive-evidence-aggregate.mjs",
+      "sha256": "ddf888a1c3b2cce263c629b3a11cdb6af63ba19b17572a29869e3994a407891e"
+    },
+    {
+      "file": "scripts/aggregate-responsive-evidence.mjs",
+      "sha256": "a44221b444c5cf3d7cba9b3a8c45b9eb6bb3b4853b72416911f6d1e98d009054"
+    },
+    {
+      "file": ".github/workflows/deploy-pages.yml",
+      "sha256": "61618328e55b7903c3bf81c7d4a2745e328993043190460dfb5351146dd6f4e3"
+    },
+    {
+      "file": "scripts/run-test-shard.mjs",
+      "sha256": "f9e678e70f87299a1634789b943627d531952208ad8207d55aac6b4b7d221085"
+    },
+    {
+      "file": "test/ui-islands.test.js",
+      "sha256": "2b02aeff3be6cab43c718fe0deb0cf837bc8afb86b93857e394df32ed3aeedc1"
+    },
+    {
+      "file": "test/co-gm-briefing.test.js",
+      "sha256": "e969210c9961b48b0d6e2b6b32cff81e0348fce2c875ca14a2c129332f5f79d7"
+    },
+    {
+      "file": "test/community-event-contract.test.js",
+      "sha256": "a1a366f489e64b94106893bef88acf9c49ba857f3a0cee2ef88b2988e23572cb"
+    },
+    {
+      "file": "test/community-telemetry-consent.test.js",
+      "sha256": "051706bbb796a0d0b788b43fc04f46a87517b8e51df16f53d12b697d1dd6219d"
+    },
+    {
+      "file": "test/player-profile-narrative.test.js",
+      "sha256": "9dc6f8d9bc2ea211de1d3899e0b47381a14613e10c4023fa8af747826e9a8d1a"
+    },
+    {
+      "file": "test/responsive-evidence-shards.test.js",
+      "sha256": "b750d18170faaf4a48a5ef847c826e670f4421aa556484c23ae84acd36194ad3"
+    },
+    {
+      "file": "public/styles.css",
+      "sha256": "fb7ca2be3b40dc96add0ed26e96a449d191931ae9448b73ab297c7013d47544a"
+    },
+    {
+      "file": "test/release-authority.test.js",
+      "sha256": "144750a77d2d66b155bdd3b80415b20ca25c2fdb9123ec32939dfbf6fc49c260"
+    }
+  ],
+  "executionNote": "A trailing blank line only in the lazy coaching module was normalized during this run. No behavior changed; final immutable hosted checks remain required."
+}

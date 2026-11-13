@@ -3,7 +3,7 @@
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: 06c3f662e849c4b7 -->
-<!-- genius-authority-fingerprint: 07fbe4d9f140c567 -->
+<!-- genius-authority-fingerprint: 2278f5e472fee788 -->
 <!-- session-authority: committed=S129 · SIL=S129 · status=S129 · handoff=S129; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
@@ -22,7 +22,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ LAST SESSION (S129) - WHAT SHIPPED ══════════════════════════╗
-║  S129 recovered its cut-off depth-chart rebuild (c2e5a5ca) and   ║
+║  S129 recovery published and read back at c5290c3d: current Stu  ║
 ║  Tests Unverified for this session                               ║
 ║  Deploy —                                                        ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -61,15 +61,15 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE WE LEFT OFF  ·  Session 129 ═══════════════════════════╗
-║  Shipped:  S129 recovery observed identical frontend source 746  ║
+║  Shipped:  S129 recovery: the two depth-chart fixes are written  ║
 ║  Tests: Unverified for this session                              ║
-║  Deploy: S128 matching frontend/API812fd52b accepted; corrected  ║
+║  Deploy: Observed frontend staging/production 74683a57; API hea  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    2% used                          ║
-║     2,948 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,474 tok/turn  ·  cache 50%  ·  122 turns to compact       ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    6% used                          ║
+║     15,175 / 272,000 tok  ·  codex/codex-272k  ·  measured+heur  ║
+║     ~7,588 tok/turn  ·  cache 50%  ·  30 turns to compact        ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -89,7 +89,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⚠  Doctor        10/12 (83%)  ·  2 warn                         ║
+║  ⚠  Doctor        9/12 (75%)  ·  3 warn                          ║
 ║  ✓  Cost          Max flat-rate · $0.00/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -113,22 +113,10 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ cache source: AUDIT_2026-11-10.json                           ║
+║  ✓ cache source: AUDIT_2026-11-13.json                           ║
 ║                                                                  ║
-║  #2 · 🔥 · player-identity                                       ║
-║  Player identity: archetypes, traits, signature abilities, pers  ║
-║                                                                  ║
-║  #3 · 🔥 · position-balance                                      ║
-║  Realistic positional balance and CPU roster building            ║
-║                                                                  ║
-║  #4 · 🔥 · player-profile-redesign                               ║
-║  Player profile: grouped ratings, scouting report, comparable p  ║
-║                                                                  ║
-║  #5 · 🔥 · depth-chart-rebuild                                   ║
-║  Depth chart: drag rows, autosave, best lineup, and decision da  ║
-║                                                                  ║
-║  #6 · ⚡ · faster-first-week                                      ║
-║  Faster first week                                               ║
+║  #2 · 🔥 · responsive-capture-shards                             ║
+║  Capture every responsive state within bounded release jobs      ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 

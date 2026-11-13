@@ -26709,6 +26709,446 @@
       "bytes": 177982,
       "session": 129
     },
+    "s130-after-actual-player-availability-desktop-dark.png": {
+      "sha256": "57c4a42bc621dd9fe7c8f9192fda3702c62f0175a8bbd53aec0b87b4ec425be1",
+      "bytes": 10773,
+      "session": 130
+    },
+    "s130-after-actual-player-availability-desktop-light.png": {
+      "sha256": "447fba844959f1318ea2b9d0eb17584bf4947d76536bbffe93d66b82dd51effb",
+      "bytes": 10154,
+      "session": 130
+    },
+    "s130-after-actual-player-availability-mobile-dark.png": {
+      "sha256": "9eb999f7c71687c81790c11f48c0f06611090e55889e2889b13bbc7ce95888b6",
+      "bytes": 12922,
+      "session": 130
+    },
+    "s130-after-actual-player-availability-mobile-light.png": {
+      "sha256": "a8b17731b1ef1fcd26d904d9bb6f71262eba218a715800ea63cca3a0f2f60357",
+      "bytes": 10276,
+      "session": 130
+    },
+    "s130-after-actual-player-dossier-desktop-dark.png": {
+      "sha256": "0b60471d4314f0f9500ce8a5cb8be13b6a2ca2c6a70749aa3231b1508f305345",
+      "bytes": 560758,
+      "session": 130
+    },
+    "s130-after-actual-player-dossier-desktop-light.png": {
+      "sha256": "2d461b03e735d827094dde2c2b7f2d6235a068e8490ed369a0053748a0541aff",
+      "bytes": 582468,
+      "session": 130
+    },
+    "s130-after-actual-player-dossier-mobile-dark.png": {
+      "sha256": "0860b2b5d79263198ad863ce317b0b5e66ed0a65152b0bf9aee67957e8497498",
+      "bytes": 163838,
+      "session": 130
+    },
+    "s130-after-actual-player-dossier-mobile-light.png": {
+      "sha256": "6177406d20b3eec5744db635122f2136343df9178de556cc8257115a99b4f775",
+      "bytes": 168924,
+      "session": 130
+    },
+    "s130-after-community-storage-refusal-desktop-dark.png": {
+      "sha256": "c7e3e019724c4dcbb8dd5abcb916b9a4d38063cd80617af80d673b50ca8fd8ac",
+      "bytes": 22468,
+      "session": 130
+    },
+    "s130-after-community-storage-refusal-desktop-light.png": {
+      "sha256": "ab4c026a140524db02829b5e74d075fba3526438ea81fc9217e2a28264e53c4e",
+      "bytes": 24593,
+      "session": 130
+    },
+    "s130-after-community-storage-refusal-mobile-dark.png": {
+      "sha256": "21881fe1dbc243f5d6433c762dbbe8bd948839199ec076fc9dede98512b3b934",
+      "bytes": 24755,
+      "session": 130
+    },
+    "s130-after-community-storage-refusal-mobile-light.png": {
+      "sha256": "b5d72c0f3a22fe9cf4ed5f479b800c772e103e39f6df40738312c91118fd7229",
+      "bytes": 26934,
+      "session": 130
+    },
+    "s130-after-controlled-coaching-desktop-dark.png": {
+      "sha256": "f0b2016a372d7d469f1d5dadc781097afed473ec436bd45250a0310c004b0601",
+      "bytes": 65343,
+      "session": 130
+    },
+    "s130-after-controlled-coaching-desktop-light.png": {
+      "sha256": "a3d243a1440100886fb24db8d28fc0ce29a2c0191383b73fb6bae7f37c7745ad",
+      "bytes": 54037,
+      "session": 130
+    },
+    "s130-after-controlled-coaching-mobile-dark.png": {
+      "sha256": "8bfdedea0827e018d563f8c2dde63657666eb911b2b4671fc6f1471f554e2467",
+      "bytes": 75172,
+      "session": 130
+    },
+    "s130-after-controlled-coaching-mobile-light.png": {
+      "sha256": "318a58842af3579b2be687cff08863f02b87a94facee4382ade837fbc8da36c9",
+      "bytes": 64050,
+      "session": 130
+    },
+    "s130-after-expanded-co-gm-brief-desktop-dark.png": {
+      "sha256": "f90ad1656ba824b67f2bd4fe581013f93f853f133d85c3cc35ef49fde0ee4275",
+      "bytes": 39936,
+      "session": 130
+    },
+    "s130-after-expanded-co-gm-brief-desktop-light.png": {
+      "sha256": "95a6e27bf5015086a42b42625679ac8adc7525f99fb2d8f7c0eb6568d5d3d0fb",
+      "bytes": 37324,
+      "session": 130
+    },
+    "s130-after-expanded-co-gm-brief-mobile-dark.png": {
+      "sha256": "47e22ab15528a8c0270e478166a234f92fc90dc1ed7f855b1b868d38131c057d",
+      "bytes": 44437,
+      "session": 130
+    },
+    "s130-after-expanded-co-gm-brief-mobile-light.png": {
+      "sha256": "c481fdc2ceec8a7b17e2fdcab183059e61d7d36ee83374c878c1789a480157f0",
+      "bytes": 43366,
+      "session": 130
+    },
+    "s130-after-rival-coaching-desktop-dark.png": {
+      "sha256": "1571c0b4db7cdaad7c7a23d07e876fbf4cf8446966dd6fada20464151eed44a3",
+      "bytes": 5613,
+      "session": 130
+    },
+    "s130-after-rival-coaching-desktop-light.png": {
+      "sha256": "270d3f1c5efacbbc8fc03b1fcfb48997fa834890b47313a9dc3e608fb7baee06",
+      "bytes": 5389,
+      "session": 130
+    },
+    "s130-after-rival-coaching-mobile-dark.png": {
+      "sha256": "6c92a9c19b47a2245bc0284ac20fddfddb78538d99153c9b692bf0ea20fa2168",
+      "bytes": 6138,
+      "session": 130
+    },
+    "s130-after-rival-coaching-mobile-light.png": {
+      "sha256": "d880c8efb534e20aeca30a32189db4f5754a910ff25e74fce0b325ff7dcc9c25",
+      "bytes": 5551,
+      "session": 130
+    },
+    "s130-after-suspension-fixture-desktop-dark.png": {
+      "sha256": "3dfbe75a6f1d784ee3406bdfa522d9404e2d79aeba4f7e92c98cb623c1cef98f",
+      "bytes": 97369,
+      "session": 130
+    },
+    "s130-after-suspension-fixture-desktop-light.png": {
+      "sha256": "cf21a53f975c59c80429076cabdac0561533e7a7f501d92d6601877ff7cd8e7d",
+      "bytes": 82476,
+      "session": 130
+    },
+    "s130-after-suspension-fixture-mobile-dark.png": {
+      "sha256": "615ded2ca4e7ae8d73ef8e809abd16a93796297e504dc5f75ba4ac821e3e4351",
+      "bytes": 81956,
+      "session": 130
+    },
+    "s130-after-suspension-fixture-mobile-light.png": {
+      "sha256": "5c9c3944f89c5af96d7a721faa993341f5a9d6d7ef72f5acd31b1ea12d8a94b5",
+      "bytes": 69790,
+      "session": 130
+    },
+    "s130-before-actual-player-availability-desktop-dark.png": {
+      "sha256": "e2a313ef2b5eaad92fc13ee96cf71095d6fa1ecbe7703e7eb879e328a49f965f",
+      "bytes": 5095,
+      "session": 130
+    },
+    "s130-before-actual-player-availability-desktop-light.png": {
+      "sha256": "5f06696dbd4941b48f891bf18aabf93dc4e24abc6355c36feaa8669715164f22",
+      "bytes": 4951,
+      "session": 130
+    },
+    "s130-before-actual-player-availability-mobile-dark.png": {
+      "sha256": "3ab06f87e9c64914c22e5d1cf26d4ba0561d69207b029fede547285b7092b37d",
+      "bytes": 5667,
+      "session": 130
+    },
+    "s130-before-actual-player-availability-mobile-light.png": {
+      "sha256": "0b4e665feabf69694da6d6a14f94cbb3fabd8afdf34fbe63cfd5ba498bf4be53",
+      "bytes": 4946,
+      "session": 130
+    },
+    "s130-before-actual-player-dossier-desktop-dark.png": {
+      "sha256": "7841eb9c59ead108bdade962a2b9a9d1bb632dcb034c0961b45a89efac3da431",
+      "bytes": 552136,
+      "session": 130
+    },
+    "s130-before-actual-player-dossier-desktop-light.png": {
+      "sha256": "12c17849df036b4a78790cb69092b0ab4479c844a161cd3220f260fca109cce6",
+      "bytes": 574849,
+      "session": 130
+    },
+    "s130-before-actual-player-dossier-mobile-dark.png": {
+      "sha256": "be75d8e2d1632c65029868eefb88ceff10fa2b0b8fb2ca26a3a3bce728185b5a",
+      "bytes": 166155,
+      "session": 130
+    },
+    "s130-before-actual-player-dossier-mobile-light.png": {
+      "sha256": "86f67a669bfc6572253ed46da684c8f110c5efa701f5a605b73ef58f305807c9",
+      "bytes": 170578,
+      "session": 130
+    },
+    "s130-before-community-storage-refusal-desktop-dark.png": {
+      "sha256": "0c2155073e0be21c472f9803ea9974e612cb14dbf151e89432e5f16a8374acd5",
+      "bytes": 61894,
+      "session": 130
+    },
+    "s130-before-community-storage-refusal-desktop-light.png": {
+      "sha256": "f5259bda737ea3b8134683a84b2cab7cd8dd605d272f3efe0fc01efdd7851799",
+      "bytes": 50229,
+      "session": 130
+    },
+    "s130-before-community-storage-refusal-mobile-dark.png": {
+      "sha256": "6700ba23efd790cbcf2bf164777871c0e602009ac46dac8d4cdc24501540a4c8",
+      "bytes": 41974,
+      "session": 130
+    },
+    "s130-before-community-storage-refusal-mobile-light.png": {
+      "sha256": "8f8672d1a510c7cd8735c7f8402c96252826d090a864dfd8bbe41554c333b878",
+      "bytes": 46869,
+      "session": 130
+    },
+    "s130-before-controlled-coaching-desktop-dark.png": {
+      "sha256": "7cfd2375f89b32f493c70f733a9f7c459d306733f255c17a190a1a7cea1a0f6e",
+      "bytes": 66782,
+      "session": 130
+    },
+    "s130-before-controlled-coaching-desktop-light.png": {
+      "sha256": "dd5b8ce695b72f5821728646538d64278e9dc6d236be6394c95de80af1078d34",
+      "bytes": 53759,
+      "session": 130
+    },
+    "s130-before-controlled-coaching-mobile-dark.png": {
+      "sha256": "b6f37deed4916138a5216c8b9e7a2d04f8223ff56f73bde3ec0599c0c5c23691",
+      "bytes": 72661,
+      "session": 130
+    },
+    "s130-before-controlled-coaching-mobile-light.png": {
+      "sha256": "9c0859c767bdeeee0ae4590c0f6ab4d7a37cc137a911c8ee18d70a6286418291",
+      "bytes": 61898,
+      "session": 130
+    },
+    "s130-before-expanded-co-gm-brief-desktop-dark.png": {
+      "sha256": "655e64713dccb523a5882334334d2249213f5f09e86245afb2ba7de395515515",
+      "bytes": 41533,
+      "session": 130
+    },
+    "s130-before-expanded-co-gm-brief-desktop-light.png": {
+      "sha256": "7e8f922a34d94e84dd190fd3d0cf0b47eda3dc42ed7ffc5cf73402ec92751fdd",
+      "bytes": 37409,
+      "session": 130
+    },
+    "s130-before-expanded-co-gm-brief-mobile-dark.png": {
+      "sha256": "70dfd2be633a1937a062630ec93dca15c06b7ce5b6dc49af7aae26f4d88d653f",
+      "bytes": 44619,
+      "session": 130
+    },
+    "s130-before-expanded-co-gm-brief-mobile-light.png": {
+      "sha256": "118be8742a97fedb049b8652c5bc32e4c55843a15fa1bb988902c166d1451148",
+      "bytes": 43484,
+      "session": 130
+    },
+    "s130-before-rival-coaching-desktop-dark.png": {
+      "sha256": "1571c0b4db7cdaad7c7a23d07e876fbf4cf8446966dd6fada20464151eed44a3",
+      "bytes": 5613,
+      "session": 130
+    },
+    "s130-before-rival-coaching-desktop-light.png": {
+      "sha256": "270d3f1c5efacbbc8fc03b1fcfb48997fa834890b47313a9dc3e608fb7baee06",
+      "bytes": 5389,
+      "session": 130
+    },
+    "s130-before-rival-coaching-mobile-dark.png": {
+      "sha256": "6c92a9c19b47a2245bc0284ac20fddfddb78538d99153c9b692bf0ea20fa2168",
+      "bytes": 6138,
+      "session": 130
+    },
+    "s130-before-rival-coaching-mobile-light.png": {
+      "sha256": "d880c8efb534e20aeca30a32189db4f5754a910ff25e74fce0b325ff7dcc9c25",
+      "bytes": 5551,
+      "session": 130
+    },
+    "s130-before-suspension-fixture-desktop-dark.png": {
+      "sha256": "8b17a63e77a9fec4703b1bf18d0ae7078258eaba27f341ec312d4e54539156eb",
+      "bytes": 95227,
+      "session": 130
+    },
+    "s130-before-suspension-fixture-desktop-light.png": {
+      "sha256": "37b83af8e5b11f0d92974b0efa658783cb61a8ed2e7af670f66200ac7f333a60",
+      "bytes": 80842,
+      "session": 130
+    },
+    "s130-before-suspension-fixture-mobile-dark.png": {
+      "sha256": "7e66909c842a1457eb9591c254ce6b3278048dc6091aa45d9f6caa3024f4891e",
+      "bytes": 85133,
+      "session": 130
+    },
+    "s130-before-suspension-fixture-mobile-light.png": {
+      "sha256": "978376d2c738dcb284bb313a01523d94825087f7d3028b2399c9746b087c9223",
+      "bytes": 70273,
+      "session": 130
+    },
+    "s130-fault-co-gm-build-error-desktop-dark.png": {
+      "sha256": "4fede056aea404cb397ea789eb91c26338f8910b5e20df445752c8cc8bd4889f",
+      "bytes": 379212,
+      "session": 130
+    },
+    "s130-fault-co-gm-build-error-desktop-light.png": {
+      "sha256": "75526c73b1c7d82111b2350432be595fd4b4317c2c39431d0887da5ee89be141",
+      "bytes": 353110,
+      "session": 130
+    },
+    "s130-fault-co-gm-build-error-mobile-dark.png": {
+      "sha256": "a4f87103414584f8d1caabc05c351c3c5fc57e4964f943140ca1d453949979fa",
+      "bytes": 140697,
+      "session": 130
+    },
+    "s130-fault-co-gm-build-error-mobile-light.png": {
+      "sha256": "26bf60d8671b2275f3365374bbf1ba1f11897a879ba5a5133c053c1e30134886",
+      "bytes": 135333,
+      "session": 130
+    },
+    "s130-fault-co-gm-clipboard-refusal-desktop-dark.png": {
+      "sha256": "04cc488dc161b3b886b7e69b8523c16766b7b7cacabf2ada4e0219eb7e028111",
+      "bytes": 382722,
+      "session": 130
+    },
+    "s130-fault-co-gm-clipboard-refusal-desktop-light.png": {
+      "sha256": "86db02c83e91e115afaa092924d6a0c9ea0daff63c41192c33ff820fa423dc52",
+      "bytes": 355388,
+      "session": 130
+    },
+    "s130-fault-co-gm-clipboard-refusal-mobile-dark.png": {
+      "sha256": "0e33abea8706a053676c8a688f1971dfa6c28fabdd8ac2cf7e327e8067779390",
+      "bytes": 142455,
+      "session": 130
+    },
+    "s130-fault-co-gm-clipboard-refusal-mobile-light.png": {
+      "sha256": "da34f4c27bf99321ce53e9439c4183e861d313929cebe9c9397e8c33169a11ec",
+      "bytes": 133867,
+      "session": 130
+    },
+    "s130-fault-co-gm-download-error-desktop-dark.png": {
+      "sha256": "1b11b2186213ae5a048478ee6bea75099c83812d040ebe3ee1b9a77e7b879c8c",
+      "bytes": 379442,
+      "session": 130
+    },
+    "s130-fault-co-gm-download-error-desktop-light.png": {
+      "sha256": "6ed0eed3cd9a619325fdb3f7670bc3d7c3bc046d9fe7a383626e4e5128263502",
+      "bytes": 353217,
+      "session": 130
+    },
+    "s130-fault-co-gm-download-error-mobile-dark.png": {
+      "sha256": "254d458caafb9c2585767d8476517766ffd706baf69eb5a31b843e3bb9c619f4",
+      "bytes": 141038,
+      "session": 130
+    },
+    "s130-fault-co-gm-download-error-mobile-light.png": {
+      "sha256": "8c5390f40acba6a167c37750c40379bbbd465492ef16fb817670404683b0a76d",
+      "bytes": 135871,
+      "session": 130
+    },
+    "s130-fault-co-gm-module-error-desktop-dark.png": {
+      "sha256": "c8c38594ef70c43a4b853dc895a294e9764bcc4dae4da59c1d336bacba2e77f3",
+      "bytes": 365560,
+      "session": 130
+    },
+    "s130-fault-co-gm-module-error-desktop-light.png": {
+      "sha256": "abbfb28cb1c52d7b801171167ad414ecb0810fc89d86b95d5f687383b818daea",
+      "bytes": 341320,
+      "session": 130
+    },
+    "s130-fault-co-gm-module-error-mobile-dark.png": {
+      "sha256": "5a6abe32105932f94c3a63ab0a2f03985f651d98d9853118b49e26512f1efde5",
+      "bytes": 146678,
+      "session": 130
+    },
+    "s130-fault-co-gm-module-error-mobile-light.png": {
+      "sha256": "8b19b04a67b5757626c7106486d4bcb87fcf861b062ffce5be6742a2bb5bd70b",
+      "bytes": 143031,
+      "session": 130
+    },
+    "s130-fault-coaching-action-error-desktop-dark.png": {
+      "sha256": "50e4d5e80e80858c6ed85fa19af183333e57ca7ab1fe9e9473bc49eadbebceb5",
+      "bytes": 533129,
+      "session": 130
+    },
+    "s130-fault-coaching-action-error-desktop-light.png": {
+      "sha256": "46955fb7f73f93a0003a98a579e1abe4b9e0799fa0f602a53706e3f98beb7bf6",
+      "bytes": 456470,
+      "session": 130
+    },
+    "s130-fault-coaching-action-error-mobile-dark.png": {
+      "sha256": "989211bfa53f1379798f61981bb382d5669a7a1ed392fe50d016e8b23ba6d5c4",
+      "bytes": 148732,
+      "session": 130
+    },
+    "s130-fault-coaching-action-error-mobile-light.png": {
+      "sha256": "b12005ab81c8385fbf56c3d317c98ae17cdbb0de24d5912927e76716847c8a07",
+      "bytes": 139195,
+      "session": 130
+    },
+    "s130-fault-coaching-module-retry-error-desktop-dark.png": {
+      "sha256": "0db6f9344047d3cd089ad2ff82c9370934d34264ca30a4df6e5e583509d95a9e",
+      "bytes": 451650,
+      "session": 130
+    },
+    "s130-fault-coaching-module-retry-error-desktop-light.png": {
+      "sha256": "14da42c88dbbcaedfb6af83b0aec8b64b595faf36277a1855e963351599b9cba",
+      "bytes": 374025,
+      "session": 130
+    },
+    "s130-fault-coaching-module-retry-error-mobile-dark.png": {
+      "sha256": "b12575c67bd3696e3a78010a013ea1700fe3ab0f451ac110c2ca3bbd15ec32ce",
+      "bytes": 143171,
+      "session": 130
+    },
+    "s130-fault-coaching-module-retry-error-mobile-light.png": {
+      "sha256": "31f64d4a74a667ad3c6e494959cb5a8dfab7ca7d1b495092c655386ff00c027a",
+      "bytes": 135584,
+      "session": 130
+    },
+    "s130-fault-community-deletion-pending-desktop-dark.png": {
+      "sha256": "6e933945154efd8ff4b5a63f57b3aea9f84cdd53a38cd78aa9d754fcb5047872",
+      "bytes": 710695,
+      "session": 130
+    },
+    "s130-fault-community-deletion-pending-desktop-light.png": {
+      "sha256": "b78209b66f81117c52e6153c2751f0a0ae07cd7ec2af91b9867845a44ab4354d",
+      "bytes": 711809,
+      "session": 130
+    },
+    "s130-fault-community-deletion-pending-mobile-dark.png": {
+      "sha256": "4978650f976336e91b00b546c61d012894c35d240e9f505e9f06511b06b6b2bc",
+      "bytes": 199103,
+      "session": 130
+    },
+    "s130-fault-community-deletion-pending-mobile-light.png": {
+      "sha256": "558a13ca758e6b90a42927048c341f46eb5e82c1d91d9c59ee81631887f6f257",
+      "bytes": 189100,
+      "session": 130
+    },
+    "s130-fault-community-storage-refusal-desktop-dark.png": {
+      "sha256": "5e8ae88ac66aa0fb26e5c3bc6fcad6f6e1bac284cbc7cc3c2b8e85dff37f743b",
+      "bytes": 713642,
+      "session": 130
+    },
+    "s130-fault-community-storage-refusal-desktop-light.png": {
+      "sha256": "d87e9d35c402262facbaf5de380f31e604f1ddb1cd863cf43b23b4bdbd838dd5",
+      "bytes": 717248,
+      "session": 130
+    },
+    "s130-fault-community-storage-refusal-mobile-dark.png": {
+      "sha256": "7da8d8903fa337e5af4329a9791c2d0def01e7c566fa2064e80c1b7a4e1b3e30",
+      "bytes": 204126,
+      "session": 130
+    },
+    "s130-fault-community-storage-refusal-mobile-light.png": {
+      "sha256": "ec6909f2a76d51b7842124dea1b0752c63d9260ef7dd9562911c90310585b2bb",
+      "bytes": 193411,
+      "session": 130
+    },
     "s69-desktop-gm-persona-dark.png": {
       "sha256": "6fceb8a7121d7c6ebe4d5bb955fd2be60b49d247dc97b43bcc00860a909a5bc5",
       "bytes": 52906,

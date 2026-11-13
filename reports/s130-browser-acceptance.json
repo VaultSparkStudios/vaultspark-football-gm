@@ -1,0 +1,53 @@
+{
+  "session": 130,
+  "observedAt": "2026-11-13T06:43:19.942Z",
+  "sourceRevision": "local-worktree",
+  "selectedBehaviorVerified": true,
+  "releaseVerified": false,
+  "scopes": [
+    {
+      "cases": 8,
+      "what": "Consent refusal+retained deletion,1440/390,dark/light",
+      "artifactDigest": "d94370f2afdd7b537c5b937dccb9e9531342fe221e97da65a8ffeccb0fa4c7e1",
+      "log": ".cache/s130-browser-matrix-final.log",
+      "logSha256": "0778f741e15fc45102ab3c4fc325711c8866704ad2ec259f8695da5968db8f01"
+    },
+    {
+      "cases": 28,
+      "what": "Coaching16+CoGM12 on final logic before error-only containmentCSS",
+      "artifactDigest": "e4e4aed524073fcc50078226bfd54bb49d3c16c8c83ccc5f7bd1c985338d047d",
+      "harnessSha256": "68eb67adefa7b9a477b67d0bb1d21142ea47aaf4f6f8649523885dc224bada44",
+      "log": ".cache/s130-browser-affected28-final.log",
+      "logSha256": "40d0f406607d7b51a09f688881c07cd4f999895bc62867c7fe454d9e990044cd"
+    },
+    {
+      "cases": 4,
+      "what": "Retry failure/retry/reload plus44pxtarget and actualdocument+panel+buttoncontainment on containmentCSS artifact",
+      "artifactDigest": "0a058bf0f49f9441e70cdad0b50cb7fabba2a103baa3c8d9e516c433a29429a7",
+      "harnessSha256": "ac894b36d7003c9d8347ec7ad1fd45143f374b90166591ab1b4344714703dc76",
+      "log": ".cache/s130-browser-retry-containment-final.log",
+      "logSha256": "df946647fde28c54856e1042793b6596806e5a71b8a335ca60ade2bea81576b2",
+      "results": "output/playwright/s130-browser-retry-containment-final-results",
+      "passed": 4,
+      "failed": 0
+    }
+  ],
+  "visual": {
+    "receipt": "docs/visual-qa/LATEST.json",
+    "receiptSha256": "c181aa1adf68bb96040f71a3df0658c4f8af05b87e954e772d335941fb259a41",
+    "before": 28,
+    "normal": 28,
+    "fault": 32,
+    "allHashesMatch": true,
+    "blockingDefects": 0
+  },
+  "historicalFailures": [
+    "Initial8/9 found inert coaching recovery.",
+    "Interrupted desktop18/mobile fixture run remains partial.",
+    "Completed36 run28passed/8failed:7own-diagnostic status decorations and1transient-toast ordering assertion.",
+    "Mobile error-panel overflow was measured, fixed and verified separately."
+  ],
+  "limitations": [
+    "Explicit implementation artifact boundaries; not full-suite, immutable hosted, actual-player, or deployment proof."
+  ]
+}
