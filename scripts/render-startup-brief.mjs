@@ -658,13 +658,15 @@ const genomeData   = readJson(path.join(root, 'context', 'GENOME_HISTORY.json'),
 const genSnaps     = genomeData.snapshots ?? [];
 const genLast      = genSnaps.length > 0 ? (genSnaps[genSnaps.length - 1]?.dimensions ?? {}) : {};
 const genPrev      = genSnaps.length >= 2 ? (genSnaps[genSnaps.length - 2]?.dimensions ?? {}) : {};
+const unmeasuredDims = Object.values(genLast).filter(v => !Number.isFinite(v)).length;
 const droppedDims  = Object.entries(genLast)
-  .filter(([k, v]) => genPrev[k] != null && v < genPrev[k])
+  .filter(([k, v]) => Number.isFinite(v) && Number.isFinite(genPrev[k]) && v < genPrev[k])
   .map(([k, v]) => ({ dim: k.replace(/_/g, '-'), from: genPrev[k], to: v }));
-const sigGenome    = droppedDims.length > 0 ? '⚠' : '✓';
-const genomeDetail = droppedDims.length > 0
-  ? `drop: ${droppedDims.map(d => `${d.dim} ${d.from}→${d.to}`).join(' · ')}`
-  : `all stable  (${genSnaps.length > 0 ? genSnaps[genSnaps.length - 1].total : '?'}/25)`;
+const sigGenome    = unmeasuredDims > 0 || droppedDims.length > 0 ? '⚠' : '✓';
+const genomeDetail = [
+  ...(droppedDims.length ? [`drop: ${droppedDims.map(d => `${d.dim} ${d.from}→${d.to}`).join(' · ')}`] : []),
+  ...(unmeasuredDims ? [`unmeasured (${unmeasuredDims} dimensions; —/25)`] : [])
+].join(' · ') || `all stable  (${genSnaps.length > 0 ? genSnaps[genSnaps.length - 1].total : '?'}/25)`;
 
 // ── Deploy gaps ──────────────────────────────────────────────────────────────
 let sigDeploy = '✓';
