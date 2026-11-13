@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "recovery-checkpoint",
+  "date": "2026-11-13",
+  "session": 129,
+  "goalId": "01a1d30c-860b-7d22-8b59-9a47d7d5e5a1",
+  "recoveryComplete": false,
+  "newArcComplete": false,
+  "sourceRevision": "74683a5746ce384518aff84977243e8728799f09",
+  "testProcess": {
+    "toolSession": 35768,
+    "state": "running-at-checkpoint"
+  },
+  "pending": [
+    "Final staged scan and recovery commit/push/readback",
+    "Sync remote dependency update; full startup and bind new arc",
+    "Fresh audit, implement, staging/production and full closeout"
+  ],
+  "review": {
+    "verdict": "fix",
+    "findings": 2,
+    "fixed": 2,
+    "scope": "Recovery metadata claims and screenshot reference retention only",
+    "screenshotRetention": {
+      "deleted": 808,
+      "unchangedHistoricalLedgerEntries": 6301,
+      "appendedEntries": 214,
+      "policy": "latest-three-session retention permits pruning; ledger history retained"
+    }
+  },
+  "provenance": {
+    "staging": "reports/s129-recovery-staging-provenance.json",
+    "production": "reports/s129-recovery-production-provenance.json",
+    "checksPerOrigin": "14/14",
+    "scope": "frontend provenance only"
+  },
+  "sourceCoverageCaution": "Startup canon reconciliation propagated four scripts after full suite began; inspect actual receipt coverage before current-source acceptance.",
+  "hostedCi": {
+    "report": "reports/s129-recovery-hosted-ci.json",
+    "runId": 43149099119,
+    "sourceRevision": "74683a5746ce384518aff84977243e8728799f09",
+    "status": "passed",
+    "jobs": 7,
+    "scope": "Six complete native unit shards plus browser-gates at recovered application source; does not cover subsequent metadata/propagation."
+  },
+  "localDuplicateRun": {
+    "toolSession": 35768,
+    "status": "cancelled",
+    "reason": "Exact-source hosted six-shard and browser success discovered; avoid duplicating complete existing application validation.",
+    "passingResultClaimed": false
+  },
+  "pagesFailure": {
+    "runId": 43149099241,
+    "status": "failure",
+    "step": "Capture responsive artifact evidence",
+    "cause": "8-minute Actions step expired at approximately 8m9s despite capture tool printing completion327. No upload/publish occurred in this run.",
+    "acceptedAsPass": false
+  },
+  "updatedAt": "2026-11-13T04:07:59.605Z",
+  "status": "validated-awaiting-recovery-publication",
+  "currentStudioProof": "reports/s129-recovery-studio-pass.json",
+  "backendObservation": "reports/s129-recovery-backend-observation.json"
+}

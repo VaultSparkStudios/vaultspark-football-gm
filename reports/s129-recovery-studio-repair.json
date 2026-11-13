@@ -1,0 +1,69 @@
+{
+  "checkedAt": "2026-11-13T04:19:10.888Z",
+  "initialStudio": {
+    "toolSession": 56568,
+    "status": "failed",
+    "passed": 396,
+    "total": 398,
+    "durationMs": 650620,
+    "failures": [
+      {
+        "test": "project-authority-contract",
+        "cause": "Two forbidden ignored generic authority scripts existed at project paths."
+      },
+      {
+        "test": "public-compliance",
+        "cause": "Ignored private creative-direction ledger existed at public docs path."
+      }
+    ]
+  },
+  "repair": "reports/s129-local-residue-repair.json",
+  "focusedRecheck": {
+    "command": "node --test test/project-authority-contract.test.js test/public-compliance.test.js",
+    "passed": 15,
+    "total": 15,
+    "exitCode": 0
+  },
+  "fullRecheck": {
+    "toolSession": 38846,
+    "status": "failed",
+    "complete": true,
+    "passed": 397,
+    "total": 398,
+    "durationMs": 346717,
+    "failure": {
+      "file": "test/api-contract-parity.test.js",
+      "test": "trade APIs enforce complete pick valuation and stale-plan authority through both transports",
+      "message": "server exited early with empty captured output",
+      "cause": "Unresolved startup failure; not classified as an application regression or accepted as passing."
+    }
+  },
+  "isolatedApiRecheck": {
+    "toolSession": 88644,
+    "command": "node --test test/api-contract-parity.test.js",
+    "exitCode": 0,
+    "passed": 5,
+    "total": 5
+  },
+  "currentFullRecheck": {
+    "status": "passed",
+    "complete": true,
+    "toolSession": 5129,
+    "passed": 398,
+    "total": 398,
+    "exitCode": 0,
+    "proof": "reports/s129-recovery-studio-pass.json"
+  },
+  "thirdFullRun": {
+    "toolSession": 83566,
+    "status": "failed",
+    "passed": 397,
+    "total": 398,
+    "durationMs": 176034,
+    "failure": {
+      "file": "test/startup-authority-contract.test.js",
+      "cause": "Agent updated tracked PROJECT_STATUS while the no-mutation renderer test was running; validation interference, not a renderer defect."
+    },
+    "apiCase": "Passed in this full run"
+  }
+}

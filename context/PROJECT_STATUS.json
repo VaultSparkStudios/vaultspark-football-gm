@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S129 recovered its cut-off depth-chart rebuild (c2e5a5ca) and shipped to main a weekly challenge with shareable links, a root llms.txt, football playing styles with earned signature abilities, and a Pages build without developer runtime controls (51701878). Not yet deployed: production is unchanged.",
-  "nextMilestone": "Release S129: deploy the main candidate to staging, verify, then promote through the release protocol. Then continue docs/AUDIT_2026-11-10.json: player-identity L2, site-truth releaseLabel/privacy single source, and the pending items. Independent identity/email/public-launch holds remain separate.",
+  "currentFocus": "S129 recovery: the two depth-chart fixes are written back; current Studio398/398 and recovered application hosted CI7/7 are separately verified. Frontend staging/production74683a57 provenance14/14 each is verified, while API health still reports812fd52b. Screenshot retention and local authority repairs are recorded. Full new arc and release parity remain pending.",
+  "nextMilestone": "Finish S129 recovery and its evidence reconciliation, then run the new goal’s full startup, audit, implement, closeout and authorized staging/production release.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-11-11",
+  "lastUpdated": "2026-11-13",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "type": "game",
@@ -24,10 +24,10 @@
   },
   "truthAuditStatus": "Selected S128 technical release and formal closeout phase evidence verified; final containing receipt publication/readback and original bound lock release remain native guards; broader launch readiness partial.",
   "truthAuditLastRun": "2026-10-29",
-  "ignisScore": 43808,
+  "ignisScore": 42318,
   "ignisGrade": "FORGE",
-  "ignisLastComputed": "2026-10-29",
-  "testSuiteStatus": "passed",
+  "ignisLastComputed": "2026-11-11",
+  "testSuiteStatus": "recovery-studio-and-historical-application-ci-passed",
   "testsPassing": null,
   "testsTotal": null,
   "session8Summary": {
@@ -123,19 +123,25 @@
   "silHealth": 495,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 1,
+    "blockingFailing": 0,
     "total": 12,
-    "failing": 1,
-    "score": 92,
-    "date": "2026-11-11",
-    "passing": 11,
-    "warning": 0,
+    "failing": 0,
+    "score": 83,
+    "date": "2026-11-13",
+    "passing": 10,
+    "warning": 2,
     "checks": [
       {
-        "id": "release-authority-git-head-covered-by-publication",
-        "status": "failing",
-        "blocking": true,
-        "detail": "HEAD 51701878ff7df8cbde816afc306d040f06da265c is not covered by live production 812fd52b5ea01d1e0ef3d4037d383f311998aaa5"
+        "id": "release-authority-checked-publication-current",
+        "status": "warning",
+        "blocking": false,
+        "detail": "checked 812fd52b5ea01d1e0ef3d4037d383f311998aaa5 · live 74683a5746ce384518aff84977243e8728799f09"
+      },
+      {
+        "id": "release-authority-release-source-current",
+        "status": "warning",
+        "blocking": false,
+        "detail": "release source 812fd52b5ea01d1e0ef3d4037d383f311998aaa5 · live staging 74683a5746ce384518aff84977243e8728799f09"
       }
     ]
   },
@@ -166,7 +172,7 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-10-26"
+      "lastChecked": "2026-11-12"
     }
   ],
   "lastSession": 129,
@@ -301,21 +307,18 @@
     ]
   },
   "stagingAuthority": {
-    "session": 128,
-    "schemaVersion": "1.1",
-    "kind": "independent-staging-authority",
-    "project": "franchise-architect-staging",
-    "branch": "staging",
-    "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+    "schemaVersion": "1.0",
+    "receiptSha256": "b5c48d5b556981fab2ba131cba543f8f5b7028828719657209c17f5fb368f764",
+    "sourceRevision": "74683a5746ce384518aff84977243e8728799f09",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
-      "files": 363,
+      "digest": "8c79be1b6a3c90829b704e3f014897aea5b26b39753ff4219e98a8526c0e55d8",
+      "files": 369,
       "entries": [
         {
           "path": ".well-known/llms.txt",
-          "bytes": 1838,
-          "sha256": "e3e0b6523eacd499b63c718a9c877a79f6cc3cad7fa9f66621aeb225d6e5610c"
+          "bytes": 3671,
+          "sha256": "6150c005c531121155c7e45767528bff991a0cef027a224d1c606e8c4a7373bc"
         },
         {
           "path": ".well-known/security.txt",
@@ -325,12 +328,12 @@
         {
           "path": "404.html",
           "bytes": 4275,
-          "sha256": "fc46ba7638fad57e658b44a2fd9f52674395feae7d690b2945aef57d6a3f56d6"
+          "sha256": "acde38f6a3a28bf31f8232da2d2ebe57f2af7f03d7cc12256cc18b445db9374c"
         },
         {
           "path": "_headers",
           "bytes": 1295,
-          "sha256": "bfb73560f89678d5c2446b30b05842821571191daf5f3fa23f2c043146880c64"
+          "sha256": "5729299b9036b919838f6887154f392a4a46e7360834eeca5cab6392b15fb992"
         },
         {
           "path": "_redirects",
@@ -340,17 +343,17 @@
         {
           "path": "about.html",
           "bytes": 6379,
-          "sha256": "deb0b79cf1b64c2dbe71ea6d5564def66832d54c9a4ac0989c32155884f73b32"
+          "sha256": "e03573b2292bc0049abc529176d4c9c0105bbd815af7c24232d011df70d4a83a"
         },
         {
           "path": "agents.json",
-          "bytes": 2445,
-          "sha256": "f5ddfb29615054c7e9e2483fd180d02efb302f1a6be3164e169f11a2efa399b1"
+          "bytes": 2870,
+          "sha256": "edb0b54031ee99b2255d13f3de02c6d91051666e5ec7c1e87a080ea57a042c0e"
         },
         {
           "path": "app.js",
-          "bytes": 113858,
-          "sha256": "59bc345f65cb26435a5c661d74e9e7e93764b4822daa73e9d0be447a3761b8dd"
+          "bytes": 112851,
+          "sha256": "99509aec40a330c1fcf82e6d04e98045dde8b3087bc33fe4860ca4ec42b6e278"
         },
         {
           "path": "boot-manifest.json",
@@ -375,17 +378,17 @@
         {
           "path": "contact.html",
           "bytes": 5482,
-          "sha256": "05ea486ecce8fe54c0befbca69efae4a1a07608a290da0285566aa12b4f2ac0b"
+          "sha256": "3b39e056d56aca56b17d674fa0c1f806dc327c71e3c78aa137cb6c0e6a5fbff8"
         },
         {
           "path": "content/claims.json",
-          "bytes": 11531,
-          "sha256": "2f6d661d428fde3a81d10263f67bec98c5c98ff8d415353afe64f574c67b0c89"
+          "bytes": 11534,
+          "sha256": "f31199582b1b7b7ac81fabf152421250b5041560d81d71ccc86af2ec74e4e933"
         },
         {
           "path": "faq.html",
-          "bytes": 10553,
-          "sha256": "686929eac4b0bd517fd6cb8a7c46880e5ad359c8cf424d44799e2839c63c3236"
+          "bytes": 10770,
+          "sha256": "641dbd86a4782a2b348e3793685d0324f0332f7dc1bfe014b34bc9e79ab2fd46"
         },
         {
           "path": "favicon.ico",
@@ -399,8 +402,8 @@
         },
         {
           "path": "features.html",
-          "bytes": 13819,
-          "sha256": "a7a5b2c64f28f93883840b54a1a2e2b4687dd07f17d09748af98dae3965edea5"
+          "bytes": 13816,
+          "sha256": "e2bdcd21090f79dfcc9fe1269c001172402d1431716afad3f49a5e4b62008908"
         },
         {
           "path": "footer-manifest.json",
@@ -409,13 +412,13 @@
         },
         {
           "path": "game.html",
-          "bytes": 116842,
-          "sha256": "5cdf950860e937bcec9ed52992dbc4d82acd799dab2c667362c6474ce4d2c3ef"
+          "bytes": 117153,
+          "sha256": "a9a62197b0239d712c51ec4c4feb4a34c8933cbb6bce2a3a5608bf8b00a93ad1"
         },
         {
           "path": "how-to-play.html",
           "bytes": 8526,
-          "sha256": "96ae3fb1061ae7f0a302fdd1fef1cbd88839f6f22ec0c99ba843de6d3dfa17a3"
+          "sha256": "42144e484744c8d6e20936e87338070387c6c0e7a8a81aa5d3f7e65c4c1399fc"
         },
         {
           "path": "images/apple-touch-icon.png",
@@ -479,8 +482,8 @@
         },
         {
           "path": "index.html",
-          "bytes": 458050,
-          "sha256": "4db07886902f0134b6586de9be2c01265320111f97d768cfeaa09612a69ca706"
+          "bytes": 462155,
+          "sha256": "36959a5a6bc1294bfd2d795ffab8a47f5ea10044a96ca48627cab19489f9d4a6"
         },
         {
           "path": "lib/achievements.js",
@@ -524,8 +527,8 @@
         },
         {
           "path": "lib/appCore.js",
-          "bytes": 60861,
-          "sha256": "e33ccab3cdb0678b90da36bd2ef14e141a249eb6dd6ff100ced1c4cb28b165e8"
+          "bytes": 60998,
+          "sha256": "37cb979fe8f8bc02b455f32a177a3c54325a198e02c3e6d82d36bbe221742781"
         },
         {
           "path": "lib/appState.js",
@@ -636,6 +639,16 @@
           "path": "lib/decisionArchive.js",
           "bytes": 4377,
           "sha256": "f1733d13e24ebc7d51b656082a789c2bd2a0df08dafb658dae08d4f701aaf76f"
+        },
+        {
+          "path": "lib/depthBoard.js",
+          "bytes": 18530,
+          "sha256": "5df5aa1fb0fab8b11a0d0a6dea97ad3d2fa92fc57f88cd1f4f229bd13d56c9a8"
+        },
+        {
+          "path": "lib/depthReorder.js",
+          "bytes": 4088,
+          "sha256": "85e6c2307fa16f5cba758c11ae578258d6aec7722f020f0b528ac3fc2c119db2"
         },
         {
           "path": "lib/deskIslands.js",
@@ -934,8 +947,8 @@
         },
         {
           "path": "lib/playerProfileNarrative.js",
-          "bytes": 11463,
-          "sha256": "f00e726494fb4df27f43172e1792609edb73abf659787438f3fea3473b490391"
+          "bytes": 12243,
+          "sha256": "81ebab330d28088d8021c18a9871adb4d21da6f2273d02d666c26f7bb03144d6"
         },
         {
           "path": "lib/playerSideAppearance.js",
@@ -1124,8 +1137,8 @@
         },
         {
           "path": "lib/tabRoster.js",
-          "bytes": 13930,
-          "sha256": "39a4173ccaf752e785ae8303f98b895489229629b8d6e752ccf123f0e4f6814a"
+          "bytes": 7673,
+          "sha256": "a74efa53810af15ac7a24bd32a79253a889ed92cc20bd2849cb973fa43646f48"
         },
         {
           "path": "lib/tabSettings.js",
@@ -1193,9 +1206,19 @@
           "sha256": "de2089084e7baf56d214e0190c8232c96dad2c2d6fa2733a9e3a5489a3eaa0ba"
         },
         {
+          "path": "lib/weeklyChallenge.js",
+          "bytes": 4488,
+          "sha256": "5fd5c7be1088c125780f68f717bea512fbaa5384ac3ce28f9d3256972337b903"
+        },
+        {
           "path": "lib/weeklyPlanComposer.js",
           "bytes": 7650,
           "sha256": "7c257e23dace7197745fd6b5928707bea18e4d974f4e2e512a61c15df94afca6"
+        },
+        {
+          "path": "llms.txt",
+          "bytes": 3671,
+          "sha256": "6150c005c531121155c7e45767528bff991a0cef027a224d1c606e8c4a7373bc"
         },
         {
           "path": "manifest.webmanifest",
@@ -1204,18 +1227,18 @@
         },
         {
           "path": "precache-manifest.json",
-          "bytes": 26069,
-          "sha256": "3e6881ef54318405c40366ef38bec6302fe6765e5e6f1b1c43937651a26da5f4"
+          "bytes": 26506,
+          "sha256": "62411f3d7709bad147cada5fcaa4428a75add8ea751d01d2e3ab03326a4054c6"
         },
         {
           "path": "press.html",
-          "bytes": 10946,
-          "sha256": "9584e987fbefb96bc70f61756495b4bdd2421ca82929c3aafd9d4ddd33f850b1"
+          "bytes": 10938,
+          "sha256": "c1d41cc3761105b4dd6d3e761d3301a350c312b3e879d536837a5156b6446925"
         },
         {
           "path": "privacy.html",
           "bytes": 7429,
-          "sha256": "06760910d10668f0236ad2fb5b49a57ce5c21b6de7ecf0e91fea93368c9170ca"
+          "sha256": "6d5c13a40d15d7fd0bc3788645770a9cf4aa2e7f7adbb2b393d6e0d1d069301a"
         },
         {
           "path": "public-identity.json",
@@ -1264,8 +1287,8 @@
         },
         {
           "path": "roadmap.html",
-          "bytes": 6313,
-          "sha256": "8b68b8fe79f56f5b60f8a14c47e07683f7c3da051982cdec6e3dad132c0f9965"
+          "bytes": 7312,
+          "sha256": "ec2d3f379b09bba66c912acb3b331212b86eb218fb094630989345785bf5acbe"
         },
         {
           "path": "robots.txt",
@@ -1274,8 +1297,8 @@
         },
         {
           "path": "setup.js",
-          "bytes": 30439,
-          "sha256": "253a3ca138e93b951850bae7f07ffac8288f4afd68abf078070d90897362bf3c"
+          "bytes": 34135,
+          "sha256": "d717a95da7c4457aa32761711fefa9e2db459d3ce4a91ef1ab4d1a4c1157e420"
         },
         {
           "path": "showcase-league.json",
@@ -1285,7 +1308,7 @@
         {
           "path": "simulation.html",
           "bytes": 11282,
-          "sha256": "d959a70bede95b0840ce84f512729a2c264f8f184f08b42db2a7f38227f254a0"
+          "sha256": "a3950ad790d49bb98212ae77e1f84d2069f6c5cc7dbfe8300fb293c1bf9f8ff9"
         },
         {
           "path": "site.11e8faac8d.css",
@@ -1300,7 +1323,7 @@
         {
           "path": "sitemap.xml",
           "bytes": 1844,
-          "sha256": "347619dabfaa9f52fb99b747f87f9c4d994c303486040d59641522108d661221"
+          "sha256": "08efd9c5b278f37fe090848ce204ee064c14154652b1c743e413b2f34cbea2b5"
         },
         {
           "path": "src/adapters/persistence/browserSaveStore.js",
@@ -1411,6 +1434,11 @@
           "path": "src/domain/annualElevationInjuryResolution.js",
           "bytes": 7778,
           "sha256": "6f62481afa07315cab10d9391d5f6b3fdfc970d5e8cd5b118b2cf14b655e26da"
+        },
+        {
+          "path": "src/domain/attributeCategories.js",
+          "bytes": 7003,
+          "sha256": "ce8063dfff5b4c4b54a672ef625c85c53fc59497e0081ab9af4b97df9566afd4"
         },
         {
           "path": "src/domain/capCarryover.js",
@@ -1531,6 +1559,11 @@
           "path": "src/domain/playerWorkouts.js",
           "bytes": 3652,
           "sha256": "41714bb1c2f9f2018d6b13d96d70ad8af6788b66ae739e1065d3ef5c80e286d4"
+        },
+        {
+          "path": "src/domain/playingStyle.js",
+          "bytes": 3773,
+          "sha256": "375fef6702dd972c872097a269c42e91ec0530d5c1a34b07bab84390688a8e81"
         },
         {
           "path": "src/domain/postseasonMedicalClock.js",
@@ -1859,8 +1892,8 @@
         },
         {
           "path": "src/runtime/GameSession.js",
-          "bytes": 401744,
-          "sha256": "d25af1bf04a7af424fe76456596e8317d0e311d11dec8411eb9d787bfd12fb6d"
+          "bytes": 402738,
+          "sha256": "18e35c20c8a99c2c9eb960139a59ef4a3147bfc9c596f3a4e444ee075a6bc73f"
         },
         {
           "path": "src/runtime/advanceWeekCommand.js",
@@ -2095,37 +2128,37 @@
         {
           "path": "stats.html",
           "bytes": 8090,
-          "sha256": "1c5e21df66bda17ee80bbae213f315e90595d5d3c773dae6d0169cc601732829"
+          "sha256": "598d44b64bdb59ca33e1c2ae3ee48474207da5c6a170d7dddd9d2a0c2574ff23"
         },
         {
           "path": "status-archive.html",
           "bytes": 26996,
-          "sha256": "37b34cf3b9b00592649d85580f9a2a0f9babe3e4eea96ef4c0a8b4f7254c6aab"
+          "sha256": "e1f2c75c41765fca02ddb725772bb9217aacb9eca9db2a676731baacb3ccf4ed"
         },
         {
           "path": "status.html",
           "bytes": 6809,
-          "sha256": "3806e586b2a512396f7b0bb872b886cfb98f0b6421d201fc4c525e9f01d8beb7"
+          "sha256": "51bb9c344f303e26aa100358185424a325bb0c7d288c8486ee266195048f1a58"
         },
         {
-          "path": "styles.c4075a9e38.css",
-          "bytes": 217891,
-          "sha256": "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83"
+          "path": "styles.77d2fe84af.css",
+          "bytes": 222220,
+          "sha256": "77d2fe84afa932691f5eb68a9ce3663109174df0c8482947111e6feaefb30d58"
         },
         {
           "path": "styles.css",
-          "bytes": 217891,
-          "sha256": "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83"
+          "bytes": 222220,
+          "sha256": "77d2fe84afa932691f5eb68a9ce3663109174df0c8482947111e6feaefb30d58"
         },
         {
           "path": "sw.js",
-          "bytes": 13022,
-          "sha256": "30f3a971a97ad088d3da14f26a6674523cdf6e8f78ac0278da578be29bbe8c8c"
+          "bytes": 13177,
+          "sha256": "f36cbf904ee60aa78d9f8837ae6a1f28611892df1f685769ec18158cfadb6f47"
         },
         {
           "path": "terms.html",
           "bytes": 6025,
-          "sha256": "b210fd557c47e00eb765ec925db3f7e395d7d5c302976dca52bfcbb863d1dd07"
+          "sha256": "fcd8df10c63f44486a1dfa68d6b4354f59d705c7fd520da92999d6e832a59293"
         }
       ],
       "exclusions": [
@@ -2134,26 +2167,21 @@
         "edge-policy-receipt.json"
       ]
     },
-    "promotionIdentity": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5:86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
-    "deploymentId": "9c53869a-a96d-4f3b-ab68-e45da5d64322",
-    "deploymentUrl": "https://9c53869a.franchise-architect-staging.pages.dev",
+    "deploymentId": "d0d58626-d692-4502-8f85-3998c7f03324",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
-    "independent": true,
-    "exactRevision": true,
-    "exactArtifact": true,
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-10-29T18:42:36.941Z"
+      "checkedAt": "2026-11-12T03:34:53.225Z"
     },
     "rollback": {
-      "previousDeploymentId": "c4b80141-d275-4bab-a4df-6bc691be52b9",
+      "previousDeploymentId": "d062e362-9fbe-48fe-a8ae-f908b5a09e1f",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-10-29T18:42:36.942Z"
+    "observedAt": "2026-11-12T03:34:53.226Z"
   },
   "lastCloseoutAt": "2026-10-27T01:27:00.881Z",
   "performanceAuthority": {
@@ -2190,7 +2218,7 @@
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
     "observedAt": "2026-10-29T20:14:02.268Z",
-    "status": "verified",
+    "status": "contradicted",
     "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
     "publicationRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
     "publicationDelta": null,
@@ -2246,7 +2274,7 @@
         "ok": true
       }
     ],
-    "evidenceVerified": true,
+    "evidenceVerified": false,
     "launchReady": false,
     "blockerCodes": [
       "email-delivery-unverified",
@@ -2264,7 +2292,14 @@
       "visualSha256": "a29caa30d5ba081da9ae3113f84fca335e4688bbd4fdab48a2ebff90cc42afac",
       "performanceSha256": "481d10c0790779c93050f0de6d5a24441020afe43857a9bea5963b7f2908e578"
     },
-    "receiptSha256": "66a365ead20ec3131555c4e1e945fb47090a9109ca0f34134407ba9834d58f51"
+    "receiptSha256": "66a365ead20ec3131555c4e1e945fb47090a9109ca0f34134407ba9834d58f51",
+    "recoveryObservation": {
+      "checkedAt": "2026-11-13T04:01:36.758Z",
+      "sourceRevision": "74683a5746ce384518aff84977243e8728799f09",
+      "stagingReport": "reports/s129-recovery-staging-provenance.json",
+      "productionReport": "reports/s129-recovery-production-provenance.json",
+      "scope": "Frontend provenance only; prior full release authority is stale and has not been replaced by this observation."
+    }
   },
   "launchReady": false,
   "sil": {
@@ -2296,8 +2331,8 @@
   "sessionState": {
     "version": 1,
     "durableSession": 129,
-    "currentFocus": "S129 recovered its cut-off depth-chart rebuild (c2e5a5ca) and shipped to main a weekly challenge with shareable links, a root llms.txt, football playing styles with earned signature abilities, and a Pages build without developer runtime controls (51701878). Not yet deployed: production is unchanged.",
-    "nextMilestone": "Release S129: deploy the main candidate to staging, verify, then promote through the release protocol. Then continue docs/AUDIT_2026-11-10.json: player-identity L2, site-truth releaseLabel/privacy single source, and the pending items. Independent identity/email/public-launch holds remain separate.",
+    "currentFocus": "S129 recovery: the two depth-chart fixes are written back; current Studio398/398 and recovered application hosted CI7/7 are separately verified. Frontend staging/production74683a57 provenance14/14 each is verified, while API health still reports812fd52b. Screenshot retention and local authority repairs are recorded. Full new arc and release parity remain pending.",
+    "nextMilestone": "Finish S129 recovery and its evidence reconciliation, then run the new goal’s full startup, audit, implement, closeout and authorized staging/production release.",
     "lastSessionSummary": "S129 recovered its cut-off depth-chart rebuild (c2e5a5ca) and shipped to main a weekly challenge with shareable links, a root llms.txt, football playing styles with earned signature abilities, and a Pages build without developer runtime controls (51701878). Not yet deployed: production is unchanged."
   },
   "partialCloseout": {
@@ -3079,5 +3114,41 @@
     "suite": "canonical core shard timed out at 90 min on a host saturated by other projects (736 passed, 0 failed before termination, partial and not a receipt); focused 17-file run 128/129 after a stale-build preload red was cleared by rebuilding; the remaining red is local-only (gitignored private file)",
     "deployed": false,
     "note": "Main carries the code; staging and production were not deployed this session."
-  }
+  },
+  "s129RecoveryObservation": {
+    "sourceRevision": "74683a5746ce384518aff84977243e8728799f09",
+    "frontendDeployed": true,
+    "fullReleaseVerified": false,
+    "summary": "S129 recovery observed identical frontend source 74683a57 on staging and production: native same-origin provenance14/14 each; latest214 capture hashes match. This corrects the historical not-deployed note. Full suite, gameplay, performance, backend parity and full release acceptance remain unverified in this invocation."
+  },
+  "currentTestRun": {
+    "status": "passed",
+    "scope": "Studio only",
+    "passed": 398,
+    "total": 398,
+    "receipt": "reports/s129-recovery-studio-pass.json"
+  },
+  "historicalTestVerification": {
+    "session": 128,
+    "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+    "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+    "acceptance": "reports/s128-release-acceptance.json",
+    "sourceStudioReceipt": "reports/s128-isolated-studio.json",
+    "tests": "Two selected outcomes. Focused49/49, exact-source Studio398/398 and hosted CI7/7 are separate evidence scopes. Staging and production each passed four actual worker journeys, native provenance14/14, eighteen independently inspected captures and unchanged five-run performance checks per desktop/mobile profile. Final visual62 preserves baseline8, local-C3 18, staging18 and production18 boundaries. API database ready; database/routing preserved and rollback source/image retained. C1/C2 failures and supersession remain historical. No actual-player, financial, recipient-adoption or public-launch outcome is claimed.",
+    "scope": "Source/release and first staged closing-metadata checkpoint separately verified; subsequent formal attestation publication and original-lock release remain guarded.",
+    "finalMetadataReceipt": "reports/s128-final-metadata.json",
+    "completion": "reports/s128-closeout-completion.json"
+  },
+  "s129RecoveryHostedCi": {
+    "report": "reports/s129-recovery-hosted-ci.json",
+    "runId": 43149099119,
+    "sourceRevision": "74683a5746ce384518aff84977243e8728799f09",
+    "status": "passed",
+    "jobs": 7,
+    "scope": "Six complete native unit shards plus browser-gates at recovered application source; does not cover subsequent metadata/propagation."
+  },
+  "s129StudioRepair": "reports/s129-recovery-studio-repair.json",
+  "s129RecoveryBackendObservation": "reports/s129-recovery-backend-observation.json",
+  "s129PropagationFeedback": "reports/s129-propagation-feedback.json",
+  "s129RecoveryCheckpoint": "reports/s129-recovery-checkpoint.json"
 }

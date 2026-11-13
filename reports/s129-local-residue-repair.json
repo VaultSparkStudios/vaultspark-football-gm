@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-11-13T04:17:48.898Z",
+  "reason": "Restore project-owned execution authorities and separate private local ledger from public docs path",
+  "moves": [
+    {
+      "file": "scripts/run-tests.mjs",
+      "sha256": "ff33fb83108a4d69dc79e97f1cf3679e840b48238105cddbc11e0e6f62cf7235",
+      "disposition": "Preserved in ignored in-project quarantine; no content published"
+    },
+    {
+      "file": "scripts/check-last-session-summary.mjs",
+      "sha256": "5061d260411cfac186448d4f639ef9740e6e8bd58bf53cfe88ef96c5ca261445",
+      "disposition": "Preserved in ignored in-project quarantine; no content published"
+    },
+    {
+      "file": "docs/CREATIVE_DIRECTION_RECORD.md",
+      "sha256": "9dfaccca872f501465920fbbdb6e2d591a241373212dc4a106ab0ac05a12fef1",
+      "disposition": "Preserved in ignored in-project quarantine; no content published"
+    }
+  ]
+}

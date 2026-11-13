@@ -24,6 +24,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { types } from 'node:util';
 import { acquirePendingQueueLock } from './pending-queue-lock.mjs';
+import { parseArgvStrict, missingFlagValues, strayPositionals, HELP_ALIASES, DRY_ALIASES } from './argv-guard.mjs';
 
 // S156 #21: canonical list lives in lib/sil-categories.mjs (policy-drift extraction)
 import { V3_CATS as CATS } from './sil-categories.mjs';
@@ -317,15 +318,41 @@ export function updateProjectStatus(repoRoot, mutate, opts = {}) {
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 if (isMain) {
   const args = process.argv.slice(2);
-  const repoRoot = (() => {
-    const i = args.indexOf('--repo-root');
-    return i >= 0 ? path.resolve(args[i + 1]) : process.cwd();
-  })();
+  const valueFlags = ['--repo-root'];
+  const parsed = parseArgvStrict({ argv: args, boolFlags: ['--fix', ...HELP_ALIASES], valueFlags });
+  const bad = [...parsed.bad, ...missingFlagValues(parsed, valueFlags),
+    ...strayPositionals(args, valueFlags).filter(token => !HELP_ALIASES.includes(token))];
+  if (args.filter(token => token === '--repo-root' || token.startsWith('--repo-root=')).length > 1) bad.push('duplicate --repo-root');
+  if (parsed.flags.has('--check') && parsed.flags.has('--fix')) bad.push('conflicting --check and --fix');
+  if (bad.length) { console.error('⛔ invalid status CLI arguments — use --help'); process.exit(2); }
+  if (args.some(token => HELP_ALIASES.includes(token))) {
+    console.log('Usage: node scripts/lib/write-project-status.mjs [--check | --fix] [--repo-root <path>] [--dry-run | --dry | -n]\nPreview aliases never write. --check and --fix are mutually exclusive.');
+    process.exit(0);
+  }
+  const repoRoot = parsed.values['--repo-root'] === undefined ? process.cwd() : path.resolve(parsed.values['--repo-root']);
+  const apply = parsed.flags.has('--fix') && !args.some(token => DRY_ALIASES.includes(token));
   const p = path.join(repoRoot, 'context', 'PROJECT_STATUS.json');
   if (!fs.existsSync(p)) { console.error(`⛔ no PROJECT_STATUS.json at ${p}`); process.exit(2); }
-  const current = JSON.parse(fs.readFileSync(p, 'utf8'));
-  const { status: fixed, violations } = enforceSilInvariant(current);
-  const shape = validateProjectStatusShape(fixed, repoRoot);
+  let current, fixed, violations, shape;
+  const inspect = draft => {
+    current = draft;
+    ({ status: fixed, violations } = enforceSilInvariant(draft));
+    shape = validateProjectStatusShape(fixed, repoRoot);
+  };
+  if (apply) {
+    // No pre-admission snapshot: validate and derive the repair from the current
+    // admitted draft. A clean/unrepairable status must preserve exact bytes.
+    const noPublication = Symbol('no repair publication');
+    try {
+      updateProjectStatus(repoRoot, draft => {
+        inspect(draft);
+        if (!shape.ok || !violations.some(v => !v.unfixable)) throw noPublication;
+        return fixed;
+      }, { touchLastUpdated: false });
+    } catch (error) { if (error !== noPublication) throw error; }
+  } else {
+    inspect(JSON.parse(fs.readFileSync(p, 'utf8')));
+  }
   if (!shape.ok) {
     console.error(`⛔ PROJECT_STATUS contract invalid (${shape.errors.length}):`);
     for (const error of shape.errors) console.error(`  - ${error}`);
@@ -338,9 +365,8 @@ if (isMain) {
   // still fail the exit code.
   const fixable = violations.filter(v => !v.unfixable);
   const unfixable = violations.filter(v => v.unfixable);
-  if (args.includes('--fix')) {
+  if (apply) {
     if (fixable.length) {
-      writeProjectStatus(repoRoot, fixed, { touchLastUpdated: false });
       console.log(`✓ fixed ${fixable.length} violation(s):`);
       for (const v of fixable) console.log(`  - ${v.field}=${JSON.stringify(v.value)} → ${v.fix}`);
     } else if (!unfixable.length) {

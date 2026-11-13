@@ -147,3 +147,23 @@ Release deferred: main carries the code, and production is unchanged (a main pus
 ---
 
 Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+
+## 2026-11-13 — S129 post-closeout recovery checkpoint
+
+Recovered source commits f4179d69 and 74683a57 repair the depth chart: text wraps within the desktop panel across fonts, phone player names retain readable width, and snap share 100 remains visible. The recovery browser spec now explicitly supplies the server-only runtime option stripped from the Pages build. These changes were committed after the prior S129 closeout and were missing from its write-back.
+
+Uncommitted S129 staging authority and visual captures are preserved as prior-session evidence, not accepted as a completed release. Historical screenshot deletions are also preserved pending reference-integrity review. The native full test runner is currently live; no passing suite, new production deployment or completed recovery closeout is claimed. Remote main has an additional dependency update b5341a2c, to reconcile after preserving the recovery boundary.
+
+New founder goal 01a1d30c-860b-7d22-8b59-9a47d7d5e5a1 (createdAt 1794542183) requires a full NEW arc after recovery; it cannot borrow S129 completion. Binding initially returned start-new-arc. New startup/session binding remains pending.
+
+
+### S129 recovery — canon posture
+
+Offline conformance found no ABSOLUTE gaps and an existing STRONG CANON-045 identity gap. This recovery changes records and shared tooling; it adds no account flow, identity configuration or public launch. Preserve the identity gap for the full readiness audit and keep routine deployment authorization separate. Manual, doctor-owned and portfolio checks are not claimed conformed. Adoption suggest/check completed against 55 current canons; three pending-review rows remain (045, 051, 052).
+
+
+
+### S129 recovery verified checkpoint
+
+S129 recovery: the two depth-chart fixes are written back; current Studio398/398 and recovered application hosted CI7/7 are separately verified. Frontend staging/production74683a57 provenance14/14 each is verified, while API health still reports812fd52b. Screenshot retention and local authority repairs are recorded. Full new arc and release parity remain pending. SIL remains532/1000; no new score or player-outcome measurement. Earlier failed runs remain historical; no new founder creative direction.

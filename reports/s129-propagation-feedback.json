@@ -1,0 +1,9 @@
+{
+  "checkedAt": "2026-11-13T04:20:47.916Z",
+  "recipient": "studio-ops",
+  "cargoId": "01K79I5V3S86B9A0F174D2601D",
+  "shipped": true,
+  "exitCode": 0,
+  "recipientAdoptionVerified": false,
+  "scope": "Propagator owner handoff only; recipient application and verification remain separate."
+}

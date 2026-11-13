@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "1.1",
+  "generatedBy": "scripts/verify-release-provenance.mjs",
+  "checkedAt": "2026-11-13T04:00:18.390Z",
+  "baseUrl": "https://playfranchisearchitect.com",
+  "expectedRevision": "74683a5746ce384518aff84977243e8728799f09",
+  "summary": {
+    "status": "verified",
+    "checksPassed": 14,
+    "checksTotal": 14
+  },
+  "checks": [
+    {
+      "name": "health stayed on staging origin",
+      "ok": true
+    },
+    {
+      "name": "manifest stayed on staging origin",
+      "ok": true
+    },
+    {
+      "name": "style asset stayed on staging origin",
+      "ok": true
+    },
+    {
+      "name": "Community Stats asset stayed on staging origin",
+      "ok": true
+    },
+    {
+      "name": "health reachable",
+      "ok": true
+    },
+    {
+      "name": "manifest reachable",
+      "ok": true
+    },
+    {
+      "name": "style asset reachable",
+      "ok": true
+    },
+    {
+      "name": "Community Stats asset reachable",
+      "ok": true
+    },
+    {
+      "name": "Community Stats asset identity",
+      "ok": true,
+      "expected": "community-stats.25f97e0a1e.js",
+      "observed": "community-stats.25f97e0a1e.js"
+    },
+    {
+      "name": "source revision",
+      "ok": true,
+      "expected": "74683a5746ce384518aff84977243e8728799f09",
+      "observed": "74683a5746ce384518aff84977243e8728799f09"
+    },
+    {
+      "name": "artifact fingerprint",
+      "ok": true,
+      "expected": "8c79be1b6a3c90829b704e3f014897aea5b26b39753ff4219e98a8526c0e55d8",
+      "observed": "8c79be1b6a3c90829b704e3f014897aea5b26b39753ff4219e98a8526c0e55d8"
+    },
+    {
+      "name": "style asset identity",
+      "ok": true,
+      "expected": "styles.77d2fe84af.css",
+      "observed": "styles.77d2fe84af.css"
+    },
+    {
+      "name": "repository identity",
+      "ok": true,
+      "expected": "VaultSparkStudios/vaultspark-football-gm",
+      "observed": "VaultSparkStudios/vaultspark-football-gm"
+    },
+    {
+      "name": "launch truth separation",
+      "ok": true,
+      "expected": false,
+      "observed": false
+    }
+  ]
+}

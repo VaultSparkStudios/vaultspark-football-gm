@@ -128,7 +128,12 @@ export function resolveSessionTrigger(root = ROOT, { maxAgeHours = 24 } = {}) {
 // `ranAt` is passed in (no clock here — the caller stamps it, keeping this unit-testable). Mutates
 // and returns the status object.
 export function recordAmortization(status, amort, ranAt, cap = HISTORY_CAP, meta = {}) {
-  const trigger = inferTrigger({ ...meta, trigger: amort.trigger ?? meta.trigger });
+  // S413 — the caller's env, when it passes one, is the only env consulted. The closeout
+  // caller resolves the trigger from an injected env and then fell through to ambient
+  // process.env here, so on a hosted runner GITHUB_EVENT_NAME=push typed every row and the
+  // "untyped" diagnostic never fired (tier2-closeout-session-caller failed in tests.yml only).
+  const { env = process.env, ...rest } = meta;
+  const trigger = inferTrigger({ ...rest, trigger: amort.trigger ?? rest.trigger }, env);
   const scheduled = isScheduledTrigger(trigger);
   const record = {
     ratio: Number.isFinite(amort.ratio) && amort.ratio >= 0 ? amort.ratio : null,

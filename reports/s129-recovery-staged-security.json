@@ -1,0 +1,8 @@
+{
+  "checkedAt": "2026-11-13T04:34:40.247Z",
+  "scope": "Actual staged text blobs in franchise-architect-football; PNGs excluded as binary",
+  "scanner": "Canonical scanContent imported without owner CLI or owner ledger mutation",
+  "scanned": 30,
+  "findings": [],
+  "count": 0
+}

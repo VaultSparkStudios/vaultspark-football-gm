@@ -18,11 +18,44 @@
 // Threshold files (any context/ or docs/ file):
 //   Content length must not shrink below WIPE_THRESHOLD (default 50%) of HEAD.
 
-import { readFileSync, existsSync, realpathSync } from 'fs';
+import { readFileSync, existsSync, realpathSync, readdirSync } from 'fs';
 import { resolve, join, dirname, basename, relative, isAbsolute } from 'path';
 import { fileURLToPath } from 'url';
 import { spawnSync } from './safe-spawn.mjs';
 import { STUDIO_STATE_DIRS } from './studio-state-dirs.mjs';
+import { rotationLedgerSpecs, archiveNamePattern, sortArchiveNames, proveRotation } from './rotate-ledger.mjs';
+
+const ROTATION_LEDGERS = new Map(rotationLedgerSpecs().map((s) => [s.ledger, s]));
+
+/**
+ * S410 — a registered rotation ledger shrinks BY DESIGN when rotate-ledger archives its
+ * head; the closeout autopilot's wipe gate read the first real rotation (43MB → 1.9MB)
+ * as "shrunk to 5% of HEAD" and aborted. The exemption is the same exact proof the
+ * start-sync residue classifier uses, never a size or path allowance: the archives that
+ * are NOT in HEAD (rotation order; leading leftovers droppable) plus the working file
+ * must start with the committed text. Anything else still trips the guard.
+ *
+ * @returns {boolean} true only when the shrink is a proven lossless rotation
+ */
+export function provenRotationShrink(root, relPath, headContent, diskContent, { maxBuffer } = {}) {
+  const spec = ROTATION_LEDGERS.get(relPath);
+  if (!spec) return false;
+  const base = relPath.split('/').pop();
+  const re = archiveNamePattern(base);
+  let onDisk = [];
+  try { onDisk = readdirSync(join(root, spec.archiveDir)).filter((n) => re.test(n)); } catch { return false; }
+  const ls = spawnSync('git', ['ls-tree', '--name-only', 'HEAD', `${spec.archiveDir}/`], { cwd: root, encoding: 'utf8', windowsHide: true, maxBuffer });
+  if (ls.error || ls.status !== 0) return false;   // cannot tell which archives are new → no exemption
+  const tracked = new Set(ls.stdout.split('\n').filter(Boolean).map((p) => p.split('/').pop()));
+  const fresh = sortArchiveNames(onDisk.filter((n) => !tracked.has(n)), base);
+  if (!fresh.length) return false;
+  let buffers;
+  try { buffers = fresh.map((n) => readFileSync(join(root, spec.archiveDir, n))); } catch { return false; }
+  for (let i = 0; i < buffers.length; i++) {
+    if (proveRotation({ beforeText: headContent, afterText: diskContent, archiveBuffers: buffers.slice(i) }).proven) return true;
+  }
+  return false;
+}
 
 const WIPE_THRESHOLD = 0.5; // warn/abort if new content < 50% of existing
 
@@ -197,6 +230,12 @@ const GENERATED = [
   // a true wipe is still caught — declaring a false positive beats weakening the
   // detector.
   'portfolio/BLOCKER_DAG.json',
+  // S419 — check-canon-contradictions.mjs rewrites this report from scratch on every
+  // run; its size is the current flag count. It fell to 18% of HEAD when the repaired
+  // decision graph and two verified reconfirmations (D-S419.2) resolved both flags:
+  // same schema, flagCount 2 → 0, and new graph coverage stats. GENERATED (not
+  // SHRINK_ALLOWED), so the JSON branch still rejects an empty or corrupt payload.
+  'portfolio/CANON_CONTRADICTIONS.json',
 ];
 
 // Template-placeholder markers that signal an empty scaffold overwrote real
@@ -457,7 +496,7 @@ export function checkContextFiles(root, opts = {}) {
         continue;
       }
       const ratio = diskContent.length / headContent.length;
-      if (ratio < threshold) {
+      if (ratio < threshold && !provenRotationShrink(root, relPath, headContent, diskContent, { maxBuffer })) {
         findings.push({ file: relPath, issue: 'content-wipe', ratio });
       }
     }
@@ -494,7 +533,7 @@ export function checkContextFiles(root, opts = {}) {
           continue;
         }
         const ratio = diskContent.length / headContent.length;
-        if (ratio < threshold) {
+        if (ratio < threshold && !provenRotationShrink(root, relPath, headContent, diskContent, { maxBuffer })) {
           findings.push({ file: relPath, issue: 'content-wipe', ratio });
         }
       }

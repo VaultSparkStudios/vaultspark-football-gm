@@ -1,3 +1,23 @@
+# S129 recovery — validated, publication pending
+
+S129 recovery: the two depth-chart fixes are written back; current Studio398/398 and recovered application hosted CI7/7 are separately verified. Frontend staging/production74683a57 provenance14/14 each is verified, while API health still reports812fd52b. Screenshot retention and local authority repairs are recorded. Full new arc and release parity remain pending.
+
+No owned test job remains running. Final staged scan and separate recovery commit/push/readback precede the FULL new S130 startup and native goal binding. Goal identity remains01a1d30c-860b-7d22-8b59-9a47d7d5e5a1, createdAt1794542183. See reports/s129-recovery-checkpoint.json for scoped proof and historical attempts.
+
+## Historical recovery record
+
+# Active checkpoint — S129 recovery before a new arc
+
+Native goal: 01a1d30c-860b-7d22-8b59-9a47d7d5e5a1, createdAt 1794542183. Initial binding: start-new-arc. Recovery does not satisfy the new arc. No new session lock has been acquired or bound yet.
+
+Live observation on 2026-11-13: staging and production frontend both serve 74683a5746ce384518aff84977243e8728799f09; each passed 14/14 native same-origin provenance checks. Latest 214 capture bytes match hashes; this is not a complete release acceptance. Prior full release authority is stale. Hosted CI 43149099119 passed all six native unit shards and browser-gates at that application source. The duplicate local full run (35768) was cancelled after confirming hosted coverage; it produced no passing local result. The first current Studio run finished 396/398. Both failures were ignored local residue; all three files were preserved in ignored quarantine, and the affected tests passed 15/15. The second Studio run finished 397/398 with an empty-output server-start failure; the isolated API file then passed 5/5. The third Studio run passed the API case but failed its renderer no-mutation check because the agent updated status during validation. A fourth run is being started with tracked records held stable; its log is .cache/s129-studio-attempt4.log. Earlier failures remain in reports/s129-recovery-studio-repair.json. Poll this existing handle before deciding whether a new run is needed. The staged secret scan passed with zero findings across 22 text blobs, and settings sanitization is clean.
+
+Independent recovery review: the 808 deleted PNGs are sessions 122–126 retained in committed ledger history; existing latest-three-session retention policy permits pruning them. Preserve the deletions. The ledger retains all 6301 previous entries unchanged and appends 214.
+
+Next: finish recovery suite/doctor and review, verify all required evidence, commit/push its separate recovery boundary; reconcile remote dependency commit b5341a2c; then perform the FULL new startup, bind the new lock with arc-goal-binding --apply, fresh audit, implement, staging/production and closeout. Keep broader identity/email/public-launch gaps separate from routine deployment.
+
+## Historical S129 handoff and recovery notes
+
 # Session 129 Closeout — recovered cut-off run, four audit outcomes on main
 
 ## Where We Left Off (Session 129)
@@ -25,3 +45,22 @@ The canonical core shard did **not** complete. It timed out at 90 minutes on a h
 4. Continue docs/AUDIT_2026-11-10.json: player-identity L2, site-truth releaseLabel and privacy single source, the depth-chart menu entry, and the 14 pending items.
 
 Independent identity, email and public-launch holds remain. CDR reviewed: no new founder creative direction this session.
+
+
+## 2026-11-13 — S129 post-closeout recovery checkpoint
+
+Recovered source commits f4179d69 and 74683a57 repair the depth chart: text wraps within the desktop panel across fonts, phone player names retain readable width, and snap share 100 remains visible. The recovery browser spec now explicitly supplies the server-only runtime option stripped from the Pages build. These changes were committed after the prior S129 closeout and were missing from its write-back.
+
+Uncommitted S129 staging authority and visual captures are preserved as prior-session evidence, not accepted as a completed release. Historical screenshot deletions are also preserved pending reference-integrity review. The native full test runner is currently live; no passing suite, new production deployment or completed recovery closeout is claimed. Remote main has an additional dependency update b5341a2c, to reconcile after preserving the recovery boundary.
+
+New founder goal 01a1d30c-860b-7d22-8b59-9a47d7d5e5a1 (createdAt 1794542183) requires a full NEW arc after recovery; it cannot borrow S129 completion. Binding initially returned start-new-arc. New startup/session binding remains pending.
+
+
+### S129 live-state correction
+
+S129 recovery observed identical frontend source 74683a57 on staging and production: native same-origin provenance14/14 each; latest214 capture hashes match. This corrects the historical not-deployed note. Full suite, gameplay, performance, backend parity and full release acceptance remain unverified in this invocation.
+
+
+### S129 recovery validation boundary
+
+Hosted CI43149099119 is complete and successful at recovered application source74683a57: six native unit shards plus browser-gates, seven jobs. The duplicate local full run35768 was intentionally cancelled after this evidence was discovered, without a passing local result. Subsequent propagated tooling/metadata require separate Studio verification. Pages run43149099241 remains failed: responsive capture printed327 complete captures but exceeded its eight-minute Actions step (about8m9s), so upload/publish steps did not run. Existing live frontend provenance is separately verified14/14 per origin, not inferred from this failed run.

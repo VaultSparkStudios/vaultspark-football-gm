@@ -1,5 +1,22 @@
 #!/usr/bin/env bash
-# hook-version: 1   # S389 — stamps editor commits from the marker prepare-commit-msg leaves
+# hook-version: 2   # S413 — refuses a first line carrying literal \n\n (escaped paragraph breaks)
+#                   # S389 — stamps editor commits from the marker prepare-commit-msg leaves
+#
+# S413 — ESCAPED NEWLINES. Two of three consecutive feature commits (S410 d0124b9ea, S412
+# 6a0728fc2) were written as `git commit -m "subject\n\n- bullet\n\nCo-Authored-By: …"`
+# in a shell that does not expand \n. The whole message landed in the subject line: a
+# 1,000-character `git log --oneline` row and NO Co-Authored-By trailer for any parser
+# (interpret-trailers saw only the Studio-Session lines appended after it). Pushed history
+# cannot be amended, so the only fix is before the commit exists. This check refuses a
+# message whose FIRST line contains the literal four characters \n\n — a paragraph break
+# nobody types on purpose in a subject. A single \n, or \n\n in the body, stays legal, so a
+# subject that mentions an escape is not refused. STUDIO_ALLOW_LITERAL_NEWLINE=1 lets an
+# intended one through. Unlike the stamping below, this one blocks: the author retries
+# with real newlines and nothing is lost. Known edges (S413 review): `--amend --no-edit` of
+# an already-escaped commit (d0124b9ea, 6a0728fc2, or a Revert of one) is refused too, so
+# use the env opt-out; sequencer replays (rebase pick, cherry-pick, revert --no-edit) skip
+# commit-msg and pass. A `-m` subject starting with the comment character is stripped
+# before the check, so `-m '#42 a\n\nb'` is not caught.
 #
 # WHY. prepare-commit-msg runs before the editor, so it cannot stamp an editor commit
 # without making an untouched (empty) message non-empty — git would then commit a
@@ -15,6 +32,23 @@
 # commit: any missing piece leaves the message as it is. Like every commit-msg hook it is
 # skipped under --no-verify, so such an editor commit stays unbound (identity rule).
 MSG_FILE="$1"
+if [ -n "$MSG_FILE" ] && [ -f "$MSG_FILE" ] && [ "${STUDIO_ALLOW_LITERAL_NEWLINE:-}" != "1" ]; then
+  FIRST_LINE="$(git stripspace --strip-comments < "$MSG_FILE" 2>/dev/null | head -n 1)"
+  case "$FIRST_LINE" in
+    *'\n\n'*)
+      {
+        echo "commit-msg: refused — the subject line contains literal \\n\\n (escaped paragraph breaks)."
+        echo "  The shell did not expand \\n, so the whole message would land in the subject and"
+        echo "  trailers such as Co-Authored-By would be invisible to every parser."
+        echo "  Write real newlines instead:  git commit -F <message-file>"
+        echo "  or a quoted heredoc:          git commit -F - <<'EOF' ... EOF"
+        echo "  (intended? set STUDIO_ALLOW_LITERAL_NEWLINE=1 for this commit)"
+      } >&2
+      M="$(git rev-parse --git-path studio-session-pending 2>/dev/null)" && [ -n "$M" ] && rm -f "$M" 2>/dev/null
+      exit 1
+      ;;
+  esac
+fi
 MARKER="$(git rev-parse --git-path studio-session-pending 2>/dev/null)" || exit 0
 [ -n "$MARKER" ] && [ -f "$MARKER" ] || exit 0
 read -r SESSION START BASE < "$MARKER" 2>/dev/null
