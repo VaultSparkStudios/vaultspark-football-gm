@@ -1,6 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { runInNewContext } from "node:vm";
+import { expectedResponsiveNames, responsiveCaptureFailures } from "../scripts/lib/responsive-evidence-contract.mjs";
 
 const styles = readFileSync(new URL("../public/styles.css", import.meta.url), "utf8");
 const responsiveEvidence = readFileSync(new URL("../scripts/responsive-evidence.mjs", import.meta.url), "utf8");
@@ -39,8 +41,43 @@ for (const selector of [...DESKTOP_SELECTORS, ...MOBILE_SELECTORS]) {
 
 test("first-run tutorial visual proof covers both themes and durable receipts", () => {
   assert.match(responsiveEvidence, /game-dialog-\$\{theme\}/);
-  assert.match(responsiveEvidence, /requiredCaptureNames[\s\S]*game-dialog-\$\{theme\}/);
+  assert.match(responsiveEvidence, /import\s*\{[^}]*expectedResponsiveNames[^}]*responsiveCaptureFailures[^}]*\}\s*from\s*"\.\/lib\/responsive-evidence-contract\.mjs"/);
+  assert.match(responsiveEvidence, /const requiredCaptureNames = requiredNames;/);
+  assert.match(responsiveEvidence, /responsiveCaptureFailures\(records, requiredCaptureNames\)/);
+  const declaration = responsiveEvidence.match(/const requiredNames = viewports\.flatMap\([^;]+;/)?.[0];
+  assert.ok(declaration, "native capture runner must derive its required inventory from the shared contract");
+  const profiles = ["mobile", "tablet", "desktop"];
+  for (const scope of ["full", "lazy-style"]) {
+    const required = Array.from(runInNewContext(`${declaration}\nrequiredNames;`, {
+      viewports: profiles.map(name => ({ name })), expectedResponsiveNames, lazyStyleOnly: scope === "lazy-style"
+    }));
+    assert.deepEqual(required, profiles.flatMap(profile => expectedResponsiveNames(profile, { scope })));
+    for (const profile of profiles) for (const theme of ["dark", "light"]) {
+      for (const surface of ["game-dialog", "tutorial-identity", "tutorial-pressure", "tutorial-first-call", "tutorial-receipt"]) {
+        assert.ok(required.includes(`${profile}-${surface}-${theme}`), `${scope} must require ${profile}-${surface}-${theme}`);
+      }
+    }
+  }
   assert.match(visualReceiptWriter, /First-run Opening Contract tutorial/);
+});
+
+test("shared tutorial inventory rejects an omitted frame in every profile and theme", () => {
+  for (const profile of ["mobile", "tablet", "desktop"]) {
+    const required = expectedResponsiveNames(profile);
+    const records = required.map(name => ({ name, overflowX: false, bodyContrast: 7, undersizedControls: [],
+      ...(name.endsWith("-sim-watch-authority") ? { visualGameReceipt: {
+        schemaVersion: "1.0", kind: "deterministic-visual-game-receipt", gameId: "test-game",
+        terminal: { gameId: "test-game", accepted: true, playCount: 1, impactCount: 1 }, attempts: [{}]
+      } } : {}) }));
+    assert.deepEqual(responsiveCaptureFailures(records, required), [], "complete synthetic inventory is a passing control, not browser proof");
+    for (const theme of ["dark", "light"]) {
+      for (const surface of ["game-dialog", "tutorial-identity", "tutorial-pressure", "tutorial-first-call", "tutorial-receipt"]) {
+        const omitted = `${profile}-${surface}-${theme}`;
+        assert.deepEqual(responsiveCaptureFailures(records.filter(record => record.name !== omitted), required),
+          [`${omitted}: required capture missing`]);
+      }
+    }
+  }
 });
 
 test("first-run boot paints a fixed Opening Contract surface before dashboard hydration", () => {
