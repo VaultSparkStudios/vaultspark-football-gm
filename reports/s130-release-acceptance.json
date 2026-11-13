@@ -1,0 +1,255 @@
+{
+  "schemaVersion": "1.0",
+  "session": 130,
+  "observedAt": "2026-11-13T10:52:48.249Z",
+  "sourceRevision": "7a54ba295296c751114b0b0a144bdb8adade2dd5",
+  "artifactDigest": "0a058bf0f49f9441e70cdad0b50cb7fabba2a103baa3c8d9e516c433a29429a7",
+  "verified": true,
+  "technicalReleaseVerified": true,
+  "technicalAcceptanceComplete": true,
+  "closeoutComplete": false,
+  "launchApproved": false,
+  "selectedOutcomes": [
+    "boot-headroom",
+    "community-consent-revocation",
+    "player-availability-truth",
+    "co-gm-export-integrity",
+    "responsive-capture-shards"
+  ],
+  "ci": {
+    "ok": true,
+    "sha": "7a54ba295296c751114b0b0a144bdb8adade2dd5",
+    "runId": 43393453136,
+    "attempt": 1,
+    "requiredJobs": [
+      "unit-shards (core)",
+      "unit-shards (runtime)",
+      "unit-shards (sim:contract)",
+      "unit-shards (sim:realism)",
+      "unit-shards (long)",
+      "unit-shards (studio)",
+      "browser-gates"
+    ],
+    "lane": "hosted-exact-sha",
+    "browser": {
+      "passed": 344,
+      "skipped": 3,
+      "failed": 0,
+      "total": 347,
+      "exclusions": [
+        "Two managed-career cases require an actual separate save input.",
+        "One in-page worker negative-control diagnostic is opt-in."
+      ],
+      "selectedS130SkipGate": false
+    }
+  },
+  "responsive": {
+    "runId": 43393633271,
+    "attempt": 1,
+    "requiredRecords": 327,
+    "verifiedRecords": 327,
+    "pngImages": 324,
+    "authorityRecords": 3,
+    "profiles": [
+      {
+        "viewport": "desktop",
+        "records": 107,
+        "timing": {
+          "startedAt": "2026-11-13T10:38:51.108Z",
+          "completedAt": "2026-11-13T10:41:44.750Z",
+          "durationMs": 173642,
+          "viewports": [
+            {
+              "name": "desktop",
+              "startedAt": "2026-11-13T10:38:54.873Z",
+              "durationMs": 169781,
+              "complete": true,
+              "completedAt": "2026-11-13T10:41:44.654Z"
+            }
+          ]
+        }
+      },
+      {
+        "viewport": "mobile",
+        "records": 111,
+        "timing": {
+          "startedAt": "2026-11-13T10:38:59.547Z",
+          "completedAt": "2026-11-13T10:41:21.613Z",
+          "durationMs": 142066,
+          "viewports": [
+            {
+              "name": "mobile",
+              "startedAt": "2026-11-13T10:38:59.995Z",
+              "durationMs": 141534,
+              "complete": true,
+              "completedAt": "2026-11-13T10:41:21.529Z"
+            }
+          ]
+        }
+      },
+      {
+        "viewport": "tablet",
+        "records": 109,
+        "timing": {
+          "startedAt": "2026-11-13T10:38:56.907Z",
+          "completedAt": "2026-11-13T10:41:17.797Z",
+          "durationMs": 140890,
+          "viewports": [
+            {
+              "name": "tablet",
+              "startedAt": "2026-11-13T10:39:04.832Z",
+              "durationMs": 132905,
+              "complete": true,
+              "completedAt": "2026-11-13T10:41:17.737Z"
+            }
+          ]
+        }
+      }
+    ],
+    "providerArchives": [
+      {
+        "viewport": "mobile",
+        "artifactId": 14029088491,
+        "sha256": "sha256:140f842b2f44471888df09f45ad4c3ed1de3d6fcb08547183f59430531923c01",
+        "bytes": 26229985
+      },
+      {
+        "viewport": "tablet",
+        "artifactId": 14029716919,
+        "sha256": "sha256:501ade9595993008e08dec3dba36024cea5f72e28e16d9f7e9b0042a0b62edbd",
+        "bytes": 32399172
+      },
+      {
+        "viewport": "desktop",
+        "artifactId": 14030015666,
+        "sha256": "sha256:9306b2231f1515b0e13b7fdd9613df5f2ef78b59f66147f96c84182ccc964382",
+        "bytes": 46608691
+      },
+      {
+        "viewport": "aggregate",
+        "artifactId": 14028424719,
+        "sha256": "sha256:e43c0b5de2b88f3ae7fe365d24348f53ee9daacaff9b6f29cb2a63bdbf1b43cb",
+        "bytes": 105166651
+      }
+    ]
+  },
+  "frontend": {
+    "deploymentId": "3ebfa6ad-395d-4db4-935a-88ab4f2d5bbd",
+    "productionUrl": "https://playfranchisearchitect.com",
+    "stagingUrl": "https://staging.playfranchisearchitect.com",
+    "productionNative": {
+      "status": "verified",
+      "checksPassed": 14,
+      "checksTotal": 14
+    },
+    "stagingNative": {
+      "status": "verified",
+      "checksPassed": 14,
+      "checksTotal": 14
+    },
+    "rollback": {
+      "available": true,
+      "deploymentId": "5741a2e5-8621-4b70-b697-ed9e96dfa418",
+      "sourceRevision": "74683a5746ce384518aff84977243e8728799f09"
+    }
+  },
+  "backend": {
+    "sourceRevision": "7a54ba295296c751114b0b0a144bdb8adade2dd5",
+    "imageId": "sha256:746c6de74f03fc65e1d804809b80c7555ddaf0993159f19a7404991204ab3c9c",
+    "status": "running",
+    "preservedDatabaseAndRouting": true,
+    "previousSourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+    "previousImageAvailable": true
+  },
+  "api": {
+    "ok": true,
+    "database": "ready",
+    "schemaVersion": 1,
+    "service": "franchise-architect-community-stats",
+    "sourceRevision": "7a54ba295296c751114b0b0a144bdb8adade2dd5"
+  },
+  "phases": [
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "sourceRevision": "7a54ba295296c751114b0b0a144bdb8adade2dd5",
+      "artifactDigest": "0a058bf0f49f9441e70cdad0b50cb7fabba2a103baa3c8d9e516c433a29429a7",
+      "workerJourneys": 4,
+      "reviewedCaptures": 40,
+      "nativeProvenance": "14/14",
+      "performance": {
+        "route": "/",
+        "runsPerProfile": 5,
+        "profiles": [
+          {
+            "name": "desktop",
+            "lcpMs": 360,
+            "inpMs": 24,
+            "cls": 0.0003,
+            "interactionObserved": true
+          },
+          {
+            "name": "mobile",
+            "lcpMs": 360,
+            "inpMs": 24,
+            "cls": 0.0131,
+            "interactionObserved": true
+          }
+        ]
+      },
+      "scope": "Fresh local-worker client journeys; remote Community writes blocked. API runtime/database verified separately."
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "sourceRevision": "7a54ba295296c751114b0b0a144bdb8adade2dd5",
+      "artifactDigest": "0a058bf0f49f9441e70cdad0b50cb7fabba2a103baa3c8d9e516c433a29429a7",
+      "workerJourneys": 4,
+      "reviewedCaptures": 40,
+      "nativeProvenance": "14/14",
+      "performance": {
+        "route": "/",
+        "runsPerProfile": 5,
+        "profiles": [
+          {
+            "name": "desktop",
+            "lcpMs": 324,
+            "inpMs": 24,
+            "cls": 0.0003,
+            "interactionObserved": true
+          },
+          {
+            "name": "mobile",
+            "lcpMs": 368,
+            "inpMs": 40,
+            "cls": 0.0131,
+            "interactionObserved": true
+          }
+        ]
+      },
+      "scope": "Fresh local-worker client journeys; remote Community writes blocked. API runtime/database verified separately."
+    }
+  ],
+  "visual": {
+    "receipt": "docs/visual-qa/LATEST.json",
+    "receiptSha256": "6631fd8d51677c8b04c865f5ecb4e6eed0599946345ecb557133fd7ae1897977",
+    "images": 168,
+    "before": 28,
+    "localNormal": 28,
+    "historicalFault": 32,
+    "staging": 40,
+    "production": 40,
+    "scope": "Mixed collection retains each image’s actual source and artifact boundary; all selected originals inspected and hashes verified."
+  },
+  "sourceEvidence": {
+    "boot": "reports/s130-boot-foundation-proof.json",
+    "focused": "reports/s130-focused-tests.json",
+    "browser": "reports/s130-browser-acceptance.json"
+  },
+  "historicalFailures": [
+    "C1 runtime1196/1197 failed a stale inventory-location assertion; corrected C2 runtime1198/1198 passed.",
+    "Prior partial native capture and superseded C1 workflow evidence remain historical."
+  ],
+  "scope": "Five selected technical improvements and same-source frontend/API release; engineering evidence does not measure player or financial outcomes.",
+  "publicationGuard": "Formal closing-record publication remains pending."
+}

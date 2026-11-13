@@ -1,6 +1,6 @@
 {
   "session": 130,
-  "phase": "candidate-preparation",
+  "phase": "closeout-records-verified-publication-guarded",
   "startHead": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
   "audit": "docs/AUDIT_2026-11-13.json",
   "admission": {
@@ -29,12 +29,13 @@
     "consentAndExistingContract": "26/26",
     "coGm": "8/8",
     "availability": "18/18 author, includes runtime projections",
-    "capture": "60/60 author, Windows junction/hardlink scope; Unix symlink acceptance pending",
+    "capture": "Local Windows controls retained; all exact-C2 Linux unit gates passed. Counts remain separately scoped.",
     "shardInventory": "3/3",
     "finalSelectedUnits": "93/93",
     "bootBeforeRetryFix": "13/13",
     "currentSelectedNative": "118/118",
-    "completeStudio": "441/441"
+    "completeStudio": "441/441",
+    "scope": "Original implementation and prior Studio counts retain their checkpoints; C4 hosted CI and final closing metadata are separate gates."
   },
   "boot": {
     "finalSourceBytes": 647545,
@@ -44,33 +45,61 @@
     "proof": "reports/s130-boot-foundation-proof.json",
     "scope": "Fresh isolated baseline plus coaching-only countercheck is separate from final integrated source measurement; no budget changed."
   },
-  "notComplete": [
-    "Staged security/public-safe check and real candidate commit",
-    "Native full327capture/aggregate plus actual hosted capture jobs",
-    "Staging then production frontend/API parity, performance, rollback and exact seven-job CI",
-    "Full ordered closeout and direct main publication/readback"
-  ],
-  "allItemsShipped": false,
+  "notComplete": [],
+  "allItemsShipped": true,
   "visual": {
     "receipt": "docs/visual-qa/LATEST.json",
     "before": 28,
     "normal": 28,
     "fault": 32,
-    "individuallyInspected": 88,
-    "hashMatches": 88,
+    "staging": 40,
+    "production": 40,
+    "individuallyInspected": 260,
+    "hashMatches": 260,
     "blockingDefects": 0,
-    "scope": "Explicit mixed implementation artifacts; source release evidence remains separate."
+    "scope": "Mixed per-image sources; original168 preserved,80 current game +8 current note +4 C2 before-note added.",
+    "currentC4": 88
   },
   "browser": {
     "historicalFirstRun": "8/9; inert recovery bug fixed",
     "historicalInterruptedMatrix": "18desktop passed; mobile menu fixture failure and unfinished case preserved",
     "historicalCompletedMatrix": "28/36 passed; seven own-diagnostic Ready decorations and one transient-toast ordering assertion failed",
-    "current": "Affected28/28 plus finalRetry4/4 pass; priorconsent8/8 at explicit separate artifact. No immutable integration claim."
+    "current": "Exact C4 hosted browser344 passed/3 pre-existing exclusions, CI7/7; staging4/4 and production4/4 journeys,44 reviewed images each."
   },
   "localOutcomesVerified": [
     "boot-headroom",
     "community-consent-revocation",
     "player-availability-truth",
-    "co-gm-export-integrity"
-  ]
+    "co-gm-export-integrity",
+    "responsive-capture-shards"
+  ],
+  "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+  "technicalReleaseVerified": true,
+  "releaseReport": "reports/s130-c4-release-acceptance.json",
+  "pipeline": {
+    "hostedRecords": 327,
+    "pngImages": 324,
+    "authorityRecords": 3,
+    "profiles": 3,
+    "runId": 43425287183,
+    "attempt": 1,
+    "verified": true,
+    "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548"
+  },
+  "closingRecord": "reports/s130-closeout-completion.json",
+  "publicationGuard": "These closing records are valid after their containing commit passes final checks and is confirmed on remote main.",
+  "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+  "acceptance": "reports/s130-c4-release-acceptance.json",
+  "remainingCloseoutGuards": [
+    "Final closing metadata/security checks",
+    "Independent current closing review",
+    "Containing main publication/readback",
+    "Signed impact and owned cleanup"
+  ],
+  "finalMetadata": {
+    "verified": true,
+    "passed": 441,
+    "total": 441,
+    "scope": "Closing Studio metadata checkpoint only; application C4 hosted CI7/7 and runtime/browser scopes remain separate."
+  }
 }

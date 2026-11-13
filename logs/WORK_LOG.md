@@ -129,3 +129,11 @@ Hosted CI43149099119 is complete and successful at recovered application source7
 ### S129 recovery verified checkpoint
 
 S129 recovery: the two depth-chart fixes are written back; current Studio398/398 and recovered application hosted CI7/7 are separately verified. Frontend staging/production74683a57 provenance14/14 each is verified, while API health still reports812fd52b. Screenshot retention and local authority repairs are recorded. Full new arc and release parity remain pending. SIL remains532/1000; no new score or player-outcome measurement. Earlier failed runs remain historical; no new founder creative direction.
+
+
+## 2026-11-13 — Session 130 — Beta hardening
+
+Five improvements make coaching, player availability, Co-GM exports, Community Stats consent and responsive verification more reliable. Exact C2 required CI7/7 passed. Its browser run passed344 with3 declared pre-existing exclusions. The separate hosted responsive inventory verified327 required records across mobile, tablet and desktop in both themes. Staging and production frontend checks passed14/14 per origin, with the same C2 API running and database ready. Selected worker journeys, image reviews and five-run performance evidence are recorded in reports/s130-release-acceptance.json. These scopes are not summed. Source 7a54ba295296c751114b0b0a144bdb8adade2dd5. Five selected improvements and the exact technical release are verified. Final containing-commit publication and readback remain pending; no public launch approval is claimed.
+
+
+Current C4 follow-through accepted (same S130): source 67ab750b40bad7751a5374b6f5ce382f5d4a7548, matching staging/production frontend and API verified by reports/s130-c4-release-acceptance.json; CI7/7, browser344 passed/3 exclusions and327 responsive records. Current C4 images88; mixed collection260. C2 evidence remains historical. No new scored session or selected outcome. These closing records are valid after their containing commit passes final checks and is confirmed on remote main.

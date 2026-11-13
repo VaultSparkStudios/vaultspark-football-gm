@@ -1,8 +1,8 @@
 <!-- truth-audit-version: 1.1 -->
 # Truth Audit
 
-Overall status: S129 selected outcomes on main with focused evidence; canonical suite partial (timed out on a saturated host); not deployed, production remains S128; broader launch readiness partial
-Last reviewed: 2026-11-11
+Overall status: S130 five selected technical outcomes and matching frontend/API release verified at67ab750b; closing publication remains guarded. Broader readiness, player, financial and adoption outcomes remain unmeasured.
+Last reviewed: 2026-11-13
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
 ## 2026-10-23 — S120 — A "flaky" recovery case had a cause
@@ -117,3 +117,10 @@ Hosted CI43149099119 is complete and successful at recovered application source7
 ### S129 recovery verified checkpoint
 
 S129 recovery: the two depth-chart fixes are written back; current Studio398/398 and recovered application hosted CI7/7 are separately verified. Frontend staging/production74683a57 provenance14/14 each is verified, while API health still reports812fd52b. Screenshot retention and local authority repairs are recorded. Full new arc and release parity remain pending. SIL remains532/1000; no new score or player-outcome measurement. Earlier failed runs remain historical; no new founder creative direction.
+
+
+## 2026-11-13 — Session 130 — Exact technical release
+
+Exact C2 required CI7/7 passed. Its browser run passed344 with3 declared pre-existing exclusions. The separate hosted responsive inventory verified327 required records across mobile, tablet and desktop in both themes. Staging and production frontend checks passed14/14 per origin, with the same C2 API running and database ready. Selected worker journeys, image reviews and five-run performance evidence are recorded in reports/s130-release-acceptance.json. These scopes are not summed.
+
+Source 7a54ba295296c751114b0b0a144bdb8adade2dd5, artifact 0a058bf0f49f9441e70cdad0b50cb7fabba2a103baa3c8d9e516c433a29429a7, release report reports/s130-release-acceptance.json. C1 failed runtime1196/1197 and the superseding C2 test-only correction remain historical; no failure is relabeled passing. Five selected improvements and the exact technical release are verified. Final containing-commit publication and readback remain pending; no public launch approval is claimed.

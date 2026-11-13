@@ -1,5 +1,16 @@
 # Agent Memory
 
+## Session 130 durable patterns
+
+- When a deferred interface fails after hydration, preserve interactive recovery controls and original action authority.
+- Verify the independent capture inventory and source-bound pixels together; missing profiles or frames must fail coverage.
+- A successful retry clears only its own diagnostic and preserves unrelated warnings.
+- Preserve unknown numeric and medical facts instead of coercing them into zero or healthy prose.
+- Bind optional analytics events to the active consent generation and retain the purpose-bound deletion identifier until acknowledgment.
+
+Five selected improvements and the exact technical release are verified. Final containing-commit publication and readback remain pending; no public launch approval is claimed.
+
+
 ## Session 128 verified finalization — same-session evidence
 
 Preserve truthful Partial checkpoints and superseded candidate evidence. Record verified finalization as an append-only same-session addendum after actual closing metadata, containing readback, signed impact and owned cleanup. Keep the approved score and two outcomes counted once. The formal receipt cannot prove its own final containing publication or original-lock release. Project-native patterns only; private global memory is untouched.
@@ -111,3 +122,6 @@ S126 closeout lesson: canonical handoff headings carry session authority. Preser
 ---
 
 Older entries are retained verbatim in `context/archive/AGENT_MEMORY.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+
+Current C4 follow-through accepted (same S130): source 67ab750b40bad7751a5374b6f5ce382f5d4a7548, matching staging/production frontend and API verified by reports/s130-c4-release-acceptance.json; CI7/7, browser344 passed/3 exclusions and327 responsive records. Current C4 images88; mixed collection260. C2 evidence remains historical. No new scored session or selected outcome. These closing records are valid after their containing commit passes final checks and is confirmed on remote main.

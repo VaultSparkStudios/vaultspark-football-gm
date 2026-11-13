@@ -1,0 +1,270 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "engineering-release-acceptance",
+  "session": 130,
+  "observedAt": "2026-11-13T18:31:03.155Z",
+  "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+  "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+  "verified": true,
+  "technicalReleaseVerified": true,
+  "technicalAcceptanceComplete": true,
+  "launchApproved": false,
+  "selectedOutcomes": [
+    "boot-headroom",
+    "community-consent-revocation",
+    "player-availability-truth",
+    "co-gm-export-integrity",
+    "responsive-capture-shards"
+  ],
+  "ci": {
+    "ok": true,
+    "sha": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+    "runId": 43425287191,
+    "attempt": 1,
+    "requiredJobs": [
+      "unit-shards (core)",
+      "unit-shards (runtime)",
+      "unit-shards (sim:contract)",
+      "unit-shards (sim:realism)",
+      "unit-shards (long)",
+      "unit-shards (studio)",
+      "browser-gates"
+    ],
+    "lane": "hosted-exact-sha",
+    "runtime": {
+      "passed": 1198,
+      "total": 1198,
+      "failed": 0,
+      "scope": "Exact C4 hosted runtime shard only"
+    },
+    "browser": {
+      "passed": 344,
+      "skipped": 3,
+      "failed": 0,
+      "total": 347,
+      "exclusions": [
+        "Two managed-career cases require an actual separate save input.",
+        "One in-page worker negative-control diagnostic is opt-in."
+      ],
+      "selectedS130SkipGate": false
+    }
+  },
+  "responsive": {
+    "runId": 43425287183,
+    "attempt": 1,
+    "requiredRecords": 327,
+    "verifiedRecords": 327,
+    "pngImages": 324,
+    "authorityRecords": 3,
+    "profiles": [
+      {
+        "viewport": "desktop",
+        "records": 107,
+        "timing": {
+          "startedAt": "2026-11-13T14:59:29.391Z",
+          "completedAt": "2026-11-13T15:02:13.574Z",
+          "durationMs": 164183,
+          "viewports": [
+            {
+              "name": "desktop",
+              "startedAt": "2026-11-13T14:59:30.124Z",
+              "durationMs": 163342,
+              "complete": true,
+              "completedAt": "2026-11-13T15:02:13.466Z"
+            }
+          ]
+        }
+      },
+      {
+        "viewport": "mobile",
+        "records": 111,
+        "timing": {
+          "startedAt": "2026-11-13T14:59:11.961Z",
+          "completedAt": "2026-11-13T15:01:47.313Z",
+          "durationMs": 155352,
+          "viewports": [
+            {
+              "name": "mobile",
+              "startedAt": "2026-11-13T14:59:12.460Z",
+              "durationMs": 154778,
+              "complete": true,
+              "completedAt": "2026-11-13T15:01:47.238Z"
+            }
+          ]
+        }
+      },
+      {
+        "viewport": "tablet",
+        "records": 109,
+        "timing": {
+          "startedAt": "2026-11-13T14:59:11.973Z",
+          "completedAt": "2026-11-13T15:01:19.584Z",
+          "durationMs": 127611,
+          "viewports": [
+            {
+              "name": "tablet",
+              "startedAt": "2026-11-13T14:59:12.522Z",
+              "durationMs": 126983,
+              "complete": true,
+              "completedAt": "2026-11-13T15:01:19.505Z"
+            }
+          ]
+        }
+      }
+    ],
+    "providerArchives": [
+      {
+        "viewport": "mobile",
+        "artifactId": 14049631187,
+        "sha256": "sha256:aa8a85907d154aaee69c7bfc9f17242423b8500c0be023c4f4b3ebe51cf743a6",
+        "bytes": 26780085
+      },
+      {
+        "viewport": "tablet",
+        "artifactId": 14048403281,
+        "sha256": "sha256:4cb9ac828b285f5465e39145345ca9b436fe23f5f0c7664d631fe64798829aca",
+        "bytes": 32997923
+      },
+      {
+        "viewport": "desktop",
+        "artifactId": 14049740869,
+        "sha256": "sha256:a65f72d121dd02c134c4d7eb923fd21404e18f54eb0fcf8471bbff8fcd779b55",
+        "bytes": 46381848
+      },
+      {
+        "viewport": "aggregate",
+        "artifactId": 14049751135,
+        "sha256": "sha256:b886065078c6d21a9028bf5f278255ba9c58f36d41e00282c5c4e07f11853b9e",
+        "bytes": 106088638
+      }
+    ]
+  },
+  "frontend": {
+    "deploymentId": "dc04f431-fc24-41f4-b546-21cb4a4ea2b1",
+    "productionUrl": "https://playfranchisearchitect.com",
+    "stagingUrl": "https://staging.playfranchisearchitect.com",
+    "productionNative": {
+      "status": "verified",
+      "checksPassed": 14,
+      "checksTotal": 14
+    },
+    "stagingNative": {
+      "status": "verified",
+      "checksPassed": 14,
+      "checksTotal": 14
+    },
+    "rollback": {
+      "available": true,
+      "deploymentId": "3ebfa6ad-395d-4db4-935a-88ab4f2d5bbd",
+      "sourceRevision": "7a54ba295296c751114b0b0a144bdb8adade2dd5"
+    }
+  },
+  "backend": {
+    "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+    "imageId": "sha256:c8d98f22e8fd8c7fe03aa0680a2bbff0d03242d166bd0983216848bcd5f9f4ed",
+    "status": "running",
+    "preservedDatabaseAndRouting": true,
+    "previousSourceRevision": "7a54ba295296c751114b0b0a144bdb8adade2dd5",
+    "previousImageAvailable": true
+  },
+  "api": {
+    "ok": true,
+    "database": "ready",
+    "schemaVersion": 1,
+    "service": "franchise-architect-community-stats",
+    "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548"
+  },
+  "phases": [
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "workerJourneys": 4,
+      "journeyImages": 40,
+      "noteImages": 4,
+      "reviewedCaptures": 44,
+      "nativeProvenance": "14/14",
+      "performance": {
+        "route": "/",
+        "runsPerProfile": 5,
+        "profiles": [
+          {
+            "name": "desktop",
+            "lcpMs": 328,
+            "inpMs": 24,
+            "cls": 0.0003,
+            "interactionObserved": true
+          },
+          {
+            "name": "mobile",
+            "lcpMs": 332,
+            "inpMs": 24,
+            "cls": 0.0131,
+            "interactionObserved": true
+          }
+        ]
+      },
+      "scope": "Fresh local-worker client journeys; remote Community writes blocked. API runtime/database verified separately."
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "workerJourneys": 4,
+      "journeyImages": 40,
+      "noteImages": 4,
+      "reviewedCaptures": 44,
+      "nativeProvenance": "14/14",
+      "performance": {
+        "route": "/",
+        "runsPerProfile": 5,
+        "profiles": [
+          {
+            "name": "desktop",
+            "lcpMs": 476,
+            "inpMs": 40,
+            "cls": 0.0003,
+            "interactionObserved": true
+          },
+          {
+            "name": "mobile",
+            "lcpMs": 556,
+            "inpMs": 40,
+            "cls": 0.0131,
+            "interactionObserved": true
+          }
+        ]
+      },
+      "scope": "Fresh local-worker client journeys; remote Community writes blocked. API runtime/database verified separately."
+    }
+  ],
+  "visual": {
+    "receipt": "docs/visual-qa/LATEST.json",
+    "receiptSha256": "bacb50615f519dc76cd42007819cf195324c08b0a8de787f8936edc324b9254c",
+    "images": 260,
+    "originalHistoricalImages": 168,
+    "currentJourneyImages": 80,
+    "currentNoteImages": 8,
+    "previousSourceNoteBaselines": 4,
+    "currentReleaseSubset": "reports/s130-c4-release-visual.json",
+    "currentReleaseImages": 88,
+    "historicalC2ReceiptSnapshot": {
+      "path": "reports/s130-c2-visual-snapshot.json",
+      "sha256": "6631fd8d51677c8b04c865f5ecb4e6eed0599946345ecb557133fd7ae1897977"
+    },
+    "scope": "Mixed collection preserves actual per-image source boundaries; current C4 subset and previous-source baselines are separately identified."
+  },
+  "sourceEvidence": {
+    "boot": "reports/s130-boot-foundation-proof.json",
+    "focused": "reports/s130-focused-tests.json",
+    "browser": "reports/s130-browser-acceptance.json"
+  },
+  "historicalFailures": [
+    "C1 runtime1196/1197 failed a stale inventory-location assertion; corrected C2 runtime1198/1198 passed.",
+    "Prior partial native capture, superseded C1 workflow evidence and the intermediate full-term release-note correction remain historical; current C4 acceptance is separate."
+  ],
+  "scope": "Five selected technical improvements and same-source frontend/API release; engineering evidence does not measure player or financial outcomes.",
+  "publicationGuard": "Formal closing-record publication remains pending."
+}

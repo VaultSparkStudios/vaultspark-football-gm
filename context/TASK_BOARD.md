@@ -1,12 +1,17 @@
 ## S130 Wave status
 
-Session Intent: /arc then I authorize a direct push/commit to main/remote and fully deploy to staging & production
+Session Intent: Complete five selected improvements, their authorized technical release and full closing records.
 
 - [x] Wave 0: S129 recovery published and read back at c5290c3d; scoped Studio 398/398, application hosted CI 7/7 and frontend provenance are separate evidence.
 - [x] Wave 1: Full S130 startup and native goal binding; canon reconciliation, offline conformance, adoption, radar, credentials discovery and validated startup brief. Beacon unconfigured; owner propagation exclusions remain unverified.
 - [x] Wave 2: Fresh nine-axis audit, readiness matrix, five strict premises, pre-implementation timing and fixture/real admission verified.
-- [ ] Wave 3: Four local outcomes verified; responsive-pipeline native327 and hosted complete aggregate remain pending.
-- [ ] Wave 4: Verify staging, production frontend/API parity, rollback, full closeout and remote publication.
+- [x] Wave 3: All five selected S130 improvements and the complete 327-record responsive inventory are verified; reports/s130-c4-release-acceptance.json.
+- [x] S130 — Coaching boot headroom: defer staff-management rendering until needed; preserve club authority, retry and failure recovery.
+- [x] S130 — Community participation: failed consent persistence keeps sharing off; pending deletion remains off and retry-first.
+- [x] S130 — Player availability: show simultaneous suspension, reserve, roster and medical facts without inventing eligibility.
+- [x] S130 — Co-GM exports: visible failure, truthful clipboard download fallback, valid retry and temporary download cleanup.
+- [x] S130 — Responsive capture inventory: source-bound mobile/tablet/desktop evidence in dark/light, complete coverage and omission guards.
+- [x] Closing records: accepted technical evidence and ordered records are prepared; their containing commit must pass final checks and remote readback.
 
 # Task Board — Franchise Architect: Football
 
@@ -17,9 +22,9 @@ Session Intent: /arc then I authorize a direct push/commit to main/remote and fu
 - [x] Wave 1: audit refresh. Premises re-run against live code: 24 verified, 1 contradicted only by the recovered fix.
 - [x] Wave 2: weekly-challenge (implemented), agent-surface (implemented), site-truth-pass (reduced), player-identity L1 (reduced); committed as 51701878.
 - [x] Wave 3: closeout write-back, SIL, push to main. Staging/production release not attempted this session.
-- [ ] [SIL:129] Boot budget headroom: game boot is 649883/650000 bytes. Move a static island behind a dynamic import before the next player-facing change lands on the boot path.
+- [x] [SIL:129] Boot budget headroom — resolved by S130: coaching loads on demand; isolated foundation headroom is 5,344 bytes under the unchanged 650,000-byte ceiling. The full candidate footprint is verified separately; reports/s130-release-acceptance.json.
 - [ ] [SIL:129] Checkpoint before you continue: commit a cut-off session's tree on its own before the first new edit. This session had to rebuild that boundary from -U0 hunks.
-- [ ] S129 audit follow-ups: release (staging then production), site-truth releaseLabel + privacy single source, player-identity L2 (personality, college, hometown, roster/depth display), depth-chart menu entry, and the 14 pending items in docs/AUDIT_2026-11-10.json.
+- [ ] S129 audit follow-ups: release (staging then production) fulfilled by S130 — reports/s130-release-acceptance.json; remaining: site-truth releaseLabel + privacy single source, player-identity L2 (personality, college, hometown, roster/depth display), depth-chart menu entry, and the 14 pending items in docs/AUDIT_2026-11-10.json.
 
 
 ## S128 Wave status
@@ -172,7 +177,7 @@ Recovered source commits f4179d69 and 74683a57 repair the depth chart: text wrap
 
 Uncommitted S129 staging authority and visual captures are preserved as prior-session evidence, not accepted as a completed release. Historical screenshot deletions are also preserved pending reference-integrity review. The native full test runner is currently live; no passing suite, new production deployment or completed recovery closeout is claimed. Remote main has an additional dependency update b5341a2c, to reconcile after preserving the recovery boundary.
 
-New founder goal 01a1d30c-860b-7d22-8b59-9a47d7d5e5a1 (createdAt 1794542183) requires a full NEW arc after recovery; it cannot borrow S129 completion. Binding initially returned start-new-arc. New startup/session binding remains pending.
+The subsequent founder request requires a new full session after recovery; prior completion is separate evidence.
 
 
 ### S129 recovery verified checkpoint

@@ -46,3 +46,7 @@ Acceptance: All existing states and themes retained. Missing viewport/capture, w
 ## Release and closeout
 
 Preserve fixed budgets and every test/capture. Run focused meaningful regressions, inspect real before/after pixels for all touched states in desktop/mobile dark/light, independent review, current complete acceptance and exact-candidate CI. Verify staging first, then production frontend/API parity using existing authorization. Retain the true rollback source/image and database/routing baseline. Run full ordered closeout, scoped SIL scoring, final staged security/supply-chain checks, direct main push and remote readback. Broader email/identity/market/restore unknowns do not become passing or a public launch.
+
+## Verified technical acceptance
+
+All five selected L2 outcomes are verified at application source `7a54ba295296c751114b0b0a144bdb8adade2dd5`. Exact CI7/7, complete hosted327/327 responsive records, matching staging/production frontend/API and scoped journey/pixel/performance evidence are accepted in reports/s130-release-acceptance.json. Original implementation failures and source boundaries remain historical. Formal closing-record publication is pending.

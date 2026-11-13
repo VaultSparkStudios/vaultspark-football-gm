@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-11-13 (Session 129 closeout) -->
+<!-- generated-at: 2026-11-13 (Session 130 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: 06c3f662e849c4b7 -->
-<!-- genius-authority-fingerprint: 2278f5e472fee788 -->
-<!-- session-authority: committed=S129 · SIL=S129 · status=S129 · handoff=S129; divergent=false -->
+<!-- genius-authority-fingerprint: 6d3ec37eff739172 -->
+<!-- session-authority: committed=S130 · SIL=S130 · status=S130 · handoff=S130; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 129 closeout · 2026-11-13.
+> **Fast-boot brief** — generated at Session 130 closeout · 2026-11-13.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,12 +17,12 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 130 · 2026-11-13 · BUILDER MODE                         ║
+║  Session 131 · 2026-11-13 · BUILDER MODE                         ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S129) - WHAT SHIPPED ══════════════════════════╗
-║  S129 recovery published and read back at c5290c3d: current Stu  ║
+╔══ LAST SESSION (S130) - WHAT SHIPPED ══════════════════════════╗
+║  S130 verified five selected improvements, exact-source CI7, co  ║
 ║  Tests Unverified for this session                               ║
 ║  Deploy —                                                        ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -40,56 +40,55 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    532/1000   ████████████░░░░░░░░░░░░   53%                     ║
-║    SIL v3.0  ·  Avg3: 533.3  ·  Velocity 4→                      ║
-║    Active 0d · closeout 2d · source: newest SIL/status/handoff   ║
+║    545/1000   █████████████░░░░░░░░░░░   55%                     ║
+║    SIL v3.0  ·  Avg3: 536.3  ·  Velocity 5→                      ║
+║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
 ║    Trend  ▁▁▁▁▁  →  (last 5 sessions)                            ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
 ║    ─────────────── ────── ────────── ──────── ─                  ║
-║    Dev Health        88    █████████░  —        →                ║
+║    Dev Health        89    █████████░  —        →                ║
 ║    Alignment         72    ███████░░░  —        →                ║
-║    Momentum          65    ███████░░░  —        →                ║
+║    Momentum          68    ███████░░░  —        →                ║
 ║    Engagement        47    █████░░░░░  —        →                ║
-║    Process Qual      55    ██████░░░░  —        →                ║
+║    Process Qual      57    ██████░░░░  —        →                ║
 ║    Coherence         60    ██████░░░░  ········ →                ║
-║    Security          62    ██████░░░░  ········ →                ║
+║    Security          66    ███████░░░  ········ →                ║
 ║    Ecosystem         20    ██░░░░░░░░  ········ →                ║
 ║    Capital            0    ░░░░░░░░░░  ········ →                ║
-║    Automation        63    ██████░░░░  ········ →                ║
+║    Automation        66    ███████░░░  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 129 ═══════════════════════════╗
-║  Shipped:  S129 recovery: the two depth-chart fixes are written  ║
+╔══ WHERE WE LEFT OFF  ·  Session 130 ═══════════════════════════╗
+║  Shipped:  Five selected improvements and the current full-term  ║
 ║  Tests: Unverified for this session                              ║
-║  Deploy: Observed frontend staging/production 74683a57; API hea  ║
+║  Deploy: Frontend/API 67ab750b matched; staging/production14/14  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    6% used                          ║
-║     15,175 / 272,000 tok  ·  codex/codex-272k  ·  measured+heur  ║
-║     ~7,588 tok/turn  ·  cache 50%  ·  30 turns to compact        ║
+║  ✓  ████████░░░░░░░░░░░░░░░░   31% used                          ║
+║     85,130 / 272,000 tok  ·  codex/codex-272k  ·  measured+heur  ║
+║     ~42,565 tok/turn  ·  cache 50%  ·  3 turns to compact        ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ⚠ Tests STALE · current unverified; historical 1752/1752        ║
-║  (2026-10-02)                                                    ║
-║  ✓  Velocity      4   ·  Debt: →                                 ║
+║  ✓ Tests 441/441 passing · studio                                ║
+║  ✓  Velocity      5   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ✓  IGNIS         42318 FORGE  ·  2d old                         ║
-║  ⛔  Truth         S129 selected outcomes on main with focused e  ║
+║  ✓  IGNIS         41418 FORGE  ·  0d old                         ║
+║  ⛔  Truth         S130 five selected technical outcomes and mat  ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
-║  ✓  Genome dims   all stable  (0/25)                             ║
-║  ✓  Entropy       0.008  (healthy)                               ║
+║  ⚠  Genome dims   unmeasured (5 dimensions; —/25)                ║
+║  ✓  Entropy       0.233  (healthy)                               ║
 ║  ✓  CDR           no gap detected                                ║
 ║  ✓  Patterns      no recurring pressure detected                 ║
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⚠  Doctor        9/12 (75%)  ·  3 warn                          ║
+║  ✓  Doctor        12/12 (100%)  ·  2026-11-13  ✓                 ║
 ║  ✓  Cost          Max flat-rate · $0.00/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -107,22 +106,20 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ MOMENTUM METER ══════════════════════════════════════════════╗
-║  Velocity:   ▁▁▁▁▁  4→  (last 5 sessions)                        ║
+║  Velocity:   ▁▁▁▁▁  5→  (last 5 sessions)                        ║
 ║  Intent:     60% achieved last 5                                 ║
-║  Streak:     — (last intent not achieved)                        ║
+║  Streak:     ✓ 1 consecutive achieved-intent session             ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ cache source: AUDIT_2026-11-13.json                           ║
-║                                                                  ║
-║  #2 · 🔥 · responsive-capture-shards                             ║
-║  Capture every responsive state within bounded release jobs      ║
-║                                                                  ║
+║  ✓ queue exhausted · source: AUDIT_2026-11-13.json               ║
+║  Closed: 5 · Open: 0                                             ║
+║  All 5 live-premise-verified audit items are done.               ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ```
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 129 closeout · 2026-11-13*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 130 closeout · 2026-11-13*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

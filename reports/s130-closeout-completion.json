@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "guarded-closeout-records",
+  "session": 130,
+  "date": "2026-11-13",
+  "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+  "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+  "selectedOutcomes": 5,
+  "silScore": 545,
+  "silCategoriesV3": {
+    "devHealth": 89,
+    "creativeAlignment": 72,
+    "momentum": 68,
+    "engagement": 47,
+    "processQuality": 57,
+    "crossRepoCoherence": 60,
+    "securityPosture": 66,
+    "ecosystemIntegration": 20,
+    "capitalEfficiency": 0,
+    "automationCoverage": 66
+  },
+  "recordsVerified": true,
+  "technicalReleaseVerified": true,
+  "launchApproved": false,
+  "technicalAcceptance": {
+    "path": "reports/s130-c4-release-acceptance.json",
+    "sha256": "a0ff171ee0f31e793cbbd5dfc7051f4d2ded1bd542b1fa78cd51252c9973778e"
+  },
+  "releaseAuthority": {
+    "path": "reports/s130-c4-release-authority.json",
+    "sha256": "8c4704f9b63bdc32ddea7917334cfe4f25c675c0a8cfcc4990799d3fd8ddc60a"
+  },
+  "visual": {
+    "images": 260,
+    "currentC4": 88,
+    "receipt": "docs/visual-qa/LATEST.json",
+    "sha256": "bacb50615f519dc76cd42007819cf195324c08b0a8de787f8936edc324b9254c"
+  },
+  "publicationGuard": "These closing records are valid after their containing commit passes final checks and is confirmed on remote main.",
+  "scope": "Project records and accepted engineering release. Live closing verification is performed after the containing publication; this receipt cannot attest to its own commit.",
+  "historicalC2": {
+    "acceptance": "reports/s130-release-acceptance.json",
+    "sha256": "01719592adc5a9c70d101116d6a457bda0dd91d0fbcb1fbd86cd01585874bcd7",
+    "visualSnapshot": "reports/s130-c2-visual-snapshot.json",
+    "visualSha256": "6631fd8d51677c8b04c865f5ecb4e6eed0599946345ecb557133fd7ae1897977"
+  }
+}

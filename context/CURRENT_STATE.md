@@ -1,5 +1,11 @@
 # Current State
 
+## 2026-11-13 — Session 130 — Verified decision and recovery improvements
+
+Five selected outcomes are verified: coaching recovery, consent revocation, concurrent availability facts, recoverable Co-general manager exports and complete bounded responsive evidence. Current frontend/API source 67ab750b40bad7751a5374b6f5ce382f5d4a7548; acceptance: reports/s130-c4-release-acceptance.json. Exact-source CI7/7, runtime1198/1198, browser344 passed/3 declared pre-existing exclusions, hosted327 records (324 PNGs and3 authority records). Staging/production each passed native14/14, four worker journeys with44 reviewed images and five-run desktop/mobile performance. API database ready, routing/mounts preserved and C2 rollback retained. Technical release only; public launch, actual-player and financial outcomes are unmeasured.
+
+These closing records are valid after their containing commit passes final checks and is confirmed on remote main.
+
 ## 2026-11-11 — Session 129 — Recovered cut-off session, weekly challenge, agent surface, playing styles
 <!-- s129-closeout -->
 
@@ -121,7 +127,7 @@ Recovered source commits f4179d69 and 74683a57 repair the depth chart: text wrap
 
 Uncommitted S129 staging authority and visual captures are preserved as prior-session evidence, not accepted as a completed release. Historical screenshot deletions are also preserved pending reference-integrity review. The native full test runner is currently live; no passing suite, new production deployment or completed recovery closeout is claimed. Remote main has an additional dependency update b5341a2c, to reconcile after preserving the recovery boundary.
 
-New founder goal 01a1d30c-860b-7d22-8b59-9a47d7d5e5a1 (createdAt 1794542183) requires a full NEW arc after recovery; it cannot borrow S129 completion. Binding initially returned start-new-arc. New startup/session binding remains pending.
+The subsequent founder request requires a new full session after recovery; prior completion is separate evidence.
 
 
 ### S129 live-state correction

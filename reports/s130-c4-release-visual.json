@@ -1,0 +1,2302 @@
+{
+  "schemaVersion": 1,
+  "session": 130,
+  "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d"
+  },
+  "capturedAt": "2026-11-13T18:23:21.603Z",
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "captures": [
+    {
+      "file": "s130-c4-staging-desktop-dark-controlled-coaching-before-hire-segment-1-of-1-ce08ace376db.png",
+      "sha256": "ce08ace376db843e70636c8d7f85314b0657e084e6893671e9ad89036dc46ed8",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging: controlled-coaching-before-hire-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-desktop-dark-controlled-coaching-after-hire-segment-1-of-1-2879d1d6851a.png",
+      "sha256": "2879d1d6851ab68659393b44c0169a25253d6ed9037d4ddb9086cc954a054c66",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging: controlled-coaching-after-hire-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-desktop-dark-rival-coaching-guard-segment-1-of-1-465aecd558a6.png",
+      "sha256": "465aecd558a6e6e871b736e15d3bd41f99d3f412b14965371f8a10b9706e1602",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging: rival-coaching-guard-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-desktop-dark-co-gm-valid-export-segment-1-of-1-47f5cd3cefb7.png",
+      "sha256": "47f5cd3cefb72dc26fe8aba6282401466f2f755f4b36b5217124a1dcbda21983",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging: co-gm-valid-export-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-desktop-dark-actual-player-dossier-segment-1-of-2-31ab9c7efcdb.png",
+      "sha256": "31ab9c7efcdb3e3045b33a5fe36d496595dede7cc33ec4c0560e1a557cd2cc41",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging: actual-player-dossier-segment-1-of-2",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-desktop-dark-actual-player-dossier-segment-2-of-2-0a552dfc3006.png",
+      "sha256": "0a552dfc3006d1cb10dbd12e503fbfa49577d7751ddfb5650cbcb193603aaf3f",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging: actual-player-dossier-segment-2-of-2",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-desktop-dark-actual-player-availability-segment-1-of-1-22285f2f8fe6.png",
+      "sha256": "22285f2f8fe6dc0002dbd255bb78d9cf59aa014b400c41e179b5f74ba19a877c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging: actual-player-availability-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-desktop-dark-actual-player-availability-bio-segment-1-of-1-52f37f1afefb.png",
+      "sha256": "52f37f1afefb01791734c9c06852b03f73025fb62614ad981c4944d821cf3ca1",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging: actual-player-availability-bio-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-desktop-light-controlled-coaching-before-hire-segment-1-of-1-d5cf15d893bb.png",
+      "sha256": "d5cf15d893bb0b8a9bf0bb49fa0788776e605e013184248598f1023f2ca2b096",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging: controlled-coaching-before-hire-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-desktop-light-controlled-coaching-after-hire-segment-1-of-1-847440e8b399.png",
+      "sha256": "847440e8b3993422ee4f3770fd8aef43a242182c78effe733e0acb434b8292e8",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging: controlled-coaching-after-hire-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-desktop-light-rival-coaching-guard-segment-1-of-1-6f8451bd02c9.png",
+      "sha256": "6f8451bd02c93c1a05ba878390353259b8317d959167b6ad62d2db05ad2ca0c1",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging: rival-coaching-guard-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-desktop-light-co-gm-valid-export-segment-1-of-1-dc8afaddd02c.png",
+      "sha256": "dc8afaddd02c1ff836b01fe1a2ac0e9a9a7f39a0a10662bfe3407973cd9c68ca",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging: co-gm-valid-export-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-desktop-light-actual-player-dossier-segment-1-of-2-4f054a8519c9.png",
+      "sha256": "4f054a8519c9739952a2d988149a969088eca549e5ec6876b1a4d8e51bc10dbc",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging: actual-player-dossier-segment-1-of-2",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-desktop-light-actual-player-dossier-segment-2-of-2-b9f90256d4df.png",
+      "sha256": "b9f90256d4df818184f221c480832bf7e198a2ed7aa910fad850f981682f2f54",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging: actual-player-dossier-segment-2-of-2",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-desktop-light-actual-player-availability-segment-1-of-1-2dd2aa7ef80f.png",
+      "sha256": "2dd2aa7ef80fa07679f34d0881b5002e7dec6175e27639beea4eea3e997b85f1",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging: actual-player-availability-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-desktop-light-actual-player-availability-bio-segment-1-of-1-17648f08fd7d.png",
+      "sha256": "17648f08fd7dcb83ffd5c1a4a97ffd4ca1b3a0e6b81fa651e3a798611c0628d8",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging: actual-player-availability-bio-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-dark-controlled-coaching-before-hire-segment-1-of-2-596fa02c5aa9.png",
+      "sha256": "596fa02c5aa9e09cdd1f8404d8f793b5285fb96e29002394d7474eaf286b8c34",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: controlled-coaching-before-hire-segment-1-of-2",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-dark-controlled-coaching-before-hire-segment-2-of-2-0dd948a5b49d.png",
+      "sha256": "0dd948a5b49db765b22808b99f7664f054668021d72ed494cfcbba9060bea731",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: controlled-coaching-before-hire-segment-2-of-2",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-dark-controlled-coaching-after-hire-segment-1-of-2-1a7e0e2bd1d1.png",
+      "sha256": "1a7e0e2bd1d177f997aede5259bae3b884b2781dff7c8991d2dc4d1640f0daab",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: controlled-coaching-after-hire-segment-1-of-2",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-dark-controlled-coaching-after-hire-segment-2-of-2-3d6d96222ce4.png",
+      "sha256": "3d6d96222ce45fd33d098d9585b5aae6b099c84790f3f787b32a80d1906598ef",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: controlled-coaching-after-hire-segment-2-of-2",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-dark-rival-coaching-guard-segment-1-of-1-1bf0667cfcae.png",
+      "sha256": "1bf0667cfcae924791fdaa00affecb210b98798ab88d492f7a618362d73ca693",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: rival-coaching-guard-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-dark-co-gm-valid-export-segment-1-of-1-c18f8003ed80.png",
+      "sha256": "c18f8003ed807e9f3fb3d2741fae2140c24a3399f265fe8a603e0e3e60d252f7",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: co-gm-valid-export-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-dark-actual-player-dossier-segment-1-of-4-9cbc233f51cf.png",
+      "sha256": "9cbc233f51cf8b48712dac1cb23339aca5f7a5cdb969b4dec1ddce9c94ca51be",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: actual-player-dossier-segment-1-of-4",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-dark-actual-player-dossier-segment-2-of-4-80da60b28461.png",
+      "sha256": "80da60b284617dac4a6aa60d894e1e65ff17ea3569414dd5433cb599b9bd93cb",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: actual-player-dossier-segment-2-of-4",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-dark-actual-player-dossier-segment-3-of-4-b48adf3e337b.png",
+      "sha256": "b48adf3e337bb56ee94b31b0ebb3b64b7bda9bb5debb6c003628f23c66ee9b4e",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: actual-player-dossier-segment-3-of-4",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-dark-actual-player-dossier-segment-4-of-4-b5426c886440.png",
+      "sha256": "b5426c88644012e270611da75c4437cb83f5e0062348f79142dd584b25fcf815",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: actual-player-dossier-segment-4-of-4",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-dark-actual-player-availability-segment-1-of-1-c8791eb77476.png",
+      "sha256": "c8791eb7747689c42174ccd38f5f26117fc37f3fed6a9bf9a9a40fe25f0ccf67",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: actual-player-availability-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-dark-actual-player-availability-bio-segment-1-of-1-55f8ee7affdb.png",
+      "sha256": "55f8ee7affdbd5d3e16d964d3a5e1676bf3ad5234b9e263c4cb27657b6545ba2",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: actual-player-availability-bio-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-light-controlled-coaching-before-hire-segment-1-of-2-ea9ea7ef1e49.png",
+      "sha256": "ea9ea7ef1e49092184c3df5c934113093ede2ac278b7b87a73b462c2dc26e86f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: controlled-coaching-before-hire-segment-1-of-2",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-light-controlled-coaching-before-hire-segment-2-of-2-6a32ac7efa22.png",
+      "sha256": "6a32ac7efa22585c82349431978a4639baff38f35629b66b8d30cd41d1f20568",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: controlled-coaching-before-hire-segment-2-of-2",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-light-controlled-coaching-after-hire-segment-1-of-2-b9e98e16736e.png",
+      "sha256": "b9e98e16736ede83f7764933dc448d0e647ee42da3916109e2c4113f1ed35679",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: controlled-coaching-after-hire-segment-1-of-2",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-light-controlled-coaching-after-hire-segment-2-of-2-25644941df50.png",
+      "sha256": "25644941df50e389c14edce718515c3ba6a2c1e48378ceb934f195889caad8d9",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: controlled-coaching-after-hire-segment-2-of-2",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-light-rival-coaching-guard-segment-1-of-1-4e32243d2904.png",
+      "sha256": "4e32243d29049803a3a59b2ac2f84391a6d4fe295979646b2fd36718fddb064f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: rival-coaching-guard-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-light-co-gm-valid-export-segment-1-of-1-3cbc8c9c0ac7.png",
+      "sha256": "3cbc8c9c0ac72e319f995fd85c8d1d1af28e80de36fc2bd2e3fb674a9cd4bd18",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: co-gm-valid-export-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-light-actual-player-dossier-segment-1-of-4-a8a925ecf678.png",
+      "sha256": "a8a925ecf6786b80324063ab444633ee8d0f453058331abbd852e506698b6f68",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: actual-player-dossier-segment-1-of-4",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-light-actual-player-dossier-segment-2-of-4-82c6262996a6.png",
+      "sha256": "82c6262996a6b6ec007db2dbb4f8cb8eea8e937fc6e6934f59a0f19f331d10b0",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: actual-player-dossier-segment-2-of-4",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-light-actual-player-dossier-segment-3-of-4-46b5504cd4a4.png",
+      "sha256": "46b5504cd4a4ba5f4c56968eb69731c50c38e77e8681e0a9cd5b7da9eddba7bd",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: actual-player-dossier-segment-3-of-4",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-light-actual-player-dossier-segment-4-of-4-19e1115a699b.png",
+      "sha256": "19e1115a699bf9d97b1e8be5419c7909a68a15379ba63cae8fda24659a95894c",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: actual-player-dossier-segment-4-of-4",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-light-actual-player-availability-segment-1-of-1-6bfbe86a589a.png",
+      "sha256": "6bfbe86a589aea57c169b33a561bd60fbdb061d59cc6f2bf6ac7a63613314411",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: actual-player-availability-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-mobile-light-actual-player-availability-bio-segment-1-of-1-549ab5b29b0a.png",
+      "sha256": "549ab5b29b0a6da82289f5b541a89fcc7ac936f7d97d129157b29b3a2e203ef9",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging: actual-player-availability-bio-segment-1-of-1",
+      "phase": "staging",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T12:26:38.343Z",
+        "completedAt": "2026-11-13T12:28:20.659Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "8164ce6e3dfab14e063a499eb0083e47b0edcdc2efb175007039e745060ca6b7",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-note-desktop-dark-player-facing-release-note-viewport-143b06469144.png",
+      "sha256": "143b064691445a4decee2033a7e99ed93da5c0cba1ec028adcee3be1cb7fdf6e",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging-note: player-facing-release-note-viewport",
+      "phase": "staging-note",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport with normal header and no masks.",
+      "captureWindow": {
+        "capturedAt": "2026-11-13T12:26:27.099Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "d499cfdab26a85e16a47d964cd194539bf6855bed82e96640c0197129f93d4a1",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-note-desktop-light-player-facing-release-note-viewport-ffff9e19e7cc.png",
+      "sha256": "ffff9e19e7cc6f9937b7386d26c2c4955b8dd5a952b707c763c1d9da750a6543",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "staging-note: player-facing-release-note-viewport",
+      "phase": "staging-note",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport with normal header and no masks.",
+      "captureWindow": {
+        "capturedAt": "2026-11-13T12:26:27.099Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "d499cfdab26a85e16a47d964cd194539bf6855bed82e96640c0197129f93d4a1",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-note-mobile-dark-player-facing-release-note-viewport-356216b828d8.png",
+      "sha256": "356216b828d8ed164110e681a92a9c6fee71d13b18a87d6869462eff33fce217",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging-note: player-facing-release-note-viewport",
+      "phase": "staging-note",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport with normal header and no masks.",
+      "captureWindow": {
+        "capturedAt": "2026-11-13T12:26:27.099Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "d499cfdab26a85e16a47d964cd194539bf6855bed82e96640c0197129f93d4a1",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-staging-note-mobile-light-player-facing-release-note-viewport-c02c3c8030b3.png",
+      "sha256": "c02c3c8030b394ee0ea6be6452f68d034b7b9f0890558230cb3fe30c43097cf3",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "staging-note: player-facing-release-note-viewport",
+      "phase": "staging-note",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport with normal header and no masks.",
+      "captureWindow": {
+        "capturedAt": "2026-11-13T12:26:27.099Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "d499cfdab26a85e16a47d964cd194539bf6855bed82e96640c0197129f93d4a1",
+      "reviewSha256": "d92621531ef8e4fc5c0fb7b0cfdbb2cf8770e2332efd3209fecbfc8903483096"
+    },
+    {
+      "file": "s130-c4-production-desktop-dark-controlled-coaching-before-hire-segment-1-of-1-ce08ace376db.png",
+      "sha256": "ce08ace376db843e70636c8d7f85314b0657e084e6893671e9ad89036dc46ed8",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production: controlled-coaching-before-hire-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-desktop-dark-controlled-coaching-after-hire-segment-1-of-1-2879d1d6851a.png",
+      "sha256": "2879d1d6851ab68659393b44c0169a25253d6ed9037d4ddb9086cc954a054c66",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production: controlled-coaching-after-hire-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-desktop-dark-rival-coaching-guard-segment-1-of-1-465aecd558a6.png",
+      "sha256": "465aecd558a6e6e871b736e15d3bd41f99d3f412b14965371f8a10b9706e1602",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production: rival-coaching-guard-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-desktop-dark-co-gm-valid-export-segment-1-of-1-47f5cd3cefb7.png",
+      "sha256": "47f5cd3cefb72dc26fe8aba6282401466f2f755f4b36b5217124a1dcbda21983",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production: co-gm-valid-export-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-desktop-dark-actual-player-dossier-segment-1-of-2-31ab9c7efcdb.png",
+      "sha256": "31ab9c7efcdb3e3045b33a5fe36d496595dede7cc33ec4c0560e1a557cd2cc41",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production: actual-player-dossier-segment-1-of-2",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-desktop-dark-actual-player-dossier-segment-2-of-2-0a552dfc3006.png",
+      "sha256": "0a552dfc3006d1cb10dbd12e503fbfa49577d7751ddfb5650cbcb193603aaf3f",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production: actual-player-dossier-segment-2-of-2",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-desktop-dark-actual-player-availability-segment-1-of-1-22285f2f8fe6.png",
+      "sha256": "22285f2f8fe6dc0002dbd255bb78d9cf59aa014b400c41e179b5f74ba19a877c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production: actual-player-availability-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-desktop-dark-actual-player-availability-bio-segment-1-of-1-52f37f1afefb.png",
+      "sha256": "52f37f1afefb01791734c9c06852b03f73025fb62614ad981c4944d821cf3ca1",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production: actual-player-availability-bio-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-desktop-light-controlled-coaching-before-hire-segment-1-of-1-d5cf15d893bb.png",
+      "sha256": "d5cf15d893bb0b8a9bf0bb49fa0788776e605e013184248598f1023f2ca2b096",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production: controlled-coaching-before-hire-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-desktop-light-controlled-coaching-after-hire-segment-1-of-1-847440e8b399.png",
+      "sha256": "847440e8b3993422ee4f3770fd8aef43a242182c78effe733e0acb434b8292e8",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production: controlled-coaching-after-hire-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-desktop-light-rival-coaching-guard-segment-1-of-1-6f8451bd02c9.png",
+      "sha256": "6f8451bd02c93c1a05ba878390353259b8317d959167b6ad62d2db05ad2ca0c1",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production: rival-coaching-guard-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-desktop-light-co-gm-valid-export-segment-1-of-1-dc8afaddd02c.png",
+      "sha256": "dc8afaddd02c1ff836b01fe1a2ac0e9a9a7f39a0a10662bfe3407973cd9c68ca",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production: co-gm-valid-export-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-desktop-light-actual-player-dossier-segment-1-of-2-4f054a8519c9.png",
+      "sha256": "4f054a8519c9739952a2d988149a969088eca549e5ec6876b1a4d8e51bc10dbc",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production: actual-player-dossier-segment-1-of-2",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-desktop-light-actual-player-dossier-segment-2-of-2-b9f90256d4df.png",
+      "sha256": "b9f90256d4df818184f221c480832bf7e198a2ed7aa910fad850f981682f2f54",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production: actual-player-dossier-segment-2-of-2",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-desktop-light-actual-player-availability-segment-1-of-1-2dd2aa7ef80f.png",
+      "sha256": "2dd2aa7ef80fa07679f34d0881b5002e7dec6175e27639beea4eea3e997b85f1",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production: actual-player-availability-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-desktop-light-actual-player-availability-bio-segment-1-of-1-17648f08fd7d.png",
+      "sha256": "17648f08fd7dcb83ffd5c1a4a97ffd4ca1b3a0e6b81fa651e3a798611c0628d8",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production: actual-player-availability-bio-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-dark-controlled-coaching-before-hire-segment-1-of-2-d986abdb9e0b.png",
+      "sha256": "d986abdb9e0b6f97c06b77a490138d7a7892a1f559e991a0b1cf7428deeb4c60",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: controlled-coaching-before-hire-segment-1-of-2",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-dark-controlled-coaching-before-hire-segment-2-of-2-77a4966a55cf.png",
+      "sha256": "77a4966a55cf595e9dc7077e6392328e1f20d3bdbb50c21ceede88ed0f0d1882",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: controlled-coaching-before-hire-segment-2-of-2",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-dark-controlled-coaching-after-hire-segment-1-of-2-1a7e0e2bd1d1.png",
+      "sha256": "1a7e0e2bd1d177f997aede5259bae3b884b2781dff7c8991d2dc4d1640f0daab",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: controlled-coaching-after-hire-segment-1-of-2",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-dark-controlled-coaching-after-hire-segment-2-of-2-3d6d96222ce4.png",
+      "sha256": "3d6d96222ce45fd33d098d9585b5aae6b099c84790f3f787b32a80d1906598ef",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: controlled-coaching-after-hire-segment-2-of-2",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-dark-rival-coaching-guard-segment-1-of-1-7a76363bb950.png",
+      "sha256": "7a76363bb950077f57456fb26614ca4301d28284f937e290fd12849abc4a8010",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: rival-coaching-guard-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-dark-co-gm-valid-export-segment-1-of-1-c18f8003ed80.png",
+      "sha256": "c18f8003ed807e9f3fb3d2741fae2140c24a3399f265fe8a603e0e3e60d252f7",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: co-gm-valid-export-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-dark-actual-player-dossier-segment-1-of-4-9cbc233f51cf.png",
+      "sha256": "9cbc233f51cf8b48712dac1cb23339aca5f7a5cdb969b4dec1ddce9c94ca51be",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: actual-player-dossier-segment-1-of-4",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-dark-actual-player-dossier-segment-2-of-4-80da60b28461.png",
+      "sha256": "80da60b284617dac4a6aa60d894e1e65ff17ea3569414dd5433cb599b9bd93cb",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: actual-player-dossier-segment-2-of-4",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-dark-actual-player-dossier-segment-3-of-4-b48adf3e337b.png",
+      "sha256": "b48adf3e337bb56ee94b31b0ebb3b64b7bda9bb5debb6c003628f23c66ee9b4e",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: actual-player-dossier-segment-3-of-4",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-dark-actual-player-dossier-segment-4-of-4-b5426c886440.png",
+      "sha256": "b5426c88644012e270611da75c4437cb83f5e0062348f79142dd584b25fcf815",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: actual-player-dossier-segment-4-of-4",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-dark-actual-player-availability-segment-1-of-1-c8791eb77476.png",
+      "sha256": "c8791eb7747689c42174ccd38f5f26117fc37f3fed6a9bf9a9a40fe25f0ccf67",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: actual-player-availability-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-dark-actual-player-availability-bio-segment-1-of-1-55f8ee7affdb.png",
+      "sha256": "55f8ee7affdbd5d3e16d964d3a5e1676bf3ad5234b9e263c4cb27657b6545ba2",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: actual-player-availability-bio-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-light-controlled-coaching-before-hire-segment-1-of-2-48964e067707.png",
+      "sha256": "48964e0677070c7a7a1db424d0ad9b76f7adc3abf8af9bb26216704fe9273c26",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: controlled-coaching-before-hire-segment-1-of-2",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-light-controlled-coaching-before-hire-segment-2-of-2-2ff823ef6c66.png",
+      "sha256": "2ff823ef6c668d7901895b1de54b74743221f84190233fb4260fb775668e6a33",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: controlled-coaching-before-hire-segment-2-of-2",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-light-controlled-coaching-after-hire-segment-1-of-2-b9e98e16736e.png",
+      "sha256": "b9e98e16736ede83f7764933dc448d0e647ee42da3916109e2c4113f1ed35679",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: controlled-coaching-after-hire-segment-1-of-2",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-light-controlled-coaching-after-hire-segment-2-of-2-25644941df50.png",
+      "sha256": "25644941df50e389c14edce718515c3ba6a2c1e48378ceb934f195889caad8d9",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: controlled-coaching-after-hire-segment-2-of-2",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-light-rival-coaching-guard-segment-1-of-1-4e32243d2904.png",
+      "sha256": "4e32243d29049803a3a59b2ac2f84391a6d4fe295979646b2fd36718fddb064f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: rival-coaching-guard-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-light-co-gm-valid-export-segment-1-of-1-3cbc8c9c0ac7.png",
+      "sha256": "3cbc8c9c0ac72e319f995fd85c8d1d1af28e80de36fc2bd2e3fb674a9cd4bd18",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: co-gm-valid-export-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-light-actual-player-dossier-segment-1-of-4-a8a925ecf678.png",
+      "sha256": "a8a925ecf6786b80324063ab444633ee8d0f453058331abbd852e506698b6f68",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: actual-player-dossier-segment-1-of-4",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-light-actual-player-dossier-segment-2-of-4-82c6262996a6.png",
+      "sha256": "82c6262996a6b6ec007db2dbb4f8cb8eea8e937fc6e6934f59a0f19f331d10b0",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: actual-player-dossier-segment-2-of-4",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-light-actual-player-dossier-segment-3-of-4-46b5504cd4a4.png",
+      "sha256": "46b5504cd4a4ba5f4c56968eb69731c50c38e77e8681e0a9cd5b7da9eddba7bd",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: actual-player-dossier-segment-3-of-4",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-light-actual-player-dossier-segment-4-of-4-19e1115a699b.png",
+      "sha256": "19e1115a699bf9d97b1e8be5419c7909a68a15379ba63cae8fda24659a95894c",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: actual-player-dossier-segment-4-of-4",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-light-actual-player-availability-segment-1-of-1-6bfbe86a589a.png",
+      "sha256": "6bfbe86a589aea57c169b33a561bd60fbdb061d59cc6f2bf6ac7a63613314411",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: actual-player-availability-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-mobile-light-actual-player-availability-bio-segment-1-of-1-549ab5b29b0a.png",
+      "sha256": "549ab5b29b0a6da82289f5b541a89fcc7ac936f7d97d129157b29b3a2e203ef9",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production: actual-player-availability-bio-segment-1-of-1",
+      "phase": "production",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport segmented below the measured real sticky/modal header; normal toast expiry awaited, native scrolling only, no CSS/DOM hiding or forced clicks",
+      "captureWindow": {
+        "startedAt": "2026-11-13T18:14:02.351Z",
+        "completedAt": "2026-11-13T18:16:10.874Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "33a55c8387b0db3ca882a91abc1cd50cb82e107c7d01da59d4ff5fcf7846026b",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-note-desktop-dark-player-facing-release-note-viewport-143b06469144.png",
+      "sha256": "143b064691445a4decee2033a7e99ed93da5c0cba1ec028adcee3be1cb7fdf6e",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production-note: player-facing-release-note-viewport",
+      "phase": "production-note",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport with normal header and no masks.",
+      "captureWindow": {
+        "capturedAt": "2026-11-13T18:14:13.007Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "b458369ef7195c22c0c2b4a1af9243bd44f56fbc7b61905646f001b3713f9407",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-note-desktop-light-player-facing-release-note-viewport-ffff9e19e7cc.png",
+      "sha256": "ffff9e19e7cc6f9937b7386d26c2c4955b8dd5a952b707c763c1d9da750a6543",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "production-note: player-facing-release-note-viewport",
+      "phase": "production-note",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport with normal header and no masks.",
+      "captureWindow": {
+        "capturedAt": "2026-11-13T18:14:13.007Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "b458369ef7195c22c0c2b4a1af9243bd44f56fbc7b61905646f001b3713f9407",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-note-mobile-dark-player-facing-release-note-viewport-356216b828d8.png",
+      "sha256": "356216b828d8ed164110e681a92a9c6fee71d13b18a87d6869462eff33fce217",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production-note: player-facing-release-note-viewport",
+      "phase": "production-note",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport with normal header and no masks.",
+      "captureWindow": {
+        "capturedAt": "2026-11-13T18:14:13.007Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "b458369ef7195c22c0c2b4a1af9243bd44f56fbc7b61905646f001b3713f9407",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    },
+    {
+      "file": "s130-c4-production-note-mobile-light-player-facing-release-note-viewport-c02c3c8030b3.png",
+      "sha256": "c02c3c8030b394ee0ea6be6452f68d034b7b9f0890558230cb3fe30c43097cf3",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "production-note: player-facing-release-note-viewport",
+      "phase": "production-note",
+      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+      "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+      "origin": "https://playfranchisearchitect.com",
+      "captureMethod": "Ordinary viewport with normal header and no masks.",
+      "captureWindow": {
+        "capturedAt": "2026-11-13T18:14:13.007Z"
+      },
+      "inspection": {
+        "inspectedOriginal": true,
+        "verdict": "pass",
+        "note": "Actual original inspected; content readable in this theme and viewport."
+      },
+      "reportSha256": "b458369ef7195c22c0c2b4a1af9243bd44f56fbc7b61905646f001b3713f9407",
+      "reviewSha256": "e98aac9c45b3c0dc0c3a641990f79bcef7bee18bcd3ad4c17e6730b00a3fbf44"
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "blockingDefectsOpen": 0,
+    "reviewer": "Independent recovery_review",
+    "scope": "Actual C4 staging/production40 journey images plus4 release-note images per origin; no C2 relabelling."
+  }
+}

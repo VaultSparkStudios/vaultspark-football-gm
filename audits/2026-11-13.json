@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.3",
+  "session": 130,
+  "date": "2026-11-13",
+  "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+  "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+  "selectedItems": 5,
+  "shipped": 5,
+  "silCategoriesV3": {
+    "devHealth": 89,
+    "creativeAlignment": 72,
+    "momentum": 68,
+    "engagement": 47,
+    "processQuality": 57,
+    "crossRepoCoherence": 60,
+    "securityPosture": 66,
+    "ecosystemIntegration": 20,
+    "capitalEfficiency": 0,
+    "automationCoverage": 66
+  },
+  "silScore": 545,
+  "acceptance": "reports/s130-c4-release-acceptance.json",
+  "technicalReleaseVerified": true,
+  "scope": "Five selected technical outcomes verified; formal closing-record acceptance and containing publication remain guarded. Player, financial and recipient-adoption outcomes are unmeasured.",
+  "closeoutRecordsVerified": true,
+  "closeoutCompletion": "reports/s130-closeout-completion.json",
+  "publicationGuard": "These closing records are valid after their containing commit passes final checks and is confirmed on remote main."
+}

@@ -621,6 +621,33 @@
       },
       "delta": 0,
       "cause": "S128 shipped reliable Inbox recovery and trustworthy playtest notes. Usable cached messages retain history while empty i"
+    },
+    {
+      "date": "2026-11-13",
+      "session": 130,
+      "total": null,
+      "maxTotal": 25,
+      "overallStatus": "S130 five selected technical outcomes and matching frontend/API release verified at7a54ba29; closing publication remains guarded. Broader readiness, player, financial and adoption outcomes remain unmeasured.",
+      "lastReviewed": "2026-11-13",
+      "dimensions": {
+        "schema_alignment": null,
+        "prompt_template_alignment": null,
+        "derived_view_freshness": null,
+        "handoff_continuity": null,
+        "contradiction_density": null
+      },
+      "delta": null,
+      "cause": "Reliable coaching, consent, availability, Co-GM exports and responsive verification are deployed at the matching fronten",
+      "nativeSnapshotSha256": "b02ffb93b617e0f6d9861c07f0ff9347ce6fdef2e575099c86a7750d68f00669",
+      "unmeasuredDimensions": [
+        "schema_alignment",
+        "prompt_template_alignment",
+        "derived_view_freshness",
+        "handoff_continuity",
+        "contradiction_density"
+      ],
+      "dimensionsMeasured": false,
+      "measurementScope": "Dimension measurements are absent from the source truth audit; unknown values remain null. Native numeric defaults are preserved privately as raw derivation evidence."
     }
   ]
 }

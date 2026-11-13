@@ -100,13 +100,21 @@
           "at": "2026-11-13T06:43:19.948Z",
           "status": "shipped",
           "note": "L2 local acceptance verified: unknown/null, real zero, malformed peers, bounded disclosure and safe identities pass. Four-profile copy/import/build/clipboard/download failure and valid retry checks pass; native cleanup and scoped diagnostic recovery preserve unrelated warnings. reports/s130-focused-tests.json and reports/s130-browser-acceptance.json. Deployment and exact-candidate integration remain separately pending."
+        },
+        {
+          "at": "2026-11-13T10:54:41.309Z",
+          "status": "shipped",
+          "note": "Exact C2 technical release verified: CI7/7; actual three-profile hosted327/327; staging/production native14 each, four worker journeys and40 independently reviewed captures per origin, five-run entry performance; matching API source/database readiness with existing database/routing and prior rollback preserved. reports/s130-release-acceptance.json. Formal closing publication remains pending."
         }
       ],
       "evidence": "Reproduced unknown year/week/cap becoming zero and null injury rows throwing; app click handlers import/build outside their existing error boundary.",
       "insight": "The assistant currently receives invented zeroes for missing fields, and damaged rows can stop export. Preserve known data and expose recoverable export failures.",
       "rank": 1,
       "premise": "Reproduced unknown year/week/cap becoming zero and null injury rows throwing; app click handlers import/build outside their existing error boundary.",
-      "executionEvidence": "L2 local acceptance verified: unknown/null, real zero, malformed peers, bounded disclosure and safe identities pass. Four-profile copy/import/build/clipboard/download failure and valid retry checks pass; native cleanup and scoped diagnostic recovery preserve unrelated warnings. reports/s130-focused-tests.json and reports/s130-browser-acceptance.json. Deployment and exact-candidate integration remain separately pending."
+      "executionEvidence": [
+        "L2 local acceptance verified: unknown/null, real zero, malformed peers, bounded disclosure and safe identities pass. Four-profile copy/import/build/clipboard/download failure and valid retry checks pass; native cleanup and scoped diagnostic recovery preserve unrelated warnings. reports/s130-focused-tests.json and reports/s130-browser-acceptance.json. Exact C2 technical release verified: CI7/7; actual three-profile hosted327/327; staging/production native14 each, four worker journeys and40 independently reviewed captures per origin, five-run entry performance; matching API source/database readiness with existing database/routing and prior rollback preserved. reports/s130-release-acceptance.json. Formal closing publication remains pending.",
+        "Current C4 technical release: reports/s130-c4-release-acceptance.json; source 67ab750b40bad7751a5374b6f5ce382f5d4a7548."
+      ]
     },
     {
       "id": 4,
@@ -119,7 +127,7 @@
       "innovation": 4,
       "effortHours": 4,
       "priority": 27.853402120886994,
-      "status": "pending",
+      "status": "shipped",
       "readinessArea": "staging, release evidence and truthful beta/release communication",
       "stageRationale": "FORGE/FB beta hardening: repair a reproduced product failure or measured release prerequisite within the existing authorized arc.",
       "recipe": "Reuse the three existing viewport profiles as independent bounded jobs with distinct output paths/artifacts. Aggregate exact required-name coverage, themes, source revision and artifact digest before publication. Reject missing/duplicate/mismatched/invalid profiles; retain partial failure diagnostics and per-viewport timings. Preserve every capture and assertion and the eight-minute per-job bound.",
@@ -148,12 +156,21 @@
           "recipe": "Optional broader redesign is unselected; complete the declared L2 acceptance without widening scope."
         }
       },
-      "executionLog": [],
+      "executionLog": [
+        {
+          "at": "2026-11-13T10:54:41.309Z",
+          "status": "shipped",
+          "note": "All required records and assertions retained; three independent eight-minute profile jobs and strict aggregate passed on the actual hosted candidate. Exact C2 technical release verified: CI7/7; actual three-profile hosted327/327; staging/production native14 each, four worker journeys and40 independently reviewed captures per origin, five-run entry performance; matching API source/database readiness with existing database/routing and prior rollback preserved. reports/s130-release-acceptance.json. Formal closing publication remains pending."
+        }
+      ],
       "evidence": "Executed Pages43149099241 exceeded its eight-minute step after printing327 captures. Source runs all viewports serially and each invocation clears one shared revision directory.",
       "insight": "One slow serial image run currently blocks release. Capture the existing viewports independently and require their exact source-bound union before publishing.",
       "rank": 2,
       "premise": "Executed Pages43149099241 exceeded its eight-minute step after printing327 captures. Source runs all viewports serially and each invocation clears one shared revision directory.",
-      "executionEvidence": "Local capture guards60/60 and independent source review pass. Actual full327capture and successful hosted three-profile complete aggregate remain pending."
+      "executionEvidence": [
+        "All existing states/themes, missing/duplicate/source/hash/timing/output rejection controls, per-profile bounds and actual hosted aggregate verified. Exact C2 technical release verified: CI7/7; actual three-profile hosted327/327; staging/production native14 each, four worker journeys and40 independently reviewed captures per origin, five-run entry performance; matching API source/database readiness with existing database/routing and prior rollback preserved. reports/s130-release-acceptance.json. Formal closing publication remains pending.",
+        "Current C4 technical release: reports/s130-c4-release-acceptance.json; source 67ab750b40bad7751a5374b6f5ce382f5d4a7548."
+      ]
     },
     {
       "id": 3,
@@ -200,13 +217,21 @@
           "at": "2026-11-13T06:43:19.948Z",
           "status": "shipped",
           "note": "L2 local acceptance verified:18pure/projected healthy, suspended, practice, reserve, inactive, recovered and concurrent restriction cases; actual dossier/Availability renders inspected desktop/mobile dark/light. reports/s130-focused-tests.json and docs/visual-qa/LATEST.json. Deployment and exact-candidate integration remain separately pending."
+        },
+        {
+          "at": "2026-11-13T10:54:41.309Z",
+          "status": "shipped",
+          "note": "Exact C2 technical release verified: CI7/7; actual three-profile hosted327/327; staging/production native14 each, four worker journeys and40 independently reviewed captures per origin, five-run entry performance; matching API source/database readiness with existing database/routing and prior rollback preserved. reports/s130-release-acceptance.json. Formal closing publication remains pending."
         }
       ],
       "evidence": "Reproduced a suspended reserve profile receiving the healthy/available sentence; the runtime projects eligibility restrictions already.",
       "insight": "Availability prose must follow projected roster and medical facts. Reserve, suspension and inactivity must remain visible in the player dossier.",
       "rank": 3,
       "premise": "Reproduced a suspended reserve profile receiving the healthy/available sentence; the runtime projects eligibility restrictions already.",
-      "executionEvidence": "L2 local acceptance verified:18pure/projected healthy, suspended, practice, reserve, inactive, recovered and concurrent restriction cases; actual dossier/Availability renders inspected desktop/mobile dark/light. reports/s130-focused-tests.json and docs/visual-qa/LATEST.json. Deployment and exact-candidate integration remain separately pending."
+      "executionEvidence": [
+        "L2 local acceptance verified:18pure/projected healthy, suspended, practice, reserve, inactive, recovered and concurrent restriction cases; actual dossier/Availability renders inspected desktop/mobile dark/light. reports/s130-focused-tests.json and docs/visual-qa/LATEST.json. Exact C2 technical release verified: CI7/7; actual three-profile hosted327/327; staging/production native14 each, four worker journeys and40 independently reviewed captures per origin, five-run entry performance; matching API source/database readiness with existing database/routing and prior rollback preserved. reports/s130-release-acceptance.json. Formal closing publication remains pending.",
+        "Current C4 technical release: reports/s130-c4-release-acceptance.json; source 67ab750b40bad7751a5374b6f5ce382f5d4a7548."
+      ]
     },
     {
       "id": 1,
@@ -253,13 +278,21 @@
           "at": "2026-11-13T06:43:19.948Z",
           "status": "shipped",
           "note": "L2 local acceptance verified: fail-closed storage, stale capability/event generations, hung deadlines and retained ID-only deletion retry fixtures pass; sharing-off and retry-first states inspected across four profiles. Browser evidence keeps its original consent artifact separate. reports/s130-focused-tests.json and reports/s130-browser-acceptance.json. Deployment and exact-candidate integration remain separately pending."
+        },
+        {
+          "at": "2026-11-13T10:54:41.309Z",
+          "status": "shipped",
+          "note": "Exact C2 technical release verified: CI7/7; actual three-profile hosted327/327; staging/production native14 each, four worker journeys and40 independently reviewed captures per origin, five-run entry performance; matching API source/database readiness with existing database/routing and prior rollback preserved. reports/s130-release-acceptance.json. Formal closing publication remains pending."
         }
       ],
       "evidence": "Reproduced: a refused decline write returns false while getCommunityParticipation still returns true. Async capability admission also lacks a consent-generation check.",
       "insight": "Declining sharing must stop collection even when storage or a request fails. Keep deletion retryable while refusing stale event sends.",
       "rank": 4,
       "premise": "Reproduced: a refused decline write returns false while getCommunityParticipation still returns true. Async capability admission also lacks a consent-generation check.",
-      "executionEvidence": "L2 local acceptance verified: fail-closed storage, stale capability/event generations, hung deadlines and retained ID-only deletion retry fixtures pass; sharing-off and retry-first states inspected across four profiles. Browser evidence keeps its original consent artifact separate. reports/s130-focused-tests.json and reports/s130-browser-acceptance.json. Deployment and exact-candidate integration remain separately pending."
+      "executionEvidence": [
+        "L2 local acceptance verified: fail-closed storage, stale capability/event generations, hung deadlines and retained ID-only deletion retry fixtures pass; sharing-off and retry-first states inspected across four profiles. Browser evidence keeps its original consent artifact separate. reports/s130-focused-tests.json and reports/s130-browser-acceptance.json. Exact C2 technical release verified: CI7/7; actual three-profile hosted327/327; staging/production native14 each, four worker journeys and40 independently reviewed captures per origin, five-run entry performance; matching API source/database readiness with existing database/routing and prior rollback preserved. reports/s130-release-acceptance.json. Formal closing publication remains pending.",
+        "Current C4 technical release: reports/s130-c4-release-acceptance.json; source 67ab750b40bad7751a5374b6f5ce382f5d4a7548."
+      ]
     },
     {
       "id": 5,
@@ -306,13 +339,21 @@
           "at": "2026-11-13T06:43:19.947Z",
           "status": "shipped",
           "note": "L2 local acceptance verified: isolated baseline plus coaching-only graph644656/650000 gives5344bytes headroom; final integrated647545/650000 unchanged budget. Actual four-profile coaching hire/refusal, stale reads, disabled-control restoration, import failure/retry and44px/mobile containment passed. reports/s130-boot-foundation-proof.json and reports/s130-browser-acceptance.json. Deployment and exact-candidate integration remain separately pending."
+        },
+        {
+          "at": "2026-11-13T10:54:41.308Z",
+          "status": "shipped",
+          "note": "Exact C2 technical release verified: CI7/7; actual three-profile hosted327/327; staging/production native14 each, four worker journeys and40 independently reviewed captures per origin, five-run entry performance; matching API source/database readiness with existing database/routing and prior rollback preserved. reports/s130-release-acceptance.json. Formal closing publication remains pending."
         }
       ],
       "evidence": "Native current baseline649883/650000 decoded bytes leaves117 bytes. Both app event binding and gameFlow eagerly import the coaching renderer although staff loading is async and intent-owned.",
       "insight": "Coaching-market rendering belongs to staff intent. Keep event binding small and preserve loading and retry behavior under the existing boot cap.",
       "rank": 5,
       "premise": "Native current baseline649883/650000 decoded bytes leaves117 bytes. Both app event binding and gameFlow eagerly import the coaching renderer although staff loading is async and intent-owned.",
-      "executionEvidence": "L2 local acceptance verified: isolated baseline plus coaching-only graph644656/650000 gives5344bytes headroom; final integrated647545/650000 unchanged budget. Actual four-profile coaching hire/refusal, stale reads, disabled-control restoration, import failure/retry and44px/mobile containment passed. reports/s130-boot-foundation-proof.json and reports/s130-browser-acceptance.json. Deployment and exact-candidate integration remain separately pending."
+      "executionEvidence": [
+        "L2 local acceptance verified: isolated baseline plus coaching-only graph644656/650000 gives5344bytes headroom; final integrated647545/650000 unchanged budget. Actual four-profile coaching hire/refusal, stale reads, disabled-control restoration, import failure/retry and44px/mobile containment passed. reports/s130-boot-foundation-proof.json and reports/s130-browser-acceptance.json. Exact C2 technical release verified: CI7/7; actual three-profile hosted327/327; staging/production native14 each, four worker journeys and40 independently reviewed captures per origin, five-run entry performance; matching API source/database readiness with existing database/routing and prior rollback preserved. reports/s130-release-acceptance.json. Formal closing publication remains pending.",
+        "Current C4 technical release: reports/s130-c4-release-acceptance.json; source 67ab750b40bad7751a5374b6f5ce382f5d4a7548."
+      ]
     }
   ],
   "axisCoverage": {
@@ -377,9 +418,7 @@
       ]
     },
     "speed-organization-efficiency": {
-      "surviving": [
-        "responsive-capture-shards"
-      ],
+      "surviving": [],
       "rejectedOnVerify": [
         {
           "slug": "missing-source-bound-capture",
@@ -797,8 +836,13 @@
     }
   },
   "executionScope": {
-    "localOutcomesVerified": 4,
-    "pipelineOutcomePending": "Native327capture and actual hosted complete three-profile aggregate required; no release completion claim."
+    "selectedOutcomesVerified": 5,
+    "localEvidence": "Original implementation scopes and historical C2 acceptance preserved; current C4 acceptance is separately verified.",
+    "technicalReleaseVerified": true,
+    "releaseReport": "reports/s130-c4-release-acceptance.json",
+    "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+    "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
+    "publicationGuard": "These closing records are valid after their containing commit passes final checks and is confirmed on remote main."
   },
   "skipped": [
     {
