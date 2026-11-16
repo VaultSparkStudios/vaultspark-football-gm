@@ -1,0 +1,398 @@
+{
+  "schemaVersion": "2.1",
+  "date": "2026-11-13",
+  "session": 131,
+  "source": "1bd1807c",
+  "project": {
+    "slug": "franchise-architect-football",
+    "type": "game",
+    "name": "Franchise Architect: Football"
+  },
+  "scope": "Fresh S131 audit under public-beta hardening. Engine-first: one simulated season was tabulated before ranking. Two selected L2 outcomes plus the authorized staging-first release to production and full closeout. Every other candidate remains explicitly unselected.",
+  "profile": {
+    "rubric": "product",
+    "audience": "public-unlaunched",
+    "type": "game",
+    "source": "Live source reads after /start plus a canonical-path engine probe (createSession seed 131, BUF, one regular season, dressed-roster capture via gameDressedPlayers).",
+    "staging": "independent Cloudflare Pages project; stable staging domain"
+  },
+  "lifecycleFocus": {
+    "stage": "FB",
+    "display": "FORGE · BETA",
+    "audience": "public-unlaunched",
+    "health": "yellow",
+    "mode": "public-beta-hardening",
+    "readiness": true,
+    "statusSource": "project-status",
+    "stageSource": "project-status"
+  },
+  "axes": {
+    "features-depth": 1.5,
+    "ui-ux-feedback": 3,
+    "gamification-immersion": 5,
+    "ai-intelligence": 1.5,
+    "security": 1,
+    "speed-organization-efficiency": 2,
+    "token-cost": 1,
+    "observability-honesty": 1,
+    "sil-debt": 1
+  },
+  "items": [
+    {
+      "id": 1,
+      "slug": "injury-clock-truth",
+      "title": "Injured players miss the games their injury says they miss",
+      "axis": "gamification-immersion",
+      "category": "gamification-immersion",
+      "tier": "⚡",
+      "impact": 9,
+      "innovation": 6,
+      "effortHours": 4,
+      "priority": 20.9,
+      "status": "shipped",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB beta hardening: a measured core-loop defect. Injury pressure is a General Manager decision driver, and 85% of the shortest absences currently cost nothing.",
+      "recipe": "Run the weekly availability recovery after the week's games and before that week's injury rolls, so a recovery week elapses only for a game the player actually missed and a fresh injury is never decremented before its first absence. Keep the season-end (no week block) recovery tick. Preserve every pay, pension and admitted-injury interval contract.",
+      "acceptance": "Canonical-path probe: among players whose team played the next week, Out 1W dress 0 times in the next game; Out 2-3W miss two games; IR (4W) misses four. Focused regression test proves the labelled absence end to end through advanceWeek. Full native suite green; any golden-master movement is re-measured and explained, never re-baselined blind.",
+      "premises": [
+        {
+          "claim": "Weekly recovery runs before the week's games, ahead of waivers and simulation.",
+          "adapter": "file-content",
+          "target": "src/runtime/GameSession.js",
+          "pattern": "this.decrementAvailability({deferAdmittedPay:true});",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The recovery clears a player as soon as weeksRemaining reaches zero; dressed-roster eligibility admits weeksRemaining <= 0.",
+          "adapter": "file-content",
+          "target": "src/engine/injurySystem.js",
+          "pattern": "if (player.injury.weeksRemaining === 0) {",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Relabel severities to describe what they do (recovery weeks, not games missed). Truthful but removes the intended pressure; unselected."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Move the regular-season recovery tick after simulation and before injury rolls; keep the season-end tick; prove absences by probe and focused test."
+        },
+        "L3": {
+          "effortHours": 10,
+          "recipe": "Add NFL-style weekly practice participation and usage-based wear feeding the injury roll. Unselected."
+        }
+      },
+      "evidence": "Engine probe, seed 131, one regular season: Out 1W 300 injuries, 257 dressed for the very next game; Questionable 419, 357 dressed; Out 2-3W 0 of 201 dressed next game but only one game missed by construction (2 - 1 = 1).",
+      "insight": "Recovery is decremented at the start of the following week, before kickoff, so every injury costs exactly one game fewer than its label. Two thirds of all injuries were cosmetic.",
+      "rank": 1,
+      "premise": "Weekly recovery runs before the week's games, ahead of waivers and simulation. The recovery clears a player as soon as weeksRemaining reaches zero; dressed-roster eligibility admits weeksRemaining <= 0.",
+      "executionLog": [
+        {
+          "at": "2026-11-13T23:10:08.782Z",
+          "status": "shipped",
+          "note": "L2 verified: GameSession ticks regular-season recovery after the week's games (after both injury sources), and kickoff readiness reads live injury state. Engine probe seed 131 games missed by label — Out 1W 0:297/316 before, 1:279/330 after (residual 0s are team byes); Out 2-3W 1→2; IR(4W) 3→4; IR-Long 6-7→7-8. test/injury-clock-truth.test.js drives real advanceWeek against box-score game-day rosters; negative control: both clock tests fail on the pre-fix engine. Focused 29/29. Independent review: fix, 4 findings, 4 fixed. Postseason clock alignment carried as a follow-up."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "questionable-status-visible",
+      "title": "Show Questionable as a game-time status, not as a recovered injury",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "⚡",
+      "impact": 6,
+      "innovation": 5,
+      "effortHours": 2,
+      "priority": 15,
+      "status": "shipped",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB beta hardening: the profile currently tells the player a fresh Questionable tag is a recovered injury, and the roster shows a bare '(0)'.",
+      "recipe": "Add one shared formatter for a player's injury line. Questionable (zero remaining weeks, still tagged) reads 'Questionable · expected to play this week'; multi-week injuries read 'Out · N game(s)'. Use it in the player profile medical fact, roster injury column and depth board row tag.",
+      "acceptance": "Pure tests for null, Questionable, one-game and multi-game injuries plus malformed data; profile no longer says 'Recovered' for a live Questionable tag; roster shows the formatted label; depth board marks Questionable rows without removing them from the lineup. Visible in the browser on desktop and mobile in dark and light.",
+      "premises": [
+        {
+          "claim": "A live Questionable tag (weeksRemaining 0) is rendered as a recovered injury in the player profile.",
+          "adapter": "grep",
+          "target": "public/lib/playerProfileNarrative.js",
+          "pattern": "no recovery weeks remain",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The roster injury column prints the raw remaining-weeks number.",
+          "adapter": "file-content",
+          "target": "public/lib/tabRoster.js",
+          "pattern": "${player.injury.type} (${player.injury.weeksRemaining})",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Fix the profile sentence only. Unselected."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "One shared formatter used by profile, roster and depth board."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Give Questionable a real game-day probability with a pre-game decision for the controlled team. Changes RNG stream and golden masters; unselected."
+        }
+      },
+      "evidence": "playerProfileNarrative.js:133 renders weeksRemaining === 0 as 'Recovered <type>'; injurySystem SEVERITY_TABLE stores Questionable with weeksRemaining 0 until the next weekly recovery clears it.",
+      "insight": "The most common injury outcome is invisible or mislabeled on every surface a General Manager uses to set a lineup.",
+      "rank": 2,
+      "premise": "A live Questionable tag (weeksRemaining 0) is rendered as a recovered injury in the player profile. The roster injury column prints the raw remaining-weeks number.",
+      "executionLog": [
+        {
+          "at": "2026-11-13T23:10:08.782Z",
+          "status": "shipped",
+          "note": "L2 verified: shared public/lib/injuryStatus.js labels Out / Questionable / cleared / unknown; roster column, depth status (amber .depth-status--questionable) and dossier read a live Questionable tag as a game-time status, not a recovery. tests-ui/s131-injury-status.spec.js 4/4 desktop+mobile × dark+light with captures inspected; unit cases in test/injury-clock-truth.test.js. Boot 647702/730000, 0 lazy leaks. Independent review: fix, 3 findings, 3 fixed."
+        }
+      ]
+    }
+  ],
+  "candidateAssessments": [
+    {
+      "slug": "injury-clock-truth",
+      "decision": "selected",
+      "reason": "Measured core-loop defect; engine probe."
+    },
+    {
+      "slug": "questionable-status-visible",
+      "decision": "selected",
+      "reason": "Live mislabel on three surfaces; small, testable."
+    },
+    {
+      "slug": "axe-accessibility-tests",
+      "decision": "unselected",
+      "reason": "Premise holds (no axe dependency) but requires a new dependency through the package-trust gate; carried."
+    },
+    {
+      "slug": "minify-shipped-modules",
+      "decision": "unselected",
+      "reason": "Premise holds (build-pages.mjs has no minifier); needs a pinned dependency and before/after hosted performance; carried."
+    },
+    {
+      "slug": "faster-first-week",
+      "decision": "unselected",
+      "reason": "Rehearsal layer still present (architectPlanRehearsal.js); onboarding redesign exceeds this arc; carried."
+    },
+    {
+      "slug": "community-api-fog-hardening",
+      "decision": "unselected",
+      "reason": "Requires backend topology confirmation; carried from AUDIT_2026-11-10 #9."
+    }
+  ],
+  "readinessAssessment": [
+    {
+      "area": "core journeys and product correctness",
+      "status": "fail",
+      "evidence": "Engine probe: labelled injury absences cost one game fewer than stated; Questionable mislabeled as recovered.",
+      "sourceRevision": "1bd1807c",
+      "nextAcceptanceCheck": "Selected items' probe, focused tests, full suite, staging then production parity.",
+      "observedAt": "2026-11-13T20:40:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "onboarding and identity/access",
+      "status": "partial",
+      "evidence": "Not re-examined in S131; S130 assessment carried: Historical client journeys exist; Obelisk integration remains a recorded gap. No new account-bearing flow is selected.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Unselected this arc; re-assess at the next audit that selects work in this area."
+    },
+    {
+      "area": "accessibility, mobile parity and every supported theme",
+      "status": "partial",
+      "evidence": "No automated axe coverage; prior responsive inventory 327 records at S130.",
+      "sourceRevision": "1bd1807c",
+      "nextAcceptanceCheck": "Touched surfaces inspected desktop/mobile dark/light.",
+      "observedAt": "2026-11-13T20:40:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "performance and capacity",
+      "status": "partial",
+      "evidence": "Not re-examined in S131; S130 assessment carried: Current native boot649883/650000 measured; current hosted LCP/interaction proof remains unmeasured.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Unselected this arc; re-assess at the next audit that selects work in this area."
+    },
+    {
+      "area": "security, privacy, data integrity and abuse controls",
+      "status": "partial",
+      "evidence": "Not re-examined in S131; S130 assessment carried: Fresh mock-only reproduction shows decline returns false while subsequent consent read remains true after storage refusal.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Unselected this arc; re-assess at the next audit that selects work in this area."
+    },
+    {
+      "area": "backup, recovery and rollback",
+      "status": "unknown",
+      "evidence": "Not re-examined in S131; S130 assessment carried: API database health ready is observed; it does not prove restore behavior. New candidate rollback baseline must be retained.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Unselected this arc; re-assess at the next audit that selects work in this area."
+    },
+    {
+      "area": "email and notifications where used",
+      "status": "unknown",
+      "evidence": "Not re-examined in S131; S130 assessment carried: Email delivery/reply proof remains unverified; no notification feature change is selected.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Unselected this arc; re-assess at the next audit that selects work in this area."
+    },
+    {
+      "area": "observability and actionable analytics",
+      "status": "partial",
+      "evidence": "Not re-examined in S131; S130 assessment carried: Frontend74683a57 and API812fd52b differ. Actual new release parity and analytics participation correctness require proof.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Unselected this arc; re-assess at the next audit that selects work in this area."
+    },
+    {
+      "area": "feedback, support and issue triage",
+      "status": "partial",
+      "evidence": "Not re-examined in S131; S130 assessment carried: Existing GitHub/contact paths and local export surfaces exist; real player feedback/comprehension evidence is absent.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Unselected this arc; re-assess at the next audit that selects work in this area."
+    },
+    {
+      "area": "branding, legal, contact and rights/provenance",
+      "status": "partial",
+      "evidence": "Not re-examined in S131; S130 assessment carried: Public source contains proprietary branding/legal/contact surfaces; physical mail reply path remains unproved. No policy or license change selected.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Unselected this arc; re-assess at the next audit that selects work in this area."
+    },
+    {
+      "area": "human and agent access where applicable",
+      "status": "partial",
+      "evidence": "Not re-examined in S131; S130 assessment carried: Discovery files exist; source-bound Co-GM data-quality/export failures reproduced.",
+      "sourceRevision": "c5290c3d26e6117e7ae99f1381b05bbbef342814",
+      "observedAt": "2026-11-13T04:52:30.892Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Unselected this arc; re-assess at the next audit that selects work in this area."
+    },
+    {
+      "area": "staging, release evidence and truthful beta/release communication",
+      "status": "pass",
+      "evidence": "S130 C4 staging/production frontend and API matched 67ab750b; reports/s130-c4-release-acceptance.json.",
+      "sourceRevision": "1bd1807c",
+      "nextAcceptanceCheck": "New candidate exact-source CI, staging verify, promote, provenance on both origins.",
+      "observedAt": "2026-11-13T20:40:00.000Z",
+      "owner": "project release owner"
+    }
+  ],
+  "totals": {
+    "count": 2,
+    "priority": 35.9,
+    "top3": [
+      "injury-clock-truth",
+      "questionable-status-visible"
+    ],
+    "effortHours": 6
+  },
+  "generatedAt": "2026-11-13T20:40:00.000Z",
+  "axisCoverage": {
+    "features-depth": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "questionable-doubtful-statuses",
+          "premise": "Only Ready or Out exist.",
+          "evidence": "injurySystem SEVERITY_TABLE already has Questionable; the real defect is the clock (item 1) and the label (item 2)."
+        }
+      ]
+    },
+    "ui-ux-feedback": {
+      "surviving": [
+        "questionable-status-visible"
+      ],
+      "rejectedOnVerify": []
+    },
+    "gamification-immersion": {
+      "surviving": [
+        "injury-clock-truth"
+      ],
+      "rejectedOnVerify": []
+    },
+    "ai-intelligence": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "paid-co-gm-backend",
+          "premise": "Co-GM needs a model backend.",
+          "evidence": "public/lib/coGmBriefing.js is a bounded local export (S130)."
+        }
+      ]
+    },
+    "security": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "community-api-fog-hardening",
+          "premise": "Runtime defaults are unsafe.",
+          "evidence": "Unverifiable without backend topology this arc; carried from AUDIT_2026-11-10 #9, not claimed."
+        }
+      ]
+    },
+    "speed-organization-efficiency": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "minify-shipped-modules",
+          "premise": "Modules ship unminified.",
+          "evidence": "Premise holds (build-pages.mjs has no minifier) but needs a pinned dependency; unselected, carried."
+        }
+      ]
+    },
+    "token-cost": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-bounded-projection",
+          "premise": "Context reads are unbounded.",
+          "evidence": "task-slice.mjs --audit-context ran bounded at 8000 chars this audit."
+        }
+      ]
+    },
+    "observability-honesty": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "injury-report-hides-questionable",
+          "premise": "Report omits weeksRemaining 0.",
+          "evidence": "True, folded into item 2 rather than a separate item."
+        }
+      ]
+    },
+    "sil-debt": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "audit-by-running-engine",
+          "premise": "Audits rank without measurement.",
+          "evidence": "This audit ran a canonical-path engine probe before ranking."
+        }
+      ]
+    }
+  }
+}

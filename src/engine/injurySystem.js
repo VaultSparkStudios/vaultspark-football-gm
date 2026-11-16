@@ -11,7 +11,9 @@ import { recordElevationFootballInjury,endElevationInjuryPay } from '../domain/e
  *
  * Integration points:
  *   - Call rollInjuryChecks() after each simulated game
- *   - Call advanceInjuryRecovery() each week start
+ *   - Call advanceInjuryRecovery() once per elapsed week; in the regular
+ *     season GameSession ticks it after that week's games (S131), so an
+ *     "Out 1W" injury misses the next team game
  *   - Call getInjuryReport() to surface to UI
  */
 

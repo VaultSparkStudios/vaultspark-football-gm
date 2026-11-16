@@ -1,3 +1,5 @@
+import { injuryStatus } from "./injuryStatus.js";
+
 const POSITION_IDENTITY = {
   QB: { noun: "field general", craft: "processing leverage, protecting the football, and creating answers after the snap" },
   RB: { noun: "backfield catalyst", craft: "reading blocks, surviving contact, and turning space into chain-moving yards" },
@@ -130,6 +132,8 @@ export function playerAvailabilitySummary(player = {}) {
   if (injury === null) facts.push("No current injury recorded.");
   else if (typeof injury?.weeksRemaining === "number" && Number.isFinite(injury.weeksRemaining) && injury.weeksRemaining > 0) {
     facts.push(`Medical restriction: ${injuryName}, ${injury.weeksRemaining} week(s) remaining.`);
+  } else if (injuryStatus(injury)?.state === "questionable") {
+    facts.push("Questionable: a game-time injury tag that does not by itself keep him out.");
   } else if (injury?.weeksRemaining === 0) facts.push(`Recovered ${injuryName}; no recovery weeks remain.`);
   else facts.push("Medical recovery status not established.");
   return facts.join(" ");

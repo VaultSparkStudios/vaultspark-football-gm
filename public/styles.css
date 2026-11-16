@@ -1084,6 +1084,11 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
   font-weight: 600;
 }
 
+.depth-status--questionable {
+  color: var(--warning);
+  font-weight: 600;
+}
+
 @media (max-width: 720px) {
   .depth-board,
   .depth-board tbody {

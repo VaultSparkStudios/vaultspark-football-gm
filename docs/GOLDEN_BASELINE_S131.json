@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "baselineVersion": "s131-v4",
+  "status": "deliberate attributed behavior change; release evidence recorded separately",
+  "change": "Regular-season injury recovery now ticks after that week's games instead of before kickoff, so an injury costs the number of team games its label states. Before the change an 'Out 1W' injury healed before the very next game (engine probe, seed 131: 297 of 316 missed no game; after: 279 of 330 miss exactly one, the remainder absorbed by team byes).",
+  "previous": {
+    "file": "test/fixtures/football-golden-master.s119-v3.json",
+    "sha256": "d1230f6155dfcfc115d2960edc0f6e45be61eda611951f1a435ffe0cdb56a0bb",
+    "preservedUnchanged": true
+  },
+  "older": [
+    { "file": "test/fixtures/football-golden-master.s118-v2.json", "sha256": "d9b95a052a21e85b789a42d0d7320d55e7b50427f58f923fb5bc8ef832066b26", "preservedUnchanged": true },
+    { "file": "test/fixtures/football-golden-master.json", "sha256": "4901d3487f119b9fc7485e139135a663738c32062668f7eaa66dc32517de1190", "preservedUnchanged": true }
+  ],
+  "current": {
+    "file": "test/fixtures/football-golden-master.s131-v4.json",
+    "sha256": "e507876912facc646026c29141496fb2309acc29fd170d5554eac79fe35b8ab4"
+  },
+  "scenarios": ["drive-20260306-BUF", "play-4113-CHI"],
+  "beforeCheck": {
+    "log": ".cache/s131-shards.log",
+    "result": "sim-contract shard: champions differ from s119-v3 on the S131 tree (expected direction of the change)"
+  },
+  "afterCheck": {
+    "log": ".cache/s131-golden-write.log",
+    "result": "110 sections differ in value; one section added; none removed",
+    "summaries": {
+      "drive-20260306-BUF": { "before": ["SEA", "ATL", "ATL"], "after": ["LAC", "BAL", "CIN"] },
+      "play-4113-CHI": { "before": ["DET", "PIT", "KC"], "after": ["CIN", "GB", "KC"] }
+    },
+    "added": ["play-4113-CHI: league.admittedInjuryContinuations"]
+  },
+  "attribution": {
+    "league-wide": "who is available each week changes from week 1 onward, so game results, stats, standings, champions and every downstream ledger move; this is the intended consequence, not drift",
+    "league.admittedInjuryContinuations": "an elevated player injured in his elevation game now serves his labelled week, so the existing continuation ledger records its first entry in this scenario"
+  },
+  "guards": [
+    "test/football-golden-master.test.js: S119 fixture hash, value-only diff with the single named added section",
+    "test/injury-clock-truth.test.js: labelled injuries miss that many team games against the box-score game-day roster",
+    "test/nfl-game-day-roster.test.js: an owed injury week keeps the player out of kickoff; Questionable does not"
+  ]
+}

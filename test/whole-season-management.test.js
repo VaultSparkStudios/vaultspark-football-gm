@@ -123,7 +123,19 @@ test('actual complete season delegates management without changing controlled ow
   const active=roster.filter(p=>p.rosterSlot!=='practice');
   assert.equal(active.length,53);assert.equal(roster.filter(p=>p.rosterSlot==='practice').length,16);
   for(const [position,band] of Object.entries(FIELDABLE_DEPTH))assert.ok(active.filter(p=>p.position===position).length>=band.min,position);
-  for(const p of roster)if(before.has(p.id))assert.deepEqual(p.profile,before.get(p.id));
+  // Delegation never rewrites a player. The one sanctioned profile change is
+  // a draft prospect (often still in the upcoming class) named as his relative: the veteran then carries his own
+  // family authority (assignPlayerFamily). Nothing else may differ.
+  for(const p of roster){
+    if(!before.has(p.id))continue;
+    const expected=before.get(p.id);
+    if(p.profile.family&&!expected.family){
+      assert.equal(p.profile.family.id,`family:${p.id}`,p.id);
+      const people=[...session.league.players,...(session.league.pendingDraft?.available||[])];
+      assert.ok(people.some(r=>r.profile?.familyRelationship?.anchorId===p.id),`${p.id} anchors a relative in the league or the upcoming draft class`);
+      const {family,...rest}=p.profile;assert.deepEqual(rest,expected);
+    }else assert.deepEqual(p.profile,expected);
+  }
 });
 
 test('whole-season continuation from awards preserves the completed result without replaying games',()=>{

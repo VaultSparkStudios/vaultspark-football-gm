@@ -1,52 +1,20 @@
-<!-- Source: docs/AUDIT_2026-11-13.json · Session 130 -->
-# S130 implementation plan
+<!-- Source: docs/AUDIT_2026-11-13_SESSION131.json · Session 131 -->
+# S131 implementation plan
 
-Live focus: FORGE/FB beta hardening, public-unlaunched, product rubric. Five L2 outcomes are selected within the startup velocity-based cap6. No lifecycle transition, model API or paid dependency is selected.
+Live focus: FORGE/FB beta hardening, public-unlaunched, product rubric. Two L2 outcomes are selected. No lifecycle transition, model API or paid dependency is selected. Engine change first (foundation), display change second (façade over the corrected clock).
 
-## 1. Remove coaching rendering from the initial boot graph (`boot-headroom`)
-
-Readiness: performance and capacity.
-
-Separate the minimal delegated action binding from coaching rendering and dynamically load the renderer through existing staff-loading owners. Preserve hydration authority, early loading/error states, controlled-club guards and retries. Do not alter any byte/module/island budget.
-
-Acceptance: Create at least4KiB headroom before other boot-path repairs; final source remains within every unchanged budget. Focused load/action races and actual staff selection/hire/refusal journeys, desktop/mobile and themes, preserve behavior.
-
-## 2. Keep Community Stats sharing off after decline (`community-consent-revocation`)
-
-Readiness: security, privacy, data integrity and abuse controls.
-
-Use a fail-closed volatile consent decision and generation-bound event admission. Bound capability/mutation requests, cancel stale event sends, and preserve purpose-bound deletion tombstones and retry. Keep opt-in honest when persistence fails.
-
-Acceptance: Fault-injected decline write, delayed capability then decline, stale response after renewed opt-in, hung event/delete request, successful deletion retry; real settings states in desktop/mobile and both themes.
-
-## 3. Describe player availability from actual eligibility facts (`player-availability-truth`)
+## 1. Injured players miss the games their injury says they miss (`injury-clock-truth`)
 
 Readiness: core journeys and product correctness.
 
-Use existing projected suspension, reserve, practice, inactive and medical facts before healthy prose. Preserve concurrent restrictions, explain current availability without inventing eligibility, and handle recovered or malformed optional injury data.
+Run the weekly availability recovery after the week's games and before that week's injury rolls, so a recovery week elapses only for a game the player actually missed and a fresh injury is never decremented before its first absence. Keep the season-end (no week block) recovery tick. Preserve every pay, pension and admitted-injury interval contract.
 
-Acceptance: Pure cases for healthy, suspension, practice, IR/PUP/NFI, inactive, recovered injury and concurrent restrictions; real dossier renders desktop/mobile in dark/light.
+Acceptance: Canonical-path probe shows Out 1W players never dress for the next game their team plays, Out 2-3W miss two, IR (4W) four. A focused regression test proves the labelled absence through advanceWeek. Full native suite green; any golden-master movement is re-measured and explained.
 
-## 4. Export truthful and recoverable Co-GM briefings (`co-gm-export-integrity`)
+## 2. Show Questionable as a game-time status, not as a recovered injury (`questionable-status-visible`)
 
-Readiness: human and agent access where applicable.
+Readiness: core journeys and product correctness.
 
-Admit finite numeric values and intentional numeric strings without coercing absent/boolean values. Filter malformed optional rows while preserving bounded valid data and disclosure. Reuse action-error reporting around copy/download import and build, retain clipboard fallback, retry and download cleanup.
+One shared formatter for a player's injury line, used by the player profile medical fact, roster injury column and depth board row tag. Questionable reads as expected to play this week; multi-week injuries read as games out.
 
-Acceptance: Unknown remains null; real zero survives; malformed rows preserve valid peers; secret/save fields remain excluded. Browser copy/download failures are visible and retry succeeds in every touched theme/viewport.
-
-## 5. Capture every responsive state within bounded release jobs (`responsive-capture-shards`)
-
-Readiness: staging, release evidence and truthful beta/release communication.
-
-Reuse the three existing viewport profiles as independent bounded jobs with distinct output paths/artifacts. Aggregate exact required-name coverage, themes, source revision and artifact digest before publication. Reject missing/duplicate/mismatched/invalid profiles; retain partial failure diagnostics and per-viewport timings. Preserve every capture and assertion and the eight-minute per-job bound.
-
-Acceptance: All existing states and themes retained. Missing viewport/capture, wrong source/digest, duplicate profile and failed shard must refuse publication. Actual full three-viewport run and hosted successful capture jobs with complete aggregate evidence.
-
-## Release and closeout
-
-Preserve fixed budgets and every test/capture. Run focused meaningful regressions, inspect real before/after pixels for all touched states in desktop/mobile dark/light, independent review, current complete acceptance and exact-candidate CI. Verify staging first, then production frontend/API parity using existing authorization. Retain the true rollback source/image and database/routing baseline. Run full ordered closeout, scoped SIL scoring, final staged security/supply-chain checks, direct main push and remote readback. Broader email/identity/market/restore unknowns do not become passing or a public launch.
-
-## Verified technical acceptance
-
-All five selected L2 outcomes are verified at application source `7a54ba295296c751114b0b0a144bdb8adade2dd5`. Exact CI7/7, complete hosted327/327 responsive records, matching staging/production frontend/API and scoped journey/pixel/performance evidence are accepted in reports/s130-release-acceptance.json. Original implementation failures and source boundaries remain historical. Formal closing-record publication is pending.
+Acceptance: Pure tests for null, Questionable, one-game, multi-game and malformed data; profile no longer says Recovered for a live Questionable tag; visible in the browser on desktop and mobile in dark and light.

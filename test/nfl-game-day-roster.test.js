@@ -52,8 +52,12 @@ test("readiness respects byes and previews recovery without mutating the franchi
   assert.equal(session.getAdvanceReadiness().reasonCode, 'GAME_DAY_ROSTER_EMPTY', 'last suspended game is still unavailable');
   assert.equal(JSON.stringify(session.toSnapshot()), before);
   qb.suspensionWeeks = 0;
-  assert.equal(session.getAdvanceReadiness().ok, true, 'ordinary deterministic injury recovery remains previewed');
-  qb.injury.weeksRemaining = 100;
+  // S131: recovery elapses after the week's games, so a one-week injury still
+  // sits out this game; readiness reads the live state, not a recovery preview.
+  assert.equal(session.getAdvanceReadiness().reasonCode, 'GAME_DAY_ROSTER_EMPTY', 'an owed injury week keeps the player out of kickoff');
+  qb.injury = { type: "Questionable", weeksRemaining: 0 };
+  assert.equal(session.getAdvanceReadiness().ok, true, 'a Questionable tag does not keep the player out');
+  qb.injury = { type: "Test strain", weeksRemaining: 100 };
   assert.equal(session.getAdvanceReadiness().reasonCode, "GAME_DAY_ROSTER_EMPTY");
 });
 

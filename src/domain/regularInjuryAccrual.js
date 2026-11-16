@@ -4,7 +4,8 @@ const fail=message=>{throw Object.assign(new TypeError(`Invalid regular injury a
 const rowKey=row=>JSON.stringify([row.year,row.week,row.playerId]);
 const same=(a,b)=>Object.keys(a).length===Object.keys(b).length&&Object.keys(a).every(key=>a[key]===b[key]);
 
-// Capture eligibility before the elapsed weekly recovery step. The working
+// Capture eligibility at the top of the week, before that week's recovery
+// tick (which since S131 runs after the week's games). The working
 // copy owns all payroll/contract/cap mutations; no wages are committed here.
 export function previewRegularInjuryAccrual(league,{year,week}={}){
  const planned={...league,capLedger:structuredClone(league.capLedger),players:league.players.map(player=>({...player,
@@ -22,8 +23,9 @@ function paidPracticeBase(player,{teamId,year,week}){
  return (receipts[0]?.amount||0)*100;
 }
 
-// Actual base payroll runs first. Reconcile the old payer even if clearance
-// allowed a roster/contract change during the week's maintenance. A same-club
+// Actual base payroll runs first. Reconcile the old payer even if the week's
+// maintenance changed a roster or contract (since S131 the recovery clearance
+// itself comes after maintenance and after this commit). A same-club
 // settled elevation already covering the weekly minimum needs no second top-up.
 export function commitRegularInjuryAccrual(league,{year,week,receipts}={}){
  if(!Array.isArray(receipts)||!Number.isSafeInteger(year)||!Number.isSafeInteger(week)||week<1||week>18)fail('period');

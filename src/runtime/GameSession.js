@@ -6153,22 +6153,10 @@ export class GameSession {
       }
       teamIds = (this.seasonSchedule[this.currentWeek - 1]?.games || [])
         .flatMap(game => [game.homeTeamId, game.awayTeamId]);
-      // Preview the same deterministic recovery used at week entry. Copies
-      // prevent rehab counters, receipts and suspensions changing on refusal.
-      if (this.sportRules.match.checkReadiness({ league, teamIds,...readinessContext }).ok === false) {
-        league = { ...league, players: league.players.map(player => ({ ...player,
-          injury: player.injury ? { ...player.injury } : null,
-          developmentHealth: player.developmentHealth ? { ...player.developmentHealth } : undefined,
-          // Recovery closes qualifying elevation injury-pay episodes. Those
-          // nested records belong to the preview as well as the injury counter.
-          elevationInjuryPay: player.elevationInjuryPay ? structuredClone(player.elevationInjuryPay) : undefined,
-          suspensionWeeks: player.suspensionWeeks || 0
-        })) };
-        advanceInjuryRecovery(league, { getTeamModifiers: teamId => {
-          const team = teamById(this.league, teamId);
-          return teamWorldStateModifiers(team, team ? teamPlayersAll(this.league, teamId) : []);
-        } });
-      }
+      // S131 [injury-clock-truth]: weekly recovery now elapses after the
+      // week's games, so kickoff sees the live injury state. Readiness is
+      // checked on that state; previewing recovery here would admit a roster
+      // that simulateRegularSeasonWeek then refuses after maintenance ran.
     } else if (this.phase === "postseason") {
       // The command can play other clubs' games before/after the controlled
       // gate. Check all surviving clubs before applying any of those results.
@@ -6238,7 +6226,14 @@ export class GameSession {
     // the simulator actually observes the decision. Consumed exactly once.
     consumePendingWeeklyTactic(this);
     this.grantWeeklyScoutingPoints();
-    this.decrementAvailability({deferAdmittedPay:true});
+    const weekBlock = this.seasonSchedule[this.currentWeek - 1];
+    // S131 [injury-clock-truth] — a recovery week elapses only for a week the
+    // player actually sat out. With the tick before kickoff, an "Out 1W" injury
+    // healed before the very next game and every injury cost one game fewer than
+    // its label (probe: 257/300 Out 1W players dressed next game). The tick now
+    // runs after this week's games and before this week's injury rolls; a week
+    // with no games (season end) still elapses here.
+    if (!weekBlock) this.decrementAvailability({deferAdmittedPay:true});
     this.processWaivers();
     this.runAiTeamMaintenance();
     // Premium free agency is a live weekly market (S62): rivals bid, then
@@ -6246,7 +6241,6 @@ export class GameSession {
     // exactly what won.
     this.submitCpuFreeAgencyOffers();
     this.processFreeAgencyMarket();
-    const weekBlock = this.seasonSchedule[this.currentWeek - 1];
     if (!weekBlock) {
       this.enterNextCalendarPhase();
       return { ok: true, phase: this.phase, message: "Regular season complete. Advance again for playoffs." };
@@ -6284,6 +6278,11 @@ export class GameSession {
       for(const game of weekResult.games)recordAdmittedPensionGameService({league:this.league,result:game});
     this.trackTiming("simulate-week", Date.now() - simStart);
     this.trackCounter("weeks-simulated", 1);
+    // Weekly recovery for the game just played (see S131 note above): injuries
+    // that kept a player out of this week's game advance one week. Both injury
+    // sources for this week — generateWeekEvents and rollGameInjuries — run
+    // after this line, so a fresh injury is never aged before its first absence.
+    this.decrementAvailability({deferAdmittedPay:true});
     applyWeekMorale(this.league, weekResult);
     const events = this.generateWeekEvents(weekResult);
     weekResult.events = events;

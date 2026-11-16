@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { createHash } from "node:crypto";
-import { computeGoldenMaster, diffGoldenMaster, GOLDEN_MASTER_FIXTURE, HISTORICAL_GOLDEN_MASTER_FIXTURE, S118_GOLDEN_MASTER_FIXTURE, GOLDEN_MASTER_SCENARIOS } from "../scripts/golden-master.mjs";
+import { computeGoldenMaster, diffGoldenMaster, GOLDEN_MASTER_FIXTURE, HISTORICAL_GOLDEN_MASTER_FIXTURE, S118_GOLDEN_MASTER_FIXTURE, S119_GOLDEN_MASTER_FIXTURE, GOLDEN_MASTER_SCENARIOS } from "../scripts/golden-master.mjs";
 
 // S116 Phase 0: every multi-sport extraction step must leave football byte-identical.
 // A mismatch names the drifted sections. Regenerate the fixture only for an
@@ -38,15 +38,31 @@ test("versioned intentional behavior baseline preserves S116 and every original 
 test("S119 passer-rating baseline preserves S118 and moves only the season passing tables", () => {
   const s118Bytes = fs.readFileSync(S118_GOLDEN_MASTER_FIXTURE);
   assert.equal(createHash('sha256').update(s118Bytes).digest('hex'), 'd9b95a052a21e85b789a42d0d7320d55e7b50427f58f923fb5bc8ef832066b26');
-  const s118 = JSON.parse(s118Bytes), current = JSON.parse(fs.readFileSync(GOLDEN_MASTER_FIXTURE));
+  const s118 = JSON.parse(s118Bytes), s119 = JSON.parse(fs.readFileSync(S119_GOLDEN_MASTER_FIXTURE));
   // The passer rating now scales each term before clamping it. Nothing reads
   // the season rate except award tie-breaks, so every other section, including
   // awards, standings and champions, must be byte-identical to S118.
-  assert.deepEqual(diffGoldenMaster(s118, current).sort(), [
+  assert.deepEqual(diffGoldenMaster(s118, s119).sort(), [
     'drive-20260306-BUF: seasonTable.passing changed',
     'play-4113-CHI: seasonTable.passing changed'
   ]);
-  for (const id of Object.keys(s118.scenarios)) assert.deepEqual(current.scenarios[id].summary, s118.scenarios[id].summary);
+  for (const id of Object.keys(s118.scenarios)) assert.deepEqual(s119.scenarios[id].summary, s118.scenarios[id].summary);
+});
+
+test("S131 injury-clock baseline preserves S119 byte-identical and keeps every section", () => {
+  const s119Bytes = fs.readFileSync(S119_GOLDEN_MASTER_FIXTURE);
+  assert.equal(createHash('sha256').update(s119Bytes).digest('hex'), 'd1230f6155dfcfc115d2960edc0f6e45be61eda611951f1a435ffe0cdb56a0bb');
+  const s119 = JSON.parse(s119Bytes), current = JSON.parse(fs.readFileSync(GOLDEN_MASTER_FIXTURE));
+  // An injury now costs the games its label states, which changes who plays
+  // every week and so moves results league-wide. The new baseline may differ
+  // in values, never in shape: no scenario or section is removed. The one
+  // added section is the elevation-injury continuation ledger, which first
+  // appears because an injured elevated player now serves his labelled week.
+  for (const line of diffGoldenMaster(s119, current)) {
+    if (/ added$/.test(line)) assert.equal(line, 'play-4113-CHI: league.admittedInjuryContinuations added');
+    else assert.match(line, / changed$/, line);
+  }
+  assert.notDeepEqual(diffGoldenMaster(s119, current), [], 'the S131 baseline records an actual behavior change');
 });
 
 test("the diff names changed, added and missing sections", () => {

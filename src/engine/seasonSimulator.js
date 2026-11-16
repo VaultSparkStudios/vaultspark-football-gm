@@ -180,8 +180,11 @@ export function runPlayoffsAndSuperBowl({ league, statBook, year, rng, mode = "d
   return postseasonResultFromState(state, league);
 }
 
-// The headless path owns elapsed medical time; the interactive path already
-// applies it during maintenance before calling the shared weekly simulator.
+// The headless path owns elapsed medical time. It ticks recovery before the
+// week's games; since S131 the interactive path (GameSession) ticks after the
+// games and before that week's injury rolls, so a labelled absence costs its
+// full count of games. This test/tooling-only path rolls no new injuries and
+// keeps its earlier order; align it before using it for injury outcomes.
 export function simulateHeadlessRegularSeasonWeek({league,statBook,year,weekBlock,rng,mode='drive',restedTeamIds=[]}) {
   const medical=(league.sportId||'football')==='football'&&year>=2023;
   const getTeamModifiers=teamId=>teamRecoveryModifiers(league.teams.find(team=>team.id===teamId));

@@ -307,6 +307,7 @@ export const SHARDS = {
     "test/match-engine-contract.test.js",
     "test/nfl-overtime.test.js",
     "test/nfl-game-day-roster.test.js",
+    "test/injury-clock-truth.test.js",
     "test/nfl-practice-eligibility.test.js",
     "test/nfl-player-service.test.js",
     "test/nfl-pension-service.test.js",

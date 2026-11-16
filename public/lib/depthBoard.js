@@ -4,6 +4,7 @@ import { state, api } from "./appState.js";
 import { escapeHtml, fmtMoney, formatActionError, formatHeight } from "./appCore.js";
 import { loadDepthChart } from "./gameFlow.js";
 import { bindDepthReorder } from "./depthReorder.js";
+import { injuryStatus } from "./injuryStatus.js";
 
 export function depthManualShareMap(position) {
   return state.depthManualShares?.[position] || {};
@@ -102,10 +103,8 @@ function depthRatingCell(value, label) {
 }
 
 function depthStatus(player, row) {
-  if (player?.injury?.weeksRemaining > 0) {
-    const weeks = player.injury.weeksRemaining;
-    return { out: true, text: `Injured · ${weeks} wk${weeks === 1 ? "" : "s"}` };
-  }
+  const injury = injuryStatus(player?.injury);
+  if (injury?.state === "out") return { out: true, text: `Injured · ${injury.weeks} wk${injury.weeks === 1 ? "" : "s"}` };
   if (player?.suspensionWeeks > 0) return { out: true, text: `Suspended · ${player.suspensionWeeks} wk` };
   const designation = player?.designations || {};
   if (designation.ir) return { out: true, text: "Injured reserve" };
@@ -113,7 +112,8 @@ function depthStatus(player, row) {
   if (designation.nfi) return { out: true, text: "NFI list" };
   if (designation.gameDayInactive) return { out: true, text: "Inactive" };
   if (player?.rosterSlot === "practice") return { out: true, text: "Practice squad" };
-  return row?.available === false ? { out: true, text: "Out" } : { out: false, text: "Ready" };
+  if (row?.available === false) return { out: true, text: "Out" };
+  return injury?.state === "questionable" ? { out: false, text: "Questionable" } : { out: false, text: "Ready" };
 }
 
 function depthPlayerMeta(player) {
@@ -182,7 +182,7 @@ export function renderDepthBoard() {
   ${depthRatingCell(player?.potential ?? shareRow?.potential, "POT")}
   ${DEPTH_CATEGORY_COLUMNS.map(([key, short]) => depthRatingCell(categories[key], short)).join("")}
   <td class="depth-abilities" data-label="Best at">${abilities.map((ability) => `<span class="depth-ability" title="${escapeHtml(ability.label)} ${ability.value}">${escapeHtml(ability.label)} <b>${ability.value}</b></span>`).join("") || "–"}</td>
-  <td data-label="Status"><span class="depth-status ${status.out ? "depth-status--out" : ""}">${escapeHtml(status.text)}</span></td>
+  <td data-label="Status"><span class="depth-status ${status.out ? "depth-status--out" : status.text === "Questionable" ? "depth-status--questionable" : ""}">${escapeHtml(status.text)}</span></td>
   <td data-label="Contract">${contract?.yearsRemaining ? `${contract.yearsRemaining} yr · ${escapeHtml(fmtMoney(contract.capHit || contract.salary || 0))}` : "–"}</td>
   <td data-label="Snap share">
   <div class="depth-share-cell">

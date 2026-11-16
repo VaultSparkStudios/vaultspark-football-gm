@@ -59,7 +59,7 @@ test("each depth chart row shows age, category scores, strengths, status and con
     await expect(row.locator(`td[data-label="${label}"] .depth-rating`)).toHaveText(/^\d{2}$/);
   }
   await expect(row.locator(".depth-ability")).toHaveCount(3);
-  await expect(row.locator('td[data-label="Status"]')).toContainText(/Ready|Injured|Out|Inactive/);
+  await expect(row.locator('td[data-label="Status"]')).toContainText(/Ready|Questionable|Injured|Out|Inactive/);
   await expect(row.locator('td[data-label="Contract"]')).toContainText(/\d+ yr/);
   // Every column, including the snap share, is on screen at a laptop width.
   const overflow = await page.evaluate(() => {

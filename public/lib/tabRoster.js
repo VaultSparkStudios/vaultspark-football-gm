@@ -1,5 +1,6 @@
 import { state, api } from "./appState.js";
 import { decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderTable } from "./appCore.js";
+import { injuryStatus } from "./injuryStatus.js";
 
 const elevationGameLabel = game => game.seasonType === 'regular' ? `${game.year} Week ${game.week}` : `${game.year} ${game.round.replaceAll('-', ' ')}`;
 
@@ -78,7 +79,7 @@ export function renderRoster() {
       .filter(([, value]) => value === true)
       .map(([name]) => name)
       .join(","),
-    injury: player.injury ? `${player.injury.type} (${player.injury.weeksRemaining})` : "",
+    injury: injuryStatus(player.injury)?.label || "",
     suspension: player.suspensionWeeks || 0,
     capHit: fmtMoney(player.contract?.capHit || 0),
     action: ""
