@@ -155,7 +155,7 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-11-16"
+      "lastChecked": "2026-11-17"
     }
   ],
   "lastSession": 131,
@@ -193,17 +193,17 @@
     }
   ],
   "backendDeployment": {
-    "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
+    "sourceRevision": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",
     "verified": true,
-    "verifiedAt": "2026-11-16T05:49:49.501Z",
+    "verifiedAt": "2026-11-17T07:27:51.320Z",
     "deploymentTiming": "Exact deployment switch instant was not measured; verifiedAt is the actual post-deployment native readback time.",
-    "liveHealthSourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
+    "liveHealthSourceRevision": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",
     "receipt": "reports/s131-release-acceptance.json",
     "transport": "guarded-github-workflow-native-pinned-ssh",
-    "imageBuildRunId": 43801882165,
+    "imageBuildRunId": 44030182664,
     "imageBuildAttempt": 1,
-    "ciRunId": 43801823248,
-    "ciAttempt": 1,
+    "ciRunId": 44013420568,
+    "ciAttempt": 2,
     "hostPinVerified": true,
     "privateKeyCopied": false,
     "externalHealth": {
@@ -211,12 +211,12 @@
       "database": "ready",
       "schemaVersion": 1,
       "service": "franchise-architect-community-stats",
-      "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e"
+      "sourceRevision": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1"
     },
     "database": "ready",
-    "previousSourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+    "previousSourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
     "previousImage": "ghcr.io/vaultsparkstudios/franchise-architect-football-api:7a54ba295296c751114b0b0a144bdb8adade2dd5",
-    "note": "S131 API health read from the deploy-server step of run 43801882165; database ready.",
+    "note": "S131 closeout release: API health read from the deploy-server step of run 44030182664 (CI 44013420568 attempt 2); database ready. The first dispatch (44013434812) was correctly blocked by the CI gate while attempt 1 had a flaky browser-gates failure.",
     "baseUrl": "https://api-franchise-architect-football.vaultsparkstudios.com",
     "healthUrl": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
     "health": {
@@ -289,11 +289,11 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "da8130e5a6d367bb22938bdda32a087b6cb6216f6a8119b0d669330974393ef5",
-    "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
+    "receiptSha256": "cd661e1ae9dc3b85940e7668be84347e92dc07a15b23ef9d57511341d9876bbd",
+    "sourceRevision": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e",
+      "digest": "a5973cd38aafe340bdc36b814ff70cc5c0ebe0a93157a056dcdb1dbfa40ebe7c",
       "files": 371,
       "entries": [
         {
@@ -343,8 +343,8 @@
         },
         {
           "path": "changelog.xml",
-          "bytes": 31422,
-          "sha256": "c42287d4b618df54bd96398623e4f88dcb44ed6252d8a7b9b6e2222148daff11"
+          "bytes": 32441,
+          "sha256": "5eae511a74b8ffec39534c1529b7491a88a90c763728f43cc75b0505f465e874"
         },
         {
           "path": "community-stats.6debb4a69e.js",
@@ -1219,7 +1219,7 @@
         {
           "path": "precache-manifest.json",
           "bytes": 26657,
-          "sha256": "90ce201f768512c1d52fd8d777f80f306ef279b6d7b72ddb00424b7e6c8e7411"
+          "sha256": "6d0e3bfa0871b785db4c543dd297753358157def13e0c66d48bd05de9b24b2e8"
         },
         {
           "path": "press.html",
@@ -1314,7 +1314,7 @@
         {
           "path": "sitemap.xml",
           "bytes": 1844,
-          "sha256": "e4e935025611b23652aee314508968d30e9c192e3caea87d9f7f4520483df5c2"
+          "sha256": "35b11af35dd1487ae5c3fe96d52f2d3f23f56ee0a5a31f046f42b29d5c5ba2cc"
         },
         {
           "path": "src/adapters/persistence/browserSaveStore.js",
@@ -1883,8 +1883,8 @@
         },
         {
           "path": "src/runtime/GameSession.js",
-          "bytes": 402806,
-          "sha256": "2ee2a2d012d66d3433823acbf29ba92de07645cdb70f2a0f4e3909dc9ea50b6d"
+          "bytes": 402839,
+          "sha256": "0c68c24d77cc1939b254c38cf1d1d1185d51bb4188d0dff9befedc7779f93508"
         },
         {
           "path": "src/runtime/advanceWeekCommand.js",
@@ -2123,13 +2123,13 @@
         },
         {
           "path": "status-archive.html",
-          "bytes": 27474,
-          "sha256": "5cee9d910336bd4bdfe56c118d5bed25019ecc2edea1cf123a4e5540ec6d33d6"
+          "bytes": 28229,
+          "sha256": "0f4abd8d17ab13ff1a59f3bcb00dd4c5dcadd2b8d038dd3dddc9897eed6a6fe0"
         },
         {
           "path": "status.html",
-          "bytes": 6999,
-          "sha256": "8500743ab6b22ecb54fc194753cca76d72d1a531d2b0ae09ec448d8c8db88302"
+          "bytes": 7177,
+          "sha256": "9880288e976c1942449e65e6aad73b7a4c684fd27ddd2c4f8ba8bd073655334a"
         },
         {
           "path": "styles.css",
@@ -2144,7 +2144,7 @@
         {
           "path": "sw.js",
           "bytes": 13234,
-          "sha256": "9ec9d64ad8054f8532114c476629ec0d156db1855fa8d99e707511ca6677439e"
+          "sha256": "0295dbb886d403a9b401ffc3eca7d22e7df21b0d3d0ed5acb22f7f1260e45607"
         },
         {
           "path": "terms.html",
@@ -2158,21 +2158,21 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "f298f158-2746-4b59-94ad-9d4a25515bb0",
+    "deploymentId": "07c1ce0d-689a-44ca-b257-ea19d3babbb3",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-11-16T04:04:04.174Z"
+      "checkedAt": "2026-11-17T03:53:53.609Z"
     },
     "rollback": {
-      "previousDeploymentId": "9e8923fa-f107-4cc0-9d29-2215a04b2a57",
+      "previousDeploymentId": "285a7792-f482-422d-97d2-314febdcebc0",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-11-16T04:04:04.175Z"
+    "observedAt": "2026-11-17T03:53:53.609Z"
   },
   "lastCloseoutAt": "2026-10-27T01:27:00.881Z",
   "performanceAuthority": {
@@ -2208,31 +2208,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-11-17T03:25:05.241Z",
+    "observedAt": "2026-11-17T08:41:02.444Z",
     "status": "verified",
-    "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
-    "publicationRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
+    "sourceRevision": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",
+    "publicationRevision": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e"
+      "digest": "a5973cd38aafe340bdc36b814ff70cc5c0ebe0a93157a056dcdb1dbfa40ebe7c"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
-        "artifactDigest": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e"
+        "sourceRevision": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",
+        "artifactDigest": "a5973cd38aafe340bdc36b814ff70cc5c0ebe0a93157a056dcdb1dbfa40ebe7c"
       },
       "production": {
-        "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
-        "artifactDigest": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e"
+        "sourceRevision": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",
+        "artifactDigest": "a5973cd38aafe340bdc36b814ff70cc5c0ebe0a93157a056dcdb1dbfa40ebe7c"
       },
       "visual": {
-        "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
-        "artifactDigest": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e"
+        "sourceRevision": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",
+        "artifactDigest": "a5973cd38aafe340bdc36b814ff70cc5c0ebe0a93157a056dcdb1dbfa40ebe7c"
       },
       "performance": {
-        "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
-        "artifactDigest": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e"
+        "sourceRevision": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",
+        "artifactDigest": "a5973cd38aafe340bdc36b814ff70cc5c0ebe0a93157a056dcdb1dbfa40ebe7c"
       }
     },
     "checks": [
@@ -2273,17 +2273,17 @@
       "lifecycle-authority-unverified"
     ],
     "backendAuthority": {
-      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
-      "verifiedAt": "2026-11-13T18:13:45.145Z",
+      "sourceRevision": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",
+      "verifiedAt": "2026-11-17T07:27:51.320Z",
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "657d7e60eb172fcc5a89bd5fbd9456012c912b2db980723ab4250068f5a50f6d",
-      "productionSha256": "b7a1915051da3d3df4e1b4081de8956a1ca25d2b113c247c4d8de0a4eadde104",
-      "visualSha256": "0fce30d82b3d777b8fc177deb0b7df1a04d2bb277eedc5f123664e8c620908db",
-      "performanceSha256": "b2ec1cea56b0203c2ca1fd5a741b9d47d9f0373b7c235f72ab4c601cdcfab92f"
+      "stagingSha256": "c7b89eb098ad6613f0ce0c47c605a31b5b9e686e8da6216cbc5acea1a191f5bd",
+      "productionSha256": "a9688891f2391b6b64059743ec0f1561e3b9debaba62db5de3f82edfdcafcd95",
+      "visualSha256": "669ea9c832261d88a8862cc9fb87e18ad3377682174c139c6bbcc7cf6dbff8c0",
+      "performanceSha256": "b5e4eb7f72f99ca3e73007bf50d51d7131555a748b0b8fef4f19f0067eb869cd"
     },
-    "receiptSha256": "8c1f97591724be4dc56971fa88ee657635a7c0e51f50e3caa20a71f6f5469d82"
+    "receiptSha256": "0af8a180e33888eba736f65ca273e051a1da0b9c28202b4f048879398e151f2c"
   },
   "launchReady": false,
   "sil": {

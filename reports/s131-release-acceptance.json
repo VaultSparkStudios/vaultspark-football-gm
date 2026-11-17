@@ -9,7 +9,10 @@
   "verified": true,
   "technicalReleaseVerified": true,
   "launchApproved": false,
-  "selectedOutcomes": ["injury-clock-truth", "questionable-status-visible"],
+  "selectedOutcomes": [
+    "injury-clock-truth",
+    "questionable-status-visible"
+  ],
   "probe": "reports/s131-injury-clock-probe.json",
   "independentReview": "Closeout review verdict fix, 4 findings fixed before the closeout commit: release note scoped to regular season with byes and unchanged playoff recovery; probe figures reproduced and recorded; local core count clarified; backend authority re-derived at the final reconcile.",
   "ci": {
@@ -18,25 +21,77 @@
     "runId": 43801823248,
     "attempt": 1,
     "lane": "hosted-exact-sha",
-    "requiredJobs": ["unit-shards (core)", "unit-shards (runtime)", "unit-shards (sim:contract)", "unit-shards (sim:realism)", "unit-shards (long)", "unit-shards (studio)", "browser-gates"],
+    "requiredJobs": [
+      "unit-shards (core)",
+      "unit-shards (runtime)",
+      "unit-shards (sim:contract)",
+      "unit-shards (sim:realism)",
+      "unit-shards (long)",
+      "unit-shards (studio)",
+      "browser-gates"
+    ],
     "jobsPassed": 7,
     "shards": {
-      "core": { "tests": 777, "passed": 772, "failed": 0, "note": "5 skipped/todo cases declared in the shard, counted in neither pass nor fail" },
-      "runtime": { "tests": 1198, "passed": 1198, "failed": 0 },
-      "sim:contract": { "tests": 271, "passed": 271, "failed": 0 },
-      "sim:realism": { "tests": 9, "passed": 9, "failed": 0 },
-      "long": { "tests": 3, "passed": 3, "failed": 0 },
-      "studio": { "tests": 441, "passed": 441, "failed": 0 }
+      "core": {
+        "tests": 777,
+        "passed": 772,
+        "failed": 0,
+        "note": "5 skipped/todo cases declared in the shard, counted in neither pass nor fail"
+      },
+      "runtime": {
+        "tests": 1198,
+        "passed": 1198,
+        "failed": 0
+      },
+      "sim:contract": {
+        "tests": 271,
+        "passed": 271,
+        "failed": 0
+      },
+      "sim:realism": {
+        "tests": 9,
+        "passed": 9,
+        "failed": 0
+      },
+      "long": {
+        "tests": 3,
+        "passed": 3,
+        "failed": 0
+      },
+      "studio": {
+        "tests": 441,
+        "passed": 441,
+        "failed": 0
+      }
     },
-    "browser": { "passed": 348, "failed": 0 }
+    "browser": {
+      "passed": 348,
+      "failed": 0
+    }
   },
   "localSuite": {
     "note": "Local canonical npm test could not complete on this host: the first run hit the 90-minute core timeout under 100% CPU contention from other sessions (736 passed, 0 failed when killed); a later rerun was stretched by host sleep. Per-shard runs on the candidate tree: core 777/777 (local run reported tests 777, pass 777, fail 0; hosted CI skips 5 environment-gated cases), runtime 1198/1198, sim-realism 9/9, long 3/3, studio 441/441, and the four edited sim-contract files 25/25 (including the byte-identical golden master). The full sim-contract shard is proven by hosted CI above.",
     "failuresClassified": [
-      { "test": "football golden master byte-identical", "class": "self — intended behavior change", "resolution": "adopted s131-v4 baseline; S119/S118/S116 byte-identical; docs/GOLDEN_BASELINE_S131.json" },
-      { "test": "whole-season delegates without changing profiles", "class": "self — exposed seed-fragile invariant", "resolution": "sanctioned family-anchor change allowed only when a relative exists in the league or upcoming draft class" },
-      { "test": "every test file in exactly one shard", "class": "self", "resolution": "test/injury-clock-truth.test.js assigned to sim-contract" },
-      { "test": "project-authority-contract; innovation-pack marker scan", "class": "sibling-drift", "resolution": "removed gitignored scripts/run-tests.mjs and scripts/check-last-session-summary.mjs dropped by the startup canon sync; never in the repo" }
+      {
+        "test": "football golden master byte-identical",
+        "class": "self — intended behavior change",
+        "resolution": "adopted s131-v4 baseline; S119/S118/S116 byte-identical; docs/GOLDEN_BASELINE_S131.json"
+      },
+      {
+        "test": "whole-season delegates without changing profiles",
+        "class": "self — exposed seed-fragile invariant",
+        "resolution": "sanctioned family-anchor change allowed only when a relative exists in the league or upcoming draft class"
+      },
+      {
+        "test": "every test file in exactly one shard",
+        "class": "self",
+        "resolution": "test/injury-clock-truth.test.js assigned to sim-contract"
+      },
+      {
+        "test": "project-authority-contract; innovation-pack marker scan",
+        "class": "sibling-drift",
+        "resolution": "removed gitignored scripts/run-tests.mjs and scripts/check-last-session-summary.mjs dropped by the startup canon sync; never in the repo"
+      }
     ]
   },
   "staging": {
@@ -46,7 +101,10 @@
     "releaseProvenance": "10/10 verified (reports/s131-staging.json)",
     "authorityReceipt": "reports/s131-staging-authority.json",
     "smoke": "lib/injuryStatus.js and depth-status--questionable served",
-    "rollback": { "previousDeploymentId": "9e8923fa-f107-4cc0-9d29-2215a04b2a57", "available": true }
+    "rollback": {
+      "previousDeploymentId": "9e8923fa-f107-4cc0-9d29-2215a04b2a57",
+      "available": true
+    }
   },
   "production": {
     "origin": "https://playfranchisearchitect.com",
@@ -62,7 +120,11 @@
     "pngImages": 324,
     "visualReceipt": "docs/visual-qa/LATEST.json — 214 bound captures reviewed (contact sheets + touched surfaces at full resolution); blockingDefectsOpen 0"
   },
-  "performance": { "receipt": "docs/performance/LATEST.json", "status": "verified", "origin": "https://playfranchisearchitect.com" },
+  "performance": {
+    "receipt": "docs/performance/LATEST.json",
+    "status": "verified",
+    "origin": "https://playfranchisearchitect.com"
+  },
   "api": {
     "deployRunId": 43801882165,
     "ok": true,
@@ -75,5 +137,48 @@
     "stagingAuthority": "0c6fa04c",
     "doctor": "12/12, blockingFailing 0"
   },
-  "boundary": "Technical release only. Public launch, player outcomes and the postseason medical clock (still ticks before each playoff game) are not claimed."
+  "boundary": "Technical release only. Public launch, player outcomes and the postseason medical clock (still ticks before each playoff game) are not claimed.",
+  "finalRelease": {
+    "sourceRevision": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",
+    "artifactDigest": "a5973cd38aafe340bdc36b814ff70cc5c0ebe0a93157a056dcdb1dbfa40ebe7c",
+    "contents": "Closeout records plus the player-facing release note on status.html; engine identical to 0c6fa04c.",
+    "ci": {
+      "runId": 44013420568,
+      "attempt": 2,
+      "jobsPassed": 7,
+      "attempt1": "browser-gates failed on tests-ui/player-acceleration-study.spec.js: after reduced motion was emulated the caption kept animating for 10s instead of resetting to 'Ready (0%)'. Code under test identical to 0c6fa04c (passed); classified flaky, failed job re-run green. Root cause not yet found; tracked as a follow-up."
+    },
+    "staging": {
+      "deployProvenance": "14/14 verified",
+      "releaseProvenance": "10/10 verified (reports/s131-staging-c2.json)",
+      "authorityReceipt": "reports/s131-staging-authority-c2.json"
+    },
+    "production": {
+      "promotionRunId": 44030178849,
+      "blockedRunId": 44013431342,
+      "blockedReason": "CI gate: attempt 1 not successful (correct block)",
+      "promotionJobs": "gate x4, build, responsive-capture x3, publish, deploy — all success",
+      "releaseProvenance": "10/10 verified (reports/s131-production-c2.json)"
+    },
+    "api": {
+      "deployRunId": 44030182664,
+      "blockedRunId": 44013434812,
+      "ok": true,
+      "database": "ready",
+      "sourceRevision": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",
+      "readAt": "2026-11-17T07:27:51.320Z"
+    },
+    "performance": {
+      "receipt": "docs/performance/LATEST.json",
+      "status": "verified",
+      "observedAt": "2026-11-17T08:37:58.763Z"
+    },
+    "visualReceipt": "docs/visual-qa/LATEST.json — 214 captures bound to 86291dc4; status note at full resolution and 4 of 11 contact sheets reviewed; blockingDefectsOpen 0",
+    "authority": {
+      "releaseAuthority": "verified, source and publication 86291dc4",
+      "stagingAuthority": "86291dc4",
+      "backendAuthority": "86291dc4",
+      "doctor": "12 passing, blockingFailing 0"
+    }
+  }
 }

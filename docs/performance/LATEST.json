@@ -2,13 +2,13 @@
   "schemaVersion": "1.0",
   "kind": "hosted-performance-evidence",
   "generatedBy": "scripts/measure-hosted-performance.mjs",
-  "observedAt": "2026-11-17T03:19:48.817Z",
+  "observedAt": "2026-11-17T08:37:58.763Z",
   "baseUrl": "https://playfranchisearchitect.com",
   "route": "/",
-  "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
+  "sourceRevision": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e",
+    "digest": "a5973cd38aafe340bdc36b814ff70cc5c0ebe0a93157a056dcdb1dbfa40ebe7c",
     "files": 371,
     "entries": [
       {
@@ -58,8 +58,8 @@
       },
       {
         "path": "changelog.xml",
-        "bytes": 31422,
-        "sha256": "c42287d4b618df54bd96398623e4f88dcb44ed6252d8a7b9b6e2222148daff11"
+        "bytes": 32441,
+        "sha256": "5eae511a74b8ffec39534c1529b7491a88a90c763728f43cc75b0505f465e874"
       },
       {
         "path": "community-stats.6debb4a69e.js",
@@ -934,7 +934,7 @@
       {
         "path": "precache-manifest.json",
         "bytes": 26657,
-        "sha256": "90ce201f768512c1d52fd8d777f80f306ef279b6d7b72ddb00424b7e6c8e7411"
+        "sha256": "6d0e3bfa0871b785db4c543dd297753358157def13e0c66d48bd05de9b24b2e8"
       },
       {
         "path": "press.html",
@@ -1029,7 +1029,7 @@
       {
         "path": "sitemap.xml",
         "bytes": 1844,
-        "sha256": "e4e935025611b23652aee314508968d30e9c192e3caea87d9f7f4520483df5c2"
+        "sha256": "35b11af35dd1487ae5c3fe96d52f2d3f23f56ee0a5a31f046f42b29d5c5ba2cc"
       },
       {
         "path": "src/adapters/persistence/browserSaveStore.js",
@@ -1598,8 +1598,8 @@
       },
       {
         "path": "src/runtime/GameSession.js",
-        "bytes": 402806,
-        "sha256": "2ee2a2d012d66d3433823acbf29ba92de07645cdb70f2a0f4e3909dc9ea50b6d"
+        "bytes": 402839,
+        "sha256": "0c68c24d77cc1939b254c38cf1d1d1185d51bb4188d0dff9befedc7779f93508"
       },
       {
         "path": "src/runtime/advanceWeekCommand.js",
@@ -1838,13 +1838,13 @@
       },
       {
         "path": "status-archive.html",
-        "bytes": 27474,
-        "sha256": "5cee9d910336bd4bdfe56c118d5bed25019ecc2edea1cf123a4e5540ec6d33d6"
+        "bytes": 28229,
+        "sha256": "0f4abd8d17ab13ff1a59f3bcb00dd4c5dcadd2b8d038dd3dddc9897eed6a6fe0"
       },
       {
         "path": "status.html",
-        "bytes": 6999,
-        "sha256": "8500743ab6b22ecb54fc194753cca76d72d1a531d2b0ae09ec448d8c8db88302"
+        "bytes": 7177,
+        "sha256": "9880288e976c1942449e65e6aad73b7a4c684fd27ddd2c4f8ba8bd073655334a"
       },
       {
         "path": "styles.css",
@@ -1859,7 +1859,7 @@
       {
         "path": "sw.js",
         "bytes": 13234,
-        "sha256": "9ec9d64ad8054f8532114c476629ec0d156db1855fa8d99e707511ca6677439e"
+        "sha256": "0295dbb886d403a9b401ffc3eca7d22e7df21b0d3d0ed5acb22f7f1260e45607"
       },
       {
         "path": "terms.html",
@@ -1878,17 +1878,17 @@
     "alt-svc": "h3=\":443\"; ma=86400",
     "cache-control": "public, max-age=0, must-revalidate",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a5bb987a9efe5d13-IAD",
+    "cf-ray": "a5bd6a9dcd4519a7-IAD",
     "connection": "keep-alive",
     "content-encoding": "br",
     "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-UpNCcXEhd+OmJ9Vp30AM+sG2CPfKqseBZ2eLOVM8lZ8=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self' 'sha256-67Awpt9arNVFIe7DiHYP8Poj7bbauCyySWcP2wmHChU=' 'sha256-Eej6rI2Ct4e7Da6xNECeQtZ0knJCZ8B+3309kS4paEo='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "content-type": "text/html; charset=utf-8",
-    "date": "Tue, 17 Nov 2026 03:19:45 GMT",
+    "date": "Tue, 17 Nov 2026 08:37:58 GMT",
     "link": "<./lib/api/createApiClient.js>; rel=\"modulepreload\", <./lib/apiContract.js>; rel=\"modulepreload\", <./lib/challengeCodes.js>; rel=\"modulepreload\", <./lib/clientDiagnostics.js>; rel=\"modulepreload\", <./lib/clientRecoveryUi.js>; rel=\"modulepreload\", <./lib/themeCustomizer.js>; rel=\"modulepreload\"",
     "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
     "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
     "referrer-policy": "strict-origin-when-cross-origin",
-    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=aXOAM0fhVshDD7gQg4NnMc05fKohmAeC2DwooyRK8n032OPkGV5onJPDsfoDnnzyy9j7jf%2Buc88lo5syAqeZfG6MOg5zBx2%2FhM1Cs3vy3GAs4BUScHAAHRPY5BKAkRbuJjZ2I0Mh5wha4Qau0g%3D%3D\"}]}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=FGo4pxlCq0PmdMmsizECdG0ED4xi97I78KMNSv%2BfUuvfXiVVdvMcbj3NinhlS1wnUfZUCeyI7PuOqaU1cf3JbBrei47c9q1%2BhKd6bLZMVH3NQ5PaRmB%2Bx0ccwg4KdLl%2B3m3hslMdh%2BtMZAtM2Q%3D%3D\"}]}",
     "server": "cloudflare",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
     "transfer-encoding": "chunked",
@@ -1904,13 +1904,13 @@
         "height": 1000
       },
       "runs": 3,
-      "lcpMs": 584,
-      "inpMs": 56,
+      "lcpMs": 384,
+      "inpMs": 40,
       "cls": 0.0003,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 1024,
+          "lcpMs": 612,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1920,7 +1920,7 @@
           "cls": 0.0003,
           "shifts": [
             {
-              "startTimeMs": 2144,
+              "startTimeMs": 1213,
               "scrollY": 0,
               "value": 0.0003,
               "sources": [
@@ -1977,11 +1977,11 @@
               ]
             }
           ],
-          "inpMs": 160,
+          "inpMs": 136,
           "interactionObserved": true
         },
         {
-          "lcpMs": 524,
+          "lcpMs": 384,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1991,7 +1991,7 @@
           "cls": 0.0003,
           "shifts": [
             {
-              "startTimeMs": 1927,
+              "startTimeMs": 1197,
               "scrollY": 0,
               "value": 0.0003,
               "sources": [
@@ -2048,11 +2048,11 @@
               ]
             }
           ],
-          "inpMs": 56,
+          "inpMs": 24,
           "interactionObserved": true
         },
         {
-          "lcpMs": 584,
+          "lcpMs": 360,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -2062,7 +2062,7 @@
           "cls": 0.0003,
           "shifts": [
             {
-              "startTimeMs": 2052,
+              "startTimeMs": 1307,
               "scrollY": 0,
               "value": 0.0003,
               "sources": [
@@ -2119,7 +2119,7 @@
               ]
             }
           ],
-          "inpMs": 32,
+          "inpMs": 40,
           "interactionObserved": true
         }
       ]
@@ -2131,13 +2131,13 @@
         "height": 844
       },
       "runs": 3,
-      "lcpMs": 552,
+      "lcpMs": 368,
       "inpMs": 40,
       "cls": 0.0131,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 960,
+          "lcpMs": 536,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -2147,7 +2147,7 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 2160,
+              "startTimeMs": 1221,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -2229,11 +2229,11 @@
               ]
             }
           ],
-          "inpMs": 144,
+          "inpMs": 152,
           "interactionObserved": true
         },
         {
-          "lcpMs": 552,
+          "lcpMs": 340,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -2243,7 +2243,7 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 1870,
+              "startTimeMs": 1139,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -2325,11 +2325,11 @@
               ]
             }
           ],
-          "inpMs": 40,
+          "inpMs": 16,
           "interactionObserved": true
         },
         {
-          "lcpMs": 472,
+          "lcpMs": 368,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -2339,7 +2339,7 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 1999,
+              "startTimeMs": 1363,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -2433,13 +2433,13 @@
       {
         "name": "source revision is immutable",
         "ok": true,
-        "observed": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
+        "observed": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",
         "expected": "40-character git SHA"
       },
       {
         "name": "artifact fingerprint is immutable",
         "ok": true,
-        "observed": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e",
+        "observed": "a5973cd38aafe340bdc36b814ff70cc5c0ebe0a93157a056dcdb1dbfa40ebe7c",
         "expected": "sha256"
       },
       {
@@ -2463,13 +2463,13 @@
       {
         "name": "desktop LCP",
         "ok": true,
-        "observed": 584,
+        "observed": 384,
         "expected": "< 1800ms"
       },
       {
         "name": "desktop INP",
         "ok": true,
-        "observed": 56,
+        "observed": 40,
         "expected": "<= 200ms"
       },
       {
@@ -2487,7 +2487,7 @@
       {
         "name": "mobile LCP",
         "ok": true,
-        "observed": 552,
+        "observed": 368,
         "expected": "< 1800ms"
       },
       {
@@ -2529,5 +2529,5 @@
     }
   },
   "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
-  "receiptSha256": "f8d4578da11faebb35829dcb2792ca0c5cadc8491666594b364047219d524ef5"
+  "receiptSha256": "e97ca11d23785003ca85a33d63d56167cfab58d1bae4a5ceb3e229582a87a914"
 }

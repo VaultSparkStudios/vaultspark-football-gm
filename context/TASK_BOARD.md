@@ -7,6 +7,8 @@ Session Intent: /arc, then the authorized direct main push and full staging and 
 - [x] Wave 3: questionable-status-visible — shared injuryStatus label on roster, depth chart and dossier; browser spec 4/4 desktop+mobile, dark+light.
 - [x] Wave 4: released at 0c6fa04c — hosted CI 7/7, staging 14/14, production promotion 327/327 responsive, API ready, release authority verified; reports/s131-release-acceptance.json.
 - [x] Wave 5: closeout write-back, SIL, commit and push.
+- [x] Wave 6: final release of the closeout commit 86291dc4 — CI 7/7 (attempt 2), staging and production 10/10, promotion run 44030178849, API run 44030182664 ready, release authority verified, doctor 0 blocking (finalRelease in the acceptance report).
+- [ ] [S131 follow-up] Flaky browser gate: tests-ui/player-acceleration-study.spec.js failed CI 44013420568 attempt 1 — after reduced motion was emulated, the movement caption kept animating for 10s instead of resetting to "Ready (0%)". Find why the loop in public/lib/playerMotion.js mountPlayerMovement survives the reduced-motion change (a remounted dossier is one candidate) and fix the cause, not the wait.
 - [ ] [S131 follow-up] Postseason medical clock (src/domain/postseasonMedicalClock.js) still ticks before each playoff game; align it with the regular-season order and test it against box-score game-day rosters.
 - [ ] [S131 follow-up] Questionable game-day odds (audit L3 rung): a Questionable tag currently never costs a game; decide whether it should carry a measured chance to sit.
 - [ ] [S131 note] An elevated player's last injured week now earns an elevation-injury-continuation pension game (first ledger entry in the play-4113-CHI golden scenario); confirm the pay rule intends this.
