@@ -1,3 +1,19 @@
+## S131 Wave status
+
+Session Intent: /arc, then the authorized direct main push and full staging and production deployment.
+
+- [x] Wave 1: S131 startup and fresh nine-axis audit (docs/AUDIT_2026-11-13_SESSION131.json); premise gate 4 verified, 0 contradicted; plan admission ok.
+- [x] Wave 2: injury-clock-truth — recovery ticks after the week's games; labelled injuries cost that many team games; negative control red on the old engine.
+- [x] Wave 3: questionable-status-visible — shared injuryStatus label on roster, depth chart and dossier; browser spec 4/4 desktop+mobile, dark+light.
+- [x] Wave 4: released at 0c6fa04c — hosted CI 7/7, staging 14/14, production promotion 327/327 responsive, API ready, release authority verified; reports/s131-release-acceptance.json.
+- [x] Wave 5: closeout write-back, SIL, commit and push.
+- [ ] [S131 follow-up] Postseason medical clock (src/domain/postseasonMedicalClock.js) still ticks before each playoff game; align it with the regular-season order and test it against box-score game-day rosters.
+- [ ] [S131 follow-up] Questionable game-day odds (audit L3 rung): a Questionable tag currently never costs a game; decide whether it should carry a measured chance to sit.
+- [ ] [S131 note] An elevated player's last injured week now earns an elevation-injury-continuation pension game (first ledger entry in the play-4113-CHI golden scenario); confirm the pay rule intends this.
+- [ ] [SIL:131] Assign a new test file to a shard in the same edit that creates it; shard-coverage only caught it in the full suite.
+- [ ] [SIL:131] The startup canon sync drops gitignored scripts/run-tests.mjs and scripts/check-last-session-summary.mjs into this repo, which redden two studio gates locally; remove them before the suite (or fix the sync's exclusions in studio-ops).
+- [ ] Unselected S131 candidates: axe accessibility tests, minifying shipped modules, a faster first week, community API fog hardening.
+
 ## S130 Wave status
 
 Session Intent: Complete five selected improvements, their authorized technical release and full closing records.
@@ -114,72 +130,7 @@ Historical release dependency — resolved by C2: candidate `1c73ef6` passed all
 
 Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Session 9: test coverage (2026-04-13).
 
-## S121 Wave status
-
-- [x] Wave 1 — Full startup and fresh nine-axis audit; native goal bound to S121.
-- [x] Wave 2 — Four selected source outcomes and their focused, independent and rendered checks.
-- [x] Wave 3 — Exact-candidate hosted checks, production Pages/API deployment/readback and canonical closeout.
-
-## Now
-
-- [ ] [SIL:121] Before the next candidate, reconcile implemented audit statuses and lifecycle readiness before cutting its SHA.
-- [ ] [SIL:121] Bind reviewed capture hashes at capture time through the canonical image ledger.
-
-- [x] S120: Make the release-gate recovery specs deterministic. — DONE: tests-ui/helpers/static-client.js revealTable converges on an open section (the setup page opens Saved Leagues itself when deferred saves arrive, and a read-then-click closed it under CI load: Pages39968879574, 2 of 268 red); tests-ui/reveal-table-race.spec.js reproduces the interleaving, red with the old helper.
-- [x] S121: Shared public footer gutter implemented and independently reviewed; 56 immutable desktop/mobile and dark/light captures pass at 5410b8b5, stable staging 14/14. Production readback and hosted four-view inspection pass.
-- [x] S121: Public evidence now scrolls through lazy content and waits for decoded images; delayed-image browser regression passes. Mobile moment-card clipping did not reproduce: 24 baseline captures passed and the title/action were visibly present; no speculative fix.
-- [x] S121 Wave 3: Exact candidate5410b8b5 CI, staging, Pages/API promotion, provider rollback, production readback and performance verified; canonical closeout 37cac258 published and verified.
-- [x] S121: Backend errors preserve bounded, credential-redacted remote diagnostics, including ANSI/NUL normalization regression coverage. Host pinning and non-retry of admission/application failures remain enforced.
-- [x] S119: Fix the expanded-mobile Desk/card right-edge clipping at its source. — DONE: shared .team-mode-switch fit-content + wrap; tests-ui/mobile-desk-width.spec.js (390/320 px, negative control red); live on production c0ce44b4.
-- [x] S119: Make the passer rating one NFL formula across season tables, box score and client. — DONE: reference lines 99.3/158.3/115.1/0; golden s119-v3 moved only seasonTable.passing; live on production c0ce44b4.
-- [x] S119: Restore the studio shard: register AGENT_MEMORY.md as a rollable ledger. — DONE: CI39900408127 all seven jobs green.
-- [x] Next: publish a player-facing release note for S119 (Desk on phones; passer ratings now match the box score and old saves read about 10 points higher for strong seasons). Copy changes break harnesses: grep tests-ui specs/helpers and responsive-evidence before committing, and it needs its own exact candidate. S120: 2026-10-23 note on status.html; no tests-ui or responsive-evidence copy dependence; public tests pass apart from the known ignored-ledger local red.
-- [x] Next: capture-public-qa.mjs ignores PLAYWRIGHT_CHANNEL (responsive-evidence honors it); align them in the next code candidate. S120: both honor it; test/studio-protocol-smoke.test.js asserts every capture launch, red on the bare launch.
-- [x] S122 supersedes the former Founder file-removal request: preserve the three ignored local files and validate the exact tracked checkout in isolation. The clean tracked authority contract passes; local-only fixtures are not deployed or staged. No Founder removal action is required for this release. Tool-version compatibility is a recipient-owned follow-up.
-- [x] S118: Verify smoother measured characters, articulated movement and refined faces against compatibility, mesh-memory and rendered-pixel checks. — DONE: exact candidate CI, hosted visual/continuity and production verification recorded in reports/s118-candidate-ci.json and current release authority.
-- [x] S118: Verify saved family background/coloring and relationship narratives in both draft paths and browser restoration. — DONE: exact candidate CI, hosted visual/continuity and production verification recorded in reports/s118-candidate-ci.json and current release authority.
-- [x] S118: Finish the complete test inventory, inspect final captures, verify the exact candidate on staging and hosted checks, deploy Pages/backend, and record readback and rollback evidence. — DONE: exact candidate CI, hosted visual/continuity and production verification recorded in reports/s118-candidate-ci.json and current release authority.
-
-### Later — existing independent work
-
-- [ ] Observe the first real opted-in cohort and verify freshness, suppression, deletion and abuse ceilings without manufacturing activity.
-- [ ] Reconcile launch authority only from delivered/reply-as email evidence, SHA-bound founder launch approval, and the authoritative lifecycle registry.
-
-
-<!-- s112-closeout:tasks -->
-
-<!-- s112-closeout:cpu-market-evidence-correction -->
-### S112 CPU-market evidence correction
-
-S112 evidence correction to the older CPU–CPU market task: test/session111-cpu-trade-market.test.js proves a matched-seed single-week enabled/disabled transaction control, plus a separate three-year market-volume bound. It does not contain a matched three-season disabled-market comparison. The older wording remains historical and is superseded by this correction.
-<!-- /s112-closeout:cpu-market-evidence-correction -->
-
-## S117 carried scope — explicit partial closeout
-
-- [x] Now: fix the reproducible 16.2 MB save-payload regression without raising the 16 MB bar; rerun current required checks. — CLOSED S119 by measurement, not by a fix: the six-week play snapshot (seed 99, BUF) is 15.305 MB raw against the unchanged 16 MB bar, and test/save-payload-budget.test.js passes. Headroom is only 4.3%; players are 8.7 MB (2,208 × 3.85 KB, profile 2.5 MB) and the game archive 5.4 MB.
-- [ ] Next: restore payload headroom before the next per-player field lands. The nine profile recipes each repeat the same face seed; gzip absorbs that in storage, so compacting it needs a snapshot migration and pays off only in raw-size headroom. Measure again before choosing.
-- [ ] Now: finish whole-person appearance craft and clear the existing visual defect through rendered evidence.
-- [ ] Next: complete remaining NFL policy scope and a fresh source-bound 30-season managed GM verification.
-- [ ] Next: exact-candidate stable staging, release gates, authorized production promotion and readback.
-- [ ] Deploy deferred: test and visual gates nonpassing; no credential/permission dependency.
-- Scoped demographic research and plan expansion complete; full demographic runtime calibration remains partial.
-- Prototype trunk source preserved outside release files. No selected audit item newly labeled wholly shipped at closeout. [SIL:117] preserve historical accepted fixture authority separately from current deliberate anatomy changes.
-
 <!-- ledger-roll:pointer -->
 ---
 
 Older entries are retained verbatim in `context/archive/TASK_BOARD.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-
-## 2026-11-13 — S129 post-closeout recovery checkpoint
-
-Recovered source commits f4179d69 and 74683a57 repair the depth chart: text wraps within the desktop panel across fonts, phone player names retain readable width, and snap share 100 remains visible. The recovery browser spec now explicitly supplies the server-only runtime option stripped from the Pages build. These changes were committed after the prior S129 closeout and were missing from its write-back.
-
-Uncommitted S129 staging authority and visual captures are preserved as prior-session evidence, not accepted as a completed release. Historical screenshot deletions are also preserved pending reference-integrity review. The native full test runner is currently live; no passing suite, new production deployment or completed recovery closeout is claimed. Remote main has an additional dependency update b5341a2c, to reconcile after preserving the recovery boundary.
-
-The subsequent founder request requires a new full session after recovery; prior completion is separate evidence.
-
-
-### S129 recovery verified checkpoint
-
-S129 recovery: the two depth-chart fixes are written back; current Studio398/398 and recovered application hosted CI7/7 are separately verified. Frontend staging/production74683a57 provenance14/14 each is verified, while API health still reports812fd52b. Screenshot retention and local authority repairs are recorded. Full new arc and release parity remain pending. SIL remains532/1000; no new score or player-outcome measurement. Earlier failed runs remain historical; no new founder creative direction.

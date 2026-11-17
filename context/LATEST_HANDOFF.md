@@ -1,11 +1,9 @@
-# Latest Handoff — Session 130 → Session 131
+# Latest Handoff — Session 131 → Session 132
 
-Five selected outcomes are verified: coaching recovery, consent revocation, concurrent availability facts, recoverable Co-general manager exports and complete bounded responsive evidence. Current frontend/API source 67ab750b40bad7751a5374b6f5ce382f5d4a7548; acceptance: reports/s130-c4-release-acceptance.json. Exact-source CI7/7, runtime1198/1198, browser344 passed/3 declared pre-existing exclusions, hosted327 records (324 PNGs and3 authority records). Staging/production each passed native14/14, four worker journeys with44 reviewed images and five-run desktop/mobile performance. API database ready, routing/mounts preserved and C2 rollback retained. Technical release only; public launch, actual-player and financial outcomes are unmeasured.
+Two selected outcomes are verified and released. Injuries now cost the number of team games their label states: regular-season recovery ticks after that week's games, after both injury sources roll, and kickoff readiness reads live injury state. A live Questionable tag reads as a game-time status on the roster, depth chart (amber) and player profile. Golden master adopted as s131-v4 (docs/GOLDEN_BASELINE_S131.json); S119/S118/S116 fixtures byte-identical.
 
-Visual collection260 preserves all168 earlier entries and adds92:80 current game images,8 current note images and4 C2 before-note images. The current C4 subset88 is reports/s130-c4-release-visual.json. Historical C2 receipt and its exact168-image snapshot remain reports/s130-release-acceptance.json and reports/s130-c2-visual-snapshot.json; their source boundaries remain intact.
+Frontend and API source 0c6fa04ca73fe6da1c0415d3a09de686826e245e, artifact d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e. Acceptance: reports/s131-release-acceptance.json. Hosted CI 7/7 (run 43801823248); staging 14/14 deploy and 10/10 provenance; production promotion run 43801879516 with 327/327 responsive records; API run 43801882165, database ready; visual receipt 214 captures reviewed, 0 blocking; hosted performance verified; release authority verified; doctor 12/12. Staging rollback 9e8923fa remains available.
 
-SIL545/1000, ten categories. Genome remains unmeasured. Five outcomes shipped; existing backlog remains unselected.
+SIL 537/1000. The local canonical npm test could not finish on this host (CPU contention, then host sleep); per-shard local runs plus the hosted exact-SHA CI are the evidence, and every local red was classified in the acceptance report.
 
-These closing records are valid after their containing commit passes final checks and is confirmed on remote main.
-
-Remaining closeout guards: final Studio metadata/security, independent closing review, containing main publication/readback, signed impact and owned cleanup.
+Next: align the postseason medical clock (it still ticks before each playoff game), decide on Questionable game-day odds, and confirm the elevation-injury-continuation pay consequence. Technical release only; no public launch or lifecycle change is claimed.

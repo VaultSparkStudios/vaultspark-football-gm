@@ -2057,3 +2057,29 @@ Process quality stays reduced: the session started a candidate without reading m
 
 - [SIL] Read CI on main at /start; a docs-only closeout can redden the next candidate's gate.
 - [SIL] Measure a layout defect with a min-content probe before choosing a fix; the cause was one widget, not the column.
+
+## 2026-10-23 — Session 120 — Tell the player what moved, and give a flaky gate its cause
+
+SIL v3.0: **863 / 1000** (Dev Health 93, Creative Alignment 90, Momentum 78, Engagement 83, Process Quality 70, Cross-Repo Coherence 89, Security Posture 92, Ecosystem Integration 84, Capital Efficiency 95, Automation Coverage 89). Intent outcome: Achieved for the four selected outcomes, live on production Pages 207159ea; partial for "fully deploy", because the backend remote step failed (exit 75) and the API stays at c0ce44b4. Velocity: 4 selected outcomes plus one unplanned release blocker. Debt: ↓ a recurring unexplained recovery-case failure now has a cause and a deterministic guard; ↑ one recorded footer defect and two capture gaps, all pre-existing. These are engineering assessments, not measured player retention.
+
+Process quality rises: CI on main was read at /start, every fix carries a negative control, and both reviews ran with fresh context. It stays below 75: the first candidate spent a full release cycle on a race that S118's closeout had already shown and nobody chased. Coherence dips because Pages and the API now run different revisions.
+
+- [SIL] When a gate fails on a case CI passes on the same SHA, find the race before the next candidate; "flaky" in a record is a cause not yet found.
+- [SIL] A visual receipt's "no broken layout" needs a measurement on phones (left/right gutter), not only a look; the footer gutter defect survived a full S119 inspection.
+
+## 2026-10-24 — Session 121 — Reliable deployment and visible footer repair
+
+SIL v3.0: **864 / 1000** (Dev Health 94, Creative Alignment 90, Momentum 79, Engagement 83, Process Quality 66, Cross-Repo Coherence 89, Security Posture 93, Ecosystem Integration 84, Capital Efficiency 95, Automation Coverage 91). Intent outcome: Achieved for four selected outcomes and exact-candidate frontend/API deployment; closeout publication finalizing. Velocity:4 selected outcomes. Debt: ↓ four reproduced gaps; broader historical debt remains. Engineering judgement only; player retention, cohort growth, capacity and full physical-device readiness are unmeasured.
+
+Top win: frontend/API source identities agree and readable redacted SSH evidence survives failures. Gap: implemented audit items stayed pending in the first candidate; authoritative stage readiness was reconciled late. Process Quality drops4 from70; total rises1 from863.
+
+Brainstorm: pre-candidate audit reconciliation; capture-time hash-ledger binding; lifecycle-aware local profile resolution. Commit the first two as future [SIL] tasks; the third belongs to the control-plane owner. No extra implementation is authorized by this brainstorm.
+
+- [SIL] Reconcile audit execution statuses and stage readiness before cutting the candidate, not after a hosted gate rejects stale prose.
+- [SIL] Bind reviewed image hashes through the canonical ledger when captured; retention and immutable provenance must agree.
+
+IGNIS note: Four bounded fixes reached exact-source production; preserve the initial failed candidate and late readiness reconciliation as process evidence instead of laundering them into a clean run.
+
+S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main; frontend/API5410b8b5 remain verified. Ark 01K5LVUDRP9C130E63647C64C9 shipped. The containing receipt-only commit must be verified on origin/main before native goal completion.
+
+S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main; frontend/API5410b8b5 remain verified. Ark 01K5LVUDRP9C130E63647C64C9 shipped. The containing receipt-only commit must be verified on origin/main before native goal completion.

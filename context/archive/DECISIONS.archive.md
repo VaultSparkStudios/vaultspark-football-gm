@@ -1637,3 +1637,19 @@ Use the native bounded closeout ceremony because shared autopilot child scripts 
 - A red main blocks every release. Register an accumulating ledger the session it crosses the population gate; never raise the threshold.
 - Do not commit a script change after a staged candidate to fix an evidence tool: run a reviewed .cache copy, so HEAD stays covered by the publication.
 - A visual receipt inherits review only from byte-identical images of an earlier reviewed receipt; none qualified, so all 214 were inspected.
+
+## 2026-10-23 — S120 — Announce what changed in a player's own save, and fix a flaky gate rather than rerun it
+
+- The S119 passer-rating change moves numbers in existing saves, so the note states the direction and range with its exception instead of a single figure; a reviewer's recomputation set the wording.
+- Weekly conference tables come from the sport pack, like schedule and postseason already did. Conference display names stay a separate step: choosing fictional names carries IP weight and the AFC/NFC ids are load-bearing in test ids.
+- The Pages release gate failed a recovery case that CI passed on the same SHA. It was fixed at its source (the helper's read-then-click raced the page's own auto-open) with a deterministic reproduction, not rerun until green; the fix is a new candidate.
+- The backend remote deploy returning exit 75 twice is recorded as a failure with the live API's real revision; it is not reported as deployed, and host diagnosis is left to the founder because this session was not permitted to read the host.
+- The footer-gutter defect found by visual inspection is pre-existing and cosmetic; it is recorded for its own candidate instead of starting a third release cycle.
+
+## 2026-10-24 — Session 121 — Exact deployment and bounded evidence
+
+Preserve source identity5410b8b5 across staging, CI and production. Four audited fixes pass; receipt-only closeout descendants use the existing publication-delta contract. Normalize diagnostic control bytes before credential redaction. Wait for actual lazy image decode rather than a fixed delay. Initial audit-status error and late FORGE/FB readiness reconciliation remain recorded and reduce process scoring. Shared autopilot has foreign-root writers, so execute the subject-correct project-native closeout gates. Existing founder commit/push/deploy authorization is reused; no hook bypass, force push, public launch or lifecycle change.
+
+S121 closeout verification: the clean tracked-tree Studio run passed379/380, exposing an unparseable handoff heading. Corrected the title to the existing Session121 Closeout contract; all19 affected authority checks then passed. Preserve both runs; no application or test change and no manufactured380-pass rerun claim.
+
+S121 closeout verification: the clean tracked-tree Studio run passed379/380, exposing an unparseable handoff heading. Corrected the title to the existing Session121 Closeout contract; all19 affected authority checks then passed. Preserve both runs; no application or test change and no manufactured380-pass rerun claim.

@@ -6,22 +6,6 @@ Public-safe decisions only. Detailed internal decision history is maintained pri
 
 > Older entries S112 live verbatim in `context/archive/DECISIONS_S112-S112.md`.
 
-## 2026-10-23 — S120 — Announce what changed in a player's own save, and fix a flaky gate rather than rerun it
-
-- The S119 passer-rating change moves numbers in existing saves, so the note states the direction and range with its exception instead of a single figure; a reviewer's recomputation set the wording.
-- Weekly conference tables come from the sport pack, like schedule and postseason already did. Conference display names stay a separate step: choosing fictional names carries IP weight and the AFC/NFC ids are load-bearing in test ids.
-- The Pages release gate failed a recovery case that CI passed on the same SHA. It was fixed at its source (the helper's read-then-click raced the page's own auto-open) with a deterministic reproduction, not rerun until green; the fix is a new candidate.
-- The backend remote deploy returning exit 75 twice is recorded as a failure with the live API's real revision; it is not reported as deployed, and host diagnosis is left to the founder because this session was not permitted to read the host.
-- The footer-gutter defect found by visual inspection is pre-existing and cosmetic; it is recorded for its own candidate instead of starting a third release cycle.
-
-## 2026-10-24 — Session 121 — Exact deployment and bounded evidence
-
-Preserve source identity5410b8b5 across staging, CI and production. Four audited fixes pass; receipt-only closeout descendants use the existing publication-delta contract. Normalize diagnostic control bytes before credential redaction. Wait for actual lazy image decode rather than a fixed delay. Initial audit-status error and late FORGE/FB readiness reconciliation remain recorded and reduce process scoring. Shared autopilot has foreign-root writers, so execute the subject-correct project-native closeout gates. Existing founder commit/push/deploy authorization is reused; no hook bypass, force push, public launch or lifecycle change.
-
-S121 closeout verification: the clean tracked-tree Studio run passed379/380, exposing an unparseable handoff heading. Corrected the title to the existing Session121 Closeout contract; all19 affected authority checks then passed. Preserve both runs; no application or test change and no manufactured380-pass rerun claim.
-
-S121 closeout verification: the clean tracked-tree Studio run passed379/380, exposing an unparseable handoff heading. Corrected the title to the existing Session121 Closeout contract; all19 affected authority checks then passed. Preserve both runs; no application or test change and no manufactured380-pass rerun claim.
-
 ## 2026-10-25 — Session 122 — Destination and receipt authority
 
 Use real existing destination tabs/targets for all four Focus actions and one shared League news route for desktop/mobile. Prove generated actions, visible focus and reload in the actual browser. Fresh source-bound direct receipts alone authorize current totals; prior-session tests come from the matching handoff for both structured and string cards, with wrapping that preserves limitations. Rejected f21512d2 exceeded the boot target; the first hosted harness rejected the valid /game?resume=tab route. fe4f0672 local runtime measured 1058/1060, with 2 historical-comment contract failures: Locally reproduced source regression: boot-budget header trim removed two breakpoint-history phrases required by tablet navigation contracts. Restoring the phrases passed 34/34 focused checks, executable behavior unchanged; corrected boot bytes 648820/650000, target unchanged. b2da78a8 was superseded before publication. Later 26616ed9 Studio measured 387/388: New logging regression fixture contained a direct node:child_process import inside its preload string; the tree guard forbids native imports outside safe-spawn. The approved injection-seam/shared-main correction passed 5 runner plus 2 guard checks, 0 tree violations; final isolated Studio is 388/388. Bounded GET failures remain preserved. First desktop LCP median 2100ms exceeded 1800ms; 2 immutable controls and exactly 1 predeclared stable-origin confirmation passed without sample exclusions or threshold changes. Transport/scheduling variance is supported, causality unproven. Final-source native five-run staging medians: desktop 912ms, mobile 1172ms. Evidence: reports/s122-initial-candidate-failure.json, s122-runtime-gate-failure.json, s122-runtime-correction-review.json, s122-studio-gate-failure.json and s122-performance-investigation.json; audit releaseAttempts preserves every rejected/superseded identity. Final accepted source bd60d3dd387060a2afcf2b974fc27f1e57e22394 is proven separately; no timeout, budget or gate was weakened. Exact source bd60d3dd387060a2afcf2b974fc27f1e57e22394 and artifact 9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958 bind technical release evidence. Receipt-only closeout descendants require separate publication-delta acceptance. Existing launch/S117 holds remain. No hook bypass or force push is authorized by this writer.
@@ -143,12 +127,6 @@ Playing style lives in src/domain/playingStyle.js and is projected onto DTOs. Th
 
 Release deferred: main carries the code, and production is unchanged (a main push never republishes production). Staging verification and promotion are left for a session that can run the full release protocol.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-
 ## 2026-11-13 — S129 post-closeout recovery checkpoint
 
 Recovered source commits f4179d69 and 74683a57 repair the depth chart: text wraps within the desktop panel across fonts, phone player names retain readable width, and snap share 100 remains visible. The recovery browser spec now explicitly supplies the server-only runtime option stripped from the Pages build. These changes were committed after the prior S129 closeout and were missing from its write-back.
@@ -177,3 +155,13 @@ Five selected improvements and the exact technical release are verified. Final c
 
 
 Current C4 follow-through accepted (same S130): source 67ab750b40bad7751a5374b6f5ce382f5d4a7548, matching staging/production frontend and API verified by reports/s130-c4-release-acceptance.json; CI7/7, browser344 passed/3 exclusions and327 responsive records. Current C4 images88; mixed collection260. C2 evidence remains historical. No new scored session or selected outcome. These closing records are valid after their containing commit passes final checks and is confirmed on remote main.
+
+
+## 2026-11-16 — Session 131 — The injury clock counts games served
+
+Regular-season recovery ticks once per elapsed week after that week's games, after both injury sources (generateWeekEvents and rollGameInjuries) have rolled; between weeks, weeksRemaining is the number of team games still to miss under the standard plan, and a bye counts as a served week. Kickoff readiness reads live injury state, with no pre-healed preview. The headless test-only simulator keeps its pre-game tick; the postseason clock is unchanged and is a recorded follow-up. A live Questionable tag (weeksRemaining 0) is a game-time status that does not by itself keep a player out, labelled once in public/lib/injuryStatus.js; other zero-week injuries still read as recovered. Consequences accepted: an elevated player's last injured week now earns an elevation-injury-continuation pension game, and league-wide results drift (golden master s131-v4, S119/S118/S116 byte-identical). Frontend and API source 0c6fa04ca73fe6da1c0415d3a09de686826e245e, artifact d45e55a7; hosted CI 7/7 (run 43801823248); staging 14/14 and 10/10 provenance; production promotion run 43801879516 with 327/327 responsive records; API database ready; release authority verified; doctor 12/12; reports/s131-release-acceptance.json. Technical release only.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

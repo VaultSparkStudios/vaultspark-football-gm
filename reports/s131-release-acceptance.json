@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "engineering-release-acceptance",
+  "session": 131,
+  "observedAt": "2026-11-16T07:30:00.000Z",
+  "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
+  "changeRevision": "970e55026e11ec9451fd1d8411718f2c3e6dd3f9",
+  "artifactDigest": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e",
+  "verified": true,
+  "technicalReleaseVerified": true,
+  "launchApproved": false,
+  "selectedOutcomes": ["injury-clock-truth", "questionable-status-visible"],
+  "probe": "reports/s131-injury-clock-probe.json",
+  "independentReview": "Closeout review verdict fix, 4 findings fixed before the closeout commit: release note scoped to regular season with byes and unchanged playoff recovery; probe figures reproduced and recorded; local core count clarified; backend authority re-derived at the final reconcile.",
+  "ci": {
+    "ok": true,
+    "sha": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
+    "runId": 43801823248,
+    "attempt": 1,
+    "lane": "hosted-exact-sha",
+    "requiredJobs": ["unit-shards (core)", "unit-shards (runtime)", "unit-shards (sim:contract)", "unit-shards (sim:realism)", "unit-shards (long)", "unit-shards (studio)", "browser-gates"],
+    "jobsPassed": 7,
+    "shards": {
+      "core": { "tests": 777, "passed": 772, "failed": 0, "note": "5 skipped/todo cases declared in the shard, counted in neither pass nor fail" },
+      "runtime": { "tests": 1198, "passed": 1198, "failed": 0 },
+      "sim:contract": { "tests": 271, "passed": 271, "failed": 0 },
+      "sim:realism": { "tests": 9, "passed": 9, "failed": 0 },
+      "long": { "tests": 3, "passed": 3, "failed": 0 },
+      "studio": { "tests": 441, "passed": 441, "failed": 0 }
+    },
+    "browser": { "passed": 348, "failed": 0 }
+  },
+  "localSuite": {
+    "note": "Local canonical npm test could not complete on this host: the first run hit the 90-minute core timeout under 100% CPU contention from other sessions (736 passed, 0 failed when killed); a later rerun was stretched by host sleep. Per-shard runs on the candidate tree: core 777/777 (local run reported tests 777, pass 777, fail 0; hosted CI skips 5 environment-gated cases), runtime 1198/1198, sim-realism 9/9, long 3/3, studio 441/441, and the four edited sim-contract files 25/25 (including the byte-identical golden master). The full sim-contract shard is proven by hosted CI above.",
+    "failuresClassified": [
+      { "test": "football golden master byte-identical", "class": "self — intended behavior change", "resolution": "adopted s131-v4 baseline; S119/S118/S116 byte-identical; docs/GOLDEN_BASELINE_S131.json" },
+      { "test": "whole-season delegates without changing profiles", "class": "self — exposed seed-fragile invariant", "resolution": "sanctioned family-anchor change allowed only when a relative exists in the league or upcoming draft class" },
+      { "test": "every test file in exactly one shard", "class": "self", "resolution": "test/injury-clock-truth.test.js assigned to sim-contract" },
+      { "test": "project-authority-contract; innovation-pack marker scan", "class": "sibling-drift", "resolution": "removed gitignored scripts/run-tests.mjs and scripts/check-last-session-summary.mjs dropped by the startup canon sync; never in the repo" }
+    ]
+  },
+  "staging": {
+    "origin": "https://staging.playfranchisearchitect.com",
+    "deploymentId": "f298f158-2746-4b59-94ad-9d4a25515bb0",
+    "deployProvenance": "14/14 verified",
+    "releaseProvenance": "10/10 verified (reports/s131-staging.json)",
+    "authorityReceipt": "reports/s131-staging-authority.json",
+    "smoke": "lib/injuryStatus.js and depth-status--questionable served",
+    "rollback": { "previousDeploymentId": "9e8923fa-f107-4cc0-9d29-2215a04b2a57", "available": true }
+  },
+  "production": {
+    "origin": "https://playfranchisearchitect.com",
+    "promotionRunId": 43801879516,
+    "promotionJobs": "gate x4, build, responsive-capture x3, publish, deploy — all success",
+    "releaseProvenance": "10/10 verified (reports/s131-production.json)",
+    "health": "/_health reports sourceRevision 0c6fa04c and artifact d45e55a7"
+  },
+  "responsive": {
+    "runId": 43801879516,
+    "requiredRecords": 327,
+    "verifiedRecords": 327,
+    "pngImages": 324,
+    "visualReceipt": "docs/visual-qa/LATEST.json — 214 bound captures reviewed (contact sheets + touched surfaces at full resolution); blockingDefectsOpen 0"
+  },
+  "performance": { "receipt": "docs/performance/LATEST.json", "status": "verified", "origin": "https://playfranchisearchitect.com" },
+  "api": {
+    "deployRunId": 43801882165,
+    "ok": true,
+    "database": "ready",
+    "service": "franchise-architect-community-stats",
+    "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e"
+  },
+  "authority": {
+    "releaseAuthority": "verified, 7/7 checks, source and publication 0c6fa04c",
+    "stagingAuthority": "0c6fa04c",
+    "doctor": "12/12, blockingFailing 0"
+  },
+  "boundary": "Technical release only. Public launch, player outcomes and the postseason medical clock (still ticks before each playoff game) are not claimed."
+}

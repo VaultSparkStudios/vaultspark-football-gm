@@ -1,21 +1,9 @@
 <!-- truth-audit-version: 1.1 -->
 # Truth Audit
 
-Overall status: S130 five selected technical outcomes and matching frontend/API release verified at67ab750b; closing publication remains guarded. Broader readiness, player, financial and adoption outcomes remain unmeasured.
-Last reviewed: 2026-11-13
+Overall status: S131 two selected technical outcomes (injury clock, Questionable status) and matching frontend/API release verified at 0c6fa04c. Broader readiness, player, financial and adoption outcomes remain unmeasured.
+Last reviewed: 2026-11-16
 Public-safe summary only. Sensitive verification notes are maintained privately.
-
-## 2026-10-23 — S120 — A "flaky" recovery case had a cause
-
-- S119 recorded that S118's closeout commits failed CI's browser job on "one recovery case" without a cause. S120's Pages gate failed two client-session-recovery cases the same way; the cause is a race between tests-ui revealTable's read-then-click and setup.js opening Saved Leagues when deferred saves arrive. Fixed with a deterministic reproduction; the S118 failure was very likely the same race (not re-run to prove it).
-- The S119 visual receipt said "no capture shows broken layout"; S120's inspection found the shared public footer has no left gutter on 11 of 14 public pages. It predates S120 (footer untouched) and was present in S119's captures; recorded, not fixed.
-- Backend: the production API reports c0ce44b4, not S120's candidate. Pages production is 207159ea. The two deployed identities now differ, and both are recorded as observed.
-
-## 2026-10-24 — Session 121 — Release identity and evidence boundaries
-
-Four selected S121 outcomes are implemented and live at5410b8b5: persistent session start anchor, sanitized SSH diagnostics, shared footer gutter and decoded lazy-image captures. Exact CI7/7; browser271 passed/3 skipped; staging and production14/14; Pages/API health, rollback and hosted performance verified. Public launch remains HOLD. Twelve readiness areas retain eleven partial states.64 hash-bound images reviewed; production provenance14/14, provider rollback available. First failed candidate and overlapping-load performance sample preserved. Historical1802-test receipt is not re-dated; current unit aggregate unknown, exact CI7/7 and browser271/3 separately measured. No new creative direction; private CDR untouched. Final closeout publication remains a separate verified readback.
-
-S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main; frontend/API5410b8b5 remain verified. Ark 01K5LVUDRP9C130E63647C64C9 shipped. The containing receipt-only commit must be verified on origin/main before native goal completion.
 
 ## 2026-10-25 — Session 122 — Source-bound startup and release evidence
 
@@ -89,12 +77,6 @@ Completion: reports/s128-closeout-completion.json. No self-attestation of the fi
 
 A cut-off run left uncommitted work, a startup brief and an audit claiming S129, but no lock and no closeout. Every probe stayed green because the tree simply looked dirty. The recovery verified that work before editing, committed it alone (c2e5a5ca), and kept the same session number, so no number is skipped or reused. Main (51701878 and its closeout commit) is ahead of production, which still serves S128's 812fd52b; no S129 change is described as deployed. The canonical core shard timed out on a saturated host after 736 passed and 0 failed. That is recorded as partial, not as a green suite.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-
 ## 2026-11-13 — S129 post-closeout recovery checkpoint
 
 Recovered source commits f4179d69 and 74683a57 repair the depth chart: text wraps within the desktop panel across fonts, phone player names retain readable width, and snap share 100 remains visible. The recovery browser spec now explicitly supplies the server-only runtime option stripped from the Pages build. These changes were committed after the prior S129 closeout and were missing from its write-back.
@@ -124,3 +106,13 @@ S129 recovery: the two depth-chart fixes are written back; current Studio398/398
 Exact C2 required CI7/7 passed. Its browser run passed344 with3 declared pre-existing exclusions. The separate hosted responsive inventory verified327 required records across mobile, tablet and desktop in both themes. Staging and production frontend checks passed14/14 per origin, with the same C2 API running and database ready. Selected worker journeys, image reviews and five-run performance evidence are recorded in reports/s130-release-acceptance.json. These scopes are not summed.
 
 Source 7a54ba295296c751114b0b0a144bdb8adade2dd5, artifact 0a058bf0f49f9441e70cdad0b50cb7fabba2a103baa3c8d9e516c433a29429a7, release report reports/s130-release-acceptance.json. C1 failed runtime1196/1197 and the superseding C2 test-only correction remain historical; no failure is relabeled passing. Five selected improvements and the exact technical release are verified. Final containing-commit publication and readback remain pending; no public launch approval is claimed.
+
+
+## 2026-11-16 — Session 131 — Injury clock released
+
+Claims are bound to evidence: the before/after games-missed histogram is an engine probe on seed 131, not a player measurement; the negative control proves both clock tests fail on the pre-fix engine. The local canonical npm test did not complete (CPU contention, then host sleep) and is not claimed; hosted exact-SHA CI 7/7 and per-shard local runs are the suite evidence, with every local red classified (self, intended baseline change, sibling drift) in reports/s131-release-acceptance.json. Frontend and API source 0c6fa04ca73fe6da1c0415d3a09de686826e245e, artifact d45e55a7; hosted CI 7/7 (run 43801823248); staging 14/14 and 10/10 provenance; production promotion run 43801879516 with 327/327 responsive records; API database ready; release authority verified; doctor 12/12; reports/s131-release-acceptance.json. Technical release only.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

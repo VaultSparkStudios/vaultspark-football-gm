@@ -6230,9 +6230,10 @@ export class GameSession {
     // S131 [injury-clock-truth] — a recovery week elapses only for a week the
     // player actually sat out. With the tick before kickoff, an "Out 1W" injury
     // healed before the very next game and every injury cost one game fewer than
-    // its label (probe: 257/300 Out 1W players dressed next game). The tick now
-    // runs after this week's games and before this week's injury rolls; a week
-    // with no games (season end) still elapses here.
+    // its label (probe, seed 131: 297 of 316 Out 1W missed no game;
+    // reports/s131-injury-clock-probe.json). The tick now runs after this
+    // week's games and both injury rolls; a week with no games (season end)
+    // still elapses here.
     if (!weekBlock) this.decrementAvailability({deferAdmittedPay:true});
     this.processWaivers();
     this.runAiTeamMaintenance();

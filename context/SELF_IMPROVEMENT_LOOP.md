@@ -3,40 +3,14 @@
 
 
 <!-- rolling-status-start -->
-Last session: 130 (2026-11-13) | Total: 545/1000 | Velocity: 5 | Debt: →
-Avgs — 3: 536.3 | 5: 535.4 | 10: 554.1 | 25: 746.8 | all: 916.8
+Last session: 131 (2026-11-16) | Total: 537/1000 | Velocity: 2 | Debt: →
+Avgs — 3: 538 | 5: 536.4 | 10: 521.4 | 25: 729.9 | all: 912.4
 Sparkline: ▁▁▁▁▁
-Intent rate: 60% (3/5 last 5)
-SIL delta: 532 → 545 (+13). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 84 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+Intent rate: 80% (4/5 last 5)
+SIL delta: 545 → 537 (-8). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 85 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
 > Older entries S112 live verbatim in `context/archive/SELF_IMPROVEMENT_LOOP_S112-S112.md`.
-
-## 2026-10-23 — Session 120 — Tell the player what moved, and give a flaky gate its cause
-
-SIL v3.0: **863 / 1000** (Dev Health 93, Creative Alignment 90, Momentum 78, Engagement 83, Process Quality 70, Cross-Repo Coherence 89, Security Posture 92, Ecosystem Integration 84, Capital Efficiency 95, Automation Coverage 89). Intent outcome: Achieved for the four selected outcomes, live on production Pages 207159ea; partial for "fully deploy", because the backend remote step failed (exit 75) and the API stays at c0ce44b4. Velocity: 4 selected outcomes plus one unplanned release blocker. Debt: ↓ a recurring unexplained recovery-case failure now has a cause and a deterministic guard; ↑ one recorded footer defect and two capture gaps, all pre-existing. These are engineering assessments, not measured player retention.
-
-Process quality rises: CI on main was read at /start, every fix carries a negative control, and both reviews ran with fresh context. It stays below 75: the first candidate spent a full release cycle on a race that S118's closeout had already shown and nobody chased. Coherence dips because Pages and the API now run different revisions.
-
-- [SIL] When a gate fails on a case CI passes on the same SHA, find the race before the next candidate; "flaky" in a record is a cause not yet found.
-- [SIL] A visual receipt's "no broken layout" needs a measurement on phones (left/right gutter), not only a look; the footer gutter defect survived a full S119 inspection.
-
-## 2026-10-24 — Session 121 — Reliable deployment and visible footer repair
-
-SIL v3.0: **864 / 1000** (Dev Health 94, Creative Alignment 90, Momentum 79, Engagement 83, Process Quality 66, Cross-Repo Coherence 89, Security Posture 93, Ecosystem Integration 84, Capital Efficiency 95, Automation Coverage 91). Intent outcome: Achieved for four selected outcomes and exact-candidate frontend/API deployment; closeout publication finalizing. Velocity:4 selected outcomes. Debt: ↓ four reproduced gaps; broader historical debt remains. Engineering judgement only; player retention, cohort growth, capacity and full physical-device readiness are unmeasured.
-
-Top win: frontend/API source identities agree and readable redacted SSH evidence survives failures. Gap: implemented audit items stayed pending in the first candidate; authoritative stage readiness was reconciled late. Process Quality drops4 from70; total rises1 from863.
-
-Brainstorm: pre-candidate audit reconciliation; capture-time hash-ledger binding; lifecycle-aware local profile resolution. Commit the first two as future [SIL] tasks; the third belongs to the control-plane owner. No extra implementation is authorized by this brainstorm.
-
-- [SIL] Reconcile audit execution statuses and stage readiness before cutting the candidate, not after a hosted gate rejects stale prose.
-- [SIL] Bind reviewed image hashes through the canonical ledger when captured; retention and immutable provenance must agree.
-
-IGNIS note: Four bounded fixes reached exact-source production; preserve the initial failed candidate and late readiness reconciliation as process evidence instead of laundering them into a clean run.
-
-S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main; frontend/API5410b8b5 remain verified. Ark 01K5LVUDRP9C130E63647C64C9 shipped. The containing receipt-only commit must be verified on origin/main before native goal completion.
-
-S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main; frontend/API5410b8b5 remain verified. Ark 01K5LVUDRP9C130E63647C64C9 shipped. The containing receipt-only commit must be verified on origin/main before native goal completion.
 
 ## 2026-10-25 — Session 122 — Restore actionable decisions and evidence truth
 
@@ -248,12 +222,6 @@ Brainstorm: A dead session's tree is evidence. Commit it alone before the first 
 
 Intent outcome: Partial. The selected outcomes reached main with their tests. Release was deferred, and three items shipped at reduced scope as recorded in the audit execution log. Velocity: 4 audit outcomes + 1 recovered outcome.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-
 ## 2026-11-13 — S129 post-closeout recovery checkpoint
 
 Recovered source commits f4179d69 and 74683a57 repair the depth chart: text wraps within the desktop panel across fonts, phone player names retain readable width, and snap share 100 remains visible. The recovery browser spec now explicitly supplies the server-only runtime option stripped from the Pages build. These changes were committed after the prior S129 closeout and were missing from its write-back.
@@ -299,3 +267,31 @@ Five selected improvements and the exact technical release are verified. Final c
 
 
 Current C4 follow-through accepted (same S130): source 67ab750b40bad7751a5374b6f5ce382f5d4a7548, matching staging/production frontend and API verified by reports/s130-c4-release-acceptance.json; CI7/7, browser344 passed/3 exclusions and327 responsive records. Current C4 images88; mixed collection260. C2 evidence remains historical. No new scored session or selected outcome. These closing records are valid after their containing commit passes final checks and is confirmed on remote main.
+
+
+## 2026-11-16 — Session 131 — Injury clock truth
+
+SIL v3.0: **537 / 1000** (Dev Health 88, Creative Alignment 74, Momentum 62, Engagement 47, Process Quality 58, Cross-Repo Coherence 58, Security Posture 64, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 66). Intent outcome: Achieved — /arc with both selected outcomes and the authorized staging and production release. Prior 545; delta -8. Engineering judgment, not measured player, financial or launch outcomes.
+
+Frontend and API source 0c6fa04ca73fe6da1c0415d3a09de686826e245e, artifact d45e55a7; hosted CI 7/7 (run 43801823248); staging 14/14 and 10/10 provenance; production promotion run 43801879516 with 327/327 responsive records; API database ready; release authority verified; doctor 12/12; reports/s131-release-acceptance.json. Technical release only.
+
+Velocity: 2 selected product outcomes, excluding SIL/meta tasks. Debt: →, carried; no new whole-board debt census.
+
+- Dev Health: 88: exact-SHA CI and per-shard local runs support the change; the local canonical suite could not complete on this host.
+- Creative Alignment: 74: injuries now matter for exactly as long as they say, which makes depth and roster decisions real; player response is unmeasured.
+- Momentum: 62: two focused outcomes released end to end; fewer outcomes than S130.
+- Engagement: 47: clearer injury status on three surfaces; activation and retention unmeasured.
+- Process Quality: 58: engine probe before ranking, premise gate before edits, negative control red on the old engine, independent review fixed; the new test file was not assigned to a shard until the full suite caught it.
+- Cross-Repo Coherence: 58: sibling-drift scripts from the startup sync reddened two local gates and were removed; the sync itself is not fixed here.
+- Security Posture: 64: secret scan clean; no security work selected.
+- Ecosystem Integration: 20: project reporting only.
+- Capital Efficiency: 0 proof credit: token and runway efficiency unmeasured; not a finding of poor finances.
+- Automation Coverage: 66: deployment, provenance, responsive inventory and authority reconciliation agent-operated; whole-workflow ratios unmeasured.
+
+- [SIL:131] Future improvement — unselected: Assign a new test file to a shard in the same edit that creates it.
+- [SIL:131] Future improvement — unselected: Remove (or stop the sync from dropping) gitignored studio-ops scripts that redden local gates before running the suite.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

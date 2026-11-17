@@ -2,6 +2,39 @@
 
 Append-only archive of entries rolled out of the live ledger. Verbatim; newest first. See `context/CURRENT_STATE.md` for the working set.
 
+- 2026-10-22: Session 118 selected character/family implementation and production verification complete; closeout commit eb0ed0a6 is published; the final receipt is effective after its ordinary push and remote readback. Measured character v5 contours, garment relief, articulated feet and softer face/eye treatment are integrated into the actual player dossier. Saved height/weight continue to distinguish real roster players. Six athletic studies support motion, pause/resume and reduced motion. Explicit family authority shares racial/background category, heritage and natural pigment channels while retaining individual faces, recorded measurements and football random streams; generated brothers and reload persistence were exercised in the actual default client worker. Exact application candidate 863ea60e61398fa149d0e5715f15341a57337df5; artifact 2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737. CI39796952874 verified all six canonical unit shards and the complete browser job/test step. Pages39797016574 and backend39797029101 promoted the exact candidate. Stable staging14/14 and production14/14 provenance passed; hosted performance passed desktop/mobile. Provider/public source identities match. Previous Pages deployment and API image are available for rollback. Database container, image/start/mount identity and routing files/service identity are unchanged. No aggregate core/runtime case count is invented from truncated TAP output. Characters remain stylized procedural art and movement studies; no photorealism, motion capture, complete physical tissue-mass calibration, physical-device frame-rate or actual-user long-career proof is claimed. Existing expanded-mobile Desk/card right-edge clipping remains recorded and does not obstruct the tested save-restoration controls. Broader S117 benefits/policy and actual-user career work remain outside this selected three-item scope. Technical promotion does not authorize a public launch or lifecycle transition; launch/email holds remain independent.
+<!-- /s118-closeout:state -->
+
+<!-- s116-closeout:state -->
+- 2026-10-04: Session 116 Franchise Architect is becoming a multi-sport platform, and football now runs through a sport pack. Phase 0 added a football golden master, which hashes 70 state sections over two seeded leagues and three seasons, plus a conformance kit every future sport must pass. Phase 1 steps 1–6 moved six seams behind the pack (src/sport/): sport rules, a match engine that returns its stats instead of writing them, the stat schema, the season calendar, the schedule and the postseason. A toy six-team sport already plays a full season through the core with no core edits. Football is byte-identical to the golden master at every step. Source d913b9f9c0043d00131506c0d4271034a15fc169. All six shards green at this commit, run shard by shard and in runtime chunks under host memory pressure (studio 365, sim-contract 122, sim-realism 9, long 3, core 290, runtime 1013). Football golden master identical at every extraction step. Stable staging 14/14 (artifact b4acf986…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37200292923 success, production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Public launch remains HOLD.
+- 2026-10-05: Session 116 addendum, launch path. Cloudflare Email Routing had no rule for football@playfranchisearchitect.com (550 5.1.1). A forward rule to the studio Zoho mailbox was added through the Cloudflare API. Inbound is verified end to end: test (3) was delivered with no bounce, and the founder replied from Zoho. Reply-as football@ (Zoho Send Mail As through Brevo SMTP) is deferred to the founder's custom email studio project. The S0→FB registry transition has green Ladder Court verdicts and a GO packet, but the apply command is founder-only and is still pending. No deployable change since d913b9f; production already serves it.
+<!-- /s116-closeout:state -->
+
+<!-- s115-closeout:state -->
+
+## 2026-11-13 — S129 post-closeout recovery checkpoint
+
+Recovered source commits f4179d69 and 74683a57 repair the depth chart: text wraps within the desktop panel across fonts, phone player names retain readable width, and snap share 100 remains visible. The recovery browser spec now explicitly supplies the server-only runtime option stripped from the Pages build. These changes were committed after the prior S129 closeout and were missing from its write-back.
+
+Uncommitted S129 staging authority and visual captures are preserved as prior-session evidence, not accepted as a completed release. Historical screenshot deletions are also preserved pending reference-integrity review. The native full test runner is currently live; no passing suite, new production deployment or completed recovery closeout is claimed. Remote main has an additional dependency update b5341a2c, to reconcile after preserving the recovery boundary.
+
+The subsequent founder request requires a new full session after recovery; prior completion is separate evidence.
+
+
+### S129 live-state correction
+
+S129 recovery observed identical frontend source 74683a57 on staging and production: native same-origin provenance14/14 each; latest214 capture hashes match. This corrects the historical not-deployed note. Full suite, gameplay, performance, backend parity and full release acceptance remain unverified in this invocation.
+
+
+### S129 recovery validation boundary
+
+Hosted CI43149099119 is complete and successful at recovered application source74683a57: six native unit shards plus browser-gates, seven jobs. The duplicate local full run35768 was intentionally cancelled after this evidence was discovered, without a passing local result. Subsequent propagated tooling/metadata require separate Studio verification. Pages run43149099241 remains failed: responsive capture printed327 complete captures but exceeded its eight-minute Actions step (about8m9s), so upload/publish steps did not run. Existing live frontend provenance is separately verified14/14 per origin, not inferred from this failed run.
+
+
+### S129 recovery verified checkpoint
+
+S129 recovery: the two depth-chart fixes are written back; current Studio398/398 and recovered application hosted CI7/7 are separately verified. Frontend staging/production74683a57 provenance14/14 each is verified, while API health still reports812fd52b. Screenshot retention and local authority repairs are recorded. Full new arc and release parity remain pending. SIL remains532/1000; no new score or player-outcome measurement. Earlier failed runs remain historical; no new founder creative direction.
+
 - 2026-10-03: Session 115 Situational calls let the GM set standing 4th-down (Conservative / By the book / Aggressive) and two-minute (Protect the ball / Standard / Hurry-up) orders from a Desk card. They work through the engine's existing aggression and play-call seams, and the defaults are byte-identical to the previous engine. Rival clubs now draft by GM archetype; the first, strategy-profile version measured as a no-op and was re-keyed. The deploy gate runs as four parallel legs. Source 80125a0a5609be8a9fd7c01399e176ffe1b8e052. Six-shard suite 1765/1765 at this commit (core 290, runtime 1013, sim-contract 85, sim-realism 9, long 3 in one run; studio 365 re-run after the first run was stopped by host memory pressure). Stable staging 14/14 (artifact b4506762…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37141977109 success with the gate as four parallel legs (about 7.5 minutes, was about 23), production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt 214 captures bound to 80125a0. Public launch remains HOLD.
 <!-- /s115-closeout:state -->
 

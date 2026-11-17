@@ -95,6 +95,11 @@
           "at": "2026-11-13T23:10:08.782Z",
           "status": "shipped",
           "note": "L2 verified: GameSession ticks regular-season recovery after the week's games (after both injury sources), and kickoff readiness reads live injury state. Engine probe seed 131 games missed by label — Out 1W 0:297/316 before, 1:279/330 after (residual 0s are team byes); Out 2-3W 1→2; IR(4W) 3→4; IR-Long 6-7→7-8. test/injury-clock-truth.test.js drives real advanceWeek against box-score game-day rosters; negative control: both clock tests fail on the pre-fix engine. Focused 29/29. Independent review: fix, 4 findings, 4 fixed. Postseason clock alignment carried as a follow-up."
+        },
+        {
+          "at": "2026-11-17T03:26:12.143Z",
+          "status": "shipped",
+          "note": "Released at 0c6fa04c (artifact d45e55a7): hosted CI 7/7 run 43801823248; staging 14/14 deploy + 10/10 provenance; production promotion run 43801879516 with 327/327 responsive records; API 0c6fa04c database ready; release authority verified; reports/s131-release-acceptance.json. Technical release only."
         }
       ]
     },
@@ -155,6 +160,11 @@
           "at": "2026-11-13T23:10:08.782Z",
           "status": "shipped",
           "note": "L2 verified: shared public/lib/injuryStatus.js labels Out / Questionable / cleared / unknown; roster column, depth status (amber .depth-status--questionable) and dossier read a live Questionable tag as a game-time status, not a recovery. tests-ui/s131-injury-status.spec.js 4/4 desktop+mobile × dark+light with captures inspected; unit cases in test/injury-clock-truth.test.js. Boot 647702/730000, 0 lazy leaks. Independent review: fix, 3 findings, 3 fixed."
+        },
+        {
+          "at": "2026-11-17T03:26:12.143Z",
+          "status": "shipped",
+          "note": "Released at 0c6fa04c (artifact d45e55a7): hosted CI 7/7 run 43801823248; staging 14/14 deploy + 10/10 provenance; production promotion run 43801879516 with 327/327 responsive records; API 0c6fa04c database ready; release authority verified; reports/s131-release-acceptance.json. Technical release only."
         }
       ]
     }

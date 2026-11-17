@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "Five selected improvements and the current full-term release note are verified on the matching C4 frontend and API.",
-  "nextMilestone": "Next founder-selected beta outcome from the existing backlog.",
+  "currentFocus": "Injury clock and Questionable status released on the matching frontend and API at 0c6fa04c.",
+  "nextMilestone": "Align the postseason medical clock; decide Questionable game-day odds.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-11-16",
+  "lastUpdated": "2026-11-17",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "type": "game",
@@ -22,12 +22,12 @@
     "protocol": "oidc-authorization-code-s256-pkce",
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
-  "truthAuditStatus": "S130 five selected technical outcomes and matching frontend/API release verified at67ab750b; closing publication remains guarded. Broader readiness, player, financial and adoption outcomes remain unmeasured.",
+  "truthAuditStatus": "S131 two selected technical outcomes (injury clock, Questionable status) and matching frontend/API release verified at 0c6fa04c. Broader readiness, player, financial and adoption outcomes remain unmeasured.",
   "truthAuditLastRun": "2026-10-29",
   "ignisScore": 41418,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-11-13",
-  "testSuiteStatus": "C4 exact-source CI7/7; closing Studio441/441; browser344 passed/3 pre-existing exclusions. Counts are separately scoped.",
+  "testSuiteStatus": "S131 exact-source hosted CI 7/7 (core 772+5 declared skips, runtime 1198, sim:contract 271, sim:realism 9, long 3, studio 441, browser 348). Local canonical npm test incomplete on this host; per-shard local runs recorded in reports/s131-release-acceptance.json.",
   "testsPassing": null,
   "testsTotal": null,
   "session8Summary": {
@@ -68,28 +68,28 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 545,
+  "silScore": 537,
   "silCategoriesV3": {
-    "devHealth": 89,
-    "creativeAlignment": 72,
-    "momentum": 68,
+    "devHealth": 88,
+    "creativeAlignment": 74,
+    "momentum": 62,
     "engagement": 47,
-    "processQuality": 57,
-    "crossRepoCoherence": 60,
-    "securityPosture": 66,
+    "processQuality": 58,
+    "crossRepoCoherence": 58,
+    "securityPosture": 64,
     "ecosystemIntegration": 20,
     "capitalEfficiency": 0,
     "automationCoverage": 66
   },
-  "currentSession": 130,
+  "currentSession": 131,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
-    "session": 130,
-    "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
-    "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
-    "acceptance": "reports/s130-c4-release-acceptance.json",
-    "scope": "Current C4 technical release verified; closing-record validity requires final containing-publication checks."
+    "session": 131,
+    "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
+    "artifactDigest": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e",
+    "acceptance": "reports/s131-release-acceptance.json",
+    "scope": "S131 technical release verified on staging, production and API."
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
@@ -116,14 +116,14 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 495,
+  "silHealth": 493,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
     "score": 100,
-    "date": "2026-11-16",
+    "date": "2026-11-17",
     "passing": 12,
     "warning": 0,
     "checks": []
@@ -131,13 +131,13 @@
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-10-29",
-  "lastVerificationAt": "2026-11-13",
+  "lastVerificationAt": "2026-11-16",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.233,
   "entropyLastComputed": "2026-11-13",
-  "lastSessionSummary": "S130 verified five selected improvements, exact-source CI7, complete responsive evidence and matching C4 staging, production frontend and API. Closing publication remains guarded.",
+  "lastSessionSummary": "S131 made injuries cost the games their label states and labelled live Questionable tags honestly; exact-source CI 7/7, staging 14/14, production with 327/327 responsive records and matching API verified at 0c6fa04c.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -155,11 +155,11 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-11-13"
+      "lastChecked": "2026-11-16"
     }
   ],
-  "lastSession": 130,
-  "silLastSession": 130,
+  "lastSession": 131,
+  "silLastSession": 131,
   "bootAmortization": {
     "ratio": 6.78,
     "verdict": "excellent",
@@ -193,16 +193,16 @@
     }
   ],
   "backendDeployment": {
-    "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+    "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
     "verified": true,
-    "verifiedAt": "2026-11-13T18:13:45.145Z",
+    "verifiedAt": "2026-11-16T05:49:49.501Z",
     "deploymentTiming": "Exact deployment switch instant was not measured; verifiedAt is the actual post-deployment native readback time.",
-    "liveHealthSourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
-    "receipt": "reports/s130-c4-release-acceptance.json",
+    "liveHealthSourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
+    "receipt": "reports/s131-release-acceptance.json",
     "transport": "guarded-github-workflow-native-pinned-ssh",
-    "imageBuildRunId": 43425404107,
+    "imageBuildRunId": 43801882165,
     "imageBuildAttempt": 1,
-    "ciRunId": 43425287191,
+    "ciRunId": 43801823248,
     "ciAttempt": 1,
     "hostPinVerified": true,
     "privateKeyCopied": false,
@@ -211,12 +211,12 @@
       "database": "ready",
       "schemaVersion": 1,
       "service": "franchise-architect-community-stats",
-      "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548"
+      "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e"
     },
     "database": "ready",
-    "previousSourceRevision": "7a54ba295296c751114b0b0a144bdb8adade2dd5",
+    "previousSourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
     "previousImage": "ghcr.io/vaultsparkstudios/franchise-architect-football-api:7a54ba295296c751114b0b0a144bdb8adade2dd5",
-    "note": "Actual C4 API runtime and database readiness; database/mount/routing and previous C2 image preserved. No restore drill inferred.",
+    "note": "S131 API health read from the deploy-server step of run 43801882165; database ready.",
     "baseUrl": "https://api-franchise-architect-football.vaultsparkstudios.com",
     "healthUrl": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
     "health": {
@@ -289,12 +289,12 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "afb51638fafad16fbc48afc478888de8c5f69d099fafbb3ee20c1301a456eff6",
-    "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+    "receiptSha256": "da8130e5a6d367bb22938bdda32a087b6cb6216f6a8119b0d669330974393ef5",
+    "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
-      "files": 370,
+      "digest": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e",
+      "files": 371,
       "entries": [
         {
           "path": ".well-known/llms.txt",
@@ -309,12 +309,12 @@
         {
           "path": "404.html",
           "bytes": 4275,
-          "sha256": "e08ed67979d38af94e0ed0e190231bb1256c7cd229b59368fc8d19523d0d7ea7"
+          "sha256": "c4ea452d37f3d868cc4ef1f74bdaf063c6417024ab93a2efd9f55f0bac5c137d"
         },
         {
           "path": "_headers",
           "bytes": 1295,
-          "sha256": "2f2579a4ebaabc25646bfa2e9ec265f3171b03be72df283a42989889bfb887ec"
+          "sha256": "2f844ace832946120b94b009a32402a42b3827ec79b0fdd18920c541b039056f"
         },
         {
           "path": "_redirects",
@@ -324,7 +324,7 @@
         {
           "path": "about.html",
           "bytes": 6379,
-          "sha256": "3df90d72d5a2287cd71fe1c3d282ed53f312634f3473e637b939b07d7596c38d"
+          "sha256": "b522915ef796a71cd5f536ba5cf1ed7a115ae5f3a1e3858cfc29d0552695f98d"
         },
         {
           "path": "agents.json",
@@ -359,7 +359,7 @@
         {
           "path": "contact.html",
           "bytes": 5482,
-          "sha256": "9ef7ebd675ea60fda7b111ba6f2a1ef28a3d79e54b0e6dda99ccdee8e842ae64"
+          "sha256": "4811827ae4c47208e99d93ea40106a43edcab1e3360c033daec5b678277432db"
         },
         {
           "path": "content/claims.json",
@@ -369,7 +369,7 @@
         {
           "path": "faq.html",
           "bytes": 10770,
-          "sha256": "9daad5f25b5897a8103543e39ae69e0b836f622a7cd913c673e303c128016ca2"
+          "sha256": "2e47afc5c0d104e1cc978e7767b4901e4e2e8be285be2aadf99fb4878d8b17c0"
         },
         {
           "path": "favicon.ico",
@@ -384,7 +384,7 @@
         {
           "path": "features.html",
           "bytes": 13816,
-          "sha256": "931ddce400957fd5835df016380d208f0aaec148d3e7546db27f75171a34fded"
+          "sha256": "48103b8e513d603ed5f2508af3034643a38264fab0bfcca06d0965734f05b5b9"
         },
         {
           "path": "footer-manifest.json",
@@ -393,13 +393,13 @@
         },
         {
           "path": "game.html",
-          "bytes": 117155,
-          "sha256": "fb27625ca3b9e889270965ed45f9191a3ba11fe5fcc3e8e4d379a80113edbe8f"
+          "bytes": 117217,
+          "sha256": "5eb3abd9445b02522e6306ee597be094ca64c1575c5c47afdd187b614d739c88"
         },
         {
           "path": "how-to-play.html",
           "bytes": 8526,
-          "sha256": "2dd8a9ed32f67ec02776b0beb6512125bd67b8ea1f34d9358c46ed7ab21eccca"
+          "sha256": "cef06c14f502b0903711c4d07c70761cc8ca9d210a3f13ea10d8d15ef5fc8b2e"
         },
         {
           "path": "images/apple-touch-icon.png",
@@ -463,8 +463,8 @@
         },
         {
           "path": "index.html",
-          "bytes": 462467,
-          "sha256": "29833e9492a445ce57ce67da6e7ecd5b47922a58c0c45968c2c3a640adc031c1"
+          "bytes": 462545,
+          "sha256": "16c26a2d6eca51310f6523a63e7e00d100cba1d397d6535b2260a151adceccd0"
         },
         {
           "path": "lib/achievements.js",
@@ -628,8 +628,8 @@
         },
         {
           "path": "lib/depthBoard.js",
-          "bytes": 18530,
-          "sha256": "5df5aa1fb0fab8b11a0d0a6dea97ad3d2fa92fc57f88cd1f4f229bd13d56c9a8"
+          "bytes": 18721,
+          "sha256": "ce3ad9a6b17c1a5dfc600b8d1ad1a4ed5247481e25bc47f86fbc68e8c2c41867"
         },
         {
           "path": "lib/depthReorder.js",
@@ -780,6 +780,11 @@
           "path": "lib/injurySalaryClaimsPanel.js",
           "bytes": 3151,
           "sha256": "7bccd36c6ce7e1a67447080ec48c3afc17f49c8ce916b7ab1a7fa1f6847a9886"
+        },
+        {
+          "path": "lib/injuryStatus.js",
+          "bytes": 1787,
+          "sha256": "d923f04977592b349c37bd1e8b6554e18ed410792723b3250d2d6ef784618911"
         },
         {
           "path": "lib/launchReadiness.js",
@@ -933,8 +938,8 @@
         },
         {
           "path": "lib/playerProfileNarrative.js",
-          "bytes": 14688,
-          "sha256": "6f3b09786673a807e4044b69b86e2d19b77d51c5882d16fb87e9cbf8de4d4e50"
+          "bytes": 14896,
+          "sha256": "10459e5f9cc8e99d9a968e89e7393d3b0000a62691852f12e02ae8f4c0843ae3"
         },
         {
           "path": "lib/playerSideAppearance.js",
@@ -1123,8 +1128,8 @@
         },
         {
           "path": "lib/tabRoster.js",
-          "bytes": 7673,
-          "sha256": "a74efa53810af15ac7a24bd32a79253a889ed92cc20bd2849cb973fa43646f48"
+          "bytes": 7685,
+          "sha256": "0624c58bb205f1fd8663cfde6bf4db352b7c97eab4281716fd51409a05886610"
         },
         {
           "path": "lib/tabSettings.js",
@@ -1213,18 +1218,18 @@
         },
         {
           "path": "precache-manifest.json",
-          "bytes": 26586,
-          "sha256": "f3384e30d43275b66bd44928f85da5130b1596a80540b7ee563fd3ca60572900"
+          "bytes": 26657,
+          "sha256": "90ce201f768512c1d52fd8d777f80f306ef279b6d7b72ddb00424b7e6c8e7411"
         },
         {
           "path": "press.html",
           "bytes": 10938,
-          "sha256": "bfab5eef15a1989c8751a6861b6f51a571d4698bd65938af95a1cc38663f77b6"
+          "sha256": "c370cbe139685968222f5f551b0e6d10fd0bcad4bba0e094caece3f4bfd9a209"
         },
         {
           "path": "privacy.html",
           "bytes": 7429,
-          "sha256": "6ebf864405ae1ba1a2da0fbd236e46be7a8b3b76374bb0a904f2150ac9bebfd7"
+          "sha256": "39542babbc539a5ec7ce5e7c53f34095ac671f6e1c8705cbb79094533b7c2cb7"
         },
         {
           "path": "public-identity.json",
@@ -1274,7 +1279,7 @@
         {
           "path": "roadmap.html",
           "bytes": 7312,
-          "sha256": "312544a66b3e0a6cd2e9a501cacf27ed4dc5faa0cb792b1a2f8d34c90fe2fd72"
+          "sha256": "63e052bdccee7ce3d04ce80aa022d9fefc4293f28f51adc668920d3c072c6dc7"
         },
         {
           "path": "robots.txt",
@@ -1294,7 +1299,7 @@
         {
           "path": "simulation.html",
           "bytes": 11282,
-          "sha256": "bdb3f9dd6bc77e9bd2350bfa57d2ae361fbaba0567ec0105d6f6484e0b27426e"
+          "sha256": "71b569178caecc678dff1b90cb93b8abdcd0b4d74044650937238de4fd2e3156"
         },
         {
           "path": "site.11e8faac8d.css",
@@ -1588,8 +1593,8 @@
         },
         {
           "path": "src/domain/regularInjuryAccrual.js",
-          "bytes": 5482,
-          "sha256": "ba833af35c66d48a21132f49fe8ee5b3edb936cd3d4d7f41f0b4f095df07fc13"
+          "bytes": 5620,
+          "sha256": "848906f2f370a53a959ad75b0a2dec3ae538c16164565e20a460f2978132b650"
         },
         {
           "path": "src/domain/regularMedicalRecovery.js",
@@ -1748,8 +1753,8 @@
         },
         {
           "path": "src/engine/injurySystem.js",
-          "bytes": 10427,
-          "sha256": "949d909053d844c91badadc9aad7e99f71241f33e3abb022c637902b053787d1"
+          "bytes": 10571,
+          "sha256": "a1d42823c6c43aa27581cd88ef9814c6cc55cf9ba63caa84ca7f8af6086b67d8"
         },
         {
           "path": "src/engine/matchupEdge.js",
@@ -1833,8 +1838,8 @@
         },
         {
           "path": "src/engine/seasonSimulator.js",
-          "bytes": 12819,
-          "sha256": "0d78babe22ab2ccf9d4f0e54c3fde04c91aafe5c0907e6922570d04c907cac49"
+          "bytes": 13051,
+          "sha256": "0a4c35c296fe967bfc7d3379e1536400d8b170cab9328437781f894ce03c93b9"
         },
         {
           "path": "src/engine/situationalCalls.js",
@@ -1878,8 +1883,8 @@
         },
         {
           "path": "src/runtime/GameSession.js",
-          "bytes": 402738,
-          "sha256": "18e35c20c8a99c2c9eb960139a59ef4a3147bfc9c596f3a4e444ee075a6bc73f"
+          "bytes": 402806,
+          "sha256": "2ee2a2d012d66d3433823acbf29ba92de07645cdb70f2a0f4e3909dc9ea50b6d"
         },
         {
           "path": "src/runtime/advanceWeekCommand.js",
@@ -2114,37 +2119,37 @@
         {
           "path": "stats.html",
           "bytes": 8090,
-          "sha256": "3d86514b442ffcf80673e4eae69421d0b130cbfff8e0c88739b84174594f3c1c"
+          "sha256": "afc36833086f076171f8d564d1dcf3d013ea6d895d240bcf8ec6b318948b6cc4"
         },
         {
           "path": "status-archive.html",
           "bytes": 27474,
-          "sha256": "bc00a892e93a285cd727d5c6c830266ec02661ccb0c4f92ce4f591c3c971d691"
+          "sha256": "5cee9d910336bd4bdfe56c118d5bed25019ecc2edea1cf123a4e5540ec6d33d6"
         },
         {
           "path": "status.html",
           "bytes": 6999,
-          "sha256": "f0bf12c37b76a333a5661e51da9a3bfe406358ce8fbe8bc2ea4a15c4bf8288af"
-        },
-        {
-          "path": "styles.a71a5560d9.css",
-          "bytes": 222532,
-          "sha256": "a71a5560d96a9e52ed501a02cb49f8d15b72d50c6286a812af0a9587a3c0d9dd"
+          "sha256": "8500743ab6b22ecb54fc194753cca76d72d1a531d2b0ae09ec448d8c8db88302"
         },
         {
           "path": "styles.css",
-          "bytes": 222532,
-          "sha256": "a71a5560d96a9e52ed501a02cb49f8d15b72d50c6286a812af0a9587a3c0d9dd"
+          "bytes": 222610,
+          "sha256": "ebb030a6df5aacd54521eec388760ff0fa23edb6dab82cb249670fdb09870a15"
+        },
+        {
+          "path": "styles.ebb030a6df.css",
+          "bytes": 222610,
+          "sha256": "ebb030a6df5aacd54521eec388760ff0fa23edb6dab82cb249670fdb09870a15"
         },
         {
           "path": "sw.js",
-          "bytes": 13210,
-          "sha256": "701fba7fe1fda4eedf2e7ea0eeef34ae27250cd524b3a9e585043a6716acc133"
+          "bytes": 13234,
+          "sha256": "9ec9d64ad8054f8532114c476629ec0d156db1855fa8d99e707511ca6677439e"
         },
         {
           "path": "terms.html",
           "bytes": 6025,
-          "sha256": "0e9358a2544b768dc383a2fbfae7206717ae29e41f0f737f578df8ee6b93e8b6"
+          "sha256": "3fbc62fd006a1e0cd0cffc9a34bcc07d36ff0df60f242f8f75c213de131b35bb"
         }
       ],
       "exclusions": [
@@ -2153,21 +2158,21 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "9e8923fa-f107-4cc0-9d29-2215a04b2a57",
+    "deploymentId": "f298f158-2746-4b59-94ad-9d4a25515bb0",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-11-13T12:25:33.640Z"
+      "checkedAt": "2026-11-16T04:04:04.174Z"
     },
     "rollback": {
-      "previousDeploymentId": "d664b4a7-d5b8-43a7-8674-c233bad58d5d",
+      "previousDeploymentId": "9e8923fa-f107-4cc0-9d29-2215a04b2a57",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-11-13T12:25:33.640Z"
+    "observedAt": "2026-11-16T04:04:04.175Z"
   },
   "lastCloseoutAt": "2026-10-27T01:27:00.881Z",
   "performanceAuthority": {
@@ -2203,31 +2208,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-11-13T18:34:25.576Z",
+    "observedAt": "2026-11-17T03:25:05.241Z",
     "status": "verified",
-    "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
-    "publicationRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
+    "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
+    "publicationRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d"
+      "digest": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
-        "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d"
+        "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
+        "artifactDigest": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e"
       },
       "production": {
-        "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
-        "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d"
+        "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
+        "artifactDigest": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e"
       },
       "visual": {
-        "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
-        "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d"
+        "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
+        "artifactDigest": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e"
       },
       "performance": {
-        "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
-        "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d"
+        "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
+        "artifactDigest": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e"
       }
     },
     "checks": [
@@ -2273,31 +2278,31 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "a6380452995cb5177c3797a94cc2b8ff73ffd185859c9a1177d5a63f61ae8f8a",
-      "productionSha256": "769fd0739d56bd71bd665aae3ecdf21f35d5c4ba257bcb913f2fa55de37ce19e",
-      "visualSha256": "481fe1f2187be5db3ef2255067cce60033a80144f7a6f109c171c97c5be0e92a",
-      "performanceSha256": "b6c4740328f43831eae1ea7604152faca8700d4e5371cd07965eafd7431f382e"
+      "stagingSha256": "657d7e60eb172fcc5a89bd5fbd9456012c912b2db980723ab4250068f5a50f6d",
+      "productionSha256": "b7a1915051da3d3df4e1b4081de8956a1ca25d2b113c247c4d8de0a4eadde104",
+      "visualSha256": "0fce30d82b3d777b8fc177deb0b7df1a04d2bb277eedc5f123664e8c620908db",
+      "performanceSha256": "b2ec1cea56b0203c2ca1fd5a741b9d47d9f0373b7c235f72ab4c601cdcfab92f"
     },
-    "receiptSha256": "d8ed66b9de66e39a053e3fb2f7e66db96b62aa1a3aad0d6890debe55a1495eeb"
+    "receiptSha256": "8c1f97591724be4dc56971fa88ee657635a7c0e51f50e3caa20a71f6f5469d82"
   },
   "launchReady": false,
   "sil": {
     "version": "3.0",
-    "session": 130,
-    "silScore": 545,
+    "session": 131,
+    "silScore": 537,
     "categories": {
-      "devHealth": 89,
-      "creativeAlignment": 72,
-      "momentum": 68,
+      "devHealth": 88,
+      "creativeAlignment": 74,
+      "momentum": 62,
       "engagement": 47,
-      "processQuality": 57,
-      "crossRepoCoherence": 60,
-      "securityPosture": 66,
+      "processQuality": 58,
+      "crossRepoCoherence": 58,
+      "securityPosture": 64,
       "ecosystemIntegration": 20,
       "capitalEfficiency": 0,
       "automationCoverage": 66
     },
-    "date": "2026-11-13"
+    "date": "2026-11-16"
   },
   "silRollingAverages": {
     "3": 536.3,
@@ -2309,10 +2314,10 @@
   "session112Summary": "S112 completed ten audit items and five second-order outcomes. Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD.",
   "sessionState": {
     "version": 1,
-    "durableSession": 130,
-    "currentFocus": "Five selected improvements and the current full-term release note are verified on the matching C4 frontend and API.",
-    "nextMilestone": "Next founder-selected beta outcome from the existing backlog.",
-    "lastSessionSummary": "S130 verified five selected improvements, exact-source CI7, complete responsive evidence and matching C4 staging, production frontend and API. Closing publication remains guarded."
+    "durableSession": 131,
+    "currentFocus": "Injury clock and Questionable status released on the matching frontend and API at 0c6fa04c.",
+    "nextMilestone": "Align the postseason medical clock; decide Questionable game-day odds.",
+    "lastSessionSummary": "S131 made injuries cost the games their label states and labelled live Questionable tags honestly; exact-source CI 7/7, staging 14/14, production with 327/327 responsive records and matching API verified at 0c6fa04c."
   },
   "partialCloseout": {
     "session": 117,
@@ -2909,11 +2914,11 @@
     "mindHash": "e7ccf63ef328f3c1e4ee3e69d40607628cb0c423369dea8d67fd0a3fb2d9e3fe",
     "receipt": "reports/s124-ignis-refresh.json"
   },
-  "silAvg3": 536.3,
-  "silAvg5": 535.4,
-  "silAvg10": 554.1,
-  "silAvg25": 746.8,
-  "silAvgAll": 916.8,
+  "silAvg3": 538,
+  "silAvg5": 536.4,
+  "silAvg10": 521.4,
+  "silAvg25": 729.9,
+  "silAvgAll": 912.4,
   "closeoutProcessEvidence": {
     "premiseTiming": {
       "strictPremisesBeforeRecordedImplementation": "proven",
@@ -2937,7 +2942,7 @@
     "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact f39 staging/frontend/API identity, terminal receipt-only CI with no observed executed failure, zero owned transient jobs/processes, and release only the original S124 lock."
   },
   "silDebtTrend": "→",
-  "silLastUpdated": "2026-11-13",
+  "silLastUpdated": "2026-11-16",
   "lastDeployStatus": "Frontend/API 67ab750b matched; staging/production14/14, API database ready; C2 rollback retained.",
   "previousBackendDeployment": {
     "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
@@ -3095,10 +3100,10 @@
   },
   "currentTestRun": {
     "status": "passed",
-    "scope": "S130 complete local Studio shard only; exact-candidate full CI pending",
-    "passed": 441,
-    "total": 441,
-    "receipt": "reports/s130-studio-candidate.json"
+    "scope": "S131 exact-source hosted CI run 43801823248 (7 jobs)",
+    "passed": 7,
+    "total": 7,
+    "receipt": "reports/s131-release-acceptance.json"
   },
   "historicalTestVerification": {
     "session": 128,
@@ -3125,14 +3130,14 @@
   "s129RecoveryCheckpoint": "reports/s129-recovery-checkpoint.json",
   "currentImplementationProgress": "reports/s130-implementation-progress.json",
   "lastCloseout": {
-    "session": 130,
-    "date": "2026-11-13",
-    "intent": "Achieved for five selected improvements and technical release",
-    "sourceRevision": "67ab750b40bad7751a5374b6f5ce382f5d4a7548",
-    "artifactDigest": "ade69cd19fdcff77789cd32380291b47c6b069695508e803b83e685a133a684d",
-    "silScore": 545,
+    "session": 131,
+    "date": "2026-11-16",
+    "intent": "Achieved: two selected outcomes and the authorized staging and production release",
+    "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
+    "artifactDigest": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e",
+    "silScore": 537,
     "recordsVerified": true,
-    "completion": "reports/s130-closeout-completion.json",
-    "publicationGuard": "These closing records are valid after their containing commit passes final checks and is confirmed on remote main."
+    "completion": "reports/s131-release-acceptance.json",
+    "publicationGuard": "Valid once the closeout commit is confirmed on remote main."
   }
 }

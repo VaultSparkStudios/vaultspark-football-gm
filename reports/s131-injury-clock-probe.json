@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "kind": "engine-probe",
+  "session": 131,
+  "question": "How many team games does a freshly labelled injury actually cost?",
+  "method": "createSession({seed:131,startYear:2026,controlledTeamId:'BUF'}), advance to the regular season, then 18 weeks through the real advanceWeek. A pass-through wrapper on gameDressedPlayers records the authoritative box-score game-day roster per week and which teams played. For each injury first observed after a week, games missed = consecutive later weeks in which the player's team played and he did not dress; weeks the team did not play (byes) are skipped; injuries still unresolved at season end are excluded. The before run uses the 1bd1807c source tree (git archive of src/ and public/); the after run uses the 970e5502 engine. Measured 2026-11-17; the probe script is a session-local tool, not shipped.",
+  "boundary": "Engine measurement on one seed; not a player or balance outcome.",
+  "before": {
+    "source": "1bd1807c36a8961924bcd941043ea93806cb75b3",
+    "tally": {
+      "Questionable": { "injuries": 439, "gamesMissed": { "0": 409, "1": 27, "2": 2, "3": 1 } },
+      "Out 1W": { "injuries": 316, "gamesMissed": { "0": 297, "1": 17, "2": 1, "3": 1 } },
+      "Out 2-3W": { "injuries": 200, "gamesMissed": { "0": 7, "1": 182, "2": 9, "3": 1, "7": 1 } },
+      "IR (4W)": { "injuries": 87, "gamesMissed": { "2": 16, "3": 68, "4": 3 } },
+      "IR-Long (8W)": { "injuries": 40, "gamesMissed": { "6": 19, "7": 21 } }
+    }
+  },
+  "after": {
+    "source": "970e55026e11ec9451fd1d8411718f2c3e6dd3f9",
+    "tally": {
+      "Questionable": { "injuries": 432, "gamesMissed": { "0": 400, "1": 28, "2": 2, "3": 1, "4": 1 } },
+      "Out 1W": { "injuries": 330, "gamesMissed": { "0": 26, "1": 279, "2": 21, "3": 4 } },
+      "Out 2-3W": { "injuries": 189, "gamesMissed": { "1": 17, "2": 161, "3": 10, "4": 1 } },
+      "IR (4W)": { "injuries": 95, "gamesMissed": { "3": 32, "4": 57, "5": 6 } },
+      "IR-Long (8W)": { "injuries": 37, "gamesMissed": { "7": 26, "8": 11 } }
+    }
+  },
+  "reading": "Before, an injury cost one game fewer than its label (Out 1W: 297 of 316 missed none). After, the modal cost equals the label (Out 1W: 279 of 330 miss one); shorter costs are byes counted as served weeks, longer costs are re-injury or the roster's own handling. Questionable keeps players available, as intended."
+}

@@ -2,6 +2,25 @@
 
 Append-only archive of entries rolled out of the live ledger. Verbatim; newest first. See `context/AGENT_MEMORY.md` for the working set.
 
+## Session 120 durable patterns
+
+- A browser test that clicks a `<details>` summary must converge on the open state, not toggle once: page code that opens the same section asynchronously turns a read-then-click into a close. Reproduce such a race deterministically (an event the page fires mid-click) before believing the fix.
+- A test fix after a staged candidate is a new candidate; when only tests changed, the artifact digest is identical, but captures still differ (dynamic content), so re-inspect rather than inherit.
+- A remote deploy failure the deployer will not retry (non-255 exit) is not transient; one rerun to confirm, then diagnose on the host, never loop.
+- Write a player-facing number change as a range with its exceptions; a single "about N higher" overclaims when the change depends on the stat line.
+
+## Session 119 durable patterns
+
+- Read CI on main before cutting a candidate. A docs-only closeout can redden the studio shard for every later candidate, and promotions here wait for all seven exact-candidate jobs.
+- A file that accumulates `## Session N` headings must be registered in `scripts/ledger-roll.mjs` the session it reaches twelve; never raise the population threshold.
+- Find a layout overflow's source with a min-content probe. One `width: max-content` widget can set the minimum width of an entire grid column, because `max-width: 100%` does not resolve during intrinsic sizing.
+- One formula, one owner: the engine imports the stat schema; the browser copy is held equal by published reference values, and a deliberate golden change gets a new versioned fixture.
+- Evidence tools that need a local fix after staging run from a reviewed `.cache` copy, so HEAD stays covered by the publication.
+
+<!-- s118-final:memory -->
+
+Current C4 follow-through accepted (same S130): source 67ab750b40bad7751a5374b6f5ce382f5d4a7548, matching staging/production frontend and API verified by reports/s130-c4-release-acceptance.json; CI7/7, browser344 passed/3 exclusions and327 responsive records. Current C4 images88; mixed collection260. C2 evidence remains historical. No new scored session or selected outcome. These closing records are valid after their containing commit passes final checks and is confirmed on remote main.
+
 ## Session 118 durable patterns
 
 - Family authority inherits appearance context, never ratings or football RNG; preserve natural pigment resemblance and individual face seeds across restoration.

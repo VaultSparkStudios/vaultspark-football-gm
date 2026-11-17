@@ -1,6 +1,7 @@
 // S131 [injury-clock-truth] + [questionable-status-visible].
 // The recovery tick used to run before kickoff, so an "Out 1W" injury healed
-// before the very next game (probe, seed 131: 257 of 300 dressed next game).
+// before the very next game (probe, seed 131: 297 of 316 missed no game;
+// reports/s131-injury-clock-probe.json).
 // These tests drive the real advanceWeek and read the authoritative box-score
 // game-day roster, not a stub of the seam they guard.
 import test from "node:test";

@@ -1422,3 +1422,28 @@ The shared closeout autopilot was not executed: independent source review found 
 
 <!-- s118-final-publication -->
 S118 selected character/family outcomes and full exact-candidate production delivery are complete. Closeout commit eb0ed0a6dfb018c2fd21aef090bb4f4325572186 is on remote main; independent review passed after one corrected receipt label. All seven CI jobs passed; hosted browser267pass/0fail/3existing opt-in skips and responsive327captures/312required passed. Actual production motion, family reload, save restoration and lab performance passed. Ark summary 01K5IB7Q1U348173B7DFE7C352 was shipped; delivery, application and recipient verification are not asserted. No configured session beacon exists. The containing receipt commit must be verified on origin/main after an ordinary push; native goal completion is withheld until that readback.
+
+## 2026-10-23 — Session 119 — The phone Desk fits, one passer rating, and a red main repaired
+
+Fresh audit (docs/AUDIT_2026-10-22.json, premises 6/6 live-verified, plan admission ok). Shipped:
+1. Phone Desk clipping fixed at source: .team-mode-switch fit-content + wrap (was max-content, which set a 356 px minimum on a 321 px column). Measured with a min-content probe in installed Chrome; guard tests-ui/mobile-desk-width.spec.js at 390/320 px, negative control red (35.6 px).
+2. One NFL passer rating: stat schema scales before clamping; box score imports it; client copy held equal (test/passer-rating.test.js 8/8, negative control 4/8 red). Golden s119-v3: only seasonTable.passing moved; S118/S116 fixtures byte-identical.
+3. Carried 16.2 MB payload task closed by measurement: 15.305 MB raw vs 16 MB bar.
+Unplanned but blocking: S118's closeout reddened CI on main (AGENT_MEMORY.md reached 12 entries, test/session106). Registered it as a newest-first rollable ledger and rolled S72/S74; first candidate f67f9e6c superseded (its CI and backend runs cancelled; Pages39898892606 refused at the studio gate), second candidate c0ce44b4 promoted.
+Verification: CI39900408127 seven jobs green; Pages39900428496 and backend39900432601 success; staging 14/14 and production provenance verified; hosted fix check on staging and production; hosted performance verified; release authority verified; doctor 12/12. Visual receipt: 214 captures inspected on contact sheets, none inherited. Local sim-contract shard was stopped by host memory pressure (not a failure); local studio 373/376 with three reds from git-ignored local files only. Independent fresh-context review approved both fixes, 0 fix findings (reports/s119-reviews.json).
+
+## 2026-10-23 — Session 120 — The S119 release note, conferences from the sport pack, and a release-gate race fixed at its source
+
+Fresh audit (docs/AUDIT_2026-10-23.json, premises 5/5 live-verified and recorded before edits, plan admission ok). Shipped:
+1. Player-facing 2026-10-23 release note for S119 on status.html, carried into status-archive.html and changelog.xml. Review corrected an overclaim; the note now says most passers read higher (up to about ten points), some near-perfect backups lower, zero attempts reads 0.
+2. weeklySimulator builds conference standings from structure.conferences; golden master byte-identical (4/4); contract test red on the literal version.
+3. Every Chromium-launching script honors PLAYWRIGHT_CHANNEL (capture-public-qa, community-stats-evidence, generate-cover-image, generate-favicon); smoke test scans all, red on a bare launch.
+4. Stale board items closed.
+Unplanned release blocker: candidate 822ffd9e failed the Pages browser gate (2/268, client-session-recovery) on a revealTable race with the setup page's own auto-open of Saved Leagues; helper converges on the open state, new red-first spec; candidate 207159ea promoted.
+Verification: CI39968433866 and CI39993396521 success; Pages39993950168 success; staging authority 14/14; staging and production provenance 10/10; hosted performance verified; release authority reconciled; doctor 12/12. Visual receipt 214 captures inspected at 207159ea (fresh-context subagent on 22 contact sheets plus full-resolution status page by the session agent), 0 blocking. Backend Deploy 39968888182 failed twice with remote exit 75; API healthy at c0ce44b4, not promoted (founder decision). Local studio shard 374/377, the 3 reds are the known git-ignored local files. Independent review: approve, 3 findings, 2 fixed.
+
+- 2026-10-24 — S121: Four selected S121 outcomes are implemented and live at5410b8b5: persistent session start anchor, sanitized SSH diagnostics, shared footer gutter and decoded lazy-image captures. Exact CI7/7; browser271 passed/3 skipped; staging and production14/14; Pages/API health, rollback and hosted performance verified. Public launch remains HOLD. Canonical closeout publication finalizing.
+
+S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main; frontend/API5410b8b5 remain verified. Ark 01K5LVUDRP9C130E63647C64C9 shipped. The containing receipt-only commit must be verified on origin/main before native goal completion.
+
+S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main; frontend/API5410b8b5 remain verified. Ark 01K5LVUDRP9C130E63647C64C9 shipped. The containing receipt-only commit must be verified on origin/main before native goal completion.

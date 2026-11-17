@@ -1,14 +1,42 @@
-<!-- generated-by: session-agent deterministic current-state digest -->
-<!-- source-hash: 97a22bc38d95 -->
+<!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
+<!-- source-hash: 610b7e52c70f -->
+<!-- generated-at: 2026-11-17T03:29:19.709Z -->
 
-# Latest Handoff — Session 130 → Session 131
+# LATEST_HANDOFF (compact)
 
-Five selected outcomes are verified: coaching recovery, consent revocation, concurrent availability facts, recoverable Co-general manager exports and complete bounded responsive evidence. Current frontend/API source 67ab750b40bad7751a5374b6f5ce382f5d4a7548; acceptance: reports/s130-c4-release-acceptance.json. Exact-source CI7/7, runtime1198/1198, browser344 passed/3 declared pre-existing exclusions, hosted327 records (324 PNGs and3 authority records). Staging/production each passed native14/14, four worker journeys with44 reviewed images and five-run desktop/mobile performance. API database ready, routing/mounts preserved and C2 rollback retained. Technical release only; public launch, actual-player and financial outcomes are unmeasured.
+SESSION 132 HANDOFF SUMMARY
 
-Visual collection260 preserves all168 earlier entries and adds92:80 current game images,8 current note images and4 C2 before-note images. The current C4 subset88 is reports/s130-c4-release-visual.json. Historical C2 receipt and its exact168-image snapshot remain reports/s130-release-acceptance.json and reports/s130-c2-visual-snapshot.json; their source boundaries remain intact.
+Session: 131 → 132
 
-SIL545/1000, ten categories. Genome remains unmeasured. Five outcomes shipped; existing backlog remains unselected.
+Shipped
+- Two selected outcomes verified and released (technical release only; no public launch/lifecycle change).
+- Injuries now cost exactly the team-games stated by their label; regular-season recovery ticks after that week's games and after both injury sources roll.
+- Kickoff readiness reads live injury state; live Questionable tag shows as game-time status on roster, depth chart (amber), and player profile.
+- Golden master adopted as s131-v4 (docs/GOLDEN_BASELINE_S131.json); S119/S118/S116 fixtures byte-identical.
 
-These closing records are valid after their containing commit passes final checks and is confirmed on remote main.
+Current Intent
+- Finalize postseason/game-day medical-clock and injury pay-consequence rules; maintain release integrity.
 
-Remaining closeout guards: final Studio metadata/security, independent closing review, containing main publication/readback, signed impact and owned cleanup.
+Now (Top 3)
+- Align postseason medical clock (currently ticks before each playoff game, not after).
+- Decide Questionable game-day odds handling.
+- Confirm elevation-injury-continuation pay consequence.
+
+Blockers (Top 3)
+- Local canonical npm test could not finish on this host (CPU contention, then host sleep); evidence relied on per-shard local runs plus hosted exact-SHA CI.
+- All local reds classified in acceptance report (reports/s131-release-acceptance.json) — confirm no masked regressions.
+- SIL at 537/1000 — track against target.
+
+Human-Blocked
+- None recorded.
+
+Release References
+- Frontend/API source: 0c6fa04ca73fe6da1c0415d3a09de686826e245e
+- Artifact: d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e
+- Hosted CI 7/7 (run 43801823248); staging 14/14 deploy, 10/10 provenance.
+- Production promotion run 43801879516 (327/327 responsive); API run 43801882165, database ready.
+- Visual receipt: 214 captures, 0 blocking; doctor 12/12; release authority verified.
+- Staging rollback 9e8923fa available.
+
+Next Session Pointer
+- Start by aligning the postseason medical clock so recovery ticks after playoff games, then resolve Questionable odds and elevation pay consequence.

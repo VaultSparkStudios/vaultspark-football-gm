@@ -1077,3 +1077,15 @@ S118 selected character/family outcomes and full exact-candidate production deli
 - The TASK_BOARD "reproducible 16.2 MB" payload regression no longer reproduced (15.305 MB); closed by measurement.
 - The passer rating recorded as "pinned as shipped" in test/stat-schema-contract.test.js was a known deviation from the NFL formula; now corrected and attributed in docs/GOLDEN_BASELINE_S119.json.
 - Backend host-level container/routing identity was not re-read over SSH in S119; workflow exact-SHA health and external health are the recorded evidence.
+
+## 2026-10-23 — S120 — A "flaky" recovery case had a cause
+
+- S119 recorded that S118's closeout commits failed CI's browser job on "one recovery case" without a cause. S120's Pages gate failed two client-session-recovery cases the same way; the cause is a race between tests-ui revealTable's read-then-click and setup.js opening Saved Leagues when deferred saves arrive. Fixed with a deterministic reproduction; the S118 failure was very likely the same race (not re-run to prove it).
+- The S119 visual receipt said "no capture shows broken layout"; S120's inspection found the shared public footer has no left gutter on 11 of 14 public pages. It predates S120 (footer untouched) and was present in S119's captures; recorded, not fixed.
+- Backend: the production API reports c0ce44b4, not S120's candidate. Pages production is 207159ea. The two deployed identities now differ, and both are recorded as observed.
+
+## 2026-10-24 — Session 121 — Release identity and evidence boundaries
+
+Four selected S121 outcomes are implemented and live at5410b8b5: persistent session start anchor, sanitized SSH diagnostics, shared footer gutter and decoded lazy-image captures. Exact CI7/7; browser271 passed/3 skipped; staging and production14/14; Pages/API health, rollback and hosted performance verified. Public launch remains HOLD. Twelve readiness areas retain eleven partial states.64 hash-bound images reviewed; production provenance14/14, provider rollback available. First failed candidate and overlapping-load performance sample preserved. Historical1802-test receipt is not re-dated; current unit aggregate unknown, exact CI7/7 and browser271/3 separately measured. No new creative direction; private CDR untouched. Final closeout publication remains a separate verified readback.
+
+S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main; frontend/API5410b8b5 remain verified. Ark 01K5LVUDRP9C130E63647C64C9 shipped. The containing receipt-only commit must be verified on origin/main before native goal completion.

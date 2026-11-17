@@ -1,28 +1,3 @@
-## 2026-10-23 — Session 119 — The phone Desk fits, one passer rating, and a red main repaired
-
-Fresh audit (docs/AUDIT_2026-10-22.json, premises 6/6 live-verified, plan admission ok). Shipped:
-1. Phone Desk clipping fixed at source: .team-mode-switch fit-content + wrap (was max-content, which set a 356 px minimum on a 321 px column). Measured with a min-content probe in installed Chrome; guard tests-ui/mobile-desk-width.spec.js at 390/320 px, negative control red (35.6 px).
-2. One NFL passer rating: stat schema scales before clamping; box score imports it; client copy held equal (test/passer-rating.test.js 8/8, negative control 4/8 red). Golden s119-v3: only seasonTable.passing moved; S118/S116 fixtures byte-identical.
-3. Carried 16.2 MB payload task closed by measurement: 15.305 MB raw vs 16 MB bar.
-Unplanned but blocking: S118's closeout reddened CI on main (AGENT_MEMORY.md reached 12 entries, test/session106). Registered it as a newest-first rollable ledger and rolled S72/S74; first candidate f67f9e6c superseded (its CI and backend runs cancelled; Pages39898892606 refused at the studio gate), second candidate c0ce44b4 promoted.
-Verification: CI39900408127 seven jobs green; Pages39900428496 and backend39900432601 success; staging 14/14 and production provenance verified; hosted fix check on staging and production; hosted performance verified; release authority verified; doctor 12/12. Visual receipt: 214 captures inspected on contact sheets, none inherited. Local sim-contract shard was stopped by host memory pressure (not a failure); local studio 373/376 with three reds from git-ignored local files only. Independent fresh-context review approved both fixes, 0 fix findings (reports/s119-reviews.json).
-
-## 2026-10-23 — Session 120 — The S119 release note, conferences from the sport pack, and a release-gate race fixed at its source
-
-Fresh audit (docs/AUDIT_2026-10-23.json, premises 5/5 live-verified and recorded before edits, plan admission ok). Shipped:
-1. Player-facing 2026-10-23 release note for S119 on status.html, carried into status-archive.html and changelog.xml. Review corrected an overclaim; the note now says most passers read higher (up to about ten points), some near-perfect backups lower, zero attempts reads 0.
-2. weeklySimulator builds conference standings from structure.conferences; golden master byte-identical (4/4); contract test red on the literal version.
-3. Every Chromium-launching script honors PLAYWRIGHT_CHANNEL (capture-public-qa, community-stats-evidence, generate-cover-image, generate-favicon); smoke test scans all, red on a bare launch.
-4. Stale board items closed.
-Unplanned release blocker: candidate 822ffd9e failed the Pages browser gate (2/268, client-session-recovery) on a revealTable race with the setup page's own auto-open of Saved Leagues; helper converges on the open state, new red-first spec; candidate 207159ea promoted.
-Verification: CI39968433866 and CI39993396521 success; Pages39993950168 success; staging authority 14/14; staging and production provenance 10/10; hosted performance verified; release authority reconciled; doctor 12/12. Visual receipt 214 captures inspected at 207159ea (fresh-context subagent on 22 contact sheets plus full-resolution status page by the session agent), 0 blocking. Backend Deploy 39968888182 failed twice with remote exit 75; API healthy at c0ce44b4, not promoted (founder decision). Local studio shard 374/377, the 3 reds are the known git-ignored local files. Independent review: approve, 3 findings, 2 fixed.
-
-- 2026-10-24 — S121: Four selected S121 outcomes are implemented and live at5410b8b5: persistent session start anchor, sanitized SSH diagnostics, shared footer gutter and decoded lazy-image captures. Exact CI7/7; browser271 passed/3 skipped; staging and production14/14; Pages/API health, rollback and hosted performance verified. Public launch remains HOLD. Canonical closeout publication finalizing.
-
-S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main; frontend/API5410b8b5 remain verified. Ark 01K5LVUDRP9C130E63647C64C9 shipped. The containing receipt-only commit must be verified on origin/main before native goal completion.
-
-S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main; frontend/API5410b8b5 remain verified. Ark 01K5LVUDRP9C130E63647C64C9 shipped. The containing receipt-only commit must be verified on origin/main before native goal completion.
-
 ## 2026-10-25 — Session 122
 
 Three selected S122 outcomes reached exact-source technical production: all four Architect Focus actions open their real decision destinations; desktop/mobile League pulse opens League news; startup counts distinguish fresh receipts, historical totals and matching prior-session evidence. 7 exact-candidate CI jobs pass (run 40135773664); CI browser 275 passed and 3 skipped (not counted as passed); hosted navigation 4/4; isolated Studio 388/388. Aggregate unit case total is unmeasured. Closeout publication pending; reports/s122-release-acceptance.json.
@@ -106,12 +81,6 @@ Evidence: attribute-categories 8/8, weekly-challenge 6/6, player-profile-narrati
 
 Not done, recorded honestly: staging deploy and production promotion (production unchanged); site-truth releaseLabel and single-sourced Community Stats privacy; player-identity personality/college/hometown and roster/depth display; depth-chart menu entry; 14 other audit items remain pending in docs/AUDIT_2026-11-10.json.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `logs/archive/WORK_LOG.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-
 ## 2026-11-13 — S129 post-closeout recovery checkpoint
 
 Recovered source commits f4179d69 and 74683a57 repair the depth chart: text wraps within the desktop panel across fonts, phone player names retain readable width, and snap share 100 remains visible. The recovery browser spec now explicitly supplies the server-only runtime option stripped from the Pages build. These changes were committed after the prior S129 closeout and were missing from its write-back.
@@ -137,3 +106,13 @@ Five improvements make coaching, player availability, Co-GM exports, Community S
 
 
 Current C4 follow-through accepted (same S130): source 67ab750b40bad7751a5374b6f5ce382f5d4a7548, matching staging/production frontend and API verified by reports/s130-c4-release-acceptance.json; CI7/7, browser344 passed/3 exclusions and327 responsive records. Current C4 images88; mixed collection260. C2 evidence remains historical. No new scored session or selected outcome. These closing records are valid after their containing commit passes final checks and is confirmed on remote main.
+
+
+## 2026-11-16 — Session 131 — Injury clock truth
+
+Injuries now cost the games their label states. Regular-season recovery ticked before kickoff, so "Out 1W" healed before the next game (probe, seed 131: 297/316 missed none); GameSession now ticks after the week's games and kickoff readiness reads live injury state (after: 279/330 miss exactly one, the rest are byes). A shared injuryStatus label makes a live Questionable tag read as a game-time status on the roster, depth chart and dossier. Golden master adopted as s131-v4; the whole-season profile test now allows only the sanctioned family-anchor change it exposed. Frontend and API source 0c6fa04ca73fe6da1c0415d3a09de686826e245e, artifact d45e55a7; hosted CI 7/7 (run 43801823248); staging 14/14 and 10/10 provenance; production promotion run 43801879516 with 327/327 responsive records; API database ready; release authority verified; doctor 12/12; reports/s131-release-acceptance.json. Technical release only.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `logs/archive/WORK_LOG.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
