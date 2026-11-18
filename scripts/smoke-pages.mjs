@@ -3,6 +3,7 @@ import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "@playwright/test";
+import { checkMinifiedEngineParity } from "./check-minified-engine-parity.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -130,6 +131,22 @@ async function assertPublishedMountContract() {
     await assertStaticPath(`${mount}favicon.ico`, null, "image/x-icon");
   }
   await assertNoNestedMounts(manifest.publishedMounts);
+  await assertShippedAssetsMinified();
+  const parity = await checkMinifiedEngineParity();
+  if (!parity.ok) throw new Error(`Shipped engine diverges from the authored engine: ${JSON.stringify(parity)}`);
+}
+
+// The shipped client must be the minified one. A build that silently skipped
+// minification still boots, so size is the only place the regression shows.
+async function assertShippedAssetsMinified() {
+  if (process.env.VSFGM_MINIFY === "0") return;
+  for (const name of ["app.js", "setup.js", "styles.css"]) {
+    const authored = (await fs.stat(path.join(rootDir, "public", name))).size;
+    const shipped = (await fs.stat(path.join(staticDir, name))).size;
+    if (shipped > authored * 0.85) {
+      throw new Error(`${name} shipped at ${shipped} bytes against ${authored} authored; expected the minified file.`);
+    }
+  }
 }
 
 // One service worker per declared mount and no more. A mount copied inside

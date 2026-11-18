@@ -36,7 +36,8 @@
   "private": true,
   "license": "UNLICENSED",
   "devDependencies": {
-    "@playwright/test": "^1.65.0"
+    "@playwright/test": "^1.65.0",
+    "esbuild": "0.28.2"
   },
   "dependencies": {
     "pg": "8.23.1"

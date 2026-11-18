@@ -105,6 +105,9 @@ const htmlPages = [
   "how-to-play.html",
   "faq.html",
   "roadmap.html",
+  "guides.html",
+  "compare.html",
+  "media.html",
   "404.html"
 ];
 // Generated at build from status.html; there is no source page to drift.
@@ -482,6 +485,38 @@ async function emitRetiredRouteRedirects() {
   return RETIRED_ROUTES.length;
 }
 
+// Shipped scripts and stylesheets are minified in place, one file to one file,
+// so every URL, import specifier and module boundary stays exactly as authored.
+// No `format` is set: top-level names are left alone, which keeps classic
+// scripts that share globals working and keeps exported names readable.
+// VSFGM_MINIFY=0 ships the authored text for debugging.
+async function minifyShippedAssets() {
+  if (process.env.VSFGM_MINIFY === "0") return { files: 0, before: 0, after: 0 };
+  const { transform } = await import("esbuild");
+  const totals = { files: 0, before: 0, after: 0 };
+  async function walk(dir) {
+    for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
+      const target = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        await walk(target);
+        continue;
+      }
+      const loader = entry.name.endsWith(".js") ? "js" : entry.name.endsWith(".css") ? "css" : null;
+      if (!loader) continue;
+      const source = await fs.readFile(target, "utf8");
+      const result = await transform(source, { loader, minify: true, legalComments: "none", charset: "utf8", target: "es2022" });
+      const code = result.code.endsWith("\n") ? result.code : `${result.code}\n`;
+      if (code.length >= source.length) continue;
+      await fs.writeFile(target, code, "utf8");
+      totals.files += 1;
+      totals.before += Buffer.byteLength(source);
+      totals.after += Buffer.byteLength(code);
+    }
+  }
+  await walk(outDir);
+  return totals;
+}
+
 async function emitHashedStylesheet() {
   const cssPath = path.join(outDir, "styles.css");
   const css = await fs.readFile(cssPath, "utf8");
@@ -608,6 +643,10 @@ async function main() {
   // source file serves both, so the two copies cannot drift apart.
   await fs.copyFile(path.join(outDir, ".well-known", "llms.txt"), path.join(outDir, "llms.txt"));
   await copyBrowserModules();
+  const minified = await minifyShippedAssets();
+  if (minified.files) {
+    console.log(`minified ${minified.files} scripts and stylesheets: ${Math.round(minified.before / 1024)} KB -> ${Math.round(minified.after / 1024)} KB`);
+  }
   await emitHashedStylesheet();
   await emitHashedSiteStylesheet();
   await emitHashedCommunityStats();

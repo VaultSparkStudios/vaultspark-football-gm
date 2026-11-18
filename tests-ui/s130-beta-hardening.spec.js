@@ -353,10 +353,11 @@ test("worker packet-build and clipboard fixtures: Co-GM clicks report failures t
   await page.route("**/lib/coGmBriefPanel.js*", async route => {
     const response = await route.fetch();
     const original = await response.text();
-    const signature = "export function currentCoGmBriefingPacket() {";
-    expect(original).toContain(signature);
+    // The served build is minified, so the signature is matched without relying on its spacing.
+    const signature = /export function currentCoGmBriefingPacket\(\)\s*\{/;
+    expect(original).toMatch(signature);
     return route.fulfill({ response, body: original.replace(signature,
-      `${signature}\n  if (globalThis.__s130BriefBuildFault) throw new Error("S130 explicit briefing-build fixture");`) });
+      (match) => `${match}\n  if (globalThis.__s130BriefBuildFault) throw new Error("S130 explicit briefing-build fixture");`) });
   });
   await workerLeague(page);
   await openBrief(page);

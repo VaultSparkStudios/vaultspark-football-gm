@@ -135,6 +135,8 @@ function sha256(value) {
   return createHash("sha256").update(value).digest("base64");
 }
 
+export const MAX_EDGE_HEADER_LINE = 1900;
+
 export function inspectHtmlForEdgePolicy(html, file = "document.html") {
   if (INLINE_EVENT_HANDLER.test(html)) {
     throw new Error(`${file} contains an inline event handler; bind it from a trusted module instead.`);
@@ -248,6 +250,13 @@ export async function emitEdgeSecurityPolicy({
   const inlineScriptHashes = [...new Set(hashes)].sort();
   const inlineStyleHashes = [...new Set(styleHashes)].sort();
   const headers = buildEdgeHeaders({ inlineScriptHashes, inlineStyleHashes });
+  // Every inline block adds a hash to one site-wide policy line. The host drops
+  // an over-long header line instead of rejecting the deploy, so the policy
+  // would vanish silently; fail the build well before that length.
+  const longest = Math.max(...headers.split("\n").map((line) => line.length));
+  if (longest > MAX_EDGE_HEADER_LINE) {
+    throw new Error(`Edge header line is ${longest} characters; the limit kept here is ${MAX_EDGE_HEADER_LINE}. Reduce inline blocks.`);
+  }
   const fingerprint = createHash("sha256").update(headers).digest("hex");
   const receipt = {
     schemaVersion: "1.0",
