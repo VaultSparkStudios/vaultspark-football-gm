@@ -5,7 +5,7 @@
 > Suggest: `node ../vaultspark-studio-ops/scripts/check-canon-adoption.mjs --project . --suggest` uses conformance evidence to pre-fill safe suggestions.
 > Mark each: **adopted** · **pending** · **review** · **exempt (reason)**. This file is maintained, not auto-trusted.
 
-Audience: public-unlaunched · Live ACTIVE canons: 55 · Pending review: 3
+Audience: public-unlaunched · Live ACTIVE canons: 56 · Pending review: 4
 
 | Canon | Title | Status | Evidence / note |
 |---|---|---|---|
@@ -64,4 +64,5 @@ Audience: public-unlaunched · Live ACTIVE canons: 55 · Pending review: 3
 | CANON-054 | Public Stats Surface: every website reports and analyzes its | adopted | CANON-054 checker passes: six public measures with period, sample, computed-at, methodology, deterministic interpretation, and explicit warming/suppressed/stale states. |
 | CANON-055 | Surface Follow-Through: every project change reaches the thi | adopted | The backend receipt plane reaches users through the homepage Community Pulse and full Stats Atlas; both surfaces passed rendered-pixel, mobile, and theme review. |
 | CANON-056 | AI + SI Hybrid Terminology: keep AI, add Synthetic Intellige | adopted (suggested) | Conformance checker passed: 175 public content file(s) · no CANON-056 findings |
+| CANON-057 | AI-Era Security Baseline: agent surfaces, supply chain, edge | review |  |
 
