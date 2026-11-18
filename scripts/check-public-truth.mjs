@@ -52,7 +52,7 @@ export const FORBIDDEN_MARKETING_VOCAB = [
 
 // The website surfaces the marketing gate reads. game.html is the app shell and
 // is covered by FORBIDDEN_INTERNAL_VOCAB only.
-export const MARKETING_JSON_SURFACES = ["public-identity.json", "agents.json", "footer-manifest.json", "content/claims.json", "manifest.webmanifest", ".well-known/llms.txt"];
+export const MARKETING_JSON_SURFACES = ["public-identity.json", "agents.json", "footer-manifest.json", "content/claims.json", "stats-surface.json", "manifest.webmanifest", ".well-known/llms.txt"];
 
 export function marketingVocabularyProblems(name, text) {
   const problems = [];

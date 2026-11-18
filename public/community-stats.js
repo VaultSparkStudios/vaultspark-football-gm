@@ -121,11 +121,11 @@ export function communityParticipationPresentation({ participating = false, pend
   const detail = participating
     ? "Thanks—only game choices and results are shared. Your save stays on this device."
     : deletionStatus === "failed"
-      ? "No new activity is being shared. We will retry deleting the prior anonymous receipts while you are online."
+      ? "No new activity is being shared. We will retry deleting the prior anonymous records while you are online."
       : deletionStatus === "pending"
-        ? "No new activity is being shared. The prior anonymous receipts will be deleted when the service acknowledges the request."
+        ? "No new activity is being shared. The prior anonymous records will be deleted when the service acknowledges the request."
         : deletionStatus === "success"
-          ? "The service acknowledged deletion of receipts tied to this browser identifier."
+          ? "The service acknowledged deletion of records tied to this browser identifier."
           : participationFailed
             ? "This browser could not save your participation choice. Check storage access and try again; sharing stays off."
             : "Share game choices and results without sharing your save, names, notes, or private details.";
@@ -248,7 +248,7 @@ function renderAtlas(snapshot) {
     root.innerHTML = invitationMarkup(false);
     renderComparisons(period);
     const preInsight = document.querySelector("[data-community-atlas-insight]");
-    if (preInsight) preInsight.textContent = "Nothing is being hidden here — there is simply not a cohort yet. The first trends appear once enough players share.";
+    if (preInsight) preInsight.textContent = "Nothing is being hidden here — not enough players are sharing yet. The first trends appear once enough players share.";
     return;
   }
   root.innerHTML = period.categories.map((category, index) => `<section class="community-category" id="${escapeHtml(category.id)}">

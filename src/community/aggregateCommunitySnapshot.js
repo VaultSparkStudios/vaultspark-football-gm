@@ -102,7 +102,7 @@ function aggregatePeriod(rows, periodKey, computedAt) {
   const stats = {
     participants: participantStat,
     franchises: stat("franchises-founded", "Franchises founded", totals.franchises, "New leagues created by participating browsers in this period.", distribution(participants, "franchises")),
-    weeks: stat("weeks-managed", "Weeks managed", totals.weeks, "Receipted franchise weeks completed in this period.", distribution(participants, "weeks")),
+    weeks: stat("weeks-managed", "Weeks managed", totals.weeks, "Franchise weeks completed in this period.", distribution(participants, "weeks")),
     seasons: stat("seasons-completed", "Seasons completed", totals.seasons, "Season boundaries crossed through receipted weekly commands."),
     decisions: stat("gm-decisions", "GM decisions committed", totals.decisions, "Weekly commands that included an explicit General Manager decision.", distribution(participants, "decisions")),
     trades: stat("trades-completed", "Trades completed", totals.trades, "Successful trade transactions, counted once per receipt.", distribution(participants, "trades")),

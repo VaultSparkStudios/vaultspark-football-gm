@@ -1,0 +1,1313 @@
+{
+  "schemaVersion": "2.1",
+  "date": "2026-11-17",
+  "session": 132,
+  "source": "d7fa6cfe",
+  "project": {
+    "slug": "franchise-architect-football",
+    "type": "game",
+    "name": "Franchise Architect: Football"
+  },
+  "scope": "Full-project S132 audit toward public beta: every public page, the in-game experience, security, performance, release process and the competitor field. Twenty ranked items in seven waves ordered so each wave lowers the cost of the next. Nothing is selected for release by this record alone; each wave is selected when it starts.",
+  "profile": {
+    "rubric": "product",
+    "audience": "public-unlaunched",
+    "type": "game",
+    "source": "Three read-only source audits after /start (public site, game client and engine, infrastructure and release process) plus public competitor research.",
+    "staging": "independent Cloudflare Pages project; stable staging domain"
+  },
+  "lifecycleFocus": {
+    "stage": "FB",
+    "display": "FORGE · BETA",
+    "audience": "public-unlaunched",
+    "health": "yellow",
+    "mode": "public-beta-hardening",
+    "readiness": true,
+    "statusSource": "project-status",
+    "stageSource": "project-status"
+  },
+  "axes": {
+    "features-depth": 2,
+    "ui-ux-feedback": 4,
+    "gamification-immersion": 5,
+    "ai-intelligence": 1.5,
+    "security": 2,
+    "speed-organization-efficiency": 3,
+    "token-cost": 1.5,
+    "observability-honesty": 3,
+    "sil-debt": 1
+  },
+  "items": [
+    {
+      "id": 1,
+      "rank": 1,
+      "slug": "legacy-mirrors-to-redirects",
+      "title": "Legacy URL mirrors become redirects; the deploy ships one copy of the site",
+      "axis": "speed-organization-efficiency",
+      "category": "speed-organization-efficiency",
+      "tier": "⚡",
+      "wave": 1,
+      "impact": 9,
+      "innovation": 4,
+      "effortHours": 3,
+      "priority": 20.5,
+      "status": "implemented-reduced",
+      "readinessArea": "performance and capacity",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 1 of the approved order.",
+      "recipe": "Stop copying the whole site into each legacy path. Emit 301 rules for the legacy slugs in _redirects and keep one service worker at the root.",
+      "acceptance": "Built static/ is under 10 MB and contains exactly one sw.js; a test fails if any nested sw.js exists; legacy URLs return 301 to the root on staging.",
+      "premises": [
+        {
+          "claim": "The mirror exclusion list omits the franchise-architect slug, so games/* mirrors nest another full copy.",
+          "adapter": "file-content",
+          "target": "scripts/build-pages.mjs",
+          "pattern": "if ([slug, \"vaultspark-football-gm\", \"games\"].includes(entry.name)) continue;",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "The mirror exclusion list omits the franchise-architect slug, so games/* mirrors nest another full copy.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Add the missing slug to the exclusion list only; mirrors stay."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Stop copying the whole site into each legacy path. Emit 301 rules for the legacy slugs in _redirects and keep one service worker at the root."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Also retire the GitHub Pages path build if no inbound links remain."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "implemented-reduced",
+          "note": "L1 implemented, not yet released. The mount list is a declared contract (the pages smoke test requires the games/franchise-architect mount to serve real files), so the mounts stay and only the nesting defect is fixed: mount roots are now derived from the mount list. Local build 57.2 MB / 3,740 files / 10 service workers before, 40.0 MB / 2,618 files / 7 after. New smoke guard fails on any service worker outside a declared mount; negative control: it named the three nested workers on the pre-fix output. Pages smoke green. Replacing mounts with redirects (L2) needs a decision on the mount contract."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "rank": 2,
+      "slug": "site-truth-pass",
+      "title": "Public pages match the shipped game: roadmap, features, release notes, one beta label, one Community Stats explanation",
+      "axis": "observability-honesty",
+      "category": "observability-honesty",
+      "tier": "⚡",
+      "wave": 1,
+      "impact": 9,
+      "innovation": 4,
+      "effortHours": 6,
+      "priority": 19.1,
+      "status": "in-progress",
+      "readinessArea": "staging, release evidence and truthful beta/release communication",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 1 of the approved order.",
+      "recipe": "Move shipped work out of the roadmap, add the missing release note, extend Features to shipped systems, add releaseLabel and a single Community Stats block to claims.json and render both everywhere. Extend the public-truth check to the stats JSON and script strings.",
+      "acceptance": "Roadmap lists no shipped work; every page renders the same label and the same Community Stats wording; check-public-truth goes red on a seeded stale claim and green after.",
+      "premises": [
+        {
+          "claim": "The roadmap lists the drag depth chart as future work although it shipped.",
+          "adapter": "file-content",
+          "target": "public/roadmap.html",
+          "pattern": "<h3>A depth chart you can drag</h3>",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "The roadmap lists the drag depth chart as future work although it shipped.",
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Fix the roadmap and add the release note only."
+        },
+        "L2": {
+          "effortHours": 6,
+          "recipe": "Move shipped work out of the roadmap, add the missing release note, extend Features to shipped systems, add releaseLabel and a single Community Stats block to claims.json and render both everywhere. Extend the public-truth check to the stats JSON and script strings."
+        },
+        "L3": {
+          "effortHours": 12,
+          "recipe": "Generate the Features page from a shipped-systems manifest that release notes also read."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "in-progress",
+          "note": "Implemented locally, not yet released: roadmap no longer lists shipped work and shows four more shipped items; release note added for the depth chart, playing styles and weekly challenge; six shipped systems added to the Features source; Community Stats methodology wording aligned with the privacy notice; internal record wording removed from the stats surface, the stats script and the service text; stats-surface.json added to the vocabulary gate. Public tests, truth gate and pages smoke green. Remaining: one release label field (to change at beta launch, not before) and per-session note freshness."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "rank": 3,
+      "slug": "bundle-and-minify",
+      "title": "Minified, bundled, content-hashed client; hero image no longer inlined as base64",
+      "axis": "speed-organization-efficiency",
+      "category": "speed-organization-efficiency",
+      "tier": "🔨",
+      "wave": 2,
+      "impact": 9,
+      "innovation": 5,
+      "effortHours": 12,
+      "priority": 17.7,
+      "status": "pending",
+      "readinessArea": "performance and capacity",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 2 of the approved order.",
+      "recipe": "Add a pinned bundler through the package-trust gate. Bundle and minify the client and worker graphs into hashed chunks with immutable caching, shorten the precache list, and serve the hero as a preloaded image. Measure the boot budget on shipped bytes without raising maxBytes.",
+      "acceptance": "Transfer size of the landing page and game shell falls by at least half; every island keeps 15% headroom; throttled staging LCP/INP/CLS recorded before and after; service-worker upgrade from the current production cache verified.",
+      "premises": [
+        {
+          "claim": "No bundler is a dependency.",
+          "adapter": "file-content",
+          "target": "package.json",
+          "pattern": "esbuild",
+          "operator": "eq",
+          "expected": false
+        },
+        {
+          "claim": "The landing hero is inlined as a base64 data URL.",
+          "adapter": "file-content",
+          "target": "scripts/lib/inline-public-entry.mjs",
+          "pattern": "const dataUrl = `data:image/jpeg;base64,${heroJpeg.toString(\"base64\")}`;",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "No bundler is a dependency. The landing hero is inlined as a base64 data URL.",
+      "ladder": {
+        "L1": {
+          "effortHours": 4,
+          "recipe": "Stop inlining the hero and hash existing modules; no bundler."
+        },
+        "L2": {
+          "effortHours": 12,
+          "recipe": "Add a pinned bundler through the package-trust gate. Bundle and minify the client and worker graphs into hashed chunks with immutable caching, shorten the precache list, and serve the hero as a preloaded image. Measure the boot budget on shipped bytes without raising maxBytes."
+        },
+        "L3": {
+          "effortHours": 24,
+          "recipe": "Route-level code splitting with per-tab chunks and a build-time unused-CSS pass."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": []
+    },
+    {
+      "id": 4,
+      "rank": 4,
+      "slug": "in-game-feedback-and-diagnostics",
+      "title": "Feedback and opt-in error reports are sent from inside the game, with abuse controls",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "🔨",
+      "wave": 3,
+      "impact": 9,
+      "innovation": 6,
+      "effortHours": 12,
+      "priority": 18.5,
+      "status": "pending",
+      "readinessArea": "feedback, support and issue triage",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 3 of the approved order.",
+      "recipe": "Add feedback and diagnostics routes to the existing community service with a human-verification check on capability issuance. Replace the three local-only prompts and the external issue link with one consented in-game form.",
+      "acceptance": "A feedback post and a forced client error from staging are stored by the service; an unverified scripted request is refused; no account is needed to send feedback.",
+      "premises": [
+        {
+          "claim": "In-game feedback opens an external issue form that needs an account.",
+          "adapter": "file-content",
+          "target": "public/lib/betaFeedback.js",
+          "pattern": "const REPO_ISSUE_BASE = \"https://github.com/VaultSparkStudios/vaultspark-football-gm/issues/new\";",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "In-game feedback opens an external issue form that needs an account.",
+      "ladder": {
+        "L1": {
+          "effortHours": 4,
+          "recipe": "Keep the external link; make the local surveys exportable."
+        },
+        "L2": {
+          "effortHours": 12,
+          "recipe": "Add feedback and diagnostics routes to the existing community service with a human-verification check on capability issuance. Replace the three local-only prompts and the external issue link with one consented in-game form."
+        },
+        "L3": {
+          "effortHours": 24,
+          "recipe": "Triage view for the operator with deduplicated error groups."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": []
+    },
+    {
+      "id": 5,
+      "rank": 5,
+      "slug": "faster-first-week",
+      "title": "First game result within four clicks of the landing page",
+      "axis": "gamification-immersion",
+      "category": "gamification-immersion",
+      "tier": "🔨",
+      "wave": 5,
+      "impact": 9,
+      "innovation": 6,
+      "effortHours": 10,
+      "priority": 19.2,
+      "status": "pending",
+      "readinessArea": "onboarding and identity/access",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the approved order.",
+      "recipe": "Put the team choice in the hero, state each preset's difficulty and mode on its card, cut the Opening Contract to one step, skip plan modals in week one, and move the playtest survey off the first game.",
+      "acceptance": "A browser spec counts four or fewer clicks from landing to the first result; no survey appears before the third game; presets state their tradeoffs.",
+      "premises": [
+        {
+          "claim": "The hero start assigns a random team.",
+          "adapter": "file-content",
+          "target": "public/setup.js",
+          "pattern": "return state.teams[Math.floor(Math.random() * state.teams.length)].id;",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "A survey prompt is mounted after the first advance.",
+          "adapter": "file-content",
+          "target": "public/app.js",
+          "pattern": "maybePromptFirstDebriefPulse({ dashboard: state.dashboard, focusTarget: document.getElementById(\"advanceWeekBtn\") })),",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "The hero start assigns a random team. A survey prompt is mounted after the first advance.",
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Move the survey and add the team picker only."
+        },
+        "L2": {
+          "effortHours": 10,
+          "recipe": "Put the team choice in the hero, state each preset's difficulty and mode on its card, cut the Opening Contract to one step, skip plan modals in week one, and move the playtest survey off the first game."
+        },
+        "L3": {
+          "effortHours": 20,
+          "recipe": "Guided first season with spotlight coach marks that unlock systems progressively."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": []
+    },
+    {
+      "id": 6,
+      "rank": 6,
+      "slug": "game-day-in-the-loop",
+      "title": "Advancing a week offers the highlight reel of your game",
+      "axis": "gamification-immersion",
+      "category": "gamification-immersion",
+      "tier": "⚡",
+      "wave": 5,
+      "impact": 8,
+      "innovation": 7,
+      "effortHours": 8,
+      "priority": 19.2,
+      "status": "pending",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the approved order.",
+      "recipe": "After the user's game, the recap card offers the Sim-Watch highlight reel directly, with a setting to play it automatically. Loaded as a lazy island.",
+      "acceptance": "From Advance Week the reel is one click away on desktop and phone; reduced-motion users get the static recap; boot budget unchanged.",
+      "premises": [
+        {
+          "claim": "The replay viewer module exists and can be reused.",
+          "adapter": "file-exists",
+          "target": "public/lib/rewardBeats.js",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "The replay viewer module exists and can be reused.",
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Add a Watch button to the recap card."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "After the user's game, the recap card offers the Sim-Watch highlight reel directly, with a setting to play it automatically. Loaded as a lazy island."
+        },
+        "L3": {
+          "effortHours": 16,
+          "recipe": "Live drive-by-drive game day with in-game decisions."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": []
+    },
+    {
+      "id": 7,
+      "rank": 7,
+      "slug": "owner-can-fire-you",
+      "title": "The owner can fire the general manager; a job market offers the next club",
+      "axis": "gamification-immersion",
+      "category": "gamification-immersion",
+      "tier": "🔨",
+      "wave": 6,
+      "impact": 9,
+      "innovation": 8,
+      "effortHours": 14,
+      "priority": 19.3,
+      "status": "pending",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 6 of the approved order.",
+      "recipe": "A failed ultimatum at the patience floor ends the tenure. The GM career continues through a job-market screen. Free team switching is limited to Sandbox rules. Authority stays guarded at the shared command seam.",
+      "acceptance": "A simulated losing tenure is fired within a bounded window on Standard and Hard; the career record carries across clubs; old saves load; Sandbox still allows switching.",
+      "premises": [
+        {
+          "claim": "Owner patience has a floor and no terminal state.",
+          "adapter": "file-content",
+          "target": "src/engine/ownerConfidence.js",
+          "pattern": "const PATIENCE_FLOOR = 0.05;",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "Owner patience has a floor and no terminal state.",
+      "ladder": {
+        "L1": {
+          "effortHours": 5,
+          "recipe": "Firing only, with a restart prompt."
+        },
+        "L2": {
+          "effortHours": 14,
+          "recipe": "A failed ultimatum at the patience floor ends the tenure. The GM career continues through a job-market screen. Free team switching is limited to Sandbox rules. Authority stays guarded at the shared command seam."
+        },
+        "L3": {
+          "effortHours": 28,
+          "recipe": "Owner personalities, contract years for the GM and interviews."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": []
+    },
+    {
+      "id": 8,
+      "rank": 8,
+      "slug": "cpu-draft-through-fog",
+      "title": "Rival clubs draft on scouted value, potential and age",
+      "axis": "ai-intelligence",
+      "category": "ai-intelligence",
+      "tier": "🔨",
+      "wave": 6,
+      "impact": 8,
+      "innovation": 7,
+      "effortHours": 10,
+      "priority": 18.4,
+      "status": "pending",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 6 of the approved order.",
+      "recipe": "Measure first: tabulate ten seasons of draft outcomes by club. Then score CPU picks on the club's scouted read, potential and age instead of the true rating, with persona-specific error.",
+      "acceptance": "Before and after tables for a declared population show CPU pick value variance and bust rate in line with the user's fogged view; league parity statistics (dispersion and tail) stay inside their gates.",
+      "premises": [
+        {
+          "claim": "The CPU pick score weights the prospect's overall rating directly.",
+          "adapter": "file-content",
+          "target": "src/runtime/GameSession.js",
+          "pattern": "const score = prospect.overall * 2 + needBoost + projectionBonus - depthPenalty + personaTilt + this.rng.int(-4, 4);",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "The CPU pick score weights the prospect's overall rating directly.",
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Add potential and age terms to the existing score."
+        },
+        "L2": {
+          "effortHours": 10,
+          "recipe": "Measure first: tabulate ten seasons of draft outcomes by club. Then score CPU picks on the club's scouted read, potential and age instead of the true rating, with persona-specific error."
+        },
+        "L3": {
+          "effortHours": 20,
+          "recipe": "Rival boards the user can scout, with draft-day trade logic driven by board disagreements."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": []
+    },
+    {
+      "id": 9,
+      "rank": 9,
+      "slug": "gm-profile",
+      "title": "A GM Profile screen gathers career, trophies, shareables and save health; Settings is split up",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "🔨",
+      "wave": 5,
+      "impact": 8,
+      "innovation": 6,
+      "effortHours": 10,
+      "priority": 17.6,
+      "status": "pending",
+      "readinessArea": "onboarding and identity/access",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the approved order.",
+      "recipe": "New lazy tab holding career record, legacy tier, Trophy Case, share exports, save slots and backup status. Settings keeps preferences only. No account is introduced.",
+      "acceptance": "Every share export and the trophy case are reachable in two clicks; Settings no longer holds saves, multiplayer or exports; phone layout verified.",
+      "premises": [
+        {
+          "claim": "Trophies are implemented and stored locally.",
+          "adapter": "file-exists",
+          "target": "public/lib/achievements.js",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "Trophies are implemented and stored locally.",
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Move share exports and trophies to the Dynasty tab."
+        },
+        "L2": {
+          "effortHours": 10,
+          "recipe": "New lazy tab holding career record, legacy tier, Trophy Case, share exports, save slots and backup status. Settings keeps preferences only. No account is introduced."
+        },
+        "L3": {
+          "effortHours": 20,
+          "recipe": "Portable profile file that carries the career between browsers."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": []
+    },
+    {
+      "id": 10,
+      "rank": 10,
+      "slug": "scored-weekly-challenge",
+      "title": "The weekly challenge has a goal, a score and a shared board",
+      "axis": "gamification-immersion",
+      "category": "gamification-immersion",
+      "tier": "🔨",
+      "wave": 6,
+      "impact": 8,
+      "innovation": 8,
+      "effortHours": 10,
+      "priority": 19.2,
+      "status": "pending",
+      "readinessArea": "observability and actionable analytics",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 6 of the approved order.",
+      "recipe": "Each week's seed gets a stated objective and a deterministic score. Opted-in players submit to the community service; the board shows only when the participation threshold is met.",
+      "acceptance": "Two browsers on the same seed produce comparable scores; the board hides below the threshold; a share card states the result.",
+      "premises": [
+        {
+          "claim": "The weekly challenge derives only a seed.",
+          "adapter": "file-content",
+          "target": "public/lib/weeklyChallenge.js",
+          "pattern": "export function weeklySeed(weekKey) {",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "The weekly challenge derives only a seed.",
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Local goal and score with a share card; no board."
+        },
+        "L2": {
+          "effortHours": 10,
+          "recipe": "Each week's seed gets a stated objective and a deterministic score. Opted-in players submit to the community service; the board shows only when the participation threshold is met."
+        },
+        "L3": {
+          "effortHours": 20,
+          "recipe": "Daily challenge and seasonal ladders."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": []
+    },
+    {
+      "id": 11,
+      "rank": 11,
+      "slug": "one-site-template",
+      "title": "One page template, grouped footer, one name per destination",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "⚡",
+      "wave": 4,
+      "impact": 7,
+      "innovation": 4,
+      "effortHours": 8,
+      "priority": 15,
+      "status": "pending",
+      "readinessArea": "branding, legal, contact and rights/provenance",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 4 of the approved order.",
+      "recipe": "Render every marketing page through one layout in the shared chrome. Group footer links, unify nav labels, remove the app shell from the shared-footer list or include it properly.",
+      "acceptance": "All pages share one layout class; header and footer labels match; dev and built pages show the same chrome.",
+      "premises": [
+        {
+          "claim": "The app shell is listed as a shared-footer page although the chrome exempts it.",
+          "adapter": "file-content",
+          "target": "public/footer-manifest.json",
+          "pattern": "\"game.html\",",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "The app shell is listed as a shared-footer page although the chrome exempts it.",
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Fix labels and the manifest contradiction only."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "Render every marketing page through one layout in the shared chrome. Group footer links, unify nav labels, remove the app shell from the shared-footer list or include it properly."
+        },
+        "L3": {
+          "effortHours": 16,
+          "recipe": "Generate pages from content files with a small static-site layer."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": []
+    },
+    {
+      "id": 12,
+      "rank": 12,
+      "slug": "new-pages",
+      "title": "New pages: Updates with known issues, Guides with glossary, Media, Compare, Beta",
+      "axis": "features-depth",
+      "category": "features-depth",
+      "tier": "🔨",
+      "wave": 4,
+      "impact": 8,
+      "innovation": 6,
+      "effortHours": 12,
+      "priority": 16.9,
+      "status": "pending",
+      "readinessArea": "staging, release evidence and truthful beta/release communication",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 4 of the approved order.",
+      "recipe": "Merge status, archive and shipped-roadmap content into Updates with a Known Issues section. Add a Guides hub, a Media gallery, a comparison page and a Beta page explaining what beta means and how to give feedback.",
+      "acceptance": "Each new page is in the sitemap, footer and agent manifest; the landing page keeps marketing only, with setup on its own step; all pass the public-truth check.",
+      "premises": [
+        {
+          "claim": "No guides page exists.",
+          "adapter": "file-exists",
+          "target": "public/guides.html",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "premise": "No guides page exists.",
+      "ladder": {
+        "L1": {
+          "effortHours": 4,
+          "recipe": "Updates and Beta pages only."
+        },
+        "L2": {
+          "effortHours": 12,
+          "recipe": "Merge status, archive and shipped-roadmap content into Updates with a Known Issues section. Add a Guides hub, a Media gallery, a comparison page and a Beta page explaining what beta means and how to give feedback."
+        },
+        "L3": {
+          "effortHours": 24,
+          "recipe": "Searchable guide library generated from in-game help text."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": []
+    },
+    {
+      "id": 13,
+      "rank": 13,
+      "slug": "visual-upgrade",
+      "title": "Bundled fonts, a hero with live league data, current screenshots, per-page share images",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "🔨",
+      "wave": 4,
+      "impact": 8,
+      "innovation": 6,
+      "effortHours": 12,
+      "priority": 16.9,
+      "status": "pending",
+      "readinessArea": "accessibility, mobile parity and every supported theme",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 4 of the approved order.",
+      "recipe": "Self-host two WOFF2 faces so typography is the same on every device. Rebuild the hero around the showcase league. Recapture screenshots in both themes and at phone width, including portraits and the depth chart. Set per-page share images.",
+      "acceptance": "Typography identical on Windows, macOS, iOS and Android captures; every feature card has an image; share previews differ per page; contrast checked in both themes.",
+      "premises": [
+        {
+          "claim": "The font stack depends on fonts installed with one operating system.",
+          "adapter": "file-content",
+          "target": "public/styles.css",
+          "pattern": "font-family: \"Bahnschrift\", \"Franklin Gothic Medium\", \"Trebuchet MS\", sans-serif;",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "The font stack depends on fonts installed with one operating system.",
+      "ladder": {
+        "L1": {
+          "effortHours": 4,
+          "recipe": "Fonts and fresh screenshots only."
+        },
+        "L2": {
+          "effortHours": 12,
+          "recipe": "Self-host two WOFF2 faces so typography is the same on every device. Rebuild the hero around the showcase league. Recapture screenshots in both themes and at phone width, including portraits and the depth chart. Set per-page share images."
+        },
+        "L3": {
+          "effortHours": 24,
+          "recipe": "Short captured gameplay loops and an animated hero."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": []
+    },
+    {
+      "id": 14,
+      "rank": 14,
+      "slug": "funnel-telemetry",
+      "title": "Opt-in telemetry covers onboarding and return visits; consent is offered in the game",
+      "axis": "observability-honesty",
+      "category": "observability-honesty",
+      "tier": "⚡",
+      "wave": 3,
+      "impact": 8,
+      "innovation": 4,
+      "effortHours": 6,
+      "priority": 17.4,
+      "status": "pending",
+      "readinessArea": "observability and actionable analytics",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 3 of the approved order.",
+      "recipe": "Add coarse funnel events (setup finished, first advance, first season finished, return visit) to the event contract and offer the existing consent choice once inside the game. Off by default.",
+      "acceptance": "With consent, the four funnel events arrive on staging; without it nothing is sent; privacy page lists the new events.",
+      "premises": [
+        {
+          "claim": "The event contract covers gameplay events only.",
+          "adapter": "file-content",
+          "target": "public/lib/communityEventContract.js",
+          "pattern": "first_advance",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "premise": "The event contract covers gameplay events only.",
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "In-game consent prompt only."
+        },
+        "L2": {
+          "effortHours": 6,
+          "recipe": "Add coarse funnel events (setup finished, first advance, first season finished, return visit) to the event contract and offer the existing consent choice once inside the game. Off by default."
+        },
+        "L3": {
+          "effortHours": 12,
+          "recipe": "Cohort retention view on the stats page once thresholds are met."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": []
+    },
+    {
+      "id": 15,
+      "rank": 15,
+      "slug": "plain-football-language",
+      "title": "Player copy uses football words; panels load themselves; the command palette opens",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "⚡",
+      "wave": 5,
+      "impact": 7,
+      "innovation": 4,
+      "effortHours": 8,
+      "priority": 15,
+      "status": "pending",
+      "readinessArea": "accessibility, mobile parity and every supported theme",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the approved order.",
+      "recipe": "Replace process words in player-facing copy with football terms from one glossary, auto-load panels that still wait for a button, and bind the command palette to Ctrl/Cmd+K.",
+      "acceptance": "A vocabulary check fails on the retired words in player copy; no panel needs a Load button on first view; the palette opens by keyboard.",
+      "premises": [
+        {
+          "claim": "The command palette opener is defined.",
+          "adapter": "file-content",
+          "target": "public/app.js",
+          "pattern": "const openCommandPalette = () => {",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "The command palette opener is defined.",
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Wire the palette and remove Load buttons."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "Replace process words in player-facing copy with football terms from one glossary, auto-load panels that still wait for a button, and bind the command palette to Ctrl/Cmd+K."
+        },
+        "L3": {
+          "effortHours": 16,
+          "recipe": "Tone presets (broadcast, front office, plain) selectable in settings."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": []
+    },
+    {
+      "id": 16,
+      "rank": 16,
+      "slug": "release-process-diet",
+      "title": "Shorter release gate: parallel browser tests, curated gate set, accurate status signals",
+      "axis": "token-cost",
+      "category": "token-cost",
+      "tier": "⚡",
+      "wave": 3,
+      "impact": 8,
+      "innovation": 4,
+      "effortHours": 8,
+      "priority": 16.7,
+      "status": "pending",
+      "readinessArea": "staging, release evidence and truthful beta/release communication",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 3 of the approved order.",
+      "recipe": "Run browser tests on several workers with a curated release set and the full set nightly. Run the process-tooling shard beside the deploy, not in front of it. Parse the truth status token correctly and import the hosted test receipt into the brief.",
+      "acceptance": "Release gate wall-clock falls by at least half with the same defects caught on a seeded failure; the brief shows the hosted test result and a correct truth status.",
+      "premises": [
+        {
+          "claim": "Browser tests run on a single worker.",
+          "adapter": "file-content",
+          "target": "playwright.config.mjs",
+          "pattern": "workers: 1,",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The process-tooling shard is in the deploy gate.",
+          "adapter": "file-content",
+          "target": ".github/workflows/deploy-pages.yml",
+          "pattern": "- shard: studio (protocol truth)",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "Browser tests run on a single worker. The process-tooling shard is in the deploy gate.",
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Fix the two status signals and raise the worker count."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "Run browser tests on several workers with a curated release set and the full set nightly. Run the process-tooling shard beside the deploy, not in front of it. Parse the truth status token correctly and import the hosted test receipt into the brief."
+        },
+        "L3": {
+          "effortHours": 16,
+          "recipe": "Affected-test selection from the changed files."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": []
+    },
+    {
+      "id": 17,
+      "rank": 17,
+      "slug": "security-hardening-batch",
+      "title": "Small hardening fixes across staging, imports, escaping, database role and automation",
+      "axis": "security",
+      "category": "security",
+      "tier": "⚡",
+      "wave": 1,
+      "impact": 7,
+      "innovation": 3,
+      "effortHours": 8,
+      "priority": 14.2,
+      "status": "in-progress",
+      "readinessArea": "security, privacy, data integrity and abuse controls",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 1 of the approved order.",
+      "recipe": "Staging is marked noindex. Imports are size-capped before parsing. One tested escape helper replaces the copies and covers style values. The service uses a least-privilege database role. Automated dependency merges check the pull request author. Developer diagnostics are stripped from production markup.",
+      "acceptance": "Each fix has a test that fails without it; staging returns a noindex header; an oversized import is refused with a clear message.",
+      "premises": [
+        {
+          "claim": "Escape helpers are still defined per module, not shared.",
+          "adapter": "file-content",
+          "target": "public/lib/decisionArchive.js",
+          "pattern": "function escapeHtml(value) {",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "Escape helpers are still defined per module, not shared.",
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Staging noindex, import cap and the escape fix."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "Staging is marked noindex. Imports are size-capped before parsing. One tested escape helper replaces the copies and covers style values. The service uses a least-privilege database role. Automated dependency merges check the pull request author. Developer diagnostics are stripped from production markup."
+        },
+        "L3": {
+          "effortHours": 16,
+          "recipe": "Scheduled dependency and header drift checks with alerts."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "in-progress",
+          "note": "Implemented locally: the timeline escape helper now escapes quotes and the team color is escaped in the style attribute; a new test failed first against the unescaped helper. Remaining: staging noindex (same artifact serves staging and production, so it needs a host-scoped header rule verified on a staging deploy), import size cap, single escape helper, database role, diagnostics strip. The dependency auto-merge workflow is portfolio-managed and is reported to its owner, not edited here."
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "rank": 18,
+      "slug": "desk-and-tactics",
+      "title": "The Desk shows about eight panels; game plans get real choices",
+      "axis": "features-depth",
+      "category": "features-depth",
+      "tier": "🔨",
+      "wave": 5,
+      "impact": 7,
+      "innovation": 6,
+      "effortHours": 14,
+      "priority": 14.8,
+      "status": "pending",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the approved order.",
+      "recipe": "Group the Desk into this week, your club, the league and your career, with the rest one click down. Extend the weekly plan beyond four tactics with pace, run-pass lean and coverage choices whose effect is measured.",
+      "acceptance": "Desk first view fits one phone screen of headings; each new plan choice moves a measured statistic in a multi-season probe.",
+      "premises": [
+        {
+          "claim": "Weekly tactics live in one runtime module.",
+          "adapter": "file-exists",
+          "target": "src/runtime/weeklyTactic.js",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "Weekly tactics live in one runtime module.",
+      "ladder": {
+        "L1": {
+          "effortHours": 5,
+          "recipe": "Desk grouping only."
+        },
+        "L2": {
+          "effortHours": 14,
+          "recipe": "Group the Desk into this week, your club, the league and your career, with the rest one click down. Extend the weekly plan beyond four tactics with pace, run-pass lean and coverage choices whose effect is measured."
+        },
+        "L3": {
+          "effortHours": 28,
+          "recipe": "Opponent scouting report that recommends a plan."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": []
+    },
+    {
+      "id": 19,
+      "rank": 19,
+      "slug": "seo-and-agent-surfaces",
+      "title": "Structured data on every page; a published briefing schema; a game map for contributors and agents",
+      "axis": "ai-intelligence",
+      "category": "ai-intelligence",
+      "tier": "⚡",
+      "wave": 4,
+      "impact": 6,
+      "innovation": 5,
+      "effortHours": 5,
+      "priority": 15.1,
+      "status": "pending",
+      "readinessArea": "human and agent access where applicable",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 4 of the approved order.",
+      "recipe": "Add FAQ, organization, website and breadcrumb structured data. Publish the Co-GM briefing as a versioned JSON schema. Add a game-specific map to the agent instructions and remove links to files that are not in the public repo.",
+      "acceptance": "Structured data validates; the schema file is linked from llms.txt and the agent manifest; no dead documentation links remain.",
+      "premises": [
+        {
+          "claim": "The FAQ page has no FAQ structured data.",
+          "adapter": "file-content",
+          "target": "public/faq.html",
+          "pattern": "FAQPage",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "premise": "The FAQ page has no FAQ structured data.",
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "FAQ structured data and dead-link removal."
+        },
+        "L2": {
+          "effortHours": 5,
+          "recipe": "Add FAQ, organization, website and breadcrumb structured data. Publish the Co-GM briefing as a versioned JSON schema. Add a game-specific map to the agent instructions and remove links to files that are not in the public repo."
+        },
+        "L3": {
+          "effortHours": 10,
+          "recipe": "Read-only agent mode that answers questions about a loaded league."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": []
+    },
+    {
+      "id": 20,
+      "rank": 20,
+      "slug": "launch-hold-clearance",
+      "title": "Clear the launch hold and announce public beta",
+      "axis": "observability-honesty",
+      "category": "observability-honesty",
+      "tier": "⚡",
+      "wave": 7,
+      "impact": 9,
+      "innovation": 3,
+      "effortHours": 4,
+      "priority": 19.1,
+      "status": "pending",
+      "readinessArea": "email and notifications where used",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 7 of the approved order.",
+      "recipe": "Prepare the email-delivery check and the approval packet for the founder to run. Add the install prompt. Switch the release label and promote through staging to production.",
+      "acceptance": "A received-message receipt exists; the founder's approval is recorded by the founder; production shows the beta label and matches the staged build.",
+      "premises": [
+        {
+          "claim": "Launch is on hold for email delivery and approval.",
+          "adapter": "file-content",
+          "target": "context/PROJECT_STATUS.json",
+          "pattern": "email-delivery-unverified",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "Launch is on hold for email delivery and approval.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Prepare the packet only."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Prepare the email-delivery check and the approval packet for the founder to run. Add the install prompt. Switch the release label and promote through staging to production."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "Supporter page with voluntary contributions and no gated content."
+        }
+      },
+      "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
+      "executionLog": []
+    }
+  ],
+  "candidateAssessments": [
+    {
+      "slug": "legacy-mirrors-to-redirects",
+      "decision": "unselected",
+      "reason": "Ranked 1; wave 1. Selected when its wave starts."
+    },
+    {
+      "slug": "site-truth-pass",
+      "decision": "unselected",
+      "reason": "Ranked 2; wave 1. Selected when its wave starts."
+    },
+    {
+      "slug": "bundle-and-minify",
+      "decision": "unselected",
+      "reason": "Ranked 3; wave 2. Selected when its wave starts."
+    },
+    {
+      "slug": "in-game-feedback-and-diagnostics",
+      "decision": "unselected",
+      "reason": "Ranked 4; wave 3. Selected when its wave starts."
+    },
+    {
+      "slug": "faster-first-week",
+      "decision": "unselected",
+      "reason": "Ranked 5; wave 5. Selected when its wave starts."
+    },
+    {
+      "slug": "game-day-in-the-loop",
+      "decision": "unselected",
+      "reason": "Ranked 6; wave 5. Selected when its wave starts."
+    },
+    {
+      "slug": "owner-can-fire-you",
+      "decision": "unselected",
+      "reason": "Ranked 7; wave 6. Selected when its wave starts."
+    },
+    {
+      "slug": "cpu-draft-through-fog",
+      "decision": "unselected",
+      "reason": "Ranked 8; wave 6. Selected when its wave starts."
+    },
+    {
+      "slug": "gm-profile",
+      "decision": "unselected",
+      "reason": "Ranked 9; wave 5. Selected when its wave starts."
+    },
+    {
+      "slug": "scored-weekly-challenge",
+      "decision": "unselected",
+      "reason": "Ranked 10; wave 6. Selected when its wave starts."
+    },
+    {
+      "slug": "one-site-template",
+      "decision": "unselected",
+      "reason": "Ranked 11; wave 4. Selected when its wave starts."
+    },
+    {
+      "slug": "new-pages",
+      "decision": "unselected",
+      "reason": "Ranked 12; wave 4. Selected when its wave starts."
+    },
+    {
+      "slug": "visual-upgrade",
+      "decision": "unselected",
+      "reason": "Ranked 13; wave 4. Selected when its wave starts."
+    },
+    {
+      "slug": "funnel-telemetry",
+      "decision": "unselected",
+      "reason": "Ranked 14; wave 3. Selected when its wave starts."
+    },
+    {
+      "slug": "plain-football-language",
+      "decision": "unselected",
+      "reason": "Ranked 15; wave 5. Selected when its wave starts."
+    },
+    {
+      "slug": "release-process-diet",
+      "decision": "unselected",
+      "reason": "Ranked 16; wave 3. Selected when its wave starts."
+    },
+    {
+      "slug": "security-hardening-batch",
+      "decision": "unselected",
+      "reason": "Ranked 17; wave 1. Selected when its wave starts."
+    },
+    {
+      "slug": "desk-and-tactics",
+      "decision": "unselected",
+      "reason": "Ranked 18; wave 5. Selected when its wave starts."
+    },
+    {
+      "slug": "seo-and-agent-surfaces",
+      "decision": "unselected",
+      "reason": "Ranked 19; wave 4. Selected when its wave starts."
+    },
+    {
+      "slug": "launch-hold-clearance",
+      "decision": "unselected",
+      "reason": "Ranked 20; wave 7. Selected when its wave starts."
+    }
+  ],
+  "readinessAssessment": [
+    {
+      "area": "core journeys and product correctness",
+      "status": "partial",
+      "evidence": "No fail state for the GM; game day absent from the weekly loop; CPU draft scoring reads the overall rating.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Wave 5 and 6 acceptance checks.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "onboarding and identity/access",
+      "status": "partial",
+      "evidence": "About twelve clicks and three modals before the first result; no account system by design.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Click-count browser spec (faster-first-week).",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "accessibility, mobile parity and every supported theme",
+      "status": "partial",
+      "evidence": "No automated accessibility run; typography depends on platform fonts.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Captures in both themes and at phone width for touched surfaces.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "performance and capacity",
+      "status": "fail",
+      "evidence": "Build output carries nested copies of the site; client ships unminified with the hero inlined.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Wave 1 size check and wave 2 throttled measurements.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "security, privacy, data integrity and abuse controls",
+      "status": "partial",
+      "evidence": "Strict headers and escaping are in place; several small gaps are listed in the hardening batch.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Each hardening fix lands with a failing-first test.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "backup, recovery and rollback",
+      "status": "pass",
+      "evidence": "Rolling backups, rewind and export exist; not re-tested this audit.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Re-check when save surfaces move to the GM Profile.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "email and notifications where used",
+      "status": "fail",
+      "evidence": "Launch hold names unverified email delivery.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Received-message receipt (launch-hold-clearance).",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "observability and actionable analytics",
+      "status": "fail",
+      "evidence": "No remote error reporting and no funnel events.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Staging receipt of feedback, diagnostics and funnel events.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "feedback, support and issue triage",
+      "status": "fail",
+      "evidence": "In-game surveys stay on the device; sending feedback needs an external account.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "In-game form stores a staging submission.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "branding, legal, contact and rights/provenance",
+      "status": "partial",
+      "evidence": "Legal pages exist without effective dates; three page templates.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Wave 4 template and legal-date checks.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "human and agent access where applicable",
+      "status": "partial",
+      "evidence": "llms.txt and the agent manifest are good; agent instructions link to files outside the public repo.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Dead-link check and published briefing schema.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "staging, release evidence and truthful beta/release communication",
+      "status": "fail",
+      "evidence": "Roadmap lists shipped work as future; one release has no note; the label differs from the planned beta label.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Public-truth check red on a seeded stale claim, green after the pass.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    }
+  ],
+  "totals": {
+    "count": 20,
+    "priority": 349.8,
+    "top3": [
+      "legacy-mirrors-to-redirects",
+      "site-truth-pass",
+      "bundle-and-minify"
+    ],
+    "effortHours": 180
+  },
+  "generatedAt": "2026-11-17T23:30:00.000Z",
+  "axisCoverage": {
+    "features-depth": {
+      "surviving": [
+        "new-pages",
+        "desk-and-tactics"
+      ],
+      "rejectedOnVerify": [
+        {
+          "slug": "accounts-and-login",
+          "premise": "A beta needs accounts.",
+          "evidence": "No account system exists and 'no account' is a published claim; gm-profile gives a local user panel instead. Revisit if shared boards need identity."
+        }
+      ]
+    },
+    "ui-ux-feedback": {
+      "surviving": [
+        "in-game-feedback-and-diagnostics",
+        "gm-profile",
+        "one-site-template",
+        "visual-upgrade",
+        "plain-football-language"
+      ],
+      "rejectedOnVerify": []
+    },
+    "gamification-immersion": {
+      "surviving": [
+        "faster-first-week",
+        "game-day-in-the-loop",
+        "owner-can-fire-you",
+        "scored-weekly-challenge"
+      ],
+      "rejectedOnVerify": []
+    },
+    "ai-intelligence": {
+      "surviving": [
+        "cpu-draft-through-fog",
+        "seo-and-agent-surfaces"
+      ],
+      "rejectedOnVerify": [
+        {
+          "slug": "runtime-llm-narrative",
+          "premise": "Narrative needs a model at runtime.",
+          "evidence": "Rejected in earlier audits; the product makes no model calls and says so publicly."
+        }
+      ]
+    },
+    "security": {
+      "surviving": [
+        "security-hardening-batch"
+      ],
+      "rejectedOnVerify": []
+    },
+    "speed-organization-efficiency": {
+      "surviving": [
+        "legacy-mirrors-to-redirects",
+        "bundle-and-minify"
+      ],
+      "rejectedOnVerify": []
+    },
+    "token-cost": {
+      "surviving": [
+        "release-process-diet"
+      ],
+      "rejectedOnVerify": [
+        {
+          "slug": "product-token-reduction",
+          "premise": "The product spends API tokens.",
+          "evidence": "No model or AI endpoint calls exist in src/ or public/; the cost is in the release process (release-process-diet)."
+        }
+      ]
+    },
+    "observability-honesty": {
+      "surviving": [
+        "site-truth-pass",
+        "funnel-telemetry",
+        "launch-hold-clearance"
+      ],
+      "rejectedOnVerify": []
+    },
+    "sil-debt": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "history-rewrite-visual-qa",
+          "premise": "Tracked capture images should be purged now.",
+          "evidence": "Needs a destructive history rewrite of a public repository; carried as a separate proposal."
+        }
+      ]
+    }
+  }
+}

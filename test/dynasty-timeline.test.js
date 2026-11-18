@@ -60,6 +60,12 @@ test("every season node carries role=button, tabindex=0, and aria-controls point
   }
 });
 
+test("a team color from an imported save cannot break out of the style attribute", () => {
+  const html = renderNodesHTML(seasons, -1, `#4a8fb5" onclick="alert(1)`, "tl-detail-panel-x");
+  assert.ok(!html.includes(`" onclick="alert(1)`), "the quote is escaped, so no new attribute is created");
+  assert.match(html, /style="--tl-color:#4a8fb5&quot; onclick=&quot;alert\(1\)"/);
+});
+
 test("aria-expanded reflects activeIdx and only the active node is true", () => {
   const html = renderNodesHTML(seasons, 1, "#4a8fb5", "tl-detail-panel-x");
   const matches = [...html.matchAll(/data-idx="(\d+)"[^>]*aria-expanded="(true|false)"/g)];

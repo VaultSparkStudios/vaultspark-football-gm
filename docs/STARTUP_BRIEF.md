@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-11-17 (Session 131 closeout) -->
+<!-- generated-at: 2026-11-18 (Session 131 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: 06c3f662e849c4b7 -->
-<!-- genius-authority-fingerprint: c5b63bd564505fdc -->
+<!-- genius-authority-fingerprint: 1bf3472e85dd0095 -->
 <!-- session-authority: committed=S131 · SIL=S131 · status=S131 · handoff=S131; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 131 closeout · 2026-11-17.
+> **Fast-boot brief** — generated at Session 131 closeout · 2026-11-18.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,7 +17,7 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 132 · 2026-11-17 · BUILDER MODE                         ║
+║  Session 132 · 2026-11-18 · BUILDER MODE                         ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -34,7 +34,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · cache stale 49d · refresh required             ║
+║  Profile · game · cache stale 50d · refresh required             ║
 ║  ✓ Lifecycle authority · local FORGE · registry FORGE            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -42,7 +42,7 @@
 ║                                                                  ║
 ║    537/1000   ████████████░░░░░░░░░░░░   54%                     ║
 ║    SIL v3.0  ·  Avg3: 538  ·  Velocity 2→                        ║
-║    Active 0d · closeout 1d · source: newest SIL/status/handoff   ║
+║    Active 1d · closeout 2d · source: newest SIL/status/handoff   ║
 ║    Trend  ▁▁▁▁▁  →  (last 5 sessions)                            ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -67,9 +67,9 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,689 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,345 tok/turn  ·  cache 50%  ·  134 turns to compact       ║
+║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    2% used                          ║
+║     15,174 / 1,000,000 tok  ·  claude-code/opus-4-8-1m  ·  heur  ║
+║     ~7,587 tok/turn  ·  cache 50%  ·  119 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -78,8 +78,8 @@
 ║  (2026-11-13)                                                    ║
 ║  ✓  Velocity      2   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
-║  ✓  Context age   0d                                             ║
-║  ✓  IGNIS         41418 FORGE  ·  4d old                         ║
+║  ✓  Context age   1d                                             ║
+║  ✓  IGNIS         41418 FORGE  ·  5d old                         ║
 ║  ⛔  Truth         S131 two selected technical outcomes (injury   ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ⚠  Genome dims   unmeasured (5 dimensions; —/25)                ║
@@ -89,8 +89,8 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ✓  Doctor        12/12 (100%)  ·  2026-11-17  ✓                 ║
-║  ✓  Cost          Max flat-rate · $0.01/7d notional · no alarm   ║
+║  ✓  Doctor        12/12 (100%)  ·  2026-11-18  ✓                 ║
+║  ✓  Cost          Max flat-rate · $0.08/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ ORCHESTRATOR ════════════════════════════════════════════════╗
@@ -113,14 +113,28 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-11-13_SESSION131.json    ║
-║  Closed: 2 · Open: 0                                             ║
-║  All 2 live-premise-verified audit items are done.               ║
+║  ✓ cache source: AUDIT_2026-11-17_SESSION132.json                ║
+║                                                                  ║
+║  #1 · ⚡ · legacy-mirrors-to-redirects                            ║
+║  Legacy URL mirrors become redirects; the deploy ships one copy  ║
+║                                                                  ║
+║  #2 · ⚡ · site-truth-pass                                        ║
+║  Public pages match the shipped game: roadmap, features, releas  ║
+║                                                                  ║
+║  #3 · 🔨 · bundle-and-minify                                     ║
+║  Minified, bundled, content-hashed client; hero image no longer  ║
+║                                                                  ║
+║  #4 · 🔨 · in-game-feedback-and-diagnostics                      ║
+║  Feedback and opt-in error reports are sent from inside the gam  ║
+║                                                                  ║
+║  #5 · 🔨 · faster-first-week                                     ║
+║  First game result within four clicks of the landing page        ║
+║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ```
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 131 closeout · 2026-11-17*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 131 closeout · 2026-11-18*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

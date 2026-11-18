@@ -20,7 +20,7 @@ const PADDING_X = 40;
 const SVG_H = 200;
 
 function esc(s) {
-  return String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
 
 function nodeClass(season) {
@@ -58,7 +58,7 @@ export function renderNodesHTML(data, activeIdx, teamColor, detailPanelId) {
     const crown = season.champion ? `<span class="tl-crown" title="Champion">&#9813;</span>` : "";
     const label = `Season ${esc(season.year)}${season.champion ? ", Champion" : ""}${rec ? `, ${esc(rec)}` : ""}`;
     return `
-        <div class="${cls}" data-idx="${i}" style="--tl-color:${teamColor}" role="button" tabindex="0" aria-expanded="${isActive}" aria-controls="${detailPanelId}" aria-label="${label}">
+        <div class="${cls}" data-idx="${i}" style="--tl-color:${esc(teamColor)}" role="button" tabindex="0" aria-expanded="${isActive}" aria-controls="${detailPanelId}" aria-label="${label}">
           <div class="tl-year">${esc(season.year)}${crown}</div>
           <div class="tl-rec">${esc(rec)}</div>
         </div>`;

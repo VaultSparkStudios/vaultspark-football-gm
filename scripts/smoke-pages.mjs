@@ -129,6 +129,24 @@ async function assertPublishedMountContract() {
     await assertStaticPath(`${mount}setup.js`, /createApiClient/, "application/javascript");
     await assertStaticPath(`${mount}favicon.ico`, null, "image/x-icon");
   }
+  await assertNoNestedMounts(manifest.publishedMounts);
+}
+
+// One service worker per declared mount and no more. A mount copied inside
+// another mount ships a second site and a second worker at an undeclared path.
+async function assertNoNestedMounts(publishedMounts) {
+  const declared = new Set(publishedMounts.map((mount) => {
+    const relativeMount = String(mount).replace(/^\/+|\/+$/g, "");
+    return relativeMount ? `${relativeMount}/sw.js` : "sw.js";
+  }));
+  const entries = await fs.readdir(staticDir, { recursive: true });
+  const found = entries
+    .map((entry) => String(entry).replace(/\\/g, "/"))
+    .filter((entry) => entry === "sw.js" || entry.endsWith("/sw.js"));
+  const undeclared = found.filter((entry) => !declared.has(entry));
+  if (undeclared.length) {
+    throw new Error(`Service workers published outside the declared mounts: ${undeclared.join(", ")}`);
+  }
 }
 
 async function main() {

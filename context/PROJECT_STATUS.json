@@ -9,7 +9,7 @@
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-11-17",
+  "lastUpdated": "2026-11-18",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "type": "game",
@@ -123,7 +123,7 @@
     "total": 12,
     "failing": 0,
     "score": 100,
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "passing": 12,
     "warning": 0,
     "checks": []

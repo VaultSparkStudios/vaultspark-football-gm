@@ -383,13 +383,18 @@ function withFeedLink(html) {
   );
 }
 
+const mountRootNames = new Set([slug, ...legacySlugs].map((mount) => mount.split("/")[0]));
+
 async function mirrorPath(mirrorSlug) {
   const projectDir = path.join(outDir, ...mirrorSlug.split("/"));
   const entries = await fs.readdir(outDir, { withFileTypes: true });
   await fs.mkdir(projectDir, { recursive: true });
 
   for (const entry of entries) {
-    if ([slug, "vaultspark-football-gm", "games"].includes(entry.name)) continue;
+    // Skip every mount root, derived from the mount list itself. The literal list
+    // this replaces omitted "franchise-architect", so each games/* mount carried a
+    // nested second copy of the site and its own service worker.
+    if (mountRootNames.has(entry.name)) continue;
     const source = path.join(outDir, entry.name);
     const destination = path.join(projectDir, entry.name);
     if (entry.isDirectory()) {
