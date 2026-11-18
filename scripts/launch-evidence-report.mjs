@@ -44,6 +44,10 @@ function routeUrl(baseUrl, route) {
 }
 
 const maxRedirectHops = 5;
+// The largest response a probe keeps. The release manifest lists every shipped
+// file and is read whole by the provenance check, so this must stay above its
+// size; the pages smoke test fails the build if the manifest outgrows it.
+export const PROBE_BODY_LIMIT = 1024 * 1024;
 
 function probeOnceHttps(url, timeoutMs) {
   return new Promise((resolve) => {
@@ -51,8 +55,8 @@ function probeOnceHttps(url, timeoutMs) {
       const chunks = [];
       let size = 0;
       response.on("data", (chunk) => {
-        if (size >= 65536) return;
-        const remaining = 65536 - size;
+        if (size >= PROBE_BODY_LIMIT) return;
+        const remaining = PROBE_BODY_LIMIT - size;
         const bounded = chunk.subarray(0, remaining);
         chunks.push(bounded);
         size += bounded.length;

@@ -4,6 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "@playwright/test";
 import { checkMinifiedEngineParity } from "./check-minified-engine-parity.mjs";
+import { PROBE_BODY_LIMIT } from "./launch-evidence-report.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -132,12 +133,23 @@ async function assertPublishedMountContract() {
   }
   await assertNoNestedMounts(manifest.publishedMounts);
   await assertShippedAssetsMinified();
+  await assertManifestFitsProbe();
   const parity = await checkMinifiedEngineParity();
   if (!parity.ok) throw new Error(`Shipped engine diverges from the authored engine: ${JSON.stringify(parity)}`);
 }
 
 // The shipped client must be the minified one. A build that silently skipped
 // minification still boots, so size is the only place the regression shows.
+// The provenance check reads the whole release manifest through a bounded
+// probe. A manifest larger than that bound is cut short, fails to parse, and
+// every identity check reports a mismatch on a correct deploy.
+async function assertManifestFitsProbe() {
+  const bytes = (await fs.stat(path.join(staticDir, "deploy-manifest.json"))).size;
+  if (bytes >= PROBE_BODY_LIMIT) {
+    throw new Error(`deploy-manifest.json is ${bytes} bytes, at or over the ${PROBE_BODY_LIMIT}-byte probe limit.`);
+  }
+}
+
 async function assertShippedAssetsMinified() {
   if (process.env.VSFGM_MINIFY === "0") return;
   for (const name of ["app.js", "setup.js", "styles.css"]) {
