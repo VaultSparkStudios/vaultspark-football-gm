@@ -269,6 +269,13 @@ test("saved snapshot authority is checked over HTTP before replacing the active 
   await withServer(async (base) => {
     const original = (await getJson(base, "/api/state")).body;
     const alternateTeam = original.controlledTeamId === "NYJ" ? "BUF" : "NYJ";
+    // Free choice of club is a Sandbox-rules capability. Prove the server
+    // adapter refuses it under the default rules, then opt this fixture in.
+    const locked = await postJson(base, "/api/control-team", { teamId: alternateTeam });
+    assert.equal(locked.status, 403, JSON.stringify(locked.body));
+    assert.equal(locked.body.reasonCode, "team-switch-locked");
+    assert.equal((await getJson(base, "/api/state")).body.controlledTeamId, original.controlledTeamId);
+    assert.equal((await postJson(base, "/api/settings", { rulesPreset: "sandbox" })).status, 200);
     const control = async teamId => {
       const response = await postJson(base, "/api/control-team", { teamId });
       assert.equal(response.status, 200, JSON.stringify(response.body));

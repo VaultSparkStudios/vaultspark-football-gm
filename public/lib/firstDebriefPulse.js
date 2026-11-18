@@ -1,5 +1,6 @@
 import { closeModal, openModal } from "./modalManager.js";
 import { franchiseStorageKey } from "./franchiseScope.js";
+import { findTeamStanding, normalizeTeamRecord } from "./teamRecord.js";
 import {
   buildLocalPlaytestExport,
   buildLocalPlaytestReceipt,
@@ -58,8 +59,26 @@ export function setFirstDebriefPulseState(dashboard = {}, value, storage) {
   return value;
 }
 
-export function shouldPromptFirstDebriefPulse(dashboard = {}, storage) {
-  return Boolean(dashboard?.controlledTeamId) && getFirstDebriefPulseState(dashboard, storage) === null;
+// The check-in asks about the weekly loop, so it waits until the player has
+// been through it a few times. One finished game is a result, not a routine.
+export const FIRST_DEBRIEF_MIN_GAMES = 3;
+
+// Games the controlled team has finished this season, read from the standings.
+// A dashboard without a standings row counts as zero: never ask on absence.
+export function completedGamesForPulse(dashboard = {}) {
+  const row = findTeamStanding(dashboard?.latestStandings, {
+    ...dashboard?.controlledTeam,
+    id: dashboard?.controlledTeamId,
+    abbrev: dashboard?.controlledTeam?.abbrev || dashboard?.controlledTeamId
+  });
+  const { wins, losses, ties } = normalizeTeamRecord(row);
+  return wins + losses + ties;
+}
+
+export function shouldPromptFirstDebriefPulse(dashboard = {}, storage, { minGames = FIRST_DEBRIEF_MIN_GAMES } = {}) {
+  return Boolean(dashboard?.controlledTeamId)
+    && getFirstDebriefPulseState(dashboard, storage) === null
+    && (Number(dashboard?.seasonsSimulated) > 0 || completedGamesForPulse(dashboard) >= minGames);
 }
 
 function ratingOptions() {
@@ -78,8 +97,8 @@ function pulseMarkup() {
   return `
     <section class="first-debrief-card" role="document" aria-labelledby="firstDebriefTitle" aria-describedby="firstDebriefPrivacy">
       <div class="first-debrief-kicker">Private playtest check-in</div>
-      <h2 id="firstDebriefTitle">How did that first week feel?</h2>
-      <p class="first-debrief-lede">Rate the decision loop you just completed. This takes about 20 seconds.</p>
+      <h2 id="firstDebriefTitle">How are your first few weeks going?</h2>
+      <p class="first-debrief-lede">Rate the weekly routine now that you have played a few games. This takes about 20 seconds.</p>
       <form id="firstDebriefForm">
         <div class="first-debrief-rating-grid">
           <label>Clarity<select name="clarity" required>${options}</select></label>
@@ -129,10 +148,11 @@ export function maybePromptFirstDebriefPulse({
   dashboard = {},
   storage,
   clipboard = globalThis.navigator?.clipboard,
-  focusTarget = null
+  focusTarget = null,
+  minGames = FIRST_DEBRIEF_MIN_GAMES
 } = {}) {
   storage = resolvePulseStorage(storage);
-  if (typeof document === "undefined" || !document.body || !shouldPromptFirstDebriefPulse(dashboard, storage)) {
+  if (typeof document === "undefined" || !document.body || !shouldPromptFirstDebriefPulse(dashboard, storage, { minGames })) {
     return false;
   }
   if (document.getElementById("firstDebriefPulse")) return false;

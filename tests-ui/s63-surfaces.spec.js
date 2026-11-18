@@ -195,6 +195,9 @@ test("the podium opens after a game and answering it records a receipt", async (
 
 test("the pre-game brief states the opponent read the engine acts on", async ({ page }) => {
   await startFranchise(page);
+  // The opening week runs on the staff's game plan with no pop-up; the brief
+  // is offered from the second week on.
+  await advanceWeekThroughPlan(page);
   await page.locator("#advanceWeekBtn").click();
 
   const decision = page.locator("#gmDecisionOptions .gm-decision-option").first();

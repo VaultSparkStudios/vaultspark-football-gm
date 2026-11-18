@@ -31,6 +31,7 @@ export async function handleCommissionerRoutes(req, res, url, ctx) {
       displayName: commissionerId,
       controlledTeamId
     });
+    ctx.session.setCommissionerLobbyActive(true);
     sendJson(res, 200, { ok: true, lobby: lobbyStatus(ctx.serverLobby) });
     return true;
   }
@@ -149,6 +150,7 @@ export async function handleCommissionerRoutes(req, res, url, ctx) {
 
   if (req.method === "DELETE" && url.pathname === "/api/commissioner/lobby") {
     ctx.serverLobby = null;
+    ctx.session.setCommissionerLobbyActive(false);
     sendJson(res, 200, { ok: true });
     return true;
   }

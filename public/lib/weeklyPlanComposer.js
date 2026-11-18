@@ -56,12 +56,14 @@ export async function composeWeeklyPlan({
   collectDecision = async () => ({ status: "none", choice: null }),
   collectTactic = async () => null,
   onBye = false,
+  openingWeek = false,
   reviewPlan = null,
   onCheckpoint = () => {}
 } = {}) {
   const regularSeason = phase === "regular-season";
   const onByeWeek = Boolean(onBye) && regularSeason;
-  const tacticalPhase = (regularSeason && !onByeWeek) || (phase === "postseason" && postseasonPlanRequired);
+  const staffPlan = openingWeek && regularSeason && !onByeWeek;
+  const tacticalPhase = !staffPlan && ((regularSeason && !onByeWeek) || (phase === "postseason" && postseasonPlanRequired));
   const compositionOrder = [];
   let decisionChoice = presetDecisionChoice || null;
   onCheckpoint("weekly-plan-opened");
@@ -147,6 +149,7 @@ export async function composeWeeklyPlan({
     compositionOrder.push("bye");
     onCheckpoint("bye-week-acknowledged");
   }
+  if (staffPlan) compositionOrder.push("staff-plan");
 
   const body = { count: 1 };
   if (decisionChoice) body.gmDecisionChoice = decisionChoice;
@@ -193,6 +196,7 @@ const PLAN_STEP_LABELS = {
   "review-revise": "rethink",
   "tactic-revision": "revised plan",
   "standing-plan-reinforced": "plan kept",
+  "staff-plan": "opening week",
   bye: "bye week"
 };
 
@@ -209,7 +213,9 @@ export function describeWeeklyPlanReceipt(receipt) {
     ? `tactic: ${String(receipt.plan.tacticId).replace(/-/g, " ")}`
     : receipt.onBye
       ? "bye week — no opponent"
-      : "no game plan (your call)";
+      : receipt.compositionOrder?.includes("staff-plan")
+        ? "staff game plan (you call it from Week 2)"
+        : "no game plan (your call)";
   if (receipt.status === "deferred") {
     return { title: "Weekly plan deferred", detail: "Nothing was committed this week.", tone: "warning" };
   }

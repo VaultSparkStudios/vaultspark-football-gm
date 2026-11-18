@@ -20,6 +20,7 @@ import { getFanSentiment, fanApprovalLabel } from "../../engine/fanSentiment.js"
 import { executeAdvanceWeekTransaction } from "../../runtime/advanceWeekCommand.js";
 import { inspectSnapshotCompatibility, migrateSnapshot, snapshotErrorPayload } from "../../runtime/snapshotMigration.js";
 import { authorizeCommand } from "../../runtime/franchiseAuthority.js";
+import { runCareerCommand } from "../../runtime/careerCommand.js";
 import { handleArchitectThesisRequest } from "../../runtime/handlers/architectThesisHandler.js";
 import { handleTradeOffersRequest } from "../../runtime/handlers/tradeOffersHandler.js";
 import { handleFranchiseMomentRequest } from "../../runtime/handlers/franchiseMomentHandler.js";
@@ -457,9 +458,11 @@ export function createLocalApiRuntime({
     const started = now();
     try {
       for (let i = 0; i < batchSize && job.completedSeasons < job.totalSeasons; i += 1) {
-        const summary = activeSession.simulateOneSeason({ runOffseasonAfter: true });
+        const summary = activeSession.simulateOneSeason({ runOffseasonAfter: true, stopOnDismissal: true });
         job.results.push(summary);
         job.completedSeasons += 1;
+        // A general manager who was let go chooses the next club before any more seasons run.
+        if (activeSession.getGmCareerState?.()?.dismissed === true) job.totalSeasons = job.completedSeasons;
       }
       job.progress = Number(((job.completedSeasons / Math.max(1, job.totalSeasons)) * 100).toFixed(2));
       job.updatedAt = now();
@@ -664,9 +667,17 @@ export function createLocalApiRuntime({
         return finish(jsonResponse(200, { ok: true, teamId, state: getAugmentedState(session) }));
       }
 
+      // GM career: resign, or take a job the market actually offered. Whether
+      // the command is allowed was already decided at the authority boundary.
+      if (method === "POST" && pathname === "/api/career") {
+        const result = runCareerCommand(session, body);
+        if (result.ok) writeAutoBackup("career");
+        return finish(jsonResponse(result.ok ? 200 : result.status || 400, { ...result, state: getAugmentedState(session) }));
+      }
+
       if (method === "POST" && pathname === "/api/advance-season") {
         const count = Math.max(1, Math.min(100, toInt(body?.count) || 1));
-        const results = session.simulateSeasons(count, { runOffseasonAfterLast: true });
+        const results = session.simulateSeasons(count, { runOffseasonAfterLast: true, stopOnDismissal: true });
         writeAutoBackup("season-sim");
         return finish(jsonResponse(200, { ok: true, count, results, state: getAugmentedState(session) }));
       }
@@ -1698,6 +1709,7 @@ export function createLocalApiRuntime({
           displayName:     commissionerId,
           controlledTeamId
         });
+        s.setCommissionerLobbyActive(true);
         _persistLobby();
         return finish(jsonResponse(200, { ok: true, lobby: lobbyStatus(_lobby) }));
       }
@@ -1791,6 +1803,7 @@ export function createLocalApiRuntime({
 
       if (method === "DELETE" && pathname === "/api/commissioner/lobby") {
         _lobby = null;
+        session?.setCommissionerLobbyActive(false);
         _persistLobby();
         return finish(jsonResponse(200, { ok: true }));
       }

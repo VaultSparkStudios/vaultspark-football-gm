@@ -69,10 +69,12 @@ for(const action of ['skip','complete'])test(`tutorial ${action} works when pers
  if(action==='skip'){
   await page.locator('#tutSkipBtn').click();expect(await page.evaluate(()=>window.storageSkipCount)).toBe(1);
  }else{
-  for(let step=0;step<3;step++){await page.locator('.tutorial-choice').first().click();await page.locator('#tutNextBtn').click();}
-  await expect(page.locator('.tutorial-receipt')).toBeVisible();
+  // One screen, three calls, one confirm; the dialog closes itself once applied.
+  await expect(page.locator('.tutorial-group')).toHaveCount(3);
+  for(const group of await page.locator('.tutorial-group').all())await group.locator('.tutorial-choice').first().click();
+  await page.locator('#tutNextBtn').click();
+  await expect(page.locator('.tutorial-overlay')).toHaveCount(0);
   expect(await page.evaluate(()=>window.storageApplyCount)).toBe(1);
-  await page.getByRole('button',{name:'Enter the Franchise',exact:true}).click();
  }
  await expect(page.locator('.tutorial-overlay')).toHaveCount(0);expect(errors).toEqual([]);
 });

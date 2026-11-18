@@ -154,3 +154,43 @@ test("eliminated and non-qualified postseason states advance without inventing a
   assert.deepEqual(preview.body, { count: 1 });
   assert.equal(preview.receipt.plan.explicitNoPlan, false);
 });
+
+test("a new franchise's opening week skips the tactic and review steps and says so", async () => {
+  const calls = [];
+  const result = await composeWeeklyPlan({
+    phase: "regular-season",
+    openingWeek: true,
+    collectDecision: async () => { calls.push("decision"); return { status: "none", choice: null }; },
+    collectTactic: async () => { calls.push("tactic"); return "run-heavy"; },
+    reviewPlan: async () => { calls.push("review"); return { status: "commit", evidence: { reviewed: true } }; }
+  });
+  assert.deepEqual(calls, ["decision"], "the GM call is still asked; the tactic modal and the review are not");
+  assert.equal(result.deferred, false);
+  assert.deepEqual(result.body, { count: 1 }, "no tactic is sent, so the staff plan stands");
+  assert.deepEqual(result.receipt.compositionOrder, ["gm-decision", "staff-plan"]);
+  assert.equal(result.receipt.plan.explicitNoPlan, false, "the player did not refuse a plan");
+  const described = describeWeeklyPlanReceipt(commitWeeklyPlanReceipt(result.receipt, { state: { currentYear: 2026, currentWeek: 2, controlledTeamId: "BUF" } }));
+  assert.match(described.detail, /staff game plan \(you call it from Week 2\)/);
+  assert.match(described.detail, /GM call → opening week/);
+  assert.doesNotMatch(described.detail, /your call\)$|no game plan/);
+});
+
+test("the opening-week shortcut never applies to a bye, the postseason, or a later week", async () => {
+  const bye = await composeWeeklyPlan({ phase: "regular-season", openingWeek: true, onBye: true, collectTactic: async () => "run-heavy" });
+  assert.deepEqual(bye.receipt.compositionOrder, ["gm-decision", "bye"]);
+  const later = await composeWeeklyPlan({ phase: "regular-season", openingWeek: false, collectTactic: async () => "run-heavy" });
+  assert.equal(later.body.weeklyTacticOverride, "run-heavy");
+  assert.deepEqual(later.receipt.compositionOrder, ["gm-decision", "tactic"]);
+  const playoffs = await composeWeeklyPlan({ phase: "postseason", postseasonPlanRequired: true, openingWeek: true, collectTactic: async () => "blitz-heavy" });
+  assert.equal(playoffs.body.weeklyTacticOverride, "blitz-heavy");
+});
+
+test("Advance Week marks only week one of a franchise's first season as the opening week", async () => {
+  const { readFileSync } = await import("node:fs");
+  const app = readFileSync(new URL("../public/app.js", import.meta.url), "utf8");
+  const start = app.indexOf("async function collectWeeklyCommandIntent");
+  const intent = app.slice(start, app.indexOf("async function refreshAfterWeeklyCommand"));
+  assert.match(intent, /openingWeek: state\.dashboard\?\.currentWeek === 1 && !state\.dashboard\?\.seasonsSimulated,/);
+  assert.match(intent, /title: "Weekly Plan Composer"/, "the composer still opens from week two");
+  assert.match(intent, /showArchitectPlanRehearsal\(/, "the review still opens from week two");
+});

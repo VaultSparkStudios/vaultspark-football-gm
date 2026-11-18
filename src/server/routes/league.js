@@ -3,6 +3,7 @@ import { createSession } from "../../runtime/bootstrap.js";
 import { applyInitialLeagueSetup } from "../../runtime/applyLeagueSetup.js";
 import { listBackupSlots, listSaveSlots } from "../../runtime/saveStore.js";
 import { executeAdvanceWeekTransaction } from "../../runtime/advanceWeekCommand.js";
+import { runCareerCommand } from "../../runtime/careerCommand.js";
 import { handleFranchiseMomentRequest } from "../../runtime/handlers/franchiseMomentHandler.js";
 import { readRequestBody } from "../httpHardening.js";
 
@@ -127,6 +128,20 @@ export async function handleLeagueRoutes(req, res, url, ctx) {
     return true;
   }
 
+  // GM career: resign, or take a job the market actually offered. Whether the
+  // command is allowed was already decided at the authority boundary.
+  if (req.method === "POST" && url.pathname === "/api/career") {
+    const body = parseJsonBody(await readRequestBody(req));
+    if (body == null) {
+      sendJson(res, 400, { ok: false, error: "Invalid JSON body." });
+      return true;
+    }
+    const result = runCareerCommand(ctx.session, body);
+    if (result.ok) writeAutoBackup("career");
+    sendJson(res, result.ok ? 200 : result.status || 400, { ...result, state: ctx.session.getDashboardState() });
+    return true;
+  }
+
   if (req.method === "POST" && url.pathname === "/api/advance-season") {
     const body = parseJsonBody(await readRequestBody(req));
     if (body == null) {
@@ -134,7 +149,7 @@ export async function handleLeagueRoutes(req, res, url, ctx) {
       return true;
     }
     const count = Math.max(1, Math.min(100, toInt(body.count) || 1));
-    const results = ctx.session.simulateSeasons(count, { runOffseasonAfterLast: true });
+    const results = ctx.session.simulateSeasons(count, { runOffseasonAfterLast: true, stopOnDismissal: true });
     writeAutoBackup("season-sim");
     sendJson(res, 200, { ok: true, count, results, state: ctx.session.getDashboardState() });
     return true;

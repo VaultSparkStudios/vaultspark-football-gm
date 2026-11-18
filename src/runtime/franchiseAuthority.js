@@ -75,10 +75,8 @@ export const TEAM_SCOPED_COMMANDS = {
  * Recorded rather than omitted so the completeness test can prove totality.
  */
 export const AUTHORITY_EXEMPT_COMMANDS = {
-  "/api/control-team": "defines authority itself — claiming a franchise cannot require already holding it",
   "/api/new-league": "creates the league and its controlled team",
   "/api/onboarding/start-scenario": "opening contract for the controlled team; carries no team field",
-  "/api/settings": "league-wide settings, not a franchise action",
   "/api/advance-week": "advances the league clock for all thirty-two franchises at once; not an action taken on behalf of one team",
   "/api/advance-season": "advances the league clock for all thirty-two franchises at once; not an action taken on behalf of one team",
   "/api/offseason/advance": "advances the shared offseason pipeline for the whole league; not an action taken on behalf of one team",
@@ -113,7 +111,129 @@ export const AUTHORITY_EXEMPT_COMMANDS = {
   "/api/commissioner/advance": "advances the shared lobby clock once every member has readied; each member intent is bound to its own slot at apply time"
 };
 
+/**
+ * Commands that decide WHICH club the general manager runs.
+ *
+ * A general manager who can walk into any front office at will has nothing to
+ * lose, so outside Sandbox rules the controlled club changes only through the
+ * job market — after a dismissal or a resignation. The rule lives here, at the
+ * command boundary, for the same reason the team guard does: GameSession's
+ * `setControlledTeam` is plain bookkeeping that internal callers and tests use
+ * freely, and a guard inside it would be in the wrong place.
+ */
+export const CAREER_GUARDED_COMMANDS = {
+  "/api/control-team": "free choice of club is a Sandbox-rules capability; other leagues change clubs through the job market",
+  "/api/career": "resigning, or taking a job that was actually offered after a dismissal or resignation",
+  "/api/settings": "a league that has used Sandbox rules stays a Sandbox league, so free club choice cannot be carried back into a league with a job on the line"
+};
+
+/**
+ * Commands a general manager without a club may not issue. The league is
+ * intact and waiting; the only moves left are the job market and the
+ * persistence/setup routes.
+ */
+export const DISMISSAL_BLOCKED_COMMANDS = new Set([
+  ...Object.keys(TEAM_SCOPED_COMMANDS),
+  "/api/advance-week",
+  "/api/advance-season",
+  "/api/jobs/simulate",
+  "/api/settings",
+  "/api/commissioner/create",
+  "/api/offseason/advance",
+  "/api/onboarding/start-scenario",
+  "/api/draft/prepare",
+  "/api/draft/user-pick",
+  "/api/draft/on-clock-trade",
+  "/api/draft/cpu",
+  "/api/combine/run",
+  "/api/architect-thesis",
+  "/api/trade-offers",
+  "/api/brand-identity"
+]);
+
+/** True when a POST route must pass through `authorizeCommand` before it runs. */
+export function isAuthorityCheckedRoute(route) {
+  return Boolean(TEAM_SCOPED_COMMANDS[route] || CAREER_GUARDED_COMMANDS[route] || DISMISSAL_BLOCKED_COMMANDS.has(route));
+}
+
 const normalizeTeam = (value) => String(value ?? "").trim().toUpperCase();
+
+function refusal(status, reasonCode, error, extra = {}) {
+  return { status, payload: { ok: false, error, reasonCode, ...extra } };
+}
+
+/**
+ * Career rules at the boundary. Returns a denial or null.
+ *
+ * A lobby that two or more general managers actually share may move between
+ * clubs freely, as it always could. A lobby of one is a single-player league
+ * and gets no exemption, and no lobby lets a general manager without a club
+ * keep running one. A session with no career state to read (no league yet)
+ * has nothing to guard.
+ */
+function authorizeCareerCommand({ session, route, body, lobby }) {
+  const sharedLobby = (lobby?.players || []).length >= 2;
+  const career = typeof session?.getGmCareerState === "function" ? session.getGmCareerState() : null;
+  if (!career) return null;
+  const dismissed = career.dismissed === true;
+
+  if (route === "/api/career") {
+    const action = String(body?.action || "").trim().toLowerCase();
+    if (action === "resign") {
+      return dismissed
+        ? refusal(409, "career-on-market", "You are already without a club. Choose your next job from the job market.")
+        : null;
+    }
+    if (action === "take-job") {
+      if (!dismissed) {
+        return refusal(409, "career-not-on-market", "You already run a club. Resign first to see the job market.");
+      }
+      const wanted = normalizeTeam(body?.teamId);
+      if (!wanted) return null;
+      const offered = (career.offers || []).some((offer) => normalizeTeam(offer.teamId) === wanted);
+      return offered
+        ? null
+        : refusal(403, "job-not-offered", "That club has not offered you its general manager job.", { attemptedTeamId: wanted });
+    }
+    return null;
+  }
+
+  if (dismissed && (route === "/api/control-team" || DISMISSAL_BLOCKED_COMMANDS.has(route))) {
+    const club = career.dismissal?.teamName || "that club";
+    return refusal(
+      409,
+      "gm-dismissed",
+      `You no longer run ${club}. Choose your next club from the job market, or start a new league.`
+    );
+  }
+
+  if (route === "/api/settings") {
+    const settings = typeof session?.getLeagueSettings === "function" ? session.getLeagueSettings() : null;
+    const wanted = String(body?.rulesPreset ?? "").trim().toLowerCase();
+    if (wanted && wanted !== "sandbox" && settings?.rulesPreset === "sandbox") {
+      return refusal(
+        403,
+        "rules-locked",
+        "A league that has used Sandbox rules stays a Sandbox league. Start a new league to play with your job on the line."
+      );
+    }
+    return null;
+  }
+
+  if (route === "/api/control-team") {
+    const settings = typeof session?.getLeagueSettings === "function" ? session.getLeagueSettings() : null;
+    if (sharedLobby || settings?.rulesPreset === "sandbox") return null;
+    const wanted = normalizeTeam(body?.teamId);
+    if (!wanted || wanted === normalizeTeam(session?.controlledTeamId)) return null;
+    return refusal(
+      403,
+      "team-switch-locked",
+      "Under these league rules you run one club. You can change clubs only through the job market, after resigning or being let go. Sandbox rules allow free switching.",
+      { attemptedTeamId: wanted }
+    );
+  }
+  return null;
+}
 
 /**
  * Every franchise this session may act for.
@@ -164,6 +284,9 @@ function denial({ action, attempted, authorized }) {
  * this seam answers "may you act for that team", not "did you name a team".
  */
 export function authorizeCommand({ session, route, body, lobby = null }) {
+  if (!isAuthorityCheckedRoute(route)) return null;
+  const careerDenial = authorizeCareerCommand({ session, route, body, lobby });
+  if (careerDenial) return careerDenial;
   const rule = TEAM_SCOPED_COMMANDS[route];
   if (!rule) return null;
   const authorized = authorizedTeamIds(session, { lobby });

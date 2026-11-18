@@ -4,6 +4,7 @@ import { pathToFileURL } from "node:url";
 import { CommunityStore } from "./communityStore.js";
 import { aggregateCommunitySnapshot } from "./aggregateCommunitySnapshot.js";
 import { COMMUNITY_BATCH_LIMIT, normalizeCommunityEvent } from "./eventContract.js";
+import { DIAGNOSTIC_BATCH_LIMIT, normalizeDiagnosticReport, normalizeFeedback } from "./feedbackContract.js";
 
 const PORT = Number(process.env.PORT || 8082);
 const MAX_BODY_BYTES = 32 * 1024;
@@ -14,6 +15,13 @@ const CAPABILITY_TTL_MS = 15 * 60 * 1000;
 const CAPABILITY_USE_LIMIT = 16;
 const CAPABILITY_PARTICIPANT_LIMIT = 4;
 const CAPABILITY_PARTICIPANT_WINDOW_MS = 24 * 60 * 60 * 1000;
+const HOUR_MS = 60 * 60 * 1000;
+// A feedback note is something a person typed, so one address gets a handful
+// an hour. Its capability is a separate, single-purpose kind (see `scope`).
+const FEEDBACK_LIMIT_PER_HOUR = 5;
+const FEEDBACK_CAPABILITY_LIMIT_PER_HOUR = 10;
+const FEEDBACK_CAPABILITY_USES = 2;
+const DIAGNOSTICS_LIMIT_PER_HOUR = 30;
 
 export function runtimeSourceRevision(value = process.env.SOURCE_REVISION) {
   const revision = String(value || "").trim();
@@ -131,10 +139,13 @@ export function createParticipationCapabilityAuthority({
     }
   }
 
-  function issue(participantId) {
+  // `scope` names the one job a capability may do. A "feedback" capability is
+  // handed out without the per-address browser limit, so it must never be
+  // accepted where game stats are written or deleted.
+  function issue(participantId, { scope = "events", useLimit: requestedUseLimit = useLimit } = {}) {
     const now = Number(clock());
     prune(now);
-    const subject = participantSubject(participantId, key);
+    const subject = `${scope}:${participantSubject(participantId, key)}`;
     const existingNonce = activeBySubject.get(subject);
     const existing = active.get(existingNonce);
     if (existing) {
@@ -147,7 +158,7 @@ export function createParticipationCapabilityAuthority({
     }
     const nonce = randomBytes(16).toString("base64url");
     const expiresAt = now + Math.max(1, Number(ttlMs) || CAPABILITY_TTL_MS);
-    const boundedUseLimit = Math.max(1, Math.min(64, Math.floor(Number(useLimit) || CAPABILITY_USE_LIMIT)));
+    const boundedUseLimit = Math.max(1, Math.min(64, Math.floor(Number(requestedUseLimit) || CAPABILITY_USE_LIMIT)));
     const payload = { v: 1, sub: subject, exp: expiresAt, nonce, useLimit: boundedUseLimit };
     const encoded = Buffer.from(JSON.stringify(payload)).toString("base64url");
     const capability = `${encoded}.${signCapabilityPayload(encoded, key)}`;
@@ -156,7 +167,7 @@ export function createParticipationCapabilityAuthority({
     return { capability, expiresAt: new Date(expiresAt).toISOString(), useLimit: boundedUseLimit, remainingUses: boundedUseLimit };
   }
 
-  function consume(capability, participantId) {
+  function consume(capability, participantId, scope = "events") {
     const token = String(capability || "");
     if (token.length < 32 || token.length > 2048) throw capabilityError();
     const [encoded, suppliedSignature, extra] = token.split(".");
@@ -169,7 +180,7 @@ export function createParticipationCapabilityAuthority({
     let payload;
     try { payload = JSON.parse(Buffer.from(encoded, "base64url").toString("utf8")); } catch { throw capabilityError(); }
     const now = Number(clock());
-    const subject = participantSubject(participantId, key);
+    const subject = `${scope}:${participantSubject(participantId, key)}`;
     const state = active.get(payload?.nonce);
     if (payload?.v !== 1 || payload.sub !== subject || !Number.isFinite(payload.exp) || payload.exp <= now || !state ||
         state.subject !== subject || state.expiresAt !== payload.exp || state.useLimit !== payload.useLimit || state.uses >= state.useLimit) {
@@ -231,11 +242,17 @@ export function createCommunityStatsHandler({
   rateLimit = createMemoryRateLimiter(),
   capabilityIssueRateLimit = createCapabilityIssueLimiter(),
   capabilities = createParticipationCapabilityAuthority(),
-  addressKey = createPrivacySafeAddressKey()
+  addressKey = createPrivacySafeAddressKey(),
+  feedbackRateLimit = createMemoryRateLimiter({ limit: FEEDBACK_LIMIT_PER_HOUR, windowMs: HOUR_MS }),
+  feedbackCapabilityRateLimit = createMemoryRateLimiter({ limit: FEEDBACK_CAPABILITY_LIMIT_PER_HOUR, windowMs: HOUR_MS }),
+  diagnosticsRateLimit = createMemoryRateLimiter({ limit: DIAGNOSTICS_LIMIT_PER_HOUR, windowMs: HOUR_MS })
 } = {}) {
   if (!store) throw new Error("Community Stats handler requires a store.");
   return async function handler(req, res) {
-    const url = new URL(req.url || "/", "http://community.local");
+    // A request line the URL parser rejects (for example "//") is a bad request, not a crash.
+    let url;
+    try { url = new URL(req.url || "/", "http://community.local"); }
+    catch { sendJson(res, 400, { ok: false, error: "Invalid request." }); return; }
     const origin = String(req.headers.origin || "").replace(/\/+$/, "");
     const originAllowed = !origin || origins.has(origin) || (/^https?:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?$/.test(origin) && process.env.NODE_ENV !== "production");
     if (originAllowed && origin) {
@@ -275,9 +292,42 @@ export function createCommunityStatsHandler({
         const body = await readJson(req);
         const id = participantId(body.participantId);
         if (body.schemaVersion !== "1.0" || !id) { sendJson(res, 400, { ok: false, error: "A valid anonymous browser identifier is required." }); return; }
-        const issuance = capabilityIssueRateLimit(privateAddressKey, id);
+        // Feedback needs no Community Stats sharing, so its capability is tied
+        // to a throwaway identifier and counted per address by the hour instead
+        // of against the per-address browser limit that protects the statistics.
+        const feedbackOnly = body.purpose === "feedback";
+        const issuance = feedbackOnly ? feedbackCapabilityRateLimit(privateAddressKey) : capabilityIssueRateLimit(privateAddressKey, id);
         if (!issuance.ok) { sendJson(res, 429, { ok: false, error: "Participation capability limit reached; try again shortly." }, { "Retry-After": String(issuance.retryAfter) }); return; }
-        sendJson(res, 201, { ok: true, schemaVersion: "1.0", ...capabilities.issue(id) }, { "Cache-Control": "no-store" }); return;
+        const lease = feedbackOnly ? capabilities.issue(id, { scope: "feedback", useLimit: FEEDBACK_CAPABILITY_USES }) : capabilities.issue(id);
+        sendJson(res, 201, { ok: true, schemaVersion: "1.0", ...lease }, { "Cache-Control": "no-store" }); return;
+      }
+      if (req.method === "POST" && url.pathname === "/community/v1/feedback") {
+        const allowance = feedbackRateLimit(privateAddressKey);
+        if (!allowance.ok) { sendJson(res, 429, { ok: false, error: "Feedback limit reached; try again later." }, { "Retry-After": String(allowance.retryAfter) }); return; }
+        const body = await readJson(req);
+        const id = participantId(body.participantId);
+        const feedback = normalizeFeedback(body.feedback);
+        if (body.schemaVersion !== "1.0" || !id || !feedback) {
+          sendJson(res, 400, { ok: false, error: "Expected schemaVersion 1.0, a request identifier, a category and a message." }); return;
+        }
+        capabilities.consume(body.capability, id, "feedback");
+        // The request identifier only binds the capability; it is not stored.
+        await store.saveFeedback(feedback);
+        sendJson(res, 202, { ok: true, receivedAt: new Date().toISOString() }, { "Cache-Control": "no-store" }); return;
+      }
+      if (req.method === "POST" && url.pathname === "/community/v1/diagnostics") {
+        const allowance = diagnosticsRateLimit(privateAddressKey);
+        if (!allowance.ok) { sendJson(res, 429, { ok: false, error: "Error report limit reached; try again later." }, { "Retry-After": String(allowance.retryAfter) }); return; }
+        const body = await readJson(req);
+        const id = participantId(body.participantId);
+        if (body.schemaVersion !== "1.0" || !id || !Array.isArray(body.reports) || body.reports.length < 1 || body.reports.length > DIAGNOSTIC_BATCH_LIMIT) {
+          sendJson(res, 400, { ok: false, error: `Expected schemaVersion 1.0, an anonymous browser identifier, and 1-${DIAGNOSTIC_BATCH_LIMIT} error reports.` }); return;
+        }
+        capabilities.consume(body.capability, id);
+        const reports = body.reports.map((row) => normalizeDiagnosticReport(row));
+        if (reports.some((row) => row == null)) { sendJson(res, 400, { ok: false, error: "One or more error reports are not in the expected shape." }); return; }
+        const result = await store.saveDiagnostics(id, reports);
+        sendJson(res, 202, { ok: true, ...result }, { "Cache-Control": "no-store" }); return;
       }
       if (req.method === "POST" && url.pathname === "/community/v1/events") {
         const body = await readJson(req);

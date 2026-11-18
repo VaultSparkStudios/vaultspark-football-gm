@@ -14,15 +14,114 @@
  * bonuses, no outcome prediction.
  */
 
+import { DIFFICULTY_PRESETS } from "../config/leagueSetup.js";
+
 const WEEKLY_DELTA_CAP = 0.03;
 const PATIENCE_FLOOR = 0.05;
 const PATIENCE_CEILING = 0.95;
 const LOG_LIMIT = 24;
+const LINE_EPSILON = 1e-9;
 
 const clampNumber = (value, low, high) => Math.min(high, Math.max(low, value));
 
 function round4(value) {
   return Number(value.toFixed(4));
+}
+
+export const OWNER_PATIENCE_FLOOR = PATIENCE_FLOOR;
+
+/**
+ * Challenge modes that switch career stakes off. Empty on purpose: "open" is
+ * the default challenge selection of every league (its label is "Open
+ * Sandbox", but it only means "no extra restrictions"), so exempting it would
+ * switch firing off for nearly every franchise. The ruleset decides instead.
+ * Add an id here to exempt a challenge mode.
+ */
+export const CAREER_STAKES_EXEMPT_CHALLENGES = Object.freeze([]);
+
+/**
+ * What a general manager stands to lose in this league — resolved from the
+ * league's own rules in exactly one place, and read by the season review, the
+ * command boundary and the dashboard alike.
+ *
+ * - Sandbox rules (and a live commissioner lobby): no firing, free choice of
+ *   club at any time.
+ * - Relaxed difficulty: the owner never fires; he delivers a stern warning.
+ * - Standard: the owner acts once patience has run out (the patience floor).
+ * - Hard / Brutal: the owner acts sooner. The line moves up by exactly as much
+ *   as that difficulty already shortens the owner's starting patience, so no
+ *   new tuning number is introduced.
+ */
+export function resolveCareerStakes(settings = {}, { commissionerLobby = false } = {}) {
+  const sandbox =
+    settings?.rulesPreset === "sandbox" ||
+    commissionerLobby === true ||
+    CAREER_STAKES_EXEMPT_CHALLENGES.includes(settings?.challengeMode);
+  const difficulty = Object.hasOwn(DIFFICULTY_PRESETS, settings?.difficultyPreset) ? settings.difficultyPreset : "standard";
+  const shift = DIFFICULTY_PRESETS.standard.patch.ownerPatience - DIFFICULTY_PRESETS[difficulty].patch.ownerPatience;
+  const line = round4(PATIENCE_FLOOR + shift);
+  const ownerMode = settings?.enableOwnerMode !== false;
+  const lineReachable = line >= PATIENCE_FLOOR - LINE_EPSILON;
+  const firing = !sandbox && ownerMode && lineReachable;
+  return {
+    firing,
+    // Relaxed: the same grounds are judged against the floor, but the owner only warns.
+    sternWarningOnly: !sandbox && ownerMode && !lineReachable,
+    freeTeamSwitch: sandbox,
+    dismissalLine: lineReachable ? clampNumber(line, PATIENCE_FLOOR, PATIENCE_CEILING) : PATIENCE_FLOOR,
+    difficulty
+  };
+}
+
+export function patienceAtDismissalLine(patience, stakes) {
+  // Only a real number can be "at the line". `Number(null)` is 0 — a missing
+  // patience must never read as patience that has run out.
+  if (typeof patience !== "number" || !Number.isFinite(patience)) return false;
+  const line = typeof stakes?.dismissalLine === "number" && Number.isFinite(stakes.dismissalLine)
+    ? stakes.dismissalLine
+    : PATIENCE_FLOOR;
+  return patience <= line + LINE_EPSILON;
+}
+
+/**
+ * The owner's verdict at the season review. Pure; exported for direct testing.
+ *
+ * Grounds for a change: patience is at the dismissal line AND either this
+ * season's ultimatum was failed, or patience already sat at the line through
+ * the previous season review and the win target was missed again.
+ *
+ * A dismissal additionally requires all of: firing is on under these rules, the
+ * general manager has completed more than one season at this club, and at
+ * least one warning was put in front of them beforehand. Anything short of
+ * that is a warning, never a surprise.
+ *
+ * @returns {{ action: "none"|"warning"|"final-warning"|"dismiss", reason: string|null, atLine: boolean }}
+ */
+export function decideOwnerVerdict({
+  stakes,
+  patience,
+  tenureSeasons = 0,
+  ultimatumFailed = false,
+  targetMissed = false,
+  warned = false,
+  flooredAtLastReview = false
+} = {}) {
+  const active = stakes?.firing === true || stakes?.sternWarningOnly === true;
+  const atLine = active && patienceAtDismissalLine(patience, stakes);
+  if (!active || !atLine) return { action: "none", reason: null, atLine: false };
+  const reason = ultimatumFailed === true
+    ? "ultimatum-failed"
+    : flooredAtLastReview === true && targetMissed === true
+      ? "patience-exhausted"
+      : null;
+  if (!reason) {
+    // First review spent at the line with the target missed: say so out loud.
+    return { action: targetMissed === true ? "final-warning" : "none", reason: targetMissed === true ? "patience-at-floor" : null, atLine };
+  }
+  if (stakes.firing !== true) return { action: "warning", reason, atLine };
+  if (!(Number(tenureSeasons) > 1)) return { action: "final-warning", reason, atLine };
+  if (warned !== true) return { action: "final-warning", reason, atLine };
+  return { action: "dismiss", reason, atLine };
 }
 
 /**

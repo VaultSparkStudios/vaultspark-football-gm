@@ -199,3 +199,21 @@ test("registry hygiene: unique ids, tiers, and honest check functions", () => {
   }
   assert.ok(ACHIEVEMENTS.length >= 25, "registry offers a real trophy case");
 });
+
+test("the week recap offers the game replay, or the box score when motion is reduced", async () => {
+  const { weekRecapAction } = await import("../public/lib/rewardBeats.js");
+  const game = deriveControlledGame([box(1, 24, 17)], TEAM, 1);
+  assert.deepEqual(weekRecapAction(game, { reducedMotion: false }), { kind: "sim-watch", label: "Watch highlights", gameId: "g1" });
+  assert.deepEqual(weekRecapAction(game, { reducedMotion: true }), { kind: "box-score", label: "View box score", gameId: "g1" });
+  assert.equal(weekRecapAction(null, { reducedMotion: false }), null, "a bye has no game to watch");
+  assert.equal(weekRecapAction({ week: 3 }, { reducedMotion: false }), null, "no game id, no button");
+
+  const { readFileSync } = await import("node:fs");
+  const source = readFileSync(new URL("../public/lib/rewardBeats.js", import.meta.url), "utf8");
+  assert.match(source, /prefers-reduced-motion: reduce/);
+  assert.match(source, /import\("\.\/simWatchDirector\.js"\)\)\.runSimWatch\(gameId\)/, "opens the existing replay for that game directly");
+  assert.match(source, /import\("\.\/tabOverview\.js"\)\)\.loadBoxScore\(gameId\)/);
+  assert.doesNotMatch(source, /^import [^;]*simWatchDirector/m, "the replay is reached lazily from the recap");
+  const app = readFileSync(new URL("../public/app.js", import.meta.url), "utf8");
+  assert.match(app, /import\("\.\/lib\/rewardBeats\.js"\)\)\.presentWeekRecap\(game\)/, "the recap itself stays out of the boot graph");
+});

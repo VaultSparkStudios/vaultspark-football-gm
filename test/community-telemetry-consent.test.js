@@ -5,6 +5,10 @@ const CONSENT = "fa:community-participation:v1";
 const PARTICIPANT = "fa:community-participant:v1";
 const QUEUE = "fa:community-queue:v1";
 const DELETION = "fa:community-pending-deletion:v1";
+const SITE = "https://playfranchisearchitect.com";
+const crash = (message = "roster is undefined", line = 120) => Object.assign(new TypeError(message), {
+  stack: `TypeError: ${message}\n    at renderRoster (${SITE}/lib/tabRoster.js?v=abc:${line}:15)\n    at inject (chrome-extension://abcdefghijklmnop/content.js:1:1)\n    at ${SITE}/app.js:44:9`
+});
 const deferred = () => { let resolve; const promise = new Promise((done) => { resolve = done; }); return { promise, resolve }; };
 const settle = async () => { for (let i = 0; i < 4; i += 1) await new Promise(setImmediate); };
 const json = (body, status = 200) => new Response(JSON.stringify(body), { status });
@@ -12,7 +16,7 @@ const lease = (name = "fixture-lease") => json({ capability: name, expiresAt: ne
 let sequence = 0;
 
 async function harness(run, { entries = [], storageMissing = false } = {}) {
-  const keys = ["window", "document", "navigator", "CustomEvent", "fetch", "setTimeout", "clearTimeout"];
+  const keys = ["window", "document", "navigator", "location", "CustomEvent", "fetch", "setTimeout", "clearTimeout"];
   const originals = new Map(keys.map((key) => [key, Object.getOwnPropertyDescriptor(globalThis, key)]));
   const h = { values: new Map(entries), calls: [], events: [], timers: new Map(), listeners: new Map(), refuse: () => false };
   h.localStorage = {
@@ -30,7 +34,7 @@ async function harness(run, { entries = [], storageMissing = false } = {}) {
   };
   const bindings = {
     window: { localStorage: storageMissing ? null : h.localStorage, dispatchEvent: (event) => h.events.push(event), addEventListener: (type, listener) => h.listeners.set(type, listener) },
-    document: { querySelector: () => null }, navigator: { onLine: true },
+    document: { querySelector: () => null }, navigator: { onLine: true }, location: { origin: SITE },
     CustomEvent: class { constructor(type, options) { this.type = type; this.detail = options.detail; } },
     fetch: async (url, init = {}) => {
       const call = { path: new URL(url).pathname.split("/").at(-1), init, body: init.body ? JSON.parse(init.body) : null };
@@ -356,5 +360,100 @@ test("failed or offline deletion gates renewal until acknowledgement, preserving
     assert.deepEqual(acknowledged, ["browser-old", idB]);
     assert.equal(h.module.getPendingCommunityDeletion(), "");
     assert.equal(h.values.has(DELETION), false);
+  }, { entries: participating() });
+});
+
+test("a service that predates the first-steps milestones still receives the game stats queued with them", async () => {
+  await harness(async (h) => {
+    const accepted = [];
+    h.fetch = async (_url, _init, call) => {
+      if (call.path === "capability") return lease();
+      if (call.body.events.some((row) => /^(setup_finished|first_advance|first_season_finished|return_visit)$/.test(row.type))) return json({ ok: false, error: "One or more events failed the public receipt contract." }, 400);
+      accepted.push(...call.body.events);
+      return json({ accepted: call.body.events.length }, 202);
+    };
+    h.values.set(QUEUE, "[]");
+    const fresh = newLeagueReceipt(h); await settle(); await h.module.flushCommunityQueue();
+    assert.deepEqual(fresh.map((row) => row.type), ["league_started", "setup_finished"]);
+    assert.deepEqual(accepted.map((row) => row.type), ["league_started"]);
+    assert.deepEqual(JSON.parse(h.values.get(QUEUE)), [], "nothing is left stuck in the queue");
+    // A refusal that is not about milestones is still left alone, exactly as before.
+    h.fetch = async (_url, _init, call) => call.path === "capability" ? lease() : json({ ok: false }, 400);
+    h.values.set(QUEUE, JSON.stringify([{ eventId: "plain-event", type: "trade_completed" }]));
+    const before = h.calls.filter((call) => call.path === "events").length;
+    assert.deepEqual(await h.module.flushCommunityQueue(), { sent: 0 });
+    assert.equal(h.calls.filter((call) => call.path === "events").length - before, 1, "no resend loop");
+    assert.equal(JSON.parse(h.values.get(QUEUE)).length, 1);
+  }, { entries: participating() });
+});
+
+// ── Error reports ride on the Community Stats choice ────────────────────────
+
+test("with sharing off, errors are never turned into reports, queued, or sent", async () => {
+  for (const entries of [[], [[CONSENT, "declined"]], [[CONSENT, "declined"], [PARTICIPANT, "browser-old"]]]) await harness(async (h) => {
+    h.module.initCommunityTelemetry();
+    h.listeners.get("error")({ error: crash() });
+    h.listeners.get("unhandledrejection")({ reason: crash("draft board is null", 77) });
+    assert.equal(h.module.reportClientError(crash("third failure", 9)), false);
+    assert.deepEqual(await h.module.flushCommunityDiagnostics(), { sent: 0 });
+    await settle();
+    assert.equal(h.calls.length, 0, "no request of any kind is made");
+    assert.equal([...h.timers.values()].some((timer) => timer.delay === 3_000), false, "no send is even scheduled");
+    assert.doesNotMatch(JSON.stringify([...h.values]), /roster is undefined|draft board|tabRoster/);
+    // Turning sharing on later must not release anything that happened while it was off.
+    await h.module.setCommunityParticipation(true); await settle();
+    assert.deepEqual(await h.module.flushCommunityDiagnostics(), { sent: 0 });
+    assert.equal(h.calls.some((call) => call.path === "diagnostics"), false);
+  }, { entries });
+});
+
+test("with sharing on, each distinct error is reported once with only this site's script paths", async () => {
+  await harness(async (h) => {
+    h.module.initCommunityTelemetry(); await settle();
+    h.calls.length = 0;
+    h.listeners.get("error")({ error: crash() });
+    h.listeners.get("error")({ error: crash() });
+    assert.equal(h.module.reportClientError(crash()), false, "the same error is not queued twice");
+    assert.equal(h.module.reportClientError(crash("draft board is null", 77), { screen: "draftTab" }), true);
+    assert.equal([...h.timers.values()].filter((timer) => timer.delay === 3_000).length, 1, "one delayed send is scheduled");
+    assert.deepEqual(await h.module.flushCommunityDiagnostics(), { sent: 2 });
+    const sends = h.calls.filter((call) => call.path === "diagnostics");
+    assert.equal(sends.length, 1);
+    assert.equal(sends[0].body.participantId, "browser-old");
+    assert.equal(sends[0].body.capability, "fixture-lease");
+    assert.deepEqual(sends[0].body.reports, [
+      { name: "TypeError", message: "roster is undefined", stack: ["/lib/tabRoster.js:120:15", "/app.js:44:9"] },
+      { name: "TypeError", message: "draft board is null", stack: ["/lib/tabRoster.js:77:15", "/app.js:44:9"], screen: "draftTab" }
+    ]);
+    assert.doesNotMatch(JSON.stringify(sends), /chrome-extension|v=abc|playfranchisearchitect/);
+    assert.doesNotMatch(JSON.stringify([...h.values]), /roster is undefined|draft board/, "reports are never written to storage");
+    assert.deepEqual(await h.module.flushCommunityDiagnostics(), { sent: 0 });
+  }, { entries: participating() });
+});
+
+test("turning sharing off discards queued error reports, and a failed send is dropped rather than retried", async () => {
+  await harness(async (h) => {
+    assert.equal(h.module.reportClientError(crash()), true);
+    await h.module.setCommunityParticipation(false);
+    assert.deepEqual(await h.module.flushCommunityDiagnostics(), { sent: 0 });
+    assert.equal(h.calls.some((call) => call.path === "diagnostics"), false);
+    // Sharing again later starts clean: what was queued before the decline is gone for good.
+    assert.equal((await h.module.setCommunityParticipation(true)).participating, true); await settle();
+    assert.deepEqual(await h.module.flushCommunityDiagnostics(), { sent: 0 });
+    assert.equal(h.calls.some((call) => call.path === "diagnostics"), false);
+  }, { entries: participating() });
+  await harness(async (h) => {
+    // Sharing turned off in another tab: the choice is re-read at send time.
+    assert.equal(h.module.reportClientError(crash()), true);
+    h.values.set(CONSENT, "declined");
+    assert.deepEqual(await h.module.flushCommunityDiagnostics(), { sent: 0 });
+    assert.equal(h.calls.length, 0);
+  }, { entries: participating() });
+  await harness(async (h) => {
+    h.fetch = async (_url, _init, call) => call.path === "capability" ? lease() : json({ ok: false, error: "Community Stats route not found." }, 404);
+    assert.equal(h.module.reportClientError(crash()), true);
+    assert.deepEqual(await h.module.flushCommunityDiagnostics(), { sent: 0 }, "an older service without the route is a quiet no-op");
+    assert.deepEqual(await h.module.flushCommunityDiagnostics(), { sent: 0 });
+    assert.equal(h.calls.filter((call) => call.path === "diagnostics").length, 1);
   }, { entries: participating() });
 });

@@ -65,6 +65,9 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
       if (result?.ok === false) return { ...result, results, count: results.length };
       results.push(result);
       afterAdvance?.({ result, before, session, index });
+      // A general manager relieved of duties mid-run chooses a club before the
+      // league clock moves again.
+      if (session.league.gmCareer?.status === "dismissed") break;
     }
   } finally {
     // Clear any tactic that was never consumed (e.g. the advance threw, or the

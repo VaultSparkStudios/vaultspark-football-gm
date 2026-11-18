@@ -248,7 +248,15 @@ async function measureSelectedTutorialTextContrast(page, screenshotPath) {
   if (!(await page.locator(".tutorial-choice.selected .choice-tip").count())) return [];
   const pngBase64 = (await fs.readFile(screenshotPath)).toString("base64");
   return page.evaluate(async (pngBase64) => {
-    const tips = [...document.querySelectorAll(".tutorial-choice.selected .choice-tip")];
+    // The Opening Contract shows all three calls on one scrolling screen, so
+    // only a selected tip that is actually in the captured frame — inside the
+    // viewport and not under the sticky action bar — has pixels to measure.
+    const tips = [...document.querySelectorAll(".tutorial-choice.selected .choice-tip")].filter((tip) => {
+      const rect = tip.getBoundingClientRect();
+      if (rect.height <= 0 || rect.top < 0 || rect.bottom > innerHeight || rect.left < 3) return false;
+      const hit = document.elementFromPoint(rect.left + 1, rect.top + rect.height / 2);
+      return Boolean(hit && tip.closest(".tutorial-choice").contains(hit));
+    });
     if (!tips.length) return [];
     const bytes = Uint8Array.from(atob(pngBase64), (character) => character.charCodeAt(0));
     const bitmap = await createImageBitmap(new Blob([bytes], { type: "image/png" }));
@@ -372,27 +380,36 @@ async function captureTutorialCompletion(browser, viewport, baseUrl, outputDir, 
     await page.locator("#createLeagueBtn").click();
     await page.waitForURL("**/game.html?resume=tab", { timeout: 90_000 });
     await page.locator("#tutSkipBtn").waitFor({ state: "visible" });
+    // The three opening calls share one screen. Each frame brings one call to
+    // the top of the dialog with its choice selected; one confirm applies all three.
     for (const [step, choice] of [["identity", "balanced"], ["pressure", "balanced-mandate"], ["first-call", "trust-scout"]]) {
-      await page.locator(`.tutorial-choice[data-choice="${choice}"]`).click();
+      const group = `.tutorial-group[data-step="${step}"]`;
+      await page.locator(`${group} .tutorial-choice[data-choice="${choice}"]`).click();
+      await page.locator(group).evaluate((node) => node.scrollIntoView({ block: "start" }));
       for (const theme of evidenceThemes) {
         await setTheme(page, theme);
-        await captureStyledSurface(page, outputDir, `${viewport.name}-tutorial-${step}-${theme}`, ".tutorial-modal", records, { checks: tutorialStyleChecks, action: "#tutNextBtn" });
+        await captureStyledSurface(page, outputDir, `${viewport.name}-tutorial-${step}-${theme}`, group, records, { checks: tutorialStyleChecks, action: "#tutNextBtn" });
       }
-      await page.locator("#tutNextBtn").click();
     }
-    await page.locator(".tutorial-receipt").waitFor({ state: "visible", timeout: 30_000 });
+    await page.locator("#tutNextBtn").click();
+    await page.locator(".tutorial-overlay").waitFor({ state: "detached", timeout: 30_000 });
     const receipt = await page.evaluate(async () => {
       const [{ state }, tutorial] = await Promise.all([import("./lib/appState.js"), import("./lib/tutorialCampaign.js")]);
       return { receipt: state.dashboard.startScenarioReceipt, tutorialState: tutorial.getTutorialState(state.dashboard) };
     });
     if (!receipt.receipt?.effects || receipt.tutorialState !== "done") throw new Error("Completed tutorial lacks its committed opening-contract receipt.");
+    // There is no second dialog: the applied contract is shown on the Overview card.
+    if (viewport.name === "mobile" && await page.locator("#mlFullViewBtn").isVisible().catch(() => false)) {
+      await page.locator("#mlFullViewBtn").click();
+      await page.waitForFunction(() => document.getElementById("mobileLoopOverlay")?.classList.contains("hidden"));
+    }
     for (const theme of evidenceThemes) {
       await setTheme(page, theme);
-      await captureStyledSurface(page, outputDir, `${viewport.name}-tutorial-receipt-${theme}`, ".tutorial-receipt", records, { checks: tutorialStyleChecks, action: ".tutorial-receipt button" });
+      await captureStyledSurface(page, outputDir, `${viewport.name}-tutorial-receipt-${theme}`, "#openingContractCard", records, {
+        checks: [{ selector: "#openingContractCard", property: "paddingTop", min: 10 }, { selector: ".opening-contract-timeline", property: "display", equals: "grid" }]
+      });
       records.at(-1).tutorialReceipt = receipt;
     }
-    await page.locator(".tutorial-receipt button").click();
-    await page.locator(".tutorial-overlay").waitFor({ state: "detached" });
   } finally { await context.close(); }
 }
 
@@ -441,7 +458,7 @@ async function captureLazyStyleFixtures(page, viewport, outputDir, records) {
     const [{ state }, pulse] = await Promise.all([import("./lib/appState.js"), import("./lib/firstDebriefPulse.js")]);
     const values = new Map();
     const storage = { getItem: (key) => values.get(key) || null, setItem: (key, value) => values.set(key, value) };
-    if (!pulse.maybePromptFirstDebriefPulse({ dashboard: state.dashboard, storage })) throw new Error("First-debrief fixture did not mount.");
+    if (!pulse.maybePromptFirstDebriefPulse({ dashboard: state.dashboard, storage, minGames: 0 })) throw new Error("First-debrief fixture did not mount.");
   });
   for (const theme of evidenceThemes) {
     await setTheme(page, theme);

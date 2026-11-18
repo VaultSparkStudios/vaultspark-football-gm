@@ -199,7 +199,9 @@ export async function advanceClientWeek(page) {
     await expect(choice).toBeVisible();
     await choice.click();
   }
-  if (!dashboard.controlledOnBye) {
+  // A new franchise's opening week runs the staff plan: no tactic, no review.
+  const openingWeek = dashboard.currentWeek === 1 && !dashboard.seasonsSimulated;
+  if (!dashboard.controlledOnBye && !openingWeek) {
     await expect(page.locator("#halftimeAdjustModal .tactic-skip-btn")).toBeVisible();
     await page.locator("#halftimeAdjustModal .tactic-skip-btn").click();
     await expect(page.locator("#commitArchitectPlanBtn")).toBeVisible();

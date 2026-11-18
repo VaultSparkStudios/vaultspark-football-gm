@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { createHash } from "node:crypto";
-import { computeGoldenMaster, diffGoldenMaster, GOLDEN_MASTER_FIXTURE, HISTORICAL_GOLDEN_MASTER_FIXTURE, S118_GOLDEN_MASTER_FIXTURE, S119_GOLDEN_MASTER_FIXTURE, GOLDEN_MASTER_SCENARIOS } from "../scripts/golden-master.mjs";
+import { computeGoldenMaster, diffGoldenMaster, GOLDEN_MASTER_FIXTURE, HISTORICAL_GOLDEN_MASTER_FIXTURE, S118_GOLDEN_MASTER_FIXTURE, S119_GOLDEN_MASTER_FIXTURE, S131_GOLDEN_MASTER_FIXTURE, GOLDEN_MASTER_SCENARIOS } from "../scripts/golden-master.mjs";
 
 // S116 Phase 0: every multi-sport extraction step must leave football byte-identical.
 // A mismatch names the drifted sections. Regenerate the fixture only for an
@@ -52,7 +52,7 @@ test("S119 passer-rating baseline preserves S118 and moves only the season passi
 test("S131 injury-clock baseline preserves S119 byte-identical and keeps every section", () => {
   const s119Bytes = fs.readFileSync(S119_GOLDEN_MASTER_FIXTURE);
   assert.equal(createHash('sha256').update(s119Bytes).digest('hex'), 'd1230f6155dfcfc115d2960edc0f6e45be61eda611951f1a435ffe0cdb56a0bb');
-  const s119 = JSON.parse(s119Bytes), current = JSON.parse(fs.readFileSync(GOLDEN_MASTER_FIXTURE));
+  const s119 = JSON.parse(s119Bytes), current = JSON.parse(fs.readFileSync(S131_GOLDEN_MASTER_FIXTURE));
   // An injury now costs the games its label states, which changes who plays
   // every week and so moves results league-wide. The new baseline may differ
   // in values, never in shape: no scenario or section is removed. The one
@@ -63,6 +63,30 @@ test("S131 injury-clock baseline preserves S119 byte-identical and keeps every s
     else assert.match(line, / changed$/, line);
   }
   assert.notDeepEqual(diffGoldenMaster(s119, current), [], 'the S131 baseline records an actual behavior change');
+});
+
+test("S132 rival-scouting baseline preserves S131 byte-identical and keeps every scenario", () => {
+  const s131Bytes = fs.readFileSync(S131_GOLDEN_MASTER_FIXTURE);
+  assert.equal(createHash('sha256').update(s131Bytes).digest('hex'), 'e507876912facc646026c29141496fb2309acc29fd170d5554eac79fe35b8ab4');
+  const s131 = JSON.parse(s131Bytes), current = JSON.parse(fs.readFileSync(GOLDEN_MASTER_FIXTURE));
+  // Rival clubs now draft on a per-club scouted read, so who is drafted where
+  // changes from the first draft on and results move league-wide. A section
+  // may appear or disappear only where it is a ledger that exists once its
+  // first event happens; every other difference is a changed value.
+  const eventLedgers = [
+    'drive-20260306-BUF: league.gmCareer added',
+    'drive-20260306-BUF: league.rivalGmMemory changed (removed)',
+    'play-4113-CHI: league.admittedInjuryContinuations changed (removed)',
+    'play-4113-CHI: league.gmCareer added',
+    'play-4113-CHI: league.rivalGmMemory added'
+  ];
+  const lines = diffGoldenMaster(s131, current);
+  for (const line of lines) {
+    if (!/ changed$/.test(line)) assert.ok(eventLedgers.includes(line), `unexpected shape change: ${line}`);
+    else assert.match(line, / changed$/, line);
+  }
+  assert.notDeepEqual(lines, [], 'the S132 baseline records an actual behavior change');
+  for (const id of Object.keys(s131.scenarios)) assert.deepEqual(current.scenarios[id].summary.champions[0], s131.scenarios[id].summary.champions[0], 'the season before the first changed draft is untouched');
 });
 
 test("the diff names changed, added and missing sections", () => {

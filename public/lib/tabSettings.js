@@ -85,7 +85,7 @@ export function buildLaunchReadinessRows({
     {
       area: "Feedback",
       status: "Ready",
-      detail: "Tell the Commissioner opens a prefilled public GitHub feedback path"
+      detail: "Tell the Commissioner sends a note straight to the team"
     },
     {
       area: "Challenge Codes",
@@ -389,7 +389,7 @@ export function renderCommandPalette() {
     button.dataset.commandId = command.id;
     button.textContent = "Run";
     button.addEventListener("click", () => {
-      document.getElementById("commandPalette")?.classList.add("hidden");
+      document.getElementById("closeCommandPaletteBtn")?.click();
       command.run();
     });
     cell.replaceChildren(button);

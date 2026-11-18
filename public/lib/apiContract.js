@@ -70,6 +70,7 @@ const POST_PATHS = [
   "/api/backups/load",
   "/api/brand-identity",
   "/api/calibration/jobs",
+  "/api/career",
   "/api/combine/run",
   "/api/commissioner/advance",
   "/api/commissioner/create",

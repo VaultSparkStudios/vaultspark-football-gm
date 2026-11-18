@@ -6,7 +6,7 @@ import { corsHeadersFor, resolveAllowedOrigins } from "./app/devCors.js";
 import { recordWinPct } from "./stats/teamRecord.js";
 import { createSession } from "./runtime/bootstrap.js";
 import { saveRollingBackup } from "./runtime/saveStore.js";
-import { authorizeCommand, TEAM_SCOPED_COMMANDS } from "./runtime/franchiseAuthority.js";
+import { authorizeCommand, isAuthorityCheckedRoute } from "./runtime/franchiseAuthority.js";
 import {
   applySecurityHeaders,
   isPathInsideBaseDir,
@@ -362,9 +362,11 @@ function runSimulationJob(jobId) {
   const started = Date.now();
   try {
     for (let i = 0; i < batchSize && job.completedSeasons < job.totalSeasons; i += 1) {
-      const summary = session.simulateOneSeason({ runOffseasonAfter: true });
+      const summary = session.simulateOneSeason({ runOffseasonAfter: true, stopOnDismissal: true });
       job.results.push(summary);
       job.completedSeasons += 1;
+      // A general manager who was let go chooses the next club before any more seasons run.
+      if (session.getGmCareerState?.()?.dismissed === true) job.totalSeasons = job.completedSeasons;
     }
     job.progress = Number(((job.completedSeasons / Math.max(1, job.totalSeasons)) * 100).toFixed(2));
     job.updatedAt = Date.now();
@@ -460,7 +462,7 @@ async function handleApi(req, res, url) {
   // with src/app/api/localApiRuntime.js so the two adapters cannot drift. The body
   // is buffered on the request, so each route's own readRequestBody call is
   // unaffected.
-  if (req.method === "POST" && TEAM_SCOPED_COMMANDS[url.pathname]) {
+  if (req.method === "POST" && isAuthorityCheckedRoute(url.pathname)) {
     const authorityDenial = authorizeCommand({
       session,
       route: url.pathname,

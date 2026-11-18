@@ -42,6 +42,180 @@ async function postEvents(origin, participantId, capability, events, headers = {
   });
 }
 
+const quietStore = (extra = {}) => ({ health: async () => ({ ok: true }), snapshot: async () => aggregateCommunitySnapshot([]), cache: null, ...extra });
+const jsonPost = (url, payload, headers = {}) => fetch(url, {
+  method: "POST",
+  headers: { Origin: ALLOWED_ORIGIN, "Content-Type": "application/json", ...headers },
+  body: typeof payload === "string" ? payload : JSON.stringify(payload)
+});
+
+async function issueFeedbackCapability(origin, participantId, headers = {}) {
+  const response = await jsonPost(`${origin}/community/v1/capability`, { schemaVersion: "1.0", participantId, purpose: "feedback" }, headers);
+  return { response, body: await response.json() };
+}
+
+const validFeedback = (overrides = {}) => ({ category: "bug", message: "The draft board froze on pick 12.", rating: 4, context: { screen: "draftTab", season: 2027, week: 0, viewport: "phone", theme: "dark", build: "abc123" }, ...overrides });
+const postFeedback = (origin, participantId, capability, feedback = validFeedback(), headers = {}) =>
+  jsonPost(`${origin}/community/v1/feedback`, { schemaVersion: "1.0", participantId, capability, feedback }, headers);
+const postDiagnostics = (origin, participantId, capability, reports, headers = {}) =>
+  jsonPost(`${origin}/community/v1/diagnostics`, { schemaVersion: "1.0", participantId, capability, reports }, headers);
+
+test("feedback is accepted with a feedback capability and stored without the request identifier or unknown fields", async () => {
+  const saved = [];
+  const store = quietStore({ saveFeedback: async (...args) => { saved.push(args); return { accepted: 1 }; } });
+  await withServer(store, async (origin) => {
+    const { response: issued, body: lease } = await issueFeedbackCapability(origin, "one_off_request_id_0001");
+    assert.equal(issued.status, 201);
+    const response = await postFeedback(origin, "one_off_request_id_0001", lease.capability, {
+      ...validFeedback({ message: "  The draft board froze on pick 12.\u0000  " }),
+      teamName: "Secret Franchise",
+      context: { ...validFeedback().context, playerName: "Secret Player", save: { players: [1, 2] } }
+    });
+    assert.equal(response.status, 202);
+    assert.equal(saved.length, 1);
+    assert.equal(saved[0].length, 1, "only the note reaches the store; the request identifier does not");
+    assert.deepEqual(saved[0][0], {
+      category: "bug",
+      message: "The draft board froze on pick 12.",
+      rating: 4,
+      context: { build: "abc123", screen: "draftTab", season: 2027, week: 0, viewport: "phone", theme: "dark" }
+    });
+    assert.doesNotMatch(JSON.stringify(saved), /Secret|one_off_request_id|players/);
+  });
+});
+
+test("feedback is refused from a wrong or missing origin, without a capability, when malformed, and when oversized", async () => {
+  let saves = 0;
+  const store = quietStore({ saveFeedback: async () => { saves += 1; return { accepted: 1 }; } });
+  await withServer(store, async (origin) => {
+    const id = "one_off_request_id_0002";
+    const { body: lease } = await issueFeedbackCapability(origin, id);
+    const wrongOrigin = await postFeedback(origin, id, lease.capability, validFeedback(), { Origin: "https://attacker.example" });
+    assert.equal(wrongOrigin.status, 403);
+    const noOrigin = await fetch(`${origin}/community/v1/feedback`, {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ schemaVersion: "1.0", participantId: id, capability: lease.capability, feedback: validFeedback() })
+    });
+    assert.equal(noOrigin.status, 403);
+    assert.equal((await postFeedback(origin, id, "")).status, 401, "a capability is required");
+    assert.equal((await postFeedback(origin, id, "x".repeat(40))).status, 401, "a made-up capability is refused");
+    assert.equal(saves, 0);
+  });
+  // Each group below uses its own server so the five-an-hour allowance does not mask the check.
+  await withServer(store, async (origin) => {
+    const id = "one_off_request_id_0003";
+    const { body: lease } = await issueFeedbackCapability(origin, id);
+    assert.equal((await postFeedback(origin, id, lease.capability, validFeedback({ category: "rant" }))).status, 400);
+    assert.equal((await postFeedback(origin, id, lease.capability, validFeedback({ message: "   " }))).status, 400);
+    const oversized = await jsonPost(`${origin}/community/v1/feedback`, JSON.stringify({
+      schemaVersion: "1.0", participantId: id, capability: lease.capability, feedback: validFeedback({ message: "x".repeat(33 * 1024) })
+    }));
+    assert.equal(oversized.status, 413);
+    assert.equal(saves, 0);
+    const longButAllowed = await postFeedback(origin, id, lease.capability, validFeedback({ message: "y".repeat(5000) }));
+    assert.equal(longButAllowed.status, 202);
+  });
+  assert.equal(saves, 1);
+});
+
+test("a long feedback message is cut to 2,000 characters before it is stored", async () => {
+  let stored = null;
+  const store = quietStore({ saveFeedback: async (feedback) => { stored = feedback; return { accepted: 1 }; } });
+  await withServer(store, async (origin) => {
+    const { body: lease } = await issueFeedbackCapability(origin, "one_off_request_id_0004");
+    assert.equal((await postFeedback(origin, "one_off_request_id_0004", lease.capability, validFeedback({ message: "z".repeat(5000), rating: 9 }))).status, 202);
+  });
+  assert.equal(stored.message.length, 2000);
+  assert.equal(stored.rating, null, "an out-of-range rating is dropped, not stored");
+});
+
+test("one address may send five feedback notes an hour and the sixth is refused", async () => {
+  let saves = 0;
+  const store = quietStore({ saveFeedback: async () => { saves += 1; return { accepted: 1 }; } });
+  await withServer(store, async (origin) => {
+    const address = { "X-Forwarded-For": "203.0.113.20" };
+    const statuses = [];
+    for (let index = 0; index < 6; index += 1) {
+      const id = `one_off_request_rate_${index}`;
+      const { body: lease } = await issueFeedbackCapability(origin, id, address);
+      statuses.push((await postFeedback(origin, id, lease.capability, validFeedback(), address)).status);
+    }
+    assert.deepEqual(statuses, [202, 202, 202, 202, 202, 429]);
+    assert.equal(saves, 5);
+    const { body: lease } = await issueFeedbackCapability(origin, "one_off_request_other_addr", { "X-Forwarded-For": "203.0.113.21" });
+    assert.equal((await postFeedback(origin, "one_off_request_other_addr", lease.capability, validFeedback(), { "X-Forwarded-For": "203.0.113.21" })).status, 202, "another address has its own allowance");
+  });
+});
+
+test("a feedback capability cannot write or delete game stats, and a stats capability cannot send feedback", async () => {
+  let ingests = 0, deletions = 0, saves = 0, reports = 0;
+  const store = quietStore({
+    ingest: async () => { ingests += 1; return { accepted: 1, duplicates: 0 }; },
+    deleteParticipant: async () => { deletions += 1; return { deleted: 1 }; },
+    saveFeedback: async () => { saves += 1; return { accepted: 1 }; },
+    saveDiagnostics: async () => { reports += 1; return { accepted: 1, duplicates: 0 }; }
+  });
+  await withServer(store, async (origin) => {
+    const id = "browser_identifier_scope";
+    const { body: feedbackLease } = await issueFeedbackCapability(origin, id);
+    assert.equal((await postEvents(origin, id, feedbackLease.capability, [validEvent("valid_event_scope_1")])).status, 401);
+    const { body: second } = await issueFeedbackCapability(origin, id);
+    assert.equal((await postDiagnostics(origin, id, second.capability, [{ name: "Error", message: "boom", stack: [] }])).status, 401);
+    const { body: third } = await issueFeedbackCapability(origin, id);
+    const withdrawal = await fetch(`${origin}/community/v1/participation`, {
+      method: "DELETE", headers: { Origin: ALLOWED_ORIGIN, "Content-Type": "application/json" },
+      body: JSON.stringify({ schemaVersion: "1.0", participantId: id, capability: third.capability })
+    });
+    assert.equal(withdrawal.status, 401);
+    const { body: statsLease } = await issueCapability(origin, id);
+    assert.equal((await postFeedback(origin, id, statsLease.capability)).status, 401);
+    assert.deepEqual({ ingests, deletions, saves, reports }, { ingests: 0, deletions: 0, saves: 0, reports: 0 });
+  });
+});
+
+test("feedback capabilities do not use up the per-address browser allowance, and have their own hourly limit", async () => {
+  await withServer(quietStore(), async (origin) => {
+    const address = { "X-Forwarded-For": "203.0.113.30" };
+    const feedbackStatuses = [];
+    for (let index = 0; index < 11; index += 1) feedbackStatuses.push((await issueFeedbackCapability(origin, `one_off_request_many_${index}`, address)).response.status);
+    assert.deepEqual(feedbackStatuses, [...Array(10).fill(201), 429]);
+    const browserStatuses = [];
+    for (let index = 0; index < 5; index += 1) browserStatuses.push((await issueCapability(origin, `rotating_browser_id_fb_${index}`, address)).response.status);
+    assert.deepEqual(browserStatuses, [201, 201, 201, 201, 429], "the browser allowance is untouched by feedback capabilities");
+  });
+});
+
+test("error reports need a stats capability and are stored only in the fixed, scrubbed shape", async () => {
+  let received = null;
+  const store = quietStore({ saveDiagnostics: async (id, reports) => { received = { id, reports }; return { accepted: reports.length, duplicates: 0 }; } });
+  await withServer(store, async (origin) => {
+    const id = "browser_identifier_diag";
+    const { body: lease } = await issueCapability(origin, id);
+    const response = await postDiagnostics(origin, id, lease.capability, [{
+      name: "TypeError",
+      message: `Cannot read properties of undefined (reading 'name') at https://playfranchisearchitect.com/app.js?token=abc for "Secret Player Name" ${"x".repeat(600)}`,
+      stack: ["/app.js:10:5", "https://evil.example/x.js:1:1", "/app.js?token=abc:3:1", "chrome-extension://abcdef/content.js:9:9", "/lib/gameFlow.js:120"],
+      screen: "overviewTab",
+      build: "7becc57",
+      saveData: { players: ["Secret Player Name"] }
+    }]);
+    assert.equal(response.status, 202);
+    assert.equal(received.id, id);
+    const [report] = received.reports;
+    assert.deepEqual(Object.keys(report).sort(), ["build", "message", "name", "screen", "stack"]);
+    assert.deepEqual(report.stack, ["/app.js:10:5", "/lib/gameFlow.js:120"]);
+    assert.ok(report.message.length <= 300);
+    assert.match(report.message, /reading '\[text\]'/);
+    assert.doesNotMatch(JSON.stringify(report), /Secret|token=abc|evil\.example|chrome-extension|playfranchisearchitect/);
+
+    assert.equal((await postDiagnostics(origin, id, "", [{ name: "Error", message: "boom", stack: [] }])).status, 401);
+    assert.equal((await postDiagnostics(origin, id, lease.capability, [])).status, 400);
+    assert.equal((await postDiagnostics(origin, id, lease.capability, Array.from({ length: 11 }, () => ({ name: "Error", message: "boom", stack: [] })))).status, 400);
+    assert.equal((await postDiagnostics(origin, id, lease.capability, [{ message: "no name" }])).status, 400);
+    assert.equal((await postDiagnostics(origin, id, lease.capability, [{ name: "Error", message: "boom", stack: [] }], { Origin: "https://attacker.example" })).status, 403);
+  });
+});
+
 test("snapshot uses public cache validators and CORS only for allowed origins", async () => {
   const snapshot = aggregateCommunitySnapshot([], { now: "2026-08-08T12:00:00.000Z" });
   const store = { snapshot: async () => snapshot, health: async () => ({ ok: true }), cache: null };

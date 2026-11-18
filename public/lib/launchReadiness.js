@@ -22,7 +22,7 @@ export function buildLaunchReadinessRows({ dashboard = null, saves = [], persist
   return [
     { area: "Runtime", status: dashboard ? "Ready" : "Load league", detail: `${safePersistence.kind || (dashboard ? "browser/server" : "not loaded")} | ${dashboard?.phase || "no league loaded"} | ${safeObservability.server?.requests ?? 0} server requests` },
     { area: "Save Health", status: saves.length ? "Ready" : "No saves", detail: saves.length ? `${saves.length} local slots available` : "Create a save before inviting long beta runs" },
-    { area: "Feedback", status: "Ready", detail: "Tell the Commissioner opens a prefilled public GitHub feedback path" },
+    { area: "Feedback", status: "Ready", detail: "Tell the Commissioner sends a note straight to the team" },
     { area: "Challenge Codes", status: speedrunChallenge ? "Active" : "Ready", detail: "VSFC1 seeded challenge codes support zero-backend beat-my-run duels" },
     { area: "Public Domain", status: publicDomain.status, detail: publicDomain.detail },
     { area: "Contact Email", status: contactEmail.status, detail: contactEmail.detail }

@@ -7,6 +7,7 @@ import {
   warmLocalRuntime
 } from "./lib/api/createApiClient.js";
 import { saveRivalTarget } from "./lib/challengeCodes.js";
+import { RANDOM_TEAM_VALUE, keepTeamChoice, resolveTeamChoice, teamOptionsHtml } from "./lib/setupTeamChoice.js";
 // Weekly challenges and challenge links load after first paint; nothing on the
 // start page needs them to render.
 const loadWeeklyChallenge = () => import("./lib/weeklyChallenge.js");
@@ -33,7 +34,7 @@ let navigationInFlight = false;
 let pendingNavigation = false;
 
 function setNavigationControlsDisabled(disabled) {
-  document.querySelectorAll("#runtimeModeSelect, #instantStartBtn, #createLeagueBtn, #presetModernBtn, #presetBalancedBtn, #presetLegacyBtn, #continueActiveBtn, #resumeLatestBtn, #applyChallengeCodeBtn, #weeklyChallengeBtn, #teamSelect, #eraProfileInput, #franchiseArchetypeInput, #rulesPresetInput, #difficultyPresetInput, #challengeModeInput, #ownerModeInput, #narrativesInput, #compPicksInput, #chemistryInput, [data-resume], [data-backup-resume]")
+  document.querySelectorAll("#runtimeModeSelect, #instantStartBtn, #createLeagueBtn, #presetModernBtn, #presetBalancedBtn, #presetLegacyBtn, #continueActiveBtn, #resumeLatestBtn, #applyChallengeCodeBtn, #weeklyChallengeBtn, #teamSelect, #heroTeamSelect, #eraProfileInput, #franchiseArchetypeInput, #rulesPresetInput, #difficultyPresetInput, #challengeModeInput, #ownerModeInput, #narrativesInput, #compPicksInput, #chemistryInput, [data-resume], [data-backup-resume]")
     .forEach((button) => { button.disabled = disabled; });
 }
 
@@ -67,8 +68,6 @@ const SETUP_GUIDE_ROWS = [
   "Every league gets one clean team identity: a real U.S. city paired with its own nickname.",
   "After you create a league, your team becomes the default roster and depth-chart focus in the franchise view."
 ];
-
-const RANDOM_TEAM_VALUE = "__random__";
 
 function escapeHtml(value) {
   return String(value)
@@ -153,26 +152,22 @@ function updateModeHelp() {
 function renderTeams() {
   const select = document.getElementById("teamSelect");
   if (!select) return;
-  const chosen = select.value;
+  const chosen = keepTeamChoice(select.value, state.teams);
+  select.innerHTML = teamOptionsHtml(state.teams, "🎲 Surprise me — random team");
+  select.value = chosen;
+  // The hero picker offers the same clubs and always mirrors this one.
+  const hero = document.getElementById("heroTeamSelect");
+  if (hero) hero.innerHTML = teamOptionsHtml(state.teams, "Team: Surprise me");
+  syncHeroTeam();
+}
 
-  if (!state.teams.length) {
-    select.innerHTML = `<option value="${RANDOM_TEAM_VALUE}">🎲 Surprise me — random team</option>`;
-    return;
-  }
-
-  select.innerHTML =
-    `<option value="${RANDOM_TEAM_VALUE}">🎲 Surprise me — random team</option>` +
-    state.teams
-      .map((team) => `<option value="${escapeHtml(team.id)}">${escapeHtml(teamCode(team))} - ${escapeHtml(team.name)}</option>`)
-      .join("");
-  select.value = state.teams.some(team => team.id === chosen) ? chosen : RANDOM_TEAM_VALUE;
+function syncHeroTeam() {
+  const hero = document.getElementById("heroTeamSelect");
+  if (hero) hero.value = document.getElementById("teamSelect")?.value || RANDOM_TEAM_VALUE;
 }
 
 function resolveControlledTeamId() {
-  const chosen = document.getElementById("teamSelect")?.value || RANDOM_TEAM_VALUE;
-  if (chosen !== RANDOM_TEAM_VALUE) return chosen;
-  if (!state.teams.length) return "BUF";
-  return state.teams[Math.floor(Math.random() * state.teams.length)].id;
+  return resolveTeamChoice(document.getElementById("teamSelect")?.value, state.teams);
 }
 
 function updateHeroActions() {
@@ -185,6 +180,8 @@ function updateHeroActions() {
   const continueBtn = document.getElementById("continueActiveBtn");
   const resumeBtn = document.getElementById("resumeLatestBtn");
   if (instantBtn) instantBtn.hidden = returning;
+  const heroTeam = document.getElementById("heroTeamSelect");
+  if (heroTeam) heroTeam.hidden = returning;
   if (continueBtn) continueBtn.hidden = !hasActive;
   if (resumeBtn) resumeBtn.hidden = !hasSaves;
   const savedSection = document.getElementById("savedLeaguesSection");
@@ -199,7 +196,7 @@ function renderActiveLeague(activeLeague) {
   if (!activeLeague || !activeLeague.currentYear) {
     text.textContent = state.saves.length
       ? "Pick a saved league below, or start a fresh franchise."
-      : "New here? One click starts a franchise — surprise team included.";
+      : "New here? Pick your team or let us surprise you, then start.";
     button.disabled = true;
     return;
   }
@@ -616,6 +613,12 @@ function bindEvents() {
   document.getElementById("presetBalancedBtn").addEventListener("click", () => quickStartLeague("balanced"));
   document.getElementById("presetLegacyBtn").addEventListener("click", () => quickStartLeague("legacy"));
   document.getElementById("instantStartBtn")?.addEventListener("click", () => quickStartLeague("balanced"));
+  // One team choice, two pickers: whichever the visitor touches sets both.
+  document.getElementById("heroTeamSelect")?.addEventListener("change", (event) => {
+    const teamSelect = document.getElementById("teamSelect");
+    if (teamSelect) teamSelect.value = keepTeamChoice(event.target.value, state.teams);
+  });
+  document.getElementById("teamSelect")?.addEventListener("change", syncHeroTeam);
 
   document.getElementById("createLeagueBtn").addEventListener("click", async () => {
     try {
@@ -756,6 +759,7 @@ function applyChallenge(decoded, message = null) {
   const teamSelect = document.getElementById("teamSelect");
   if (teamSelect && [...teamSelect.options].some((o) => o.value === decoded.teamId)) {
     teamSelect.value = decoded.teamId;
+    syncHeroTeam();
   }
   saveRivalTarget(decoded.rivalSeasons ? decoded : null);
   setStatus(

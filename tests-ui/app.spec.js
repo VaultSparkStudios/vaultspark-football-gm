@@ -137,24 +137,31 @@ test("create league, advance week, and open player modal", async ({ page }) => {
   expect(teamOptions).toContain(scheduleAway);
   expect(teamOptions).toContain(scheduleHome);
 
+  // Free choice of club is a Sandbox-rules control: under the default rules the
+  // switcher is present for the other selects to mirror, but not shown.
+  await expect(page.locator("#teamSelect")).toBeHidden();
+
   const before = parseWeek(await page.locator("#yearCard").textContent());
-  await page.click("#advanceWeekBtn");
-  // Weekly plan composition is ordered: optional GM decision → tactic → rehearsal.
-  // Choose (rather than dismiss) a live decision so the command remains eligible
-  // to advance, then drain each subsequently-created modal in contract order.
-  const gmDecisionChoice = page.locator("#gmDecisionOptions .gm-decision-option").first();
-  if (await gmDecisionChoice.isVisible({ timeout: 3_000 }).catch(() => false)) {
-    await gmDecisionChoice.click();
-  }
-  const skipBtn = page.locator("#halftimeAdjustModal .tactic-skip-btn");
-  if (await skipBtn.isVisible({ timeout: 10_000 }).catch(() => false)) {
-    await skipBtn.click();
-  }
-  const commitPlan = page.locator("#commitArchitectPlanBtn");
-  if (await commitPlan.isVisible({ timeout: 10_000 }).catch(() => false)) {
-    await commitPlan.click();
-  }
-  await waitGameReady(page, 120_000);
+  const advanceWeekThroughUi = async () => {
+    await page.click("#advanceWeekBtn");
+    // Weekly plan composition is ordered: optional GM decision → tactic → rehearsal.
+    // Choose (rather than dismiss) a live decision so the command remains eligible
+    // to advance, then drain each subsequently-created modal in contract order.
+    const gmDecisionChoice = page.locator("#gmDecisionOptions .gm-decision-option").first();
+    if (await gmDecisionChoice.isVisible({ timeout: 3_000 }).catch(() => false)) {
+      await gmDecisionChoice.click();
+    }
+    const skipBtn = page.locator("#halftimeAdjustModal .tactic-skip-btn");
+    if (await skipBtn.isVisible({ timeout: 10_000 }).catch(() => false)) {
+      await skipBtn.click();
+    }
+    const commitPlan = page.locator("#commitArchitectPlanBtn");
+    if (await commitPlan.isVisible({ timeout: 10_000 }).catch(() => false)) {
+      await commitPlan.click();
+    }
+    await waitGameReady(page, 120_000);
+  };
+  await advanceWeekThroughUi();
   const after = parseWeek(await page.locator("#yearCard").textContent());
   expect(after).not.toBeNull();
   expect(before).not.toBeNull();
@@ -162,20 +169,10 @@ test("create league, advance week, and open player modal", async ({ page }) => {
 
   let latestBoxScore = page.locator("#boxScoreTicker [data-boxscore-id]").first();
   if ((await latestBoxScore.count()) === 0) {
-    // A controlled team can legitimately open on a bye. Switch to a team
-    // that played so this test exercises the box-score flow without making
-    // a false schedule assumption.
-    const playedTeam = (await page.locator("#weekTable tr").nth(1).locator("td").nth(1).textContent())?.trim();
-    expect(playedTeam).toBeTruthy();
-    const playedTeamValue = await page.locator("#teamSelect option").evaluateAll((options, abbreviation) => {
-      const match = options.find((option) =>
-        option.textContent?.split(" - ")[0]?.trim() === abbreviation
-      );
-      return match?.value || null;
-    }, playedTeam);
-    expect(playedTeamValue).toBeTruthy();
-    await page.selectOption("#teamSelect", playedTeamValue);
-    await waitGameReady(page);
+    // A controlled team can legitimately open on a bye. A club has one bye a
+    // season, so the next week is a game: play it rather than assume the
+    // schedule. (This used to switch clubs, which Standard rules no longer allow.)
+    await advanceWeekThroughUi();
     latestBoxScore = page.locator("#boxScoreTicker [data-boxscore-id]").first();
   }
   await expect(latestBoxScore).toBeVisible();
@@ -236,24 +233,69 @@ test("depth chart controls and game guide modal are operational", async ({ page 
   await expect(page.locator("#guideModal")).toHaveClass(/hidden/);
 });
 
-test("Tell the Commissioner reserves a trusted window and navigates it to a prefilled issue", async ({ page }) => {
-  await createLeagueFromSetup(page);
-  await page.evaluate(() => {
-    globalThis.__feedbackTarget = "";
-    window.open = () => ({
-      opener: null,
-      location: {
-        replace(url) {
-          globalThis.__feedbackTarget = url;
-        }
-      }
-    });
+test("Tell the Commissioner sends a note from the in-game form and keeps the text when sending fails", async ({ page }) => {
+  // The feedback service is replaced by a fixture: no request leaves the test machine.
+  const posted = [];
+  let feedbackStatus = 404;
+  const cors = { "access-control-allow-origin": "*", "access-control-allow-headers": "Content-Type", "access-control-allow-methods": "POST,OPTIONS" };
+  await page.route("**/community/v1/**", async (route) => {
+    const request = route.request();
+    if (request.method() === "OPTIONS") return route.fulfill({ status: 204, headers: cors });
+    const path = new URL(request.url()).pathname.split("/").at(-1);
+    const body = request.postDataJSON();
+    posted.push({ path, body });
+    if (path === "capability") {
+      return route.fulfill({ status: 201, headers: cors, contentType: "application/json", body: JSON.stringify({ ok: true, capability: "fixture-feedback-capability", expiresAt: new Date(Date.now() + 60_000).toISOString() }) });
+    }
+    return route.fulfill({ status: feedbackStatus, headers: cors, contentType: "application/json", body: JSON.stringify({ ok: feedbackStatus < 300 }) });
   });
+  await page.addInitScript(() => { window.open = () => { globalThis.__feedbackWindowOpened = true; return null; }; });
+  await createLeagueFromSetup(page);
+
   await page.click('[data-testid="tab-settings"]');
   await expect(page.locator("#betaFeedbackBtn")).toBeVisible();
   await page.click("#betaFeedbackBtn");
-  await expect.poll(() => page.evaluate(() => globalThis.__feedbackTarget)).toContain("/issues/new?");
-  await expect.poll(() => page.evaluate(() => globalThis.__feedbackTarget)).toContain("labels=beta-feedback");
+  const dialog = page.locator("#feedbackModal");
+  await expect(dialog).toBeVisible();
+  await expect(dialog).toHaveAttribute("aria-modal", "true");
+  await expect(dialog.locator("#feedbackSentLine")).toContainText("your message");
+  await expect(dialog.locator("#feedbackSentLine")).toContainText("and: screen, season and week, app version, screen size and theme");
+  await expect(dialog.locator("#feedbackMessage")).toBeFocused();
+  await expect(dialog.getByRole("link", { name: "Discuss on GitHub" })).toBeVisible();
+
+  // An older service without the route: the note is not lost.
+  await dialog.getByRole("button", { name: "Idea", exact: true }).click();
+  await expect(dialog.getByRole("button", { name: "Idea", exact: true })).toHaveAttribute("aria-pressed", "true");
+  await dialog.locator("#feedbackMessage").fill("Let me sort the draft board by position.");
+  await dialog.getByRole("button", { name: "Send", exact: true }).click();
+  await expect(dialog.locator("#feedbackStatus")).toContainText("Could not send your note. Your text is still here.");
+  await expect(dialog.locator("#feedbackMessage")).toHaveValue("Let me sort the draft board by position.");
+  await expect(dialog.getByRole("button", { name: "Copy message" })).toBeVisible();
+  await expect(dialog.getByRole("link", { name: /football@playfranchisearchitect\.com/ })).toBeVisible();
+
+  // Escape closes the form and the unsent text comes back when it is reopened.
+  await page.keyboard.press("Escape");
+  await expect(dialog).toHaveCount(0);
+  await page.locator("#feedbackWidget a").click();
+  await expect(dialog.locator("#feedbackMessage")).toHaveValue("Let me sort the draft board by position.");
+
+  feedbackStatus = 202;
+  await dialog.getByRole("button", { name: "4", exact: true }).click();
+  await dialog.getByRole("button", { name: "Send", exact: true }).click();
+  await expect(dialog).toContainText("Thanks. Your note was sent.");
+  await dialog.getByRole("button", { name: "Done" }).click();
+  await expect(dialog).toHaveCount(0);
+
+  const sent = posted.filter((entry) => entry.path === "feedback").at(-1).body;
+  expect(Object.keys(sent).sort()).toEqual(["capability", "feedback", "participantId", "schemaVersion"]);
+  expect(Object.keys(sent.feedback).sort()).toEqual(["category", "context", "message", "rating"]);
+  expect(sent.feedback.category).toBe("idea");
+  expect(sent.feedback.rating).toBe(4);
+  expect(sent.feedback.message).toBe("Let me sort the draft board by position.");
+  for (const key of Object.keys(sent.feedback.context)) expect(["build", "screen", "season", "week", "viewport", "theme"]).toContain(key);
+  expect(posted.filter((entry) => entry.path === "capability").every((entry) => entry.body.purpose === "feedback")).toBe(true);
+  expect(await page.evaluate(() => localStorage.getItem("fa:community-participant:v1"))).toBeNull();
+  expect(await page.evaluate(() => globalThis.__feedbackWindowOpened === true)).toBe(false);
 });
 
 test("designation and retirement override flows use table selection", async ({ page }) => {

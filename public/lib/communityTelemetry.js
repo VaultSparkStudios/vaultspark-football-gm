@@ -1,6 +1,7 @@
 import { extractCommunityEvents } from "./extractCommunityEvents.js";
-import { COMMUNITY_BATCH_LIMIT } from "./communityEventContract.js";
-import { observeBackgroundTask } from "./clientDiagnostics.js";
+import { COMMUNITY_BATCH_LIMIT, COMMUNITY_FUNNEL_EVENT_TYPES, normalizeCommunityEvent, returnVisitGap } from "./communityEventContract.js";
+import { buildDiagnosticReport, diagnosticSignatureSource, DIAGNOSTIC_BATCH_LIMIT } from "./communityFeedbackContract.js";
+import { observeBackgroundTask, subscribeClientDiagnostics } from "./clientDiagnostics.js";
 
 export const COMMUNITY_CONSENT_KEY = "fa:community-participation:v1";
 export const COMMUNITY_PARTICIPANT_KEY = "fa:community-participant:v1";
@@ -8,6 +9,14 @@ export const COMMUNITY_QUEUE_KEY = "fa:community-queue:v1";
 export const COMMUNITY_LOCAL_LEDGER_KEY = "fa:community-local-ledger:v1";
 export const COMMUNITY_PENDING_DELETION_KEY = "fa:community-pending-deletion:v1";
 export const COMMUNITY_ENDPOINT = "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1";
+// Which first-steps milestones this browser has already reported, and the day
+// it last played. Written only while sharing is on; never sent as-is.
+export const COMMUNITY_FUNNEL_KEY = "fa:community-funnel:v1";
+// One sentence for every place that offers the sharing choice, so the wording
+// cannot drift from what this module sends.
+export const COMMUNITY_SHARING_SUMMARY = "Share game choices and results, plus short error reports when something breaks, without sharing your save, names, notes, or private details.";
+const DAY_MS = 24 * 60 * 60 * 1000;
+const DIAGNOSTIC_FLUSH_DELAY_MS = 3_000;
 const MAX_QUEUE = 240;
 const CAPABILITY_EXPIRY_SKEW_MS = 5_000;
 const DELETION_RETRY_MIN_MS = 5_000;
@@ -69,7 +78,7 @@ function participantId({ create = false } = {}) {
   } catch { return ""; }
 }
 
-function statsEndpoint(path) {
+export function statsEndpoint(path) {
   const meta = typeof document !== "undefined" ? document.querySelector('meta[name="fa-community-api"]')?.content?.trim() : "";
   const base = meta || COMMUNITY_ENDPOINT;
   return `${base.replace(/\/+$/, "")}/${String(path).replace(/^\/+/, "")}`;
@@ -293,6 +302,7 @@ export async function setCommunityParticipation(participating) {
   }
 
   discardStoredQueue = true;
+  pendingDiagnostics.length = 0;
   persistDecline();
   // Decline is immediate and collection stays off even if remote deletion is
   // temporarily unavailable. Only the identifier moves into a retry tombstone.
@@ -385,6 +395,13 @@ export async function flushCommunityQueue() {
           keepalive: batch.length <= 8
         }, admitted));
       } catch { break; }
+      if (admitted() && response.status === 400) {
+        // A service that predates the first-steps milestones refuses the whole
+        // batch because of them. Drop only those and send the rest, so game
+        // stats never queue up behind an event the service will not take.
+        const milestones = new Set(batch.filter((row) => COMMUNITY_FUNNEL_EVENT_TYPES.includes(row.type)).map((row) => row.eventId));
+        if (milestones.size && writeJson(COMMUNITY_QUEUE_KEY, readQueue().filter((row) => !milestones.has(row.eventId)))) continue;
+      }
       if (!admitted() || !response.ok) break;
       const latest = readQueue();
       const ids = new Set(batch.map((row) => row.eventId));
@@ -397,9 +414,113 @@ export async function flushCommunityQueue() {
   return pending.promise;
 }
 
+let returnVisitChecked = false;
+
+function funnelEvent(type, runtime, dimensions = {}) {
+  const occurredAt = new Date().toISOString();
+  return normalizeCommunityEvent({
+    eventId: `evt_${Date.now()}_${Math.random().toString(36).slice(2, 14)}`,
+    type,
+    occurredAt,
+    dimensions: { runtime, ...dimensions }
+  }, { now: Date.parse(occurredAt) });
+}
+
+/**
+ * Coarse first-steps milestones, derived from the events a game action already
+ * produced: finishing setup, the first advance, the first finished season, and
+ * a return visit bucketed by days away. Each "first" is reported once per
+ * browser. Nothing is derived, remembered or queued unless sharing is on.
+ */
+function deriveFunnelEvents(events, runtime) {
+  if (!getCommunityParticipation()) return [];
+  const saved = readJson(COMMUNITY_FUNNEL_KEY, null);
+  const seen = saved && typeof saved === "object" && !Array.isArray(saved) ? { ...saved } : {};
+  const rows = [];
+  const once = (flag, type) => { if (!seen[flag]) { seen[flag] = 1; rows.push(funnelEvent(type, runtime)); } };
+  if (!returnVisitChecked) {
+    const today = Math.floor(Date.now() / DAY_MS);
+    const last = Number(seen.day);
+    if (Number.isFinite(last) && last > 0 && last <= today) rows.push(funnelEvent("return_visit", runtime, { gap: returnVisitGap(today - last) }));
+    seen.day = today;
+  }
+  for (const row of events) {
+    if (row.type === "league_started") once("setup", "setup_finished");
+    if (row.type === "weeks_managed") {
+      once("advance", "first_advance");
+      if (Number(row.metrics?.seasonsCompleted) > 0) once("season", "first_season_finished");
+    }
+  }
+  // If the marker cannot be saved, report nothing rather than report it twice.
+  if (!writeJson(COMMUNITY_FUNNEL_KEY, seen)) return [];
+  returnVisitChecked = true;
+  return rows.filter(Boolean);
+}
+
+const pendingDiagnostics = [];
+const reportedDiagnostics = new Set();
+let diagnosticFlushTimer = null;
+let buildIdRequest = null;
+
+/** The deployed build's revision, read once from this site's own health file. */
+function buildId() {
+  if (!buildIdRequest) {
+    buildIdRequest = (async () => {
+      try {
+        const response = await fetch(new URL("./_health", document.baseURI).href, { credentials: "omit" });
+        return response.ok ? String((await response.json())?.sourceRevision || "") : "";
+      } catch { return ""; }
+    })();
+  }
+  return buildIdRequest;
+}
+export { buildId as getCommunityBuildId };
+
+/**
+ * Queue one error report. This is the consent boundary for error reports:
+ * with sharing off the error is not even reduced to a report, so nothing
+ * exists to send later. Returns whether a report was queued.
+ */
+export function reportClientError(error, { screen = null } = {}) {
+  if (!getCommunityParticipation() || typeof location === "undefined") return false;
+  const report = buildDiagnosticReport(error, {
+    origin: location.origin,
+    screen: screen || (typeof document !== "undefined" ? document.querySelector(".tab-panel.active")?.id : null)
+  });
+  if (!report) return false;
+  const signature = diagnosticSignatureSource(report);
+  if (reportedDiagnostics.has(signature) || reportedDiagnostics.size >= 40) return false;
+  reportedDiagnostics.add(signature);
+  pendingDiagnostics.push(report);
+  if (pendingDiagnostics.length > DIAGNOSTIC_BATCH_LIMIT) pendingDiagnostics.shift();
+  if (!diagnosticFlushTimer) {
+    diagnosticFlushTimer = setTimeout(() => { diagnosticFlushTimer = null; void flushCommunityDiagnostics(); }, DIAGNOSTIC_FLUSH_DELAY_MS);
+    diagnosticFlushTimer?.unref?.();
+  }
+  return true;
+}
+
+/** Send queued error reports. A failed send is dropped, never retried or stored. */
+export async function flushCommunityDiagnostics() {
+  if (!getCommunityParticipation() || !pendingDiagnostics.length || typeof fetch !== "function") return { sent: 0 };
+  const browserId = participantId();
+  if (!browserId) return { sent: 0 };
+  const generation = consentGeneration;
+  const admitted = () => generation === consentGeneration && getCommunityParticipation() && participantId() === browserId;
+  const batch = pendingDiagnostics.splice(0, DIAGNOSTIC_BATCH_LIMIT);
+  try {
+    const build = await buildId();
+    if (!admitted()) return { sent: 0 };
+    const reports = batch.map((report) => (build ? { ...report, build } : report));
+    const { response } = await capabilityMutation("diagnostics", browserId, { schemaVersion: "1.0", participantId: browserId, reports }, {}, admitted);
+    return { sent: response.ok ? batch.length : 0 };
+  } catch { return { sent: 0 }; }
+}
+
 export function observeCommunityApiReceipt({ method, path, body, response, runtime }) {
   const events = extractCommunityEvents({ method, path, body, response, runtime });
   if (!events.length) return events;
+  events.push(...deriveFunnelEvents(events, runtime));
   recordLocally(events);
   queueEvents(events);
   if (getCommunityParticipation() && (typeof navigator === "undefined" || navigator.onLine !== false)) void flushCommunityQueue();
@@ -414,6 +535,17 @@ export function initCommunityTelemetry() {
       consentGeneration += 1;
       discardStoredQueue = true;
       for (const controller of eventRequests) controller.abort();
+    }
+  });
+  // Error reports ride on the sharing choice. reportClientError() discards
+  // everything while sharing is off, so these listeners are inert until then.
+  window.addEventListener("error", (event) => {
+    reportClientError(event.error || { name: "Error", message: event.message, stack: `${event.filename}:${event.lineno}:${event.colno}` });
+  });
+  window.addEventListener("unhandledrejection", (event) => { reportClientError(event.reason); });
+  subscribeClientDiagnostics((snapshot) => {
+    for (const entry of snapshot.entries) {
+      if (entry.surface !== "community-telemetry") reportClientError({ name: "BackgroundTask", message: entry.message }, { screen: `${entry.surface}:${entry.operation}` });
     }
   });
   window.addEventListener("online", () => {

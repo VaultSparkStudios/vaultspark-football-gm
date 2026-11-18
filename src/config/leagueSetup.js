@@ -188,7 +188,7 @@ export const RULES_PRESETS = {
   },
   sandbox: {
     label: "Sandbox",
-    summary: "Looser roster management and more forgiving league economics for experimentation.",
+    summary: "Looser roster management and more forgiving league economics for experimentation. Switch clubs freely; the owner never fires you.",
     patch: {
       allowInjuries: true,
       enableCompPicks: true,
@@ -204,7 +204,7 @@ export const RULES_PRESETS = {
 export const DIFFICULTY_PRESETS = {
   relaxed: {
     label: "Relaxed",
-    summary: "More scouting bandwidth and slightly gentler economy pressure.",
+    summary: "More scouting bandwidth and slightly gentler economy pressure. The owner warns but never fires you.",
     patch: {
       cpuTradeAggression: 0.42,
       injuryRateMultiplier: 0.9,
@@ -215,7 +215,7 @@ export const DIFFICULTY_PRESETS = {
   },
   standard: {
     label: "Standard",
-    summary: "Current default balance for AI pressure, injuries, and owner expectations.",
+    summary: "Current default balance for AI pressure, injuries, and owner expectations. Keep missing the owner's targets and you can be fired.",
     patch: {
       cpuTradeAggression: 0.5,
       injuryRateMultiplier: 1,
@@ -226,7 +226,7 @@ export const DIFFICULTY_PRESETS = {
   },
   hard: {
     label: "Hard",
-    summary: "Tighter scouting, more assertive AI teams, and less patient ownership.",
+    summary: "Tighter scouting, more assertive AI teams, and less patient ownership that fires sooner.",
     patch: {
       cpuTradeAggression: 0.62,
       injuryRateMultiplier: 1.08,
@@ -237,7 +237,7 @@ export const DIFFICULTY_PRESETS = {
   },
   brutal: {
     label: "Brutal",
-    summary: "Maximum pressure: expensive contracts, thin scouting, and very little patience.",
+    summary: "Maximum pressure: expensive contracts, thin scouting, and an owner who fires soonest.",
     patch: {
       cpuTradeAggression: 0.72,
       injuryRateMultiplier: 1.18,

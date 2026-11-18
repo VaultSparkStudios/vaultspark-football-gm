@@ -7,6 +7,7 @@ import { createLocalApiRuntime } from "../src/app/api/localApiRuntime.js";
 import {
   TEAM_SCOPED_COMMANDS,
   AUTHORITY_EXEMPT_COMMANDS,
+  CAREER_GUARDED_COMMANDS,
   authorizedTeamIds,
   authorizeCommand
 } from "../src/runtime/franchiseAuthority.js";
@@ -61,12 +62,12 @@ function postRoutesIn(relative) {
 // franchise authority — so the seam cannot silently lose coverage the way the
 // original hole was silently created.
 
-test("every POST route in both adapters is classified as team-scoped or explicitly exempt", () => {
+test("every POST route in both adapters is classified as team-scoped, career-guarded or explicitly exempt", () => {
   for (const relative of Object.keys(POST_ROUTE_PATTERNS)) {
     const routes = postRoutesIn(relative);
     assert.ok(routes.size > 40, `${relative} should expose the full POST surface, saw ${routes.size}`);
     const unclassified = [...routes].filter(
-      (route) => !TEAM_SCOPED_COMMANDS[route] && !AUTHORITY_EXEMPT_COMMANDS[route]
+      (route) => !TEAM_SCOPED_COMMANDS[route] && !AUTHORITY_EXEMPT_COMMANDS[route] && !CAREER_GUARDED_COMMANDS[route]
     );
     assert.deepEqual(
       unclassified,
@@ -91,13 +92,23 @@ test("classification carries no phantom routes and no overlap", () => {
     assert.ok(live.has(route), `AUTHORITY_EXEMPT_COMMANDS names a route that no adapter serves: ${route}`);
     assert.ok(!TEAM_SCOPED_COMMANDS[route], `${route} cannot be both guarded and exempt`);
   }
-  for (const reason of Object.values(AUTHORITY_EXEMPT_COMMANDS)) {
-    assert.ok(String(reason).trim().length > 20, "every exemption must record a real reason");
+  for (const route of Object.keys(CAREER_GUARDED_COMMANDS)) {
+    assert.ok(live.has(route), `CAREER_GUARDED_COMMANDS names a route that no adapter serves: ${route}`);
+    assert.ok(!TEAM_SCOPED_COMMANDS[route], `${route} cannot be both team-scoped and career-guarded`);
+    assert.ok(!AUTHORITY_EXEMPT_COMMANDS[route], `${route} cannot be both career-guarded and exempt`);
+  }
+  for (const reason of [...Object.values(AUTHORITY_EXEMPT_COMMANDS), ...Object.values(CAREER_GUARDED_COMMANDS)]) {
+    assert.ok(String(reason).trim().length > 20, "every exemption and career rule must record a real reason");
   }
 });
 
-test("every exemption is deliberate: control-team defines authority and is never guarded", () => {
-  assert.ok(AUTHORITY_EXEMPT_COMMANDS["/api/control-team"]);
+// Choosing which club you run used to be exempt ("claiming a franchise cannot
+// require already holding it"). It is now a career decision: free only under
+// Sandbox rules, otherwise made through the job market. test/gm-career.test.js
+// proves the refusal and the Sandbox success through the live adapter.
+test("control-team is career-guarded: no longer exempt, and not a team-scoped command", () => {
+  assert.ok(CAREER_GUARDED_COMMANDS["/api/control-team"]);
+  assert.ok(!AUTHORITY_EXEMPT_COMMANDS["/api/control-team"]);
   assert.ok(!TEAM_SCOPED_COMMANDS["/api/control-team"]);
 });
 
@@ -131,8 +142,44 @@ test("authorizeCommand allows the controlled team and denies every other franchi
 
 test("exempt and unknown routes are never denied", () => {
   const session = { controlledTeamId: "BUF" };
-  assert.equal(authorizeCommand({ session, route: "/api/control-team", body: { teamId: "NYJ" } }), null);
+  assert.equal(authorizeCommand({ session, route: "/api/new-league", body: { controlledTeamId: "NYJ" } }), null);
   assert.equal(authorizeCommand({ session, route: "/api/advance-week", body: {} }), null);
+  assert.equal(authorizeCommand({ session, route: "/api/not-a-route", body: { teamId: "NYJ" } }), null);
+});
+
+test("a lobby that two general managers share keeps free choice of club; a lobby of one does not", () => {
+  const lockedCareer = { dismissed: false, freeTeamSwitch: false, offers: [] };
+  const session = { controlledTeamId: "BUF", getGmCareerState: () => lockedCareer };
+  const body = { teamId: "NYJ" };
+  const solo = authorizeCommand({ session, route: "/api/control-team", body });
+  assert.equal(solo.status, 403);
+  assert.equal(solo.payload.reasonCode, "team-switch-locked");
+  const alone = { players: [{ controlledTeamId: "BUF" }] };
+  assert.equal(authorizeCommand({ session, route: "/api/control-team", body, lobby: alone }).payload.reasonCode, "team-switch-locked");
+  const shared = { players: [{ controlledTeamId: "BUF" }, { controlledTeamId: "MIA" }] };
+  assert.equal(authorizeCommand({ session, route: "/api/control-team", body, lobby: shared }), null);
+});
+
+test("a general manager without a club cannot simulate, change rules or open a lobby, with or without a lobby", () => {
+  const career = { dismissed: true, freeTeamSwitch: true, offers: [], dismissal: { teamName: "Buffalo" } };
+  const session = { controlledTeamId: "BUF", getGmCareerState: () => career, getLeagueSettings: () => ({ rulesPreset: "standard" }) };
+  const shared = { players: [{ controlledTeamId: "BUF" }, { controlledTeamId: "MIA" }] };
+  for (const route of ["/api/jobs/simulate", "/api/settings", "/api/commissioner/create", "/api/advance-week", "/api/control-team"]) {
+    for (const lobby of [null, shared]) {
+      const denied = authorizeCommand({ session, route, body: { teamId: "NYJ", seasons: 1 }, lobby });
+      assert.equal(denied?.payload.reasonCode, "gm-dismissed", `${route} lobby=${Boolean(lobby)}`);
+    }
+  }
+});
+
+test("a Sandbox league cannot be switched back to rules with a job on the line", () => {
+  const career = { dismissed: false, freeTeamSwitch: true, offers: [] };
+  const sandbox = { controlledTeamId: "BUF", getGmCareerState: () => career, getLeagueSettings: () => ({ rulesPreset: "sandbox" }) };
+  assert.equal(authorizeCommand({ session: sandbox, route: "/api/settings", body: { rulesPreset: "standard" } }).payload.reasonCode, "rules-locked");
+  assert.equal(authorizeCommand({ session: sandbox, route: "/api/settings", body: { enableNarratives: false } }), null);
+  assert.equal(authorizeCommand({ session: sandbox, route: "/api/control-team", body: { teamId: "NYJ" } }), null);
+  const standard = { ...sandbox, getLeagueSettings: () => ({ rulesPreset: "standard" }) };
+  assert.equal(authorizeCommand({ session: standard, route: "/api/settings", body: { rulesPreset: "sandbox" } }), null);
 });
 
 test("a missing team field is left to the route's own validation, not turned into a 403", () => {

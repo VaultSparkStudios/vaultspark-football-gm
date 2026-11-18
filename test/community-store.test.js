@@ -6,10 +6,44 @@ import path from "node:path";
 import { CommunityStore, hashParticipant } from "../src/community/communityStore.js";
 
 class FakePool {
-  constructor() { this.rows = []; }
+  constructor() { this.rows = []; this.feedback = []; this.diagnostics = []; this.schemaSql = ""; }
 
   async query(sql, params = []) {
-    if (/CREATE SCHEMA/.test(sql)) return {};
+    if (/CREATE SCHEMA/.test(sql)) { this.schemaSql = sql; return {}; }
+    if (/SELECT count\(\*\)::int AS count FROM community_stats\.feedback WHERE received_at > now\(\) - interval '1 day'/.test(sql)) {
+      const cutoff = Date.now() - 24 * 60 * 60 * 1000;
+      return { rows: [{ count: this.feedback.filter((r) => r.received_at.getTime() > cutoff).length }] };
+    }
+    if (/^INSERT INTO community_stats\.feedback\(category,message,rating,context\)/.test(sql)) {
+      const [category, message, rating, context] = params;
+      this.feedback.push({ category, message, rating, context: JSON.parse(context), received_at: new Date() });
+      return { rowCount: 1 };
+    }
+    if (/SELECT count\(\*\)::int AS count FROM community_stats\.diagnostics WHERE participant_hash=\$1 AND report_day=\$2/.test(sql)) {
+      const [participantHash, day] = params;
+      return { rows: [{ count: this.diagnostics.filter((r) => r.participant_hash === participantHash && r.report_day === day).length }] };
+    }
+    if (/^INSERT INTO community_stats\.diagnostics\(.*ON CONFLICT \(participant_hash,report_day,signature\) DO NOTHING/.test(sql)) {
+      const [participantHash, day, signature, name, message, stack, screen, build] = params;
+      if (this.diagnostics.some((r) => r.participant_hash === participantHash && r.report_day === day && r.signature === signature)) return { rowCount: 0 };
+      this.diagnostics.push({ participant_hash: participantHash, report_day: day, signature, error_name: name, message, stack: JSON.parse(stack), screen, build, received_at: new Date() });
+      return { rowCount: 1 };
+    }
+    if (/DELETE FROM community_stats\.diagnostics WHERE participant_hash=\$1/.test(sql)) {
+      const [participantHash] = params;
+      const before = this.diagnostics.length;
+      this.diagnostics = this.diagnostics.filter((r) => r.participant_hash !== participantHash);
+      return { rowCount: before - this.diagnostics.length };
+    }
+    const sweep = /DELETE FROM community_stats\.(feedback|diagnostics) WHERE received_at < now\(\) - \(\$1::int \* interval '1 day'\)/.exec(sql);
+    if (sweep) {
+      const [days] = params;
+      assert.ok(Number.isInteger(days) && days > 0, "retention days must be bound as a positive integer");
+      const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
+      const before = this[sweep[1]].length;
+      this[sweep[1]] = this[sweep[1]].filter((r) => r.received_at.getTime() >= cutoff);
+      return { rowCount: before - this[sweep[1]].length };
+    }
     if (/^SELECT 1$/.test(sql.trim())) return { rows: [{}] };
     if (/SELECT count\(\*\)::int AS count FROM community_stats\.receipts WHERE participant_hash=\$1 AND received_at > now\(\) - interval '1 hour'/.test(sql)) {
       const [participantHash] = params;
@@ -187,5 +221,90 @@ test("health reports ok after initialize succeeds", async () => {
   const health = await store.health();
   assert.equal(health.ok, true);
   assert.equal(health.database, "ready");
-  assert.equal(health.schemaVersion, 1);
+  assert.equal(health.schemaVersion, 2);
+});
+
+test("schema setup only ever adds: the new tables are created if missing and nothing existing is altered or dropped", async () => {
+  const pool = new FakePool();
+  await makeStore({ pool }).initialize();
+  assert.match(pool.schemaSql, /CREATE TABLE IF NOT EXISTS community_stats\.receipts/);
+  assert.match(pool.schemaSql, /CREATE TABLE IF NOT EXISTS community_stats\.feedback/);
+  assert.match(pool.schemaSql, /CREATE TABLE IF NOT EXISTS community_stats\.diagnostics/);
+  assert.match(pool.schemaSql, /schema_migrations\(version\) VALUES \(2\) ON CONFLICT DO NOTHING/);
+  assert.doesNotMatch(pool.schemaSql, /\b(DROP|ALTER|TRUNCATE)\b/i);
+  for (const statement of pool.schemaSql.split(";").map((part) => part.replace(/--.*$/gm, "").trim()).filter((part) => /^CREATE/.test(part))) {
+    assert.match(statement, /^CREATE (SCHEMA|TABLE|INDEX) IF NOT EXISTS /, `must be safe to repeat on a live database: ${statement.slice(0, 60)}`);
+  }
+});
+
+test("a feedback note is stored with its fixed context and nothing that identifies the sender", async () => {
+  const pool = new FakePool();
+  const store = makeStore({ pool });
+  const result = await store.saveFeedback({ category: "idea", message: "More trade logic please.", rating: 4, context: { screen: "overviewTab", season: 2027, week: 3 } });
+  assert.deepEqual(result, { accepted: 1 });
+  assert.equal(pool.feedback.length, 1);
+  assert.deepEqual(Object.keys(pool.feedback[0]).sort(), ["category", "context", "message", "rating", "received_at"]);
+  assert.deepEqual(pool.feedback[0].context, { screen: "overviewTab", season: 2027, week: 3 });
+});
+
+test("the feedback inbox refuses new notes once the daily ceiling is reached", async () => {
+  const pool = new FakePool();
+  const store = makeStore({ pool });
+  pool.feedback = Array.from({ length: 2000 }, () => ({ category: "bug", message: "x", rating: null, context: {}, received_at: new Date() }));
+  await assert.rejects(
+    () => store.saveFeedback({ category: "bug", message: "one too many", rating: null, context: {} }),
+    (error) => { assert.equal(error.status, 429); return true; }
+  );
+  assert.equal(pool.feedback.length, 2000);
+});
+
+test("error reports are counted once per browser, per day, per error name and top frame", async () => {
+  let now = new Date("2026-08-09T10:00:00.000Z");
+  const pool = new FakePool();
+  const store = makeStore({ pool, clock: () => now });
+  const report = (overrides = {}) => ({ name: "TypeError", message: "x is undefined", stack: ["/app.js:10:5", "/lib/gameFlow.js:20:1"], screen: "overviewTab", ...overrides });
+  assert.deepEqual(await store.saveDiagnostics("player-1", [report(), report({ message: "same place, different words" })]), { accepted: 1, duplicates: 1 });
+  assert.deepEqual(await store.saveDiagnostics("player-1", [report()]), { accepted: 0, duplicates: 1 });
+  assert.deepEqual(await store.saveDiagnostics("player-1", [report({ stack: ["/app.js:11:5"] }), report({ name: "RangeError" })]), { accepted: 2, duplicates: 0 }, "a different top frame or error name is a different error");
+  assert.deepEqual(await store.saveDiagnostics("player-2", [report()]), { accepted: 1, duplicates: 0 }, "another browser is counted separately");
+  now = new Date("2026-08-10T10:00:00.000Z");
+  assert.deepEqual(await store.saveDiagnostics("player-1", [report()]), { accepted: 1, duplicates: 0 }, "a new day is counted again");
+  assert.equal(pool.diagnostics.length, 5);
+  assert.ok(pool.diagnostics.every((row) => /^[0-9a-f]{64}$/.test(row.participant_hash) && /^[0-9a-f]{64}$/.test(row.signature)));
+  assert.doesNotMatch(JSON.stringify(pool.diagnostics), /player-1|player-2/);
+});
+
+test("one browser cannot store more than its daily allowance of error reports", async () => {
+  const pool = new FakePool();
+  const store = makeStore({ pool });
+  const many = (offset) => Array.from({ length: 10 }, (_, index) => ({ name: "Error", message: "boom", stack: [`/app.js:${offset + index}:1`] }));
+  for (let batch = 0; batch < 4; batch += 1) assert.equal((await store.saveDiagnostics("player-loop", many(batch * 10))).accepted, 10);
+  assert.deepEqual(await store.saveDiagnostics("player-loop", many(400)), { accepted: 0, duplicates: 0 });
+  assert.equal(pool.diagnostics.length, 40);
+});
+
+test("turning sharing off deletes that browser's error reports along with its game stats", async () => {
+  const pool = new FakePool();
+  const store = makeStore({ pool });
+  await store.ingest("player-a", [event("evt-a1")]);
+  await store.saveDiagnostics("player-a", [{ name: "Error", message: "boom", stack: ["/app.js:1:1"] }]);
+  await store.saveDiagnostics("player-b", [{ name: "Error", message: "boom", stack: ["/app.js:1:1"] }]);
+  assert.deepEqual(await store.deleteParticipant("player-a"), { deleted: 2 });
+  assert.equal(pool.diagnostics.length, 1);
+});
+
+test("feedback notes and error reports expire with the same 30-day sweep as game stats", async () => {
+  let now = new Date();
+  const pool = new FakePool();
+  const store = makeStore({ pool, clock: () => now });
+  await store.saveFeedback({ category: "praise", message: "old note", rating: null, context: {} });
+  await store.saveDiagnostics("player-1", [{ name: "Error", message: "old", stack: ["/app.js:1:1"] }]);
+  const longAgo = new Date(Date.now() - 31 * 24 * 60 * 60 * 1000);
+  pool.feedback[0].received_at = longAgo;
+  pool.diagnostics[0].received_at = longAgo;
+  await store.saveFeedback({ category: "praise", message: "fresh note", rating: null, context: {} });
+  now = new Date(now.getTime() + 7 * 60 * 60 * 1000);
+  await store.cleanupIfDue();
+  assert.deepEqual(pool.feedback.map((row) => row.message), ["fresh note"]);
+  assert.equal(pool.diagnostics.length, 0);
 });

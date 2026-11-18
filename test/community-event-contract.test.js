@@ -122,7 +122,8 @@ test("browser participation acquires a short-lived capability, retries one rejec
       runtime: "client"
     });
     const flushed = await flushCommunityQueue();
-    assert.equal(flushed.sent, 1);
+    assert.equal(flushed.sent, 2, "the league start and its one-time setup milestone travel together");
+    assert.deepEqual(calls.filter((row) => row.url.endsWith("/events")).at(-1).body.events.map((row) => row.type), ["league_started", "setup_finished"]);
     assert.equal(eventAttempts, 2, "a rejected process-local lease is refreshed exactly once");
     assert.equal(calls.filter((row) => row.url.endsWith("/capability")).length, 2);
     assert.equal(calls.filter((row) => row.url.endsWith("/events"))[0].body.capability, "lease-1");
@@ -258,4 +259,133 @@ test("participation controls distinguish pending, failed, and acknowledged delet
   assert.doesNotMatch(refused.heading, /contributing/i);
   assert.match(communityParticipationPresentation({ participating: true, participationFailed: true }).heading, /contributing/i);
   assert.match(communityParticipationPresentation({ pending: true, participationFailed: true }).heading, /deletion pending/i);
+});
+
+// ── First-steps milestones, feedback notes and error reports ────────────────
+
+test("the four first-steps milestones normalise to fixed fields and drop everything else", async () => {
+  const { COMMUNITY_EVENT_TYPES, COMMUNITY_FUNNEL_EVENT_TYPES, COMMUNITY_RETURN_GAPS, returnVisitGap } = await import("../src/community/eventContract.js");
+  assert.deepEqual(COMMUNITY_FUNNEL_EVENT_TYPES, ["setup_finished", "first_advance", "first_season_finished", "return_visit"]);
+  for (const type of COMMUNITY_FUNNEL_EVENT_TYPES) assert.ok(COMMUNITY_EVENT_TYPES.includes(type));
+  const at = Date.parse(now());
+  for (const type of ["setup_finished", "first_advance", "first_season_finished"]) {
+    const normalized = normalizeCommunityEvent({
+      eventId: "valid_event_123", type, occurredAt: now(),
+      dimensions: { runtime: "client", team: "BUF", ownerName: "Private Founder", gap: "1-6" },
+      metrics: { weeks: 4, count: 3 }
+    }, { now: at });
+    assert.deepEqual(normalized.dimensions, { runtime: "client" }, `${type} carries nothing but the runtime`);
+    assert.deepEqual(normalized.metrics, {});
+  }
+  const visit = (gap) => normalizeCommunityEvent({ eventId: "valid_event_123", type: "return_visit", occurredAt: now(), dimensions: { runtime: "client", gap, lastSeen: "2026-08-01" }, metrics: { days: 12 } }, { now: at });
+  for (const gap of COMMUNITY_RETURN_GAPS) assert.deepEqual(visit(gap).dimensions, { runtime: "client", gap });
+  assert.deepEqual(visit("12").dimensions, { runtime: "client" }, "an exact day count is not one of the four buckets and is dropped");
+  assert.deepEqual(visit("2026-08-01").dimensions, { runtime: "client" });
+  assert.deepEqual(visit("7-29").metrics, {});
+  assert.deepEqual([0, 0.5, 1, 6, 7, 29, 30, 400, -3, "x"].map(returnVisitGap), ["same-day", "same-day", "1-6", "1-6", "7-29", "7-29", "30-plus", "30-plus", "same-day", "same-day"]);
+});
+
+test("milestones are derived only while sharing is on, once per browser, with a bucketed return visit", async () => {
+  const values = new Map();
+  const localStorage = {
+    getItem(key) { return values.get(String(key)) ?? null; },
+    setItem(key, value) { values.set(String(key), String(value)); },
+    removeItem(key) { values.delete(String(key)); }
+  };
+  const saved = Object.fromEntries(["window", "document", "navigator", "CustomEvent", "fetch"].map((key) => [key, Object.getOwnPropertyDescriptor(globalThis, key)]));
+  try {
+    Object.defineProperty(globalThis, "window", { configurable: true, value: { localStorage, dispatchEvent() {} } });
+    Object.defineProperty(globalThis, "document", { configurable: true, value: { querySelector: () => null } });
+    Object.defineProperty(globalThis, "navigator", { configurable: true, value: { onLine: false } });
+    Object.defineProperty(globalThis, "CustomEvent", { configurable: true, value: class { constructor(type, init) { this.type = type; this.detail = init?.detail; } } });
+    Object.defineProperty(globalThis, "fetch", { configurable: true, value: async () => { throw new Error("offline fixture: nothing may be sent"); } });
+    const telemetry = await import("../public/lib/communityTelemetry.js?funnel-test=1");
+    const league = () => telemetry.observeCommunityApiReceipt({ method: "POST", path: "/api/new-league", body: { controlledTeamId: "BUF" }, response: { ok: true, state: { controlledTeamId: "BUF", settings: {} } }, runtime: "client" });
+    const advance = (completedYear) => telemetry.observeCommunityApiReceipt({
+      method: "POST", path: "/api/advance-week", body: {}, runtime: "client",
+      response: { ok: true, commandReceipt: { count: 1, started: { year: 2026, phase: "regular-season" }, completed: { year: completedYear, phase: "regular-season" } }, state: { controlledTeamId: "BUF", champions: [], latestStandings: [{ team: "BUF", wins: 1, losses: 1 }] } }
+    });
+    const types = (rows) => rows.map((row) => row.type);
+
+    assert.deepEqual(types(league()), ["league_started"], "sharing is off: no milestone is derived");
+    assert.equal(values.has(telemetry.COMMUNITY_FUNNEL_KEY), false, "sharing is off: nothing is remembered either");
+
+    values.set(COMMUNITY_CONSENT_KEY, "participating");
+    values.set(COMMUNITY_PARTICIPANT_KEY, "browser_identifier_funnel");
+    assert.deepEqual(types(league()), ["league_started", "setup_finished"]);
+    assert.deepEqual(types(league()), ["league_started"], "setup is reported once per browser");
+    assert.deepEqual(types(advance(2026)), ["weeks_managed", "first_advance"]);
+    assert.deepEqual(types(advance(2027)), ["weeks_managed", "first_season_finished"]);
+    assert.deepEqual(types(advance(2028)), ["weeks_managed"]);
+    const stored = JSON.parse(values.get(telemetry.COMMUNITY_FUNNEL_KEY));
+    assert.deepEqual(Object.keys(stored).sort(), ["advance", "day", "season", "setup"]);
+
+    // A later page load, nine days on: one return visit in the 7-29 bucket, then none for that load.
+    values.set(telemetry.COMMUNITY_FUNNEL_KEY, JSON.stringify({ ...stored, day: stored.day - 9 }));
+    const later = await import("../public/lib/communityTelemetry.js?funnel-test=2");
+    const returned = later.observeCommunityApiReceipt({ method: "POST", path: "/api/settings", body: { difficultyPreset: "standard" }, response: { ok: true }, runtime: "client" });
+    assert.deepEqual(types(returned), ["settings_changed", "return_visit"]);
+    assert.deepEqual(returned[1].dimensions, { runtime: "client", gap: "7-29" });
+    assert.deepEqual(returned[1].metrics, {});
+    assert.deepEqual(types(later.observeCommunityApiReceipt({ method: "POST", path: "/api/settings", body: {}, response: { ok: true }, runtime: "client" })), ["settings_changed"]);
+    assert.doesNotMatch(JSON.stringify(JSON.parse(values.get(COMMUNITY_QUEUE_KEY)).filter((row) => row.type === "return_visit")), /"day"|lastSeen/);
+  } finally {
+    for (const [key, descriptor] of Object.entries(saved)) {
+      if (descriptor) Object.defineProperty(globalThis, key, descriptor);
+      else delete globalThis[key];
+    }
+  }
+});
+
+test("a feedback note keeps only its category, message, rating and six fixed context fields", async () => {
+  const { normalizeFeedback, FEEDBACK_MESSAGE_LIMIT } = await import("../src/community/feedbackContract.js");
+  assert.equal(normalizeFeedback(null), null);
+  assert.equal(normalizeFeedback({ category: "rant", message: "hello" }), null);
+  assert.equal(normalizeFeedback({ category: "bug", message: " \n\t " }), null);
+  const normalized = normalizeFeedback({
+    category: "confusing", message: `  Line one\r\nLine two\u0007  ${"x".repeat(3000)}`, rating: "5", email: "me@example.com",
+    context: { screen: "rosterTab", season: 2031, week: 7, viewport: "tablet", theme: "light", build: "7becc57", teamName: "Secret", save: {}, token: "abc" }
+  });
+  assert.deepEqual(Object.keys(normalized).sort(), ["category", "context", "message", "rating"]);
+  assert.equal(normalized.message.length, FEEDBACK_MESSAGE_LIMIT);
+  assert.match(normalized.message, /^Line one\nLine two /);
+  assert.equal(normalized.rating, 5);
+  assert.deepEqual(normalized.context, { build: "7becc57", screen: "rosterTab", season: 2031, week: 7, viewport: "tablet", theme: "light" });
+  assert.equal(normalizeFeedback({ category: "idea", message: "ok", rating: 0 }).rating, null);
+  assert.deepEqual(normalizeFeedback({ category: "idea", message: "ok", context: { viewport: "1920x1080", season: "abc", week: 900 } }).context, {});
+});
+
+test("stack scrubbing keeps only this site's script paths and line numbers", async () => {
+  const { scrubStack, buildDiagnosticReport, scrubDiagnosticMessage } = await import("../src/community/feedbackContract.js");
+  const origin = "https://playfranchisearchitect.com";
+  const stack = [
+    "TypeError: Cannot read properties of undefined (reading 'name')",
+    "    at renderRoster (https://playfranchisearchitect.com/lib/tabRoster.js?v=abc&token=secret:120:15)",
+    "    at https://playfranchisearchitect.com/app.js#frag:44:9",
+    "    at inject (chrome-extension://abcdefghijklmnop/content.js:1:1)",
+    "    at track (https://cdn.tracker.example/t.js?id=42:9:9)",
+    "    at https://evil.example/https://playfranchisearchitect.com/app.js:5:5",
+    "    at https://playfranchisearchitect.com/game.html?save=private:12:3",
+    "loadDashboard@https://playfranchisearchitect.com/lib/gameFlow.js:88:21",
+    "    at <anonymous>"
+  ].join("\n");
+  assert.deepEqual(scrubStack(stack, origin), ["/lib/tabRoster.js:120:15", "/app.js:44:9", "/lib/gameFlow.js:88:21"]);
+  assert.deepEqual(scrubStack(stack, "https://staging.playfranchisearchitect.com"), [], "another origin's frames are never kept");
+  assert.deepEqual(scrubStack(stack, ""), []);
+  assert.equal(scrubStack(Array.from({ length: 30 }, (_, i) => `at f (${origin}/app.js:${i + 1}:1)`).join("\n"), origin).length, 8);
+
+  const report = buildDiagnosticReport(Object.assign(new TypeError(`Player "Avery Stone Jr" missing at ${origin}/app.js?token=abc, mail a@b.co ${"y".repeat(500)}`), { stack }), { origin, screen: "rosterTab", build: "7becc57" });
+  assert.deepEqual(Object.keys(report).sort(), ["build", "message", "name", "screen", "stack"]);
+  assert.equal(report.name, "TypeError");
+  assert.ok(report.message.length <= 300);
+  assert.doesNotMatch(JSON.stringify(report), /Avery|token|secret|tracker|evil|chrome-extension|a@b\.co|save=private/);
+  assert.equal(scrubDiagnosticMessage("x is undefined (reading 'name')"), "x is undefined (reading '[text]')", "a single quoted word can be a surname used as a key");
+});
+
+test("an error report keeps message text only for the runtime's own error types", async () => {
+  const { normalizeDiagnosticReport } = await import("../public/lib/communityFeedbackContract.js");
+  const appWritten = normalizeDiagnosticReport({ name: "Error", message: "Player Marcus Bell not found", stack: [] });
+  assert.equal(appWritten.message, "", "a message the game wrote can carry a name, so it is not sent");
+  const runtime = normalizeDiagnosticReport({ name: "TypeError", message: "Cannot read properties of undefined (reading 'id')", stack: [] });
+  assert.match(runtime.message, /Cannot read properties of undefined/);
 });

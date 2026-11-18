@@ -37,6 +37,8 @@ async function drainWeeklyPlanModals(page, dashboard) {
   // The GM lookup is asynchronous even when its queue is empty. Await the
   // expected next gate; isVisible({ timeout }) only takes an instant snapshot.
   if (dashboard.controlledOnBye) return;
+  // A new franchise's opening week runs the staff plan: no tactic, no review.
+  if (dashboard.currentWeek === 1 && !dashboard.seasonsSimulated) return;
   const skipBtn = page.locator("#halftimeAdjustModal .tactic-skip-btn");
   await expect(skipBtn).toBeVisible();
   await skipBtn.click();
@@ -87,8 +89,19 @@ for (const scenario of WEEKLY_SCENARIOS) {
       await expect(page.locator("#boxScoreTicker [data-boxscore-id]")).not.toHaveCount(0);
       await expect(card).toBeVisible();
       await expect(card.locator(".wr-kicker")).toContainText(`Week ${before.currentWeek}`);
-      await card.locator(".wr-close").click();
+      // Opening week: the game was played on the staff plan, with no plan modals.
+      expect(advances[0].weeklyTacticOverride).toBeUndefined();
+      await expect(page.locator("#halftimeAdjustModal")).toBeHidden();
+      await expect(page.locator("#architectPlanRehearsalModal")).toBeHidden();
+      await expect(page.locator(".weekly-plan-receipt")).toContainText("staff game plan");
+      // Game day is one click from the recap: the replay of the game just played.
+      const watch = card.locator('.wr-action[data-recap-action="sim-watch"]');
+      await expect(watch).toHaveText("Watch highlights");
+      await watch.click();
+      await expect(page.locator("#simWatchOverlay")).toBeVisible();
       await expect(page.locator("#weekRecapCard.wr-visible")).toHaveCount(0);
+      await page.locator("#simWatchCloseBtn").click();
+      await expect(page.locator("#simWatchOverlay")).toBeHidden();
     } else {
       // The actual midseason bye produces no new game recap.
       // Prior games remain available; the bye must add no invented game.

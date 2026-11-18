@@ -391,9 +391,8 @@ async function collectWeeklyCommandIntent({ gmDecisionChoice = null } = {}) {
     phase: state.dashboard?.phase || "unknown",
     postseasonPlanRequired: state.dashboard?.postseasonProgress?.controlledStatus === "active",
     presetDecisionChoice: gmDecisionChoice || state.mobilePendingDecisionChoice || null,
-    // Engine-owned truth (S102). The schedule cache is cold on this path, so it
-    // cannot answer whether this week has an opponent.
     onBye: state.dashboard?.controlledOnBye === true,
+    openingWeek: state.dashboard?.currentWeek === 1 && !state.dashboard?.seasonsSimulated,
     collectDecision: checkAndShowGmDecision,
     collectTactic: () => new Promise((resolve) => showHalftimeAdjustModal(resolve, {
       title: "Weekly Plan Composer",
@@ -642,14 +641,8 @@ function bindEvents() {
     } catch (error) { presentActionError(error); }
   });
 
-  document.getElementById("teamSelect").addEventListener("change", (event) =>
-    runAction(async () => {
-      const response = await api("/api/control-team", { method: "POST", body: { teamId: event.target.value } });
-      applyDashboard(response.state);
-      invalidateHydrationDomains();
-      await hydrateTab(state.activeTab || "overviewTab", { force: true });
-    }, "Switching team...")
-  );
+  document.getElementById("resignGmBtn")?.addEventListener("click", () =>
+    import("./lib/gmCareerUi.js").then((ui) => ui.confirmResign()).catch(presentActionError));
 
   document.getElementById("advanceWeekBtn").addEventListener("click", () => {
     playSound("advance-tick");
@@ -1930,26 +1923,24 @@ function bindEvents() {
   };
   document.getElementById("closeCommandPaletteBtn")?.addEventListener("click", closeCommandPalette);
   document.getElementById("openGuideBtn")?.addEventListener("click", () => openGuideModal());
-  // S94: three views of one learning surface, bound the same way the History and
-  // Box Score sub-tabs already are.
   for (const button of document.querySelectorAll("[data-guide-view]")) {
     button.addEventListener("click", () => selectGuideView(button.dataset.guideView));
   }
   document.getElementById("closeGuideModalBtn")?.addEventListener("click", closeGuideModal);
 
   document.addEventListener("keydown", (event) => {
-    // Modal-scoped Escape is stopped by modalManager. This guard also covers
-    // programmatic document key events so W/R/N/1-9 can never mutate or
-    // navigate the franchise behind a blocking overlay.
+    // No shortcut may act on the franchise behind an open modal.
     if (hasOpenModal()) return;
     if (event.key === "Escape") {
       closeCommandPalette();
       closePlayerModal();
       closeBoxScoreModal();
       closeGuideModal();
-      // Modal Manager owns Escape for every open lazy-island modal. Reaching
-      // this branch means no modal is open, so invoking a cold island here
-      // would manufacture a page error merely because a drawer used Escape.
+      return;
+    }
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+      event.preventDefault();
+      openCommandPalette();
       return;
     }
     const tag = document.activeElement?.tagName;
@@ -1973,7 +1964,6 @@ function bindEvents() {
       else if (ticker) ticker.hidden = true;
       return;
     }
-    // 1–9: jump to tab by index
     if (/^[1-9]$/.test(event.key) && !event.ctrlKey && !event.metaKey) {
       const idx = parseInt(event.key, 10) - 1;
       const tabs = document.querySelectorAll(".menu-btn[data-tab]");

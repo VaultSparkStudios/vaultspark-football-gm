@@ -327,7 +327,7 @@ export function renderOpeningContract() {
     action.type = "button";
     action.className = "primary opening-contract-action";
     action.dataset.openingPrologueAction = "advance-week";
-    action.textContent = "Choose Tactic & Play Week 1";
+    action.textContent = "Play This Week";
     evidence.appendChild(action);
   }
 const scoutingTruth = document.createElement("small");

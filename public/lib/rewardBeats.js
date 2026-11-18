@@ -4,15 +4,16 @@
 // return-digest lesson) and every line derives from receipted data.
 
 import { state } from "./appState.js";
-import { escapeHtml, teamName } from "./appCore.js";
+import { escapeHtml, showToast, teamName } from "./appCore.js";
 import { playSound, vibrate, HAPTIC_PATTERNS } from "./audioFeedback.js";
 import { findTeamStanding, formatTeamRecord } from "./teamRecord.js";
 import { GAME_RESULTS, gameResultFromScores, gameResultTone } from "./gameOutcome.js";
 
 const AUTO_DISMISS_MS = 8000;
+const ACTION_DISMISS_MS = 14000;
 let dismissTimer = null;
 
-export function showBeatCard({ kicker, headline, line, meta = "", tone = "neutral" }) {
+export function showBeatCard({ kicker, headline, line, meta = "", tone = "neutral", action = null }) {
   let card = document.getElementById("weekRecapCard");
   if (!card) {
     card = document.createElement("div");
@@ -25,12 +26,18 @@ export function showBeatCard({ kicker, headline, line, meta = "", tone = "neutra
     <div class="wr-headline">${escapeHtml(headline)}</div>
     <div class="wr-score">${escapeHtml(line)}</div>
     ${meta ? `<div class="wr-meta">${escapeHtml(meta)}</div>` : ""}
+    ${action ? `<button type="button" class="wr-action" data-recap-action="${escapeHtml(action.kind)}">${escapeHtml(action.label)}</button>` : ""}
     <button class="wr-close" aria-label="Dismiss">×</button>`;
   card.querySelector(".wr-close")?.addEventListener("click", hideBeatCard, { once: true });
+  card.querySelector(".wr-action")?.addEventListener("click", () => {
+    hideBeatCard();
+    action.run();
+  }, { once: true });
   card.hidden = false;
   requestAnimationFrame(() => card.classList.add("wr-visible"));
   if (dismissTimer) clearTimeout(dismissTimer);
-  dismissTimer = setTimeout(hideBeatCard, AUTO_DISMISS_MS);
+  // A card that offers something to do stays long enough to be read and clicked.
+  dismissTimer = setTimeout(hideBeatCard, action ? ACTION_DISMISS_MS : AUTO_DISMISS_MS);
   return true;
 }
 
@@ -75,9 +82,34 @@ export function buildWeekRecapModel({ game, dashboard }) {
   };
 }
 
+function prefersReducedMotion() {
+  return globalThis.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches === true;
+}
+
+// Game day, one click from the weekly loop: the recap offers the animated
+// Sim-Watch replay of the game just played. A player who asked their device
+// for less motion is offered the still box score instead.
+export function weekRecapAction(game, { reducedMotion = prefersReducedMotion() } = {}) {
+  if (!game?.gameId) return null;
+  return reducedMotion
+    ? { kind: "box-score", label: "View box score", gameId: game.gameId }
+    : { kind: "sim-watch", label: "Watch highlights", gameId: game.gameId };
+}
+
+async function openWeekRecapAction({ kind, gameId }) {
+  try {
+    if (kind === "sim-watch") await (await import("./simWatchDirector.js")).runSimWatch(gameId);
+    else await (await import("./tabOverview.js")).loadBoxScore(gameId);
+  } catch {
+    // Sim-Watch records and announces its own failure; the box score does not.
+    if (kind !== "sim-watch") showToast("The box score could not open. Try it from the score ticker.");
+  }
+}
+
 export function presentWeekRecap(game) {
   const model = buildWeekRecapModel({ game, dashboard: state.dashboard });
   if (!model) return false;
+  const recapAction = weekRecapAction(game);
   playSound(model.result === GAME_RESULTS.WIN ? "win-chime" : model.result === GAME_RESULTS.LOSS ? "loss-thud" : "advance-tick");
   vibrate(model.result === GAME_RESULTS.WIN ? HAPTIC_PATTERNS.win : model.result === GAME_RESULTS.LOSS ? HAPTIC_PATTERNS.loss : HAPTIC_PATTERNS.tick);
   return showBeatCard({
@@ -85,7 +117,8 @@ export function presentWeekRecap(game) {
     headline: model.headline,
     line: model.scoreLine,
     meta: `${model.record ? `Record ${model.record}` : ""}${model.rank ? ` · League #${model.rank}` : ""}`.replace(/^ · /, ""),
-    tone: gameResultTone(model.result)
+    tone: gameResultTone(model.result),
+    action: recapAction ? { ...recapAction, run: () => openWeekRecapAction(recapAction) } : null
   });
 }
 

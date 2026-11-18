@@ -51,7 +51,7 @@
       "innovation": 4,
       "effortHours": 3,
       "priority": 20.5,
-      "status": "implemented-reduced",
+      "status": "shipped-reduced",
       "readinessArea": "performance and capacity",
       "stageRationale": "FORGE/FB public-beta hardening, wave 1 of the approved order.",
       "recipe": "Stop copying the whole site into each legacy path. Emit 301 rules for the legacy slugs in _redirects and keep one service worker at the root.",
@@ -85,8 +85,8 @@
       "executionLog": [
         {
           "at": "2026-11-18T01:30:00.000Z",
-          "status": "implemented-reduced",
-          "note": "L1 implemented, not yet released. The mount list is a declared contract (the pages smoke test requires the games/franchise-architect mount to serve real files), so the mounts stay and only the nesting defect is fixed: mount roots are now derived from the mount list. Local build 57.2 MB / 3,740 files / 10 service workers before, 40.0 MB / 2,618 files / 7 after. New smoke guard fails on any service worker outside a declared mount; negative control: it named the three nested workers on the pre-fix output. Pages smoke green. Replacing mounts with redirects (L2) needs a decision on the mount contract."
+          "status": "shipped-reduced",
+          "note": "The mount list is a declared contract checked by the pages smoke test, so the mounts stay and only the nesting defect is fixed. Build 57.2 MB / 10 service workers before, 40.0 MB / 7 after. A smoke guard fails on any service worker outside a declared mount; negative control named the three nested workers on the pre-fix output. Replacing mounts with redirects needs a decision on the mount contract."
         }
       ]
     },
@@ -103,7 +103,7 @@
       "innovation": 4,
       "effortHours": 6,
       "priority": 19.1,
-      "status": "in-progress",
+      "status": "shipped",
       "readinessArea": "staging, release evidence and truthful beta/release communication",
       "stageRationale": "FORGE/FB public-beta hardening, wave 1 of the approved order.",
       "recipe": "Move shipped work out of the roadmap, add the missing release note, extend Features to shipped systems, add releaseLabel and a single Community Stats block to claims.json and render both everywhere. Extend the public-truth check to the stats JSON and script strings.",
@@ -137,8 +137,8 @@
       "executionLog": [
         {
           "at": "2026-11-18T01:30:00.000Z",
-          "status": "in-progress",
-          "note": "Implemented locally, not yet released: roadmap no longer lists shipped work and shows four more shipped items; release note added for the depth chart, playing styles and weekly challenge; six shipped systems added to the Features source; Community Stats methodology wording aligned with the privacy notice; internal record wording removed from the stats surface, the stats script and the service text; stats-surface.json added to the vocabulary gate. Public tests, truth gate and pages smoke green. Remaining: one release label field (to change at beta launch, not before) and per-session note freshness."
+          "status": "shipped",
+          "note": "Implemented and verified locally in session 132; release state is recorded at closeout. Roadmap lists only future work; release notes added for the depth chart release and this one; six shipped systems added to the Features source; Community Stats wording aligned with the privacy notice; stats-surface.json added to the vocabulary gate. The release label stays as it is until beta launch."
         }
       ]
     },
@@ -155,7 +155,7 @@
       "innovation": 5,
       "effortHours": 12,
       "priority": 17.7,
-      "status": "pending",
+      "status": "shipped-reduced",
       "readinessArea": "performance and capacity",
       "stageRationale": "FORGE/FB public-beta hardening, wave 2 of the approved order.",
       "recipe": "Add a pinned bundler through the package-trust gate. Bundle and minify the client and worker graphs into hashed chunks with immutable caching, shorten the precache list, and serve the hero as a preloaded image. Measure the boot budget on shipped bytes without raising maxBytes.",
@@ -194,7 +194,13 @@
         }
       },
       "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
-      "executionLog": []
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "shipped-reduced",
+          "note": "Implemented and verified locally in session 132; release state is recorded at closeout. Scripts and stylesheets are minified at build with esbuild (package-trust approved): 3,766 KB to 2,163 KB, build 28.7 MB. A parity check simulates 16 weeks from the authored and the minified engine and compares digests; negative control exits 1 on a tampered literal. Bundling, hashed chunks and the hero image change were not done."
+        }
+      ]
     },
     {
       "id": 4,
@@ -209,7 +215,7 @@
       "innovation": 6,
       "effortHours": 12,
       "priority": 18.5,
-      "status": "pending",
+      "status": "shipped-reduced",
       "readinessArea": "feedback, support and issue triage",
       "stageRationale": "FORGE/FB public-beta hardening, wave 3 of the approved order.",
       "recipe": "Add feedback and diagnostics routes to the existing community service with a human-verification check on capability issuance. Replace the three local-only prompts and the external issue link with one consented in-game form.",
@@ -240,7 +246,13 @@
         }
       },
       "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
-      "executionLog": []
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "shipped-reduced",
+          "note": "Implemented and verified locally in session 132; release state is recorded at closeout. The in-game form posts a note to the community service; error reports are sent only with sharing on and keep message text only for the browser's own error types. One shared contract normalizes both on the client and the service. Privacy, stats and contact pages describe exactly what is sent. An independent review found a request line that could crash the service, single quoted words surviving the error scrub, and background-task reports collapsing into one; all three are fixed. A bot check on the capability route was not added, and the feedback limit is per address, so a few addresses could fill a day's inbox."
+        }
+      ]
     },
     {
       "id": 5,
@@ -255,7 +267,7 @@
       "innovation": 6,
       "effortHours": 10,
       "priority": 19.2,
-      "status": "pending",
+      "status": "shipped",
       "readinessArea": "onboarding and identity/access",
       "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the approved order.",
       "recipe": "Put the team choice in the hero, state each preset's difficulty and mode on its card, cut the Opening Contract to one step, skip plan modals in week one, and move the playtest survey off the first game.",
@@ -294,7 +306,13 @@
         }
       },
       "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
-      "executionLog": []
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "shipped",
+          "note": "Implemented and verified locally in session 132; release state is recorded at closeout. Team choice on the first screen, the opening contract in one step, the survey moved off the first game and plan pop-ups skipped in week one. test/first-run-flow.test.js 10/10."
+        }
+      ]
     },
     {
       "id": 6,
@@ -309,7 +327,7 @@
       "innovation": 7,
       "effortHours": 8,
       "priority": 19.2,
-      "status": "pending",
+      "status": "shipped-reduced",
       "readinessArea": "core journeys and product correctness",
       "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the approved order.",
       "recipe": "After the user's game, the recap card offers the Sim-Watch highlight reel directly, with a setting to play it automatically. Loaded as a lazy island.",
@@ -339,7 +357,13 @@
         }
       },
       "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
-      "executionLog": []
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "shipped-reduced",
+          "note": "Implemented and verified locally in session 132; release state is recorded at closeout. The week result offers the highlights directly. Automatic playback as a setting was not added."
+        }
+      ]
     },
     {
       "id": 7,
@@ -354,7 +378,7 @@
       "innovation": 8,
       "effortHours": 14,
       "priority": 19.3,
-      "status": "pending",
+      "status": "shipped",
       "readinessArea": "core journeys and product correctness",
       "stageRationale": "FORGE/FB public-beta hardening, wave 6 of the approved order.",
       "recipe": "A failed ultimatum at the patience floor ends the tenure. The GM career continues through a job-market screen. Free team switching is limited to Sandbox rules. Authority stays guarded at the shared command seam.",
@@ -385,7 +409,13 @@
         }
       },
       "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
-      "executionLog": []
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "shipped",
+          "note": "Implemented and verified locally in session 132; release state is recorded at closeout. Dismissal after sustained bottom confidence, a job market, resignation, and team switching limited to Sandbox and commissioner lobbies. Authority is enforced at the shared command seam. An independent review found three ways around the rules (the background simulate job, a lobby of one, and switching rules to Sandbox and back) and all three are closed with tests. Known limits: a player can still avoid dismissal by moving the league to Sandbox for good, by turning owner mode off, or with a rewind."
+        }
+      ]
     },
     {
       "id": 8,
@@ -400,7 +430,7 @@
       "innovation": 7,
       "effortHours": 10,
       "priority": 18.4,
-      "status": "pending",
+      "status": "shipped",
       "readinessArea": "core journeys and product correctness",
       "stageRationale": "FORGE/FB public-beta hardening, wave 6 of the approved order.",
       "recipe": "Measure first: tabulate ten seasons of draft outcomes by club. Then score CPU picks on the club's scouted read, potential and age instead of the true rating, with persona-specific error.",
@@ -431,7 +461,13 @@
         }
       },
       "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
-      "executionLog": []
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "shipped",
+          "note": "Implemented and verified locally in session 132; release state is recorded at closeout. Rival clubs draft on a per-club scouted read. Population: all picks by the 31 non-user clubs, rounds 1 to 7, 10 classes, seeds 20260306/4040/117 (7,645 picks before, 7,598 after). Pick-order correlation with true overall -0.93 to -0.88; first-round busts 5.4% to 9.6%; late steals 0.4% to 1.0%; scouting accuracy correlates 0.46 with draft-time surplus (0.00 before). Parity gates unchanged. A delegated user pick now reads the user's board. Golden master re-baselined as s132-v5 with v4 frozen by hash. Old saves load byte-identical."
+        }
+      ]
     },
     {
       "id": 9,
@@ -446,7 +482,7 @@
       "innovation": 6,
       "effortHours": 10,
       "priority": 17.6,
-      "status": "pending",
+      "status": "deferred",
       "readinessArea": "onboarding and identity/access",
       "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the approved order.",
       "recipe": "New lazy tab holding career record, legacy tier, Trophy Case, share exports, save slots and backup status. Settings keeps preferences only. No account is introduced.",
@@ -476,7 +512,13 @@
         }
       },
       "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
-      "executionLog": []
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "deferred",
+          "note": "Not started in session 132; carried to the next session."
+        }
+      ]
     },
     {
       "id": 10,
@@ -491,7 +533,7 @@
       "innovation": 8,
       "effortHours": 10,
       "priority": 19.2,
-      "status": "pending",
+      "status": "deferred",
       "readinessArea": "observability and actionable analytics",
       "stageRationale": "FORGE/FB public-beta hardening, wave 6 of the approved order.",
       "recipe": "Each week's seed gets a stated objective and a deterministic score. Opted-in players submit to the community service; the board shows only when the participation threshold is met.",
@@ -522,7 +564,13 @@
         }
       },
       "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
-      "executionLog": []
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "deferred",
+          "note": "Not started in session 132; carried to the next session."
+        }
+      ]
     },
     {
       "id": 11,
@@ -537,7 +585,7 @@
       "innovation": 4,
       "effortHours": 8,
       "priority": 15,
-      "status": "pending",
+      "status": "shipped-reduced",
       "readinessArea": "branding, legal, contact and rights/provenance",
       "stageRationale": "FORGE/FB public-beta hardening, wave 4 of the approved order.",
       "recipe": "Render every marketing page through one layout in the shared chrome. Group footer links, unify nav labels, remove the app shell from the shared-footer list or include it properly.",
@@ -568,7 +616,13 @@
         }
       },
       "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
-      "executionLog": []
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "shipped-reduced",
+          "note": "Implemented and verified locally in session 132; release state is recorded at closeout. Grouped footer from the manifest and one label for the updates page. The three page templates were not merged."
+        }
+      ]
     },
     {
       "id": 12,
@@ -583,7 +637,7 @@
       "innovation": 6,
       "effortHours": 12,
       "priority": 16.9,
-      "status": "pending",
+      "status": "shipped-reduced",
       "readinessArea": "staging, release evidence and truthful beta/release communication",
       "stageRationale": "FORGE/FB public-beta hardening, wave 4 of the approved order.",
       "recipe": "Merge status, archive and shipped-roadmap content into Updates with a Known Issues section. Add a Guides hub, a Media gallery, a comparison page and a Beta page explaining what beta means and how to give feedback.",
@@ -613,7 +667,13 @@
         }
       },
       "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
-      "executionLog": []
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "shipped-reduced",
+          "note": "Implemented and verified locally in session 132; release state is recorded at closeout. Guides, How It Compares and Screenshots pages added and linked from the footer and sitemap; Known issues added to Updates. A Beta page waits for the beta label; the supporter page is deferred to launch."
+        }
+      ]
     },
     {
       "id": 13,
@@ -628,7 +688,7 @@
       "innovation": 6,
       "effortHours": 12,
       "priority": 16.9,
-      "status": "pending",
+      "status": "deferred",
       "readinessArea": "accessibility, mobile parity and every supported theme",
       "stageRationale": "FORGE/FB public-beta hardening, wave 4 of the approved order.",
       "recipe": "Self-host two WOFF2 faces so typography is the same on every device. Rebuild the hero around the showcase league. Recapture screenshots in both themes and at phone width, including portraits and the depth chart. Set per-page share images.",
@@ -659,7 +719,13 @@
         }
       },
       "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
-      "executionLog": []
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "deferred",
+          "note": "Not started in session 132; needs bundled fonts and a fresh screenshot capture."
+        }
+      ]
     },
     {
       "id": 14,
@@ -674,7 +740,7 @@
       "innovation": 4,
       "effortHours": 6,
       "priority": 17.4,
-      "status": "pending",
+      "status": "shipped-reduced",
       "readinessArea": "observability and actionable analytics",
       "stageRationale": "FORGE/FB public-beta hardening, wave 3 of the approved order.",
       "recipe": "Add coarse funnel events (setup finished, first advance, first season finished, return visit) to the event contract and offer the existing consent choice once inside the game. Off by default.",
@@ -705,7 +771,13 @@
         }
       },
       "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
-      "executionLog": []
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "shipped-reduced",
+          "note": "Implemented and verified locally in session 132; release state is recorded at closeout. First-steps milestones and return buckets are sent with sharing on, with an in-game consent prompt. They are not yet shown on any report."
+        }
+      ]
     },
     {
       "id": 15,
@@ -720,7 +792,7 @@
       "innovation": 4,
       "effortHours": 8,
       "priority": 15,
-      "status": "pending",
+      "status": "deferred",
       "readinessArea": "accessibility, mobile parity and every supported theme",
       "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the approved order.",
       "recipe": "Replace process words in player-facing copy with football terms from one glossary, auto-load panels that still wait for a button, and bind the command palette to Ctrl/Cmd+K.",
@@ -751,7 +823,13 @@
         }
       },
       "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
-      "executionLog": []
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "deferred",
+          "note": "Only the first-week copy changed in session 132; the Desk wording pass is carried."
+        }
+      ]
     },
     {
       "id": 16,
@@ -766,7 +844,7 @@
       "innovation": 4,
       "effortHours": 8,
       "priority": 16.7,
-      "status": "pending",
+      "status": "deferred",
       "readinessArea": "staging, release evidence and truthful beta/release communication",
       "stageRationale": "FORGE/FB public-beta hardening, wave 3 of the approved order.",
       "recipe": "Run browser tests on several workers with a curated release set and the full set nightly. Run the process-tooling shard beside the deploy, not in front of it. Parse the truth status token correctly and import the hosted test receipt into the brief.",
@@ -805,7 +883,13 @@
         }
       },
       "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
-      "executionLog": []
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "deferred",
+          "note": "The browser suite shares one server session and the workflows are asserted by tests, so this needs its own session."
+        }
+      ]
     },
     {
       "id": 17,
@@ -820,7 +904,7 @@
       "innovation": 3,
       "effortHours": 8,
       "priority": 14.2,
-      "status": "in-progress",
+      "status": "shipped-reduced",
       "readinessArea": "security, privacy, data integrity and abuse controls",
       "stageRationale": "FORGE/FB public-beta hardening, wave 1 of the approved order.",
       "recipe": "Staging is marked noindex. Imports are size-capped before parsing. One tested escape helper replaces the copies and covers style values. The service uses a least-privilege database role. Automated dependency merges check the pull request author. Developer diagnostics are stripped from production markup.",
@@ -854,8 +938,8 @@
       "executionLog": [
         {
           "at": "2026-11-18T01:30:00.000Z",
-          "status": "in-progress",
-          "note": "Implemented locally: the timeline escape helper now escapes quotes and the team color is escaped in the style attribute; a new test failed first against the unescaped helper. Remaining: staging noindex (same artifact serves staging and production, so it needs a host-scoped header rule verified on a staging deploy), import size cap, single escape helper, database role, diagnostics strip. The dependency auto-merge workflow is portfolio-managed and is reported to its owner, not edited here."
+          "status": "shipped-reduced",
+          "note": "Implemented and verified locally in session 132; release state is recorded at closeout. Timeline escape helper escapes quotes and the team color is escaped in the style attribute, with a test that failed first; edge header lines are length-checked at build. Not done: staging noindex, import size cap, single escape helper, database role, diagnostics strip. The dependency auto-merge workflow is portfolio-managed and reported to its owner."
         }
       ]
     },
@@ -872,7 +956,7 @@
       "innovation": 6,
       "effortHours": 14,
       "priority": 14.8,
-      "status": "pending",
+      "status": "deferred",
       "readinessArea": "core journeys and product correctness",
       "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the approved order.",
       "recipe": "Group the Desk into this week, your club, the league and your career, with the rest one click down. Extend the weekly plan beyond four tactics with pace, run-pass lean and coverage choices whose effect is measured.",
@@ -902,7 +986,13 @@
         }
       },
       "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
-      "executionLog": []
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "deferred",
+          "note": "Not started in session 132."
+        }
+      ]
     },
     {
       "id": 19,
@@ -917,7 +1007,7 @@
       "innovation": 5,
       "effortHours": 5,
       "priority": 15.1,
-      "status": "pending",
+      "status": "shipped-reduced",
       "readinessArea": "human and agent access where applicable",
       "stageRationale": "FORGE/FB public-beta hardening, wave 4 of the approved order.",
       "recipe": "Add FAQ, organization, website and breadcrumb structured data. Publish the Co-GM briefing as a versioned JSON schema. Add a game-specific map to the agent instructions and remove links to files that are not in the public repo.",
@@ -948,7 +1038,13 @@
         }
       },
       "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
-      "executionLog": []
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "shipped-reduced",
+          "note": "Implemented and verified locally in session 132; release state is recorded at closeout. Breadcrumb and FAQ structured data are generated by the shared page chrome; llms.txt and agents.json list the new pages. Organization and WebSite data and the briefing schema were not added."
+        }
+      ]
     },
     {
       "id": 20,
@@ -963,7 +1059,7 @@
       "innovation": 3,
       "effortHours": 4,
       "priority": 19.1,
-      "status": "pending",
+      "status": "deferred",
       "readinessArea": "email and notifications where used",
       "stageRationale": "FORGE/FB public-beta hardening, wave 7 of the approved order.",
       "recipe": "Prepare the email-delivery check and the approval packet for the founder to run. Add the install prompt. Switch the release label and promote through staging to production.",
@@ -994,7 +1090,13 @@
         }
       },
       "evidence": "Read-only source audit at d7fa6cfe on 2026-11-17; premise re-verified by the checker before work begins.",
-      "executionLog": []
+      "executionLog": [
+        {
+          "at": "2026-11-18T01:30:00.000Z",
+          "status": "deferred",
+          "note": "Founder-run. No packet was prepared in session 132."
+        }
+      ]
     }
   ],
   "candidateAssessments": [

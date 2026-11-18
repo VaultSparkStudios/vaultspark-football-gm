@@ -11,6 +11,8 @@ import {
 import { buildLocalPlaytestExport, buildLocalPlaytestReceipt } from "../public/lib/playtestReceipts.js";
 import {
   FIRST_DEBRIEF_PULSE_STATES,
+  FIRST_DEBRIEF_MIN_GAMES,
+  completedGamesForPulse,
   firstDebriefPulseStorageKey,
   getFirstDebriefPulseState,
   setFirstDebriefPulseState,
@@ -103,8 +105,9 @@ test("planning-friction summary distinguishes reviewed revision, defer, and debr
 
 test("first-debrief pulse is one-time, franchise-scoped, and honors decline", () => {
   const storage = memoryStorage();
-  const buffalo = { franchiseId: "fa-2026-BUF", controlledTeamId: "BUF" };
-  const miami = { franchiseId: "fa-2026-MIA", controlledTeamId: "MIA" };
+  const latestStandings = [{ teamId: "BUF", wins: 2, losses: 1, ties: 0 }, { teamId: "MIA", wins: 1, losses: 1, ties: 1 }];
+  const buffalo = { franchiseId: "fa-2026-BUF", controlledTeamId: "BUF", latestStandings };
+  const miami = { franchiseId: "fa-2026-MIA", controlledTeamId: "MIA", latestStandings };
 
   assert.notEqual(firstDebriefPulseStorageKey(buffalo), firstDebriefPulseStorageKey(miami));
   assert.equal(shouldPromptFirstDebriefPulse(buffalo, storage), true);
@@ -112,6 +115,26 @@ test("first-debrief pulse is one-time, franchise-scoped, and honors decline", ()
   assert.equal(getFirstDebriefPulseState(buffalo, storage), "declined");
   assert.equal(shouldPromptFirstDebriefPulse(buffalo, storage), false);
   assert.equal(shouldPromptFirstDebriefPulse(miami, storage), true);
+});
+
+test("first-debrief pulse waits for the third completed game", () => {
+  const storage = memoryStorage();
+  const club = (wins, losses, ties = 0, extra = {}) => ({
+    franchiseId: "fa-2026-BUF", controlledTeamId: "BUF", controlledTeam: { abbrev: "BUF" },
+    latestStandings: [{ teamId: "BUF", wins, losses, ties }], ...extra
+  });
+  assert.equal(FIRST_DEBRIEF_MIN_GAMES, 3);
+  assert.equal(completedGamesForPulse(club(1, 1, 1)), 3);
+  assert.equal(shouldPromptFirstDebriefPulse({ franchiseId: "fa-2026-BUF", controlledTeamId: "BUF" }, storage), false, "no standings row is zero games, never a prompt");
+  assert.equal(shouldPromptFirstDebriefPulse(club(0, 0), storage), false, "not before the first game");
+  assert.equal(shouldPromptFirstDebriefPulse(club(1, 0), storage), false, "not after the first game");
+  assert.equal(shouldPromptFirstDebriefPulse(club(1, 1), storage), false, "not after the second game");
+  assert.equal(shouldPromptFirstDebriefPulse(club(1, 1, 1), storage), true, "a tie is a completed game");
+  assert.equal(shouldPromptFirstDebriefPulse(club(2, 1), storage), true);
+  assert.equal(shouldPromptFirstDebriefPulse(club(0, 0, 0, { seasonsSimulated: 1 }), storage), true, "a second-season club has long passed three games");
+  assert.equal(shouldPromptFirstDebriefPulse(club(0, 0), storage, { minGames: 0 }), true, "render fixtures can mount the card directly");
+  setFirstDebriefPulseState(club(2, 1), FIRST_DEBRIEF_PULSE_STATES.ANSWERED, storage);
+  assert.equal(shouldPromptFirstDebriefPulse(club(9, 2), storage), false, "still asked only once");
 });
 
 test("first-debrief prompt is wired immediately after the receipted debrief boundary", () => {
@@ -124,19 +147,20 @@ test("first-debrief prompt is wired immediately after the receipted debrief boun
 
 test("declining optional feedback survives denied writes without marking another franchise", () => {
   const storage = { getItem() { throw new Error("SecurityError"); }, setItem() { throw new Error("QuotaExceededError"); } };
-  const team = { franchiseId: "denied-BUF", controlledTeamId: "BUF" };
+  const latestStandings = [{ teamId: "BUF", wins: 3, losses: 0 }, { teamId: "MIA", wins: 0, losses: 3 }];
+  const team = { franchiseId: "denied-BUF", controlledTeamId: "BUF", latestStandings };
   assert.equal(shouldPromptFirstDebriefPulse(team, storage), true);
   assert.doesNotThrow(() => setFirstDebriefPulseState(team, "declined", storage));
   assert.equal(getFirstDebriefPulseState(team, storage), "declined");
   assert.equal(shouldPromptFirstDebriefPulse(team, storage), false);
-  assert.equal(shouldPromptFirstDebriefPulse({ franchiseId: "denied-MIA", controlledTeamId: "MIA" }, storage), true);
+  assert.equal(shouldPromptFirstDebriefPulse({ franchiseId: "denied-MIA", controlledTeamId: "MIA", latestStandings }, storage), true);
   assert.equal(shouldPromptFirstDebriefPulse(team, { getItem() { return null; } }), true, "a new page without persistence has no durable receipt");
   assert.throws(() => setFirstDebriefPulseState(team, "unverified", storage), /answered or declined/);
 });
 
 test("a denied localStorage getter cannot prevent feedback dismissal", () => {
   const descriptor = Object.getOwnPropertyDescriptor(globalThis, "localStorage");
-  const team = { franchiseId: "getter-denied", controlledTeamId: "BUF" };
+  const team = { franchiseId: "getter-denied", controlledTeamId: "BUF", latestStandings: [{ teamId: "BUF", wins: 2, losses: 1 }] };
   try {
     Object.defineProperty(globalThis, "localStorage", { configurable: true, get() { throw new Error("SecurityError"); } });
     assert.equal(shouldPromptFirstDebriefPulse(team), true);

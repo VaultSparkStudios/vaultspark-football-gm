@@ -142,7 +142,8 @@
               </div>
               <div class="overview-hero-side">
                 <div class="row">
-                  <label>Controlled Team
+                  <!-- Free choice of club is a Sandbox-rules control; lib/gmCareerUi.js shows it there. -->
+                  <label hidden>Controlled Team
                     <select id="teamSelect" data-testid="team-select"></select>
                   </label>
                   <button id="refreshBtn" data-testid="refresh-btn">Refresh</button>
@@ -1135,6 +1136,10 @@
               <div class="row">
                 <button id="saveOwnerBtn">Save Owner</button>
               </div>
+              <div class="row">
+                <button id="resignGmBtn" type="button" class="warn" data-testid="resign-gm-btn">Resign as general manager</button>
+                <span class="small">Leave this club and see which clubs would hire you.</span>
+              </div>
               <h3>Facilities Market</h3>
               <p class="small">Facility level is bought, not typed in. Each wing costs club cash, gets more expensive the higher it goes, and can only be built a few points per league year.</p>
               <div id="facilitiesMarket" class="control-spotlight facilities-market">
@@ -1226,7 +1231,7 @@
           <div class="panel" id="commissionerPanel">
             <div class="narrative-panel-header">
               <h2>Commissioner Mode</h2>
-              <span class="narrative-panel-kicker">Async multiplayer — up to 4 GMs in one league</span>
+              <span class="narrative-panel-kicker">Shared device — up to 4 GMs in one league</span>
             </div>
             <div id="commissionerLobbyStatus" class="commissioner-lobby-status">
               <div class="narrative-empty">No active lobby. Create one to play with others.</div>
@@ -1529,7 +1534,7 @@
         </div>
         <button id="openGuideBtn" data-testid="open-guide-btn">Open Game Guide</button>
       </div>
-      <div style="text-align:center;padding:8px 0;font-size:11px;color:#7a8299">A <a href="https://vaultsparkstudios.com/" rel="author" target="_blank" style="color:inherit;text-decoration:none">VaultSpark Studios</a> Game · <a href="./about.html">About</a> · <a href="./status.html">Status &amp; Updates</a> · <a href="./contact.html">Contact</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a></div>
+      <div style="text-align:center;padding:8px 0;font-size:11px;color:#7a8299">A <a href="https://vaultsparkstudios.com/" rel="author" target="_blank" style="color:inherit;text-decoration:none">VaultSpark Studios</a> Game · <a href="./about.html">About</a> · <a href="./status.html">Updates</a> · <a href="./contact.html">Contact</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a></div>
           <span class="studio-copyright" data-studio-copyright>© 2026 VaultSpark Studios LLC. All rights reserved.</span>
 </footer>
 
@@ -1738,6 +1743,7 @@
           <thead><tr><th>Key</th><th>Action</th></tr></thead>
           <tbody>
             <tr><td><kbd>R</kbd></td><td>Refresh overview</td></tr>
+            <tr><td><kbd>Ctrl</kbd>+<kbd>K</kbd> / <kbd>⌘</kbd><kbd>K</kbd></td><td>Open the command palette: jump to any screen or advance the week</td></tr>
             <tr><td><kbd>?</kbd></td><td>Open this shortcuts panel</td></tr>
             <tr><td><kbd>Escape</kbd></td><td>Close any modal</td></tr>
             <tr><td><kbd>1</kbd>–<kbd>9</kbd></td><td>Jump to tab 1–9 in the side menu</td></tr>
@@ -1851,9 +1857,10 @@
     </div>
 
     <!-- ── Feedback Widget ────────────────────────────────────────────────── -->
+    <!-- Opens the in-game feedback form (lib/betaFeedback.js binds it once loaded).
+         Until then, and without scripts, it is a plain link to the contact page. -->
     <div id="feedbackWidget" class="feedback-widget" title="Send feedback or report a bug">
-      <a href="https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions/new?category=feedback"
-         target="_blank" rel="noopener" aria-label="Send feedback">
+      <a href="./contact.html" aria-label="Send feedback">
         <span class="feedback-icon">💬</span>
         <span class="feedback-label">Feedback</span>
       </a>

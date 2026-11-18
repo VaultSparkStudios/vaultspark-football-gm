@@ -69,6 +69,9 @@
           <p class="setup-tagline">Build a dynasty. Own every roster move, draft pick, and cap decision across decades of franchise football.</p>
           <p class="setup-hero-sub"><!-- claims:hero-subline:start -->No account and no install. Your league runs and saves in your browser.<!-- claims:hero-subline:end --></p>
           <div class="setup-hero-actions">
+            <select id="heroTeamSelect" class="hero-team-select" data-testid="hero-team-select" aria-label="Your team">
+              <option value="__random__">Team: Surprise me</option>
+            </select>
             <button id="instantStartBtn" class="btn-primary btn-lg" data-testid="instant-start-btn">▶ Start Your Franchise</button>
             <button id="continueActiveBtn" class="btn-primary btn-lg" data-testid="continue-active-btn" hidden>Continue Franchise</button>
             <button id="resumeLatestBtn" class="btn-secondary btn-lg" data-testid="resume-latest-btn" hidden>Resume Latest Save</button>
@@ -139,22 +142,25 @@
       <!-- ── QUICK START ── -->
       <section class="setup-section" id="quick-start">
         <h2 class="setup-section-title">New Franchise</h2>
-        <p class="setup-section-subtitle">Pick an era and jump straight in. One click starts your league, or customize everything below first.</p>
+        <p class="setup-section-subtitle">Pick an era and jump straight in. One click starts your league with the settings shown on the card, or customize everything below first.</p>
 
         <div class="quickstart-grid">
           <button id="presetModernBtn" class="quickstart-card">
             <span class="quickstart-era">Modern</span>
             <span class="quickstart-label">Pass-heavy era with explosive offenses and aggressive cap management.</span>
+            <span class="quickstart-sets" data-preset-sets="modern">Standard difficulty · Play-by-play sim (slower, more detail) · You start as a contender</span>
             <span class="quickstart-go">Play now →</span>
           </button>
           <button id="presetBalancedBtn" class="quickstart-card quickstart-card--featured">
             <span class="quickstart-era">Balanced</span>
             <span class="quickstart-label">League-average tendencies. The classic franchise experience.</span>
+            <span class="quickstart-sets" data-preset-sets="balanced">Standard difficulty · Drive-by-drive sim (faster) · A balanced roster</span>
             <span class="quickstart-go">Play now →</span>
           </button>
           <button id="presetLegacyBtn" class="quickstart-card">
             <span class="quickstart-era">Legacy</span>
             <span class="quickstart-label">Run-first, low-tempo football. Grind it out on the ground.</span>
+            <span class="quickstart-sets" data-preset-sets="legacy">Hard difficulty · Drive-by-drive sim (faster) · Stricter roster rules · An aging core · Dynamic Narratives off</span>
             <span class="quickstart-go">Play now →</span>
           </button>
         </div>
@@ -195,7 +201,7 @@
             <p>Optional and anonymous. <a href="./stats#methodology">How it works</a>.</p>
           </div>
           <div class="community-consent" data-participating="false" data-deletion-status="idle">
-            <div role="status" aria-live="polite"><strong>Help bring these numbers to life</strong><span>Share game choices and results without sharing your save, names, notes, or private details.</span></div>
+            <div role="status" aria-live="polite"><strong>Help bring these numbers to life</strong><span>Share game choices and results, plus short error reports when something breaks, without sharing your save, names, notes, or private details.</span></div>
             <button type="button" class="btn-primary" data-community-consent>Share anonymous game stats</button>
           </div>
         </div>
@@ -316,7 +322,7 @@
 
       <!-- ── FOOTER ── -->
       <footer class="setup-footer">
-        <span class="setup-footer-links">A <a href="https://vaultsparkstudios.com/" rel="author" target="_blank">VaultSpark Studios</a> Game · <a href="#why">Why Franchise Architect?</a> · <a href="./features.html">Features</a> · <a href="./how-to-play.html">How to Play</a> · <a href="./faq.html">FAQ</a> · <a href="./roadmap.html">Roadmap</a> · <a href="./about.html">About</a> · <a href="./simulation.html">The Simulation</a> · <a href="./stats">Community Stats</a> · <a href="./status.html">Status &amp; Updates</a> · <a href="./status-archive.html">Changelog</a> · <a href="./press.html">Press</a> · <a href="./contact.html">Contact</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions" target="_blank" rel="noopener">Discussions</a></span>
+        <span class="setup-footer-links">A <a href="https://vaultsparkstudios.com/" rel="author" target="_blank">VaultSpark Studios</a> Game · <a href="#why">Why Franchise Architect?</a> · <a href="./features.html">Features</a> · <a href="./how-to-play.html">How to Play</a> · <a href="./faq.html">FAQ</a> · <a href="./guides.html">Guides</a> · <a href="./compare.html">How It Compares</a> · <a href="./media.html">Screenshots</a> · <a href="./roadmap.html">Roadmap</a> · <a href="./about.html">About</a> · <a href="./simulation.html">The Simulation</a> · <a href="./stats">Community Stats</a> · <a href="./status.html">Updates</a> · <a href="./status-archive.html">Changelog</a> · <a href="./press.html">Press</a> · <a href="./contact.html">Contact</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions" target="_blank" rel="noopener">Discussions</a></span>
         <span class="studio-copyright" data-studio-copyright>© 2026 VaultSpark Studios LLC. All rights reserved.</span>
       </footer>
 

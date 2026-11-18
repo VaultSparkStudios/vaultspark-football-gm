@@ -33,11 +33,39 @@ test("fresh visitor: one-click instant start reaches the game with a random team
 
   // Team select defaults to the random option.
   await expect(page.locator("#teamSelect")).toHaveValue("__random__");
+  await expect(page.locator("#heroTeamSelect")).toBeVisible();
+  await expect(page.locator("#heroTeamSelect")).toHaveValue("__random__");
+  await expect(page.locator("#heroTeamSelect option").first()).toHaveText("Team: Surprise me");
 
   // One click: instant start creates a league and lands in the game.
   await page.click('[data-testid="instant-start-btn"]');
   await expect(page).toHaveURL(/\/game\.html\?resume=tab$/, { timeout: 90_000 });
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 60_000 });
+});
+
+test("fresh visitor: the team picked beside the start button is the team they get", async ({ page }) => {
+  await gotoAsFreshClientVisitor(page);
+  await expect(page.locator('#heroTeamSelect option[value="BUF"]')).toHaveCount(1);
+  await page.selectOption("#heroTeamSelect", "BUF");
+  // One team choice, two pickers: the hero pick sets the league's team.
+  await expect(page.locator("#teamSelect")).toHaveValue("BUF");
+  await page.selectOption("#teamSelect", "KC");
+  await expect(page.locator("#heroTeamSelect")).toHaveValue("KC");
+  await page.selectOption("#heroTeamSelect", "BUF");
+
+  await page.click('[data-testid="instant-start-btn"]');
+  await expect(page).toHaveURL(/\/game\.html\?resume=tab$/, { timeout: 90_000 });
+  await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 60_000 });
+  expect(await page.evaluate(async () => (await import("./lib/appState.js")).state.dashboard.controlledTeamId)).toBe("BUF");
+});
+
+test("quick start cards state the difficulty and sim mode they set", async ({ page }) => {
+  await gotoAsFreshClientVisitor(page);
+  await expect(page.locator('#presetModernBtn [data-preset-sets="modern"]')).toContainText("Standard difficulty");
+  await expect(page.locator('#presetModernBtn [data-preset-sets="modern"]')).toContainText("Play-by-play sim");
+  await expect(page.locator('#presetBalancedBtn [data-preset-sets="balanced"]')).toContainText("Drive-by-drive sim");
+  await expect(page.locator('#presetLegacyBtn [data-preset-sets="legacy"]')).toContainText("Hard difficulty");
+  await expect(page.locator('#presetLegacyBtn [data-preset-sets="legacy"]')).toContainText("Dynamic Narratives off");
 });
 
 test("quick start era card starts a league in the same click", async ({ page }) => {
@@ -59,4 +87,5 @@ test("returning player sees Continue Franchise instead of instant start", async 
   await waitSetupReady(page);
   await expect(page.locator('[data-testid="continue-active-btn"]')).toBeVisible();
   await expect(page.locator('[data-testid="instant-start-btn"]')).toBeHidden();
+  await expect(page.locator("#heroTeamSelect")).toBeHidden();
 });

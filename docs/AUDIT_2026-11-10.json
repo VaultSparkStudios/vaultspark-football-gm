@@ -912,16 +912,8 @@
       "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
       "recipe": "Merge five news surfaces, three leader surfaces, three trophy surfaces and three Commissioner panels; relabel same-device multiplayer honestly; hide runtime text from players.",
       "acceptance": "Each data type has one primary surface; boot budget passes; UI specs updated.",
-      "premise": "Same-device lobby is labelled async multiplayer",
+      "premise": "Settings exposes a QA-named panel",
       "premises": [
-        {
-          "claim": "Same-device lobby is labelled async multiplayer",
-          "adapter": "grep",
-          "target": "public/game.html",
-          "pattern": "Async multiplayer",
-          "operator": "eq",
-          "expected": true
-        },
         {
           "claim": "Settings exposes a QA-named panel",
           "adapter": "grep",
@@ -945,7 +937,13 @@
           "recipe": "Full depth including the optional extensions named in the approved plan."
         }
       },
-      "executionLog": [],
+      "executionLog": [
+        {
+          "at": "2026-11-18T07:00:00.000Z",
+          "status": "pending",
+          "note": "Session 132 relabelled the same-device lobby as a shared-device league, so that premise is retired. The surface merges and the QA-named panel remain open."
+        }
+      ],
       "rank": 15
     },
     {

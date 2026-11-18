@@ -297,6 +297,7 @@ h3 {
   gap: 0.45rem;
 }
 
+label[hidden] { display: none; }
 label {
   display: flex;
   flex-direction: column;
@@ -5860,6 +5861,7 @@ html[data-theme="light"] .bg-layer {
   min-height: 0;
 }
 .wr-close:hover { color: var(--ink); }
+.wr-action { margin-top: 8px; min-height: 44px; padding: 6px 14px; font-weight: 700; }
 @media (max-width: 640px) {
   .week-recap-card { left: 12px; right: 12px; max-width: none; bottom: 76px; }
 }
@@ -6210,10 +6212,18 @@ html[data-theme="light"] .bg-layer {
       max-height: 90vh; overflow-y: auto;
       box-shadow: 0 24px 70px var(--shadow, rgba(0, 0, 0, 0.34));
     }
-    .tutorial-progress { display: flex; gap: .5rem; }
-    .tutorial-pip { width: 28px; height: 4px; border-radius: 2px; background: var(--line); }
-    .tutorial-pip.active { background: var(--accent); }
-    .tutorial-pip.done { background: var(--success); }
+    .tutorial-single { max-width: 820px; padding-bottom: 0; }
+    .tutorial-group { display: grid; gap: .5rem; }
+    .tutorial-group-title { margin: 0; font-size: 1rem; color: var(--ink-strong); }
+    .tutorial-group-body { margin: 0; color: var(--ink-dim); font-size: .82rem; line-height: 1.5; }
+    .tutorial-group .tutorial-choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; }
+    .tutorial-group .tutorial-choice { padding: .65rem .75rem; }
+    .tutorial-group .choice-tip { display: none; }
+    .tutorial-group .tutorial-choice.selected .choice-tip { display: block; }
+    .tutorial-single .tutorial-actions { position: sticky; bottom: 0; z-index: 1; margin: 0 -2rem; padding: .75rem 2rem 1rem; border-top: 1px solid var(--line); background: var(--panel, var(--surface)); }
+    @media (max-width: 640px) {
+      .tutorial-group .tutorial-choices { grid-template-columns: 1fr; }
+    }
     .tutorial-header .brand-kicker { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); opacity: 1; margin-bottom: .35rem; }
     .tutorial-header h2 { font-size: 1.4rem; color: var(--ink-strong); margin: 0; }
     .tutorial-body { color: var(--ink-dim); line-height: 1.6; font-size: .9rem; }
@@ -6235,10 +6245,6 @@ html[data-theme="light"] .bg-layer {
     .tutorial-actions button { min-height: 44px; }
     .tutorial-next:disabled { opacity: .45; cursor: not-allowed; }
     .tutorial-error { margin: 0; padding: .75rem; border: 1px solid var(--danger); border-radius: 8px; color: var(--danger); background: color-mix(in srgb, var(--danger) 10%, transparent); }
-    .tutorial-receipt-list { display: grid; gap: .75rem; }
-    .tutorial-receipt-row { padding: .85rem 1rem; border: 1px solid var(--line); border-radius: 8px; background: var(--card-grad); }
-    .tutorial-receipt-row strong { display: block; color: var(--ink-strong); }
-    .tutorial-receipt-row p { margin: .3rem 0; color: var(--ink-dim); }
 
 /* dynastyTimeline: delivered under the strict production style policy. */
 .dynasty-timeline { display: flex; flex-direction: column; gap: 1rem; min-width: 0; max-width: 100%; overflow: hidden; }
@@ -6410,4 +6416,49 @@ html[data-theme="light"] .bg-layer {
 .standard-elevation-card .row { flex-wrap: wrap; }
 @media (max-width: 430px) {
   :root .standard-elevation-card { scroll-margin-top: 350px; }
+}
+
+/* ── GM career: dismissal, job market, resignation (lib/gmCareerUi.js) ───── */
+.gm-career-overlay {
+  position: fixed; inset: 0; z-index: 1000; display: flex;
+  align-items: flex-start; justify-content: center;
+  padding: max(24px, env(safe-area-inset-top)) 16px 24px;
+  background: var(--scrim); backdrop-filter: blur(6px);
+  overflow-y: auto; overscroll-behavior: contain;
+}
+.gm-career-overlay[hidden] { display: none; }
+.gm-career-card {
+  width: min(880px, 100%); margin: auto;
+  padding: 28px 30px; border-radius: 18px;
+  background: var(--bg-1); border: 1px solid var(--line-strong);
+  color: var(--ink); box-shadow: 0 16px 64px var(--shadow);
+}
+.gm-career-card[data-step="dismissal"], .gm-career-card[data-step="resign"] { width: min(560px, 100%); }
+.gm-career-kicker { margin: 0 0 8px; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.gm-career-card h2 { margin: 0 0 12px; font-size: 1.5rem; line-height: 1.25; color: var(--ink-strong); }
+.gm-career-card h2:focus { outline: none; }
+.gm-career-lede { margin: 0 0 16px; font-size: 0.98rem; line-height: 1.55; }
+.gm-career-note { margin: 0 0 16px; font-size: 0.85rem; color: var(--muted); }
+.gm-career-facts { display: grid; gap: 10px; margin: 0 0 16px; }
+.gm-career-facts dt { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.gm-career-facts dd { margin: 2px 0 0; font-size: 0.92rem; }
+.gm-career-offers { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 0 0 18px; }
+.gm-career-offer { display: flex; flex-direction: column; gap: 10px; padding: 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--bg-2); }
+.gm-career-offer header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px; }
+.gm-career-offer h3 { margin: 0; font-size: 1.05rem; color: var(--ink-strong); }
+.gm-career-offer p { margin: 0; font-size: 0.86rem; line-height: 1.5; }
+.gm-career-offer .gm-career-facts { margin: 0; }
+.gm-career-offer button { margin-top: auto; min-height: 44px; }
+.gm-career-kind { font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.gm-career-records { display: flex; flex-wrap: wrap; gap: 4px 12px; margin: 0; padding: 0; list-style: none; }
+.gm-career-records span { color: var(--muted); }
+.gm-career-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.gm-career-actions button { min-height: 44px; }
+.gm-career-link { color: var(--accent); font-size: 0.9rem; padding: 10px 0; }
+.gm-career-warning { margin-top: 8px; }
+@media (max-width: 520px) {
+  .gm-career-card { padding: 20px 16px; border-radius: 14px; }
+  .gm-career-card h2 { font-size: 1.25rem; }
+  .gm-career-offers { grid-template-columns: 1fr; }
+  .gm-career-actions button { flex: 1 1 100%; }
 }

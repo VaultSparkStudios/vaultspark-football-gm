@@ -1,17 +1,23 @@
 /**
- * betaFeedback.js — "Tell the Commissioner" beta feedback capture (S14)
+ * betaFeedback.js — "Tell the Commissioner" feedback entry points.
  *
- * Static-host compatible: no backend, no PII. Builds a prefilled GitHub issue
- * URL carrying game context (year/week/phase/tab/runtime). A local playtest
- * receipt is included only when the player explicitly selects it.
+ * The Feedback button, the Settings panel and the Franchise Moment link all
+ * open one in-game form (feedbackModal.js, loaded on first use) that sends a
+ * note to the team without needing any account. A private playtest note is
+ * placed in that form only when the player explicitly selects it, where it
+ * can be read and edited before anything is sent.
  *
- * URL building is pure so Node tests can verify it without a DOM.
+ * The prefilled GitHub issue builders below are pure and remain for people
+ * who prefer a public report; nothing in the game opens them automatically.
  */
 
 import { state } from "./appState.js";
 import { showToast } from "./appCore.js";
-import { buildLaunchReadinessRows } from "./launchReadiness.js";
 import { findTeamStanding, formatTeamRecord } from "./teamRecord.js";
+// The readiness rows were only ever shown in the prefilled GitHub issue, which
+// the game no longer opens. Re-exported so the module stays loadable while its
+// removal (with the issue builders below) is decided; nothing here calls it.
+export { buildLaunchReadinessRows } from "./launchReadiness.js";
 
 import {
   buildLocalPlaytestExport,
@@ -154,38 +160,6 @@ export function buildFeedbackContextFingerprint({ dashboard = {}, newsRows = [] 
   ];
 }
 
-function gatherContext({ includePlaytestReceipt = false } = {}) {
-  const d = state.dashboard || {};
-  let runtimeMode = "unknown";
-  try {
-    runtimeMode = window.localStorage.getItem("vsfgm:runtime-mode") || "default";
-  } catch {
-    // ignore
-  }
-  return {
-    year: d.currentYear,
-    week: d.currentWeek,
-    phase: d.phase,
-    tab: state.activeTab || "unknown",
-    runtimeMode,
-    playtestReceipt: includePlaytestReceipt
-      ? selectPublishedPlaytestReceipt(loadLocalPlaytestReceipts()[0])
-      : null,
-    franchiseFingerprint: buildFeedbackContextFingerprint({
-      dashboard: state.dashboard,
-      newsRows: state.newsRows
-    }),
-    launchReadinessRows: buildLaunchReadinessRows({
-      dashboard: state.dashboard,
-      saves: state.saves,
-      persistence: state.persistence,
-      observability: state.observability,
-      speedrunChallenge: state.speedrunChallenge,
-      publicDomainStatus: state.launchReadiness?.publicDomainStatus
-    })
-  };
-}
-
 function _fmtMoney(value) {
   const abs = Math.abs(value);
   const prefix = value < 0 ? "-" : "";
@@ -194,18 +168,33 @@ function _fmtMoney(value) {
   return `${prefix}$${abs}`;
 }
 
-export async function openFeedback() {
-  // Open before the first await so the browser still considers this part of
-  // the trusted click. Waiting for clipboard permission first causes popup
-  // blockers to silently eat the Commissioner form.
-  const popup = openFeedbackPlaceholder(window);
+/**
+ * Open the in-game feedback form. The form itself is a separate module so its
+ * cost is paid only by players who open it. If the player ticked "attach my
+ * latest note", that note becomes the form's starting text.
+ */
+export async function openFeedback({ loadModal = () => import("./feedbackModal.js") } = {}) {
   const includePlaytestReceipt = document.getElementById("attachLatestPlaytestReceiptInput")?.checked === true;
-  const ctx = gatherContext({ includePlaytestReceipt });
-  const url = buildFeedbackIssueUrl(ctx);
-  commitFeedbackNavigation({ popup, url, browser: window });
-  showToast(includePlaytestReceipt && ctx.playtestReceipt
-    ? "Feedback form opened with your selected playtest note."
-    : "Feedback form opened — your playtest notes stayed private.");
+  const selected = includePlaytestReceipt ? selectPublishedPlaytestReceipt(loadLocalPlaytestReceipts()[0]) : null;
+  const { openFeedbackModal, describePromptNote } = await loadModal();
+  return openFeedbackModal(selected ? { message: describePromptNote(selected) } : {});
+}
+
+/** Offer the Community Stats choice once a season is finished and its review is closed. */
+export function shouldLoadCommunityOffer(dashboard, storage) {
+  if (!(Number(dashboard?.seasonsSimulated) >= 1)) return false;
+  try {
+    return Boolean(storage) && !storage.getItem("fa:community-offer:v1") && !storage.getItem("fa:community-participation:v1");
+  } catch { return false; }
+}
+
+function offerCommunityChoice(dashboard) {
+  let storage = null;
+  try { storage = window.localStorage; } catch { /* storage is optional */ }
+  if (!shouldLoadCommunityOffer(dashboard, storage)) return;
+  import("./communityConsentPrompt.js")
+    .then(({ maybeOfferCommunityChoice }) => maybeOfferCommunityChoice({ dashboard }))
+    .catch((error) => console.error("Community Stats offer failed to load", error));
 }
 
 export function openFeedbackPlaceholder(browser = globalThis.window) {
@@ -234,7 +223,7 @@ export function commitFeedbackNavigation({ popup = null, url, browser = globalTh
 
 function reportFeedbackError(error) {
   console.error("Tell the Commissioner failed", error);
-  showToast("Feedback could not open. Check popup settings and try again.");
+  showToast("The feedback form could not open. Check your connection and try again.");
 }
 
 /**
@@ -250,12 +239,12 @@ export function mountBetaFeedback() {
     panel.id = "betaFeedbackPanel";
     panel.innerHTML = `
       <h2>Tell the Commissioner</h2>
-      <p class="small" style="opacity:0.75">Found a bug? Have an idea? Your report goes straight to the dev board —
-        game context is attached automatically, never any personal data.</p>
+      <p class="small" style="opacity:0.75">Found a bug? Have an idea? Send a short note straight to the team. No account
+        needed. The form shows exactly what is sent, and your save never leaves this device.</p>
       <button id="betaFeedbackBtn" class="btn btn-accent" data-testid="beta-feedback-btn">Send Feedback</button>
       <details class="playtest-receipt-panel">
         <summary>Record a private playtest note</summary>
-        <p class="small">Nothing is sent automatically. Save a short anonymous note on this device, then choose whether to copy or attach it to feedback.</p>
+        <p class="small">Nothing is sent automatically. Save a short anonymous note on this device, then choose whether to copy it or put it in your next feedback note.</p>
         <div class="playtest-rating-grid">
           ${[["clarity", "Loop clarity"], ["agency", "Decision agency"], ["pace", "Pacing"], ["returnIntent", "Want another session"]].map(([id, label]) => `
             <label>${label}<select id="playtest-${id}"><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></label>`).join("")}
@@ -336,4 +325,23 @@ export function mountBetaFeedback() {
     });
     fmModal.appendChild(link);
   }
+
+  // The floating Feedback button is a plain link to the contact page until
+  // this module arrives; from then on it opens the in-game form instead.
+  const widgetLink = document.querySelector("#feedbackWidget a");
+  if (widgetLink && !widgetLink.dataset.feedbackBound) {
+    widgetLink.dataset.feedbackBound = "true";
+    widgetLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      openFeedback().catch(reportFeedbackError);
+    });
+  }
+
+  if (!communityOfferBound) {
+    communityOfferBound = true;
+    document.addEventListener("vsfgm:dashboard-applied", (event) => offerCommunityChoice(event.detail?.dashboard));
+    offerCommunityChoice(state.dashboard);
+  }
 }
+
+let communityOfferBound = false;

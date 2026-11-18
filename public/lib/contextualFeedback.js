@@ -1,22 +1,13 @@
 import { browserStorage } from "./browserStorage.js";
+import { escapeHtml } from "./appCore.js";
 import { buildLocalPlaytestReceipt, saveLocalPlaytestReceipt } from "./playtestReceipts.js";
 
 export const CONTEXTUAL_FEEDBACK_STORAGE_KEY = "vsfgm:contextual-feedback:v1";
 export const CONTEXTUAL_FEEDBACK_CADENCE_MS = 7 * 24 * 60 * 60 * 1000;
 
-function safeParse(value, fallback) {
-  try { return JSON.parse(value); } catch { return fallback; }
-}
-
-function escapeHtml(value) {
-  return String(value ?? "").replace(/[&<>"']/g, (character) => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
-  })[character]);
-}
-
 export function loadContextualFeedbackLedger(storage = browserStorage()) {
   let parsed = {};
-  try { parsed = safeParse(storage?.getItem?.(CONTEXTUAL_FEEDBACK_STORAGE_KEY) || "{}", {}) || {}; } catch {}
+  try { parsed = JSON.parse(storage?.getItem?.(CONTEXTUAL_FEEDBACK_STORAGE_KEY) || "{}") || {}; } catch {}
   return {
     version: 1,
     lastPromptAt: Number(parsed.lastPromptAt) || 0,
@@ -95,7 +86,7 @@ export function recordContextualFeedbackAction({ ledger = {}, momentId, action, 
 }
 
 function ratingField(id, label) {
-  return `<label>${label}<select data-context-rating="${id}"><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></label>`;
+  return `<label>${label}<select data-context-rating="${id}"><option>1<option>2<option selected>3<option>4<option>5</select></label>`;
 }
 
 export function maybeMountContextualFeedback(dashboard = {}, {
@@ -115,16 +106,16 @@ export function maybeMountContextualFeedback(dashboard = {}, {
   panel.setAttribute("role", "region");
   panel.setAttribute("aria-labelledby", "contextualEvidenceTitle");
   panel.innerHTML = `
-    <div class="contextual-evidence-head"><span>${escapeHtml(moment.kicker)}</span><button type="button" data-context-action="dismiss" aria-label="Dismiss this evidence prompt">×</button></div>
+    <div class="contextual-evidence-head"><span>${escapeHtml(moment.kicker)}</span><button type="button" data-context-action="dismiss" aria-label="Dismiss">×</button></div>
     <h2 id="contextualEvidenceTitle">${escapeHtml(moment.title)}</h2>
     <p>${escapeHtml(moment.question)}</p>
     <div class="contextual-evidence-ratings">
       ${ratingField("clarity", "Clarity")}${ratingField("agency", "Agency")}${ratingField("pace", "Pace")}${ratingField("returnIntent", "Another session")}
     </div>
     <label class="contextual-evidence-note">One moment worth preserving (optional)<textarea data-context-note maxlength="280" rows="2"></textarea></label>
-    <p class="contextual-evidence-privacy">Saved only in this browser unless you explicitly export it. No save data or personal identifier is included.</p>
+    <p class="contextual-evidence-privacy">Stays in this browser unless you choose to send it. Your save is never included.</p>
     <p data-context-error role="alert" hidden></p>
-    <div class="contextual-evidence-actions"><button type="button" data-context-action="snooze">Ask in a week</button><button type="button" class="btn btn-accent" data-context-action="save">Save note</button></div>`;
+    <div class="contextual-evidence-actions"><button type="button" data-context-action="snooze">Ask in a week</button><button type="button" data-context-action="send">Send this to the team</button><button type="button" class="btn btn-accent" data-context-action="save">Save note</button></div>`;
 
   const shownLedger = recordContextualFeedbackAction({ ledger, momentId: moment.id, action: "shown", now: now() });
   saveContextualFeedbackLedger(shownLedger, storage);
@@ -132,6 +123,13 @@ export function maybeMountContextualFeedback(dashboard = {}, {
     const button = event.target.closest?.("[data-context-action]");
     if (!button) return;
     const action = button.dataset.contextAction;
+    const fail = (text) => {
+      const error = panel.querySelector("[data-context-error]");
+      error.textContent = text;
+      error.hidden = false;
+    };
+    // Opens the form holding this note; sent only on Send.
+    if (action === "send") return void import("./feedbackModal.js").then((form) => form.openFeedbackModal({ panel, moment: moment.kind }), () => fail("The form could not open. Try again."));
     const currentLedger = loadContextualFeedbackLedger(storage);
     if (action === "save") {
       const value = (name) => panel.querySelector(`[data-context-rating="${name}"]`)?.value;
@@ -146,10 +144,7 @@ export function maybeMountContextualFeedback(dashboard = {}, {
       try {
         saveLocalPlaytestReceipt(receipt, storage);
       } catch {
-        const error = panel.querySelector("[data-context-error]");
-        error.textContent = "Note not saved. Keep your draft here and retry when browser storage is available.";
-        error.hidden = false;
-        return;
+        return fail("Note not saved. Keep your draft here and retry when browser storage is available.");
       }
       saveContextualFeedbackLedger(recordContextualFeedbackAction({ ledger: currentLedger, momentId: moment.id, action: "saved", now: now() }), storage);
       onSaved(receipt);

@@ -108,7 +108,7 @@ test("first-run tutorial modal uses the shared focus trap", () => {
   assert.match(tutorialSource, /openModal\(overlay, \{ onClose: \(\) => dismissTutorial\(onSkip\) \}\)/);
   assert.match(tutorialSource, /markTutorialSeen\(scope, storage, "deferred"\);/, "dismiss records deferral, not completion");
   assert.match(tutorialSource, /getTutorialState\(scope, storage\) !== "done"/, "completed contracts are never downgraded");
-  assert.match(tutorialSource, /await onComplete\?\.[\s\S]*markTutorialSeen\(scope, storage\);[\s\S]*renderReceipt\(receipt\)/);
+  assert.match(tutorialSource, /await onComplete\?\.[\s\S]*markTutorialSeen\(scope, storage\);[\s\S]*dismissTutorial\(\);/);
 });
 test("first-run tutorial styles are injected before mounting onboarding", () => {
   const appSource = read("../public/app.js");

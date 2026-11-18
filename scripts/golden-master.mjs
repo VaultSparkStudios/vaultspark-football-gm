@@ -29,7 +29,10 @@ export const S118_GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "f
 // S131: regular-season injury recovery ticks after that week's games, so an
 // injury costs the games its label states; every injury-dependent section moved.
 export const S119_GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s119-v3.json");
-export const GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s131-v4.json");
+export const S131_GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s131-v4.json");
+// S132: rival clubs draft on their own scouted read instead of the true rating,
+// and a general manager can be dismissed; everything after the first draft moved.
+export const GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s132-v5.json");
 export const GOLDEN_MASTER_SCENARIOS = Object.freeze([
   Object.freeze({ id: "drive-20260306-BUF", seed: 20260306, mode: "drive", controlledTeamId: "BUF", seasons: 3 }),
   Object.freeze({ id: "play-4113-CHI", seed: 4113, mode: "play", controlledTeamId: "CHI", seasons: 3 })

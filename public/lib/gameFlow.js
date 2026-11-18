@@ -166,6 +166,7 @@ export function applyDashboard(newState) {
   renderOwnerUltimatum();
   renderTrophyRoad({ dashboard: newState, recentBoxScores: state.recentBoxScores || [] });
   checkSeasonEndReview(previous);
+  if (newState.gmCareer?.ui || state.gmCareerUi) observeBackgroundTask(async () => (await import("./gmCareerUi.js")).syncGmCareer(), { surface: "career" });
   if (typeof globalThis._renderSpeedrunPanel === "function") globalThis._renderSpeedrunPanel();
 
   if (previous && (previous.phase === "postseason" || previous.phase === "regular-season")

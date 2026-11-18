@@ -10,11 +10,13 @@ function fixture(position,{upgrade=false,missing=false,only=false}={}){
  incumbent.overall=90;
  if(missing)incumbent.teamId='FA';
  const source=draft.available.find(p=>p.position===position);
+ // Clubs draft on their scouts' read, not the true rating, so the fixture
+ // states what the public board shows: here it matches the truth exactly.
  const specialist={...structuredClone(source),id:`candidate-${position}`,overall:upgrade?96:70,potential:99,
-  scouting:{...source.scouting,projectedRound:7}};
+  scouting:{...source.scouting,projectedRound:7,scoutedOverall:upgrade?96:70}};
  const sourceWr=draft.available.find(p=>p.position==='WR');
  const wr={...structuredClone(sourceWr),id:'candidate-WR',overall:upgrade?80:70,potential:99,
-  scouting:{...sourceWr.scouting,projectedRound:7}};
+  scouting:{...sourceWr.scouting,projectedRound:7,scoutedOverall:upgrade?80:70}};
  draft.available=only?[specialist]:[specialist,wr];
  if(!missing){
   const backup={...structuredClone(source),id:`held-${position}`,teamId:'MIA',status:'active',rosterSlot:'practice',overall:62,potential:70};
@@ -54,8 +56,11 @@ test('retained practice depth changes replacement value while an open developmen
   if(!keepPractice)for(const player of held.filter(p=>p.rosterSlot==='practice'))player.teamId='FA';
   const candidates=['WR','OL'].map(position=>{
    const source=draft.available.find(p=>p.position===position);
-   return {...structuredClone(source),id:`development-${position}`,overall:position==='WR'?70:69,
-    scouting:{...source.scouting,projectedRound:7}};
+   // A delegated pick for the user's club reads the user's own board (public
+   // overall, fogged potential), so the board is pinned too. The receiver
+   // leads by three so the +/-6 potential fog cannot decide the open-room case.
+   return {...structuredClone(source),id:`development-${position}`,overall:position==='WR'?72:69,potential:80,age:22,
+    scouting:{...source.scouting,projectedRound:7,scoutedOverall:position==='WR'?72:69}};
   });
   draft.available=candidates;session.rebuildLookupIndexes();
   // Explicit owned-pick delegation avoids persona tilt; remove event-day

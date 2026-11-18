@@ -6,35 +6,68 @@ test("create league in play mode reaches the franchise screen", async ({ page })
   await expect(page.locator("#yearCard")).toContainText("2026");
 });
 
+const isAdvanceWeek = (request) => new URL(request.url()).pathname === "/api/advance-week" && request.method() === "POST";
+
+// Week 1 of a brand-new franchise: Advance Week asks for a GM call if one is
+// waiting, then plays the game. No tactic modal and no plan review open.
+async function playOpeningWeek(page) {
+  const opening = await readDashboard(page);
+  expect(opening.currentWeek).toBe(1);
+  expect(opening.seasonsSimulated).toBe(0);
+  expect(opening.controlledOnBye).toBe(false);
+  const committed = page.waitForResponse((response) => isAdvanceWeek(response.request()));
+  await page.locator("#advanceWeekBtn").click();
+  if (opening.gmDecisionQueue.length) {
+    const decision = page.locator("#gmDecisionOptions .gm-decision-option").first();
+    await expect(decision).toBeVisible();
+    await decision.click();
+  }
+  const response = await committed;
+  expect(response.ok()).toBe(true);
+  expect(response.request().postDataJSON().weeklyTacticOverride).toBeUndefined();
+  await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 120_000 });
+  await expect(page.locator("#halftimeAdjustModal")).toBeHidden();
+  await expect(page.locator("#architectPlanRehearsalModal")).toBeHidden();
+  await expect(page.locator(".weekly-plan-receipt")).toContainText("staff game plan");
+  await expect(page.locator(".weekly-plan-receipt")).toContainText("opening week");
+  expect((await readDashboard(page)).currentWeek).toBe(2);
+  // The survey waits for the third game; it must not follow the first.
+  await expect(page.locator("#firstDebriefPulse")).toHaveCount(0);
+  const recapClose = page.locator("#weekRecapCard.wr-visible .wr-close");
+  if (await recapClose.isVisible().catch(() => false)) await recapClose.click();
+}
+
 for (const scenario of WEEKLY_SCENARIOS) {
 test(`session commits exactly one ${scenario.name} with a durable evidence trail`, async ({ page }) => {
   test.setTimeout(120_000);
   await createPlayScenario(page, scenario);
   await expect(page.locator(".tutorial-overlay")).toBeVisible();
 
-  for (let step = 0; step < 3; step += 1) {
-    await page.locator(".tutorial-choice").first().click();
-    await expect(page.locator("#tutNextBtn")).toBeEnabled();
-    await page.locator("#tutNextBtn").click();
-  }
-
-  await expect(page.locator(".tutorial-receipt")).toContainText("Opening Contract Applied", { timeout: 20_000 });
-  await expect(page.locator(".tutorial-receipt-row")).toHaveCount(3);
-  await expect(page.locator(".tutorial-receipt-row").first()).toContainText("Applied from the current league state");
-  await page.getByRole("button", { name: "Enter the Franchise" }).click();
-  await expect(page.locator(".tutorial-overlay")).toHaveCount(0);
+  // The Opening Contract is one screen: three calls, each with an answer
+  // already selected, and one confirm. The dialog closes itself once applied.
+  await expect(page.locator(".tutorial-group")).toHaveCount(3);
+  await expect(page.locator(".tutorial-choice.selected")).toHaveCount(3);
+  await expect(page.locator("#tutNextBtn")).toBeEnabled();
+  for (const group of await page.locator(".tutorial-group").all()) await group.locator(".tutorial-choice").first().click();
+  await expect(page.locator(".tutorial-choice.selected")).toHaveCount(3);
+  await page.locator("#tutNextBtn").click();
+  await expect(page.locator(".tutorial-overlay")).toHaveCount(0, { timeout: 20_000 });
 
   await expect(page.locator("#openingContractCard")).toBeVisible();
   await expect(page.locator("#openingContractCard")).toContainText("Opening Contract");
+  const openingSeasonChapter = await page.locator(".week-room-horizon").first().textContent();
   await reachScenarioWeek(page, scenario);
+  // A new franchise plays its opening week on the staff plan, so the scheduled
+  // game scenario exercises the tactic and review steps from Week 2.
+  if (!scenario.onBye) await playOpeningWeek(page);
   const before = await readDashboard(page);
   expect(before.controlledTeamId).toBe(scenario.teamId);
   expect(before.phase).toBe("regular-season");
-  if(!scenario.onBye) expect(before.currentWeek).toBe(1);
+  if(!scenario.onBye) expect(before.currentWeek).toBe(2);
   expect(before.controlledOnBye).toBe(scenario.onBye);
   expect(before.currentWeekSchedule.byeTeams.includes(scenario.teamId)).toBe(scenario.onBye);
   expect(before.currentWeekSchedule.games.some((game) => [game.homeTeamId, game.awayTeamId].includes(scenario.teamId))).toBe(!scenario.onBye);
-  const beforeSeasonChapter = await page.locator(".week-room-horizon").first().textContent();
+  const beforeSeasonChapter = scenario.onBye ? await page.locator(".week-room-horizon").first().textContent() : openingSeasonChapter;
   const advances = [];
   page.on("request", (request) => {
     if (new URL(request.url()).pathname === "/api/advance-week" && request.method() === "POST") advances.push(request.postDataJSON());

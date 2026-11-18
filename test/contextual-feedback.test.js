@@ -60,6 +60,16 @@ test("contextual evidence saves to the shared local-only receipt format without 
   assert.doesNotMatch(source, /\bfetch\s*\(|XMLHttpRequest|window\.open/);
 });
 
+test("the prompt offers Send this to the team by opening the feedback form, and sends nothing itself", () => {
+  const source = readFileSync(new URL("../public/lib/contextualFeedback.js", import.meta.url), "utf8");
+  assert.match(source, /data-context-action="send">Send this to the team<\/button>/);
+  assert.match(source, /action === "send"\) return void import\("\.\/feedbackModal\.js"\)\.then\(\(form\) => form\.openFeedbackModal\(\{ panel, moment: moment\.kind \}\)/);
+  assert.match(source, /Stays in this browser unless you choose to send it\. Your save is never included\./);
+  // The form module is loaded on the click, never with the page.
+  assert.doesNotMatch(source, /^\s*import[^\n]*feedbackModal/m);
+  assert.doesNotMatch(source, /\bfetch\s*\(|XMLHttpRequest|sendBeacon|window\.open/);
+});
+
 test("dashboard hydration mounts the contextual evidence evaluator", () => {
   const source = readFileSync(new URL("../public/lib/gameFlow.js", import.meta.url), "utf8");
   assert.match(source, /maybeMountContextualFeedback\(newState/);

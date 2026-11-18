@@ -171,7 +171,7 @@ test("browser completion and both adapters share the versioned route contract", 
   const server = readServerSource(root);
   const overview = fs.readFileSync(path.join(root, "public", "lib", "tabOverview.js"), "utf8");
   assert.match(tutorial, /await onComplete\?\.\(buildStartScenarioRequest\(selections\)\)/);
-  assert.match(tutorial, /await onComplete\?\.[\s\S]*markTutorialSeen\(scope, storage\);[\s\S]*renderReceipt\(receipt\)/);
+  assert.match(tutorial, /await onComplete\?\.[\s\S]*markTutorialSeen\(scope, storage\);[\s\S]*dismissTutorial\(\);/);
   assert.match(app, /\/api\/onboarding\/start-scenario/);
   assert.match(local, /\/api\/onboarding\/start-scenario/);
   assert.match(server, /\/api\/onboarding\/start-scenario/);

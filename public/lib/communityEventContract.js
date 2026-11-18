@@ -3,6 +3,7 @@ export const COMMUNITY_SNAPSHOT_SCHEMA_VERSION = "1.0";
 export const COMMUNITY_RAW_RETENTION_DAYS = 30;
 export const COMMUNITY_SUPPRESSION_THRESHOLD = 5;
 export const COMMUNITY_BATCH_LIMIT = 24;
+export const COMMUNITY_RETURN_GAPS = Object.freeze(["same-day", "1-6", "7-29", "30-plus"]);
 
 const TYPE_RULES = Object.freeze({
   league_started: {
@@ -44,10 +45,24 @@ const TYPE_RULES = Object.freeze({
   rare_feat: {
     dimensions: ["runtime", "feat"],
     metrics: ["count"]
-  }
+  },
+  // Coarse first-steps milestones. Each carries no metrics; `values` pins a
+  // dimension to a closed list, so anything else is dropped, never stored.
+  setup_finished: { dimensions: ["runtime"], metrics: [] },
+  first_advance: { dimensions: ["runtime"], metrics: [] },
+  first_season_finished: { dimensions: ["runtime"], metrics: [] },
+  return_visit: { dimensions: ["runtime", "gap"], metrics: [], values: { gap: COMMUNITY_RETURN_GAPS } }
 });
 
 export const COMMUNITY_EVENT_TYPES = Object.freeze(Object.keys(TYPE_RULES));
+export const COMMUNITY_FUNNEL_EVENT_TYPES = Object.freeze(["setup_finished", "first_advance", "first_season_finished", "return_visit"]);
+
+/** Days since the previous visit, as one of four fixed buckets. */
+export function returnVisitGap(days) {
+  const whole = Math.floor(Number(days));
+  if (!Number.isFinite(whole) || whole < 1) return COMMUNITY_RETURN_GAPS[0];
+  return COMMUNITY_RETURN_GAPS[whole < 7 ? 1 : whole < 30 ? 2 : 3];
+}
 
 function compactToken(value, maxLength = 48) {
   if (value == null || value === "") return null;
@@ -91,7 +106,8 @@ export function normalizeCommunityEvent(input, { now = Date.now() } = {}) {
   const dimensions = {};
   for (const key of rules.dimensions) {
     const value = compactToken(input.dimensions?.[key]);
-    if (value != null) dimensions[key] = value;
+    const allowed = rules.values?.[key];
+    if (value != null && (!allowed || allowed.includes(value))) dimensions[key] = value;
   }
   const metrics = {};
   for (const key of rules.metrics) {

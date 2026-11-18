@@ -10,7 +10,8 @@ for (const dismissWith of ["click", "Escape"]) {
       const module = await import("/lib/firstDebriefPulse.js");
       const dashboard = { franchiseId: "denied-storage", controlledTeamId: "BUF" };
       const storage = { getItem() { return null; }, setItem() { throw new DOMException("Storage quota exceeded", "QuotaExceededError"); } };
-      window.pulseFixture = { module, dashboard, storage, focusTarget: document.getElementById("createLeagueBtn") };
+      // minGames: 0 mounts the card without a played season; the three-game wait has its own unit test.
+      window.pulseFixture = { module, dashboard, storage, minGames: 0, focusTarget: document.getElementById("createLeagueBtn") };
       module.maybePromptFirstDebriefPulse(window.pulseFixture);
     });
     await expect(page.locator("#firstDebriefPulse")).toBeVisible();
@@ -30,7 +31,7 @@ for (const unavailable of ["write-denied", "missing"]) {
     await page.evaluate(async unavailable => {
       const { maybePromptFirstDebriefPulse } = await import("/lib/firstDebriefPulse.js");
       const storage = unavailable === "missing" ? null : { getItem() { return null; }, setItem() { throw new DOMException("Storage quota exceeded", "QuotaExceededError"); } };
-      maybePromptFirstDebriefPulse({ dashboard: { franchiseId: "save-failure", controlledTeamId: "BUF" }, storage, focusTarget: document.getElementById("createLeagueBtn") });
+      maybePromptFirstDebriefPulse({ dashboard: { franchiseId: "save-failure", controlledTeamId: "BUF" }, storage, minGames: 0, focusTarget: document.getElementById("createLeagueBtn") });
     }, unavailable);
     for (const rating of ["clarity", "agency", "pace", "returnIntent"]) await page.selectOption(`[name="${rating}"]`, "3");
     await page.getByRole("button", { name: "Save private check-in" }).click();

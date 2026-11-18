@@ -132,8 +132,7 @@ import {
   isTradeValueAcceptable,
   roleRetentionProfile,
   sortPlayersForDepth,
-  strategyPresetForTeam,
-  draftPersonaTilt
+  strategyPresetForTeam
 } from "../engine/aiTeamStrategy.js";
 import {
   createPostseasonState,
@@ -216,7 +215,8 @@ import {
   getMentorshipState
 } from "../engine/veteranMentorship.js";
 import { enrichGmDecisionQueue, getGmCommitmentState, latestGmDecision, resolveGmDecisionCommitments } from "../engine/gmDecisionConsequences.js";
-import { applyWeeklyOwnerConfidence, getOwnerConfidenceSummary } from "../engine/ownerConfidence.js";
+import { applyWeeklyOwnerConfidence, getOwnerConfidenceSummary, resolveCareerStakes } from "../engine/ownerConfidence.js";
+import { beginTenureFromOffer, buildGmCareerView, endTenure, ensureGmCareer, isGmDismissed, recordOwnerWarning, reviewGmSeason, tenureSeasons } from "../engine/gmCareer.js";
 import { generateInboundTradeOffers, getInboundTradeOffers, respondToInboundTradeOffer } from "../engine/rivalTradeOffers.js";
 import { runCpuTradeMarket } from "../engine/cpuTradeMarket.js";
 import { appendCounterPick, buildOnClockFingerprint, buildOnClockTradeOffers } from "../engine/onClockTradeMarket.js";
@@ -247,6 +247,7 @@ import {
 } from "../sport/calendarContract.js";
 import { FOOTBALL_RULES } from "../sport/football/rules.js";
 import { deriveSessionGmArchetype } from "../engine/gmArchetype.js";
+import { clubScoutedRead, clubScoutingAccuracy, draftReadValue } from "../engine/cpuDraftScouting.js";
 import {
   agentSummary,
   ensureContractAgent,
@@ -2071,6 +2072,8 @@ export class GameSession {
 
     this.startSeason(this.currentYear);
     this.rebuildLookupIndexes();
+    // The career state exists from day one, so no later read has to create it.
+    this.getGmCareer();
   }
 
   /**
@@ -2165,6 +2168,9 @@ export class GameSession {
       // that class (including any frozen picks) but do not open its clock.
       session.league.pendingDraft.scoutingOnly = true;
     }
+    // Saves from before GM careers existed get the declared shape here, once:
+    // employed at the controlled club, no warnings on file, nothing else moved.
+    session.getGmCareer();
     return session;
   }
 
@@ -2572,7 +2578,7 @@ export class GameSession {
       : `Week ${appliedWeek}${nextOpponent ? ` vs ${nextOpponent}` : ""} is ready to play`;
     const waitingAction = currentWeek > appliedWeek
       ? `Commit your tactic for Week ${currentWeek}${nextOpponent ? ` vs ${nextOpponent}` : ""} and earn the first game receipt.`
-      : "Commit your tactic and play the opening week.";
+      : "Play the opening week to earn your first result.";
     const isHome = game?.homeTeamId === this.controlledTeamId;
     const teamScore = game ? Number(isHome ? game.homeScore : game.awayScore) : null;
     const opponentScore = game ? Number(isHome ? game.awayScore : game.homeScore) : null;
@@ -4056,6 +4062,11 @@ export class GameSession {
     });
     const ultimatum = team.owner.expectation?.ultimatum;
     if (!ultimatum?.active) return null;
+    // Where the owner can replace his general manager, the demand says so.
+    // In a first season he can only warn, so the demand does not threaten it.
+    if (this.getCareerStakes().firing && tenureSeasons(this.league, this.getGmCareer().tenure).length >= 1) {
+      ultimatum.consequence = "a new general manager";
+    }
     if (!Array.isArray(this.league.gmCommitments)) this.league.gmCommitments = [];
     const existing = this.league.gmCommitments.find(
       (entry) =>
@@ -4088,6 +4099,8 @@ export class GameSession {
     };
     this.league.gmCommitments.push(commitment);
     this.league.gmCommitments = this.league.gmCommitments.slice(-120);
+    // The ultimatum is the warning the owner must have given before he can act.
+    recordOwnerWarning(this.league, this.gmCareerContext(), { kind: "ultimatum", year: this.currentYear, week: this.currentWeek });
     // beatReporter's newsLog is the Priority Inbox source; logNews feeds the
     // transaction-style feed. Announce through both so the CRITICAL inbox item
     // and the news trail both exist.
@@ -4256,8 +4269,71 @@ export class GameSession {
         delete previous.situationalCalls;
       }
       this.controlledTeamId = teamId;
+      // Career bookkeeping only — whether this switch was ALLOWED is decided at
+      // the command boundary (franchiseAuthority.js), never here.
+      this.getGmCareer();
     }
     return this.controlledTeamId;
+  }
+
+  // ── GM career: tenure, dismissal, job market ───────────────────────────────
+
+  gmCareerContext() {
+    return { controlledTeamId: this.controlledTeamId, currentYear: this.currentYear };
+  }
+
+  /** The league's career state, created or repaired on first read. */
+  getGmCareer() {
+    return ensureGmCareer(this.league, this.gmCareerContext());
+  }
+
+  getCareerStakes() {
+    return resolveCareerStakes(this.getLeagueSettings(), { commissionerLobby: this.league.commissionerLobby === true });
+  }
+
+  getGmCareerState() {
+    return buildGmCareerView(this);
+  }
+
+  /** A live commissioner lobby keeps its existing behaviour: no firing, free choice of club. */
+  setCommissionerLobbyActive(active) {
+    this.league.commissionerLobby = active === true;
+    return this.league.commissionerLobby;
+  }
+
+  resignAsGm() {
+    if (isGmDismissed(this.league)) {
+      return { ok: false, reasonCode: "career-on-market", error: "You are already without a club. Choose your next job." };
+    }
+    const team = teamById(this.league, this.controlledTeamId);
+    if (!team) return { ok: false, reasonCode: "career-no-club", error: "You do not run a club to resign from." };
+    endTenure(this, { reason: "resigned" });
+    this.resetOwnerForNewGm(team);
+    return { ok: true, teamId: team.id };
+  }
+
+  takeJobOffer(teamId) {
+    const previous = teamById(this.league, this.controlledTeamId);
+    const accepted = beginTenureFromOffer(this, teamId);
+    if (!accepted.ok) return accepted;
+    const next = teamById(this.league, accepted.teamId);
+    this.setControlledTeam(accepted.teamId);
+    if (previous && previous !== next) this.resetOwnerForNewGm(previous);
+    this.resetOwnerForNewGm(next);
+    this.logNews(`${next.name || next.id} hire a new general manager`, { type: "gm-hired", teamId: next.id, year: this.currentYear });
+    return { ok: true, teamId: next.id, kind: accepted.kind };
+  }
+
+  /** A new general manager starts with the patience this league's difficulty grants. */
+  resetOwnerForNewGm(team) {
+    if (!team?.owner) return;
+    const patience = Number(this.getLeagueSettings().ownerPatience);
+    if (!Number.isFinite(patience)) throw new Error("Owner patience for a new general manager must be a finite number.");
+    team.owner.patience = clamp(patience, 0.05, 0.95);
+    team.owner.expectation = buildOwnerExpectation(team, teamPlayersAll(this.league, team.id), this.league.transactionLog || [], {
+      currentWeek: this.currentWeek
+    });
+    team.owner.hotSeat = false;
   }
 
   getSituationalCalls(teamId = this.controlledTeamId) {
@@ -6519,11 +6595,15 @@ export class GameSession {
       // Adaptive League (S70): opt-in, bounded, announced; no-op when off.
       applyAdaptiveDifficultyAfterSeason(this);
     }
+    // The owner's season review: a warning, or — where these rules allow it and
+    // he has warned before — a change at general manager.
+    const ownerReview = this.controlledTeamId ? reviewGmSeason(this) : null;
     this.pendingSeasonWrap = {
       year: this.currentYear,
       superBowl: playoffResult.superBowl,
       awards: this.lastAwardSummary,
-      stewardshipReport
+      stewardshipReport,
+      ownerReview
     };
     this.archiveGameResults(playoffResult.gameArchiveEntries);
     this.postseasonState = null;
@@ -6616,7 +6696,7 @@ export class GameSession {
     return { ok: true, phase: this.phase, year: this.currentYear, pipeline: stageResult, message: stageResult.message };
   }
 
-  simulateOneSeason({ runOffseasonAfter = true } = {}) {
+  simulateOneSeason({ runOffseasonAfter = true, stopOnDismissal = false } = {}) {
     const previousDepth = wholeSeasonManagementDepth.get(this) || 0;
     wholeSeasonManagementDepth.set(this, previousDepth + 1);
     try {
@@ -6639,7 +6719,8 @@ export class GameSession {
       // game per command. This method is the explicit whole-season delegation
       // path, so it must consume every persisted round gate before returning.
       while (this.phase === "postseason") post = advance();
-      if (runOffseasonAfter) {
+      // A dismissed general manager chooses the next club before the offseason runs.
+      if (runOffseasonAfter && !(stopOnDismissal && isGmDismissed(this.league))) {
         let guard = 0;
         while ((this.phase === "season-awards" || this.phase === "offseason") && guard < 32) {
           if (this.getOffseasonPipeline().stage === "draft" && this.getDraftAuthority().userActionRequired) {
@@ -6662,15 +6743,17 @@ export class GameSession {
     }
   }
 
-  simulateSeasons(count = 1, { runOffseasonAfterLast = true } = {}) {
+  simulateSeasons(count = 1, { runOffseasonAfterLast = true, stopOnDismissal = false } = {}) {
     const safeCount = normalizeCount(count, 1, 100, 1);
     const summaries = [];
     for (let i = 0; i < safeCount; i += 1) {
       summaries.push(
         this.simulateOneSeason({
-          runOffseasonAfter: runOffseasonAfterLast || i < safeCount - 1
+          runOffseasonAfter: runOffseasonAfterLast || i < safeCount - 1,
+          stopOnDismissal
         })
       );
+      if (stopOnDismissal && isGmDismissed(this.league)) break;
     }
     return summaries;
   }
@@ -7343,7 +7426,21 @@ export class GameSession {
       }
 
       // One archetype read per pick (real roster, rating and cap), CPU clubs only.
-      const clubArchetype = teamOnClock === this.controlledTeamId ? null : deriveSessionGmArchetype(this, teamById(this.league, teamOnClock)).label;
+      const isUserClub = teamOnClock === this.controlledTeamId;
+      const clubArchetype = isUserClub ? null : deriveSessionGmArchetype(this, teamById(this.league, teamOnClock)).label;
+      // The club drafts on what its scouts believe, never on the true rating
+      // (src/engine/cpuDraftScouting.js). A CPU club's read is derived from the
+      // league identity, the club and the prospect, so it draws nothing from
+      // the session stream and persists nothing. A delegated pick for the
+      // user's club reads exactly what the user's own board shows: the private
+      // evaluation where points were spent, the public baseline otherwise.
+      const leagueKey = this.league.leagueId || this.league.franchiseId || ensureLeagueIdentity(this.league) || "league";
+      const scoutAccuracy = isUserClub ? null : clubScoutingAccuracy({
+        leagueKey,
+        teamId: teamOnClock,
+        scoutingWeeklyBonus: teamWorldStateModifiers(teamById(this.league, teamOnClock), teamPlayersAll(this.league, teamOnClock)).scoutingWeeklyBonus
+      });
+      const userEvaluations = isUserClub ? this.league.scouting?.teams?.[teamOnClock]?.evaluations || {} : null;
       let bestIndex = 0;
       let bestScore = -Infinity;
       for (let i = 0; i < draft.available.length; i += 1) {
@@ -7351,15 +7448,26 @@ export class GameSession {
         const needBoost = (needMap.get(prospect.position) || 0) * 13;
         const room = heldRooms.get(prospect.position) || [];
         const plannedDepth = FULL_ROSTER_TEMPLATE[prospect.position] || 2;
+        const publicPotential = scoutedPotential(prospect, draft.year);
+        const read = isUserClub
+          ? {
+              overall: Number(userEvaluations[prospect.id] ?? prospect.scouting?.scoutedOverall ?? prospect.overall),
+              potential: Number(publicPotential ?? prospect.potential)
+            }
+          : clubScoutedRead({ prospect, leagueKey, teamId: teamOnClock, draftYear: draft.year, accuracy: scoutAccuracy, publicPotential });
         // The roster is sorted best-first. Penalize a filled room only when
         // this prospect does not improve its last planned place. This is a
         // soft CPU preference, never a position eligibility ban: upgrades and
         // a specialist-only remaining board still remain draftable.
         const depthPenalty = room.length >= plannedDepth
-          && prospect.overall <= room[plannedDepth - 1].overall ? 18 : 0;
+          && read.overall <= room[plannedDepth - 1].overall ? 18 : 0;
         const projectionBonus = Math.max(0, 9 - (prospect.scouting?.projectedRound || 9)) * 2;
-        const personaTilt = clubArchetype ? draftPersonaTilt(prospect, clubArchetype) : 0;
-        const score = prospect.overall * 2 + needBoost + projectionBonus - depthPenalty + personaTilt + this.rng.int(-4, 4);
+        // Believed overall, headroom and age, tilted by the club's GM archetype.
+        const readValue = draftReadValue({ read, age: prospect.age, archetypeLabel: clubArchetype });
+        const score = readValue + needBoost + projectionBonus - depthPenalty + this.rng.int(-4, 4);
+        if (!Number.isFinite(score)) {
+          throw new TypeError(`runCpuDraft: non-finite draft score for ${prospect.id} (${teamOnClock})`);
+        }
         if (score > bestScore) {
           bestScore = score;
           bestIndex = i;
@@ -7557,6 +7665,7 @@ export class GameSession {
       latestGmDecision: latestGmDecision(this.league),
       gmCommitments: getGmCommitmentState(this.league, this.controlledTeamId),
       ownerConfidence: getOwnerConfidenceSummary(teamById(this.league, this.controlledTeamId)),
+      gmCareer: this.getGmCareerState(),
       observability: this.getObservability(),
       calibrationJobs: this.listCalibrationJobs(10),
       teams: this.league.teams.map(toDashboardTeam),

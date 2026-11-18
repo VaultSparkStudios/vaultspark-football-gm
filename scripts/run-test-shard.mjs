@@ -87,6 +87,7 @@ export const SHARDS = {
     "test/player-face-lighting.test.js",
     "test/player-side-grooming.test.js",
     "test/cpu-draft-depth.test.js",
+    "test/cpu-draft-scouting.test.js",
     "test/practice-contract-pay.test.js",
     "test/player-portrait-features.test.js",
     "test/player-iris-rendering.test.js",
@@ -255,6 +256,7 @@ export const SHARDS = {
     "test/opening-contract-choice-matrix.test.js",
     "test/player-profile-narrative.test.js",
     "test/playtest-journey.test.js",
+    "test/first-run-flow.test.js",
     "test/playtest-receipt-integrity.test.js",
     "test/player-state-storage-failure.test.js",
     "test/post-commit-hydration.test.js",
@@ -266,6 +268,7 @@ export const SHARDS = {
     "test/save-integrity.test.js",
     "test/session-lookup-indexes.test.js",
     "test/franchise-authority.test.js",
+    "test/gm-career.test.js",
     "test/server-routes.test.js",
     "test/server-route-split.test.js",
     "test/save-payload-budget.test.js",
@@ -354,7 +357,8 @@ export const SHARDS = {
     "test/monte-carlo-regression.test.js"
   ],
   long: [
-    "test/realism-career-regression.test.js"
+    "test/realism-career-regression.test.js",
+    "test/gm-career-dismissal.test.js"
   ],
   studio: [
     "test/session109-public-chrome.test.js",
