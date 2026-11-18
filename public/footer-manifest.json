@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.3",
+  "schemaVersion": "1.4",
   "headerLinks": [
     "./index.html",
     "./features.html",
@@ -10,22 +10,68 @@
   ],
   "footerLinks": [
     "./index.html",
-    "./features.html",
     "./how-to-play.html",
+    "./guides.html",
     "./faq.html",
-    "./roadmap.html",
-    "./about.html",
+    "./features.html",
+    "./compare.html",
     "./simulation.html",
+    "./media.html",
     "./stats",
     "./status.html",
     "./status-archive.html",
+    "./roadmap.html",
+    "./about.html",
     "./press.html",
     "./contact.html",
+    "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions",
     "./privacy.html",
-    "./terms.html",
-    "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions"
+    "./terms.html"
+  ],
+  "footerGroups": [
+    {
+      "label": "Play",
+      "links": [
+        "./index.html",
+        "./how-to-play.html",
+        "./guides.html",
+        "./faq.html"
+      ]
+    },
+    {
+      "label": "Learn",
+      "links": [
+        "./features.html",
+        "./compare.html",
+        "./simulation.html",
+        "./media.html",
+        "./stats"
+      ]
+    },
+    {
+      "label": "Project",
+      "links": [
+        "./status.html",
+        "./status-archive.html",
+        "./roadmap.html",
+        "./about.html",
+        "./press.html",
+        "./contact.html",
+        "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions"
+      ]
+    },
+    {
+      "label": "Legal",
+      "links": [
+        "./privacy.html",
+        "./terms.html"
+      ]
+    }
   ],
   "footerOnly": [
+    "./guides.html",
+    "./compare.html",
+    "./media.html",
     "./roadmap.html",
     "./about.html",
     "./simulation.html",
@@ -42,7 +88,6 @@
   ],
   "sharedFooterPages": [
     "index.html",
-    "game.html",
     "features.html",
     "how-to-play.html",
     "faq.html",
@@ -54,7 +99,10 @@
     "terms.html",
     "stats.html",
     "simulation.html",
-    "press.html"
+    "press.html",
+    "guides.html",
+    "compare.html",
+    "media.html"
   ],
   "labels": {
     "./index.html": "Play",
@@ -65,16 +113,15 @@
     "./about.html": "About",
     "./simulation.html": "The Simulation",
     "./stats": "Community Stats",
-    "./status.html": "Status & Updates",
+    "./status.html": "Updates",
     "./status-archive.html": "Changelog",
     "./press.html": "Press",
     "./contact.html": "Contact",
     "./privacy.html": "Privacy",
     "./terms.html": "Terms",
+    "./guides.html": "Guides",
+    "./compare.html": "How It Compares",
+    "./media.html": "Screenshots",
     "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions": "Discussions"
-  },
-  "headerLabels": {
-    "./stats": "Community",
-    "./status.html": "Updates"
   }
 }

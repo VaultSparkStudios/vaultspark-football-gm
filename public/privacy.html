@@ -14,6 +14,7 @@
     <div class="bg-layer"></div>
     <main class="legal-wrap">
       <h1>Privacy</h1>
+      <p class="small legal-updated">Last updated: 17 November 2026</p>
       <section class="panel legal-panel">
         <h2>Browser-First Play</h2>
         <p>Franchise Architect: Football runs in your browser and saves your leagues there. Your leagues, settings and challenge data stay in your browser unless you export or share them yourself.</p>
@@ -26,14 +27,16 @@
       <section class="panel legal-panel" id="community-stats-privacy">
         <h2>Optional Community Stats</h2>
         <p>Community Stats is off until you choose to take part. When it is on, after each successful game action your browser may send a short, fixed set of categories and numbers, such as league settings, weeks completed, tactics, transactions, draft positions and results.</p>
+        <p>With Community Stats on, your browser also sends two things that are used to fix the game and are not published. First, a few milestones: that setup was finished, that a first week and a first season were played, and that you came back, counted only as the same day, 1 to 6 days, 7 to 29 days, or 30 or more days. Second, a short error report when something in the game breaks: the error's name, the file names and line numbers of the game's own scripts, the screen you were on and the app version. For the browser's own error types it also includes a shortened error message with web addresses, email addresses and quoted text removed; a message written by the game is never sent. Each error is reported at most once a day per browser, and turning participation off deletes these too.</p>
         <p>Community Stats never receives your saves, names, email, free text, passwords or tokens, player identities, hidden ratings, or story history. A random browser identifier is converted into an anonymous code by the service. Internet addresses are used only briefly, in memory, to limit abuse, and are never stored. Individual records are deleted after 30 days. A published figure only appears once at least five participating browsers are counted in it. Turning participation off asks the service to delete the records tied to your browser's identifier.</p>
         <p>Published figures describe the browsers that chose to take part, not all players. The <a href="./stats#methodology">methodology</a> explains how to read them.</p>
       </section>
-      <section class="panel legal-panel">
+      <section class="panel legal-panel" id="feedback-privacy">
         <h2>Feedback</h2>
-        <p>The in-game feedback button prepares a public GitHub issue with basic, public-safe game context. It does not attach personal account data or your save.</p>
+        <p>The in-game feedback form sends a note to the team only when you press Send. It sends the kind of note you picked, the message you wrote, a rating if you gave one, and: the screen you were on, the season and week, the app version, your screen size (phone, tablet or desktop) and your theme. It never sends your save, your email address, or the names in your league. You do not need an account, and you do not need to turn on Community Stats.</p>
+        <p>A note is not linked to you or to Community Stats. Each one is sent with a random one-off identifier that is not saved in your browser and not stored by the service. Internet addresses are used only briefly, in memory, to limit abuse, and are never stored. Notes are deleted after 30 days. Please do not put personal details in your message. If you prefer a public conversation, the form links to GitHub Discussions, which needs a GitHub account.</p>
       </section>
-      <section class="panel legal-panel">
+      <section class="panel legal-panel" id="cloud-save-privacy">
         <h2>Optional Cloud Save Credentials</h2>
         <p>If you choose GitHub Gist sync, the GitHub token you supply is kept in memory and in storage that lasts only for the current browser tab. Franchise Architect removes any older stored copies, never includes the token in save exports, and sends it only to GitHub's API to perform the sync you asked for. An optional save passphrase is used on your device to create an authentication key; the passphrase is never stored or sent. Authentication detects unauthorized changes but does not encrypt the save stored by GitHub.</p>
       </section>

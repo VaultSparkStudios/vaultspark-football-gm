@@ -95,7 +95,7 @@ export function renderSimulationAnchor() {
           drift,
           "",
           "Rating points of drift allowed per year",
-          `Across the whole league, average player quality may move less than ${drift} of a rating point a season; past ${driftWatch} the build says so out loud.`
+          `Across the whole league, average player quality may move less than ${drift} of a rating point a season; past ${driftWatch} our checks raise a warning.`
         )}
       </div>
     </div>`;

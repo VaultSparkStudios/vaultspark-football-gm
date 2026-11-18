@@ -55,21 +55,71 @@ export function footerLinkLabel(href, manifest) {
   return name ? name.charAt(0).toUpperCase() + name.slice(1) : href;
 }
 
+function renderFooterLink(href, manifest, currentPage) {
+  const label = escapeHtml(footerLinkLabel(href, manifest));
+  const external = /^https?:\/\//.test(href);
+  const isCurrent = samePage(href, currentPage);
+  const attrs = [
+    `href="${escapeHtml(href)}"`,
+    external ? 'target="_blank" rel="noopener"' : "",
+    isCurrent ? 'aria-current="page"' : ""
+  ].filter(Boolean).join(" ");
+  return `<a ${attrs}>${label}</a>`;
+}
+
+function footerGroups(manifest) {
+  return (Array.isArray(manifest?.footerGroups) ? manifest.footerGroups : [])
+    .filter((group) => group && Array.isArray(group.links) && group.links.length);
+}
+
+/**
+ * footerGroups is a presentation of footerLinks, not a second list: every
+ * destination sits in exactly one group, and a group cannot introduce one.
+ * Without this a link could be dropped from the rendered footer while every
+ * check that reads footerLinks stayed green.
+ */
+export function inspectFooterGroups(manifest) {
+  const groups = footerGroups(manifest);
+  if (!groups.length) return { ok: true, grouped: false, missing: [], unknown: [], duplicated: [], unlabelled: [] };
+  const flat = manifest?.footerLinks || [];
+  const seen = new Map();
+  for (const group of groups) for (const href of group.links) seen.set(href, (seen.get(href) || 0) + 1);
+  const missing = flat.filter((href) => !seen.has(href));
+  const unknown = [...seen.keys()].filter((href) => !flat.includes(href));
+  const duplicated = [...seen].filter(([, count]) => count > 1).map(([href]) => href);
+  const unlabelled = groups.filter((group) => typeof group.label !== "string" || !group.label.trim()).map((group) => group.links[0]);
+  return { ok: !missing.length && !unknown.length && !duplicated.length && !unlabelled.length, grouped: true, missing, unknown, duplicated, unlabelled };
+}
+
+/**
+ * The footer renders as labelled groups when the manifest declares
+ * footerGroups, and as the flat footerLinks list when it does not.
+ */
 export function renderFooter(manifest, { currentPage = "" } = {}) {
-  const links = (manifest?.footerLinks || []).map((href) => {
-    const label = escapeHtml(footerLinkLabel(href, manifest));
-    const external = /^https?:\/\//.test(href);
-    const isCurrent = samePage(href, currentPage);
-    const attrs = [
-      `href="${escapeHtml(href)}"`,
-      external ? 'target="_blank" rel="noopener"' : "",
-      isCurrent ? 'aria-current="page"' : ""
-    ].filter(Boolean).join(" ");
-    return `<a ${attrs}>${label}</a>`;
-  });
+  const groups = footerGroups(manifest);
+  let nav;
+  if (groups.length) {
+    const report = inspectFooterGroups(manifest);
+    if (!report.ok) {
+      throw new Error(
+        "footer-manifest.json footerGroups disagree with footerLinks: " +
+        `missing ${report.missing.join(", ") || "-"}; unknown ${report.unknown.join(", ") || "-"}; ` +
+        `duplicated ${report.duplicated.join(", ") || "-"}; unlabelled groups ${report.unlabelled.length}`
+      );
+    }
+    const columns = groups.map((group) => {
+      const items = group.links.map((href) => `<li>${renderFooterLink(href, manifest, currentPage)}</li>`).join("");
+      const label = escapeHtml(group.label);
+      return `<div class="public-chrome-group"><span class="public-chrome-group-title" aria-hidden="true">${label}</span><ul aria-label="${label}">${items}</ul></div>`;
+    });
+    nav = `  <nav class="public-chrome-nav public-chrome-nav--groups" aria-label="Site">${columns.join("")}</nav>`;
+  } else {
+    const links = (manifest?.footerLinks || []).map((href) => renderFooterLink(href, manifest, currentPage));
+    nav = `  <nav class="public-chrome-nav" aria-label="Site">${links.join(" · ")}</nav>`;
+  }
   return [
     '<footer class="setup-footer public-chrome-footer">',
-    `  <nav class="public-chrome-nav" aria-label="Site">${links.join(" · ")}</nav>`,
+    nav,
     `  ${STUDIO_LEGAL}`,
     "</footer>"
   ].join("\n");
@@ -260,6 +310,8 @@ export function renderChangelogFeed(notes, { siteUrl, pagePath = "changelog.html
  * public-truth freshness gate (which reads the source) and the history both
  * keep one home.
  */
+const KNOWN_ISSUES_SECTION = /[ \t]*<section\b[^>]*\bid="known-issues"[^>]*>[\s\S]*?<\/section>[ \t]*\r?\n?/;
+
 export function splitStatusNotes(html, { keep = 4, archiveHref = "./status-archive.html" } = {}) {
   const notes = parseReleaseNotes(html);
   if (notes.length <= keep) return { latest: html, archive: null, notes };
@@ -278,8 +330,10 @@ export function splitStatusNotes(html, { keep = 4, archiveHref = "./status-archi
     .replace(/<meta property="og:title" content="[^"]*"/, '<meta property="og:title" content="Changelog — Franchise Architect: Football"')
     .replace(/<meta property="og:description" content="[^"]*"/, `<meta property="og:description" content="${archiveDescription}"`)
     .replace(/<h1>[^<]*<\/h1>/, "<h1>Changelog</h1>")
+    // Known issues describe today, not history: they stay on the updates page.
+    .replace(KNOWN_ISSUES_SECTION, "")
     .replace(/(<h2>Release Notes<\/h2>)([\s\S]*?)(<\/section>)/, (whole, open, body, close) =>
-      `<h2>Every release note</h2>\n<p class="small">Newest first. The <a href="./status.html">status page</a> carries the latest ${keep}; subscribe with the <a href="./changelog.xml">RSS feed</a>.</p>\n${notes.map(renderNote).join("\n")}\n${close}`
+      `<h2>Every release note</h2>\n<p class="small">Newest first. The <a href="./status.html">updates page</a> carries the latest ${keep} and the <a href="./status.html#known-issues">known issues</a>; subscribe with the <a href="./changelog.xml">RSS feed</a>.</p>\n${notes.map(renderNote).join("\n")}\n${close}`
     );
   return { latest, archive, notes };
 }
@@ -329,6 +383,102 @@ export function ensurePageMetadata(html, { ogImageUrl = "https://playfranchisear
   if (missing(/rel="icon"/)) tags.push('<link rel="icon" href="./favicon.svg" type="image/svg+xml" />');
   if (missing(/rel="apple-touch-icon"/)) tags.push('<link rel="apple-touch-icon" href="./images/apple-touch-icon.png" />');
   if (missing(/rel="manifest"/)) tags.push('<link rel="manifest" href="./manifest.webmanifest" />');
-  if (!tags.length) return next;
-  return next.replace("</head>", `    ${tags.join("\n    ")}\n  </head>`);
+  if (tags.length) next = next.replace("</head>", `    ${tags.join("\n    ")}\n  </head>`);
+  return ensureStructuredData(next);
+}
+
+// ── Structured data ──────────────────────────────────────────────
+//
+// One JSON-LD block per secondary page, generated here so there is a single
+// implementation: a BreadcrumbList for every indexable page below the root,
+// plus a FAQPage built from the page's own <details><summary> questions, so
+// the markup cannot say something the visible page does not.
+//
+// The block is data (type application/ld+json), never executed. The edge
+// policy still hashes every inline <script> body, so each page that carries a
+// block adds one hash to the site-wide Content-Security-Policy header. That is
+// why a page gets exactly one block (an @graph), and why the root page, the
+// app shell and noindex pages get none from here.
+const STRUCTURED_DATA_BLOCK = /[ \t]*<script type="application\/ld\+json" data-structured-data>[\s\S]*?<\/script>[ \t]*\r?\n?/;
+const SITE_NAME = "Franchise Architect: Football";
+
+const NAMED_ENTITIES = Object.freeze({
+  amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ",
+  ldquo: "“", rdquo: "”", lsquo: "‘", rsquo: "’",
+  mdash: "—", ndash: "–", hellip: "…", middot: "·", divide: "÷"
+});
+
+function textFromHtml(html) {
+  return String(html ?? "")
+    .replace(/<!--[\s\S]*?-->/g, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&#(\d+);/g, (whole, code) => String.fromCodePoint(Number(code)))
+    .replace(/&#x([0-9a-f]+);/gi, (whole, code) => String.fromCodePoint(parseInt(code, 16)))
+    .replace(/&([a-z]+);/gi, (whole, name) => NAMED_ENTITIES[name.toLowerCase()] ?? " ")
+    .replace(/\s+/g, " ")
+    .replace(/\s+([.,;:!?])/g, "$1")
+    .trim();
+}
+
+/** Question and answer text for every <details><summary> pair in a page. */
+export function parseFaqEntries(html) {
+  const entries = [];
+  for (const match of String(html).matchAll(/<details\b[^>]*>\s*<summary\b[^>]*>([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/g)) {
+    const question = textFromHtml(match[1]);
+    const answer = textFromHtml(match[2]);
+    if (question && answer) entries.push({ question, answer });
+  }
+  return entries;
+}
+
+/**
+ * The JSON-LD graph for a built page, or null when the page should carry
+ * none. Reads the canonical link the build has already written, so the URLs
+ * in the markup are the URLs the page declares for itself.
+ */
+export function buildStructuredData(html) {
+  const source = String(html);
+  const canonical = source.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+  if (!canonical || /<meta name="robots" content="[^"]*noindex/i.test(source)) return null;
+  let url;
+  try {
+    url = new URL(textFromHtml(canonical));
+  } catch {
+    return null;
+  }
+  if (url.pathname === "/" || /\/index\.html$/.test(url.pathname)) return null;
+  const pageName = textFromHtml(source.match(/<title>([^<]*)<\/title>/)?.[1]).split(" — ")[0].trim();
+  if (!pageName) return null;
+  const graph = [{
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${url.origin}/` },
+      { "@type": "ListItem", position: 2, name: pageName, item: url.href }
+    ]
+  }];
+  // Only a page laid out as a FAQ is described as one; a stray <details>
+  // elsewhere is not a published question.
+  const faq = /class="site-faq"/.test(source) ? parseFaqEntries(source) : [];
+  if (faq.length) {
+    graph.push({
+      "@type": "FAQPage",
+      url: url.href,
+      mainEntity: faq.map((entry) => ({
+        "@type": "Question",
+        name: entry.question,
+        acceptedAnswer: { "@type": "Answer", text: entry.answer }
+      }))
+    });
+  }
+  return { "@context": "https://schema.org", "@graph": graph };
+}
+
+/** Write (or refresh) the page's single structured-data block. Idempotent. */
+export function ensureStructuredData(html) {
+  const data = buildStructuredData(html);
+  const without = String(html).replace(STRUCTURED_DATA_BLOCK, "");
+  if (!data) return without;
+  // "<" never appears raw inside the block, so no text can close the element.
+  const json = JSON.stringify(data).replaceAll("<", "\\u003c");
+  return without.replace("</head>", `    <script type="application/ld+json" data-structured-data>${json}</script>\n  </head>`);
 }

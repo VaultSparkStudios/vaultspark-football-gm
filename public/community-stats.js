@@ -128,7 +128,7 @@ export function communityParticipationPresentation({ participating = false, pend
           ? "The service acknowledged deletion of records tied to this browser identifier."
           : participationFailed
             ? "This browser could not save your participation choice. Check storage access and try again; sharing stays off."
-            : "Share game choices and results without sharing your save, names, notes, or private details.";
+            : "Share game choices and results, plus short error reports when something breaks, without sharing your save, names, notes, or private details.";
   return { deletionStatus, heading, detail };
 }
 

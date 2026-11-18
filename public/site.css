@@ -79,6 +79,31 @@
   .site-nav a { padding: 6px 8px; font-size: 0.86rem; }
 }
 
+/* ── Shared footer, grouped ────────────────────────────────────── */
+.public-chrome-footer .public-chrome-nav--groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 18px 24px;
+  width: min(1080px, 100%);
+  margin: 0 auto 16px;
+  text-align: left;
+}
+.public-chrome-group { min-width: 0; }
+.public-chrome-group-title {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.public-chrome-group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.public-chrome-group a { display: inline-block; padding: 4px 0; }
+@media (max-width: 420px) {
+  .public-chrome-footer .public-chrome-nav--groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 /* Skip the old per-page breadcrumb spacing when a page has the header. */
 .site-header + main { margin-top: 0; }
 
@@ -185,6 +210,8 @@
 .why-more { margin: 14px 0 0; text-align: center; }
 .why-card p a { color: var(--accent-strong); white-space: nowrap; }
 .setup-help { display: block; margin-top: 4px; color: var(--muted); font-size: 0.82rem; line-height: 1.45; }
+.hero-team-select { width: auto; max-width: 100%; min-height: 44px; }
+.quickstart-sets { padding-top: 0.45rem; border-top: 1px solid var(--line); color: var(--setup-text-muted, var(--muted)); font-size: 0.72rem; line-height: 1.45; }
 .setup-advanced-block { margin-top: 0.9rem; padding-top: 0.9rem; border-top: 1px solid var(--line); display: grid; gap: 0.6rem; }
 .setup-advanced-block h3 { margin: 0; font-size: 0.95rem; }
 .setup-footer-links { color: var(--muted); font-size: 0.85rem; line-height: 1.9; }
@@ -203,6 +230,17 @@
 .site-gallery-item { margin: 0; display: grid; gap: 8px; min-width: 0; }
 .site-gallery-item figcaption { font-size: 0.85rem; color: var(--muted); }
 .site-gallery-item figcaption a { color: var(--accent-strong); }
+/* Logo and mark: shown whole on a plain tile, never cropped or stretched. */
+.site-gallery--assets { align-items: start; }
+.site-gallery img.site-asset { box-sizing: border-box; padding: 24px; aspect-ratio: 1200 / 630; object-fit: contain; background: var(--inset); box-shadow: none; }
+.site-gallery img.site-asset--mark { padding: 40px; }
+
+/* ── Guides ────────────────────────────────────────────────────── */
+.site-section ol { padding-left: 1.4rem; margin: 8px 0 0; }
+.site-section ol li + li { margin-top: 6px; }
+.site-section[id] { scroll-margin-top: 90px; }
+.site-toc { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 14px 0 0; padding: 0; list-style: none; }
+.site-toc a { color: var(--accent-strong); }
 
 /* ── How to play ───────────────────────────────────────────────── */
 .site-steps { list-style: none; counter-reset: step; padding: 0; margin: 0; display: grid; gap: 14px; }

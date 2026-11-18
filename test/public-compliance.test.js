@@ -25,7 +25,10 @@ const requiredFiles = [
   "../public/features.html",
   "../public/how-to-play.html",
   "../public/faq.html",
-  "../public/roadmap.html"
+  "../public/roadmap.html",
+  "../public/guides.html",
+  "../public/compare.html",
+  "../public/media.html"
 ];
 
 test("public Pages bundle has contact, legal, sitemap, and agent metadata sources", () => {
@@ -51,8 +54,12 @@ test("public Pages bundle has contact, legal, sitemap, and agent metadata source
   assert.match(sitemap, /simulation\.html/, "sitemap lists the simulation methodology page");
   assert.doesNotMatch(sitemap, /<loc>[^<]*\/stats<\/loc>/, "a zero-cohort stats page is withheld from the crawl invitation (S94)");
   assert.match(sitemap, /status\.html/, "sitemap lists the merged status+release-notes page");
-  for (const page of ["features.html", "how-to-play.html", "faq.html", "roadmap.html"]) {
+  for (const page of ["features.html", "how-to-play.html", "faq.html", "roadmap.html", "guides.html", "compare.html", "media.html"]) {
     assert.match(sitemap, new RegExp(page.replace(".", "\\.")), `sitemap lists ${page}`);
+    if (["guides.html", "compare.html", "media.html"].includes(page)) {
+      assert.ok(agents.entrypoints.some((entry) => entry.url.endsWith(`/${page}`)), `agents.json lists ${page}`);
+      assert.ok(llms.includes(`- /${page} - `), `llms.txt lists ${page}`);
+    }
   }
   assert.match(sitemap, /<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/, "sitemap entries carry lastmod");
   assert.doesNotMatch(sitemap, /changelog\.html/, "changelog is a redirect stub and stays out of the sitemap");
@@ -142,7 +149,10 @@ const themedStaticPages = [
   "../public/how-to-play.html",
   "../public/faq.html",
   "../public/roadmap.html",
-  "../public/press.html"
+  "../public/press.html",
+  "../public/guides.html",
+  "../public/compare.html",
+  "../public/media.html"
 ];
 
 test("themeBoot is a dependency-free classic script honoring the shared theme key", () => {

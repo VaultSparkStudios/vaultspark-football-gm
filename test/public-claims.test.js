@@ -79,6 +79,13 @@ test("every marker is filled and the built output carries no marker text", () =>
   }
   const press = built("press.html");
   for (const fact of claims.facts) assert.ok(press.includes(fact.label), `press fact sheet lists ${fact.label}`);
+  // The screenshots have one home; the press kit links to it.
+  const media = built("media.html");
+  const shots = [claims.heroImage, ...claims.features.map((feature) => feature.image)].filter(Boolean);
+  for (const shot of shots) assert.ok(media.includes(`src="${shot.src}"`), `media.html shows ${shot.src}`);
+  assert.equal((media.match(/class="site-gallery-item"/g) || []).length >= shots.length + 3, true, "screenshots plus the wordmark, mark and cover");
+  assert.doesNotMatch(press, /class="site-gallery"/, "press.html does not carry a second gallery");
+  assert.match(press, /href="\.\/media\.html"/);
 });
 
 test("NEGATIVE CONTROL: a stale, unknown or bare block is caught, and claim text is escaped", () => {

@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Status &amp; Updates — Franchise Architect: Football</title>
-    <meta name="description" content="What is new in Franchise Architect: Football: the latest dated release notes, with every earlier change in the changelog." />
+    <title>Updates — Franchise Architect: Football</title>
+    <meta name="description" content="Where Franchise Architect: Football stands today: known issues and the latest dated release notes, with every earlier change in the changelog." />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="./site.css" />
@@ -13,14 +13,29 @@
   <body class="setup-body">
     <div class="bg-layer"></div>
     <main class="legal-wrap">
-      <h1>Status &amp; Updates</h1>
-      <section class="panel legal-panel">
+      <h1>Updates</h1>
+      <section class="panel legal-panel" id="status">
         <p><span class="site-status-chip"><!-- claims:status-label:start -->Free early access<!-- claims:status-label:end --></span></p>
         <p><!-- claims:status-line:start -->Franchise Architect: Football is free to play in early access. It is complete enough to run a franchise for decades, and it changes often; every change is dated in the changelog.<!-- claims:status-line:end --></p>
-        <p>Found something broken? The <a href="./contact.html">contact page</a> lists the ways to tell us.</p>
+        <p>The <a href="./roadmap.html">roadmap</a> describes where the game is heading.</p>
       </section>
-      <section class="panel legal-panel">
+      <section class="panel legal-panel" id="known-issues">
+        <h2>Known issues</h2>
+        <p>These are open problems we know about. Each one leaves this list when its fix appears in the release notes below.</p>
+        <ul>
+          <li><strong>Playoff injuries heal too early.</strong> In the regular season an injury lasts the number of weeks its label states. In the playoffs it still recovers on the older schedule, so an injured player can be back a game sooner than his label says.</li>
+          <li><strong>A Questionable player always plays.</strong> The Questionable tag shows as a game-time status, but it does not yet carry any chance that the player sits out.</li>
+        </ul>
+        <p>Found something that is not listed? The <a href="./contact.html">contact page</a> lists the ways to tell us.</p>
+      </section>
+      <section class="panel legal-panel" id="release-notes">
         <h2>Release Notes</h2>
+        <h3>2026-11-17 — Your job is on the line, and a quicker first week</h3>
+        <p>The owner can now fire you. When confidence stays at the bottom for long enough, you are dismissed and choose your next club from the teams with an open job, or you can resign and move on your own terms. Switching teams freely is now a Sandbox option only; in every other mode you keep the club you took.</p>
+        <p>Rival clubs now draft from their own scouting reports instead of knowing every prospect's true ability. Some clubs scout better than others, so first-round misses and late-round finds happen about twice as often as before. If you let the game make your pick, it uses what your own draft board shows. Because drafts change, simulated seasons and champions will differ from earlier versions.</p>
+        <p>Starting a league takes fewer steps: pick your team on the first screen, and the first week skips the planning pop-ups so you reach a result sooner. After a week is played you can watch its highlights straight from the result.</p>
+        <p>Tell the Commissioner now sends your note directly to the team from inside the game, with no account needed. If you share Community Stats, the game also sends short error reports when something breaks; the <a href="./privacy.html#feedback-privacy">privacy page</a> lists exactly what is sent.</p>
+        <p>The site has three new pages, <a href="./guides.html">Guides</a>, <a href="./compare.html">How It Compares</a> and <a href="./media.html">Screenshots</a>, and the game now downloads faster because its files are smaller.</p>
         <h3>2026-11-16 — Injuries last as long as they say</h3>
         <p>In the regular season, an injury now keeps a player out for the number of weeks its label states, and a bye week counts as one of them. Before this, a player listed as out for one week was usually healed in time for the very next game, so short injuries rarely changed a lineup. Playoff recovery is unchanged for now. Because who plays each week changes, simulated seasons, standings and champions will differ from earlier versions.</p>
         <p>A Questionable tag now reads as a game-time status on the roster, depth chart and player profile. It no longer appears as “Questionable (0)”, “Ready” or a recovery, and it stays separate from a player who is out.</p>

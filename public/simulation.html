@@ -67,7 +67,7 @@
         <article class="sim-figure">
         <strong class="sim-figure-value">0.15<span class="sim-figure-unit"></span></strong>
         <span class="sim-figure-label">Rating points of drift allowed per year</span>
-        <p>Across the whole league, average player quality may move less than 0.15 of a rating point a season; past 0.3 the build says so out loud.</p>
+        <p>Across the whole league, average player quality may move less than 0.15 of a rating point a season; past 0.3 our checks raise a warning.</p>
       </article>
       </div>
     </div>
@@ -82,16 +82,16 @@
         <ul class="sim-limits">
           <li><strong>It is an analogy, not an identity.</strong> An All-Pro place is an award for how someone <em>played</em> last season. A 90-plus rating is a claim about how good someone <em>is</em>. Those are related, not the same. That is exactly why the target ships as a band between two honors rather than as a single confident number — a point estimate here would be false precision.</li>
           <li><strong>The honor counts are structural, not measured.</strong> We read them from the stable shape of the awards. That is stronger than someone's judgement and weaker than a real published distribution of player ratings, which nobody has released in a citable form.</li>
-          <li><strong>A measurement window is part of the measurement.</strong> A freshly generated league is not a league at rest. A three-season probe here once reported a problem that a ten-season probe did not confirm — so the checks run over a decade, and one of them runs to fifteen seasons because a slow ratchet only shows up that far out.</li>
+          <li><strong>A measurement window is part of the measurement.</strong> A freshly generated league is not a league at rest. A three-season test run here once reported a problem that a ten-season run did not confirm — so the checks simulate a full decade, and one of them runs to fifteen seasons because some slow changes only show up that far out.</li>
           <li><strong>An average can hide a shape.</strong> A league's mean rating can sit perfectly still while its top end moves enormously. So the checks look at spread and at the tail separately, because those two fail independently.</li>
           <li><strong>Statistics are guardrailed, not replayed.</strong> Season and career totals are held against real baselines from Pro Football Reference. That keeps a 7,000-yard passing season from happening. It does not make this a replay of any real season, and it is not meant to.</li>
         </ul>
       </section>
 
       <section class="sim-section">
-        <h2>Why this is a build gate and not a promise</h2>
-        <p>A claim that is only argued gets forgotten. Each of the numbers above is asserted by the test suite and checked when the game is built, so a change that quietly re-inflates the league fails before it ships rather than being discovered a decade of game-time later by a player.</p>
-        <p>The same applies to this page. The figures in it are generated from the simulation's own constants at build time — there is no second copy of them to fall out of date.</p>
+        <h2>Why this is a check and not a promise</h2>
+        <p>A claim that is only argued gets forgotten. Each of the numbers above is checked automatically every time we prepare a new version of the game, so a change that quietly re-inflates the league is stopped before it reaches you rather than being discovered a decade of game-time later by a player.</p>
+        <p>The same applies to this page. Its figures are filled in from the simulation's own settings each time the site is published — there is no second copy of them to fall out of date.</p>
       </section>
 
       <section class="sim-section">
@@ -100,7 +100,7 @@
       </section>
 
       <footer class="setup-footer">
-        <a href="./index.html">Play</a> · <a href="./index.html#why">Why Franchise Architect?</a> · <a href="./status.html">Status &amp; Updates</a> · <a href="./about.html">About</a> · <a href="./contact.html">Contact</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a>
+        <a href="./index.html">Play</a> · <a href="./index.html#why">Why Franchise Architect?</a> · <a href="./status.html">Updates</a> · <a href="./about.html">About</a> · <a href="./contact.html">Contact</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a>
         <span class="studio-copyright" data-studio-copyright>© 2026 VaultSpark Studios LLC. All rights reserved.</span> · <a href="https://vaultsparkstudios.com/" rel="author">Studio home</a>
       </footer>
     </main>
