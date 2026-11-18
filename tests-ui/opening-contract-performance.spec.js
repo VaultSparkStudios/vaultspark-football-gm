@@ -13,7 +13,7 @@ test("first-run Opening Contract mounts without visible layout shift", async ({ 
   });
 
   await page.goto("/game.html");
-  await expect(page.getByRole("dialog", { name: "Who Are You Building?" })).toBeVisible({ timeout: 20_000 });
+  await expect(page.getByRole("dialog", { name: "Three calls to start your first season" })).toBeVisible({ timeout: 20_000 });
   await page.waitForTimeout(750);
 
   const vitals = await page.evaluate(() => globalThis.__openingContractVitals);

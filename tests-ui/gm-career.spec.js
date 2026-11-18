@@ -21,7 +21,9 @@ async function startFranchise(page, { rules = null } = {}) {
   await page.click(".setup-details-toggle");
   await page.selectOption("#modeInput", "play");
   await page.selectOption("#teamSelect", "BUF");
-  if (rules) await page.selectOption("#rulesPresetInput", rules);
+  // The setup form starts from the active league's settings, so the rules are always
+  // chosen explicitly: a Sandbox league left behind must not leak into the next one.
+  await page.selectOption("#rulesPresetInput", rules || "standard");
   await page.click("#createLeagueBtn");
   await expect(page).toHaveURL(/\/game\.html$/, { timeout: 45_000 });
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 60_000 });
