@@ -1,3 +1,29 @@
+## S132 Wave status
+
+Session Intent: audit toward public beta, implement the plan in efficiency order, close out, push to main and deploy.
+
+- [x] Wave 0: startup, canon sync, audit sidecar with 20 ranked items and verified premises.
+- [x] Wave 1: one copy per mount in the build; site matches the shipped game.
+- [x] Wave 2: minified scripts and styles with an engine parity check (bundling and hashed chunks not done).
+- [x] Wave 3: in-game feedback form, opt-in error reports, first-steps milestones with a consent prompt.
+- [x] Wave 4: Guides, How It Compares and Screenshots pages; grouped footer; breadcrumb and FAQ structured data.
+- [x] Wave 5: faster first week; highlights offered on the week result.
+- [x] Wave 6: owner can fire the general manager, job market, Sandbox-only club switching; rival clubs draft through scouting fog (golden master s132-v5).
+- [x] Independent review: six defects found and fixed (three ways around the career rules, a crash path, an error-scrub gap, collapsed background-task reports).
+- [ ] Release: staging verify, production promotion and API deployment of the session's commits, then authority reconciliation.
+- [ ] [S132 carried] GM Profile page (career, trophies, shareables, save health); Settings split.
+- [ ] [S132 carried] Weekly challenge with a goal, a score and a shared board.
+- [ ] [S132 carried] Desk consolidation and game-plan depth; plain football wording across the Desk.
+- [ ] [S132 carried] Visual upgrade: bundled fonts, fresh screenshots, per-page share images.
+- [ ] [S132 carried] Security remainder: staging noindex, import size cap, one escape helper, least-privilege database role, diagnostics strip.
+- [ ] [S132 carried] Release process diet: parallel browser workers and a curated gate set.
+- [ ] [S132 carried] Feedback limits are per address; group IPv6 by /64 and run retention on a timer, not only on writes.
+- [ ] [S132 carried] Career limits: owner mode off, a permanent move to Sandbox and a rewind all avoid dismissal; a difficulty change resets owner patience. Decide which are intended.
+- [ ] [S132 carried] Draft follow-ups: projected round reveals true potential order; scouting accuracy is permanent per club; rival GM personas may be identical across leagues (unconfirmed); check champion concentration over 30 seasons.
+- [ ] [S132 carried] Launch hold: email-delivery check and founder approval packet (founder-run).
+- [ ] [SIL:132] Run a new browser spec before reporting it; three GM-career tests had never passed.
+- [ ] [SIL:132] Any test or fixture that patches shipped script text must match minified output.
+
 ## S131 Wave status
 
 Session Intent: /arc, then the authorized direct main push and full staging and production deployment.
@@ -115,22 +141,6 @@ Historical release dependency — resolved by C2: candidate `1c73ef6` passed all
 - [x] Wave 1 — Cloud storage resilience: focused and real-browser denied-storage POST/PATCH/clear checks pass locally and on staging.
 - [x] Wave 2 — Owner ultimatum opens Boardroom: corrected async ownership guard passes26units and local browser5/5 including8cross-franchise boundary cases;16images inspected/hash-bound. Hosted corrected-source proof remains in Wave3.
 - [x] Wave 3 — Candidate456682bf withheld from production after the introduced ownership race; corrected candidate 49035219b7511bb5a54c438eba73f62798f0e072 verified on exact CI, staging and production. Ordered writeback recorded; final metadata checks, receipt publication and cleanup are tracked below.
-
-## S122 Wave status
-
-- [ ] [SIL:0][S122 #2] Future pre-implementation check: supported canonical premise recorder and complete staged/untracked snapshot; preserve this session's UNKNOWN timing conformance.
-
-- [x] Wave 1 — Full startup, fresh audit and premise/admission checks.
-- [x] Wave 2 — Three selected outcomes with independent and rendered acceptance.
-- [x] Wave 3 — C1 exact-source production and canonical receipt metadata verified; final containing-commit readback and scoped cleanup are enforced before native completion.
-
-- [x] S122: Four Architect Focus destinations restored; generated browser actions focus the visible target and survive reload.
-- [x] S122: Desktop/mobile League pulse opens the actual League news destination in both themes.
-- [x] S122: Current startup totals require fresh direct receipts; stale totals and prior-session evidence are explicit.
-- [ ] [SIL:0][S122 #1] Before a future candidate, measure the unchanged boot-byte target and admit the actual hosted URL form in the recovery harness.
-- [x] S122 closeout artifacts: ordered writeback, independent review, metadata388/388 and signed transport verified. Native completion requires the containing receipt commit on remote main and final job/lock readback.
-
-Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Session 9: test coverage (2026-04-13).
 
 <!-- ledger-roll:pointer -->
 ---

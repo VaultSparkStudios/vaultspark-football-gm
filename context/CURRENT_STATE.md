@@ -1,5 +1,18 @@
 # Current State
 
+## 2026-11-18 — Session 132 — Stakes, believable rivals and a way to hear from players
+
+A full audit toward public beta ranked 20 items (docs/AUDIT_2026-11-17_SESSION132.json); 13 are shipped or shipped in reduced form and 7 are carried. Committed on main at 6b8bb437 and its closeout commit; release to staging, production and the API is recorded separately once verified.
+
+- The owner can dismiss the general manager; a job market offers the next club; free club switching is limited to Sandbox rules and shared lobbies, enforced at the command boundary.
+- Rival clubs draft on a per-club scouted read. Over 7,600 picks on three seeds, first-round busts go from 5.4% to 9.6% and late steals from 0.4% to 1.0%; parity gates are unchanged. Golden master adopted as s132-v5 with v4 frozen by hash.
+- The in-game feedback form sends a note to the community service; error reports are sent only with sharing on.
+- The first week is shorter: team choice on the first screen, the opening week runs on the staff plan, and the week result offers highlights.
+- The site has Guides, How It Compares and Screenshots pages, a grouped footer, an Updates page with Known issues, and privacy wording that matches what is sent.
+- The build minifies scripts and styles (3,766 KB to 2,163 KB; built site 57.2 MB to 28.7 MB) with an engine parity check.
+
+Local evidence: studio 448/450 then both fixed files green, core 786/786, runtime 1260/1260, pages smoke, boot budget 649,328/730,000, public-truth gate, 31 + 97 browser tests across the edited and affected specs after fixes. The full sim-contract shard timed out on this loaded host after 185 passes and one expected baseline difference; the remaining files were run directly. An independent review found six defects in the career rules and the feedback service; all six are fixed with tests. Player response is unmeasured.
+
 ## 2026-11-16 — Session 131 — Injuries cost the games their label states
 
 Two selected outcomes are verified and released. Regular-season injury recovery now ticks after that week's games (after both injury sources), and kickoff readiness reads live injury state: an "Out 1W" injury now misses the next team game (engine probe, seed 131: before 297/316 missed none; after 279/330 miss exactly one, the rest absorbed by byes). A live Questionable tag reads as a game-time status on the roster, depth chart (amber) and player profile instead of "Questionable (0)", "Ready" or a recovery. Golden master adopted as s131-v4 with S119/S118/S116 byte-identical (docs/GOLDEN_BASELINE_S131.json).

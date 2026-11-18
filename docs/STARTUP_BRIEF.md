@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-11-18 (Session 131 closeout) -->
+<!-- generated-at: 2026-11-18 (Session 132 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: 06c3f662e849c4b7 -->
-<!-- genius-authority-fingerprint: 1bf3472e85dd0095 -->
-<!-- session-authority: committed=S131 · SIL=S131 · status=S131 · handoff=S131; divergent=false -->
+<!-- genius-authority-fingerprint: 8f8f4e7acaaab8bf -->
+<!-- session-authority: committed=S132 · SIL=S132 · status=S132 · handoff=S132; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 131 closeout · 2026-11-18.
+> **Fast-boot brief** — generated at Session 132 closeout · 2026-11-18.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,12 +17,12 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 132 · 2026-11-18 · BUILDER MODE                         ║
+║  Session 133 · 2026-11-18 · BUILDER MODE                         ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S131) - WHAT SHIPPED ══════════════════════════╗
-║  S131 made injuries cost the games their label states and label  ║
+╔══ LAST SESSION (S132) - WHAT SHIPPED ══════════════════════════╗
+║  S132 audited toward public beta and committed 13 of 20 items:   ║
 ║  Tests Unverified for this session                               ║
 ║  Deploy —                                                        ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -40,47 +40,47 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    537/1000   ████████████░░░░░░░░░░░░   54%                     ║
-║    SIL v3.0  ·  Avg3: 538  ·  Velocity 2→                        ║
-║    Active 1d · closeout 2d · source: newest SIL/status/handoff   ║
+║    560/1000   █████████████░░░░░░░░░░░   56%                     ║
+║    SIL v3.0  ·  Avg3: 547.3  ·  Velocity 13→                     ║
+║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
 ║    Trend  ▁▁▁▁▁  →  (last 5 sessions)                            ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
 ║    ─────────────── ────── ────────── ──────── ─                  ║
-║    Dev Health        88    █████████░  —        →                ║
-║    Alignment         74    ███████░░░  —        →                ║
-║    Momentum          62    ██████░░░░  —        →                ║
-║    Engagement        47    █████░░░░░  —        →                ║
-║    Process Qual      58    ██████░░░░  —        →                ║
+║    Dev Health        86    █████████░  —        →                ║
+║    Alignment         78    ████████░░  —        →                ║
+║    Momentum          72    ███████░░░  —        →                ║
+║    Engagement        52    █████░░░░░  —        →                ║
+║    Process Qual      60    ██████░░░░  —        →                ║
 ║    Coherence         58    ██████░░░░  ········ →                ║
-║    Security          64    ██████░░░░  ········ →                ║
+║    Security          68    ███████░░░  ········ →                ║
 ║    Ecosystem         20    ██░░░░░░░░  ········ →                ║
 ║    Capital            0    ░░░░░░░░░░  ········ →                ║
 ║    Automation        66    ███████░░░  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 131 ═══════════════════════════╗
-║  Shipped:  Injury clock and Questionable status released on the  ║
+╔══ WHERE WE LEFT OFF  ·  Session 132 ═══════════════════════════╗
+║  Shipped:  S132 public-beta audit: thirteen outcomes committed   ║
 ║  Tests: Unverified for this session                              ║
 ║  Deploy: Frontend/API 67ab750b matched; staging/production14/14  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    2% used                          ║
-║     15,174 / 1,000,000 tok  ·  claude-code/opus-4-8-1m  ·  heur  ║
-║     ~7,587 tok/turn  ·  cache 50%  ·  119 turns to compact       ║
+║     2,949 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,475 tok/turn  ·  cache 50%  ·  122 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
 ║  ⚠ Tests STALE · current unverified; historical 441/441          ║
 ║  (2026-11-13)                                                    ║
-║  ✓  Velocity      2   ·  Debt: →                                 ║
+║  ✓  Velocity      13   ·  Debt: →                                ║
 ║  ⚠  Runway        not tracked                                    ║
-║  ✓  Context age   1d                                             ║
+║  ✓  Context age   0d                                             ║
 ║  ✓  IGNIS         41418 FORGE  ·  5d old                         ║
-║  ⛔  Truth         S131 two selected technical outcomes (injury   ║
+║  ⛔  Truth         S132 thirteen audit outcomes are committed wi  ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ⚠  Genome dims   unmeasured (5 dimensions; —/25)                ║
 ║  ✓  Entropy       0.233  (healthy)                               ║
@@ -89,7 +89,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ✓  Doctor        12/12 (100%)  ·  2026-11-18  ✓                 ║
+║  ⛔  Doctor        11/12 (92%)  ·  1 failing                      ║
 ║  ✓  Cost          Max flat-rate · $0.08/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -107,9 +107,9 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ MOMENTUM METER ══════════════════════════════════════════════╗
-║  Velocity:   ▁▁▁▁▁  2→  (last 5 sessions)                        ║
-║  Intent:     80% achieved last 5                                 ║
-║  Streak:     ✓ 2 consecutive achieved-intent sessions            ║
+║  Velocity:   ▁▁▁▁▁  13→  (last 5 sessions)                       ║
+║  Intent:     60% achieved last 5                                 ║
+║  Streak:     — (last intent not achieved)                        ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
@@ -118,17 +118,17 @@
 ║  #1 · ⚡ · legacy-mirrors-to-redirects                            ║
 ║  Legacy URL mirrors become redirects; the deploy ships one copy  ║
 ║                                                                  ║
-║  #2 · ⚡ · site-truth-pass                                        ║
-║  Public pages match the shipped game: roadmap, features, releas  ║
-║                                                                  ║
 ║  #3 · 🔨 · bundle-and-minify                                     ║
 ║  Minified, bundled, content-hashed client; hero image no longer  ║
 ║                                                                  ║
 ║  #4 · 🔨 · in-game-feedback-and-diagnostics                      ║
 ║  Feedback and opt-in error reports are sent from inside the gam  ║
 ║                                                                  ║
-║  #5 · 🔨 · faster-first-week                                     ║
-║  First game result within four clicks of the landing page        ║
+║  #6 · ⚡ · game-day-in-the-loop                                   ║
+║  Advancing a week offers the highlight reel of your game         ║
+║                                                                  ║
+║  #9 · 🔨 · gm-profile                                            ║
+║  A GM Profile screen gathers career, trophies, shareables and s  ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -136,5 +136,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 131 closeout · 2026-11-18*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 132 closeout · 2026-11-18*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

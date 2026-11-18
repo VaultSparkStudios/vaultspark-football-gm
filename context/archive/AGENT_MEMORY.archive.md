@@ -2,6 +2,13 @@
 
 Append-only archive of entries rolled out of the live ledger. Verbatim; newest first. See `context/AGENT_MEMORY.md` for the working set.
 
+## Session 121 durable patterns
+
+- Persist the initial Git HEAD in the actual lock writer; repeated startup must not replace the arc anchor.
+- Strip ANSI/control bytes before exact credential redaction; normalization can reconstruct a secret.
+- Load lazy content by normal bounded scrolling, then await image decode before captures.
+- Metadata-only closeout still needs clean-checkout Studio acceptance; preserve unknown case totals and late readiness timing.
+
 ## Session 120 durable patterns
 
 - A browser test that clicks a `<details>` summary must converge on the open state, not toggle once: page code that opens the same section asynchronously turns a read-then-click into a close. Reproduce such a race deterministically (an event the page fires mid-click) before believing the fix.

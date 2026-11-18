@@ -1,42 +1,45 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 610b7e52c70f -->
-<!-- generated-at: 2026-11-17T03:29:19.709Z -->
+<!-- source-hash: 51305db1d77d -->
+<!-- generated-at: 2026-11-18T10:07:38.817Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION 132 HANDOFF SUMMARY
+SESSION HANDOFF 132 → 133
 
-Session: 131 → 132
+Session
+- Audited toward public beta (docs/AUDIT_2026-11-17_SESSION132.json, 20 ranked items); implemented 13, some reduced.
+- Committed on main at 6b8bb437 + closeout commit.
 
-Shipped
-- Two selected outcomes verified and released (technical release only; no public launch/lifecycle change).
-- Injuries now cost exactly the team-games stated by their label; regular-season recovery ticks after that week's games and after both injury sources roll.
-- Kickoff readiness reads live injury state; live Questionable tag shows as game-time status on roster, depth chart (amber), and player profile.
-- Golden master adopted as s131-v4 (docs/GOLDEN_BASELINE_S131.json); S119/S118/S116 fixtures byte-identical.
+Shipped (source)
+- GM dismissal with job market; Sandbox-only club switching enforced at command boundary.
+- Rival clubs draft on per-club scouted read (golden master s132-v5; v4 frozen by hash).
+- In-game feedback form + opt-in error reports on community service.
+- Shorter first week.
+- Three new site pages, grouped footer, Updates page with Known issues.
+- Minified build + engine parity check (57.2 MB to 28.7 MB).
 
-Current Intent
-- Finalize postseason/game-day medical-clock and injury pay-consequence rules; maintain release integrity.
+Evidence (local)
+- Studio; core 786/786; runtime 1260/1260; pages smoke; boot budget; public-truth gate; edited/affected browser specs.
+- Independent review found six defects; all six fixed with tests.
 
-Now (Top 3)
-- Align postseason medical clock (currently ticks before each playoff game, not after).
-- Decide Questionable game-day odds handling.
-- Confirm elevation-injury-continuation pay consequence.
+Current intent
+- Finish/verify the release (staging, production, API) if not already recorded verified.
 
-Blockers (Top 3)
-- Local canonical npm test could not finish on this host (CPU contention, then host sleep); evidence relied on per-shard local runs plus hosted exact-SHA CI.
-- All local reds classified in acceptance report (reports/s131-release-acceptance.json) — confirm no masked regressions.
-- SIL at 537/1000 — track against target.
+Now bucket (top 3)
+- Confirm release is recorded verified; promote once CI green.
+- Deploy community service before frontend (feedback form posts to new routes; form retains text and offers copy/email on send failure).
+- GM Profile.
 
-Human-Blocked
-- None recorded.
+Blockers (top 3)
+- Hosted exact-source CI must be green before promotion; it is the full receipt.
+- sim-contract shard timed out on loaded host after 185 passes + one expected baseline difference (not yet confirmed via CI).
+- Community service deploy ordering gates frontend release.
 
-Release References
-- Frontend/API source: 0c6fa04ca73fe6da1c0415d3a09de686826e245e
-- Artifact: d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e
-- Hosted CI 7/7 (run 43801823248); staging 14/14 deploy, 10/10 provenance.
-- Production promotion run 43801879516 (327/327 responsive); API run 43801882165, database ready.
-- Visual receipt: 214 captures, 0 blocking; doctor 12/12; release authority verified.
-- Staging rollback 9e8923fa available.
+Human-blocked
+- None explicitly flagged with age.
 
-Next Session Pointer
-- Start by aligning the postseason medical clock so recovery ticks after playoff games, then resolve Questionable odds and elevation pay consequence.
+Deferred follow-ups
+- Scored weekly challenge, Desk consolidation, visual upgrade, security remainder; carried limits on task board.
+- No public launch or lifecycle change claimed.
+
+Next session: verify/complete the release behind green hosted CI, deploy community service first, then start GM Profile.

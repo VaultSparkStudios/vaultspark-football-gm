@@ -2,6 +2,22 @@
 
 Append-only archive of entries rolled out of the live ledger. Verbatim; newest first. See `context/TASK_BOARD.md` for the working set.
 
+## S122 Wave status
+
+- [ ] [SIL:0][S122 #2] Future pre-implementation check: supported canonical premise recorder and complete staged/untracked snapshot; preserve this session's UNKNOWN timing conformance.
+
+- [x] Wave 1 — Full startup, fresh audit and premise/admission checks.
+- [x] Wave 2 — Three selected outcomes with independent and rendered acceptance.
+- [x] Wave 3 — C1 exact-source production and canonical receipt metadata verified; final containing-commit readback and scoped cleanup are enforced before native completion.
+
+- [x] S122: Four Architect Focus destinations restored; generated browser actions focus the visible target and survive reload.
+- [x] S122: Desktop/mobile League pulse opens the actual League news destination in both themes.
+- [x] S122: Current startup totals require fresh direct receipts; stale totals and prior-session evidence are explicit.
+- [ ] [SIL:0][S122 #1] Before a future candidate, measure the unchanged boot-byte target and admit the actual hosted URL form in the recovery harness.
+- [x] S122 closeout artifacts: ordered writeback, independent review, metadata388/388 and signed transport verified. Native completion requires the containing receipt commit on remote main and final job/lock readback.
+
+Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Session 9: test coverage (2026-04-13).
+
 ## S121 Wave status
 
 - [x] Wave 1 — Full startup and fresh nine-axis audit; native goal bound to S121.

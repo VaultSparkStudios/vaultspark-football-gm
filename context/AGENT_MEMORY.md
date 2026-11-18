@@ -1,5 +1,14 @@
 # Agent Memory
 
+## Session 132 durable patterns
+
+- A new browser spec is not evidence until it has run: three GM-career tests had never passed, and one hid a real defect (a hidden attribute overridden by a display rule).
+- Minifying the build breaks any fixture that patches shipped script text by exact spacing; match the signature, not the formatting.
+- A rule guarded on one route is open on its neighbours: after guarding advance-week, check the background job, the lobby and the settings route for the same effect.
+- Disabling the focused button drops focus out of a dialog, and Escape stops working; restore focus when the action fails.
+- When an audit item's premise is retired by partial work, update the premise in its sidecar in the same change, or the studio shard reddens.
+- Measure an engine change on clean before and after snapshots when other work is landing in the same tree.
+
 ## Session 131 durable patterns
 
 - Probe the engine's real clock before trusting a label: "Out 1W" healed before the next game for the project's history because recovery ticked before kickoff. Count games missed against the box-score game-day roster, not a stub.
@@ -101,13 +110,6 @@ S126 closeout lesson: canonical handoff headings carry session authority. Preser
 - Keep current direct receipt authority separate from matching historical handoff evidence; structured and string rendering must use the same authority. Wrap limitations instead of truncating them.
 - Measure unchanged boot-byte budgets before cutting candidates; hosted Ready /game?resume=tab is a valid observed route.
 - Preserve rejected-candidate and bounded GET observation failures. Technical production evidence never clears independent launch or native closeout publication gates.
-
-## Session 121 durable patterns
-
-- Persist the initial Git HEAD in the actual lock writer; repeated startup must not replace the arc anchor.
-- Strip ANSI/control bytes before exact credential redaction; normalization can reconstruct a secret.
-- Load lazy content by normal bounded scrolling, then await image decode before captures.
-- Metadata-only closeout still needs clean-checkout Studio acceptance; preserve unknown case totals and late readiness timing.
 
 <!-- ledger-roll:pointer -->
 ---

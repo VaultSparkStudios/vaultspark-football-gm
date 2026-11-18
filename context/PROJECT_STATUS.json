@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "Injury clock and Questionable status released on the matching frontend and API at 0c6fa04c.",
-  "nextMilestone": "Align the postseason medical clock; decide Questionable game-day odds.",
+  "currentFocus": "S132 public-beta audit: thirteen outcomes committed (career stakes, scouted rival drafts, in-game feedback, faster first week, site pages, minified build); release recorded separately.",
+  "nextMilestone": "Verify the S132 release; then GM Profile, scored weekly challenge, Desk consolidation and the security remainder.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -22,12 +22,12 @@
     "protocol": "oidc-authorization-code-s256-pkce",
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
-  "truthAuditStatus": "S131 two selected technical outcomes (injury clock, Questionable status) and matching frontend/API release verified at 0c6fa04c. Broader readiness, player, financial and adoption outcomes remain unmeasured.",
-  "truthAuditLastRun": "2026-10-29",
+  "truthAuditStatus": "S132 thirteen audit outcomes are committed with local shard and browser evidence; hosted exact-source CI and the release are recorded separately. Broader readiness, player, financial and adoption outcomes remain unmeasured.",
+  "truthAuditLastRun": "2026-11-18",
   "ignisScore": 41418,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-11-13",
-  "testSuiteStatus": "S131 exact-source hosted CI 7/7 (core 772+5 declared skips, runtime 1198, sim:contract 271, sim:realism 9, long 3, studio 441, browser 348). Local canonical npm test incomplete on this host; per-shard local runs recorded in reports/s131-release-acceptance.json.",
+  "testSuiteStatus": "S132 local shards: studio green after two record fixes, core 786/786, runtime 1260/1260; sim:contract timed out on this host after 185 passes and one expected baseline difference; affected browser specs green. Hosted exact-source CI is the full receipt and is recorded with the release.",
   "testsPassing": null,
   "testsTotal": null,
   "session8Summary": {
@@ -68,20 +68,20 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 537,
+  "silScore": 560,
   "silCategoriesV3": {
-    "devHealth": 88,
-    "creativeAlignment": 74,
-    "momentum": 62,
-    "engagement": 47,
-    "processQuality": 58,
+    "devHealth": 86,
+    "creativeAlignment": 78,
+    "momentum": 72,
+    "engagement": 52,
+    "processQuality": 60,
     "crossRepoCoherence": 58,
-    "securityPosture": 64,
+    "securityPosture": 68,
     "ecosystemIntegration": 20,
     "capitalEfficiency": 0,
     "automationCoverage": 66
   },
-  "currentSession": 131,
+  "currentSession": 132,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
@@ -116,17 +116,24 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 493,
+  "silHealth": 498,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 0,
+    "blockingFailing": 1,
     "total": 12,
-    "failing": 0,
-    "score": 100,
+    "failing": 1,
+    "score": 92,
     "date": "2026-11-18",
-    "passing": 12,
+    "passing": 11,
     "warning": 0,
-    "checks": []
+    "checks": [
+      {
+        "id": "release-authority-git-head-covered-by-publication",
+        "status": "failing",
+        "blocking": true,
+        "detail": "HEAD 6b8bb4372c9aed6d077d4e45ac1b19453cc35a2c is not covered by live production 86291dc4124a3d6c44cf9bef83f01daf0857f0f1"
+      }
+    ]
   },
   "complianceScore": 37,
   "complianceTotal": 37,
@@ -137,7 +144,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.233,
   "entropyLastComputed": "2026-11-13",
-  "lastSessionSummary": "S131 made injuries cost the games their label states and labelled live Questionable tags honestly; exact-source CI 7/7, staging 14/14, production with 327/327 responsive records and matching API verified at 0c6fa04c.",
+  "lastSessionSummary": "S132 audited toward public beta and committed 13 of 20 items: owner can dismiss the GM, rivals draft through scouting fog (golden master s132-v5), in-game feedback and opt-in error reports, a shorter first week, three site pages and a minified build. Local core 786/786, runtime 1260/1260; hosted CI and release recorded separately.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -158,8 +165,8 @@
       "lastChecked": "2026-11-17"
     }
   ],
-  "lastSession": 131,
-  "silLastSession": 131,
+  "lastSession": 132,
+  "silLastSession": 132,
   "bootAmortization": {
     "ratio": 6.78,
     "verdict": "excellent",
@@ -2288,21 +2295,21 @@
   "launchReady": false,
   "sil": {
     "version": "3.0",
-    "session": 131,
-    "silScore": 537,
+    "session": 132,
+    "silScore": 560,
     "categories": {
-      "devHealth": 88,
-      "creativeAlignment": 74,
-      "momentum": 62,
-      "engagement": 47,
-      "processQuality": 58,
+      "devHealth": 86,
+      "creativeAlignment": 78,
+      "momentum": 72,
+      "engagement": 52,
+      "processQuality": 60,
       "crossRepoCoherence": 58,
-      "securityPosture": 64,
+      "securityPosture": 68,
       "ecosystemIntegration": 20,
       "capitalEfficiency": 0,
       "automationCoverage": 66
     },
-    "date": "2026-11-16"
+    "date": "2026-11-18"
   },
   "silRollingAverages": {
     "3": 536.3,
@@ -2314,10 +2321,10 @@
   "session112Summary": "S112 completed ten audit items and five second-order outcomes. Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD.",
   "sessionState": {
     "version": 1,
-    "durableSession": 131,
-    "currentFocus": "Injury clock and Questionable status released on the matching frontend and API at 0c6fa04c.",
-    "nextMilestone": "Align the postseason medical clock; decide Questionable game-day odds.",
-    "lastSessionSummary": "S131 made injuries cost the games their label states and labelled live Questionable tags honestly; exact-source CI 7/7, staging 14/14, production with 327/327 responsive records and matching API verified at 0c6fa04c."
+    "durableSession": 132,
+    "currentFocus": "S132 public-beta audit: thirteen outcomes committed (career stakes, scouted rival drafts, in-game feedback, faster first week, site pages, minified build); release recorded separately.",
+    "nextMilestone": "Verify the S132 release; then GM Profile, scored weekly challenge, Desk consolidation and the security remainder.",
+    "lastSessionSummary": "S132 audited toward public beta and committed 13 of 20 items: owner can dismiss the GM, rivals draft through scouting fog (golden master s132-v5), in-game feedback and opt-in error reports, a shorter first week, three site pages and a minified build. Local core 786/786, runtime 1260/1260; hosted CI and release recorded separately."
   },
   "partialCloseout": {
     "session": 117,
@@ -2914,11 +2921,11 @@
     "mindHash": "e7ccf63ef328f3c1e4ee3e69d40607628cb0c423369dea8d67fd0a3fb2d9e3fe",
     "receipt": "reports/s124-ignis-refresh.json"
   },
-  "silAvg3": 538,
-  "silAvg5": 536.4,
-  "silAvg10": 521.4,
-  "silAvg25": 729.9,
-  "silAvgAll": 912.4,
+  "silAvg3": 547.3,
+  "silAvg5": 541.2,
+  "silAvg10": 528.9,
+  "silAvg25": 713.9,
+  "silAvgAll": 908.3,
   "closeoutProcessEvidence": {
     "premiseTiming": {
       "strictPremisesBeforeRecordedImplementation": "proven",
@@ -2942,7 +2949,7 @@
     "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact f39 staging/frontend/API identity, terminal receipt-only CI with no observed executed failure, zero owned transient jobs/processes, and release only the original S124 lock."
   },
   "silDebtTrend": "→",
-  "silLastUpdated": "2026-11-16",
+  "silLastUpdated": "2026-11-18",
   "lastDeployStatus": "Frontend/API 67ab750b matched; staging/production14/14, API database ready; C2 rollback retained.",
   "previousBackendDeployment": {
     "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
@@ -3130,14 +3137,10 @@
   "s129RecoveryCheckpoint": "reports/s129-recovery-checkpoint.json",
   "currentImplementationProgress": "reports/s130-implementation-progress.json",
   "lastCloseout": {
-    "session": 131,
-    "date": "2026-11-16",
-    "intent": "Achieved: two selected outcomes and the authorized staging and production release",
-    "sourceRevision": "0c6fa04ca73fe6da1c0415d3a09de686826e245e",
-    "artifactDigest": "d45e55a78ad40640c863793f17ba56e50738c7adfa9ae122be320e41cbfd692e",
-    "silScore": 537,
-    "recordsVerified": true,
-    "completion": "reports/s131-release-acceptance.json",
-    "publicationGuard": "Valid once the closeout commit is confirmed on remote main."
+    "session": 132,
+    "date": "2026-11-18",
+    "intent": "Partial: 13 of 20 audit items committed, 7 carried; release recorded separately",
+    "sourceRevision": "6b8bb437",
+    "audit": "docs/AUDIT_2026-11-17_SESSION132.json"
   }
 }
