@@ -1,45 +1,48 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 51305db1d77d -->
-<!-- generated-at: 2026-11-18T10:07:38.817Z -->
+<!-- source-hash: fb94dbc8ab65 -->
+<!-- generated-at: 2026-11-19T05:09:42.978Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION HANDOFF 132 → 133
+SESSION 132 → 133 HANDOFF SUMMARY
 
-Session
-- Audited toward public beta (docs/AUDIT_2026-11-17_SESSION132.json, 20 ranked items); implemented 13, some reduced.
-- Committed on main at 6b8bb437 + closeout commit.
+Status
+- Technical release only. No public launch; player outcomes unmeasured.
+- Audited toward public beta (20 ranked items); 13 implemented, some reduced form.
 
-Shipped (source)
+Shipped
 - GM dismissal with job market; Sandbox-only club switching enforced at command boundary.
 - Rival clubs draft on per-club scouted read (golden master s132-v5; v4 frozen by hash).
-- In-game feedback form + opt-in error reports on community service.
+- In-game feedback form and opt-in error reports on community service.
 - Shorter first week.
 - Three new site pages, grouped footer, Updates page with Known issues.
-- Minified build + engine parity check (57.2 MB to 28.7 MB).
+- Minified build with engine parity check (57.2 MB to 28.7 MB).
+- Independent review: six defects found, all six fixed with tests.
 
-Evidence (local)
-- Studio; core 786/786; runtime 1260/1260; pages smoke; boot budget; public-truth gate; edited/affected browser specs.
-- Independent review found six defects; all six fixed with tests.
+Release artifacts
+- Source 7f389bdd8e5dfd5d3462c08e4d71f4a93afe1d80, artifact bc7e1e3f.
+- Hosted CI 7/7 (run 44300045275); staging 14/14 deploy, 10/10 provenance.
+- Prod promotion 44301777428 (publish passed on retry after egress-limit error), 10/10 provenance.
+- API run 44301772817; database schema v2, feedback route answering.
+- Visual receipt 214 captures, 0 blocking. Release authority verified.
 
-Current intent
-- Finish/verify the release (staging, production, API) if not already recorded verified.
+Deploy constraint
+- Community service MUST deploy before frontend: new feedback form posts to routes current service lacks. Form retains text, offers copy/email fallback on send failure.
 
-Now bucket (top 3)
-- Confirm release is recorded verified; promote once CI green.
-- Deploy community service before frontend (feedback form posts to new routes; form retains text and offers copy/email on send failure).
+Now bucket (next)
 - GM Profile.
+- Scored weekly challenge.
+- Desk consolidation.
 
-Blockers (top 3)
-- Hosted exact-source CI must be green before promotion; it is the full receipt.
-- sim-contract shard timed out on loaded host after 185 passes + one expected baseline difference (not yet confirmed via CI).
-- Community service deploy ordering gates frontend release.
+Blockers / limits
+- sim-contract shard timed out on loaded host after 185 passes plus one expected baseline difference; hosted exact-source CI 7/7 is full receipt.
+- Prod publish required second attempt (storage egress limit) — watch recurrence.
+- Launch and player outcomes unmeasured.
 
 Human-blocked
-- None explicitly flagged with age.
+- None recorded with age.
 
-Deferred follow-ups
-- Scored weekly challenge, Desk consolidation, visual upgrade, security remainder; carried limits on task board.
-- No public launch or lifecycle change claimed.
+Deferred
+- Visual upgrade, security remainder. Carried limits/follow-ups on task board.
 
-Next session: verify/complete the release behind green hosted CI, deploy community service first, then start GM Profile.
+Next session: start GM Profile; ensure community service deploys ahead of any frontend push.

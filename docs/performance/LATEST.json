@@ -2,19 +2,19 @@
   "schemaVersion": "1.0",
   "kind": "hosted-performance-evidence",
   "generatedBy": "scripts/measure-hosted-performance.mjs",
-  "observedAt": "2026-11-17T08:37:58.763Z",
+  "observedAt": "2026-11-19T05:08:46.653Z",
   "baseUrl": "https://playfranchisearchitect.com",
   "route": "/",
-  "sourceRevision": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",
+  "sourceRevision": "7f389bdd8e5dfd5d3462c08e4d71f4a93afe1d80",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "a5973cd38aafe340bdc36b814ff70cc5c0ebe0a93157a056dcdb1dbfa40ebe7c",
-    "files": 371,
+    "digest": "bc7e1e3f45b7c7dd8f3c761ad070cde42cbe0b050298c8f098ec1715e94da081",
+    "files": 383,
     "entries": [
       {
         "path": ".well-known/llms.txt",
-        "bytes": 3671,
-        "sha256": "6150c005c531121155c7e45767528bff991a0cef027a224d1c606e8c4a7373bc"
+        "bytes": 3998,
+        "sha256": "353fe1269f9b83effb5672d81fd07cae64aec4012815a7eda233fe6063f41af0"
       },
       {
         "path": ".well-known/security.txt",
@@ -23,13 +23,13 @@
       },
       {
         "path": "404.html",
-        "bytes": 4275,
-        "sha256": "c4ea452d37f3d868cc4ef1f74bdaf063c6417024ab93a2efd9f55f0bac5c137d"
+        "bytes": 5070,
+        "sha256": "8397610c4e2226f94ce6d236aaabd93b57326f627c81339d583b6416f69978b5"
       },
       {
         "path": "_headers",
-        "bytes": 1295,
-        "sha256": "2f844ace832946120b94b009a32402a42b3827ec79b0fdd18920c541b039056f"
+        "bytes": 2159,
+        "sha256": "d4a9c14208520236d06cd97243f7139d68e336781e308ca18d0c01bc976fd300"
       },
       {
         "path": "_redirects",
@@ -38,18 +38,18 @@
       },
       {
         "path": "about.html",
-        "bytes": 6379,
-        "sha256": "b522915ef796a71cd5f536ba5cf1ed7a115ae5f3a1e3858cfc29d0552695f98d"
+        "bytes": 7511,
+        "sha256": "401993635c5bda5990e8136ebbc2b79c021c098f0073b05af9ac7a0b28748c41"
       },
       {
         "path": "agents.json",
-        "bytes": 2870,
-        "sha256": "edb0b54031ee99b2255d13f3de02c6d91051666e5ec7c1e87a080ea57a042c0e"
+        "bytes": 3285,
+        "sha256": "8231141a093c3041061c29e7dffddca95f2a196cd24ca23a8eacfa679c49b948"
       },
       {
         "path": "app.js",
-        "bytes": 113152,
-        "sha256": "248b9caec000f62c3c7a7cc5df0e385632d6b89184c151c5538ff6c2b327c613"
+        "bytes": 71463,
+        "sha256": "79e1c1ff60037728e822821e5532481910caa5f8e038f381d7c5d65e763f2299"
       },
       {
         "path": "boot-manifest.json",
@@ -58,33 +58,38 @@
       },
       {
         "path": "changelog.xml",
-        "bytes": 32441,
-        "sha256": "5eae511a74b8ffec39534c1529b7491a88a90c763728f43cc75b0505f465e874"
+        "bytes": 34934,
+        "sha256": "31460a6216ea35306c9b2beceaecc11e7a2678cea3d662a6c0dda0b5436ef087"
       },
       {
-        "path": "community-stats.6debb4a69e.js",
-        "bytes": 22553,
-        "sha256": "6debb4a69ec7d52110b474beb033319d1f590cad67217206d380d6a345621056"
+        "path": "community-stats.8d48a20039.js",
+        "bytes": 14284,
+        "sha256": "8d48a200393e37908f5b26cb321524dbb64881c8f742e1c02543bffc0d44e3b3"
       },
       {
         "path": "community-stats.js",
-        "bytes": 22553,
-        "sha256": "6debb4a69ec7d52110b474beb033319d1f590cad67217206d380d6a345621056"
+        "bytes": 14284,
+        "sha256": "8d48a200393e37908f5b26cb321524dbb64881c8f742e1c02543bffc0d44e3b3"
+      },
+      {
+        "path": "compare.html",
+        "bytes": 11915,
+        "sha256": "cff0a017466416607ec43326623fd776737f230da51ebc8a95500b11ac103b85"
       },
       {
         "path": "contact.html",
-        "bytes": 5482,
-        "sha256": "4811827ae4c47208e99d93ea40106a43edcab1e3360c033daec5b678277432db"
+        "bytes": 6788,
+        "sha256": "adf88fdca853b046986aea6faa21e3c767729a061b636e37dc2b8eed3c5ac9b3"
       },
       {
         "path": "content/claims.json",
-        "bytes": 11534,
-        "sha256": "f31199582b1b7b7ac81fabf152421250b5041560d81d71ccc86af2ec74e4e933"
+        "bytes": 13672,
+        "sha256": "057429e29cc2e3088c0cb78f7a9ee8c73eed5f45480643f86496883a6ea3518b"
       },
       {
         "path": "faq.html",
-        "bytes": 10770,
-        "sha256": "2e47afc5c0d104e1cc978e7767b4901e4e2e8be285be2aadf99fb4878d8b17c0"
+        "bytes": 16753,
+        "sha256": "0d7ed777d5e5b24c59739938d75a1cb09024251a7a83c281b5668489d90db0ee"
       },
       {
         "path": "favicon.ico",
@@ -98,23 +103,28 @@
       },
       {
         "path": "features.html",
-        "bytes": 13816,
-        "sha256": "48103b8e513d603ed5f2508af3034643a38264fab0bfcca06d0965734f05b5b9"
+        "bytes": 16841,
+        "sha256": "cf33ca9753e6a69d4618ac54ad34f21d7465567446536715c2253bfed6f3aa14"
       },
       {
         "path": "footer-manifest.json",
-        "bytes": 1895,
-        "sha256": "ed7c5b5165d31484f28998878c9294ea94b25bb69e0a22344c0c98f2f36f4c25"
+        "bytes": 2861,
+        "sha256": "84c9669e88928a58dba3e6d2d7e04dbd654840ffdeb73193ec843c3ad430d3d8"
       },
       {
         "path": "game.html",
-        "bytes": 117217,
-        "sha256": "5eb3abd9445b02522e6306ee597be094ca64c1575c5c47afdd187b614d739c88"
+        "bytes": 117552,
+        "sha256": "488894d92ba0635873f764e2c3d10fcf1e8b3fc28d6c3edb87c8bc415e2dc6e3"
+      },
+      {
+        "path": "guides.html",
+        "bytes": 20213,
+        "sha256": "346eb175163506ca06c47834cf8dc642e60fcb4be152507502a404af214dea9d"
       },
       {
         "path": "how-to-play.html",
-        "bytes": 8526,
-        "sha256": "cef06c14f502b0903711c4d07c70761cc8ca9d210a3f13ea10d8d15ef5fc8b2e"
+        "bytes": 9718,
+        "sha256": "b8485ad2d47f7fb16f3e1cbee935a99660e996599ba11ede6d9817d89a63738a"
       },
       {
         "path": "images/apple-touch-icon.png",
@@ -178,753 +188,783 @@
       },
       {
         "path": "index.html",
-        "bytes": 462545,
-        "sha256": "16c26a2d6eca51310f6523a63e7e00d100cba1d397d6535b2260a151adceccd0"
+        "bytes": 414450,
+        "sha256": "8d21a9229bed4e16051ebf8d5bdabdd9c73c250bea43155176bab2019c7644a3"
       },
       {
         "path": "lib/achievements.js",
-        "bytes": 22200,
-        "sha256": "312d506800d32150a214f21472b0186c9356f9d911b22688e614ed12bb1e670e"
+        "bytes": 14456,
+        "sha256": "0459d3131b4255eb6a775f5d8493cd5e889cc3627a73be05bda15f84364ce488"
       },
       {
         "path": "lib/actionCoordinator.js",
-        "bytes": 762,
-        "sha256": "2574f80d8c55c69f678c21c7e482b82f83300e26f523a5300fc34a2c51fcd96a"
+        "bytes": 415,
+        "sha256": "352fb9913a51c3c80454e83ce97cba97a112b06f7d246f6e70e3fa77f5150358"
       },
       {
         "path": "lib/api/clientSessionRecovery.js",
-        "bytes": 25582,
-        "sha256": "90cece6bd4990b54b19fee769d55a8b692217086e20378fcbca2344e6c6987e3"
+        "bytes": 14570,
+        "sha256": "d557ce14d5e0b0eeeaa99124c0bcc17ab5c811bb0090507f509089633370aa01"
       },
       {
         "path": "lib/api/createApiClient.js",
-        "bytes": 12700,
-        "sha256": "77f0da339d494fadf99cea14030111c8628cbfb834f1192fe7db22d48662d605"
+        "bytes": 6155,
+        "sha256": "c141528b148c9f4e329b8450eda8a2a7a78295312edbfca9e5a3fd10f9be7a9c"
       },
       {
         "path": "lib/api/localRuntimeWorker.js",
-        "bytes": 13705,
-        "sha256": "4e76d369959eb57c14fd69c80f44c97bcd4f6b99918d0e29b6745b75544f23ce"
+        "bytes": 5822,
+        "sha256": "14bf2d2d5389d8d13e84d6c4a2dac0dc2668f6be25a53fe654627c88f20ba053"
       },
       {
         "path": "lib/api/recoverySnapshotState.js",
-        "bytes": 1059,
-        "sha256": "8951e759850a18e52e83fb53635a5b74519eee907fde50e35a4fe0238d6506d9"
+        "bytes": 527,
+        "sha256": "cd7e933e157e297bc3ce52355409e5fb717e2f365a26b6069fc50973b5767eaf"
       },
       {
         "path": "lib/api/workerTransport.js",
-        "bytes": 7528,
-        "sha256": "7335d20537d8a268b588d9099a8d0c6cfb9b3aa97fcbfe1ae4b7002c7a016ab8"
+        "bytes": 3630,
+        "sha256": "60addab06574fe0ab6bd58ef73e32b1e40c464db73239859b1c433396ee065f9"
       },
       {
         "path": "lib/apiContract.js",
-        "bytes": 8804,
-        "sha256": "832adeaec5224b76dd873e0d0fd762018a67a5c34f15576c5e104acfc94049ba"
+        "bytes": 6866,
+        "sha256": "dc77273bb5b834500f6dd590d6ccb789a9a695d9f77abef2ab8a7f1c61b0d08f"
       },
       {
         "path": "lib/appCore.js",
-        "bytes": 61085,
-        "sha256": "13c19bb177143690bb5adef982dbbf7b2b5a651abdf1cc09946185884ae64be7"
+        "bytes": 39501,
+        "sha256": "2595239c9e4c3bc02c14d8900af40281d791296d29c24179579bca782afb97fe"
       },
       {
         "path": "lib/appState.js",
-        "bytes": 12455,
-        "sha256": "8bffb177795afba3db3e497434380fcfa232aebd87df0de4ef74eddb26f8bc78"
+        "bytes": 10984,
+        "sha256": "21a66a877c80c7d21212261148554cb45e4d2686f35c52120f1f91db12d99502"
       },
       {
         "path": "lib/appearancePalette.js",
-        "bytes": 2653,
-        "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305"
+        "bytes": 1946,
+        "sha256": "09117ba2f9da89394eba85609b96cb455d636e27bbb1a317f25bbc8d21a2a6d3"
       },
       {
         "path": "lib/architectCut.js",
-        "bytes": 6574,
-        "sha256": "5edb460f761619cef360a87293f212c7b4fc280432398304f47009f3c0c1d963"
+        "bytes": 4324,
+        "sha256": "5b140b315c8035ae92942a7e427325d34926aa2d337ad9209b41952b5f235654"
       },
       {
         "path": "lib/architectPlanRehearsal.js",
-        "bytes": 6938,
-        "sha256": "dc7987a06cf65f9c2ab2483fc73d897664e172008f00f44d436ffcbfe440a1c3"
+        "bytes": 4459,
+        "sha256": "69b5e360c23734786b2e7220452aa609c642f980f73b9b58ed70807052a6f69e"
       },
       {
         "path": "lib/audioFeedback.js",
-        "bytes": 4117,
-        "sha256": "ed261e77be93456a8f3de1b649ec2e784020306541210b8d01d478eab2c74abe"
+        "bytes": 2097,
+        "sha256": "04c9b344e2d96e057f43f001eaa9d54758fac9b06dcf592ed7e7ee34620fa6cb"
       },
       {
         "path": "lib/authorityEpoch.js",
-        "bytes": 1348,
-        "sha256": "fd8619500e7fd5f7484dbcc25f952252311ecda9e5723e6586b2f6727c257371"
+        "bytes": 633,
+        "sha256": "01ad885d7d2cc9633d4c2438bcd867c2170ae5fbea2f1d7abcaac41268d8168f"
       },
       {
         "path": "lib/betaFeedback.js",
-        "bytes": 16195,
-        "sha256": "f2e2050e4788c12378ff4d73e2ec50d7f0c945b6a78c81844d544aad4d73a080"
+        "bytes": 11011,
+        "sha256": "136a8643d80067f7774e0f893d5acdc3a64c017acfb66e797e5b21c3e4afa73d"
       },
       {
         "path": "lib/boxScorePresentation.js",
-        "bytes": 5404,
-        "sha256": "cde2ae34bac10813b2b0a2cafe0136a1e6e0ae182f09d5c70fd1047d26589f8f"
+        "bytes": 2895,
+        "sha256": "73bf0d982800b7761b2bcdc503aaa78d7e19c19243792e358c1cc09161e68ae0"
       },
       {
         "path": "lib/browserStorage.js",
-        "bytes": 102,
-        "sha256": "03d7ca99e5652bfe51db32fd9a1d5af2bf4c869cb21918a42d658481e598fe1a"
+        "bytes": 88,
+        "sha256": "12985356f7ffddd5891da6968ff6ea3278c0c77ccb8c62530b4234dffb1007dc"
       },
       {
         "path": "lib/challengeCodes.js",
-        "bytes": 5945,
-        "sha256": "d2f3d5d98aeb8880311aa273ca9e3dd49579cacecff8cabbd58feb9a9b8ed24f"
+        "bytes": 2229,
+        "sha256": "9e1646070bf8d4a0efb3a470a0d3d6c724658c357a2b1c10c08a508c2d753f56"
       },
       {
         "path": "lib/clientDiagnostics.js",
-        "bytes": 5996,
-        "sha256": "ed7a4633b7f2c2206c0e07f5dc6a16bf52d9a4483c7beda32c4b311270aefe6c"
+        "bytes": 3191,
+        "sha256": "59614bdf8419c59789ef1195220fe9321d8cc895b59cb11a34ffe3481ef69d05"
       },
       {
         "path": "lib/clientRecoveryUi.js",
-        "bytes": 5660,
-        "sha256": "59e6c1f894b9b7aade41e35ed283c4d94faea9a479d98804dfc0c54188aa4999"
+        "bytes": 3864,
+        "sha256": "bc722701bc2fa5730dc9d9568eb02b09aa5b8bfb1f6709a45b04be950e9b211f"
       },
       {
         "path": "lib/coGmBriefPanel.js",
-        "bytes": 2313,
-        "sha256": "cfb33ec4f1d28723fb5721efa10ff1d7ac29ec234aba746379d86173fc4584ec"
+        "bytes": 1773,
+        "sha256": "2109a71580451f96b45f1d95ccaf24bd268ac108b7e3cf00dbd7daa1fb1f9deb"
       },
       {
         "path": "lib/coGmBriefing.js",
-        "bytes": 8591,
-        "sha256": "90c1c798daaa4f765608cf5aaad6b09227a4f231606eb24a3654afd7a297df47"
+        "bytes": 4833,
+        "sha256": "c8ea95d421446add4b061f41974af9ff8343ff0c46d0a4bb2a35eff3dd32cff2"
       },
       {
         "path": "lib/coachingMarketActions.js",
-        "bytes": 1126,
-        "sha256": "2b119e3fe4a5da33b7b6c8f001b8293fa706b027f1554bf3a8f67751829ad318"
+        "bytes": 636,
+        "sha256": "b44f64600dc0b819a3eb6897e847ee3c83da1ad4262917d94bb0ba855d7cd109"
       },
       {
         "path": "lib/coachingMarketPanel.js",
-        "bytes": 6482,
-        "sha256": "81f802dd703000e99fda12686ef38fd48ae686dff246ea87a5462a0b3d2b6410"
+        "bytes": 4130,
+        "sha256": "51d13e749089f234a29d1c9a521e2eca7529472071f6b81b3c2d7b059ddacfc5"
+      },
+      {
+        "path": "lib/communityConsentPrompt.js",
+        "bytes": 2595,
+        "sha256": "526b5c7a8170c7122bef51fed5028a0c0acff4d0604507a66ece70a2eb73e9dd"
       },
       {
         "path": "lib/communityEventContract.js",
-        "bytes": 4634,
-        "sha256": "1466f7970beb27da0b33f767386ed19bce77de3e69737ac2be228bd2e8bb3354"
+        "bytes": 3916,
+        "sha256": "88cf7e059a9976c6495fc14c19086a20e96557aed869116071098b8487a6b323"
+      },
+      {
+        "path": "lib/communityFeedbackContract.js",
+        "bytes": 2992,
+        "sha256": "91cbb024dfc31408d67172283bee32b5157b8bd66dcfc483cb364478ef2e26cd"
       },
       {
         "path": "lib/communityTelemetry.js",
-        "bytes": 18032,
-        "sha256": "8797c75193dda3ec3ee88c912a4fbf8ba06172b4d1d1f57b4a8197f2261252d9"
+        "bytes": 12988,
+        "sha256": "ea9f693db6ce78d9f77c95c9e656bf2019a41ee629d743970afc1daac177f9a4"
       },
       {
         "path": "lib/contextualFeedback.js",
-        "bytes": 8266,
-        "sha256": "6154c32b796b73ef7544996a6f698c9ddbca52cc9bfdaec0be9fda4f0b04df88"
+        "bytes": 5948,
+        "sha256": "03c5d5fb29e8bbed000a80ec7db334266d1f877ad3c31ddaa9d6fe0edd02183d"
       },
       {
         "path": "lib/continuousHairTexture.js",
-        "bytes": 2104,
-        "sha256": "001e26613e82e50c3a4d30a18e634e81b2980ccd37af3b50fcd19309d5e2903f"
+        "bytes": 1256,
+        "sha256": "184c26166bda6a01edc6c9ddf489db35b11c56506aefbf3e5284fe9c7ae8a104"
       },
       {
         "path": "lib/croppedHairVolume.js",
-        "bytes": 2358,
-        "sha256": "71b3064332890e6edd1f51f2bfc2d9f749a7a18d8a667db4566252dc3ac71d3e"
+        "bytes": 1782,
+        "sha256": "d25361b76b11f3fd5382176052416adc28602f93e54c7269882053fec2974dd7"
       },
       {
         "path": "lib/decisionAnthology.js",
-        "bytes": 1679,
-        "sha256": "96a791b4dc4af5b9444618a18773d2d58d9c51fea38004bb6a88d28aa9a28951"
+        "bytes": 1136,
+        "sha256": "64fbb0c0f16a9a47af55fe3c801e48212a1bebef468012ccf9fe69675ae4acb4"
       },
       {
         "path": "lib/decisionArchive.js",
-        "bytes": 4377,
-        "sha256": "f1733d13e24ebc7d51b656082a789c2bd2a0df08dafb658dae08d4f701aaf76f"
+        "bytes": 3416,
+        "sha256": "5969cf72f49f11dbc104b4d34eb2da67fbf421a838000ce5d96bf11803792e00"
       },
       {
         "path": "lib/depthBoard.js",
-        "bytes": 18721,
-        "sha256": "ce3ad9a6b17c1a5dfc600b8d1ad1a4ed5247481e25bc47f86fbc68e8c2c41867"
+        "bytes": 10388,
+        "sha256": "519e4f61bb5be179cd9b5ac4c69bb86e724f17e228d72a1cff6c0c96b604cc7e"
       },
       {
         "path": "lib/depthReorder.js",
-        "bytes": 4088,
-        "sha256": "85e6c2307fa16f5cba758c11ae578258d6aec7722f020f0b528ac3fc2c119db2"
+        "bytes": 2007,
+        "sha256": "ed1d7b0637eaa132cb5e85b49991d99be1c60d881c3acc7f47369bdf893f71af"
       },
       {
         "path": "lib/deskIslands.js",
-        "bytes": 4533,
-        "sha256": "84d6649422ad0b2c91144055427c7db20f270b6653ade47d43d59e4e42f79f14"
+        "bytes": 2517,
+        "sha256": "e7b1d7442e5d6e3f36583827375794cdb28bb59733bde331330140b8014c83f8"
       },
       {
         "path": "lib/devSurfaces.js",
-        "bytes": 1377,
-        "sha256": "c19928d9eada8145f5cc688bafc38cf57949e8e6aa75cf5411fd7e2b927df2f4"
+        "bytes": 425,
+        "sha256": "e4a56de55185b0c5c413b18ac73a7875ac87c354f36b2a94ee94dda5ddac635e"
       },
       {
         "path": "lib/draftPickReveal.js",
-        "bytes": 4661,
-        "sha256": "71757db9aa7cdce68712047479ca8e50fffd511f5f71a602660137f31f372300"
+        "bytes": 2282,
+        "sha256": "7a1cec057f2b44dd05045637e7638ccb4d93711bda1f9cc73a21252b79447d14"
       },
       {
         "path": "lib/dynastyTimeline.js",
-        "bytes": 6267,
-        "sha256": "17658196cf6e9fbaa45a2824192e41df11986a85b8ec5775deacc5b7b650968d"
+        "bytes": 3267,
+        "sha256": "88cb5b6b42de4b872d74887956822099b12bc74a4b0990826b5ebbd6e7849cd9"
       },
       {
         "path": "lib/engagementFeatures.js",
-        "bytes": 28562,
-        "sha256": "917d7ab9342be8f503c613122fa8a4768701cec03bc82c9d055be4e765bc97cd"
+        "bytes": 18665,
+        "sha256": "4252b8b1b6d2c2e4251811736fcff20f9474d329f54227ac342693f16eaa5428"
       },
       {
         "path": "lib/exactSurfaceNavigation.js",
-        "bytes": 3114,
-        "sha256": "b6a3a6d7ce31896526f7893076bc455b706c617e9397383d08c09e7ccf5fe209"
+        "bytes": 1366,
+        "sha256": "2c3eec7ef0a24bb04496f08f1ff44f5e979e1f2d22951d07faaa5cc72acbf810"
       },
       {
         "path": "lib/extractCommunityEvents.js",
-        "bytes": 8329,
-        "sha256": "e1c507fc40fb87675e17797951ff7a36bcb80e2d9a41e9a2c8583fc483c62a64"
+        "bytes": 5317,
+        "sha256": "755f0f0df684f2435ff3af96aff82db1185bb6bdc23b56465a0675fb4126fe6f"
       },
       {
         "path": "lib/facilitiesPanel.js",
-        "bytes": 6563,
-        "sha256": "2d1cbd0dcfb79c441d939c06359a2912a3eeb04f0ef00a5b5ee9f9fb6ad1e352"
+        "bytes": 3973,
+        "sha256": "169e7648deda140542b0ba67f0e4643c0c89d1e9b8765df6cd5492e1ac4fe3f0"
       },
       {
         "path": "lib/fastSimulationPolicy.js",
-        "bytes": 2071,
-        "sha256": "4181fa619506961b34db77f2a1db7915fa76508524481ec15c500053f6255c00"
+        "bytes": 1378,
+        "sha256": "48829856cad0589844966eda74287e81acf2180c28e30c770d14185f778087c5"
+      },
+      {
+        "path": "lib/feedbackModal.js",
+        "bytes": 7258,
+        "sha256": "b803c06e2cd5e2d8c034cb2ecdb4a145a32dc494946bac8dc8a5fc9e5652fa83"
+      },
+      {
+        "path": "lib/feedbackTransport.js",
+        "bytes": 1976,
+        "sha256": "907ae35a4acb6275e4db514ad082b46ef18fdcf59734d98971fc4089a6d168b7"
       },
       {
         "path": "lib/fineFaceGeometry.js",
-        "bytes": 13557,
-        "sha256": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025"
+        "bytes": 10650,
+        "sha256": "2717bf2d5ee276ac33c58510e165fccd6cfe7c0205d77bd3517733955620e348"
       },
       {
         "path": "lib/firstDebriefPulse.js",
-        "bytes": 8641,
-        "sha256": "ce6751727604018d54d6b98689ce3b6c88c480b871e8b0cb6dc28236c6a4cea0"
+        "bytes": 6729,
+        "sha256": "f3e6a1de40d88bd06d6b095ab311ce1ff8ca9bf9eed0f068a31fd78e894153f1"
       },
       {
         "path": "lib/firstSeasonContract.js",
-        "bytes": 17566,
-        "sha256": "a0fdea0126fcbcd89601e4fc2f22ebad9958801de32b3eb45718aef4e8897960"
+        "bytes": 9519,
+        "sha256": "7e4deea11a303fe0a199578f7ce13377c6fa59ba874e5ca7402ba7cce1b672e0"
       },
       {
         "path": "lib/franchiseArchitecture.js",
-        "bytes": 7220,
-        "sha256": "0035be48f9b922bfa88a5122fd04ef5aecd3d82c585a820264cb71b14302e03a"
+        "bytes": 4922,
+        "sha256": "6c05952ba047b7642623ee2233e1a4f229082ab56a5c205d9ce65eb4af6fa2c8"
       },
       {
         "path": "lib/franchiseCommandCenter.js",
-        "bytes": 8547,
-        "sha256": "b8a41c783ca5d4e4edb83cb465c908f63b8514b9d73e4c027e14a42f962590cd"
+        "bytes": 5311,
+        "sha256": "e74a773a8c3890a63eb754d26df90778ba3381760d156a056efcc619e290a762"
       },
       {
         "path": "lib/franchiseNewsletter.js",
-        "bytes": 8147,
-        "sha256": "124c0b8893d87ad3ae0e35f178bbea2d678c1638d93133c7ef2d53354733a81b"
+        "bytes": 6204,
+        "sha256": "4e6f33e2389a6c7d3b82115de7fad1f6d717b1fb93a273f7779aae545e77bb8f"
       },
       {
         "path": "lib/franchiseScope.js",
-        "bytes": 1553,
-        "sha256": "8be3d6a97ecab23b96330c650f5f0eaa65d7dcfaa2a296b323da57f52a533178"
+        "bytes": 996,
+        "sha256": "8cf621bf4209e4f6baa4d698055dce85c6f41a23c56b61dec4146998ac3ab997"
       },
       {
         "path": "lib/frontOfficeAdvisor.js",
-        "bytes": 26769,
-        "sha256": "4f2308ae806d01c8f5a43d7eeb30a0e4305fa372665c39ce93fabe8599d1e188"
+        "bytes": 16152,
+        "sha256": "92ee20944885b04af89461b1ee22528b35c416660186f2b83746f9e7be49cbc5"
       },
       {
         "path": "lib/gameFlow.js",
-        "bytes": 60886,
-        "sha256": "104e96751d241c0f6b86a9ce0b075b97942191753f0d7c97212cb44b8dcfb8d2"
+        "bytes": 39522,
+        "sha256": "e3900a009797bae283612899c7922d634ec01af698e9ab0659d2b63a31635170"
       },
       {
         "path": "lib/gameOutcome.js",
-        "bytes": 2085,
-        "sha256": "738c31cead7673f36a59e111d9755b40b086fb383d58093f682d582cf2c584bd"
+        "bytes": 1081,
+        "sha256": "0e0cded2ad735de449bbdc7e209f217ee97acb45a42bfca0790b3f3bcc7a4d29"
       },
       {
         "path": "lib/gameplayNavigation.js",
-        "bytes": 2849,
-        "sha256": "ae1ab7e2665343fafbe28c9ba1b42aa767174dc0b9edb4a954d8c4958a8ac39c"
+        "bytes": 2055,
+        "sha256": "3ba017508222c4a42e216c09347a2dcb4d2d70431578db3f51048caec523fce7"
       },
       {
         "path": "lib/gistAuthentication.js",
-        "bytes": 3215,
-        "sha256": "737be150b40d767dff6f1d43b7e4c2e5f96eff106aed193d4cc7fba192c7f359"
+        "bytes": 2007,
+        "sha256": "470fb7ac13ec1c5bcb096fb51c458ea3df0039893270dc1d8e6e9f9be445ff3d"
       },
       {
         "path": "lib/gistCredentials.js",
-        "bytes": 1774,
-        "sha256": "f358cc804d864e5013ddf8f06fe541d27d4129cb9df2c35b802310f5caaceda4"
+        "bytes": 882,
+        "sha256": "dd12ec43ec00a3653c66f25d7331b540b975c5c4fba2c1d0b72e993adab7c5c3"
       },
       {
         "path": "lib/gistSync.js",
-        "bytes": 8867,
-        "sha256": "10409f97753e6323fe7ce0574ab7305f0306b1bf2ff0426dceaf4350d039b429"
+        "bytes": 3573,
+        "sha256": "4041b80a1fb72c8a624d6205e606eb93bac26a0197fa492e7c19515291524079"
       },
       {
         "path": "lib/gistVerification.js",
-        "bytes": 2018,
-        "sha256": "11f6ac5bd9a7a6461d75c4d6734bdad435d84fc566b91d930adfcf8c6b1d517a"
+        "bytes": 1257,
+        "sha256": "05f7246ba12dc154c36f63f65c18c5730e728e4485ff06b483afad31676a97bd"
+      },
+      {
+        "path": "lib/gmCareerUi.js",
+        "bytes": 6474,
+        "sha256": "e0e2bf60d2f7c1504a8244d0098b4ecf05407de798875888afb80a7cc0312b75"
       },
       {
         "path": "lib/hairArrangement.js",
-        "bytes": 1659,
-        "sha256": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26"
+        "bytes": 897,
+        "sha256": "b86237a03cb44c53e93083448cf48d61dba155cc93a9e662bfae49a7423c6c39"
       },
       {
         "path": "lib/hairGrayFibers.js",
-        "bytes": 1012,
-        "sha256": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49"
+        "bytes": 517,
+        "sha256": "b1b1caed8578f2f778453cdb3731fb4bbb338e36e6e9f394ad29476c6dc32a81"
       },
       {
         "path": "lib/hallOfFameCeremony.js",
-        "bytes": 6068,
-        "sha256": "7ca70ec97ef3f38add573af53d780174827f381779cf4dfc23f7f4bb8348fe3d"
+        "bytes": 4193,
+        "sha256": "bef30c25900e11539fa006a6286da8cb3a6f93d228412ccc343b7a2bd3a0b348"
       },
       {
         "path": "lib/historyFormatting.js",
-        "bytes": 2289,
-        "sha256": "aa6d22845a7fdfd0ec88680880458002cbabd613e32a0cfdbeee6631550833a5"
+        "bytes": 1620,
+        "sha256": "5328608c21b611e13ff652d21998fbf770d2565247e3bd0fff742c7858ac3837"
       },
       {
         "path": "lib/injurySalaryClaimsPanel.js",
-        "bytes": 3151,
-        "sha256": "7bccd36c6ce7e1a67447080ec48c3afc17f49c8ce916b7ab1a7fa1f6847a9886"
+        "bytes": 2495,
+        "sha256": "0ddad6c4753d7c94075b9e7779ad9f819f561164c18d5e4cf36b610d9c829156"
       },
       {
         "path": "lib/injuryStatus.js",
-        "bytes": 1787,
-        "sha256": "d923f04977592b349c37bd1e8b6554e18ed410792723b3250d2d6ef784618911"
+        "bytes": 656,
+        "sha256": "4e69fa966abbf68bdecf3308607b6553014423267ae983c8b0bf9a5a694f2466"
       },
       {
         "path": "lib/launchReadiness.js",
-        "bytes": 2771,
-        "sha256": "a3644f95686596e6025c7b30ebc11254f102eef6f573900060dbabed3a3a106c"
+        "bytes": 2033,
+        "sha256": "c1eee1120f1ec92869e943061a992f6f4f494c08c44a7cd77d3a28e61c628f44"
       },
       {
         "path": "lib/leagueLensPanel.js",
-        "bytes": 4686,
-        "sha256": "dc9fe60927b67a7e0dbc354719a44afb56ab1129d9e024026b48f68a59b33505"
+        "bytes": 3493,
+        "sha256": "2f92acfb5df87e72e4642dff0a69b9ffd9e384a674ddd721492c56e6cc9e25f7"
       },
       {
         "path": "lib/leagueStoryExport.js",
-        "bytes": 12078,
-        "sha256": "43ef55dba1382f058532e82a8cf4b4379fef1bec2c49ea3f4364b83ff0220058"
+        "bytes": 8823,
+        "sha256": "8186a4d97a92c96efed720acee7d65011934a1dea0b4de0ad0caa1f27d13ee5e"
       },
       {
         "path": "lib/longHairFlow.js",
-        "bytes": 4467,
-        "sha256": "4cdd4c2a3f2fff6709072a9f4ec64dee66bf4585ede6463f58ae055fa71ca0ba"
+        "bytes": 2723,
+        "sha256": "5be404815893db9791f1fb762e26f1246073afc7463eece335fec5537cb607fc"
       },
       {
         "path": "lib/lookAhead.js",
-        "bytes": 1963,
-        "sha256": "f5f83462192dff00d60831ca69223dcfa5d4177e419672ab580937831f0deb40"
+        "bytes": 1223,
+        "sha256": "6d5b0e6c77c9deef52a9efd2e336a3b1e759707cbc5342be60abb93b979e25da"
       },
       {
         "path": "lib/marqueeBadge.js",
-        "bytes": 4158,
-        "sha256": "18cf4ea5f6ee32ebaff173dafc8403f0d8c5b2d9189b26918939c7fa9fc3378e"
+        "bytes": 1469,
+        "sha256": "afa7ab6bee789c34b2b56eb395a885546cbac61818bd8e586b14613673707d5f"
       },
       {
         "path": "lib/mentorshipPanel.js",
-        "bytes": 5148,
-        "sha256": "f944718618e8d51af9909908364058bf99acd4f071b28a9d533f73c49e4e2050"
+        "bytes": 3852,
+        "sha256": "2a1f93069f93638f5db18e4f4779acc01456a93b1c76d6198c21e618d07ea8e0"
       },
       {
         "path": "lib/mobileLoop.js",
-        "bytes": 17414,
-        "sha256": "6101bf17edff16908983ca9f13b3bca49a8a650fb09f722307e2717af277dbd8"
+        "bytes": 11259,
+        "sha256": "d3a92b0aadedeee3a05c363730ca97e3d36aea0fa1c6338ba656b76efa136f99"
       },
       {
         "path": "lib/mobileNavigation.js",
-        "bytes": 5813,
-        "sha256": "a563a6432cd9f387fccc9ec8a55606889362355261b48e778d72f7abfe82980f"
+        "bytes": 3362,
+        "sha256": "797ddc95ef67dfc569a5edbea85e8ac6adf7c17df1a4f115e64be311b4993ac4"
       },
       {
         "path": "lib/modalManager.js",
-        "bytes": 6529,
-        "sha256": "d274fee8513330371c141e782b07988043ec66c267b02a98773cecb58917aff9"
+        "bytes": 1627,
+        "sha256": "c49fbe5f7a0ab988e48c126889e2d3809809a46a06545f7443fdb6a678456a13"
       },
       {
         "path": "lib/momentCard.js",
-        "bytes": 17407,
-        "sha256": "dfdb3f2c5d15cf6d1903cb2b780e355a0f3bdb5bb2a4b8ad385c4559e7cf2550"
+        "bytes": 7944,
+        "sha256": "d757afe621d32ac0ca2b9f1f30e7504420acaadfdc0e5a1ca822735860855e8d"
       },
       {
         "path": "lib/offseasonDevelopmentReport.js",
-        "bytes": 5709,
-        "sha256": "c644c99eb069256885075c85ed9119ce0881022c5ec17077c20be5afa8f85bbc"
+        "bytes": 3151,
+        "sha256": "488e25176f23854338b9cb045924a4761277b256414975af44ce4f6d3db46ddc"
       },
       {
         "path": "lib/onClockTradeMarketPanel.js",
-        "bytes": 5155,
-        "sha256": "c9944026c098d9b62670359dea2ac3601111a18c99e44bf1260c985b2a6755b6"
+        "bytes": 4271,
+        "sha256": "8c64e968e30f4c2ae1b006409b36b1fdf8585b45b2b2c8bf8550de8afeea0f77"
       },
       {
         "path": "lib/operatingStatementPanel.js",
-        "bytes": 2653,
-        "sha256": "9f685f33c5e2301bef562091e70bc7ed8a5aa43b3dd5beaaea5c25f066ff57dd"
+        "bytes": 1970,
+        "sha256": "2f95686e4a584056162afc1c5be71a4859c6db36d59a9ffdc9ae49de2125986a"
       },
       {
         "path": "lib/partedHairFlow.js",
-        "bytes": 2557,
-        "sha256": "d3460fe30217eb67eed58ba4287be9555181f3326a11216fd0c00c455c700d35"
+        "bytes": 1797,
+        "sha256": "2409713053798c9f1662b1dd60f327421de546dd7831c75e440cac1957c27bcd"
       },
       {
         "path": "lib/physiqueGeometryContract.js",
-        "bytes": 8976,
-        "sha256": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d"
+        "bytes": 4914,
+        "sha256": "0443cb106556b24429efafb929d3cb564d57db814a860079449ad0a7be9c58ca"
       },
       {
         "path": "lib/playerBody3d.js",
-        "bytes": 24016,
-        "sha256": "b214af25db170da632d972a039d107137e5bc22bc6c74993b27325e8f001aa8e"
+        "bytes": 16598,
+        "sha256": "7466ce5f3c3b52bece2704836ac98afc756f8a19df6efb2208e12522a5e0f4d5"
       },
       {
         "path": "lib/playerBodyAnimation3d.js",
-        "bytes": 5006,
-        "sha256": "ef6920eb7f435ce19a4119c937de85335e283d1890432592b03aa36a75c15d98"
+        "bytes": 3524,
+        "sha256": "cc8142aaadc9b2e3aa189da176dd7fb694a47023a33c6234bdfa2ea299a77652"
       },
       {
         "path": "lib/playerCapacityStudy.js",
-        "bytes": 2885,
-        "sha256": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7"
+        "bytes": 1663,
+        "sha256": "fddc1c4a27e97d2a4ac6b049308df6e18d7e68c416e0975f5b0b940988f51307"
       },
       {
         "path": "lib/playerCharacter3d.js",
-        "bytes": 6674,
-        "sha256": "32f0db1d505eaac5c3629b19a7711255287e01f27bcf2064e70ccb3bd8706c58"
+        "bytes": 5012,
+        "sha256": "dfeea08817702f8788aef29e45e86aa2adb378d56a3b8029da66fdbec1a50ecd"
       },
       {
         "path": "lib/playerFootArticulation.js",
-        "bytes": 738,
-        "sha256": "2ca2890c5814109f64a60b5f8443423c124712e01413ab57d3548489175bab7e"
+        "bytes": 409,
+        "sha256": "caa5392ebd345f907ccf21afd2fc3676fb9bcc068d39be0d55e956f9d81e590a"
       },
       {
         "path": "lib/playerFootwear.js",
-        "bytes": 989,
-        "sha256": "cae06f6b6ec69582d916990bde2678d41f26d3814482880ad9a4bff4068934e5"
+        "bytes": 605,
+        "sha256": "cb5b1d8e1e7cdfc6225ee0a7b2473b4da756412957e865ae0b7b7a68ef314a9a"
       },
       {
         "path": "lib/playerHand.js",
-        "bytes": 2081,
-        "sha256": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca"
+        "bytes": 1258,
+        "sha256": "81db12946544426259e00ee1b95dc986ecda92b740202384f163de9167f4aaba"
       },
       {
         "path": "lib/playerHead3d.js",
-        "bytes": 58038,
-        "sha256": "b410c81a2633052a77589cb84d4401358ee490f68f8de737be92276bc0d95abb"
+        "bytes": 39958,
+        "sha256": "037cf82271a6a451c94393d681f2e87a157919d2ba676386484051ac07bfee58"
       },
       {
         "path": "lib/playerHeadImage.js",
-        "bytes": 2869,
-        "sha256": "f4c264f72ba4643abe271fc8298e8395e9096570db18e281666791c998639a0f"
+        "bytes": 1909,
+        "sha256": "2eceb2dd1716da3b35afee167adf2666e565ead1a568225b46f44862bea30caf"
       },
       {
         "path": "lib/playerLimbSweep3d.js",
-        "bytes": 6722,
-        "sha256": "726f2d17b7234ca00b589d83b89dd0d0cbd779ce2d4a099f643ebfddc089244d"
+        "bytes": 4089,
+        "sha256": "414de23d3ca1c2f00fabbb86084bbd1109b4210551389d0370f8e62336badd04"
       },
       {
         "path": "lib/playerMotion.js",
-        "bytes": 34408,
-        "sha256": "6653b51b8f97115986d69fdc3c9c34d3cd9dfc628a3a0136b5af8cb0933f1df5"
+        "bytes": 21517,
+        "sha256": "cbb662c1131dc536d1ab67380ad72fa6bc1588b3668ac9db066cbddb3aad29c4"
       },
       {
         "path": "lib/playerPortrait.js",
-        "bytes": 23512,
-        "sha256": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445"
+        "bytes": 15197,
+        "sha256": "e09221922eae8387cc9f2a43cbe136c6efa24bd1b0808d4448419c598667d441"
       },
       {
         "path": "lib/playerPortraitFace.js",
-        "bytes": 56012,
-        "sha256": "42478c4db46954c5cbcb8cf80a140ed3b55b2cf55ea5ad413795be207e8cf774"
+        "bytes": 40417,
+        "sha256": "e6edad59793b09df7f187cf985ab847b0805cf7ae1ca7cb9a422d5b92e894bac"
       },
       {
         "path": "lib/playerPortraitMotion.js",
-        "bytes": 2523,
-        "sha256": "44d7a46274ecc99c71bff3089aadfdccf0555435229e7e45bbe7570a4da091f9"
+        "bytes": 1655,
+        "sha256": "84dcba83ccb5d48707455bc5a3a58321e5cf7fa3b354aa91e145dc11d4e313a1"
       },
       {
         "path": "lib/playerProfileNarrative.js",
-        "bytes": 14896,
-        "sha256": "10459e5f9cc8e99d9a968e89e7393d3b0000a62691852f12e02ae8f4c0843ae3"
+        "bytes": 9250,
+        "sha256": "79f26831f5ef424359565afc5f343aa5734cf3b0d7526c5e339cc457632cb0cb"
       },
       {
         "path": "lib/playerSideAppearance.js",
-        "bytes": 14309,
-        "sha256": "1430931336bca32de1221275152cedf59189bcab07268b2be6a4b53739e51e30"
+        "bytes": 10656,
+        "sha256": "a008ec50853bbaa299dad4cd819c3583cd4045c9aae7b5245ba58a473a13cc33"
       },
       {
         "path": "lib/playerSurfaceLighting.js",
-        "bytes": 2992,
-        "sha256": "88f6fa0d1b32d7c305d7bed8bdd070f6597dc6f8c6ee08030bc4fd4ead9a8171"
+        "bytes": 2308,
+        "sha256": "c4109bbf20afea931981301ec1ed39555f23b11ec737118e354ad08364bac6e1"
       },
       {
         "path": "lib/playerTorsoSurface3d.js",
-        "bytes": 1527,
-        "sha256": "9c69ad1c48d087205161c97f5acbd7aff164a47e7901923f9044afeb4015b70d"
+        "bytes": 967,
+        "sha256": "d25f313bc7ee9e66bb839855165ea29f0460a70515e087872a814ed33c18b826"
       },
       {
         "path": "lib/playerTrainingKit.js",
-        "bytes": 1536,
-        "sha256": "4753d3432504266653fdd6e04faba690b9c5e4df999471fc3058d259507a65ec"
+        "bytes": 950,
+        "sha256": "fc6964a225e9cffe45dd26371adbbf26049f0844a4d6d2b88fd80abbd0c05d18"
       },
       {
         "path": "lib/playtestJourney.js",
-        "bytes": 5051,
-        "sha256": "bb3f8aeae0814da8cb820a0e9e7ad22e7a770c2cc463345fae82e501eca0e050"
+        "bytes": 3014,
+        "sha256": "0ee107d230aedf3d286c4a990c728db26849a6be88498eb4a358e77e8a2eecd0"
       },
       {
         "path": "lib/playtestReceipts.js",
-        "bytes": 5711,
-        "sha256": "219783e865a96feb88717ee4b9401212a65b4f83d339a90ffdb5b214cf9b538e"
+        "bytes": 3737,
+        "sha256": "36d3d89026bd45ddedd11ceb10cb89c100d11b2e97bb6616815e77f5ab2f5bbc"
       },
       {
         "path": "lib/portraitAppearanceContract.js",
-        "bytes": 964,
-        "sha256": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96"
+        "bytes": 545,
+        "sha256": "3b044487366fc376cc70c3fd4dab83e648708a50df7e4366f8c6ec8b33e40120"
       },
       {
         "path": "lib/portraitEyeSurface.js",
-        "bytes": 1873,
-        "sha256": "d7b4e22337e95447e1d519936fdae1046d4103e8f020732aff55f49d92546f8f"
+        "bytes": 1590,
+        "sha256": "3ab558d2b2c54dc189e767120c9ffbf80e3a63834db06825d18de2585f1d4508"
       },
       {
         "path": "lib/portraitSurfaceLighting.js",
-        "bytes": 10698,
-        "sha256": "35b8f2cd1b0ad86b0e83740e9e0b748eb1e7bba141f7d42c8a27ecd5d5cf3b72"
+        "bytes": 8778,
+        "sha256": "ab0b21181db0f2fe8261bc1da54dba373f22aace2afeab4bd68377ad126bd24c"
       },
       {
         "path": "lib/postCommitHydration.js",
-        "bytes": 2027,
-        "sha256": "7bf28b18ec26dc059ae17537a00566a2efe3684558ad0b989ab34a69f7f62bfe"
+        "bytes": 1209,
+        "sha256": "3c51cb1af34750a6c26b553bc5bcaf80bd7bc8f8e79c4c522567d66f1ca0d03c"
       },
       {
         "path": "lib/predictionPanel.js",
-        "bytes": 7619,
-        "sha256": "25e6a578537f1b77e47619098115a03396d1c130306ce14202c203119aa06b63"
+        "bytes": 4400,
+        "sha256": "cd7a2ec7d0cc0a20fff79a1d5a68209740d3889c3438e631b721d3bf70bc8041"
       },
       {
         "path": "lib/pressRoomPanel.js",
-        "bytes": 4316,
-        "sha256": "cf807f96e9ff510ff84a4afaee24cf0363dd4f8f6226a16975830573ab0a9bcc"
+        "bytes": 2387,
+        "sha256": "7758069b54031c91cf779aa212521878227879103fb271ddb2ff98694eee88fa"
       },
       {
         "path": "lib/profiledLimbSurface.js",
-        "bytes": 4888,
-        "sha256": "b57c17eccd20af15caa442b5f500cbd2a46dc2d413a2c8460063a7aeac36aa07"
+        "bytes": 2516,
+        "sha256": "3e4901ab1dafc38724354f79447e87c1597ed6a3f5cc882e4d1e94055793a50b"
       },
       {
         "path": "lib/progressionWatch.js",
-        "bytes": 1949,
-        "sha256": "8254616bd7d5987eafdb4f41b198cb843f6475414363951844de0e5aebc4630c"
+        "bytes": 1328,
+        "sha256": "66de0286d2f4ce60b3cc71e0ba79bfa2c3e89875ed961c5a7a06208a9b321939"
       },
       {
         "path": "lib/prospectNarratives.js",
-        "bytes": 4627,
-        "sha256": "124e0becdc00bb020287e1bc7a724628c250eea3f1614342d63fa79d8af4fc7a"
+        "bytes": 3696,
+        "sha256": "70deacd54c546ea39361d0fedd9803256b0a0f151a9bfe2031da7f73b8ce6ff8"
       },
       {
         "path": "lib/returnDigest.js",
-        "bytes": 11098,
-        "sha256": "ebdc6a1e707cb36d12537d292f40061aa11d0b681605c8df5759b0a9d9152ead"
+        "bytes": 6905,
+        "sha256": "6d7379055cc087aea064087b78252db07c7b4acfa1863b64d76d85a50f33d420"
       },
       {
         "path": "lib/rewardBeats.js",
-        "bytes": 7590,
-        "sha256": "0f06ee560442b7fcc6506c46cee53fd8a5db715b1019ae9b5dccec0964699405"
+        "bytes": 5452,
+        "sha256": "d9d191529cafdfeafae3e5cca58998ca7565cbe92db77ec26789adec692e8fc1"
       },
       {
         "path": "lib/rivalCoachIntel.js",
-        "bytes": 2496,
-        "sha256": "f7885fa55083a9038cc830ecf1e47574a5de0fc077916b2ad930b26249e3f870"
+        "bytes": 1813,
+        "sha256": "e5d6606c49f48282c612bc60f665074a378bc964d131ce5454fb42cc4b05103c"
       },
       {
         "path": "lib/rivalFrontOfficeCard.js",
-        "bytes": 1983,
-        "sha256": "9a3a1321ddd8db463507385cc402b2b9b03492db6b62be7719fe9c9ce435a289"
+        "bytes": 1022,
+        "sha256": "c89bedb0f04667be1eeb7efc443546b3e0f57ca8c9960a7ba493d9213708f0f6"
       },
       {
         "path": "lib/rosterActions.js",
-        "bytes": 4598,
-        "sha256": "e18e5d4a29242291e9b9afac77ac0c67043fda94b34e1300bf9879a6bb01c35b"
+        "bytes": 3388,
+        "sha256": "49ce015f9e84324dc5a2e0bf6e15176b9f8ef89ca47f4526775ed78f178f0c66"
       },
       {
         "path": "lib/scoreline.js",
-        "bytes": 1280,
-        "sha256": "9a6b5f64abce6b15988eb85b5ab7cc1092d0f056564f186c651fa8fef2290003"
+        "bytes": 201,
+        "sha256": "04a2fbf0d737c7e277d7be59355aae06bac37ff24897b412d6f94830e6e17a6f"
       },
       {
         "path": "lib/seasonChapters.js",
-        "bytes": 17256,
-        "sha256": "d7c3e69b653169d9d37f04535f744049037e97fa5315686c29a52742638380ad"
+        "bytes": 10928,
+        "sha256": "ca594064180340695b3d884ccfac301a0b04ec64f3928f8a0d9e8c6f76159a45"
       },
       {
         "path": "lib/seasonEpilogue.js",
-        "bytes": 14718,
-        "sha256": "f832da600d35aca6aa56b15d4e1f32fa7784e7ce84913472d485bb6ab60d76cd"
+        "bytes": 9184,
+        "sha256": "4fb4b1fb2701dbfe6188c7187320ad71fc17fdda04e48acaeb6b017d53a310f6"
       },
       {
         "path": "lib/seasonReviewTransition.js",
-        "bytes": 343,
-        "sha256": "373f0b73cd6cfacdb72f97a5c62e5e4ddb54c3f123e97425fc7df87cac8479d8"
+        "bytes": 181,
+        "sha256": "38f5f9bc44cc96ab4eaa402496433556fc60982a7b7eb02cbf440576ea919053"
+      },
+      {
+        "path": "lib/setupTeamChoice.js",
+        "bytes": 740,
+        "sha256": "f08964583670f1f0464db4d9f3ea727dfd3e84ddd3a82614afcd73e91d3fb4b0"
       },
       {
         "path": "lib/simWatchDirector.js",
-        "bytes": 16252,
-        "sha256": "46d61ffcd9da4066bee4addf1d41472948c243a40cee0ea08d74171e86790c00"
+        "bytes": 10281,
+        "sha256": "1689083cdce45f7b9c69fd448a9f970243dc2dd58e80e2d47d857a07272d9d15"
       },
       {
         "path": "lib/simWatchPlayback.js",
-        "bytes": 9334,
-        "sha256": "df5ad4e3630c29ede0cb91a465d8ad33f2d11cdc90a474c01d878618457504c3"
+        "bytes": 5133,
+        "sha256": "2e4c87cdf15e345093a8ba3d467a24547bfe47eacc96160d794c3580e2c987dd"
       },
       {
         "path": "lib/simulationCheckpoints.js",
-        "bytes": 5298,
-        "sha256": "f371488ebc68a78a1350e01320bfbbcc5ce735dd6c4621ecfbd2714b178d6eca"
+        "bytes": 3009,
+        "sha256": "fbf5f892b7a1ad97647852d7a5eefc3d744d6935d4a5d410064598baecdd1c0d"
       },
       {
         "path": "lib/situationalCallsPanel.js",
-        "bytes": 4081,
-        "sha256": "630cf0715481a00d2e6fb41ba370eba8c76ccf252a90f9077471b0f298c026ca"
+        "bytes": 2987,
+        "sha256": "87555439615cb01de9e12811e4211c1332431a3e432d6948bd11ceacf20813a1"
       },
       {
         "path": "lib/spreadPredictions.js",
-        "bytes": 12100,
-        "sha256": "9b050094ac3396d463048b5d403af0112ac061f782b00d6c16897dfcd4539909"
+        "bytes": 6411,
+        "sha256": "38afd2a2971f5546f8f501fc2aa91d980a2d03787de48239f60057cd76436391"
       },
       {
         "path": "lib/startScenarioContract.js",
-        "bytes": 4454,
-        "sha256": "f20d0cc2b5d814b8365e05a17856ecebe868f636778c04388e8bc27c6b27b198"
+        "bytes": 3314,
+        "sha256": "44a1871bd52699f20d42634c78e8df9b6c7157cca6710800e973c8b9e313efd0"
       },
       {
         "path": "lib/structuredHair.js",
-        "bytes": 3570,
-        "sha256": "9022287ee0d777c9459607719fa3aabb1addd4cc3445ed5ea2831bedb8f7e755"
+        "bytes": 2596,
+        "sha256": "3c85c4a000da6182f0eb9b378ab6d54b15c8200fb202224c074ebf29ee3309ea"
       },
       {
         "path": "lib/tabContracts.js",
-        "bytes": 38413,
-        "sha256": "d6a8b92e0e8a79ddbe65afd1c184fc6802b8b75b20727784a1ebc64b1b585f1b"
+        "bytes": 25519,
+        "sha256": "3414b597e3cdc9108f3aeac8f6cb7fe8e0b83f7b146b42469f6837aff90d7c12"
       },
       {
         "path": "lib/tabDraft.js",
-        "bytes": 23489,
-        "sha256": "8d849daf90776d7b65dbf17c1e2a619c2f243f6300ae05cfd37769b8622a6619"
+        "bytes": 15163,
+        "sha256": "283c593659133782ae126da6efd5dfd44fe88eea583f720cc57b9e21c235c42c"
       },
       {
         "path": "lib/tabHistory.js",
-        "bytes": 42347,
-        "sha256": "7b582bd4aeb1f7d608a34a9e67bf9910c4aefe350ac79092467312e3e053015b"
+        "bytes": 29912,
+        "sha256": "17711800c3a8b90f5fc5388f426750c2e52dea2f2bfa9d5eae5ede88dc619a12"
       },
       {
         "path": "lib/tabHydration.js",
-        "bytes": 6294,
-        "sha256": "4a623ab5b7b900cf34ff8cfa6531ac95bf6c70dec3e2cad107d9373718c24b65"
+        "bytes": 3634,
+        "sha256": "4e5af2f47de991c02cd6a859fdb3afb93140860bb309bcf9f8fe0ec958447957"
       },
       {
         "path": "lib/tabKeyboardNavigation.js",
-        "bytes": 770,
-        "sha256": "88f0a334c69c5e7ee3f6781cd207fd0206a0215b12bdc261c5a24ed99dd1a026"
+        "bytes": 450,
+        "sha256": "3b52a8498ed6df2cbc9e3763f5fd5f4e5aedb9b24daf7bafad1d9aa85f1eefd2"
       },
       {
         "path": "lib/tabOverview.js",
-        "bytes": 70154,
-        "sha256": "d8dc8476510703d2dbbbab3fd35ddce5376bcb102d8f265bb93ce2ad4a7bd1d9"
+        "bytes": 48260,
+        "sha256": "8f6397821d9ea386223eff2587fe02bc222ca76de3b6446def822acb2eac7237"
       },
       {
         "path": "lib/tabRoster.js",
-        "bytes": 7685,
-        "sha256": "0624c58bb205f1fd8663cfde6bf4db352b7c97eab4281716fd51409a05886610"
+        "bytes": 5173,
+        "sha256": "54bcea92041739400df999a1c60980257fb17ea060f7593777167b8ffca90f77"
       },
       {
         "path": "lib/tabSettings.js",
-        "bytes": 43277,
-        "sha256": "84a361b4edacb6359537aadb953afba4f8c8fb86409219726e79567110a4879f"
+        "bytes": 30617,
+        "sha256": "3f7f547833dcd6f3476531491349b38044b7512898b353a34695be01850b3bfe"
       },
       {
         "path": "lib/tabStats.js",
-        "bytes": 9270,
-        "sha256": "7037408e4624feef2fc29ca3a11f58aa41423d4a1d635763f509af82a42b4c5c"
+        "bytes": 6091,
+        "sha256": "4dc0ecfc4a6275baed5c06fcef64076168bdb9d425c650d3f617131966c93200"
       },
       {
         "path": "lib/tacticalFilmRoom.js",
-        "bytes": 15126,
-        "sha256": "a914fadceef11e8978b64cfc0d451afc258217325652f539c897e210f8d0307f"
+        "bytes": 8469,
+        "sha256": "19df5f443e323bdabb5528804a343322663c1459f68d7924e415f3d7faf460ec"
       },
       {
         "path": "lib/teamCrest.js",
-        "bytes": 5789,
-        "sha256": "8ab745aacd1fda86da8406eee04282cf7910b3b8d8dba02fcebcbcff5f48e0ec"
+        "bytes": 3237,
+        "sha256": "7a3d02d4cb573ff9696e8d4895a35134cc6ad0f992a9651c534fb0298bf8dec8"
       },
       {
         "path": "lib/teamDisplay.js",
-        "bytes": 262,
-        "sha256": "adf9834822fb376d8324eba63177071ca3458e79b85d386677179bea87af1595"
+        "bytes": 84,
+        "sha256": "70ad2f1bf971d295d5dbb87ca1b88e8a2ab8add99646ba248b15e5758b637c1a"
       },
       {
         "path": "lib/teamRecord.js",
-        "bytes": 1811,
-        "sha256": "9490aeed93a8295cae7ce9366698f7871fc29f4b9ebeb0ffe89bb981958c84e6"
+        "bytes": 986,
+        "sha256": "195e51d35c33c9e13b3091aa0d997065300323cce97bd0ab50f50c6c8b5f8efe"
       },
       {
         "path": "lib/themeBoot.js",
-        "bytes": 1644,
-        "sha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f"
+        "bytes": 621,
+        "sha256": "1ce3622e755413a6361c9f5e57205006b42b0641ccb6b026ea6db986a2181f1d"
       },
       {
         "path": "lib/themeCustomizer.js",
-        "bytes": 8390,
-        "sha256": "d8b34bf2efd31be1f2557dcf38be420d13c0c58a1b9ab237a9caeb9e4c115abe"
+        "bytes": 4855,
+        "sha256": "6f40720894186c56f51296a572e2b4a2d1c256bdeef81eb8ca71f3373d290496"
       },
       {
         "path": "lib/torsoSurface.js",
-        "bytes": 6541,
-        "sha256": "15657b25856bf96ea4cf5f0c1abea43e666534908d1ca771ff3ce55de35d40fc"
+        "bytes": 4181,
+        "sha256": "24b504b15d7054096a27b782a2a93310564ac228162d4cff5e606d43a291d0e4"
       },
       {
         "path": "lib/tradeDeadlineFrenzy.js",
-        "bytes": 9802,
-        "sha256": "3af3d2a20be5351af4e74ee12e2e17279c6912c1e948fa5004522f7001c6299a"
+        "bytes": 6768,
+        "sha256": "402785da795bf205b8912e64617cb5e8b6f3b2e12ff579ca80e8c8339aa863ed"
       },
       {
         "path": "lib/tradeWindow.js",
-        "bytes": 1486,
-        "sha256": "ae3cd16bbad79e54d94dda978ebdab22af87a037d0c4848f7dcc9a39448f316c"
+        "bytes": 483,
+        "sha256": "f54911e2a4c12d37608dac8a36c33a963a47af7e57e8d767be12412529082ff4"
       },
       {
         "path": "lib/tutorialCampaign.js",
-        "bytes": 12347,
-        "sha256": "c22d311be378e21c73009347c4814368040910fb3bce92475c9d796de69c62a5"
+        "bytes": 6378,
+        "sha256": "7214b4268358ebcd69b966d9fc4fd66d7e4b969663c359b813552bdde85ccb9a"
       },
       {
         "path": "lib/uiIslands.js",
-        "bytes": 6424,
-        "sha256": "de2089084e7baf56d214e0190c8232c96dad2c2d6fa2733a9e3a5489a3eaa0ba"
+        "bytes": 4521,
+        "sha256": "5bf894d2f4ad60fc404f837e059e1709936d5316829372bba53e4dddc7be30ac"
       },
       {
         "path": "lib/weeklyChallenge.js",
-        "bytes": 4488,
-        "sha256": "5fd5c7be1088c125780f68f717bea512fbaa5384ac3ce28f9d3256972337b903"
+        "bytes": 1956,
+        "sha256": "2dabf0c35895969ac4e92e51a3b0c9cdae0116e19b19c07c5abbdf8b5d01dea9"
       },
       {
         "path": "lib/weeklyPlanComposer.js",
-        "bytes": 7650,
-        "sha256": "7c257e23dace7197745fd6b5928707bea18e4d974f4e2e512a61c15df94afca6"
+        "bytes": 4433,
+        "sha256": "fbf340650d7a2a9aa394fc4a6f8d727f2bbdb540c838e5d009edb7192638f82a"
       },
       {
         "path": "llms.txt",
-        "bytes": 3671,
-        "sha256": "6150c005c531121155c7e45767528bff991a0cef027a224d1c606e8c4a7373bc"
+        "bytes": 3998,
+        "sha256": "353fe1269f9b83effb5672d81fd07cae64aec4012815a7eda233fe6063f41af0"
       },
       {
         "path": "manifest.webmanifest",
@@ -932,19 +972,24 @@
         "sha256": "07e5426cdaf6094a5c9de2e141b27521ef1e1c64fff95fbfc5991362d439cc64"
       },
       {
+        "path": "media.html",
+        "bytes": 9790,
+        "sha256": "6cd339c9b72f826a582c9e702c0b7a01e155f0035bcd7bdf1da67066b591e4cf"
+      },
+      {
         "path": "precache-manifest.json",
-        "bytes": 26657,
-        "sha256": "6d0e3bfa0871b785db4c543dd297753358157def13e0c66d48bd05de9b24b2e8"
+        "bytes": 27258,
+        "sha256": "48b68c01ed121c6a7fc4562f6b8813e3ae4f09bf09fccfda23aa2f09ea38683c"
       },
       {
         "path": "press.html",
-        "bytes": 10938,
-        "sha256": "c370cbe139685968222f5f551b0e6d10fd0bcad4bba0e094caece3f4bfd9a209"
+        "bytes": 9722,
+        "sha256": "8b2ef1a5c6a9ffb6a1fa55bc2f8b899969c17aab7f16144be7c7cd9f3ab972ff"
       },
       {
         "path": "privacy.html",
-        "bytes": 7429,
-        "sha256": "39542babbc539a5ec7ce5e7c53f34095ac671f6e1c8705cbb79094533b7c2cb7"
+        "bytes": 10284,
+        "sha256": "033a63744c2170d489f6cce241d6264e1e17dccfa51750292d5420e54665a6be"
       },
       {
         "path": "public-identity.json",
@@ -953,48 +998,48 @@
       },
       {
         "path": "public/lib/appearancePalette.js",
-        "bytes": 2653,
-        "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305"
+        "bytes": 1946,
+        "sha256": "09117ba2f9da89394eba85609b96cb455d636e27bbb1a317f25bbc8d21a2a6d3"
       },
       {
         "path": "public/lib/gameOutcome.js",
-        "bytes": 2085,
-        "sha256": "738c31cead7673f36a59e111d9755b40b086fb383d58093f682d582cf2c584bd"
+        "bytes": 1081,
+        "sha256": "0e0cded2ad735de449bbdc7e209f217ee97acb45a42bfca0790b3f3bcc7a4d29"
       },
       {
         "path": "public/lib/gameplayNavigation.js",
-        "bytes": 2849,
-        "sha256": "ae1ab7e2665343fafbe28c9ba1b42aa767174dc0b9edb4a954d8c4958a8ac39c"
+        "bytes": 2055,
+        "sha256": "3ba017508222c4a42e216c09347a2dcb4d2d70431578db3f51048caec523fce7"
       },
       {
         "path": "public/lib/physiqueGeometryContract.js",
-        "bytes": 8976,
-        "sha256": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d"
+        "bytes": 4914,
+        "sha256": "0443cb106556b24429efafb929d3cb564d57db814a860079449ad0a7be9c58ca"
       },
       {
         "path": "public/lib/playerSurfaceLighting.js",
-        "bytes": 2992,
-        "sha256": "88f6fa0d1b32d7c305d7bed8bdd070f6597dc6f8c6ee08030bc4fd4ead9a8171"
+        "bytes": 2308,
+        "sha256": "c4109bbf20afea931981301ec1ed39555f23b11ec737118e354ad08364bac6e1"
       },
       {
         "path": "public/lib/portraitAppearanceContract.js",
-        "bytes": 964,
-        "sha256": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96"
+        "bytes": 545,
+        "sha256": "3b044487366fc376cc70c3fd4dab83e648708a50df7e4366f8c6ec8b33e40120"
       },
       {
         "path": "public/lib/startScenarioContract.js",
-        "bytes": 4454,
-        "sha256": "f20d0cc2b5d814b8365e05a17856ecebe868f636778c04388e8bc27c6b27b198"
+        "bytes": 3314,
+        "sha256": "44a1871bd52699f20d42634c78e8df9b6c7157cca6710800e973c8b9e313efd0"
       },
       {
         "path": "public/lib/tacticalFilmRoom.js",
-        "bytes": 15126,
-        "sha256": "a914fadceef11e8978b64cfc0d451afc258217325652f539c897e210f8d0307f"
+        "bytes": 8469,
+        "sha256": "19df5f443e323bdabb5528804a343322663c1459f68d7924e415f3d7faf460ec"
       },
       {
         "path": "roadmap.html",
-        "bytes": 7312,
-        "sha256": "63e052bdccee7ce3d04ce80aa022d9fefc4293f28f51adc668920d3c072c6dc7"
+        "bytes": 9457,
+        "sha256": "cc6bcf8e4e406111066aca202484b11d879b87ec8be742599f4e539895e5b4d8"
       },
       {
         "path": "robots.txt",
@@ -1003,8 +1048,8 @@
       },
       {
         "path": "setup.js",
-        "bytes": 34135,
-        "sha256": "d717a95da7c4457aa32761711fefa9e2db459d3ce4a91ef1ab4d1a4c1157e420"
+        "bytes": 20992,
+        "sha256": "6c68733e6bf2f04d8a6000d8852e5f7a9fe37423cfde8b86377a6f4cf41fe6f1"
       },
       {
         "path": "showcase-league.json",
@@ -1013,858 +1058,873 @@
       },
       {
         "path": "simulation.html",
-        "bytes": 11282,
-        "sha256": "71b569178caecc678dff1b90cb93b8abdcd0b4d74044650937238de4fd2e3156"
+        "bytes": 12525,
+        "sha256": "c1fc2886cafc19114bbc5236952a6305b0856035fc802215872e56a660c7cf66"
       },
       {
-        "path": "site.11e8faac8d.css",
-        "bytes": 10999,
-        "sha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+        "path": "site.000d12ed36.css",
+        "bytes": 9130,
+        "sha256": "000d12ed3621d3948c155a99b13c35ce16b502fa8ea0c974920623fd56be6bb2"
       },
       {
         "path": "site.css",
-        "bytes": 10999,
-        "sha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+        "bytes": 9130,
+        "sha256": "000d12ed3621d3948c155a99b13c35ce16b502fa8ea0c974920623fd56be6bb2"
       },
       {
         "path": "sitemap.xml",
-        "bytes": 1844,
-        "sha256": "35b11af35dd1487ae5c3fe96d52f2d3f23f56ee0a5a31f046f42b29d5c5ba2cc"
+        "bytes": 2144,
+        "sha256": "4f28e72210acc75bc0502cca891ab599910152991c953672ffd87745a0a54309"
       },
       {
         "path": "src/adapters/persistence/browserSaveStore.js",
-        "bytes": 10036,
-        "sha256": "ec8f692dbf53e14e20bcd675138984f0f7f99991a565bd66f73fe4315e43d342"
+        "bytes": 4117,
+        "sha256": "c848f7048287ba1177b052e400b6025907c1464dd77f1b95d604d4bf1860302c"
       },
       {
         "path": "src/adapters/persistence/hybridSaveStore.js",
-        "bytes": 16167,
-        "sha256": "a39c082678bbf4fcd505b8411cdbb32bb5c03aa8d96333099c7dde19e9bd464f"
+        "bytes": 7008,
+        "sha256": "35e1ae90297af8bec622476dd687b1687b2537ebf19c3742cd5ac89b504a76bd"
       },
       {
         "path": "src/adapters/persistence/jsonLayouts.js",
-        "bytes": 2156,
-        "sha256": "ad74c2748791f529e7d9b49851dca246be5c666a5a11fe2a561b5e633db4f435"
+        "bytes": 1112,
+        "sha256": "d2b353254003f0a5e9c5aebe99861f77c12d47f8b99a9b340c4bb97b4d6e3ee0"
       },
       {
         "path": "src/adapters/persistence/rewindRetention.js",
-        "bytes": 2808,
-        "sha256": "fa45f931976f6b1ac4697fa75e54db092a75f1b2aef89f9d104913fb5822899a"
+        "bytes": 1245,
+        "sha256": "56b133009dfc049ddfa664b9bc32a9b73e3317874b35ed5bbd6827f1a8423e86"
       },
       {
         "path": "src/adapters/persistence/saveStoreShared.js",
-        "bytes": 4579,
-        "sha256": "8881f866cae3ee2e4d5ba0a6706453dcaa87a4719b5f0967a646c1d13394f8da"
+        "bytes": 2733,
+        "sha256": "2a0a21b8636350bfa0299df114e75f973f4c42a77d402a4262b2342df5fef6c5"
       },
       {
         "path": "src/adapters/persistence/snapshotCodec.js",
-        "bytes": 5386,
-        "sha256": "15e0996f3b8660a8f144d1f0f9e9e54b4201ea88de2e4dfa2e1eb3a53c270903"
+        "bytes": 1509,
+        "sha256": "a99ad2d7fc66c16efc94e3322769963efe99a747f99a91e756a66f96b1e52c44"
       },
       {
         "path": "src/app/api/localApiRuntime.js",
-        "bytes": 99016,
-        "sha256": "a9d4a912dd96c26647a4fcb19a16cc277b30c3a1974b36be30fc2d6527fa4213"
+        "bytes": 48603,
+        "sha256": "1f6cdccb13850ce901c1ce34fc254c285ccd7c68bba63ec354e916300217d80e"
       },
       {
         "path": "src/config.js",
-        "bytes": 16689,
-        "sha256": "aef7fa9a74de17414e4a7adb200d4556bf8638de409d76d595b1fd12e4585e5d"
+        "bytes": 7065,
+        "sha256": "ade06c1d3dee9f2d3fadc21d5284906984d61638fd6a136f6118fe22f5c3dea9"
       },
       {
         "path": "src/config/leagueSetup.js",
-        "bytes": 17122,
-        "sha256": "e0b20a368abee80ead0faf48c29820d52565e0d4ced294ba57c2d37d28157c88"
+        "bytes": 12076,
+        "sha256": "b2189e18e4063c33fa35d161bae869ac072806a80a136e37a6ffaf5ba8c64911"
       },
       {
         "path": "src/data/nflElevationSalary.js",
-        "bytes": 2967,
-        "sha256": "ba5e378c60627a7bf9ffd8be8e4833c903d2f941c833d620dda98bc102b84b0e"
+        "bytes": 1637,
+        "sha256": "f9103a896108dbca2eed3f94cb920e5a98e11cde4e252e1e040eec00ca2b2c76"
       },
       {
         "path": "src/data/nflEliteDensityBaseline.js",
-        "bytes": 8606,
-        "sha256": "99719bf9298ce2a5027a831bbb0956b196d4a03c6ccd3e97e75766f41cc95f9d"
+        "bytes": 992,
+        "sha256": "faddd636c78ffb105ef16e35617dd4ae9f4d80ce1f46ac6f87caae19d2984ca3"
       },
       {
         "path": "src/data/nflPostseasonSalary.js",
-        "bytes": 2188,
-        "sha256": "fcf4c04325de0ddfb926881a876c6213af29f1d456d32e14e267f3440a6a9267"
+        "bytes": 1523,
+        "sha256": "e0013c6bc398e3927f69ec77b068524fe41bd36e8cd47ba15ddfd8a35b18cc52"
       },
       {
         "path": "src/data/nflPracticeSalary.js",
-        "bytes": 1031,
-        "sha256": "87a9ceaf9dc9009c595889ca7b602c81fdd0fc43c53b8b2c4f878af3a7299a54"
+        "bytes": 741,
+        "sha256": "7096aec68003f86256e2ec6d4679fd1e6f70a8b7b70bb5cc66c6a20baa9c6f80"
       },
       {
         "path": "src/data/nflSalaryCap.js",
-        "bytes": 3133,
-        "sha256": "c0f32cc7f21707c7812eb4bad2394ed9d9b1b33a74a09bedef203e1c6a73f40d"
+        "bytes": 1883,
+        "sha256": "a111ba9f7eaadd958c16da8f34ce1e727e8f8bb6322926c7f20830831c313db9"
       },
       {
         "path": "src/data/nflSalaryMinimum.js",
-        "bytes": 1302,
-        "sha256": "4ead3c363a28e537dc49076f7c1a33b9055afc140116d92a8e78d5fc637f7a44"
+        "bytes": 864,
+        "sha256": "adf143c03df2c66d0df78c8af9b05920afb1fdf2802d25493ed083482ad24922"
       },
       {
         "path": "src/data/playerDemographicBaseline.js",
-        "bytes": 2193,
-        "sha256": "cc25ff5a65990b33aad5881bbc6f5ba1eea69b2350aacf3859217d3765afc294"
+        "bytes": 1477,
+        "sha256": "ab00cc5969560af66cce8022c21c91e0fe4bc9b9b54ca13df6933956b4c5670b"
       },
       {
         "path": "src/data/playerFamilyHeritage.js",
-        "bytes": 7097,
-        "sha256": "2b016c14dd6098bbe98c476a9a0084f5dbb91ea057aa885be898595684bcafe8"
+        "bytes": 5708,
+        "sha256": "210b652155af1d3c1688cdb250ac3741b18ed1c6db13d9717bdd1d2ebd8f329e"
       },
       {
         "path": "src/domain/activeInactiveHistory.js",
-        "bytes": 6614,
-        "sha256": "0edc5f38b1d4f7810071837e1c99cc882a1008fb0498452960b240cf4d2da51e"
+        "bytes": 4310,
+        "sha256": "a13ea5ef8d11356ecbe6a7344276b03868207aacf79fae0dd6eb671f2e9cb35e"
       },
       {
         "path": "src/domain/admittedInjuryContinuation.js",
-        "bytes": 7551,
-        "sha256": "348f0715f17bfee498ac76b99c281a46ae2c1404c19855476555fba78468f945"
+        "bytes": 5391,
+        "sha256": "9c69600977eeb4d1a1138e0f1bf8ca31985d359232671a31468a99b6b53d3b92"
       },
       {
         "path": "src/domain/admittedInjuryPayroll.js",
-        "bytes": 13800,
-        "sha256": "05bf1c1041947a031d856ddd3da5cd0fdf1e3c63dab3e5887b77755c7f71b426"
+        "bytes": 8670,
+        "sha256": "e02dc354b7415c2efddc9b28667c4afb429b1b64f7e3e9859f197eeaf49c48d4"
       },
       {
         "path": "src/domain/admittedPostseasonRecovery.js",
-        "bytes": 4728,
-        "sha256": "c96bd53ba247ccaaaa9ce579332097821c9df65fb4e2eee7be6c89468a7c6d86"
+        "bytes": 3139,
+        "sha256": "51047b02690c039d23a191634599310123ea12b5dbd02fc781c4f7db6066ed64"
       },
       {
         "path": "src/domain/annualElevationInjuryResolution.js",
-        "bytes": 7778,
-        "sha256": "6f62481afa07315cab10d9391d5f6b3fdfc970d5e8cd5b118b2cf14b655e26da"
+        "bytes": 5637,
+        "sha256": "a575728989ab76f8f7da2a3cbeda6dfbd76eee2f45273a169c7bdab91f8bd329"
       },
       {
         "path": "src/domain/attributeCategories.js",
-        "bytes": 7003,
-        "sha256": "ce8063dfff5b4c4b54a672ef625c85c53fc59497e0081ab9af4b97df9566afd4"
+        "bytes": 3715,
+        "sha256": "172131d5e26bae5c6c4f88a83fdc2947accd00faff05b64c491f45895262aa37"
       },
       {
         "path": "src/domain/capCarryover.js",
-        "bytes": 510,
-        "sha256": "de0824f3edb85ad66491c010a5ca8c1df93f398cfc35e9f495aa33ed12308524"
+        "bytes": 245,
+        "sha256": "44ea33ebcc15203f187150aa9437a1df346bb8949948a92450ddd1fee5b07e2b"
       },
       {
         "path": "src/domain/contracts.js",
-        "bytes": 17014,
-        "sha256": "6548a4b0b8d5cf496beb9fca160a4e9317f8b0c89269898a4667f69c51550568"
+        "bytes": 7964,
+        "sha256": "122e4cfc17dd6a04fac12d4c7bec03b2aa20476eafda59c67b40e959e549aa55"
       },
       {
         "path": "src/domain/developmentEnvironment.js",
-        "bytes": 9551,
-        "sha256": "b581802b2ae0c740c256b0c79adf463ebdb3bbd6fdbc1c481902a0a0d98e48a1"
+        "bytes": 2636,
+        "sha256": "4d54bc450cdf6e60f79b911c7032bc8291d91bd4e01f4972dc883049a64cc573"
       },
       {
         "path": "src/domain/draftCohort.js",
-        "bytes": 1074,
-        "sha256": "02c84980926cfbe6d9976d6dcf3f35c76bd9c01e6fe9a5cfb805bc042050b8cf"
+        "bytes": 686,
+        "sha256": "542eb7ec59dff7db252f7719aaf576cc6c06e563b6de2bd238a9e207d825f3b7"
       },
       {
         "path": "src/domain/earnedPracticeCap.js",
-        "bytes": 1526,
-        "sha256": "4076592967650994bf7895e132ee9a9f92c90bac9287e0a21f0f9f4ed91187a4"
+        "bytes": 878,
+        "sha256": "5aa4acac736077278e0b3bcd26c94367a5698c74af4f3eeb3d2015c4c29e7647"
       },
       {
         "path": "src/domain/elevationInjuryPay.js",
-        "bytes": 17985,
-        "sha256": "e161792266aa35fdbb0454cd139e47dab55c604d1cf7fb5da9f9f490ac3433a0"
+        "bytes": 12129,
+        "sha256": "4d379bbc8460c64f027d0a6bafbcfd318248d42095c44294a7c1996ff20661cf"
       },
       {
         "path": "src/domain/facilityInvestment.js",
-        "bytes": 15900,
-        "sha256": "ae3d1805d056ec4fdb5079336367d6814f319a4e8f073170cea753d58938c6eb"
+        "bytes": 4514,
+        "sha256": "72e3b1fc5f87082d375aceaa4fb47ab749281938d396ee49b20e99ae616e7d8f"
       },
       {
         "path": "src/domain/footballGameReference.js",
-        "bytes": 1627,
-        "sha256": "4c8e8b9b2d827807ec7b7798a4bd6710e7e99d85ab5eb3f8fd78bf323bdc157a"
+        "bytes": 948,
+        "sha256": "399fe238acaa3518856e74d4d96223bbecb7ed1bef4af5562a17d89e5dc264a7"
       },
       {
         "path": "src/domain/injuryClaimNegotiation.js",
-        "bytes": 4567,
-        "sha256": "3bf9a66372ef6fc95ea1abd2e1c69c600071e0efc96ee09d23b7e45bfc359ce6"
+        "bytes": 3517,
+        "sha256": "a17bcfda335b324c5771e32a0b9c946ed73e858b534b2604d5183e1cd0995acb"
       },
       {
         "path": "src/domain/injurySalaryClaims.js",
-        "bytes": 8699,
-        "sha256": "2c37e32bd013865a3e9974fdf7113afbf228ff551ad1dc061fefba3120d42141"
+        "bytes": 6111,
+        "sha256": "16313f85bafe9a1ce983f6c2d79b261a329b709abf358e9648b244cbe9638323"
       },
       {
         "path": "src/domain/leagueIdentity.js",
-        "bytes": 6966,
-        "sha256": "ee14173fa1ea30bb67968d3566b665224d2efdbcbf995009e5d3aa97e41b0c40"
+        "bytes": 1136,
+        "sha256": "b712d702a8eca6d5bac66fe75b3bf11d550c930dcd99ab3499d41785574e1f48"
       },
       {
         "path": "src/domain/livingPotential.js",
-        "bytes": 5626,
-        "sha256": "5c1d0a367ae07a541f5dedadaec5267203bc6fbdafffba759787f92ce7957ce9"
+        "bytes": 3266,
+        "sha256": "27c0e940857f8127e3d546dd2004da630ca2579cfd0cd3f065f10ea531d92a7a"
       },
       {
         "path": "src/domain/offseasonMedicalCalendar.js",
-        "bytes": 5940,
-        "sha256": "8adfc519c3a64fba8e207835f8105d50e04996c1677f05ca0a3e38bb010e4714"
+        "bytes": 4049,
+        "sha256": "d51cc0c79e80b45b2c6131adf90358ff3ba0517e2ddc050e5e985718c2e3f50b"
       },
       {
         "path": "src/domain/operatingStatement.js",
-        "bytes": 3005,
-        "sha256": "1db31770b675d875f8bbbbd5412793b258a9fdd47ce83dbef9274a9aa80dc381"
+        "bytes": 1575,
+        "sha256": "978821b802230f236b273ff86b0244990fdc0029ad36a4d0497f0d3651e19a27"
       },
       {
         "path": "src/domain/ownerEconomy.js",
-        "bytes": 6571,
-        "sha256": "fcf17ea60adf2fc16d93c23807d00ac16999d038e87ae0d2a3da4b38920f30ec"
+        "bytes": 2938,
+        "sha256": "858b8186327c46e72a4b1dcdb8cf71db9c8c5cccbf6600eb3baa4ae215085174"
       },
       {
         "path": "src/domain/pensionService.js",
-        "bytes": 17102,
-        "sha256": "9cf7c4c4110f08bedc61b669bd32005d6ad6c067e441fb3cd88e5615071c7015"
+        "bytes": 10026,
+        "sha256": "e7abdb21a4e7a642fbcdc9ceebc707cc2241e450844a763677f6f94ed739de5a"
       },
       {
         "path": "src/domain/playerDemographicModel.js",
-        "bytes": 5382,
-        "sha256": "7d1f12af1ad37b8b8926b5bebce33f4f4113d7e19929d768aca40ccff59fc370"
+        "bytes": 3400,
+        "sha256": "ec5a1a6dbfbb564be152e3e9a1d83dc5e069a6aab22b592276c0023907d980d8"
       },
       {
         "path": "src/domain/playerFactory.js",
-        "bytes": 24220,
-        "sha256": "616f136e07074d33fa64f21732f50b16c1e22ff9ca8b71f57b9dc22083db47b3"
+        "bytes": 10282,
+        "sha256": "ad2774297f255ce3a5b84d35e1af280dc9d02af60f43cb68333c4f56b4c07c09"
       },
       {
         "path": "src/domain/playerFamilyIdentity.js",
-        "bytes": 3180,
-        "sha256": "7a319e232c58c2c8f50477fb96d81287b2769214f2e8377010eed6707bac5d4d"
+        "bytes": 2233,
+        "sha256": "11e5fdd413b5694583337d97ace738e18bb714001033da7252bf0bf7a4c66a82"
       },
       {
         "path": "src/domain/playerIdentity.js",
-        "bytes": 27846,
-        "sha256": "c25aea313929cf1dd9c1890f675a754b2b1f8c501aada635afbf513bb07ff7f7"
+        "bytes": 16891,
+        "sha256": "9fa1ad56003873b026987e55268a4c5551b12e7fc2da6b83fcd06f1d40510d90"
       },
       {
         "path": "src/domain/playerMeasurements.js",
-        "bytes": 14939,
-        "sha256": "68156e5be124649c7549c02dcbad706fb56dd9cbc95fc52f6bdeb0dcd1cef90e"
+        "bytes": 7181,
+        "sha256": "1ec02c02b6b1ef663a2831d88f35184c0925bb71e84d99ff84f8f26c4437c7a9"
       },
       {
         "path": "src/domain/playerService.js",
-        "bytes": 8894,
-        "sha256": "865728e63fc6f5725e8c4966efbe928c18cac8e1927ad1220c8ef04308b2f74e"
+        "bytes": 5492,
+        "sha256": "1c32da300d01cdad1587d53bd7d57b6d3207fc7032de84e08852acd8a2492d0e"
       },
       {
         "path": "src/domain/playerVisualIdentity.js",
-        "bytes": 12355,
-        "sha256": "aee4524633f194c8125221cf7af971015686716d6b7d4618d5a6f0f17cebc6af"
+        "bytes": 7964,
+        "sha256": "680623b7cac167aac6795a2ba4545eb828037441257781b95cab608dc462ff28"
       },
       {
         "path": "src/domain/playerWorkouts.js",
-        "bytes": 3652,
-        "sha256": "41714bb1c2f9f2018d6b13d96d70ad8af6788b66ae739e1065d3ef5c80e286d4"
+        "bytes": 1912,
+        "sha256": "0191e457b43b2d6cafd041f2a4f6909fd0b9716850d5b743e90ebe548efc67b2"
       },
       {
         "path": "src/domain/playingStyle.js",
-        "bytes": 3773,
-        "sha256": "375fef6702dd972c872097a269c42e91ec0530d5c1a34b07bab84390688a8e81"
+        "bytes": 2892,
+        "sha256": "34be44b5e866ecab31dc54448d96358955e41af377748a2a76c10d783fb2f8f1"
       },
       {
         "path": "src/domain/postseasonMedicalClock.js",
-        "bytes": 14419,
-        "sha256": "01850182d8b292c9cdec395f193a83a2bda739f86ae778c3f10499fed9a107a9"
+        "bytes": 8488,
+        "sha256": "daeeb73667e4f2b10e286a59444d7a30ffb675cd96f5a6b14b7c18b3d5569bbe"
       },
       {
         "path": "src/domain/potentialReversion.js",
-        "bytes": 11659,
-        "sha256": "fe05b45e3db7c27c32f2ff9eda50e0c0213a6c158c7a7a9c8ac447eb8af54d87"
+        "bytes": 1711,
+        "sha256": "99fbda4c63f08ac8f7c4d0fa0361ade1650cfb89b75bedbc27e9fbf911e90369"
       },
       {
         "path": "src/domain/practiceContractTerm.js",
-        "bytes": 4951,
-        "sha256": "c904bcd76c56d6e000c95a1fc68d04c843fbf90b839c2bfdfb9aecb5f46f0238"
+        "bytes": 3353,
+        "sha256": "c3b78d2887b7cf58e27b69ce2a04d51a9cb4db134e1fd6f4811009c38dac8c3d"
       },
       {
         "path": "src/domain/practiceContracts.js",
-        "bytes": 8284,
-        "sha256": "26b6420a346b868edeaba4a3ba1f10a4bab27b56ccc09579fa8c8917a20ed934"
+        "bytes": 5676,
+        "sha256": "ae58c65d093f9ef1a6537296c5acb89c85738de9157021e635c7cd9577e59ac9"
       },
       {
         "path": "src/domain/practiceSquadEligibility.js",
-        "bytes": 2820,
-        "sha256": "46bd2f55349cdb6035e5fbab6290caa6b63599d0484887325121ab09640d1e4c"
+        "bytes": 1850,
+        "sha256": "2c8c7b12f6f4ba773614ee4098987c605a95b1f35587e1c2d341bff3931d4ece"
       },
       {
         "path": "src/domain/preRolloverMedicalCalendar.js",
-        "bytes": 7471,
-        "sha256": "e474d4b3157835e38f4eeaa653645e821923e9bf2894ae731590de84168d7f47"
+        "bytes": 4184,
+        "sha256": "ce53b8a9fa46791ce153f44cdd611a8f25653fadfdeb5485842ae9f534db5726"
       },
       {
         "path": "src/domain/ratings.js",
-        "bytes": 16983,
-        "sha256": "6bf4854d8aa7c71dc12bdc400cc6469c5bc0c2776a6f93b7b371e7c63d8a98dd"
+        "bytes": 6175,
+        "sha256": "0ac707fd7bef2884d8210104fd0172182d210786bc546d554ba60495d2df14fa"
       },
       {
         "path": "src/domain/regularInjuryAccrual.js",
-        "bytes": 5620,
-        "sha256": "848906f2f370a53a959ad75b0a2dec3ae538c16164565e20a460f2978132b650"
+        "bytes": 3402,
+        "sha256": "b2f2e53694137d1fd150ee8d50fe177ba041b4193e194690023718f7de33a978"
       },
       {
         "path": "src/domain/regularMedicalRecovery.js",
-        "bytes": 2395,
-        "sha256": "190b0893fd6a499cb4f3f559a0b85fbe2509eef5fa6a137a1f49de7a38c49bf2"
+        "bytes": 1266,
+        "sha256": "70cca51425fc7abe2601cadd72a20f05397d6e7fd8583b94cff83905bc78b952"
       },
       {
         "path": "src/domain/reserveLists.js",
-        "bytes": 16532,
-        "sha256": "3b156889266bd3d0917266e834ce11a29cc6281bd246f0b65b0f7f2986dc5f9e"
+        "bytes": 11070,
+        "sha256": "c565e157a588e85c131638be02ed9da6240a3631167632fff177c37e5c0ae0f3"
       },
       {
         "path": "src/domain/standardElevations.js",
-        "bytes": 19437,
-        "sha256": "18e684b4c18491bbebda7b3e08776e7b0cb5b45c079d4d36b04c968ed7655c53"
+        "bytes": 14300,
+        "sha256": "b01afeec3248d5d34f271dac27630638ba2bcbf7bfd446a5ad4bef9106b9df14"
       },
       {
         "path": "src/domain/talentDistribution.js",
-        "bytes": 3804,
-        "sha256": "cbc4d5b0cc7ad80350c833603c6f4aebdcf173959daa10f6abda791d77f96050"
+        "bytes": 2217,
+        "sha256": "86a6fd4ec5fba4e4ddcf79904a64c1b084bab05f9e3fb3f14a008332018909d9"
       },
       {
         "path": "src/domain/teamFactory.js",
-        "bytes": 20005,
-        "sha256": "0a9b96e90ae387b07e2429e727a1306144ef4c98712339597b568cd8ebe152ad"
+        "bytes": 8911,
+        "sha256": "048a1a611eec239218ae07879c29bb26b6c66413cef8b68c1f2136257a6be2c7"
       },
       {
         "path": "src/domain/teamLabel.js",
-        "bytes": 567,
-        "sha256": "3fd9f4306747ff9d5bfd0a823305f92fc027eac943a037d39c902f180be760df"
+        "bytes": 88,
+        "sha256": "3ad4241a1b5c64060c4888a2dc9106b5d6d5aaf4608aedae6fd44d373df587c4"
       },
       {
         "path": "src/domain/ticketDemand.js",
-        "bytes": 7685,
-        "sha256": "397d433178d9f89e0835d84e1dc2247ef57a6c142f4be0451cc30c07fc52a174"
+        "bytes": 1656,
+        "sha256": "a201d756f98ecee00127af4a6515049d63d0b36d1888c6ff9365149ab1ff99c6"
       },
       {
         "path": "src/domain/undraftedFreeAgency.js",
-        "bytes": 3151,
-        "sha256": "b8962e175408952348a57faa2a55adc23171dda7931ac30d82fb82e16477a1b6"
+        "bytes": 1974,
+        "sha256": "9e1d6260f54dd4f970a7910f3b04a7926e475f12318cdcfd23b685836aa1da08"
       },
       {
         "path": "src/engine/adaptiveDifficulty.js",
-        "bytes": 3761,
-        "sha256": "2fd89c8ee1bbf8ce3b0b53f1f515c25f9a9b04abd40b367d4dd566ee07fd6763"
+        "bytes": 1857,
+        "sha256": "e0762d2b55da6f7d65aae67c51811d0be111df65b7d275e33936bb95bc527a7b"
       },
       {
         "path": "src/engine/aiTeamStrategy.js",
-        "bytes": 13834,
-        "sha256": "71b9499ebfd80293e12962694ef3f269e27761ccf734702948c9c2826ba4d020"
+        "bytes": 6446,
+        "sha256": "f78962d1c481961c53724bf4c05af616d7deb606d4de60b376575b3a6ba54e7e"
       },
       {
         "path": "src/engine/architectFocusReview.js",
-        "bytes": 3440,
-        "sha256": "6cf717ee0eae118b932b9292a332ac1d018011db4a5333454162f361cbdbdfef"
+        "bytes": 2237,
+        "sha256": "db4e7bc50f639167eeef223a37e5d4e49b97e3ec92d2f4e87548be62ff7f4e42"
       },
       {
         "path": "src/engine/architectMasteryPortfolio.js",
-        "bytes": 8565,
-        "sha256": "b2eec1351ee372bc258abd8a8080caeb522c8a84aebb78073a8c7066b23b59d4"
+        "bytes": 5257,
+        "sha256": "c6aa91ca80fb4015e84108330e416c340f1a975b86f9dea3ee61890a524a6fab"
       },
       {
         "path": "src/engine/architectThesis.js",
-        "bytes": 7247,
-        "sha256": "b391bdff3f39dff145bb875e366aa8af8dd17c852e33d9bc6178adf9b3f354c0"
+        "bytes": 4661,
+        "sha256": "c54a2d1d7e2d5aa46d76f575a91a608044c30ebb1e64539a7c3ab08332e025b7"
       },
       {
         "path": "src/engine/beatReporter.js",
-        "bytes": 14751,
-        "sha256": "a9ba04315cb20a21f9d0c52cc240749c1f107f723d6d51fbab9267675006a2d6"
+        "bytes": 7779,
+        "sha256": "d686fd3d1c90822506c52b674fd47ceffe254e44a7d6c86404f203904f0a7d39"
       },
       {
         "path": "src/engine/capAlerts.js",
-        "bytes": 6315,
-        "sha256": "6be318cb78060758cf1ae9f25b795b3d5ce54d6d857bfe14a8dc1725b1ffee03"
+        "bytes": 2221,
+        "sha256": "e2f64e30d31a6dca63a77996f675fa117c041ab96878f703722f1747f2a00db7"
       },
       {
         "path": "src/engine/capCompliance.js",
-        "bytes": 25500,
-        "sha256": "30370a229f12980503ad255d5489e4ec552fa387a593894f91a316a21f2c0168"
+        "bytes": 6745,
+        "sha256": "fd86f5a733784d2daa83a3d71787a645ead5007ca325ee1382562a819fdac647"
       },
       {
         "path": "src/engine/coachingMarket.js",
-        "bytes": 16734,
-        "sha256": "c14857dbdd606a4367e726a4270d1605b0f82fd98c1da9295c8e99fe9d26d011"
+        "bytes": 7273,
+        "sha256": "7dc0b27f8d07154a94b0e3b443bad58e3d6e7e6d4b6cda7c2e3c86c89dff9ee7"
       },
       {
         "path": "src/engine/coachingTree.js",
-        "bytes": 9579,
-        "sha256": "11aa298893e8da144eb41a3bc25c4f73ef4dafff7ba23f4326e0a156da4d8f73"
+        "bytes": 4298,
+        "sha256": "b04c99a32c02d0651a171e7ff08f7a30105b7cf756a6f9e65679d9cd1a584e47"
       },
       {
         "path": "src/engine/continuityLedger.js",
-        "bytes": 8621,
-        "sha256": "b6e8b08689c26158ab5baaa0c3c4e5517907b5a2f027fee3ce93b598a5047896"
+        "bytes": 3809,
+        "sha256": "1f74132d6368cc9bc0513c5a64adaf1e50a705ffd1d51b939d739fd6a3fb39e8"
+      },
+      {
+        "path": "src/engine/cpuDraftScouting.js",
+        "bytes": 2376,
+        "sha256": "2905f34909df7bf8dfdddc02cc5bd3389e1a09f83a37e5f764bc60939aa468ab"
       },
       {
         "path": "src/engine/cpuStandardElevations.js",
-        "bytes": 4878,
-        "sha256": "e0e0adb0bbd5c0a6a11f8e54b7c9551c6376ec382c96ab8708bf3f2ef2ca36a3"
+        "bytes": 2501,
+        "sha256": "24aa2969094102e9cf2ebad48a9f5875d35d33fbca926e3c64f91bb0cecfacd2"
       },
       {
         "path": "src/engine/cpuTradeMarket.js",
-        "bytes": 5196,
-        "sha256": "8a78017fdf15a2f2a5c684150e83f6838fd145a0a1a0268a90a98d3caa6de8d2"
+        "bytes": 2674,
+        "sha256": "31f248c3486bab61c9a80f70acd9213e871b4382f9d9b7226e22134d06b3b5e3"
       },
       {
         "path": "src/engine/depthChartUsage.js",
-        "bytes": 11825,
-        "sha256": "6137615931198349196ee514370eee3888cddcd50132e1b09e22f75a705471fb"
+        "bytes": 5062,
+        "sha256": "bbc0cc1c3118d1faf01ad888d7d9e1ac9038ca2a342043bfc3c0f71b8fa0f3eb"
       },
       {
         "path": "src/engine/draftCombine.js",
-        "bytes": 5974,
-        "sha256": "68c9f6b2928c7f513849becbdfb2c407911dec67edce7080f51cc14c61cc639b"
+        "bytes": 2363,
+        "sha256": "34f6fccbbb747a94bdbd4afe61b4f4e7aa925950d5a2fc8851541abf9b19ac2f"
       },
       {
         "path": "src/engine/facilityMarket.js",
-        "bytes": 12906,
-        "sha256": "d559760c28e95169d2534134b8e0025fa86c4693cab6bbaa4d2661b35d2ce097"
+        "bytes": 4409,
+        "sha256": "86eecc8ff03c375cfbb27162a6e37cc4d7f2c8dbbb9780cb03671f92dea516d9"
       },
       {
         "path": "src/engine/fanSentiment.js",
-        "bytes": 3641,
-        "sha256": "816b3681a493f0eaa4bfe4e75e9a6a16e1ac5fb29750f71818fd76e15c51be58"
+        "bytes": 1529,
+        "sha256": "23ec99d2dda5bca16a6dbf8dacdc611d9b8889d2e77be575bff3edde2833cf50"
       },
       {
         "path": "src/engine/gameDayRoster.js",
-        "bytes": 7554,
-        "sha256": "45a2cd077f888261ec8d6198271f3ef6e31bc7f68b77d1adaf25db392065aa36"
+        "bytes": 4696,
+        "sha256": "b68a9d241415584a1a3ed9d5c52f37d72e57adc294234c9d1cfbf6e975ace313"
       },
       {
         "path": "src/engine/gameSimulator.js",
-        "bytes": 83453,
-        "sha256": "ff90a03744e95a53f8ef3ea620b4e2132610e3c42a659066e3b3bb3428d3afc8"
+        "bytes": 37254,
+        "sha256": "2899c86342e6c8c55f324958cafbf6d84cdd63199e3117da51d578e0feb64953"
       },
       {
         "path": "src/engine/gmArchetype.js",
-        "bytes": 3240,
-        "sha256": "403bf6342211551353411038896ac1dddbb902a76886c65ab7573efcac836a23"
+        "bytes": 1674,
+        "sha256": "47c1cec996e4fe6ea5ca04d6671f5d2f12783984ab7b41100ba699dfb4ab4a71"
+      },
+      {
+        "path": "src/engine/gmCareer.js",
+        "bytes": 13798,
+        "sha256": "15b86ce54803934e061a6d2890b138b310109daeaaa1fb93801888e901ad4953"
       },
       {
         "path": "src/engine/gmDecisionAuthority.js",
-        "bytes": 17267,
-        "sha256": "1201cd6015692af41586de3a56ef37914fcc81a9faff45a359f76851920df7b1"
+        "bytes": 12363,
+        "sha256": "d69bfad797fb035d7a67e0bccae9c2a4c5911fcddb6d6feb4c6325bac1097ee6"
       },
       {
         "path": "src/engine/gmDecisionConsequences.js",
-        "bytes": 23253,
-        "sha256": "57b7e2258057306a27440c4ac1175520941540bdf3e4b69529dc3bc38d69f95a"
+        "bytes": 14168,
+        "sha256": "611e37fc6fb878c3c4b090fc07420b6a31cd843e46a1e06d4c428e4abc8c1fcd"
       },
       {
         "path": "src/engine/gmLegacyScore.js",
-        "bytes": 19007,
-        "sha256": "dccbb2f110b826c51c6ba6361e45dace630135c83dca6d33b03f2a4a54e1e7c3"
+        "bytes": 9684,
+        "sha256": "9908e2268a249bf016df92291ae373f2a658b98561096af3d939c3c5e5296d82"
       },
       {
         "path": "src/engine/injurySystem.js",
-        "bytes": 10571,
-        "sha256": "a1d42823c6c43aa27581cd88ef9814c6cc55cf9ba63caa84ca7f8af6086b67d8"
+        "bytes": 5157,
+        "sha256": "e4b3f1d1d800662beab6ddc314fcef147b632c625c1f188e7837d033f71a9bb9"
       },
       {
         "path": "src/engine/matchupEdge.js",
-        "bytes": 5305,
-        "sha256": "5db513dacc629dc1b6c08dc7101149c9cc1bd99079b8d9676d0e62c5c26ac83b"
+        "bytes": 1284,
+        "sha256": "e22c0ed47df22ca85ede00171a1e5cd1b6783459fafc71aab58e4cc6cea6f293"
       },
       {
         "path": "src/engine/narrativeEvents.js",
-        "bytes": 13267,
-        "sha256": "e3db2b41c23aeff62312b7e1bc29806c4e65528b6ac010f321da4793bbfdd6bc"
+        "bytes": 6558,
+        "sha256": "34be233156169883d7b2d25dfd1cc137cc0aed7fe2b05e0993ea0fad246e1d33"
       },
       {
         "path": "src/engine/offseasonDevelopmentReport.js",
-        "bytes": 4426,
-        "sha256": "471d7720dc1e5d7405cb32a3e0e9d0127ff7a0794137ecd61ef6c3d8894d9705"
+        "bytes": 2105,
+        "sha256": "d0dc4036bd370a625372bd098df237f2c97748c255b24980ea31bb7773fd9980"
       },
       {
         "path": "src/engine/offseasonSimulator.js",
-        "bytes": 45898,
-        "sha256": "848dcd193a1a484b0e1330d074f30f3af56298f94c9e5f0eba57f370be2d3209"
+        "bytes": 18039,
+        "sha256": "31928eea630abf7f3af5a05467e2927f6928aed70d3a41cbcf74f519b58c1a6b"
       },
       {
         "path": "src/engine/onClockTradeMarket.js",
-        "bytes": 5121,
-        "sha256": "6befec37eb896928a1fac8d2e13fc113f06fd738c9af48b6e93c44c16f3098f7"
+        "bytes": 2994,
+        "sha256": "9950d05d365794128244315005f031f2849ba6c5001cd8cfb26b9d00fb56e78f"
       },
       {
         "path": "src/engine/overtime.js",
-        "bytes": 2077,
-        "sha256": "76b1026e34db2abfa084c4a5047c8750d9031c72af5caf2f9ad2fc8268788d64"
+        "bytes": 727,
+        "sha256": "59eb56d23ac0e992989c589556e75d8ebc29399533d9d5ceec661cbb3bd7f908"
       },
       {
         "path": "src/engine/ownerConfidence.js",
-        "bytes": 5471,
-        "sha256": "d097c5646ccd38ca085c790b70329af9f0db939698c25f9dc6ecd2fb7d04683b"
+        "bytes": 3730,
+        "sha256": "e8742b126f250382e8ffcc905a20bca523f620eb6a1a8584c302e5ab81cea1c1"
       },
       {
         "path": "src/engine/playCalling.js",
-        "bytes": 5136,
-        "sha256": "9a16cf10342d08c3e81a0f1d1acacc765ef7fc9d794dea9d056f7156427f3c23"
+        "bytes": 925,
+        "sha256": "cd004e06f5600b62e65a77f11c5baa268bf3853f054978b7aaef8784aa14c419"
       },
       {
         "path": "src/engine/playerAgentAI.js",
-        "bytes": 6901,
-        "sha256": "4d27b1842115689ddd0de4f264180acd2d765e44e47118af1c8c5d5d7aea381d"
+        "bytes": 4639,
+        "sha256": "d188d9b951c4d85a03e6c789892cc65fb532233a17451312ce19e2d375ca4662"
       },
       {
         "path": "src/engine/pressConference.js",
-        "bytes": 14480,
-        "sha256": "b035672661939747124269fe48577d447318ebda0f31862f56f46879f533107f"
+        "bytes": 7338,
+        "sha256": "4212c554ed2429eb014bc4b65e4f990dc3795ae84777d1ae33169a70ed0cc4ad"
       },
       {
         "path": "src/engine/pressRoom.js",
-        "bytes": 14828,
-        "sha256": "9a3acadb1eb2899afd28e9a3a4bc97d7ad5c03176ac303f77b219b75111e92fa"
+        "bytes": 7884,
+        "sha256": "104142000ca62fdd2dbf999c08afd7d91fc75c26c39700c77c6b47574a994940"
       },
       {
         "path": "src/engine/rivalFrontOffice.js",
-        "bytes": 3052,
-        "sha256": "8cb3e45088f7ae187b194794fc2f6b9fe8844365caf912097b93002182440e76"
+        "bytes": 575,
+        "sha256": "83ca4066d3e947225f96d227831c914b70fbd4434eb2aa01eec916e6a5919d17"
       },
       {
         "path": "src/engine/rivalGmPersona.js",
-        "bytes": 6110,
-        "sha256": "65a05e12f9fd8e8a405f5b524926e83cf0d4a48f788e6e59294c7d39e757a1c8"
+        "bytes": 2811,
+        "sha256": "52feb7f0b6d8b54188a1b2e9da665a01868baeb433261ef89c2de53d5b97ce78"
       },
       {
         "path": "src/engine/rivalTradeOffers.js",
-        "bytes": 13031,
-        "sha256": "1110fa18df8986890c93a49b9c32ab7afdb512b64bcccaaca16016afe2411be7"
+        "bytes": 6563,
+        "sha256": "8a48493ea5bf78c497025063a3adc71de3c4cfe6e9b2870a0cf7392433d181e5"
       },
       {
         "path": "src/engine/rivalryDNA.js",
-        "bytes": 4936,
-        "sha256": "be7954d5d0c3e71f5efbd9f2d9a466463a40f94d40f0734dffa2f7705c290962"
+        "bytes": 1903,
+        "sha256": "6833b353563897cd0dbbbf8e7d7184c2aca53da79a2fc6e156a5ba066604c1ad"
       },
       {
         "path": "src/engine/schedule.js",
-        "bytes": 15539,
-        "sha256": "91a7a994aa673efcc416597f86d37d27723da6301230d1bcfa76ccb8a2f6a6ec"
+        "bytes": 6317,
+        "sha256": "044634d3f31da92b0b4b45993346d51334c513d318bdeeff8a6ef198a600e6fd"
       },
       {
         "path": "src/engine/seasonSimulator.js",
-        "bytes": 13051,
-        "sha256": "0a4c35c296fe967bfc7d3379e1536400d8b170cab9328437781f894ce03c93b9"
+        "bytes": 6909,
+        "sha256": "86fc7ee87f533101be6713b9115ca777bcf9b4d3862158353d640388710c6d0f"
       },
       {
         "path": "src/engine/situationalCalls.js",
-        "bytes": 3887,
-        "sha256": "6bb5abc288c544abfbc94af009034c092f112e73a309f53600664e589a9a43db"
+        "bytes": 1159,
+        "sha256": "629b4a1e7bf47f7cb81b7d1cba8562516d84e410cd9ab5fd43647cf023525786"
       },
       {
         "path": "src/engine/speedrunChallenge.js",
-        "bytes": 3881,
-        "sha256": "762a3672e22c63660938c6c72923410cd9d299e59d8c53890e150c2a199a6feb"
+        "bytes": 1258,
+        "sha256": "845b51f0c38357147a5971972320b67abc69393a5ac1bcfc9e2c80852e1065ab"
       },
       {
         "path": "src/engine/staffGeneration.js",
-        "bytes": 3565,
-        "sha256": "5c3a08775aeb8bcf208a1e11849c7d43dd01e8f5b04ceef5d00714f25c869038"
+        "bytes": 215,
+        "sha256": "21ef26ed67f3c2a256618be27990bf93cc9218cc9c4840053c1f503db183705d"
       },
       {
         "path": "src/engine/standings.js",
-        "bytes": 3867,
-        "sha256": "7fdcfe91675c3651993d91b3efaeb5c8860f18703c5cf266d3f0e932603f19f2"
+        "bytes": 1764,
+        "sha256": "21839842181f19dccc8a6cee972bd30ecd4c50c3f6a1529b56bde68c96537c9b"
       },
       {
         "path": "src/engine/timeCapsule.js",
-        "bytes": 13128,
-        "sha256": "a3d3f1434d8e1c199eb8b8f523cc9c2bfdeeb56b20b9cbcefbdb5297b2377f61"
+        "bytes": 6612,
+        "sha256": "a18ab3751dab5a4074f9ad1ce822d77636154ec93c89d153740c861b7f311ac7"
       },
       {
         "path": "src/engine/veteranMentorship.js",
-        "bytes": 14005,
-        "sha256": "3989cb077c160ed0611ebf5bbd7f345d31b770da23d0ee0bb37504dc730b1e9b"
+        "bytes": 8269,
+        "sha256": "71a69a438d2754c8e3253c968cf4577c174063b216863128b0927fed292f9fb1"
       },
       {
         "path": "src/engine/weeklySimulator.js",
-        "bytes": 3442,
-        "sha256": "440a40ac722a66f4864e7106fa957823690d4fdc6905eaf683864127380c7771"
+        "bytes": 1934,
+        "sha256": "3119f6bec91a30157dff582665a6ff9010f228147dbd4bc727b9fec25b4a00c0"
       },
       {
         "path": "src/engine/whatIfReplay.js",
-        "bytes": 4072,
-        "sha256": "dc4df01eed9e474960b6d1b863ee8dc5a3bbb9d818fc09aa34d7ccc76b4d9f6a"
+        "bytes": 2481,
+        "sha256": "7b1b49b3c7d8ba0cee71a85bf349c9475be7243fcd5827cbe0dbdd65b0448285"
       },
       {
         "path": "src/runtime/GameSession.js",
-        "bytes": 402839,
-        "sha256": "0c68c24d77cc1939b254c38cf1d1d1185d51bb4188d0dff9befedc7779f93508"
+        "bytes": 214331,
+        "sha256": "ea7970ec3d659d56bcd9e79fd7ce99c990ed0481c3b50f6d14a83c9d3060be2d"
       },
       {
         "path": "src/runtime/advanceWeekCommand.js",
-        "bytes": 7514,
-        "sha256": "dc0adf1be502804e052d7086483264fe10709945a4187a33045f57b293d47007"
+        "bytes": 4187,
+        "sha256": "65d1ed294a50455ccda3dbe73ef1b3cc20fe4d677bc65272f81a9cfa22dab3b2"
       },
       {
         "path": "src/runtime/applyLeagueSetup.js",
-        "bytes": 6269,
-        "sha256": "43d627b8de1fa10394acb255e9394a50ca892ccf8ff8ec1bb384777c673c309a"
+        "bytes": 3974,
+        "sha256": "129be1f244b352881810ed8c6e0154e9b6a552196252e3b7693d8fac079eecde"
       },
       {
         "path": "src/runtime/architectLedger.js",
-        "bytes": 3897,
-        "sha256": "8a1b2aa18052c46c17ff3de07fccae3520726d4d97804bf2ed6dc73eb0d54563"
+        "bytes": 2580,
+        "sha256": "af2e2a909f602d2dfc2a9ac92f358b69cc3742abd0c4fa056339b8ea5bee9ac8"
+      },
+      {
+        "path": "src/runtime/careerCommand.js",
+        "bytes": 478,
+        "sha256": "de0c5f6a6daa360ad2498527f180166220d4613d24329a301586a823ba1866c5"
       },
       {
         "path": "src/runtime/franchiseAuthority.js",
-        "bytes": 10941,
-        "sha256": "316f0518c1b007282c5b63a8314715c62e1fe57a9b910c688ce14e067d43f0a2"
+        "bytes": 8907,
+        "sha256": "e169c4b356f763fc683e48d0dac0e699d1516d9d0f616df1ecdbdd0a3de30af5"
       },
       {
         "path": "src/runtime/handlers/architectThesisHandler.js",
-        "bytes": 1264,
-        "sha256": "f4e591fbe4c76b9583e6229ce55fefdf202a7cf9c2f810c2038ea097a7a249cb"
+        "bytes": 612,
+        "sha256": "3f593264e6de5717d2da5901c54832437a73ed20c029a934a0736b02e8dfa272"
       },
       {
         "path": "src/runtime/handlers/franchiseMomentHandler.js",
-        "bytes": 4492,
-        "sha256": "dd9104a2e6597bb6276e720e50f850df23fcadb295ea050de23653d0469b315a"
+        "bytes": 2293,
+        "sha256": "0bd2a466c339d9b696dedbdae852fd0437fbcede9dd2e73f529681d0e5561c06"
       },
       {
         "path": "src/runtime/handlers/tradeOffersHandler.js",
-        "bytes": 1342,
-        "sha256": "56c0c8fabe9b90678f495e1720d1b6a7cb6d20cf419be9be775b04bbf829adf2"
+        "bytes": 644,
+        "sha256": "dade10641010b7093b3a3f77a1d908766419f26d12aa3f79da509d9b2dc9a14b"
       },
       {
         "path": "src/runtime/identityMetadataSnapshot.js",
-        "bytes": 2578,
-        "sha256": "dfc7d5afcfd0e253350c030f690d4c539c039dbc7d2c1c507bb64684156432ad"
+        "bytes": 1678,
+        "sha256": "f1a04199c8326bc6789c09292dce304f0fe8b1574292b8f7cee752cefd32956f"
       },
       {
         "path": "src/runtime/measurementProvenanceSnapshot.js",
-        "bytes": 3310,
-        "sha256": "0667e36bfece87825a4513b28abc0363383a6b9b0f904e82ad4f1030af10fc5e"
+        "bytes": 2037,
+        "sha256": "fa7ba7d8a17e241afa596ff6d9a7ff90fa4a6b8e2b7379805c5f518a5559f472"
       },
       {
         "path": "src/runtime/modules/sessionModules.js",
-        "bytes": 1255,
-        "sha256": "5fae311b47f28f8a0cd0614fa456c6605e1407a9c1e9ea29f9d62f391790eb63"
+        "bytes": 675,
+        "sha256": "c08906ce96458c7c6485df028f492364304aa2afb512784cbee1761ec2715526"
       },
       {
         "path": "src/runtime/multiplayerSession.js",
-        "bytes": 9525,
-        "sha256": "834151078c7990d52fbcdd4f203527b991939b7aa86f5a42dc39ca50acdb55a7"
+        "bytes": 4043,
+        "sha256": "5b7712506d2fa3fb0bb64ac7d33b1518096c5fd4b7f19d7e76654e92c556412d"
       },
       {
         "path": "src/runtime/pensionServiceSnapshot.js",
-        "bytes": 2536,
-        "sha256": "ed70718607ece3bf8ca17f2d7be8e2454fd8dabcdb303e04849fe4508593e4fd"
+        "bytes": 1522,
+        "sha256": "6babd288eaee7484dd81b1e23562cd767f18d475abedc468e89eb2df96c858d8"
       },
       {
         "path": "src/runtime/services/CoachingService.js",
-        "bytes": 7251,
-        "sha256": "b2abaab4d884b1cc700b7ba3289618bd1efd653c50053899f5e17e005535fbaf"
+        "bytes": 3628,
+        "sha256": "59b75cd57c531c8b10bbf11a190a0a05289314711512ccda2e23a948e0dfc4b6"
       },
       {
         "path": "src/runtime/services/ContractService.js",
-        "bytes": 2398,
-        "sha256": "9f2309bbcd0013ad6fdac87618c575ce69417735fed37e1eeb1d69c4e4ef5b97"
+        "bytes": 1183,
+        "sha256": "d85c1f572d02ae2047009a37b822e0afc2d1d396f88cec1136d6f4bf78699639"
       },
       {
         "path": "src/runtime/services/TradeService.js",
-        "bytes": 15372,
-        "sha256": "4a37748e4940e7cc4fe7920ff8fd6cdc36a5fa45c88e02fa38918eaebdf854be"
+        "bytes": 6613,
+        "sha256": "9b72862eda5cb8e112c1f8a7889a5e2d2989651d9270f205175e75d38da75566"
       },
       {
         "path": "src/runtime/services/index.js",
-        "bytes": 1835,
-        "sha256": "2296511ccb6da03fe56f35365409dba277f704de3099ea458b14989f4ac1a6d6"
+        "bytes": 1136,
+        "sha256": "a2e32cc6bb2a1fd674f2d81a4028bf5be974cc73efae8bc33d61f53633ee186e"
       },
       {
         "path": "src/runtime/services/tradePlan.js",
-        "bytes": 2022,
-        "sha256": "b245a3f8c32d033105e40a7bf7d4890634f6441f24215e9084e5878e95501e04"
+        "bytes": 1288,
+        "sha256": "267e1c743271ee7d0ae8b905742a9fa6dca1f243d4a26a617bbb65e6f0778ff9"
       },
       {
         "path": "src/runtime/snapshotMigration.js",
-        "bytes": 7382,
-        "sha256": "973e583b9d43e680757c80a521e18bc302ae959ee35018f9db9ebb30ba0d1481"
+        "bytes": 4435,
+        "sha256": "65479bc1dc49c9e2d9b2c8112abad3bcd86530ddb83f9e2bdc72788eb2ccd67a"
       },
       {
         "path": "src/runtime/statSnapshot.js",
-        "bytes": 5886,
-        "sha256": "5cc463a1929836c5548340ec860cc7dd858d0aa81f1fc5ca8a29c03313dcbf86"
+        "bytes": 3170,
+        "sha256": "096cf9c98f78c6907a52f0a8dff4a7dfa11a48ad98b5991b77b373c1365977df"
       },
       {
         "path": "src/runtime/weekResultProjection.js",
-        "bytes": 10497,
-        "sha256": "89ddf5d63abb22222d3a0a86cb3a234b122f06d9c69b22ccb5daa97a3838b983"
+        "bytes": 2561,
+        "sha256": "538bf75eaa2a2b01b10a80dd4cafe7be5fa3232dd844149b1ad986a2931c5b34"
       },
       {
         "path": "src/runtime/weeklyTactic.js",
-        "bytes": 3178,
-        "sha256": "f8f0aa3883857f8d7f67d374f7cc34a9a16bdf0f533084e29a5d73b9377f6b9f"
+        "bytes": 721,
+        "sha256": "8f2254fb8a210dd47f5a860f3ffe8868e1b18348d54a14b35b910b665f1b66a0"
       },
       {
         "path": "src/sport/calendarContract.js",
-        "bytes": 5261,
-        "sha256": "caf5a986143bfbcbf5f7f9295ac36fa39cd3e81259d3c3d52874ec10f98e2179"
+        "bytes": 2226,
+        "sha256": "1268e287f0d7cef2d1062d5add2e2ec5bb957a9a1453a2c2992150eaccb0eb25"
       },
       {
         "path": "src/sport/competitionContract.js",
-        "bytes": 5371,
-        "sha256": "9f0df43d7c7801344993d3492a0012965331ab4b955f32e650704596add0cc76"
+        "bytes": 1381,
+        "sha256": "d546bcca1fd5a1433e0175a963cf0dcbeaafcb92b5a7c16dcf7022d03d9ba908"
       },
       {
         "path": "src/sport/football/calendar.js",
-        "bytes": 1774,
-        "sha256": "6b361650154951e960380cbea28587425aa5fb2945f771b0562455769a53cbf8"
+        "bytes": 874,
+        "sha256": "f6bb433a36a2fd88ffc2b0f454cc8b636e98930d4f0fb068e7eb1673c8e7adea"
       },
       {
         "path": "src/sport/football/competition.js",
-        "bytes": 570,
-        "sha256": "45f183fe0fbe3ae526092644abd9f0ff14e822259f00f21484411109c0bbce55"
+        "bytes": 198,
+        "sha256": "72383e43615883d21bed3404576dff578aa66d76d7a94630ba0837c68440a572"
       },
       {
         "path": "src/sport/football/index.js",
-        "bytes": 1393,
-        "sha256": "b72d5900f838814b7ad04ba726d8def5e2073bd7f1c0e47bb5a7dccf0a7e1e84"
+        "bytes": 511,
+        "sha256": "39caa28da80d01a5cccc1e7f31149fbe1d2b8bf062343d59843effb740fec543"
       },
       {
         "path": "src/sport/football/postseason.js",
-        "bytes": 12210,
-        "sha256": "6007428021bb6258e375f4a9a7b8ac5787a0992436f155970130090fd7d6c318"
+        "bytes": 5751,
+        "sha256": "1145856ea38be368ddcc8356adaaec6ee3e6b2441f88c18829e59232f0827c06"
       },
       {
         "path": "src/sport/football/rules.js",
-        "bytes": 609,
-        "sha256": "64fef4a35a808ee4ca33f504b5ff774ee08b24803a3157ca167d419a0af87de1"
+        "bytes": 202,
+        "sha256": "8706dad793f831620f5119e4f49bf2d21fc475f47743c24d9943c84108723fae"
       },
       {
         "path": "src/sport/football/statSchema.js",
-        "bytes": 14365,
-        "sha256": "750b5f9882a0ece690d3c6077b3bd5224d921d3222bfcb1da7fcca7c7f85364c"
+        "bytes": 7682,
+        "sha256": "2b4c391ea221d247c156465888f283db413257602fc41b6a42886a429b38bd23"
       },
       {
         "path": "src/sport/matchReadiness.js",
-        "bytes": 491,
-        "sha256": "3046c80ccd2be7228a958f4e87f6663005217e6c34a4855ec336eca38ff10aa5"
+        "bytes": 276,
+        "sha256": "3dc9970d4540c517293ff08849241e38a982269307e249e2b9064ce3f4e71923"
       },
       {
         "path": "src/sport/registry.js",
-        "bytes": 1823,
-        "sha256": "f5958f541d40c6b75dfe420de00061f1a336cfeb62e0171f48b9991916d3a2b5"
+        "bytes": 755,
+        "sha256": "f4cd67c2d3208032303b5bec22acff49d5461209edafa411ac72c791fc57a27e"
       },
       {
         "path": "src/stats/applyGameStats.js",
-        "bytes": 1593,
-        "sha256": "cbc980c05c0d4cf600a0c8c6fbff88311197b9f05a7d49fe79f696750901f64f"
+        "bytes": 557,
+        "sha256": "224edb68cfb38a37ce81b256a14d5812f20933a7106c8cadbeedb80b88702ab5"
       },
       {
         "path": "src/stats/approximateValue.js",
-        "bytes": 12713,
-        "sha256": "6abe8fc07159a14c2008e97108088f4965bd4678c6a68b86bff4e9bc7fc27486"
+        "bytes": 5061,
+        "sha256": "e75efe34f060814908a207102f58dc74c9aa4d58303aa3920df84a5a3a6710ca"
       },
       {
         "path": "src/stats/gameImpact.js",
-        "bytes": 3136,
-        "sha256": "9a0f1781da1bc7ac58a87857b9603b90b9cb129fb0bcbd5451b7386110db4be5"
+        "bytes": 942,
+        "sha256": "34cbfaa4c2927f87b2adf7e4236ca096213ad1bbdf9f77ffb89d8083aec8b8ec"
       },
       {
         "path": "src/stats/gmReportCard.js",
-        "bytes": 10017,
-        "sha256": "4efcb78eeb3810770f63b211092b499ec7c7a9b8678b02433bac2349973c08ca"
+        "bytes": 3870,
+        "sha256": "cde0869522d059267985ab0184f6e67feac563eafb614886a900c3ff3a985148"
       },
       {
         "path": "src/stats/leagueLens.js",
-        "bytes": 12467,
-        "sha256": "b2171af8985982f16fce7dff6311011c7a64fb40dc237de7358b8c8edd36a26f"
+        "bytes": 6802,
+        "sha256": "df64463d5376c4396d1942a9b96e92d74b1a0d20aa024490fd0f85bee300d2ae"
       },
       {
         "path": "src/stats/profiles/pfrCareerWeightedProfile.js",
-        "bytes": 4418,
-        "sha256": "1072fdb5711a28a22ecf5c0d4bbce90d1cf6e702abbdd39c57b94c84ea200eb0"
+        "bytes": 3067,
+        "sha256": "cebb05f2e4874de584ed7f5d6539c4e7ffa78962d46c926ad136c558130e33d6"
       },
       {
         "path": "src/stats/profiles/pfrRecentWeightedProfile.js",
-        "bytes": 2383,
-        "sha256": "bad1cc35d2c4b5b692f9370b5ec4617b60611b3909b10abb23bb202b1be41866"
+        "bytes": 1557,
+        "sha256": "90d0c3603828235c1d139b454129106dcc5aab57b6c4fae4d77e9a742f22f490"
       },
       {
         "path": "src/stats/progressionParity.js",
-        "bytes": 41570,
-        "sha256": "7a0fe464dbfc453b1e4266ab2a102154a4d20520c6c69bb5437eb2f127a986d1"
+        "bytes": 13888,
+        "sha256": "b8fa171c8fcaf0fd140b05370c5c91b44975102969a1b8b5e76dd946d47ba616"
       },
       {
         "path": "src/stats/realismCalibrator.js",
-        "bytes": 25821,
-        "sha256": "e9d51c5555059430201a8fd31dabee7eb71b75f895f754cdbffe64afb5c17d58"
+        "bytes": 12984,
+        "sha256": "75fb7276fca46032d390f4c40f432fe5a5b65200340a5aca284c65df4d28f9de"
       },
       {
         "path": "src/stats/scoreline.js",
-        "bytes": 2928,
-        "sha256": "02ce98a9d69dc0415f3c9f68e77b6b3ab7ff513ec692db62c62a033598c03c5b"
+        "bytes": 598,
+        "sha256": "f3a4e0017988e7ac564efb644ff4dcd5368f30c74c70794be0f00d95b2a45129"
       },
       {
         "path": "src/stats/statBook.js",
-        "bytes": 24640,
-        "sha256": "e891459b0012384c525d15131714e0334a072b7fe3a779152d9b272b4b735683"
+        "bytes": 12170,
+        "sha256": "83ca713bf0cc460b828e5ee06571eb8eff6a023806397830d9e43245edbb0d4b"
       },
       {
         "path": "src/stats/teamRecord.js",
-        "bytes": 765,
-        "sha256": "45648a0f4669dc8887bd4897093e75169904e87472d3b8a035c4064a85828f51"
+        "bytes": 371,
+        "sha256": "76fbc387d9fc169749015cd6a2fecf4e79f18360d036134159a5119378b762ed"
       },
       {
         "path": "src/utils/rng.js",
-        "bytes": 5535,
-        "sha256": "12b630dea99627b266aef906d5344ba17ce77316b336ca2dab113c655d41d089"
+        "bytes": 1516,
+        "sha256": "59df9641c836c838ee4395a8ba67a7f931a1b2dfa25a11ac8b41574d80125dde"
       },
       {
         "path": "src/utils/rngStreams.js",
-        "bytes": 1408,
-        "sha256": "5d5c225c96e274e7b764798e8929f75e720b899452ac24a38554b23ea17ad181"
+        "bytes": 858,
+        "sha256": "85e99c630e4b39b1832efd9dc01c13b0b00442538b68851b614db26cf86ef149"
       },
       {
         "path": "stats-surface.json",
-        "bytes": 3191,
-        "sha256": "e75c35e7f59e1c1c3a84bff2d581a238835b6710ac791b34802b80680f3dd67a"
+        "bytes": 3175,
+        "sha256": "d5718872b40906f78a9e5e67594cf20b4e11ec6cc31c4cf8914d045b77f2a814"
       },
       {
         "path": "stats.html",
-        "bytes": 8090,
-        "sha256": "afc36833086f076171f8d564d1dcf3d013ea6d895d240bcf8ec6b318948b6cc4"
+        "bytes": 9521,
+        "sha256": "a741b14e6961280f92bf4fdf88a02c6283d33507d7e172d2112896f15d7f067e"
       },
       {
         "path": "status-archive.html",
-        "bytes": 28229,
-        "sha256": "0f4abd8d17ab13ff1a59f3bcb00dd4c5dcadd2b8d038dd3dddc9897eed6a6fe0"
+        "bytes": 31635,
+        "sha256": "ace68ae0b5f7b41f708e931f606225abb4af63a7839d88c86c4708a6f9b61a0f"
       },
       {
         "path": "status.html",
-        "bytes": 7177,
-        "sha256": "9880288e976c1942449e65e6aad73b7a4c684fd27ddd2c4f8ba8bd073655334a"
+        "bytes": 10529,
+        "sha256": "3855e55dcdee9c172a72a12bb8c52d9987f83a255049888c97b97b1ce55575de"
+      },
+      {
+        "path": "styles.a6a408aa6e.css",
+        "bytes": 176422,
+        "sha256": "a6a408aa6e47b419efb98c4f6dc8503591fca636a26a7a31a75f13835bda631f"
       },
       {
         "path": "styles.css",
-        "bytes": 222610,
-        "sha256": "ebb030a6df5aacd54521eec388760ff0fa23edb6dab82cb249670fdb09870a15"
-      },
-      {
-        "path": "styles.ebb030a6df.css",
-        "bytes": 222610,
-        "sha256": "ebb030a6df5aacd54521eec388760ff0fa23edb6dab82cb249670fdb09870a15"
+        "bytes": 176422,
+        "sha256": "a6a408aa6e47b419efb98c4f6dc8503591fca636a26a7a31a75f13835bda631f"
       },
       {
         "path": "sw.js",
-        "bytes": 13234,
-        "sha256": "0295dbb886d403a9b401ffc3eca7d22e7df21b0d3d0ed5acb22f7f1260e45607"
+        "bytes": 13503,
+        "sha256": "a809e583ce91e2a1678e9e08065bcce47a75fc2d70be715cc4145fac26858eb0"
       },
       {
         "path": "terms.html",
-        "bytes": 6025,
-        "sha256": "3fbc62fd006a1e0cd0cffc9a34bcc07d36ff0df60f242f8f75c213de131b35bb"
+        "bytes": 7286,
+        "sha256": "88b6abd05c2a2817d36a7e4e56797f88cad3c83953250aedf5be1a45582c87b5"
       }
     ],
     "exclusions": [
@@ -1878,17 +1938,17 @@
     "alt-svc": "h3=\":443\"; ma=86400",
     "cache-control": "public, max-age=0, must-revalidate",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a5bd6a9dcd4519a7-IAD",
+    "cf-ray": "a5ccb2df7aac481c-IAD",
     "connection": "keep-alive",
     "content-encoding": "br",
-    "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-UpNCcXEhd+OmJ9Vp30AM+sG2CPfKqseBZ2eLOVM8lZ8=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self' 'sha256-67Awpt9arNVFIe7DiHYP8Poj7bbauCyySWcP2wmHChU=' 'sha256-Eej6rI2Ct4e7Da6xNECeQtZ0knJCZ8B+3309kS4paEo='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+    "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/RppW6xcwkadKOLxfgK+i9luQN+gocvY7FcljBp5XZQ=' 'sha256-0Rz+2y6JEMRAEBmO0ZGZj9JsqeDSzCWOBbdvKgOCfuU=' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-9+2WwytGYhRIhgW38s5cyGADZStv2WhCuKWnjt+Rj2Q=' 'sha256-HONiLnVUE6Y2HJ9eVyBQBrQrBkHMtrAm6m25hqIYHx0=' 'sha256-KaOaSO/d4V6oGlcD95tZvqSy7QnwhdSYLASFr4aA7Rw=' 'sha256-KsaVR+LuEHednAc+QsMQN0UBj6yLhulFo4jIeEetg78=' 'sha256-LwZntZ/IVQuUyISVcVLHEngh4shx+ykGMKVQBTxRvEI=' 'sha256-O4W9r5p1vZYNP7/dsnmCzBkopk9MAELNfgu9CBwAoxE=' 'sha256-OLo0/qBz6zXnuA8gf2wdltSngF/K7iYIeb9oL6M1mc8=' 'sha256-Of2/oycLq8/o0iHHRzBbrtpLHTnUKgvvYfq7ya5fEWM=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-RL5nxZDvJUp6fz9NLSJwrzEVnQ/PW0qg9pFMNEDgWjk=' 'sha256-Z2EgYyR+Kqjlsc4IZYl1PUPxeGr1cM2D/Wkfhc4+NM8=' 'sha256-hJC0dsAF/B0x/w8dJL+4LorLBJAjxXpbanxq7l7KQOI=' 'sha256-kzXhfSqr19wheiQ6HTvKDupItXIlQtttQNXaNScLRfE=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' 'sha256-rBwl6U+iCM8GeALsZpP8687PpPy+iTwXngdoBJ2zNWE=' 'sha256-vMznO4Hy7PzPffigj8Jp9IJk9JlIE2pnQkIl8B0gFBE=' 'sha256-z0bOOrt6l1juvavYkCSZsqhssJ2k/zL1RDjUD4QFRO4=' https://static.cloudflareinsights.com; style-src-elem 'self' 'sha256-AA0S7TYh05SMFVqZsTw1zha1AvqOoMl0kgYj/Va+a7I=' 'sha256-pqQIqm5HtBnvuYxPbchQNZH8pjaianoxp18Tg1vaYx8='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "content-type": "text/html; charset=utf-8",
-    "date": "Tue, 17 Nov 2026 08:37:58 GMT",
-    "link": "<./lib/api/createApiClient.js>; rel=\"modulepreload\", <./lib/apiContract.js>; rel=\"modulepreload\", <./lib/challengeCodes.js>; rel=\"modulepreload\", <./lib/clientDiagnostics.js>; rel=\"modulepreload\", <./lib/clientRecoveryUi.js>; rel=\"modulepreload\", <./lib/themeCustomizer.js>; rel=\"modulepreload\"",
+    "date": "Thu, 19 Nov 2026 05:08:44 GMT",
+    "link": "<./lib/api/createApiClient.js>; rel=\"modulepreload\", <./lib/apiContract.js>; rel=\"modulepreload\", <./lib/challengeCodes.js>; rel=\"modulepreload\", <./lib/clientDiagnostics.js>; rel=\"modulepreload\", <./lib/clientRecoveryUi.js>; rel=\"modulepreload\", <./lib/setupTeamChoice.js>; rel=\"modulepreload\", <./lib/themeCustomizer.js>; rel=\"modulepreload\"",
     "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
     "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
     "referrer-policy": "strict-origin-when-cross-origin",
-    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=FGo4pxlCq0PmdMmsizECdG0ED4xi97I78KMNSv%2BfUuvfXiVVdvMcbj3NinhlS1wnUfZUCeyI7PuOqaU1cf3JbBrei47c9q1%2BhKd6bLZMVH3NQ5PaRmB%2Bx0ccwg4KdLl%2B3m3hslMdh%2BtMZAtM2Q%3D%3D\"}]}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=mLtnXw0yV1ZIDn0tKSBTycNORwOcuuEqV4INCbsxz4j9HZphsu8jGbbd1WoHoFIDtuoHCcMtu24%2BA8bOwJzGsUERGlx%2BFTpknm85U%2BzcjKdIgBfOpPxQNK%2BLett73hUh44V35q%2F4devEDF59kg%3D%3D\"}]}",
     "server": "cloudflare",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
     "transfer-encoding": "chunked",
@@ -1904,26 +1964,76 @@
         "height": 1000
       },
       "runs": 3,
-      "lcpMs": 384,
-      "inpMs": 40,
-      "cls": 0.0003,
+      "lcpMs": 696,
+      "inpMs": 32,
+      "cls": 0.0006,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 612,
+          "lcpMs": 804,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
             "className": "",
             "text": ""
           },
-          "cls": 0.0003,
+          "cls": 0.0006,
           "shifts": [
             {
-              "startTimeMs": 1213,
+              "startTimeMs": 3085,
               "scrollY": 0,
-              "value": 0.0003,
+              "value": 0.0006,
               "sources": [
+                {
+                  "tag": "BUTTON",
+                  "id": "instantStartBtn",
+                  "className": "btn-primary btn-lg",
+                  "previousRect": {
+                    "x": 693.328125,
+                    "y": 390.109375,
+                    "width": 224.28125,
+                    "height": 46.03125,
+                    "top": 390.109375,
+                    "right": 917.609375,
+                    "bottom": 436.140625,
+                    "left": 693.328125
+                  },
+                  "currentRect": {
+                    "x": 727.828125,
+                    "y": 390.109375,
+                    "width": 224.28125,
+                    "height": 46.03125,
+                    "top": 390.109375,
+                    "right": 952.109375,
+                    "bottom": 436.140625,
+                    "left": 727.828125
+                  }
+                },
+                {
+                  "tag": "SELECT",
+                  "id": "heroTeamSelect",
+                  "className": "hero-team-select",
+                  "previousRect": {
+                    "x": 522.390625,
+                    "y": 390.109375,
+                    "width": 159.75,
+                    "height": 46.03125,
+                    "top": 390.109375,
+                    "right": 682.140625,
+                    "bottom": 436.140625,
+                    "left": 522.390625
+                  },
+                  "currentRect": {
+                    "x": 487.890625,
+                    "y": 390.109375,
+                    "width": 228.75,
+                    "height": 46.03125,
+                    "top": 390.109375,
+                    "right": 716.640625,
+                    "bottom": 436.140625,
+                    "left": 487.890625
+                  }
+                },
                 {
                   "tag": "SPAN",
                   "id": null,
@@ -1939,14 +2049,14 @@
                     "left": 512.328125
                   },
                   "currentRect": {
-                    "x": 455.453125,
+                    "x": 470.9375,
                     "y": 450.53125,
                     "width": 149.28125,
                     "height": 25,
                     "top": 450.53125,
-                    "right": 604.734375,
+                    "right": 620.21875,
                     "bottom": 475.53125,
-                    "left": 455.453125
+                    "left": 470.9375
                   }
                 },
                 {
@@ -1964,37 +2074,87 @@
                     "left": 675.609375
                   },
                   "currentRect": {
-                    "x": 618.734375,
+                    "x": 634.21875,
                     "y": 456.125,
-                    "width": 366,
+                    "width": 335,
                     "height": 13.8125,
                     "top": 456.125,
-                    "right": 984.734375,
+                    "right": 969.21875,
                     "bottom": 469.9375,
-                    "left": 618.734375
+                    "left": 634.21875
                   }
                 }
               ]
             }
           ],
-          "inpMs": 136,
+          "inpMs": 48,
           "interactionObserved": true
         },
         {
-          "lcpMs": 384,
+          "lcpMs": 424,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
             "className": "",
             "text": ""
           },
-          "cls": 0.0003,
+          "cls": 0.0006,
           "shifts": [
             {
-              "startTimeMs": 1197,
+              "startTimeMs": 1584,
               "scrollY": 0,
-              "value": 0.0003,
+              "value": 0.0006,
               "sources": [
+                {
+                  "tag": "BUTTON",
+                  "id": "instantStartBtn",
+                  "className": "btn-primary btn-lg",
+                  "previousRect": {
+                    "x": 693.328125,
+                    "y": 390.109375,
+                    "width": 224.28125,
+                    "height": 46.03125,
+                    "top": 390.109375,
+                    "right": 917.609375,
+                    "bottom": 436.140625,
+                    "left": 693.328125
+                  },
+                  "currentRect": {
+                    "x": 727.828125,
+                    "y": 390.109375,
+                    "width": 224.28125,
+                    "height": 46.03125,
+                    "top": 390.109375,
+                    "right": 952.109375,
+                    "bottom": 436.140625,
+                    "left": 727.828125
+                  }
+                },
+                {
+                  "tag": "SELECT",
+                  "id": "heroTeamSelect",
+                  "className": "hero-team-select",
+                  "previousRect": {
+                    "x": 522.390625,
+                    "y": 390.109375,
+                    "width": 159.75,
+                    "height": 46.03125,
+                    "top": 390.109375,
+                    "right": 682.140625,
+                    "bottom": 436.140625,
+                    "left": 522.390625
+                  },
+                  "currentRect": {
+                    "x": 487.890625,
+                    "y": 390.109375,
+                    "width": 228.75,
+                    "height": 46.03125,
+                    "top": 390.109375,
+                    "right": 716.640625,
+                    "bottom": 436.140625,
+                    "left": 487.890625
+                  }
+                },
                 {
                   "tag": "SPAN",
                   "id": null,
@@ -2010,14 +2170,14 @@
                     "left": 512.328125
                   },
                   "currentRect": {
-                    "x": 455.453125,
+                    "x": 470.9375,
                     "y": 450.53125,
                     "width": 149.28125,
                     "height": 25,
                     "top": 450.53125,
-                    "right": 604.734375,
+                    "right": 620.21875,
                     "bottom": 475.53125,
-                    "left": 455.453125
+                    "left": 470.9375
                   }
                 },
                 {
@@ -2035,91 +2195,141 @@
                     "left": 675.609375
                   },
                   "currentRect": {
-                    "x": 618.734375,
+                    "x": 634.21875,
                     "y": 456.125,
-                    "width": 366,
+                    "width": 335,
                     "height": 13.8125,
                     "top": 456.125,
-                    "right": 984.734375,
+                    "right": 969.21875,
                     "bottom": 469.9375,
-                    "left": 618.734375
+                    "left": 634.21875
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 32,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 696,
+          "lcpElement": {
+            "tag": "IMG",
+            "id": null,
+            "className": "",
+            "text": ""
+          },
+          "cls": 0.0006,
+          "shifts": [
+            {
+              "startTimeMs": 1670,
+              "scrollY": 0,
+              "value": 0.0006,
+              "sources": [
+                {
+                  "tag": "BUTTON",
+                  "id": "instantStartBtn",
+                  "className": "btn-primary btn-lg",
+                  "previousRect": {
+                    "x": 693.328125,
+                    "y": 390.109375,
+                    "width": 224.28125,
+                    "height": 46.03125,
+                    "top": 390.109375,
+                    "right": 917.609375,
+                    "bottom": 436.140625,
+                    "left": 693.328125
+                  },
+                  "currentRect": {
+                    "x": 727.828125,
+                    "y": 390.109375,
+                    "width": 224.28125,
+                    "height": 46.03125,
+                    "top": 390.109375,
+                    "right": 952.109375,
+                    "bottom": 436.140625,
+                    "left": 727.828125
+                  }
+                },
+                {
+                  "tag": "SELECT",
+                  "id": "heroTeamSelect",
+                  "className": "hero-team-select",
+                  "previousRect": {
+                    "x": 522.390625,
+                    "y": 390.109375,
+                    "width": 159.75,
+                    "height": 46.03125,
+                    "top": 390.109375,
+                    "right": 682.140625,
+                    "bottom": 436.140625,
+                    "left": 522.390625
+                  },
+                  "currentRect": {
+                    "x": 487.890625,
+                    "y": 390.109375,
+                    "width": 228.75,
+                    "height": 46.03125,
+                    "top": 390.109375,
+                    "right": 716.640625,
+                    "bottom": 436.140625,
+                    "left": 487.890625
+                  }
+                },
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "site-status-chip",
+                  "previousRect": {
+                    "x": 512.328125,
+                    "y": 450.53125,
+                    "width": 149.28125,
+                    "height": 25,
+                    "top": 450.53125,
+                    "right": 661.609375,
+                    "bottom": 475.53125,
+                    "left": 512.328125
+                  },
+                  "currentRect": {
+                    "x": 470.9375,
+                    "y": 450.53125,
+                    "width": 149.28125,
+                    "height": 25,
+                    "top": 450.53125,
+                    "right": 620.21875,
+                    "bottom": 475.53125,
+                    "left": 470.9375
+                  }
+                },
+                {
+                  "tag": "SPAN",
+                  "id": "activeLeagueText",
+                  "className": "setup-session-status",
+                  "previousRect": {
+                    "x": 675.609375,
+                    "y": 456.125,
+                    "width": 253,
+                    "height": 13.8125,
+                    "top": 456.125,
+                    "right": 928.609375,
+                    "bottom": 469.9375,
+                    "left": 675.609375
+                  },
+                  "currentRect": {
+                    "x": 634.21875,
+                    "y": 456.125,
+                    "width": 335,
+                    "height": 13.8125,
+                    "top": 456.125,
+                    "right": 969.21875,
+                    "bottom": 469.9375,
+                    "left": 634.21875
                   }
                 }
               ]
             }
           ],
           "inpMs": 24,
-          "interactionObserved": true
-        },
-        {
-          "lcpMs": 360,
-          "lcpElement": {
-            "tag": "IMG",
-            "id": null,
-            "className": "",
-            "text": ""
-          },
-          "cls": 0.0003,
-          "shifts": [
-            {
-              "startTimeMs": 1307,
-              "scrollY": 0,
-              "value": 0.0003,
-              "sources": [
-                {
-                  "tag": "SPAN",
-                  "id": null,
-                  "className": "site-status-chip",
-                  "previousRect": {
-                    "x": 512.328125,
-                    "y": 450.53125,
-                    "width": 149.28125,
-                    "height": 25,
-                    "top": 450.53125,
-                    "right": 661.609375,
-                    "bottom": 475.53125,
-                    "left": 512.328125
-                  },
-                  "currentRect": {
-                    "x": 455.453125,
-                    "y": 450.53125,
-                    "width": 149.28125,
-                    "height": 25,
-                    "top": 450.53125,
-                    "right": 604.734375,
-                    "bottom": 475.53125,
-                    "left": 455.453125
-                  }
-                },
-                {
-                  "tag": "SPAN",
-                  "id": "activeLeagueText",
-                  "className": "setup-session-status",
-                  "previousRect": {
-                    "x": 675.609375,
-                    "y": 456.125,
-                    "width": 253,
-                    "height": 13.8125,
-                    "top": 456.125,
-                    "right": 928.609375,
-                    "bottom": 469.9375,
-                    "left": 675.609375
-                  },
-                  "currentRect": {
-                    "x": 618.734375,
-                    "y": 456.125,
-                    "width": 366,
-                    "height": 13.8125,
-                    "top": 456.125,
-                    "right": 984.734375,
-                    "bottom": 469.9375,
-                    "left": 618.734375
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 40,
           "interactionObserved": true
         }
       ]
@@ -2131,25 +2341,25 @@
         "height": 844
       },
       "runs": 3,
-      "lcpMs": 368,
-      "inpMs": 40,
-      "cls": 0.0131,
+      "lcpMs": 472,
+      "inpMs": 32,
+      "cls": 0.0105,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 536,
+          "lcpMs": 772,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
             "className": "",
             "text": ""
           },
-          "cls": 0.0131,
+          "cls": 0.0105,
           "shifts": [
             {
-              "startTimeMs": 1221,
+              "startTimeMs": 3059,
               "scrollY": 0,
-              "value": 0.0131,
+              "value": 0.0105,
               "sources": [
                 {
                   "tag": "FIGURE",
@@ -2157,48 +2367,23 @@
                   "className": "hero-shot",
                   "previousRect": {
                     "x": 20.1875,
-                    "y": 534.40625,
+                    "y": 589.59375,
                     "width": 349.625,
-                    "height": 279.046875,
-                    "top": 534.40625,
+                    "height": 254.40625,
+                    "top": 589.59375,
                     "right": 369.8125,
-                    "bottom": 813.453125,
+                    "bottom": 844,
                     "left": 20.1875
                   },
                   "currentRect": {
                     "x": 20.1875,
-                    "y": 546.59375,
+                    "y": 601.78125,
                     "width": 349.625,
-                    "height": 266.859375,
-                    "top": 546.59375,
+                    "height": 242.21875,
+                    "top": 601.78125,
                     "right": 369.8125,
-                    "bottom": 813.453125,
+                    "bottom": 844,
                     "left": 20.1875
-                  }
-                },
-                {
-                  "tag": "SECTION",
-                  "id": "why",
-                  "className": "setup-section",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 781.453125,
-                    "width": 390,
-                    "height": 62.546875,
-                    "top": 781.453125,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 793.640625,
-                    "width": 390,
-                    "height": 50.359375,
-                    "top": 793.640625,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
                   }
                 },
                 {
@@ -2207,45 +2392,70 @@
                   "className": "setup-session-status",
                   "previousRect": {
                     "x": 68.96875,
-                    "y": 540.203125,
+                    "y": 595.390625,
                     "width": 253,
                     "height": 13.8125,
-                    "top": 540.203125,
+                    "top": 595.390625,
                     "right": 321.96875,
-                    "bottom": 554.015625,
+                    "bottom": 609.203125,
                     "left": 68.96875
                   },
                   "currentRect": {
                     "x": 36.1875,
-                    "y": 540.203125,
+                    "y": 595.390625,
                     "width": 317.625,
                     "height": 26,
-                    "top": 540.203125,
+                    "top": 595.390625,
                     "right": 353.8125,
-                    "bottom": 566.203125,
+                    "bottom": 621.390625,
                     "left": 36.1875
+                  }
+                },
+                {
+                  "tag": "SECTION",
+                  "id": "why",
+                  "className": "setup-section",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 836.640625,
+                    "width": 390,
+                    "height": 7.359375,
+                    "top": 836.640625,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
                   }
                 }
               ]
             }
           ],
-          "inpMs": 152,
+          "inpMs": 32,
           "interactionObserved": true
         },
         {
-          "lcpMs": 340,
+          "lcpMs": 472,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
             "className": "",
             "text": ""
           },
-          "cls": 0.0131,
+          "cls": 0.0105,
           "shifts": [
             {
-              "startTimeMs": 1139,
+              "startTimeMs": 1603,
               "scrollY": 0,
-              "value": 0.0131,
+              "value": 0.0105,
               "sources": [
                 {
                   "tag": "FIGURE",
@@ -2253,48 +2463,23 @@
                   "className": "hero-shot",
                   "previousRect": {
                     "x": 20.1875,
-                    "y": 534.40625,
+                    "y": 589.59375,
                     "width": 349.625,
-                    "height": 279.046875,
-                    "top": 534.40625,
+                    "height": 254.40625,
+                    "top": 589.59375,
                     "right": 369.8125,
-                    "bottom": 813.453125,
+                    "bottom": 844,
                     "left": 20.1875
                   },
                   "currentRect": {
                     "x": 20.1875,
-                    "y": 546.59375,
+                    "y": 601.78125,
                     "width": 349.625,
-                    "height": 266.859375,
-                    "top": 546.59375,
+                    "height": 242.21875,
+                    "top": 601.78125,
                     "right": 369.8125,
-                    "bottom": 813.453125,
+                    "bottom": 844,
                     "left": 20.1875
-                  }
-                },
-                {
-                  "tag": "SECTION",
-                  "id": "why",
-                  "className": "setup-section",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 781.453125,
-                    "width": 390,
-                    "height": 62.546875,
-                    "top": 781.453125,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 793.640625,
-                    "width": 390,
-                    "height": 50.359375,
-                    "top": 793.640625,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
                   }
                 },
                 {
@@ -2303,45 +2488,70 @@
                   "className": "setup-session-status",
                   "previousRect": {
                     "x": 68.96875,
-                    "y": 540.203125,
+                    "y": 595.390625,
                     "width": 253,
                     "height": 13.8125,
-                    "top": 540.203125,
+                    "top": 595.390625,
                     "right": 321.96875,
-                    "bottom": 554.015625,
+                    "bottom": 609.203125,
                     "left": 68.96875
                   },
                   "currentRect": {
                     "x": 36.1875,
-                    "y": 540.203125,
+                    "y": 595.390625,
                     "width": 317.625,
                     "height": 26,
-                    "top": 540.203125,
+                    "top": 595.390625,
                     "right": 353.8125,
-                    "bottom": 566.203125,
+                    "bottom": 621.390625,
                     "left": 36.1875
+                  }
+                },
+                {
+                  "tag": "SECTION",
+                  "id": "why",
+                  "className": "setup-section",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 836.640625,
+                    "width": 390,
+                    "height": 7.359375,
+                    "top": 836.640625,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
                   }
                 }
               ]
             }
           ],
-          "inpMs": 16,
+          "inpMs": 32,
           "interactionObserved": true
         },
         {
-          "lcpMs": 368,
+          "lcpMs": 304,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
             "className": "",
             "text": ""
           },
-          "cls": 0.0131,
+          "cls": 0.0105,
           "shifts": [
             {
-              "startTimeMs": 1363,
+              "startTimeMs": 1474,
               "scrollY": 0,
-              "value": 0.0131,
+              "value": 0.0105,
               "sources": [
                 {
                   "tag": "FIGURE",
@@ -2349,48 +2559,23 @@
                   "className": "hero-shot",
                   "previousRect": {
                     "x": 20.1875,
-                    "y": 534.40625,
+                    "y": 589.59375,
                     "width": 349.625,
-                    "height": 279.046875,
-                    "top": 534.40625,
+                    "height": 254.40625,
+                    "top": 589.59375,
                     "right": 369.8125,
-                    "bottom": 813.453125,
+                    "bottom": 844,
                     "left": 20.1875
                   },
                   "currentRect": {
                     "x": 20.1875,
-                    "y": 546.59375,
+                    "y": 601.78125,
                     "width": 349.625,
-                    "height": 266.859375,
-                    "top": 546.59375,
+                    "height": 242.21875,
+                    "top": 601.78125,
                     "right": 369.8125,
-                    "bottom": 813.453125,
+                    "bottom": 844,
                     "left": 20.1875
-                  }
-                },
-                {
-                  "tag": "SECTION",
-                  "id": "why",
-                  "className": "setup-section",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 781.453125,
-                    "width": 390,
-                    "height": 62.546875,
-                    "top": 781.453125,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 793.640625,
-                    "width": 390,
-                    "height": 50.359375,
-                    "top": 793.640625,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
                   }
                 },
                 {
@@ -2399,29 +2584,54 @@
                   "className": "setup-session-status",
                   "previousRect": {
                     "x": 68.96875,
-                    "y": 540.203125,
+                    "y": 595.390625,
                     "width": 253,
                     "height": 13.8125,
-                    "top": 540.203125,
+                    "top": 595.390625,
                     "right": 321.96875,
-                    "bottom": 554.015625,
+                    "bottom": 609.203125,
                     "left": 68.96875
                   },
                   "currentRect": {
                     "x": 36.1875,
-                    "y": 540.203125,
+                    "y": 595.390625,
                     "width": 317.625,
                     "height": 26,
-                    "top": 540.203125,
+                    "top": 595.390625,
                     "right": 353.8125,
-                    "bottom": 566.203125,
+                    "bottom": 621.390625,
                     "left": 36.1875
+                  }
+                },
+                {
+                  "tag": "SECTION",
+                  "id": "why",
+                  "className": "setup-section",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 836.640625,
+                    "width": 390,
+                    "height": 7.359375,
+                    "top": 836.640625,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
                   }
                 }
               ]
             }
           ],
-          "inpMs": 40,
+          "inpMs": 24,
           "interactionObserved": true
         }
       ]
@@ -2433,13 +2643,13 @@
       {
         "name": "source revision is immutable",
         "ok": true,
-        "observed": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",
+        "observed": "7f389bdd8e5dfd5d3462c08e4d71f4a93afe1d80",
         "expected": "40-character git SHA"
       },
       {
         "name": "artifact fingerprint is immutable",
         "ok": true,
-        "observed": "a5973cd38aafe340bdc36b814ff70cc5c0ebe0a93157a056dcdb1dbfa40ebe7c",
+        "observed": "bc7e1e3f45b7c7dd8f3c761ad070cde42cbe0b050298c8f098ec1715e94da081",
         "expected": "sha256"
       },
       {
@@ -2451,7 +2661,7 @@
       {
         "name": "hosted Content-Security-Policy observed",
         "ok": true,
-        "observed": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-UpNCcXEhd+OmJ9Vp30AM+sG2CPfKqseBZ2eLOVM8lZ8=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self' 'sha256-67Awpt9arNVFIe7DiHYP8Poj7bbauCyySWcP2wmHChU=' 'sha256-Eej6rI2Ct4e7Da6xNECeQtZ0knJCZ8B+3309kS4paEo='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+        "observed": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/RppW6xcwkadKOLxfgK+i9luQN+gocvY7FcljBp5XZQ=' 'sha256-0Rz+2y6JEMRAEBmO0ZGZj9JsqeDSzCWOBbdvKgOCfuU=' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-9+2WwytGYhRIhgW38s5cyGADZStv2WhCuKWnjt+Rj2Q=' 'sha256-HONiLnVUE6Y2HJ9eVyBQBrQrBkHMtrAm6m25hqIYHx0=' 'sha256-KaOaSO/d4V6oGlcD95tZvqSy7QnwhdSYLASFr4aA7Rw=' 'sha256-KsaVR+LuEHednAc+QsMQN0UBj6yLhulFo4jIeEetg78=' 'sha256-LwZntZ/IVQuUyISVcVLHEngh4shx+ykGMKVQBTxRvEI=' 'sha256-O4W9r5p1vZYNP7/dsnmCzBkopk9MAELNfgu9CBwAoxE=' 'sha256-OLo0/qBz6zXnuA8gf2wdltSngF/K7iYIeb9oL6M1mc8=' 'sha256-Of2/oycLq8/o0iHHRzBbrtpLHTnUKgvvYfq7ya5fEWM=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-RL5nxZDvJUp6fz9NLSJwrzEVnQ/PW0qg9pFMNEDgWjk=' 'sha256-Z2EgYyR+Kqjlsc4IZYl1PUPxeGr1cM2D/Wkfhc4+NM8=' 'sha256-hJC0dsAF/B0x/w8dJL+4LorLBJAjxXpbanxq7l7KQOI=' 'sha256-kzXhfSqr19wheiQ6HTvKDupItXIlQtttQNXaNScLRfE=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' 'sha256-rBwl6U+iCM8GeALsZpP8687PpPy+iTwXngdoBJ2zNWE=' 'sha256-vMznO4Hy7PzPffigj8Jp9IJk9JlIE2pnQkIl8B0gFBE=' 'sha256-z0bOOrt6l1juvavYkCSZsqhssJ2k/zL1RDjUD4QFRO4=' https://static.cloudflareinsights.com; style-src-elem 'self' 'sha256-AA0S7TYh05SMFVqZsTw1zha1AvqOoMl0kgYj/Va+a7I=' 'sha256-pqQIqm5HtBnvuYxPbchQNZH8pjaianoxp18Tg1vaYx8='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
         "expected": "present"
       },
       {
@@ -2463,19 +2673,19 @@
       {
         "name": "desktop LCP",
         "ok": true,
-        "observed": 384,
+        "observed": 696,
         "expected": "< 1800ms"
       },
       {
         "name": "desktop INP",
         "ok": true,
-        "observed": 40,
+        "observed": 32,
         "expected": "<= 200ms"
       },
       {
         "name": "desktop CLS",
         "ok": true,
-        "observed": 0.0003,
+        "observed": 0.0006,
         "expected": "<= 0.1"
       },
       {
@@ -2487,19 +2697,19 @@
       {
         "name": "mobile LCP",
         "ok": true,
-        "observed": 368,
+        "observed": 472,
         "expected": "< 1800ms"
       },
       {
         "name": "mobile INP",
         "ok": true,
-        "observed": 40,
+        "observed": 32,
         "expected": "<= 200ms"
       },
       {
         "name": "mobile CLS",
         "ok": true,
-        "observed": 0.0131,
+        "observed": 0.0105,
         "expected": "<= 0.1"
       },
       {
@@ -2529,5 +2739,5 @@
     }
   },
   "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
-  "receiptSha256": "e97ca11d23785003ca85a33d63d56167cfab58d1bae4a5ceb3e229582a87a914"
+  "receiptSha256": "4c37968929c5058377c6cd5da85661017b587b96bb8e2a139ac2b2a631dce069"
 }

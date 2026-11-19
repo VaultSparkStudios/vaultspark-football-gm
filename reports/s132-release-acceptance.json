@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0",
+  "session": 132,
+  "sourceRevision": "7f389bdd8e5dfd5d3462c08e4d71f4a93afe1d80",
+  "artifactDigest": "bc7e1e3f45b7c7dd8f3c761ad070cde42cbe0b050298c8f098ec1715e94da081",
+  "ci": {
+    "run": 44300045275,
+    "jobs": 7,
+    "passed": 7,
+    "priorRun": {
+      "run": 44282866220,
+      "sourceRevision": "648e1be4c17efe8530217472db7a8b799712b744",
+      "result": "browser-gates failed 2 of 358 (opening contract dialog title; a Sandbox league leaking between specs); both fixed in 7f389bdd"
+    }
+  },
+  "staging": {
+    "deploy": "14/14",
+    "provenance": "10/10",
+    "receipts": [
+      "reports/s132-staging-authority.json",
+      "reports/s132-staging-receipt.json",
+      "reports/s132-staging.json"
+    ],
+    "note": "The first staging verification at 648e1be4 reported five identity mismatches because the provenance probe kept only 64 KB of a 66.6 KB manifest; fixed in fcc474cf with a build guard."
+  },
+  "production": {
+    "run": 44301777428,
+    "provenance": "10/10",
+    "receipt": "reports/s132-production.json",
+    "note": "publish attempt 1 failed downloading its own artifact with HTTP 503 'Egress is over the account limit'; the failed job was re-run once and passed. No test or gate was changed."
+  },
+  "api": {
+    "run": 44301772817,
+    "health": {
+      "ok": true,
+      "database": "ready",
+      "schemaVersion": 2,
+      "sourceRevision": "7f389bdd8e5dfd5d3462c08e4d71f4a93afe1d80"
+    },
+    "feedbackRoute": "POST /community/v1/feedback answered 400 to a deliberately invalid body"
+  },
+  "performance": "docs/performance/LATEST.json verified",
+  "visual": {
+    "receipt": "docs/visual-qa/LATEST.json",
+    "captures": 214,
+    "blocking": 0
+  },
+  "localEvidence": {
+    "core": "786/786",
+    "runtime": "1260/1260",
+    "studio": "450/450",
+    "simContract": "timed out locally after 185 passes and one expected baseline difference; hosted run is the receipt"
+  },
+  "scope": "Technical release only. No public launch, lifecycle change or player outcome is claimed."
+}

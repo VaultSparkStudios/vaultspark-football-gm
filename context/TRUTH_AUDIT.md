@@ -1,7 +1,7 @@
 <!-- truth-audit-version: 1.1 -->
 # Truth Audit
 
-Overall status: S132 thirteen audit outcomes are committed with local shard and browser evidence; hosted exact-source CI and the release are recorded separately. Broader readiness, player, financial and adoption outcomes remain unmeasured.
+Overall status: S132 thirteen audit outcomes and the matching frontend/API release are verified at 7f389bdd. Broader readiness, player, financial and adoption outcomes remain unmeasured.
 Last reviewed: 2026-11-18
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
@@ -105,7 +105,7 @@ Claims are bound to evidence: the before/after games-missed histogram is an engi
 
 ## 2026-11-18 — Session 132 — Committed, release recorded separately
 
-Claims are bound to evidence. The draft tables are engine measurements on three seeds with a declared population (all picks by the 31 non-user clubs, rounds 1 to 7, ten classes), taken on clean before and after snapshots, not player measurements. Build sizes are local build output. Shard results are local: studio, core 786/786, runtime 1260/1260; the sim-contract shard timed out after 185 passes and one expected baseline difference and is not claimed as complete. Browser evidence covers the edited and affected specs, not the whole suite. Seven audit items are deferred and say so in the sidecar. Known limits of the career rules and the feedback limits are listed on the task board. Nothing here claims a release; that is recorded only after staging, production and API readback.
+Claims are bound to evidence. The draft tables are engine measurements on three seeds with a declared population (all picks by the 31 non-user clubs, rounds 1 to 7, ten classes), taken on clean before and after snapshots, not player measurements. Build sizes are local build output. Shard results are local: studio, core 786/786, runtime 1260/1260; the sim-contract shard timed out after 185 passes and one expected baseline difference and is not claimed as complete. Browser evidence covers the edited and affected specs, not the whole suite. Seven audit items are deferred and say so in the sidecar. Known limits of the career rules and the feedback limits are listed on the task board. Nothing in this paragraph claims a release; the release is recorded in the current state after staging, production and API readback at 7f389bdd.
 
 <!-- ledger-roll:pointer -->
 ---

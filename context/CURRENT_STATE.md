@@ -2,7 +2,7 @@
 
 ## 2026-11-18 — Session 132 — Stakes, believable rivals and a way to hear from players
 
-A full audit toward public beta ranked 20 items (docs/AUDIT_2026-11-17_SESSION132.json); 13 are shipped or shipped in reduced form and 7 are carried. Committed on main at 6b8bb437 and its closeout commit; release to staging, production and the API is recorded separately once verified.
+A full audit toward public beta ranked 20 items (docs/AUDIT_2026-11-17_SESSION132.json); 13 are shipped or shipped in reduced form and 7 are carried. Released: frontend and API source 7f389bdd8e5dfd5d3462c08e4d71f4a93afe1d80, artifact bc7e1e3f. Hosted CI 7/7 (run 44300045275); staging 14/14 deploy and 10/10 provenance; production promotion run 44301777428 (publish passed on its second attempt after a storage egress-limit error on the first) with 10/10 provenance; API run 44301772817, database ready on schema version 2 with the feedback route answering; hosted performance verified; visual receipt 214 captures reviewed, 0 blocking; release authority verified. The first hosted run on 648e1be4 failed two browser tests, both fixed before this candidate. Technical release only; launch and player outcomes are unmeasured.
 
 - The owner can dismiss the general manager; a job market offers the next club; free club switching is limited to Sandbox rules and shared lobbies, enforced at the command boundary.
 - Rival clubs draft on a per-club scouted read. Over 7,600 picks on three seeds, first-round busts go from 5.4% to 9.6% and late steals from 0.4% to 1.0%; parity gates are unchanged. Golden master adopted as s132-v5 with v4 frozen by hash.

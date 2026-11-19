@@ -10,7 +10,9 @@ Session Intent: audit toward public beta, implement the plan in efficiency order
 - [x] Wave 5: faster first week; highlights offered on the week result.
 - [x] Wave 6: owner can fire the general manager, job market, Sandbox-only club switching; rival clubs draft through scouting fog (golden master s132-v5).
 - [x] Independent review: six defects found and fixed (three ways around the career rules, a crash path, an error-scrub gap, collapsed background-task reports).
-- [ ] Release: staging verify, production promotion and API deployment of the session's commits, then authority reconciliation.
+- [x] Released at 7f389bdd — hosted CI 7/7 (run 44300045275), staging 14/14 and 10/10, production promotion run 44301777428 10/10, API run 44301772817 ready, performance and release authority verified.
+- [ ] [S132 follow-up] Add Guides, How It Compares and Screenshots to the public capture inventory.
+- [ ] [S132 follow-up] The setup form starts from the active league's settings, so a Sandbox league carries into the next new league; decide whether that is intended.
 - [ ] [S132 carried] GM Profile page (career, trophies, shareables, save health); Settings split.
 - [ ] [S132 carried] Weekly challenge with a goal, a score and a shared board.
 - [ ] [S132 carried] Desk consolidation and game-plan depth; plain football wording across the Desk.
