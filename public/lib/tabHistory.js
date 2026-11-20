@@ -373,7 +373,7 @@ export function renderHistorySpotlight() {
   if (spotlight) {
     spotlight.innerHTML = `
       <div class="history-spotlight-mark">
-        <div class="history-spotlight-label">Legacy Ledger</div>
+        <div class="history-spotlight-label">Legacy Record</div>
         <div class="history-spotlight-meta">${escapeHtml(latestChampion ? `${latestChampion.year} champion ${teamCode(latestChampion.championTeamId)}` : "No champions recorded yet")} | ${escapeHtml(hall.length)} Hall of Fame resumes | ${escapeHtml(retiredCount)} retired numbers logged | ${escapeHtml(hallOfFamePolicyLine(settings))}</div>
       </div>
       <div class="history-spotlight-grid">

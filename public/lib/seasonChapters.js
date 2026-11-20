@@ -180,7 +180,7 @@ export function buildSeasonThesisLedger(dashboard = {}) {
       summary: thesisId
         ? `${film.length} executed tactical call${film.length === 1 ? "" : "s"} · ${aligned} on-plan result${aligned === 1 ? "" : "s"} · ${contested} off-plan result${contested === 1 ? "" : "s"} · ${architect.length} Architect review${architect.length === 1 ? "" : "s"}${identityLedger ? ` · ${identityLedger.summary}` : ""}`
         : "No Opening Contract is on record, so the season promise is still unproven.",
-      disclaimer: "The reckoning summarizes your recorded results. It does not claim the thesis caused results, predict an outcome, or grant a hidden bonus."
+      disclaimer: "The reckoning summarizes your recorded results. It does not claim your plan caused results, predict an outcome, or grant a hidden bonus."
     }
   };
 }
@@ -189,8 +189,8 @@ function bindChapterToThesis(base, thesis, checkpointId) {
   const checkpoint = thesis.checkpoints.find((entry) => entry.id === checkpointId)
     || { id: checkpointId, status: "unproven", evidenceIds: [] };
   const thesisLine = thesis.available
-    ? `Season thesis: ${thesis.identity.label} · checkpoint ${checkpoint.status}.`
-    : "Season thesis: unproven — no Opening Contract is on record.";
+    ? `Season plan: ${thesis.identity.label} · checkpoint ${checkpoint.status}.`
+    : "Season plan: unproven — no Opening Contract is on record.";
   return {
     ...base,
     detail: `${base.detail} ${thesisLine}`,

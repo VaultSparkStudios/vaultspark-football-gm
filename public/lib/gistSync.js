@@ -102,7 +102,7 @@ async function gistRequest(method, path, token, body = null) {
  * @returns {{ gistId: string, url: string }}
  */
 export async function exportToGist(snapshot, token, gistId, { passphrase = "" } = {}) {
-  if (!token) throw new Error("GitHub token is required. Set it in Settings → Cloud Sync.");
+  if (!token) throw new Error("GitHub token is required. Set it in GM Profile → Cloud Save Sync.");
   const content = typeof snapshot === "string" ? snapshot : JSON.stringify(snapshot, null, 0);
   const size = (new Blob([content]).size / 1024).toFixed(0);
   if (new Blob([content]).size > MAX_GIST_BYTES) throw new Error("Snapshot too large for Gist (> 10 MB). Try exporting after a shorter session.");

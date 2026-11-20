@@ -42,7 +42,7 @@ for(const worker of [true,false])test(`built ${worker?'worker':'in-page'} preser
   await (await import('./lib/gameFlow.js')).loadState();
  });
  expect((await readClient(page,'/api/state')).controlledTeamId).toBe('MIA');
- await page.locator('[data-testid="tab-settings"]').click();await expect(page.locator('#settingsTab')).not.toHaveAttribute('aria-busy','true');
+ await page.locator('[data-testid="tab-gm-profile"]').click();await expect(page.locator('#gmProfileTab')).not.toHaveAttribute('aria-busy','true');
  await page.locator('#saveSlotInput').fill(slot);await page.locator('#loadBtn').click();
  await expect.poll(async()=>(await readClient(page,'/api/state')).controlledTeamId).toBe('BUF');
  await expect(page.locator('#statusChip')).toContainText('Ready');await page.reload();await waitGameReady(page);await assertRuntime(page,worker);

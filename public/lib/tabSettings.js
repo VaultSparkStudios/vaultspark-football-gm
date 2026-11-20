@@ -353,6 +353,7 @@ export function renderCommandPalette() {
     // the same label that lands in the same place.
     { id: "rules", label: "Open Rules", run: () => openGuideModal("guideRulesPanel") },
     { id: "guide", label: "Open Game Guide", run: () => openGuideModal() },
+    { id: "gm-profile", label: "Open GM Profile", run: () => activateTab("gmProfileTab") },
     { id: "settings", label: "Open Settings", run: () => activateTab("settingsTab") },
     { id: "advance-week", label: "Advance Week", run: () => document.getElementById("advanceWeekBtn").click() },
     { id: "refresh", label: "Refresh All", run: () => document.getElementById("refreshBtn").click() },

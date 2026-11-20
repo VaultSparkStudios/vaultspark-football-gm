@@ -425,7 +425,8 @@ async function captureLazyStyleFixtures(page, viewport, outputDir, records) {
       checks: [{ selector: ".advisor-card", property: "display", equals: "grid" }, { selector: ".advisor-card", property: "paddingTop", min: 10 }]
     });
   }
-  await selectGameTab(page, "settingsTab");
+  // The dynasty timeline and the share controls live in the GM Profile tab.
+  await selectGameTab(page, "gmProfileTab");
   await page.evaluate(async () => {
     const [timeline, moment] = await Promise.all([import("./lib/dynastyTimeline.js"), import("./lib/momentCard.js")]);
     const mount = document.getElementById("dynastyTimelineContainer");
@@ -519,6 +520,8 @@ async function selectGameTab(page, tabId) {
   if (teamSubmode) await page.locator("#rosterTab [data-team-mode='depthTab']").click();
   await page.waitForFunction((id) => document.getElementById(id)?.classList.contains("active"), tabId);
   await page.waitForFunction((id) => !document.getElementById(id)?.hasAttribute("aria-busy"), tabId);
+  // The Desk keeps three of its four groups collapsed; the captures cover every panel.
+  if (tabId === "overviewTab") await page.evaluate(() => { for (const group of document.querySelectorAll("details.desk-group")) group.open = true; });
 }
 
 let activeAttempt = null;
@@ -931,6 +934,13 @@ async function runEvidence() {
       }
       // Exercise the verifier once so CANON-053 evidence proves the rendered
       // progression and finite-number receipts with source-derived data.
+      // Cloud save sync moved with the other save tools to the GM Profile tab.
+      await selectGameTab(page, "gmProfileTab");
+      await page.waitForSelector(".cloud-sync-panel", { state: "visible", timeout: 30_000 });
+      for (const theme of evidenceThemes) {
+        await setTheme(page, theme);
+        await captureElement(page, outputDir, `${viewport.name}-gist-authentication-${theme}`, ".cloud-sync-panel", records);
+      }
       await selectGameTab(page, "settingsTab");
       // S94: developer diagnostics ship hidden and open only for ?dev=1. The
       // evidence run is the intended caller of that flag; a player is not.
@@ -939,10 +949,6 @@ async function runEvidence() {
         module.applyDeveloperSurfaceVisibility(document, "?dev=1");
       });
       await page.waitForSelector("#realismVerifyYearsInput", { state: "visible", timeout: 30_000 });
-      for (const theme of evidenceThemes) {
-        await setTheme(page, theme);
-        await captureElement(page, outputDir, `${viewport.name}-gist-authentication-${theme}`, ".cloud-sync-panel", records);
-      }
       await page.locator("#realismVerifyYearsInput").fill("1");
       await page.locator("#runRealismVerifyBtn").click();
       await page.waitForFunction(() => document.querySelectorAll("#realismVerifyProgressionTable tr").length > 1, null, { timeout: 120_000 });

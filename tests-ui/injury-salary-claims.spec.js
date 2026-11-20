@@ -28,7 +28,7 @@ for(const worker of [true,false])test(`built ${worker?'worker':'in-page'} salary
  const slot=`injury-claim-${worker?'worker':'in-page'}`;await saveSlot(page,slot);
  await page.evaluate(async()=>{const {api}=await import('./lib/appState.js');await api('/api/new-league',{method:'POST',body:{seed:118,startYear:2026,controlledTeamId:'BUF',mode:'play'}});const {loadState}=await import('./lib/gameFlow.js');await loadState();});
  expect((await read()).claims).toBeUndefined();
- await page.locator('[data-testid="tab-settings"]').click();await expect(page.locator('#settingsTab')).not.toHaveAttribute('aria-busy','true');
+ await page.locator('[data-testid="tab-gm-profile"]').click();await expect(page.locator('#gmProfileTab')).not.toHaveAttribute('aria-busy','true');
  await page.locator('#saveSlotInput').fill(slot);await page.locator('#loadBtn').click();await expect(page.locator('#statusChip')).toContainText('Ready');
  await expect.poll(async()=>(await read()).claims).toEqual(expectedClaim);
  await page.reload();await waitGameReady(page);await assertRuntime(page,worker);

@@ -88,6 +88,11 @@
     "lib/api/workerTransport.js",
     "lib/api/localRuntimeWorker.js",
     "lib/teamCrest.js",
-    "lib/situationalCallsPanel.js"
+    "lib/situationalCallsPanel.js",
+    "lib/deskRivalry.js",
+    "lib/gmProfile.js",
+    "lib/weeklyChallengePanel.js",
+    "lib/gamePlanDials.js",
+    "lib/gamePlanDepth.js"
   ]
 }

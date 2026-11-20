@@ -785,7 +785,9 @@ async function renderWeeklyChallenge() {
   const text = document.getElementById("weeklyChallengeText");
   const challenge = await currentWeeklyChallenge();
   if (!text || !challenge) return;
-  text.textContent = `Week ${challenge.week}: take over the ${weeklyClubLabel(challenge)} and win a title in as few seasons as you can. Everyone who plays this week starts the same league.`;
+  const { weeklyObjective } = await import("./lib/weeklyChallengeScoreContract.js");
+  const goal = weeklyObjective(challenge.key)?.goal || "Win a title in as few seasons as you can.";
+  text.textContent = `Week ${challenge.week}: take over the ${weeklyClubLabel(challenge)}. This week's goal: ${goal} Your first season is scored. Everyone who plays this week starts the same league.`;
 }
 
 async function applyWeeklyChallenge() {

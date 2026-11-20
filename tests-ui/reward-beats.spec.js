@@ -2,7 +2,8 @@ import { test, expect } from "@playwright/test";
 import { createPlayScenario, readDashboard, reachScenarioWeek, WEEKLY_SCENARIOS } from "./helpers/weekly-scenarios.js";
 
 // S70 reward-layer contract: advancing a week produces a visible recap beat,
-// the trophy case renders in settings, and the sound toggle persists.
+// the trophy case renders in the GM Profile, and the sound toggle (a Settings
+// preference) persists.
 
 async function waitGameReady(page, timeout = 60_000) {
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout });
@@ -118,12 +119,13 @@ for (const scenario of WEEKLY_SCENARIOS) {
 
 test("trophy case renders the full registry and the sound toggle persists", async ({ page }) => {
   await createLeague(page);
-  await page.click('[data-testid="tab-settings"]');
+  await page.click('[data-testid="tab-gm-profile"]');
   await expect(page.locator("#trophyCaseContent .trophy")).not.toHaveCount(0, { timeout: 10_000 });
   const trophies = await page.locator("#trophyCaseContent .trophy").count();
   expect(trophies).toBeGreaterThanOrEqual(25);
   await expect(page.locator(".trophy-case-summary")).toContainText("/");
 
+  await page.click('[data-testid="tab-settings"]');
   const sound = page.locator("#soundEnabledInput");
   await expect(sound).toBeChecked();
   await sound.uncheck();

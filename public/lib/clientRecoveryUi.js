@@ -20,7 +20,7 @@ async function restorePreviousLocalCheckpoint() {
 export function mountClientRecoveryUi({ onCheckpointReady = null, onOpenSaves = null } = {}) {
   if (document.getElementById("clientRecoveryNotice")) return;
   if (!onOpenSaves && document.getElementById("saveSlotInput")) onOpenSaves = () => {
-    document.querySelector('[data-testid="tab-settings"]')?.click();
+    document.querySelector('[data-testid="tab-gm-profile"]')?.click();
     const input = document.getElementById("saveSlotInput");
     input?.scrollIntoView({ block: "center" });
     input?.focus({ preventScroll: true });

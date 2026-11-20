@@ -30,7 +30,9 @@ export const PRECACHE_EXCLUDES = Object.freeze([
   "404.html"
 ]);
 
-const PRECACHE_EXTENSIONS = new Set([".js", ".css", ".json", ".svg", ".png", ".ico", ".webmanifest", ".txt"]);
+// .woff2: the game shell renders in the self-hosted faces, so an offline boot
+// needs them the same way it needs the stylesheet.
+const PRECACHE_EXTENSIONS = new Set([".js", ".css", ".json", ".svg", ".png", ".ico", ".webmanifest", ".txt", ".woff2"]);
 
 export function shouldPrecache(relativePath) {
   const normalized = relativePath.replace(/\\/g, "/");
@@ -47,6 +49,8 @@ export function shouldPrecache(relativePath) {
   // S113: social-card and marketing imagery is fetched by link previews and the
   // public pages, never by the game shell; precaching it cost ~380 KB per install.
   if (normalized === "images/cover.png" || normalized.startsWith("images/screens/")) return false;
+  // Per-page share cards are read by link-preview crawlers only.
+  if (normalized.startsWith("og/")) return false;
   return PRECACHE_EXTENSIONS.has(path.extname(normalized).toLowerCase());
 }
 

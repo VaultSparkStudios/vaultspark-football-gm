@@ -243,7 +243,7 @@ export function buildTacticalFilmReceipt({ tactic, results = [], controlledTeamI
     score: `${ownScore}-${opponentScore}`,
     aligned,
     observed,
-    disclaimer: "Alignment compares the chosen intent with observed game telemetry; it does not claim the tactic alone caused the result."
+    disclaimer: "Alignment compares the chosen intent with the game's stats; it does not claim the tactic alone caused the result."
   };
 }
 

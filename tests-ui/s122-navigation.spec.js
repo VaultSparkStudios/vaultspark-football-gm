@@ -27,6 +27,8 @@ async function desk(page) {
   await page.evaluate(async () => {
     const { activateTab } = await import("/lib/gameFlow.js");
     await activateTab("overviewTab");
+    // Architecture Review sits in the Desk's collapsed "Your career" group.
+    for (const group of document.querySelectorAll("details.desk-group")) group.open = true;
   });
 }
 

@@ -277,11 +277,11 @@ function collectCandidates(s, teamName) {
     const label = top ? String(top.choice.label || top.choice.id) : "the staged option";
     const posture = top ? top.posture : "unread";
     const why = posture === "aggressive"
-      ? (s.capRich ? `The room can carry salary at ${money(s.capSpace)} of room.` : s.ownerHot ? `Heat ${s.ownerHeat} says the owner wants a move now.` : "Nothing in the packet argues against adding.")
+      ? (s.capRich ? `The room can carry salary at ${money(s.capSpace)} of room.` : s.ownerHot ? `Heat ${s.ownerHeat} says the owner wants a move now.` : "Nothing in the numbers argues against adding.")
       : posture === "conservative"
-        ? (s.capNegative || s.capTight ? `At ${money(s.capSpace)} of room there is nothing to buy with.` : "The packet gives no reason to spend.")
+        ? (s.capNegative || s.capTight ? `At ${money(s.capSpace)} of room there is nothing to buy with.` : "The numbers give no reason to spend.")
         : posture === "steady"
-          ? "Neither buying nor selling is priced in by the packet; stand pat."
+          ? "The numbers favor neither buying nor selling; stand pat."
           : "The options read as a coin flip from here; pick and own it.";
     push({
       kind: "gm-decision",

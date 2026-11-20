@@ -45,7 +45,7 @@ test("Week Room has an honest empty review and one native accessible disclosure"
   const overview = readFileSync(new URL("../public/lib/tabOverview.js", import.meta.url), "utf8");
   const game = readFileSync(new URL("../public/game.html", import.meta.url), "utf8");
   assert.match(overview, /<details class="architecture-review">/);
-  assert.match(overview, /This week's controlled call/);
+  assert.match(overview, /This week's call</);
   assert.match(overview, /Architecture Review/);
   assert.match(game, /The Week Room/);
 });

@@ -647,8 +647,20 @@ export async function exportSnapshot() {
   URL.revokeObjectURL(url);
 }
 
+// Largest save file the importer will read. An exported save is indented JSON:
+// measured at 48 MB after one season and growing about 10 MB a season (68 MB
+// after three), so a 64 MB cap would refuse a three-season career. 512 MiB is
+// about 45 seasons, and is also roughly the longest text a browser can hold in
+// one string, so nothing this game can export is refused. The size is checked
+// before the file is read: a far larger file would freeze or crash the tab.
+export const MAX_SAVE_IMPORT_BYTES = 512 * 1024 * 1024;
+
 export async function importSnapshot(file) {
   if (!file) throw new Error("Choose a snapshot file first.");
+  const size = Number(file.size);
+  if (Number.isFinite(size) && size > MAX_SAVE_IMPORT_BYTES) {
+    throw new Error(`That file is too large to be a save from this game (${Math.ceil(size / (1024 * 1024))} MB; the limit is ${MAX_SAVE_IMPORT_BYTES / (1024 * 1024)} MB). Nothing was changed. Choose a save file exported from this game.`);
+  }
   let snapshot = null;
   try {
     snapshot = JSON.parse(await file.text());
@@ -858,6 +870,7 @@ const HYDRATION_LOADERS = Object.freeze({
   scouting: loadScouting,
   "depth-chart": loadDepthChart,
   saves: loadSaves,
+  "gm-profile": async () => (await import("./gmProfile.js")).renderGmProfile(),
   qa: loadQa,
   "team-history": loadTeamHistory,
   calendar: loadCalendar,
@@ -1217,6 +1230,19 @@ function appendWhatIfReplay(body) {
 export function showHalftimeAdjustModal(onChoice, options = {}) {
   const modal = document.getElementById("halftimeAdjustModal");
   if (!modal) { onChoice(null); return; }
+  // Pace / run-pass lean / coverage dials: weekly plan only, loaded on demand.
+  // A failed load is reported, never shown as "no dials this week".
+  const dialHost = modal.querySelector("#gamePlanDepth");
+  if (dialHost) {
+    dialHost.hidden = true;
+    dialHost.innerHTML = "";
+    if (options.gamePlanDials === true) {
+      observeBackgroundTask(() => import("./gamePlanDials.js").then((dials) => dials.mountGamePlanDials(dialHost)), {
+        surface: "weekly-plan",
+        operation: "game-plan-dials"
+      });
+    }
+  }
   const finish = (choice) => {
     closeModal(modal);
     modal.hidden = true;
@@ -1333,7 +1359,7 @@ export function showArchitectPlanRehearsal(rehearsal, onChoice) {
   set("architectRehearsalIdentity", rehearsal.identityPreview);
   set("architectRehearsalThesis", rehearsal.architectThesis
     ? `${rehearsal.architectThesis.label} · ${rehearsal.architectThesis.text}`
-    : "No player-authored adaptation hypothesis");
+    : "No adjustment chosen yet");
   set("architectRehearsalCounterSource", rehearsal.counterSignal?.source);
   set("architectRehearsalCounter", rehearsal.counterSignal?.text);
   set("architectRehearsalDisclaimer", rehearsal.disclaimer);

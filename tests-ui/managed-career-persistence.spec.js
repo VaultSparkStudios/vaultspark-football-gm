@@ -73,8 +73,8 @@ for (const worker of [true, false]) test(`actual managed career restores measure
     await (await import('./lib/gameFlow.js')).loadState();
   });
   const slot = `managed-${snapshot.league.history.length}-${worker ? 'worker' : 'in-page'}`;
-  await page.locator('[data-testid="tab-settings"]').click();
-  await expect(page.locator('#settingsTab')).not.toHaveAttribute('aria-busy', 'true');
+  await page.locator('[data-testid="tab-gm-profile"]').click();
+  await expect(page.locator('#gmProfileTab')).not.toHaveAttribute('aria-busy', 'true');
   await page.locator('#saveSlotInput').fill(slot);
   await page.locator('#saveBtn').click();
   await expect.poll(async () => {
@@ -91,8 +91,8 @@ for (const worker of [true, false]) test(`actual managed career restores measure
     return (await api('/api/state')).currentYear;
   });
   expect(replacementYear).toBe(2026);
-  await page.locator('[data-testid="tab-settings"]').click();
-  await expect(page.locator('#settingsTab')).not.toHaveAttribute('aria-busy', 'true');
+  await page.locator('[data-testid="tab-gm-profile"]').click();
+  await expect(page.locator('#gmProfileTab')).not.toHaveAttribute('aria-busy', 'true');
   await page.locator('#saveSlotInput').fill(slot);
   await page.locator('#loadBtn').click();
   await expect.poll(async () => (await readClient(page, '/api/state')).currentYear, { timeout: 120000 }).toBe(snapshot.currentYear);

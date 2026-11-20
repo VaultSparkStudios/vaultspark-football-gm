@@ -104,16 +104,23 @@ test("NEGATIVE CONTROL: a stale, unknown or bare block is caught, and claim text
   assert.deepEqual(findUnfilledMarkers("<p>claims:facts</p>"), ["claims:facts"]);
 });
 
-test("every screenshot a claim cites exists, is a JPEG, and stays under 200 KB", () => {
-  const images = new Set(claims.features.filter((feature) => feature.image).map((feature) => feature.image.src));
-  images.add("./images/screens/hero.jpg");
-  assert.ok(images.size >= 5, "at least five gameplay screenshots back the feature tour and press kit");
+test("every feature has a screenshot that exists, is a WebP or JPEG, and stays under 200 KB", () => {
+  for (const feature of claims.features) {
+    assert.ok(feature.image?.src, `feature ${feature.id} has a screenshot`);
+    assert.ok(String(feature.image.alt || "").trim().length >= 20, `feature ${feature.id} describes its screenshot`);
+  }
+  const images = new Set(claims.features.map((feature) => feature.image.src));
+  // The landing page inlines the hero, and the inliner takes a JPEG.
+  assert.equal(claims.heroImage.src, "./images/screens/hero.jpg");
+  images.add(claims.heroImage.src);
+  assert.equal(images.size, claims.features.length + 1, "no two features share a screenshot");
   for (const src of images) {
     const file = path.join(publicDir, src.replace(/^\.\//, ""));
     assert.ok(fs.existsSync(file), `${src} exists`);
     const bytes = fs.readFileSync(file);
-    assert.equal(bytes[0], 0xff, `${src} is a JPEG`);
-    assert.equal(bytes[1], 0xd8, `${src} is a JPEG`);
+    const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8;
+    const webp = bytes.subarray(0, 4).toString("latin1") === "RIFF" && bytes.subarray(8, 12).toString("latin1") === "WEBP";
+    assert.equal(src.endsWith(".webp") ? webp : jpeg, true, `${src} is the format its name says`);
     assert.ok(bytes.length < 200 * 1024, `${src} is ${bytes.length} bytes`);
   }
 });

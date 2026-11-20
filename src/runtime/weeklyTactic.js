@@ -18,6 +18,7 @@
  * Kept in its own module so exactly one definition of the override shape
  * exists — the command seam and the session both import this one.
  */
+import { activeGamePlan } from "../../public/lib/gamePlanDepth.js";
 
 /**
  * Layer a tactic's modifiers onto a weekly plan, in place.
@@ -41,13 +42,34 @@ export function applyTacticOverride(weeklyPlan, tacticPlan) {
 }
 
 /**
- * Stage a tactic to be applied to `teamId`'s plan on the next advanced week.
- * Staging (rather than mutating now) is what makes the override survive the
- * weekly plan rebuild.
+ * Write the weekly game-plan dials (pace / run-pass lean / coverage) onto a
+ * weekly plan, in place. Only dials moved off neutral are written; an
+ * all-neutral plan leaves the weekly plan untouched, so the simulator reads
+ * exactly what it read before the dials existed.
+ *
+ * @param {object} weeklyPlan the team's current weekly plan (mutated)
+ * @param {object|null} gamePlan pace / lean / coverage choices
+ * @returns {object|null} the dials that were written, or null
  */
-export function stagePendingWeeklyTactic(session, teamId, tacticPlan) {
-  if (!session || !teamId || !tacticPlan) return;
-  session.pendingWeeklyTactic = { teamId, tacticPlan };
+export function applyGamePlanDepth(weeklyPlan, gamePlan) {
+  const active = weeklyPlan ? activeGamePlan(gamePlan) : null;
+  if (!active) return null;
+  weeklyPlan.gamePlan = active;
+  return active;
+}
+
+/**
+ * Stage a tactic and/or game-plan dials to be applied to `teamId`'s plan on
+ * the next advanced week. Staging (rather than mutating now) is what makes the
+ * choice survive the weekly plan rebuild. The dials ride the same staged entry
+ * as the tactic — there is one path to the simulator, not two.
+ */
+export function stagePendingWeeklyTactic(session, teamId, tacticPlan, gamePlan = null) {
+  const dials = activeGamePlan(gamePlan);
+  if (!session || !teamId || (!tacticPlan && !dials)) return;
+  session.pendingWeeklyTactic = dials
+    ? { teamId, tacticPlan: tacticPlan || null, gamePlan: dials }
+    : { teamId, tacticPlan };
 }
 
 /** Clear any staged tactic. Safe to call when none is staged. */
@@ -71,5 +93,6 @@ export function consumePendingWeeklyTactic(session) {
   const team = session.league?.teams?.find((entry) => entry.id === pending.teamId);
   if (!team?.weeklyPlan) return null;
   applyTacticOverride(team.weeklyPlan, pending.tacticPlan);
+  applyGamePlanDepth(team.weeklyPlan, pending.gamePlan);
   return pending.tacticPlan;
 }

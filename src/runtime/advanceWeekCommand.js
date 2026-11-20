@@ -4,6 +4,7 @@ import { buildTacticalFilmReceipt, tacticDefinition } from "../../public/lib/tac
 import { appendArchitectLedger } from "./architectLedger.js";
 import { getArchitectThesis, resolveArchitectThesis } from "../engine/architectThesis.js";
 import { applyTacticOverride, clearPendingWeeklyTactic, stagePendingWeeklyTactic } from "./weeklyTactic.js";
+import { parseGamePlanRequest } from "../../public/lib/gamePlanDepth.js";
 
 export { applyTacticOverride };
 
@@ -25,13 +26,27 @@ export function validateAdvanceWeekCommand(session, payload = {}) {
   if (tactic && !tacticPlan) {
     return { ok: false, status: 400, reasonCode: "ADVANCE_WEEK_UNKNOWN_TACTIC", error: `Unknown weekly tactic: ${tactic}.` };
   }
+  // Pace / run-pass lean / coverage. An unknown value is refused here, at the
+  // one seam both runtimes share; a neutral or absent plan resolves to null.
+  const gamePlanRequest = parseGamePlanRequest(payload.gamePlan);
+  if (!gamePlanRequest.ok) {
+    return { ok: false, status: 400, reasonCode: "ADVANCE_WEEK_UNKNOWN_GAME_PLAN", error: gamePlanRequest.error };
+  }
+  const gamePlan = gamePlanRequest.gamePlan;
   const pendingDecision = session.getDashboardState?.().gmDecisionQueue?.[0] || null;
   const pendingValidation = validatePendingGmDecision(pendingDecision, payload.gmDecisionChoice || null);
   if (!pendingValidation.ok) return pendingValidation;
   if (payload.gmDecisionChoice && !resolveGmDecisionConsequence(payload.gmDecisionChoice)) {
     return { ok: false, status: 400, reasonCode: "ADVANCE_WEEK_UNKNOWN_GM_DECISION", error: "Unknown GM decision choice." };
   }
-  return { ok: true, count: normalizeCount(payload.count), tactic, tacticPlan, gmDecisionChoice: pendingValidation.choice };
+  return {
+    ok: true,
+    count: normalizeCount(payload.count),
+    tactic,
+    tacticPlan,
+    ...(gamePlan ? { gamePlan } : null),
+    gmDecisionChoice: pendingValidation.choice
+  };
 }
 
 export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance } = {}) {
@@ -53,9 +68,12 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
   // advanceWeek() rebuilds every team's weeklyPlan before simulating, so an
   // in-place mutation here was discarded before kickoff and every tactic was a
   // measurable no-op. GameSession consumes the staged tactic after that rebuild.
-  const tacticTeam = command.tactic ? controlledTeam : null;
+  // The game-plan dials ride the same staged entry, with or without a tactic.
+  const tacticTeam = command.tactic || command.gamePlan ? controlledTeam : null;
   const originalWeeklyPlan = tacticTeam?.weeklyPlan ? { ...tacticTeam.weeklyPlan } : null;
-  if (tacticTeam && command.tacticPlan) stagePendingWeeklyTactic(session, tacticTeam.id, command.tacticPlan);
+  if (tacticTeam && (command.tacticPlan || command.gamePlan)) {
+    stagePendingWeeklyTactic(session, tacticTeam.id, command.tacticPlan, command.gamePlan || null);
+  }
 
   const results = [];
   try {
@@ -65,6 +83,9 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
       if (result?.ok === false) return { ...result, results, count: results.length };
       results.push(result);
       afterAdvance?.({ result, before, session, index });
+      // The plan was chosen for the first week of this command. If that week
+      // had no game to consume it, it must not wait for a later one.
+      clearPendingWeeklyTactic(session);
       // A general manager relieved of duties mid-run chooses a club before the
       // league clock moves again.
       if (session.league.gmCareer?.status === "dismissed") break;
@@ -118,6 +139,7 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
     results,
     gmDecision,
     tacticApplied: command.tactic,
+    ...(command.gamePlan ? { gamePlanApplied: command.gamePlan } : null),
     tacticalReceipt,
     architectEntry,
     thesisResolution,

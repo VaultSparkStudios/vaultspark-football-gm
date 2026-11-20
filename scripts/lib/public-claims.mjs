@@ -62,6 +62,9 @@ export function validateClaims(claims) {
     for (const key of ["title", "teaser", "description"]) {
       if (typeof feature[key] !== "string" || !feature[key].trim()) problems.push(`feature ${feature.id} lacks ${key}`);
     }
+    // Every feature is shown, not only described: a screenshot and what it shows.
+    if (typeof feature.image?.src !== "string" || !feature.image.src.trim()) problems.push(`feature ${feature.id} lacks a screenshot`);
+    else if (typeof feature.image.alt !== "string" || feature.image.alt.trim().length < 20) problems.push(`feature ${feature.id} lacks alt text for its screenshot`);
   }
   if (problems.length) throw new Error(`claims.json is invalid:\n- ${problems.join("\n- ")}`);
   return true;
@@ -93,29 +96,47 @@ function renderFigure(image, { eager = false } = {}) {
   const loading = eager ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
   return [
     '<figure class="site-shot">',
-    `  <img src="${safeHref(image.src)}" alt="${escapeHtml(image.alt)}" width="1440" height="900" ${loading} decoding="async" />`,
+    `  <img src="${safeHref(image.src)}" alt="${escapeHtml(image.alt)}" ${imageSize(image)} ${loading} decoding="async" />`,
     "</figure>"
   ].join("\n");
 }
 
+// Screenshots are 1440 by 900 unless the claim says otherwise.
+function imageSize(image) {
+  const width = Number.isInteger(image.width) ? image.width : 1440;
+  const height = Number.isInteger(image.height) ? image.height : 900;
+  return `width="${width}" height="${height}"`;
+}
+
+function imageFormat(image) {
+  return /\.webp$/i.test(image.src) ? "WebP" : /\.png$/i.test(image.src) ? "PNG" : "JPEG";
+}
+
+const isShowcase = (feature) => Boolean(feature.image && feature.showcase);
+
 function renderFeatureSection(feature, heading = "h2") {
-  return [
-    `<section class="site-feature${feature.image ? " site-feature--shot" : ""}" id="${escapeHtml(feature.id)}">`,
+  const showcase = isShowcase(feature);
+  const copy = [
     '  <div class="site-feature-copy">',
     `    <${heading}>${escapeHtml(feature.title)}</${heading}>`,
     `    <p>${escapeHtml(feature.description)}</p>`,
     feature.link ? `    <p>${renderLink(feature.link)}</p>` : "",
-    "  </div>",
-    feature.image ? renderFigure(feature.image) : "",
+    "  </div>"
+  ];
+  const figure = feature.image ? renderFigure(feature.image) : "";
+  return [
+    `<section class="site-feature${showcase ? " site-feature--shot" : ""}" id="${escapeHtml(feature.id)}">`,
+    // A showcase row puts the copy beside its screenshot; a card leads with it.
+    ...(showcase ? [...copy, figure] : [figure, ...copy]),
     "</section>"
   ].filter(Boolean).join("\n");
 }
 
-// Features with a screenshot get a full row each; the rest share a grid, so
-// the tour does not read as a column of half-empty cards.
+// Showcase features get a full row each; the rest share a grid of cards, each
+// led by its own screenshot.
 function renderFeatureTour(claims) {
-  const shown = claims.features.filter((feature) => feature.image).map((feature) => renderFeatureSection(feature));
-  const rest = claims.features.filter((feature) => !feature.image).map((feature) => renderFeatureSection(feature, "h3"));
+  const shown = claims.features.filter(isShowcase).map((feature) => renderFeatureSection(feature));
+  const rest = claims.features.filter((feature) => !isShowcase(feature)).map((feature) => renderFeatureSection(feature, "h3"));
   return [
     ...shown,
     '<div class="site-section site-more">',
@@ -142,8 +163,8 @@ function renderGallery(claims) {
   ];
   const items = shots.map((feature) => [
     '<figure class="site-gallery-item">',
-    `  <img src="${safeHref(feature.image.src)}" alt="${escapeHtml(feature.image.alt)}" width="1440" height="900" loading="lazy" decoding="async" />`,
-    `  <figcaption>${escapeHtml(feature.title)} · <a href="${safeHref(feature.image.src)}" download>Download JPEG</a></figcaption>`,
+    `  <img src="${safeHref(feature.image.src)}" alt="${escapeHtml(feature.image.alt)}" ${imageSize(feature.image)} loading="lazy" decoding="async" />`,
+    `  <figcaption>${escapeHtml(feature.title)} · <a href="${safeHref(feature.image.src)}" download>Download ${imageFormat(feature.image)}</a></figcaption>`,
     "</figure>"
   ].join("\n"));
   return `<div class="site-gallery">\n${items.join("\n")}\n</div>`;

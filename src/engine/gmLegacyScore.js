@@ -114,11 +114,39 @@ export function updateGmLegacyAfterSeason(league, controlledTeamId, year, { capS
     capGrade,
     cultureGrade,
     tradeNetAV: seasonTradeNetAv,
-    stewardshipScore: Number.isFinite(stewardshipReport?.overallScore) ? stewardshipReport.overallScore : null
+    stewardshipScore: Number.isFinite(stewardshipReport?.overallScore) ? stewardshipReport.overallScore : null,
+    // The season's own totals. `team.season` is cleared at rollover, so a
+    // finished season can only be scored later (the weekly challenge does) if
+    // they are kept here. Null, never zero, when a value was not available.
+    pointsFor: finiteOrNull(team.season?.pointsFor),
+    pointsAgainst: finiteOrNull(team.season?.pointsAgainst),
+    capSpace: finiteOrNull(capSummary?.capSpace)
   });
   if (legacy.seasonHistory.length > 30) legacy.seasonHistory.shift();
 
   return legacy;
+}
+
+function finiteOrNull(value) {
+  return typeof value === "number" && Number.isFinite(value) ? Math.round(value) : null;
+}
+
+/**
+ * The controlled club's totals for the league's first season, once that season
+ * has finished: what the weekly challenge is scored from. Null until then.
+ */
+export function firstSeasonTotals(league, startYear) {
+  const entry = (league?.gmLegacy?.seasonHistory || []).find((row) => Number(row.year) === Number(startYear));
+  if (!entry) return null;
+  return {
+    teamId: entry.teamId ?? null,
+    wins: entry.wins ?? null,
+    losses: entry.losses ?? null,
+    ties: entry.ties ?? 0,
+    pointsFor: entry.pointsFor ?? null,
+    pointsAgainst: entry.pointsAgainst ?? null,
+    capSpace: entry.capSpace ?? null
+  };
 }
 
 export function resolveChampionTeamId(entry) {

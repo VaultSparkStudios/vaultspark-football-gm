@@ -55,6 +55,8 @@ test(`session commits exactly one ${scenario.name} with a durable evidence trail
 
   await expect(page.locator("#openingContractCard")).toBeVisible();
   await expect(page.locator("#openingContractCard")).toContainText("Opening Contract");
+  // The Week Room lives in the Desk's collapsed "Your career" group and renders when it opens.
+  await page.evaluate(() => { for (const group of document.querySelectorAll("details.desk-group")) group.open = true; });
   const openingSeasonChapter = await page.locator(".week-room-horizon").first().textContent();
   await reachScenarioWeek(page, scenario);
   // A new franchise plays its opening week on the staff plan, so the scheduled
@@ -174,6 +176,7 @@ test(`session commits exactly one ${scenario.name} with a durable evidence trail
   expect(reloaded.controlledOnBye).toBe(reloaded.currentWeekSchedule.byeTeams.includes(scenario.teamId));
   expect(advances).toHaveLength(1);
   await expect(page.locator(".weekly-plan-receipt")).toHaveCount(0);
+  await page.evaluate(() => { for (const group of document.querySelectorAll("details.desk-group")) group.open = true; });
   await page.locator("details.architecture-review summary").click();
   await expect(page.locator(".architect-ledger-row").first()).toBeVisible();
 });

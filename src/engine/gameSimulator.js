@@ -7,6 +7,7 @@ import { clamp, mean } from "../utils/rng.js";
 import { choosePlayType, chooseFourthDownDecision, fieldGoalDistanceFromPosition } from "./playCalling.js";
 import { matchupEdgeFromContexts } from "./matchupEdge.js";
 import { fourthDownAggressionAdjustment, isTwoMinuteDrill, twoMinuteAdjustment } from "./situationalCalls.js";
+import { NEUTRAL_EFFECTS, gamePlanEffects, possessionRange } from "./gamePlanDepth.js";
 import { applyGameStats } from "../stats/applyGameStats.js";
 import { runOvertime } from "./overtime.js";
 import { selectGameDayRoster, applyFootballPostGame, checkFootballReadiness,getGameTeamPlayers } from "./gameDayRoster.js";
@@ -606,8 +607,12 @@ function buildTeamContext(league, teamId, rng,game) {
   const basePassLean = team.scheme?.passRate ?? 0.54;
   const coachingDelta = ((team.coaching?.offense || 72) - 72) / 180;
   const weeklyPlan = team.weeklyPlan || null;
+  // The weekly game-plan dials (pace / run-pass lean / coverage). Neutral
+  // unless the player set one this week; neutral adds exactly 0 and scales by
+  // exactly 1 everywhere it is read.
+  const gamePlan = gamePlanEffects(weeklyPlan);
   const passLean = clamp(
-    basePassLean + (qb.overall - rb.overall) * 0.0035 + coachingDelta + (weeklyPlan?.passLeanDelta || 0),
+    basePassLean + (qb.overall - rb.overall) * 0.0035 + coachingDelta + (weeklyPlan?.passLeanDelta || 0) + gamePlan.passLean,
     0.3,
     0.78
   );
@@ -667,6 +672,7 @@ function buildTeamContext(league, teamId, rng,game) {
     p,
     passLean,
     weeklyPlan,
+    gamePlan,
     // Standing game-day posture; set only on the controlled team. Read through
     // the situationalCalls.js normalizer, so an unset value is exactly neutral.
     situationalCalls: team.situationalCalls || null,
@@ -800,6 +806,9 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
   // see src/engine/matchupEdge.js.
   const matchupEdge = matchupEdgeFromContexts(offenseContext, defenseContext);
   const matchupLean = matchupEdge.delta;
+  // Weekly game-plan dials: the offense's pace, the defense's coverage.
+  const offensePlan = offenseContext.gamePlan || NEUTRAL_EFFECTS;
+  const coveragePlan = defenseContext.gamePlan || NEUTRAL_EFFECTS;
 
   const addPlay = (entry) => {
     playLog.push({
@@ -918,7 +927,8 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
           (receiverSeparation - depthCoverage) / 520 +
           (linePass - passRush) / 360 +
           (offenseContext.team.offenseRating - defenseContext.team.defenseRating) / 430 -
-          (depthCoverage - 70) / 370,
+          (depthCoverage - 70) / 370 +
+          (depthBucket === "deep" ? coveragePlan.completionDeep : depthBucket === "short" ? coveragePlan.completionShort : 0),
         depthBucket === "deep" ? 0.24 : depthBucket === "medium" ? 0.42 : 0.52,
         depthProfile.maxCompletion
       );
@@ -993,7 +1003,7 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
             (offenseContext.weeklyPlan?.disciplineBoost || 0) * 0.003,
           0.01,
           0.07
-        );
+        ) * offensePlan.giveawayScale * coveragePlan.interceptionScale;
         if (rng.chance(intChance)) {
           turnover = true;
           turnoverType = "INT";
@@ -1110,7 +1120,7 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
           (offenseContext.weeklyPlan?.disciplineBoost || 0) * 0.0015,
         0.004,
         0.028
-      );
+      ) * offensePlan.giveawayScale;
       if (rng.chance(fumbleChance)) {
         turnover = true;
         turnoverType = "FUMBLE";
@@ -1809,8 +1819,15 @@ export function simulateMatch({
   for (const player of homeStarters) recorder.appearance(player.id, year, true, homeTeamId, player.position, seasonType);
   for (const player of awayStarters) recorder.appearance(player.id, year, true, awayTeamId, player.position, seasonType);
 
-  const homePossessions = rng.int(...FOOTBALL_RULES.structure.possessionsPerTeamRange);
-  const awayPossessions = rng.int(...FOOTBALL_RULES.structure.possessionsPerTeamRange);
+  // Either club's pace dial moves the drive budget for both. With both neutral
+  // this is the configured range itself — the same two draws, same bounds.
+  const driveBudgetRange = possessionRange(
+    FOOTBALL_RULES.structure.possessionsPerTeamRange,
+    homeContext.gamePlan,
+    awayContext.gamePlan
+  );
+  const homePossessions = rng.int(...driveBudgetRange);
+  const awayPossessions = rng.int(...driveBudgetRange);
   let homeScore = 0;
   let awayScore = 0;
   let homeYards = 0;

@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { createHash } from "node:crypto";
-import { computeGoldenMaster, diffGoldenMaster, GOLDEN_MASTER_FIXTURE, HISTORICAL_GOLDEN_MASTER_FIXTURE, S118_GOLDEN_MASTER_FIXTURE, S119_GOLDEN_MASTER_FIXTURE, S131_GOLDEN_MASTER_FIXTURE, GOLDEN_MASTER_SCENARIOS } from "../scripts/golden-master.mjs";
+import { computeGoldenMaster, diffGoldenMaster, GOLDEN_MASTER_FIXTURE, HISTORICAL_GOLDEN_MASTER_FIXTURE, S118_GOLDEN_MASTER_FIXTURE, S119_GOLDEN_MASTER_FIXTURE, S131_GOLDEN_MASTER_FIXTURE, S132_V5_GOLDEN_MASTER_FIXTURE, GOLDEN_MASTER_SCENARIOS } from "../scripts/golden-master.mjs";
 
 // S116 Phase 0: every multi-sport extraction step must leave football byte-identical.
 // A mismatch names the drifted sections. Regenerate the fixture only for an
@@ -68,7 +68,7 @@ test("S131 injury-clock baseline preserves S119 byte-identical and keeps every s
 test("S132 rival-scouting baseline preserves S131 byte-identical and keeps every scenario", () => {
   const s131Bytes = fs.readFileSync(S131_GOLDEN_MASTER_FIXTURE);
   assert.equal(createHash('sha256').update(s131Bytes).digest('hex'), 'e507876912facc646026c29141496fb2309acc29fd170d5554eac79fe35b8ab4');
-  const s131 = JSON.parse(s131Bytes), current = JSON.parse(fs.readFileSync(GOLDEN_MASTER_FIXTURE));
+  const s131 = JSON.parse(s131Bytes), current = JSON.parse(fs.readFileSync(S132_V5_GOLDEN_MASTER_FIXTURE));
   // Rival clubs now draft on a per-club scouted read, so who is drafted where
   // changes from the first draft on and results move league-wide. A section
   // may appear or disappear only where it is a ledger that exists once its
@@ -87,6 +87,21 @@ test("S132 rival-scouting baseline preserves S131 byte-identical and keeps every
   }
   assert.notDeepEqual(lines, [], 'the S132 baseline records an actual behavior change');
   for (const id of Object.keys(s131.scenarios)) assert.deepEqual(current.scenarios[id].summary.champions[0], s131.scenarios[id].summary.champions[0], 'the season before the first changed draft is untouched');
+});
+
+test("S132 challenge-score baseline preserves v5 byte-identical and moves only the GM history sections", () => {
+  const v5Bytes = fs.readFileSync(S132_V5_GOLDEN_MASTER_FIXTURE);
+  assert.equal(createHash('sha256').update(v5Bytes).digest('hex'), 'b57decefff6fe62573635582e015496be9e4575932545b75e64902c04c94c292');
+  const v5 = JSON.parse(v5Bytes), current = JSON.parse(fs.readFileSync(GOLDEN_MASTER_FIXTURE));
+  // The GM season history gained three recorded totals. Nothing that is
+  // simulated may move: results, rosters, awards and champions are identical.
+  assert.deepEqual(diffGoldenMaster(v5, current).sort(), [
+    'drive-20260306-BUF: dashboard changed',
+    'drive-20260306-BUF: league.gmLegacy changed',
+    'play-4113-CHI: dashboard changed',
+    'play-4113-CHI: league.gmLegacy changed'
+  ]);
+  for (const id of Object.keys(v5.scenarios)) assert.deepEqual(current.scenarios[id].summary, v5.scenarios[id].summary);
 });
 
 test("the diff names changed, added and missing sections", () => {

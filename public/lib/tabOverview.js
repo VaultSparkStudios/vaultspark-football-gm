@@ -3,7 +3,6 @@ import { tradeWindow } from "./tradeWindow.js";
 import { deriveTrophyRoad, readEarnedAchievements, recordAchievementEvent } from "./achievements.js";
 import { playSound } from "./audioFeedback.js";
 import { classifyTone, humanizeId, decoratePlayerColumnByIds, decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderGuideContent, renderPanelError, renderTable, setBoxScoreTab, setMetricCardValue, setTableSkeleton, showToast, teamCode, teamName } from "./appCore.js";
-import { buildRivalCoachIntel } from "./rivalCoachIntel.js";
 import { invokeUiIsland } from "./uiIslands.js";
 import { buildBoxScoreImpactLeaders, buildQuarterScoreboard } from "./boxScorePresentation.js";
 import { observeBackgroundTask, recordClientDiagnostic } from "./clientDiagnostics.js";
@@ -16,9 +15,60 @@ import { deriveMarqueeBadge } from "./marqueeBadge.js";
 import { renderPredictionPanel } from "./predictionPanel.js";
 import { findTeamStanding, formatTeamRecord, teamRecordWinPct } from "./teamRecord.js";
 
+// The Desk is four groups. "This week" is always open; the other three are
+// <details> the player opens on demand. A collapsed group skips its heavier
+// renderers (and their API calls) until it is opened, then renders from the
+// live state. The open/closed choice is remembered per browser.
+const DESK_GROUPS_KEY = "franchise-architect-desk-groups:v1";
+const DESK_GROUP_RENDERERS = {
+  club: () => { renderRehabCommandCenter(); renderGmCommitmentBoard(); renderNarrativePanel(); },
+  league: () => {
+    renderSchedule();
+    observeBackgroundTask(renderStatLeadersStrip, { surface: "overview", operation: "stat-leaders" });
+  },
+  career: () => renderFranchiseArchitecture()
+};
+
+/** True unless the named group is a collapsed <details> (a missing group counts as open). */
+export function deskGroupOpen(name) {
+  return document.getElementById(`deskGroup${name[0].toUpperCase()}${name.slice(1)}`)?.open !== false;
+}
+
+export function wireDeskGroups() {
+  const groups = Array.from(document.querySelectorAll?.("details[data-desk-group]") || []);
+  if (!groups.length || groups[0].dataset.deskWired) return;
+  let saved = {};
+  try {
+    saved = JSON.parse(localStorage.getItem(DESK_GROUPS_KEY) || "{}") || {};
+  } catch {
+    // Storage blocked or unreadable: every group simply starts collapsed.
+  }
+  for (const group of groups) {
+    const name = group.dataset.deskGroup;
+    group.dataset.deskWired = "1";
+    if (saved[name] === true) group.open = true;
+    group.addEventListener("toggle", () => {
+      saved[name] = group.open;
+      try {
+        localStorage.setItem(DESK_GROUPS_KEY, JSON.stringify(saved));
+      } catch {
+        // The choice is just not remembered next time.
+      }
+      if (group.open && state.dashboard) DESK_GROUP_RENDERERS[name]?.();
+    });
+  }
+  // Links to other tabs appear only when that tab exists in this build.
+  for (const link of document.querySelectorAll("[data-desk-tab-link]")) {
+    const tab = document.querySelector(`.menu-btn[data-tab="${link.dataset.deskTabLink}"]`);
+    link.hidden = !tab;
+    if (tab) link.addEventListener("click", () => tab.click());
+  }
+}
+
 export function renderOverview() {
   const d = state.dashboard;
   if (!d) return;
+  wireDeskGroups();
   setMetricCardValue("phaseCard", d.phase, "info");
   setMetricCardValue("yearCard", `${d.currentYear} / W${d.currentWeek}`, "accent");
   setMetricCardValue("seasonsCard", String(d.seasonsSimulated || 0), "accent");
@@ -49,13 +99,11 @@ export function renderOverview() {
   renderOverviewSpotlight();
   renderFranchiseCommandCenter();
   renderCoGmBriefIfOpen();
-  renderFranchiseArchitecture();
+  if (deskGroupOpen("career")) renderFranchiseArchitecture();
   renderOpeningContract();
   renderPressRoomPanel(state.dashboard?.pressRoom);
-  renderRehabCommandCenter();
-  renderGmCommitmentBoard();
+  if (deskGroupOpen("club")) DESK_GROUP_RENDERERS.club();
   renderTacticalFilmRoom();
-  renderNarrativePanel();
   renderTradeDeadlineAlert();
 }
 
@@ -154,12 +202,12 @@ export function renderFranchiseArchitecture() {
   content.innerHTML = `
     ${primary ? `
       <button type="button" class="week-room-primary ${escapeHtml(primary.tone)}" data-blueprint-target-tab="${escapeHtml(primary.targetTab)}" data-blueprint-target-id="${escapeHtml(primary.targetId)}">
-        <span class="franchise-horizon-label">This week's controlled call</span>
+        <span class="franchise-horizon-label">This week's call</span>
         <strong>${escapeHtml(primary.title)}</strong>
         <span>${escapeHtml(primary.detail)}</span>
         <em>Why now · ${escapeHtml(primary.milestone)}</em>
       </button>
-    ` : '<p class="architect-ledger-empty">Load the live franchise state to establish this week’s controlled call.</p>'}
+    ` : '<p class="architect-ledger-empty">This week’s call appears once your franchise loads.</p>'}
     <div class="week-room-horizons" aria-label="Season and legacy horizons">
       ${room.horizonChips.map((lane) => `
         <button type="button" class="week-room-horizon ${escapeHtml(lane.tone)}" data-blueprint-target-tab="${escapeHtml(lane.targetTab)}" data-blueprint-target-id="${escapeHtml(lane.targetId)}">
@@ -173,8 +221,8 @@ export function renderFranchiseArchitecture() {
     <details class="architecture-review">
       <summary><span>Architecture Review</span><small>${escapeHtml(signal.sampleSize)} logged decision${signal.sampleSize === 1 ? "" : "s"} · ${escapeHtml(mastery?.label || "mastery forming")}</small></summary>
       <div class="architecture-review-body">
-        <section class="architect-thesis" aria-label="Player-authored Architect thesis">
-          <div class="architect-ledger-head"><strong>Your Architect Thesis</strong><span class="small">Version ${escapeHtml(String(thesis.revision || 0))}${thesis.lineage?.valid === false ? ` · ${escapeHtml(String(thesis.lineage.issues.length))} history gap${thesis.lineage.issues.length === 1 ? "" : "s"}` : ""} · no hidden bonus</span></div>
+        <section class="architect-thesis" aria-label="Your Architect plan">
+          <div class="architect-ledger-head"><strong>Your Architect Plan</strong><span class="small">Version ${escapeHtml(String(thesis.revision || 0))}${thesis.lineage?.valid === false ? ` · ${escapeHtml(String(thesis.lineage.issues.length))} history gap${thesis.lineage.issues.length === 1 ? "" : "s"}` : ""} · no hidden bonus</span></div>
           <label for="architectFocusSelect">Mastery focus</label>
           <div class="architect-thesis-controls">
             <select id="architectFocusSelect" data-architect-focus-select aria-label="Architect mastery focus">
@@ -182,7 +230,7 @@ export function renderFranchiseArchitecture() {
             </select>
             <button type="button" class="btn-sm" data-architect-save-focus>Save focus</button>
           </div>
-          <div class="architect-thesis-controls" role="group" aria-label="Next adaptation hypothesis">
+          <div class="architect-thesis-controls" role="group" aria-label="Next adjustment to try">
             ${["reinforce", "counter", "investigate"].map((mode) => `<button type="button" class="btn-sm ${thesis.pendingAdaptation?.mode === mode ? "active" : ""}" data-architect-adaptation="${mode}">${escapeHtml(mode[0].toUpperCase() + mode.slice(1))}</button>`).join("")}
             <button type="button" class="btn-sm" data-architect-adaptation="">Clear</button>
           </div>
@@ -214,7 +262,7 @@ export function renderFranchiseArchitecture() {
               <small class="gm-mastery-disclaimer">${escapeHtml(thesis.review.disclaimer)}</small>
             </section>
           ` : '<p class="architect-ledger-empty">No declaration baseline yet. Save a mastery focus to start tracking it.</p>'}
-          <small class="gm-mastery-disclaimer">${escapeHtml(thesis.disclaimer || "Your thesis changes the review lens, never simulation outcomes.")}</small>
+          <small class="gm-mastery-disclaimer">${escapeHtml(thesis.disclaimer || "Your plan changes how your record is reviewed, never game results.")}</small>
         </section>
         <div class="architect-signal ${signal.ready ? "ready" : "awaiting"}">
           <span class="franchise-horizon-label">Decision memory · ${escapeHtml(signal.sampleSize)} logged decision${signal.sampleSize === 1 ? "" : "s"}</span>
@@ -236,7 +284,7 @@ export function renderFranchiseArchitecture() {
           </section>
         ` : '<p class="architect-ledger-empty">Mastery detail appears once your first moves are on record.</p>'}
         <div class="architect-ledger">
-          <div class="architect-ledger-head"><strong>Architect's Ledger</strong><span class="small">Intent → execution → observed result → next adaptation</span></div>
+          <div class="architect-ledger-head"><strong>Architect's Log</strong><span class="small">Intent → execution → observed result → next adaptation</span></div>
           ${ledger.length ? `
             <ol class="architect-ledger-list">
               ${ledger.map((row) => `
@@ -247,7 +295,7 @@ export function renderFranchiseArchitecture() {
                   <small>Next: ${escapeHtml(row.adaptation)}</small>
                 </li>`).join("")}
             </ol>
-            <p class="architect-ledger-disclaimer">${escapeHtml(ledger[0].disclaimer || "The ledger reports sequence and alignment, not causation.")}</p>
+            <p class="architect-ledger-disclaimer">${escapeHtml(ledger[0].disclaimer || "The log shows what happened in order, not what caused it.")}</p>
           ` : '<p class="architect-ledger-empty">Advance a week to record the first committed intent and its observed outcome. No result is invented before play.</p>'}
         </div>
       </div>
@@ -284,7 +332,7 @@ export function renderOpeningContract() {
   heading.className = "opening-contract-heading";
   const kicker = document.createElement("span");
   kicker.className = "brand-kicker";
-  kicker.textContent = progress.status === "completed" ? "Opening Contract · Receipt Earned" : "Opening Contract · Live Prologue";
+  kicker.textContent = progress.status === "completed" ? "Opening Contract · Complete" : "Opening Contract · Your Opening";
   const receiptId = document.createElement("span");
   receiptId.className = "small";
   receiptId.textContent = receipt.receiptId || "";
@@ -389,7 +437,7 @@ export function renderRehabCommandCenter() {
       <span class="rehab-count">${injuries.length} active</span>
     </div>
     ${receipt ? `<div class="rehab-receipt"><strong>${escapeHtml(receipt.player)} cleared</strong><span>${escapeHtml(receipt.planLabel)} · risk now ${Math.round(Number(receipt.reinjuryRisk || 0) * 100)}%</span></div>` : ""}
-    <div class="rehab-player-list">${cards || '<p class="small muted">No active injuries. The latest clearance receipt remains above.</p>'}</div>
+    <div class="rehab-player-list">${cards || '<p class="small muted">No active injuries. The latest clearance note remains above.</p>'}</div>
   `;
 }
 
@@ -402,7 +450,7 @@ export function renderGmCommitmentBoard() {
   if (!active.length && !receipt) { card.hidden = true; return; }
   card.hidden = false;
   card.innerHTML = `
-    <div class="gm-commitment-kicker">Decision Consequence Ledger</div>
+    <div class="gm-commitment-kicker">Promises on Record</div>
     ${active.map((entry) => `<div class="gm-commitment-row"><div><strong>${escapeHtml(entry.label)}</strong><div>${escapeHtml(entry.promise)}</div></div><span>Due Y${escapeHtml(String(entry.deadlineYear))} W${escapeHtml(String(entry.deadlineWeek))}</span></div>`).join("")}
     ${receipt ? `<div class="gm-commitment-receipt ${receipt.status === "succeeded" ? "receipt-success" : "receipt-failure"}"><strong>${escapeHtml(receipt.label)} · ${escapeHtml(receipt.status)}</strong><div>${escapeHtml(receipt.evidence)}</div></div>` : ""}
   `;
@@ -424,11 +472,11 @@ export function renderTacticalFilmRoom() {
   card.hidden = false;
   card.className = `panel tactical-film-room ${receipt.aligned ? "film-aligned" : "film-mixed"}`;
   card.innerHTML = `
-    <div class="film-kicker">Postgame Film Receipt · Week ${escapeHtml(String(receipt.week ?? "?"))}</div>
+    <div class="film-kicker">Postgame Film Review · Week ${escapeHtml(String(receipt.week ?? "?"))}</div>
     <div class="film-headline"><strong>${escapeHtml(receipt.label)}</strong><span>${escapeHtml(receipt.result.toUpperCase())} ${escapeHtml(receipt.score)} vs ${escapeHtml(receipt.opponentId)}</span></div>
-    <div class="film-verdict">${receipt.aligned ? "Intent aligned with the observed signal" : "Observed signal was mixed against the chosen intent"}</div>
+    <div class="film-verdict">${receipt.aligned ? "The game matched the plan" : "The game only partly matched the plan"}</div>
     <div class="film-observed">${escapeHtml(receipt.observed)}</div>
-    ${identity ? `<div class="film-identity" aria-label="Tactical identity ledger"><strong>${escapeHtml(identity.summary)}</strong><span>${escapeHtml(String(identity.alignedRepetitions))} aligned repetitions · ${escapeHtml(String(identity.variety))} tactics in the ledger</span></div>` : ""}
+    ${identity ? `<div class="film-identity" aria-label="Tactical identity record"><strong>${escapeHtml(identity.summary)}</strong><span>${escapeHtml(String(identity.alignedRepetitions))} aligned repetitions · ${escapeHtml(String(identity.variety))} tactics on record</span></div>` : ""}
     <div class="film-disclaimer">${escapeHtml(identity?.disclaimer || receipt.disclaimer)}</div>
   `;
 }
@@ -703,6 +751,9 @@ export function renderLeaders() {
 }
 
 export function renderSchedule() {
+  // The schedule sits in the collapsed "The league" group; it renders (and makes
+  // its rivalry requests) when that group is open, and again on opening it.
+  if (!deskGroupOpen("league")) return;
   const week = state.scheduleWeek || state.dashboard?.currentWeek || 1;
   const schedule = state.scheduleCache[week] || null;
   const weekText = document.getElementById("scheduleWeekText");
@@ -745,7 +796,7 @@ export function renderSchedule() {
   } catch {
     // Local-only mini-game; a rendering failure here must never break the schedule tab.
   }
-  observeBackgroundTask(() => renderRivalryStrip(schedule, controlledTeamId), {
+  observeBackgroundTask(async () => (await import("./deskRivalry.js")).renderRivalryStrip(schedule, controlledTeamId), {
     surface: "overview",
     operation: "rivalry-strip",
     authorityKey: [
@@ -754,93 +805,6 @@ export function renderSchedule() {
       controlledTeamId || ""
     ].join(":")
   });
-}
-
-// ── Rivalry DNA strip (engine: src/engine/rivalryDNA.js via /api/rivalry) ────
-async function renderRivalryStrip(schedule, controlledTeamId) {
-  const strip = document.getElementById("rivalryStrip");
-  if (!strip) return;
-  const game = controlledTeamId
-    ? (schedule.games || []).find(
-        (g) => g.awayTeamId === controlledTeamId || g.homeTeamId === controlledTeamId
-      )
-    : null;
-  if (!game) {
-    strip.hidden = true;
-    const ic = document.getElementById("rivalCoachIntelContainer");
-    if (ic) ic.hidden = true;
-    return;
-  }
-  const opponentId = game.awayTeamId === controlledTeamId ? game.homeTeamId : game.awayTeamId;
-  let ctx = null;
-  try {
-    const res = await api(
-      `/api/rivalry?teamA=${encodeURIComponent(controlledTeamId)}&teamB=${encodeURIComponent(opponentId)}`
-    );
-    ctx = res?.rivalry || null;
-  } catch (error) {
-    ctx = null;
-    strip.hidden = true;
-    const intelContainer = document.getElementById("rivalCoachIntelContainer");
-    if (intelContainer) intelContainer.hidden = true;
-    throw error;
-  }
-  if (!ctx || !ctx.totalMeetings) {
-    strip.hidden = true;
-    const ic2 = document.getElementById("rivalCoachIntelContainer");
-    if (ic2) ic2.hidden = true;
-    return;
-  }
-  const heat = Math.max(0, Math.min(100, ctx.heat || 0));
-  const heatTone = heat >= 80 ? "rs-bitter" : heat >= 60 ? "rs-heated" : heat >= 40 ? "rs-competitive" : "rs-mild";
-  const streakText = ctx.streak?.count > 1
-    ? `${teamCode(ctx.streak.team)} has won ${ctx.streak.count} straight`
-    : "";
-  strip.hidden = false;
-  strip.innerHTML = `
-    <div class="rivalry-strip ${heatTone}">
-      ${heat >= 60 ? `<span class="rivalry-week-badge">RIVALRY WEEK</span>` : ""}
-      <span class="rivalry-label">${escapeHtml(ctx.heatLabel || "Series")}</span>
-      <span class="rivalry-matchup">${escapeHtml(teamCode(controlledTeamId))} vs ${escapeHtml(teamCode(opponentId))}</span>
-      <span class="rivalry-series">Series ${ctx.teamAWins}-${ctx.teamBWins} (${ctx.totalMeetings} meetings)</span>
-      ${streakText ? `<span class="rivalry-streak">${escapeHtml(streakText)}</span>` : ""}
-      <span class="rivalry-heat-meter" title="Rivalry heat ${heat}/100"><span class="rivalry-heat-fill" style="width:${heat}%"></span></span>
-    </div>`;
-
-  // Rival coach intel card
-  try {
-    const res = await api(`/api/team-archetypes?team=${encodeURIComponent(opponentId)}`);
-    const rival = (res?.archetypes || []).find((a) => a.teamId === opponentId);
-    const intel = buildRivalCoachIntel(rival?.archetype?.label, heat, rival?.ovr);
-    const intelContainer = document.getElementById("rivalCoachIntelContainer");
-    if (intelContainer) {
-      intelContainer.hidden = false;
-      const gm = rival?.gm || null;
-      intelContainer.innerHTML = `
-        <div class="rival-coach-intel">
-          <div class="rci-header">${intel.icon} Coach Intel: ${escapeHtml(rival?.name || teamCode(opponentId))} <span class="rci-archetype">[${escapeHtml(intel.archetype)}]</span></div>
-          ${gm?.persona ? `<div class="rci-gm-line"><strong>${escapeHtml(gm.persona.name)}</strong>, GM — ${escapeHtml(gm.persona.traits?.join("; ") || "")}${gm.memory?.length ? `<br /><em>${escapeHtml(gm.line)}</em>` : ""}</div>` : ""}
-          <ul class="rci-tendencies">
-            ${intel.tendencies.map((t) => `<li>${escapeHtml(t)}</li>`).join("")}
-          </ul>
-          ${intel.heatNote ? `<div class="rci-alert rci-alert-${intel.alertLevel}">${escapeHtml(intel.heatNote)}</div>` : ""}
-          ${intel.ovrNote ? `<div class="rci-alert rci-alert-high">${escapeHtml(intel.ovrNote)}</div>` : ""}
-        </div>`;
-    }
-  } catch (error) {
-    const intelContainer = document.getElementById("rivalCoachIntelContainer");
-    if (intelContainer) intelContainer.hidden = true;
-    recordClientDiagnostic({
-      surface: "overview",
-      operation: "rival-coach-intel",
-      error,
-      authorityKey: [
-        state.dashboard?.currentYear || "",
-        state.dashboard?.currentWeek || "",
-        controlledTeamId || ""
-      ].join(":")
-    });
-  }
 }
 
 export function renderStandings() {
@@ -1154,7 +1118,7 @@ export async function renderGmLegacyScore() {
     const data = await api("/api/gm-legacy");
     const s = data.legacy;
     state.gmLegacy = s;
-    renderFranchiseArchitecture();
+    if (deskGroupOpen("career")) renderFranchiseArchitecture();
     applyGmLegacyCard(card, wrap, s);
   } catch (error) {
     wrap.hidden = true;
@@ -1184,7 +1148,7 @@ export function applyGmLegacyCard(card, wrap, s) {
             <strong>${escapeHtml(s.mastery.focus.nextMilestone)}</strong>
             <small>${escapeHtml(s.mastery.focus.reason)}</small>
           </div>` : ""}
-        <small class="gm-mastery-disclaimer">Full evidence paths are available in Architecture Review.</small>`;
+        <small class="gm-mastery-disclaimer">Your full track record is in Architecture Review.</small>`;
     }
 
     // Persona tier arc
@@ -1352,7 +1316,7 @@ export function renderInjuryOverlayCard() {
 
 export async function renderStatLeadersStrip() {
   const el = document.getElementById("statLeadersStrip");
-  if (!el) return;
+  if (!el || !deskGroupOpen("league")) return;
   try {
     const data = await api("/api/stat-leaders");
     if (!data?.leaders) return;

@@ -8,7 +8,7 @@
   "intelligenceLine": "No AI services and no paid APIs. Every rival, every Advisor call and every headline is worked out by the game's own rules from your league's data.",
   "heroImage": {
     "src": "./images/screens/hero.jpg",
-    "alt": "The franchise Desk: your club, its competitive window and needs, cap space, the press room and the controls to advance the season",
+    "alt": "The franchise Desk in mid-season: your club, its competitive window and needs, cap space, standing orders and the controls to advance the week",
     "title": "The Desk"
   },
   "facts": [
@@ -67,16 +67,21 @@
       "description": "Each week the Advisor on your Desk argues for one call from your briefing and shows the cap, roster and results figures it is reading. You can take the advice or ignore it. The Advisor keeps score of how often you went against it and what happened next. Its reasoning runs on the game's own rules and your league's data. It uses no AI service, and nothing is sent anywhere.",
       "index": true,
       "image": {
-        "src": "./images/screens/desk.jpg",
-        "alt": "The First Season Contract objectives and the Front Office Advisor arguing one call, with the figures behind it"
-      }
+        "src": "./images/screens/advisor.webp",
+        "alt": "The Front Office Advisor on the Desk arguing for one call this week, with the cap room, owner heat and injury figures it is reading"
+      },
+      "showcase": true
     },
     {
       "id": "first-season",
       "title": "A First Season Contract",
       "teaser": "Five objectives every first-year general manager is judged on.",
       "description": "A new franchise opens with five objectives: sign a free agent, set a depth chart yourself, work the trade desk, reach the owner's win target, and carry a legal cap into the offseason. Each one is ticked off from what you actually do. At the season review the contract closes with the owner's verdict.",
-      "index": false
+      "index": false,
+      "image": {
+        "src": "./images/screens/first-season.webp",
+        "alt": "The First Season Contract: five objectives a first-year general manager is judged on, each ticked off from what you do"
+      }
     },
     {
       "id": "rivals",
@@ -85,16 +90,21 @@
       "description": "Every rival club is run by a general manager with an archetype. A win-now club accepts a wider price than a rebuilding one. A player at their real need carries a premium and a surplus position a discount, and the offer tells you which applied. Rivals remember the deals you have done together, including the ones they are still annoyed about, and they call on draft day to buy your pick.",
       "index": true,
       "image": {
-        "src": "./images/screens/trade.jpg",
-        "alt": "A rival general manager's trade offer, with what they want and why"
-      }
+        "src": "./images/screens/trade.webp",
+        "alt": "The trade desk with a player staged on each side, the fairness score, both clubs' cap change and the verdict on the deal"
+      },
+      "showcase": true
     },
     {
       "id": "trade-market",
       "title": "A league that trades around you",
       "teaser": "Rival clubs trade with each other under the same roster, cap and deadline rules you do.",
       "description": "Rival clubs trade with each other during the season, under the same roster, cap and deadline rules that govern your deals. Their moves are reported in League News, so the league changes even when you hold your own roster steady.",
-      "index": false
+      "index": false,
+      "image": {
+        "src": "./images/screens/trade-market.webp",
+        "alt": "The League News Feed listing trades rival clubs made with each other, week by week, beside results and award watches"
+      }
     },
     {
       "id": "boardroom",
@@ -103,9 +113,10 @@
       "description": "The Boardroom holds your owner, your facilities, your coaching staff and your franchise identity. Facilities are building projects paid from the owner's cash, and every wing you own costs upkeep each year. Ticket prices answer to a market that punishes greed. You hire from a coaching market whose staff age and move on. The owner's patience is shown as a meter, and it can run out.",
       "index": true,
       "image": {
-        "src": "./images/screens/boardroom.jpg",
-        "alt": "The Boardroom: the owner's mandate and finances, facilities, and the head coach market"
-      }
+        "src": "./images/screens/boardroom.webp",
+        "alt": "The Boardroom: the owner's mandate and finances, ticket price and staff budget, and the head coach market"
+      },
+      "showcase": true
     },
     {
       "id": "contracts",
@@ -114,79 +125,122 @@
       "description": "Every contract sits under a salary cap that applies from the first snap: extensions, restructures, franchise tags and cap casualties, with a multi-year cap view to plan against. Contracts expire, rivals fight to re-sign their own stars, and free agency resolves in bidding waves that wait for your moves.",
       "index": false,
       "image": {
-        "src": "./images/screens/contracts.jpg",
-        "alt": "The Contracts screen: cap space, expiring deals and franchise-tag candidates"
-      }
+        "src": "./images/screens/contracts.webp",
+        "alt": "The Contracts screen: cap space, active and dead cap, expiring deals, tag candidates and next year's carryover estimate"
+      },
+      "showcase": true
     },
     {
       "id": "draft",
       "title": "Scouts give you a read, not the answer",
       "teaser": "Draft prospects arrive in scouting fog. Spend scouting points to see more clearly.",
       "description": "Draft prospects arrive in scouting fog. Your board shows your scouts' estimate of each prospect's overall and potential, and the scouting points you spend move that estimate closer to the truth. Lock your board, then run the draft from the war room while rivals call to trade up.",
-      "index": true
+      "index": true,
+      "image": {
+        "src": "./images/screens/draft.webp",
+        "alt": "The draft war room with your club on the clock: three target prospects with scouting reads, and three rival general managers offering picks to trade up"
+      },
+      "showcase": true
     },
     {
       "id": "sim-watch",
       "title": "Set the plan, then watch it play out",
       "teaser": "A weekly tactical plan that changes how your team plays, and Sim-Watch replays of the key plays.",
       "description": "Before kickoff you choose the week's tactical focus, and it changes how your team plays. Sim-Watch replays a game's key plays as a broadcast, with play-by-play, a speed control and a final reel. The simulation runs in the background on browsers that support it, so the game stays responsive while a season simulates.",
-      "index": true
+      "index": true,
+      "image": {
+        "src": "./images/screens/sim-watch.webp",
+        "alt": "Sim-Watch replaying a finished game: the score, a field diagram, the speed control and the scoring plays in order"
+      }
     },
     {
       "id": "history",
       "title": "The league writes its own history",
       "teaser": "Awards, records, a Dynasty timeline and a Hall of Fame with an induction ceremony.",
       "description": "Season awards, league and franchise records, retired numbers, a Dynasty timeline, and a Hall of Fame with a ballot and an induction ceremony. Beat reporters, press conferences and League News remember what happened, so your franchise builds a history it can tell back to you.",
-      "index": true
+      "index": true,
+      "image": {
+        "src": "./images/screens/history.webp",
+        "alt": "The Dynasty screen after one season: the legacy ledger, the latest champion, the franchise records board and the season awards"
+      }
     },
     {
       "id": "share",
       "title": "Moments worth sharing",
       "teaser": "Turn trophies, picks and whole seasons into shareable cards.",
       "description": "Trophies, the season epilogue, the development report and a first-round pick can be saved as image cards. A League Story Card sums up a season, and a Dynasty Timeline sums up a whole run.",
-      "index": false
+      "index": false,
+      "image": {
+        "src": "./images/screens/share.webp",
+        "alt": "The Trophy Case in Settings: the achievements a franchise can earn, shown locked until you earn them"
+      }
     },
     {
       "id": "depth-chart",
       "title": "A depth chart you can drag",
       "teaser": "Reorder a position group by dragging a row or with the keyboard.",
       "description": "Reorder a position group by dragging a row or with the keyboard. Each row shows the player's age and experience beside his grade, so you can decide without opening every profile. Best Lineup orders the healthy players by the staff's grade, and Undo takes you back.",
-      "index": false
+      "index": false,
+      "image": {
+        "src": "./images/screens/depth-chart.webp",
+        "alt": "The depth chart for one position group, with a drag handle and arrows on each row and the player's age, experience and grades beside his name"
+      },
+      "showcase": true
     },
     {
       "id": "player-identity",
       "title": "Playing styles and signature abilities",
       "teaser": "Two players with the same rating are not the same player.",
       "description": "Every player carries a playing style and signature abilities, named on his profile. An ability is only called elite or strong when the rating earns it.",
-      "index": false
+      "index": false,
+      "image": {
+        "src": "./images/screens/player-identity.webp",
+        "alt": "A player profile: portrait, playing style, signature trait, contract, availability and career summary"
+      }
     },
     {
       "id": "injuries",
       "title": "Injuries that last as long as they say",
       "teaser": "An injury keeps a player out for the weeks its label states.",
       "description": "In the regular season an injury keeps a player out for the number of weeks its label states, and a bye week counts as one of them. A Questionable tag is a game-time status of its own on the roster, depth chart and player profile.",
-      "index": false
+      "index": false,
+      "image": {
+        "src": "./images/screens/injuries.webp",
+        "alt": "The injury report listing each player's status and weeks out, above the Rehab Command Center's recovery plans"
+      }
     },
     {
       "id": "league-pulse",
       "title": "Power rankings and award races",
       "teaser": "Every club ranked each week, and the award races as they move.",
       "description": "League Pulse ranks every club each week, and the award races update as the season goes on.",
-      "index": false
+      "index": false,
+      "image": {
+        "src": "./images/screens/league-pulse.webp",
+        "alt": "League Pulse: this week's power rankings beside the MVP, Defensive Player and Coach of the Year races"
+      }
     },
     {
       "id": "standing-orders",
       "title": "Game-day standing orders",
       "teaser": "Your rules for fourth downs and the two-minute drill.",
       "description": "You set how your team handles fourth downs and the two-minute drill, and the team follows those orders in every game.",
-      "index": false
+      "index": false,
+      "image": {
+        "src": "./images/screens/standing-orders.webp",
+        "alt": "Situational Calls on the Desk: fourth-down and two-minute-drill standing orders, each with three settings"
+      }
     },
     {
       "id": "challenge-codes",
       "title": "Challenge codes and a weekly challenge",
       "teaser": "Send a friend the same league, or start the league everyone plays this week.",
       "description": "Every league can produce a challenge code and a challenge link. A friend who pastes the code on the start page, or opens the link, gets the same league from the same starting point, so you can run the same franchise and compare. Each week there is also one challenge league that everyone can start from the same seed with the same club.",
-      "index": false
+      "index": false,
+      "image": {
+        "src": "./images/screens/challenge-codes.webp",
+        "alt": "The challenge panel in Settings, with Start Challenge and Copy Challenge Code"
+      }
     },
     {
       "id": "measured-realism",
@@ -197,6 +251,10 @@
       "link": {
         "href": "./simulation.html",
         "label": "See what we measure"
+      },
+      "image": {
+        "src": "./images/screens/measured-realism.webp",
+        "alt": "The simulation methodology page explaining what the game measures its ratings against"
       }
     },
     {
@@ -204,28 +262,44 @@
       "title": "A career, not a save file",
       "teaser": "Six GM legacy tiers, from Young Gun to Immortal, earned from results.",
       "description": "Your record follows you across every franchise in this browser through six legacy tiers, from Young Gun to Immortal. Tiers are earned only from results the game can verify you produced.",
-      "index": true
+      "index": true,
+      "image": {
+        "src": "./images/screens/career.webp",
+        "alt": "The GM Legacy card on the Desk after one season: legacy score, tier progress and what the market thinks of you"
+      }
     },
     {
       "id": "commissioner",
       "title": "Commissioner mode",
       "teaser": "Up to four general managers share one league on the same device.",
       "description": "Create a commissioner lobby and give each general manager a club. Everyone stages their moves for the week, then the commissioner advances it. Lobbies are stored in this browser, so this is a shared-device mode. There is no online multiplayer.",
-      "index": false
+      "index": false,
+      "image": {
+        "src": "./images/screens/commissioner.webp",
+        "alt": "Commissioner Mode in Settings: create or join a lobby, pick a club, mark ready and send a request to the commissioner"
+      }
     },
     {
       "id": "saves",
       "title": "Saves that protect themselves",
       "teaser": "Local saves, rolling backups, a rewind ledger, exports and optional Gist sync.",
       "description": "Your league saves in this browser, with rolling automatic backups and rewind points for recent major decisions. You can export a save file at any time, or sync it to a GitHub Gist with a token you supply. That token is sent only to GitHub and is kept only for the current tab.",
-      "index": true
+      "index": true,
+      "image": {
+        "src": "./images/screens/saves.webp",
+        "alt": "The Rewind Timeline and Saves panels: snapshots, save slots, export and import, and optional GitHub Gist sync"
+      }
     },
     {
       "id": "identity",
       "title": "It is your franchise",
       "teaser": "Name the team, set the city, choose the colors and the era.",
       "description": "Name the team, set the city, choose the colors, the era and the ruleset. Your club's crest and identity carry through the whole game.",
-      "index": false
+      "index": false,
+      "image": {
+        "src": "./images/screens/identity.webp",
+        "alt": "The Boardroom's Franchise Brand Builder: fields for team name, city, abbreviation and two club colours"
+      }
     },
     {
       "id": "community",
@@ -236,6 +310,10 @@
       "link": {
         "href": "./stats#methodology",
         "label": "How Community Stats works"
+      },
+      "image": {
+        "src": "./images/screens/community.webp",
+        "alt": "The Community Stats page: a simulated ten-season league labelled as a simulation, above the methodology that says who is included and what stays private"
       }
     }
   ]

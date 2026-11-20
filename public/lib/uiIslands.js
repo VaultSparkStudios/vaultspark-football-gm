@@ -40,7 +40,7 @@ export const UI_ISLAND_MANIFEST = Object.freeze({
   }),
   settings: Object.freeze({
     // Boardroom and Settings share the owner economy.
-    tabs: Object.freeze(["logTab", "settingsTab", "boardroomTab"]),
+    tabs: Object.freeze(["logTab", "settingsTab", "boardroomTab", "gmProfileTab"]),
     source: "./tabSettings.js",
     preload: Object.freeze(["./tabSettings.js"]),
     budgetBytes: 74_000

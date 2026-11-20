@@ -197,7 +197,8 @@ test('publication depends on all capture profiles and aggregate coverage while e
   assert.match(capture, /fail-fast: false/);
   assert.match(capture, /name: Capture responsive artifact evidence\s+timeout-minutes: 8/);
   assert.match(capture, /Preserve responsive shard evidence and partial diagnostics\s+if: \$\{\{ always\(\) \}\}/);
-  assert.match(publish, /needs: \[build, responsive-capture\]/);
+  // Publication also needs the four browser shards, which left the build job.
+  assert.match(publish, /needs: \[build, browser-release-gate, responsive-capture\]/);
   assert.ok(publish.indexOf('node scripts/aggregate-responsive-evidence.mjs') < publish.indexOf('- name: Upload Pages artifact'));
   assert.ok(publish.indexOf('node scripts/aggregate-responsive-evidence.mjs') < publish.indexOf('- name: Publish to Cloudflare Pages'));
   assert.match(workflow, /include-hidden-files: true/);

@@ -65,6 +65,11 @@ export async function navigateToExactSurface(action = {}, {
         return;
       }
 
+      // A destination inside a collapsed section (the Desk groups) is opened
+      // first; a closed <details> cannot be scrolled to or focused.
+      for (let node = target, guard = 0; node && guard < 100; node = node.parentElement || null, guard += 1) {
+        if (node.tagName === "DETAILS" && node.open === false) node.open = true;
+      }
       const reducedMotion = windowRef?.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches === true;
       target.scrollIntoView?.({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
       if (typeof target.setAttribute === "function"

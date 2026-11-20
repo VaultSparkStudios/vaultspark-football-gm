@@ -145,7 +145,7 @@ export function buildCoGmBriefingPacket({
     recentDecisionReceipts: ledger,
     disclosure: {
       bounded: true,
-      included: ["current team, season, and week", "ranked command", "pressure summary", "architect thesis", `up to ${MAX_RECEIPTS} recent decisions`],
+      included: ["current team, season, and week", "ranked command", "pressure summary", "architect plan", `up to ${MAX_RECEIPTS} recent decisions`],
       excluded: ["save file", "full roster ratings", "credentials", "personal identifiers", "hidden simulation state"],
       note: "Player-created export of what you can already see. It describes your situation; it does not prove what caused it."
     }

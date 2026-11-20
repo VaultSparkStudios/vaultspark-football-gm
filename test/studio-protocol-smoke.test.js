@@ -479,12 +479,23 @@ test("Pages publication is gated by the real browser suite", () => {
     resolve(repoRoot, ".github/workflows/deploy-pages.yml"),
     "utf8"
   );
-  const browserGate = workflow.match(
-    /- name: Run browser release gate[\s\S]*?(?=\n\s+- name: Capture responsive artifact evidence)/
-  )?.[0] || "";
+  // The suite runs as four Playwright shards of the same single-worker suite
+  // (one 180-minute step took about 1.7 hours). Every shard must run, none may
+  // be skipped by another's failure, and publication must need the whole job.
+  const normalized = workflow.replace(/\r\n/g, "\n");
+  const shardJob = normalized.match(/\n  browser-release-gate:\n[\s\S]*?(?=\n  responsive-capture:)/)?.[0] || "";
+  assert.match(shardJob, /^ {4}needs: build$/m, "the shards test the gated, built candidate");
+  assert.match(shardJob, /fail-fast: false/);
+  assert.match(shardJob, /shard: \[1, 2, 3, 4\]/);
+  assert.match(shardJob, /gh run download[^\n]*needs\.build\.outputs\.candidate-artifact-name[^\n]*--dir static/, "each shard tests the exact uploaded candidate");
+  assert.doesNotMatch(shardJob, /continue-on-error/);
+  const browserGate = shardJob.match(/- name: Run browser release gate[\s\S]*$/)?.[0] || "";
   const browserMinutes=Number(browserGate.match(/timeout-minutes:\s*(\d+)/)?.[1]);
-  assert.equal(browserMinutes,180,"complete browser suite retains the measured, finite three-hour release budget");
-  assert.match(browserGate, /run:\s*npm run test:ui/);
+  assert.equal(browserMinutes,75,"each quarter of the browser suite keeps a finite budget (4 x 75 covers the former 180-minute whole)");
+  assert.match(browserGate, /run:\s*npm run test:ui -- --shard=\$\{\{ matrix\.shard \}\}\/4\n?$/);
+  assert.equal(normalized.match(/npm run test:ui/g)?.length, 1, "the suite runs once, in the sharded job");
+  const publishNeeds = normalized.match(/\n  publish:\n {4}needs: \[([^\]]+)\]/)?.[1].split(",").map((value) => value.trim()) || [];
+  assert.ok(publishNeeds.includes("browser-release-gate"), "publication must need every browser shard");
 
   const browserIndex = workflow.indexOf("- name: Run browser release gate");
   const artifactIndex = workflow.indexOf("- name: Upload Pages artifact");

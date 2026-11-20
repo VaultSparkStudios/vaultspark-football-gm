@@ -35,11 +35,17 @@ test("app shell wires share-card and newsletter through the lazy export island",
   assert.equal(appSource.includes('from "./lib/leagueStoryExport.js"'), false);
   assert.ok(islandSource.includes('import("./franchiseNewsletter.js")'));
   assert.ok(islandSource.includes('import("./leagueStoryExport.js")'));
-  assert.ok(appSource.includes("leagueStoryCardBtn"));
-  assert.ok(appSource.includes('await loadUiIsland("exports")'));
-  assert.ok(appSource.includes("exportsIsland.story.downloadLeagueStory(story)"));
+  // The share buttons moved to the GM Profile tab, and their handlers moved
+  // with them into its on-demand module. The guarded intent is unchanged: the
+  // export code is reached through the lazy export island, never imported at boot.
+  const profileSource = read("../public/lib/gmProfile.js");
+  assert.equal(profileSource.includes('from "./franchiseNewsletter.js"'), false);
+  assert.equal(profileSource.includes('from "./leagueStoryExport.js"'), false);
+  assert.ok(profileSource.includes("leagueStoryCardBtn"));
+  assert.ok(profileSource.includes('await loadUiIsland("exports")'));
+  assert.ok(profileSource.includes("exportsIsland.story.downloadLeagueStory(story)"));
   assert.ok(gameSource.includes('id="leagueStoryCardBtn"'));
-  assert.ok(appSource.includes("exportsIsland.newsletter.generateFranchiseNewsletter(state)"));
+  assert.ok(profileSource.includes("exportsIsland.newsletter.generateFranchiseNewsletter(state)"));
   const contractLoad = appSource.indexOf("await loadContractsTeam();");
   assert.ok(contractLoad >= 0);
   assert.ok(appSource.indexOf("renderCapCasualtyPanel();", contractLoad) > contractLoad);

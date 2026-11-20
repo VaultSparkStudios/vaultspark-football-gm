@@ -173,6 +173,50 @@ async function copyDir(source, destination) {
   }
 }
 
+// Self-hosted typography. The faces come from exact-pinned @fontsource
+// devDependencies (SIL OFL 1.1) and only the files styles.css names are
+// copied, so the site ships four latin WOFF2 files instead of a font package,
+// and nothing is ever requested from a third-party host.
+//
+// The @font-face rules are generated from this one list and written into each
+// page as a single <style> block (one shared CSP hash). They cannot live in
+// styles.css: that stylesheet is inlined into the landing page, and the inliner
+// refuses any stylesheet that carries a URL.
+const SELF_HOSTED_FONTS = Object.freeze([
+  ["@fontsource/barlow", "barlow-latin-400-normal.woff2", "Barlow", 400],
+  ["@fontsource/barlow", "barlow-latin-600-normal.woff2", "Barlow", 600],
+  ["@fontsource/barlow", "barlow-latin-700-normal.woff2", "Barlow", 700],
+  ["@fontsource/barlow-semi-condensed", "barlow-semi-condensed-latin-700-normal.woff2", "Barlow Semi Condensed", 700]
+]);
+const SELF_HOSTED_FONT_MAX_BYTES = 150 * 1024;
+const FONT_FACE_STYLE = `<style>${SELF_HOSTED_FONTS
+  .map(([, file, family, weight]) => `@font-face{font-family:"${family}";font-style:normal;font-weight:${weight};font-display:swap;src:url("./fonts/${file}") format("woff2")}`)
+  .join("")}</style>`;
+const FONT_PRELOAD_LINKS = ["barlow-latin-400-normal.woff2", "barlow-semi-condensed-latin-700-normal.woff2"]
+  .map((file) => `    <link rel="preload" href="./fonts/${file}" as="font" type="font/woff2" crossorigin />`)
+  .join("\n");
+
+async function copySelfHostedFonts() {
+  const fontsDir = path.join(outDir, "fonts");
+  await fs.mkdir(fontsDir, { recursive: true });
+  let bytes = 0;
+  for (const [packageName, file] of SELF_HOSTED_FONTS) {
+    const source = path.join(rootDir, "node_modules", ...packageName.split("/"), "files", file);
+    await fs.copyFile(source, path.join(fontsDir, file));
+    bytes += (await fs.stat(source)).size;
+  }
+  if (bytes > SELF_HOSTED_FONT_MAX_BYTES) throw new Error(`self-hosted fonts are ${bytes} bytes, over the ${SELF_HOSTED_FONT_MAX_BYTES} byte ceiling`);
+  // The OFL asks that the licence travel with the font files.
+  await fs.copyFile(path.join(rootDir, "node_modules", "@fontsource", "barlow", "LICENSE"), path.join(fontsDir, "LICENSE"));
+  // A family the stylesheet asks for but the build does not ship would fall
+  // back silently on every platform, which is the defect this replaces.
+  const css = await fs.readFile(path.join(publicDir, "styles.css"), "utf8");
+  for (const family of new Set(SELF_HOSTED_FONTS.map(([, , name]) => name))) {
+    if (!css.includes(`"${family}", "${family} Fallback"`)) throw new Error(`styles.css does not use the self-hosted family ${family}`);
+  }
+  return { files: SELF_HOSTED_FONTS.length, bytes };
+}
+
 async function pathExists(targetPath) {
   try {
     await fs.access(targetPath);
@@ -231,6 +275,21 @@ async function copyBrowserModules() {
     await fs.mkdir(path.dirname(destination), { recursive: true });
     await copyFileNormalized(modulePath, destination);
   }
+}
+
+// Each public page shares its own 1200x630 card from public/og/<page>.png, so a
+// link to the FAQ does not preview as the landing page. The app shell and the
+// not-found page keep the cover, and an explicit VITE_OG_IMAGE_URL still wins.
+const SHARE_IMAGE_EXEMPT = new Set(["game.html", "404.html"]);
+
+function shareImageUrlFor(pagePath) {
+  const pageName = pagePath === "./" ? "index.html" : pagePath;
+  if (process.env.VITE_OG_IMAGE_URL || SHARE_IMAGE_EXEMPT.has(pageName)) return ogImageUrl;
+  const card = `og/${pageName.replace(/\.html$/, "")}.png`;
+  if (!fsSync.existsSync(path.join(publicDir, card))) {
+    throw new Error(`${pageName} has no share image at public/${card}`);
+  }
+  return `https://playfranchisearchitect.com${basePath}${card}`;
 }
 
 function injectHtmlDefaults(html, pagePath) {
@@ -302,11 +361,13 @@ function injectHtmlDefaults(html, pagePath) {
   } else {
     next = next.replace(/<meta property="og:url" content="[^"]*" \/>/, `<meta property=\"og:url\" content=\"${canonicalUrl}\" />`);
   }
+  const pageImageUrl = shareImageUrlFor(pagePath);
   if (!next.includes('property="og:image"')) {
-    next = next.replace("</title>", `</title>\n    <meta property=\"og:image\" content=\"${ogImageUrl}\" />`);
+    next = next.replace("</title>", `</title>\n    <meta property=\"og:image\" content=\"${pageImageUrl}\" />`);
   } else {
-    next = next.replace(/<meta property="og:image" content="[^"]*" \/>/, `<meta property=\"og:image\" content=\"${ogImageUrl}\" />`);
+    next = next.replace(/<meta property="og:image" content="[^"]*" \/>/, `<meta property=\"og:image\" content=\"${pageImageUrl}\" />`);
   }
+  next = next.replace(/<meta name="twitter:image" content="[^"]*" \/>/, `<meta name=\"twitter:image\" content=\"${pageImageUrl}\" />`);
   // S94: the methodology page's figures are rendered from the simulation's own
   // constants, so the page cannot drift from the engine it describes.
   if (next.includes(SIMULATION_ANCHOR_START)) {
@@ -314,7 +375,14 @@ function injectHtmlDefaults(html, pagePath) {
   }
   // S109: one header, one footer, one working theme toggle, from the manifest.
   next = renderPublicChrome(next, { pageName: pagePath === "./" ? "index.html" : pagePath, manifest: footerManifest });
-  if (pagePath !== "game.html") next = ensurePageMetadata(next, { ogImageUrl });
+  if (pagePath !== "game.html") next = ensurePageMetadata(next, { ogImageUrl: pageImageUrl });
+  // The website preloads its text face and its heading face so a first visit
+  // paints in them. The game keeps font-display: swap with no preload: its
+  // boot path is budgeted and the shell is usable in the fallback face.
+  if (pagePath !== "game.html" && !next.includes('as="font"')) {
+    next = next.replace("</head>", `${FONT_PRELOAD_LINKS}\n  </head>`);
+  }
+  if (!next.includes("@font-face{")) next = next.replace("</head>", `    ${FONT_FACE_STYLE}\n  </head>`);
   const preloadPage = pagePath === "./" ? "index.html" : pagePath;
   const preloads = modulePreloadLinks.get(preloadPage);
   if (preloads && !next.includes('rel="modulepreload"')) {
@@ -636,6 +704,8 @@ async function main() {
   if (!indexFooter.ok) throw new Error(`index.html footer is missing manifest destinations: ${indexFooter.missing.join(", ")}`);
   await ensureCleanDir(outDir);
   await copyDir(publicDir, outDir);
+  const fonts = await copySelfHostedFonts();
+  console.log(`self-hosted fonts: ${fonts.files} WOFF2 files · ${Math.round(fonts.bytes / 1024)} KB`);
   // The sitemap is copied, not rendered, so its comments need their own strip.
   const sitemapSource = path.join(outDir, "sitemap.xml");
   await fs.writeFile(sitemapSource, stripXmlComments(await fs.readFile(sitemapSource, "utf8")), "utf8");

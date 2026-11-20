@@ -76,8 +76,8 @@ for (const injuredWeeks of [1, 3, 5, 30]) for (const worker of [true, false]) te
     await api('/api/new-league', {method:'POST',body:{seed:118,startYear:2026,controlledTeamId:'BUF',mode:'play'}});
     await (await import('./lib/gameFlow.js')).loadState();
   });
-  await page.locator('[data-testid="tab-settings"]').click();
-  await expect(page.locator('#settingsTab')).not.toHaveAttribute('aria-busy','true');
+  await page.locator('[data-testid="tab-gm-profile"]').click();
+  await expect(page.locator('#gmProfileTab')).not.toHaveAttribute('aria-busy','true');
   await page.locator('#saveSlotInput').fill('completion-after');
   await page.locator('#loadBtn').click();
   await expect.poll(async () => (await readClient(page,'/api/state')).phase).toBe('season-awards');

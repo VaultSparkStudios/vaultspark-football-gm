@@ -32,7 +32,7 @@ for(const worker of[true,false])for(const disputed of[false,true])test(`built ${
  const mode=`${worker?'worker':'in-page'}-${disputed?'disputed':'admitted'}`,slot=`annual-${mode}`;await saveSlot(page,slot);
  await page.evaluate(async()=>{const{api}=await import('./lib/appState.js');await api('/api/new-league',{method:'POST',body:{seed:118,startYear:2027,controlledTeamId:'MIA',mode:'play'}});await(await import('./lib/gameFlow.js')).loadState();});
  expect((await readClient(page,'/api/state')).controlledTeamId).toBe('MIA');
- await page.locator('[data-testid="tab-settings"]').click();await expect(page.locator('#settingsTab')).not.toHaveAttribute('aria-busy','true');
+ await page.locator('[data-testid="tab-gm-profile"]').click();await expect(page.locator('#gmProfileTab')).not.toHaveAttribute('aria-busy','true');
  await page.locator('#saveSlotInput').fill(slot);await page.locator('#loadBtn').click();await expect.poll(async()=>(await readClient(page,'/api/state')).controlledTeamId).toBe('BUF');
  await page.reload();await waitGameReady(page);await assertRuntime(page,worker);
  const restored=(await readClient(page,'/api/snapshot/export')).snapshot;

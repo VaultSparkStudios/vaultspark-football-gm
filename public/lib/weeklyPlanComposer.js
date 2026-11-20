@@ -1,5 +1,14 @@
 export const WEEKLY_PLAN_RECEIPT_SCHEMA_VERSION = "1.0";
 
+// Pace / run-pass lean / coverage. The plan modal hands over `{ dials, summary }`
+// with only the dials moved off neutral (public/lib/gamePlanDials.js); this
+// module is in the boot graph, so it carries the choice and never the table.
+function readGamePlanChoice(value) {
+  const dials = value?.dials;
+  if (!dials || typeof dials !== "object" || Array.isArray(dials) || !Object.keys(dials).length) return null;
+  return { dials: { ...dials }, summary: String(value.summary || "").slice(0, 160) };
+}
+
 function decisionSummary(choice) {
   if (!choice) return null;
   return {
@@ -26,6 +35,7 @@ function previewReceipt({
   compositionOrder,
   decisionChoice,
   tacticId,
+  gamePlan = null,
   phase,
   tacticalPhase = false,
   onBye = false,
@@ -42,6 +52,8 @@ function previewReceipt({
     plan: {
       gmDecision: decisionSummary(decisionChoice),
       tacticId: tacticId || null,
+      // Pace / run-pass lean / coverage, present only when one is off neutral.
+      ...(gamePlan ? { gamePlan: gamePlan.dials, gamePlanSummary: gamePlan.summary } : null),
       // A bye has no tactic to withhold, so it is not an "explicit no-plan".
       explicitNoPlan: tacticalPhase && !onBye && !tacticId
     },
@@ -55,6 +67,9 @@ export async function composeWeeklyPlan({
   presetDecisionChoice = null,
   collectDecision = async () => ({ status: "none", choice: null }),
   collectTactic = async () => null,
+  // Read after each tactic step: the dials the player left set in the plan
+  // modal. Never asked on a bye or in the opening week, which stay neutral.
+  collectGamePlan = () => null,
   onBye = false,
   openingWeek = false,
   reviewPlan = null,
@@ -94,12 +109,14 @@ export async function composeWeeklyPlan({
   }
 
   let tacticId = null;
+  let gamePlan = null;
   let review = null;
   if (tacticalPhase) {
     let revising = false;
     while (true) {
       compositionOrder.push(revising ? "tactic-revision" : "tactic");
       tacticId = await collectTactic();
+      gamePlan = readGamePlanChoice(await collectGamePlan());
       onCheckpoint("tactic-resolved");
       if (typeof reviewPlan !== "function") break;
       compositionOrder.push("review");
@@ -108,6 +125,7 @@ export async function composeWeeklyPlan({
         compositionOrder: [...compositionOrder],
         decisionChoice,
         tacticId,
+        gamePlan,
         phase,
         tacticalPhase,
         onBye: onByeWeek
@@ -132,6 +150,7 @@ export async function composeWeeklyPlan({
             compositionOrder,
             decisionChoice,
             tacticId,
+            gamePlan,
             phase,
             tacticalPhase,
             onBye: onByeWeek,
@@ -154,6 +173,7 @@ export async function composeWeeklyPlan({
   const body = { count: 1 };
   if (decisionChoice) body.gmDecisionChoice = decisionChoice;
   if (tacticId) body.weeklyTacticOverride = tacticId;
+  if (gamePlan) body.gamePlan = gamePlan.dials;
   return {
     deferred: false,
     body,
@@ -162,6 +182,7 @@ export async function composeWeeklyPlan({
       compositionOrder,
       decisionChoice,
       tacticId,
+      gamePlan,
       phase,
       tacticalPhase,
       onBye: onByeWeek,
@@ -232,9 +253,10 @@ export function describeWeeklyPlanReceipt(receipt) {
   const reinforcement = receipt.review?.mode === "standing-reinforcement"
     ? ` · reinforced from ${receipt.review.sourceReceiptId ? "your last game plan" : "last week's film"}`
     : reviewSource;
+  const dials = receipt.plan?.gamePlan ? String(receipt.plan.gamePlanSummary || "") : "";
   return {
     title: receipt.status === "committed" ? "Weekly plan committed" : "Weekly plan staged",
-    detail: `${decision} · ${tactic}${reinforcement} · ${describePlanSteps(receipt.compositionOrder) || "plan only"}`,
+    detail: `${decision} · ${tactic}${dials ? ` · ${dials}` : ""}${reinforcement} · ${describePlanSteps(receipt.compositionOrder) || "plan only"}`,
     tone: receipt.status === "committed" ? "positive" : "accent"
   };
 }

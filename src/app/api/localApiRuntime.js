@@ -9,7 +9,7 @@ import { GameSession, scoutedDraftResult } from "../../runtime/GameSession.js";
 import { applyInitialLeagueSetup } from "../../runtime/applyLeagueSetup.js";
 import { RNG } from "../../utils/rng.js";
 import { RNGStreams } from "../../utils/rngStreams.js";
-import { initGmLegacy, getGmLegacySummary, buildGmReputationProfile, resolveChampionTeamId } from "../../engine/gmLegacyScore.js";
+import { initGmLegacy, getGmLegacySummary, buildGmReputationProfile, resolveChampionTeamId, firstSeasonTotals } from "../../engine/gmLegacyScore.js";
 import { initRivalries, getRivalryContext, getTeamRivalries } from "../../engine/rivalryDNA.js";
 import { runLeagueCombine, getCombineSummary } from "../../engine/draftCombine.js";
 import {
@@ -1906,9 +1906,13 @@ export function createLocalApiRuntime({
         const metaSession = session;
         const leagueMeta = metaSession
           ? {
-              seed: metaSession.rng?.seed ?? null,
+              // The league's own seed. `rng.seed` is the generator's moving
+              // state, which stops matching the league after the first draw.
+              seed: metaSession.rngStreams?.baseSeed ?? metaSession.rng?.seed ?? null,
               startYear: metaSession.startYear ?? metaSession.currentYear ?? null,
-              controlledTeamId: metaSession.controlledTeamId || null
+              controlledTeamId: metaSession.controlledTeamId || null,
+              currentYear: metaSession.currentYear ?? null,
+              firstSeason: firstSeasonTotals(metaSession.league, metaSession.startYear)
             }
           : null;
         return finish(jsonResponse(200, { ok: true, challenge: _speedrunChallenge, leagueMeta }));

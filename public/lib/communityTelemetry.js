@@ -66,7 +66,7 @@ export function getCommunityParticipation() {
   try { return storage()?.getItem(COMMUNITY_CONSENT_KEY) === "participating"; } catch { return false; }
 }
 
-function participantId({ create = false } = {}) {
+export function participantId({ create = false } = {}) {
   try {
     let value = storage()?.getItem(COMMUNITY_PARTICIPANT_KEY) || "";
     if (create && (!value || value === getPendingCommunityDeletion())) {
@@ -188,7 +188,7 @@ async function ensureCapability(browserId, { force = false } = {}) {
   return capabilityRequest.promise;
 }
 
-async function capabilityMutation(path, browserId, payload, init = {}, admitted = null) {
+export async function capabilityMutation(path, browserId, payload, init = {}, admitted = null) {
   let result = null;
   for (let attempt = 0; attempt < 2; attempt += 1) {
     if (admitted && !admitted()) throw new Error("Community sharing stopped.");

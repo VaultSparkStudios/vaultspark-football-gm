@@ -168,7 +168,7 @@ export function buildReturnChapterAction(digest = {}) {
 export function formatSeasonThesisContinuation(chapter = {}) {
   const thesis = chapter.seasonThesis || null;
   if (!thesis) return "";
-  if (!thesis.thesisId) return "Season thesis remains unproven; no Opening Contract is on record.";
+  if (!thesis.thesisId) return "Season plan remains unproven; no Opening Contract is on record.";
   return `Season promise (${thesis.identity?.label || "your plan"}): ${humanizeCheckpoint(thesis.checkpointId)} is ${humanizeCheckpoint(thesis.checkpointStatus)}.`;
 }
 

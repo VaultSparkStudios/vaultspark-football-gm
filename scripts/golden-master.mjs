@@ -32,7 +32,11 @@ export const S119_GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "f
 export const S131_GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s131-v4.json");
 // S132: rival clubs draft on their own scouted read instead of the true rating,
 // and a general manager can be dismissed; everything after the first draft moved.
-export const GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s132-v5.json");
+export const S132_V5_GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s132-v5.json");
+// S132 (second release): each GM season-history entry also records points for,
+// points against and cap space, for the weekly challenge score. No simulation
+// section moved; only the two sections that carry that history did.
+export const GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s132-v6.json");
 export const GOLDEN_MASTER_SCENARIOS = Object.freeze([
   Object.freeze({ id: "drive-20260306-BUF", seed: 20260306, mode: "drive", controlledTeamId: "BUF", seasons: 3 }),
   Object.freeze({ id: "play-4113-CHI", seed: 4113, mode: "play", controlledTeamId: "CHI", seasons: 3 })

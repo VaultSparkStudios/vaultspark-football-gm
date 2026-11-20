@@ -401,8 +401,10 @@ async function collectWeeklyCommandIntent({ gmDecisionChoice = null } = {}) {
         : "Choose the football identity that follows your General Manager call. A first plan receives a full Architect review.",
       confirmLabel: standingTactic ? `Reinforce ${standingTactic.label}` : "Stage Tactic",
       initialChoice: standingTactic?.id || null,
-      skipLabel: "Commit With No Tactic"
+      skipLabel: "Commit With No Tactic",
+      gamePlanDials: true
     })),
+    collectGamePlan: async () => (await import("./lib/gamePlanDials.js")).readWeeklyGamePlan(),
     reviewPlan: (receipt) => {
       const reviewInput = {
         dashboard: state.dashboard,
@@ -2137,28 +2139,7 @@ function bindEvents() {
     syncMobileLoopOverlay();
   });
 
-  document.getElementById("shareDynastyBtn")?.addEventListener("click", () => callAppIsland("settings", "shareDynastyTimeline"));
-  document.getElementById("leagueStoryCardBtn")?.addEventListener("click", () => {
-    observeBackgroundTask(async () => {
-      const exportsIsland = await loadUiIsland("exports");
-      const story = exportsIsland.story.buildLeagueStoryFromDashboard(state.dashboard || {});
-      exportsIsland.story.downloadLeagueStory(story);
-    }, {
-      surface: "export-island",
-      operation: "league-story",
-      authorityKey: dashboardAuthorityKey(state.dashboard)
-    });
-  });
-  document.getElementById("franchiseNewsletterBtn")?.addEventListener("click", () => {
-    observeBackgroundTask(async () => {
-      const exportsIsland = await loadUiIsland("exports");
-      return exportsIsland.newsletter.generateFranchiseNewsletter(state);
-    }, {
-      surface: "export-island",
-      operation: "franchise-newsletter",
-      authorityKey: dashboardAuthorityKey(state.dashboard)
-    });
-  });
+  // The share buttons are bound by lib/gmProfile.js when the GM Profile opens.
 
   document.getElementById("closeSeasonReviewBtn")?.addEventListener("click", closeSeasonReviewModal);
 
@@ -2377,17 +2358,13 @@ async function loadSpeedrunStatus() {
     const res = await api("/api/speedrun/leaderboard");
     state.speedrunLeaderboard = res.entries || [];
   } catch { state.speedrunLeaderboard = []; }
-  state.speedrunWeeklyWeek = null;
-  if (state.speedrunLeagueMeta?.seed != null) {
-    try {
-      const { weeklyChallengeWeekForSeed } = await import("./lib/weeklyChallenge.js");
-      state.speedrunWeeklyWeek = weeklyChallengeWeekForSeed(state.speedrunLeagueMeta.seed);
-    } catch (error) {
-      recordClientDiagnostic({ surface: "speedrun", operation: "load-weekly-challenge", error, severity: "warning" });
-    }
-  }
   renderSpeedrunPanel();
 }
+// The weekly challenge's goal, score and week line load after the first dashboard.
+document.addEventListener("vsfgm:dashboard-applied", () => observeBackgroundTask(
+  async () => (await import("./lib/weeklyChallengePanel.js")).syncWeeklyChallenge(),
+  { surface: "challenge", operation: "weekly-challenge", severity: "warning" }
+), { once: true });
 
 async function startSpeedrunChallenge() {
   const teamId = state.dashboard?.controlledTeamId;

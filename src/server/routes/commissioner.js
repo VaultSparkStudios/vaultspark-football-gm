@@ -1,5 +1,5 @@
 import { executeAdvanceWeekTransaction } from "../../runtime/advanceWeekCommand.js";
-import { resolveChampionTeamId } from "../../engine/gmLegacyScore.js";
+import { resolveChampionTeamId, firstSeasonTotals } from "../../engine/gmLegacyScore.js";
 import { startChallenge, advanceChallengeSeason, checkChallengeComplete, formatLeaderboardEntry, rankEntry } from "../../engine/speedrunChallenge.js";
 import { createLobby, addPlayerToLobby, queueIntent, markPlayerReady, lockGate, openGate, applyIntents, recordAdvance, lobbyStatus, ADVANCE_GATE_STATUS } from "../../runtime/multiplayerSession.js";
 import { readRequestBody } from "../httpHardening.js";
@@ -175,9 +175,12 @@ export async function handleCommissionerRoutes(req, res, url, ctx) {
       ok: true,
       challenge: ctx.serverSpeedrunChallenge,
       leagueMeta: {
-        seed: ctx.session.rng?.seed ?? null,
+        // The league's own seed, not `rng.seed` (the generator's moving state).
+        seed: ctx.session.rngStreams?.baseSeed ?? ctx.session.rng?.seed ?? null,
         startYear: ctx.session.startYear ?? ctx.session.currentYear ?? null,
-        controlledTeamId: ctx.session.controlledTeamId || null
+        controlledTeamId: ctx.session.controlledTeamId || null,
+        currentYear: ctx.session.currentYear ?? null,
+        firstSeason: firstSeasonTotals(ctx.session.league, ctx.session.startYear)
       }
     });
     return true;

@@ -16,6 +16,8 @@ export const TAB_HYDRATION_DOMAINS = Object.freeze({
   // needed, so the economy is populated when a player opens the Boardroom rather
   // than only after they happen to visit Settings first.
   boardroomTab: ["settings-island", "settings", "staff", "owner"],
+  // The GM Profile owns the save and backup controls that left Settings.
+  gmProfileTab: ["settings-island", "saves", "gm-profile"],
   // S94: "staff" and "owner" moved to boardroomTab with the panels that render
   // them. Leaving them declared here would fetch and render into elements that
   // now live in another tab — dead work on a path whose failures are counted.

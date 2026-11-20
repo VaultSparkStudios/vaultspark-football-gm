@@ -71,6 +71,31 @@ export function weeklyChallengeWeekForSeed(seed, date = new Date()) {
   return null;
 }
 
+/**
+ * Whether a league in play is one of the open weekly challenges, and whether it
+ * is being played the way the challenge sets it up. `league` is
+ * { seed, startYear, controlledTeamId }; `teamIds` are the league's clubs.
+ * Returns null when the seed is not a weekly seed, otherwise
+ * { year, week, key, teamId, asSetUp } where `asSetUp` is true only when the
+ * start year and the club are the challenge's own.
+ */
+export function weeklyChallengeForLeague(league, teamIds = [], date = new Date()) {
+  const week = weeklyChallengeWeekForSeed(league?.seed, date);
+  if (!week) return null;
+  const now = date instanceof Date ? date.getTime() : Number(date);
+  let challenge = null;
+  for (let back = 0; back <= 4 && !challenge; back += 1) {
+    const candidate = weeklyChallenge(teamIds, new Date(now - back * 7 * 86_400_000));
+    if (candidate?.key === week.key) challenge = candidate;
+  }
+  const club = String(league?.controlledTeamId || "").toUpperCase();
+  return {
+    ...week,
+    teamId: challenge?.teamId || null,
+    asSetUp: Boolean(challenge) && challenge.teamId === club && Number(league?.startYear) === challenge.startYear
+  };
+}
+
 /** A link that starts a league from a challenge code, or this week's league. */
 export function challengeLink(codeOrWeekly, base) {
   const url = new URL(base);

@@ -215,10 +215,10 @@ export async function advanceClientWeek(page) {
 }
 
 export async function saveSlot(page, slot) {
-  await page.locator('[data-testid="tab-settings"]').click();
-  await expect(page.locator("#settingsTab")).not.toHaveAttribute("aria-busy", "true");
+  await page.locator('[data-testid="tab-gm-profile"]').click();
+  await expect(page.locator("#gmProfileTab")).not.toHaveAttribute("aria-busy", "true");
   await expect(page.locator("#saveListText")).toBeVisible();
-  // Settings hydration replaces the default field once; wait for its data
+  // GM Profile hydration replaces the default field once; wait for its data
   // load before choosing the explicit slot the test means to save.
   await expect(page.locator("#saveSlotInput")).toBeVisible();
   await page.locator("#saveSlotInput").fill(slot);

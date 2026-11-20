@@ -1,4 +1,40 @@
+/* Self-hosted typography (SIL OFL 1.1): Barlow for text, Barlow Semi Condensed
+   for headings. The @font-face rules that name the WOFF2 files are written
+   into each built page by scripts/build-pages.mjs, next to the step that
+   copies the files from the pinned @fontsource packages into ./fonts/. They
+   are not declared here because this stylesheet is inlined into the landing
+   page and must stay free of URLs.
+
+   Below: metric-matched local fallbacks, so text keeps its width and line
+   height while the web font is loading (and in the unbuilt dev tree). */
+@font-face {
+  font-family: "Barlow Fallback";
+  src: local("Arial");
+  size-adjust: 94.3%;
+  ascent-override: 106%;
+  descent-override: 21.2%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Barlow Fallback Roboto";
+  src: local("Roboto");
+  size-adjust: 102.7%;
+  ascent-override: 97.4%;
+  descent-override: 19.5%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Barlow Semi Condensed Fallback";
+  src: local("Arial Bold"), local("Arial");
+  size-adjust: 77.7%;
+  ascent-override: 128.7%;
+  descent-override: 25.7%;
+  line-gap-override: 0%;
+}
+
 :root {
+  --font-text: "Barlow", "Barlow Fallback", "Barlow Fallback Roboto", "Bahnschrift", "Franklin Gothic Medium", "Trebuchet MS", sans-serif;
+  --font-display: "Barlow Semi Condensed", "Barlow Semi Condensed Fallback", "Bahnschrift SemiCondensed", "Arial Narrow", sans-serif;
   --ink: #f5f1e7;
   --ink-strong: #fff9ef;
   --muted: #99a8a1;
@@ -107,7 +143,7 @@ body {
   margin: 0;
   color: var(--ink);
   background: var(--bg-0);
-  font-family: "Bahnschrift", "Franklin Gothic Medium", "Trebuchet MS", sans-serif;
+  font-family: var(--font-text);
   min-height: 100vh;
 }
 
@@ -256,7 +292,7 @@ p {
 
 h1 {
   font-size: clamp(1.3rem, 2.6vw, 1.95rem);
-  font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
+  font-family: var(--font-display);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: 0.2rem;
@@ -266,7 +302,7 @@ h1 {
 
 h2 {
   font-size: 1.02rem;
-  font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
+  font-family: var(--font-display);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 0.6rem;
@@ -546,7 +582,7 @@ th {
 
 .setup-title {
   font-size: clamp(2.2rem, 6vw, 3.6rem);
-  font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
+  font-family: var(--font-display);
   letter-spacing: 0;
   text-transform: uppercase;
   margin: 0 0 0.15rem;
@@ -641,7 +677,7 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
 
 .setup-section-title {
   font-size: 1.1rem;
-  font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
+  font-family: var(--font-display);
   letter-spacing: 0;
   text-transform: uppercase;
   margin: 0 0 0.25rem;
@@ -692,7 +728,7 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
 }
 
 .quickstart-era {
-  font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
+  font-family: var(--font-display);
   font-size: 1.2rem;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -745,7 +781,7 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
   padding: 0.9rem 1.2rem;
   cursor: pointer;
   list-style: none;
-  font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
+  font-family: var(--font-display);
   font-size: 0.92rem;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -1493,7 +1529,7 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
 
 .overview-team-label {
   font-size: clamp(1.3rem, 3.2vw, 2.1rem);
-  font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
+  font-family: var(--font-display);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--ink-strong);
@@ -1794,7 +1830,7 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
 }
 
 .player-nameplate strong {
-  font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
+  font-family: var(--font-display);
   font-size: clamp(1.3rem, 2.6vw, 2rem);
   letter-spacing: 0.03em;
   color: var(--ink-strong);
@@ -1997,7 +2033,7 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
 
 .history-spotlight-label {
   font-size: clamp(1.05rem, 2.1vw, 1.45rem);
-  font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
+  font-family: var(--font-display);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--ink-strong);
@@ -2071,7 +2107,7 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
 
 .history-card-title strong {
   color: var(--ink-strong);
-  font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
+  font-family: var(--font-display);
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
@@ -2089,7 +2125,7 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
   background: var(--wash-gold);
   color: var(--accent-strong);
   text-align: center;
-  font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
   letter-spacing: 0.04em;
 }
@@ -2160,7 +2196,7 @@ body[data-theme="light"] .btn-primary:not(:disabled) {
   cursor: pointer;
   padding: 0.78rem 0.9rem;
   color: var(--ink-strong);
-  font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
+  font-family: var(--font-display);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   background: var(--panel-grad);
@@ -2662,7 +2698,7 @@ td.tone-info {
 
 .clock-seconds {
   font-size: 1.4rem;
-  font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
+  font-family: var(--font-display);
   color: var(--ink-strong);
 }
 
@@ -3710,6 +3746,20 @@ body.mobile-loop-active .mobile-loop-overlay {
 .tactic-option .to-icon { font-size: 20px; margin-bottom: 4px; }
 .tactic-option .to-label { font-size: 13px; font-weight: 700; }
 .tactic-option .to-desc { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.game-plan-depth { display: grid; gap: 10px; margin-bottom: 16px; }
+.game-plan-depth[hidden] { display: none; }
+.game-plan-dial { display: grid; gap: 4px; }
+.game-plan-dial-label { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.game-plan-segments { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.game-plan-segment {
+  min-height: 36px; padding: 6px 4px; border: 0; border-radius: 0; cursor: pointer;
+  background: var(--bg-2, var(--inset)); color: var(--ink); font-size: 12px; font-weight: 600;
+}
+.game-plan-segment + .game-plan-segment { border-left: 1px solid var(--line); }
+.game-plan-segment:hover { background: color-mix(in srgb, var(--panel) 90%, var(--accent)); }
+.game-plan-segment[aria-checked="true"] { background: color-mix(in srgb, var(--panel) 78%, var(--accent-2)); font-weight: 800; }
+.game-plan-segment:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.game-plan-trade { font-size: 11px; line-height: 1.35; color: var(--muted); min-height: 2.7em; }
 .halftime-actions { display: flex; gap: 8px; }
 .tactic-confirm-btn { flex: 1; }
 .tactic-skip-btn { background: var(--bg-2, var(--inset)); border: 1px solid var(--line); color: var(--ink); }
@@ -4066,7 +4116,7 @@ body.mobile-loop-active .mobile-loop-overlay {
 .fm-kicker { font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
 #fmHeadline { font-size: 1.05rem; font-weight: 700; line-height: 1.3; margin: 0 0 10px; }
 .fm-score-row { display: flex; align-items: baseline; gap: 10px; margin: 4px 0 10px; }
-#fmScore { font-size: 1.6rem; font-weight: 800; color: var(--accent-strong); font-family: "Rockwell", serif; }
+#fmScore { font-size: 1.6rem; font-weight: 800; color: var(--accent-strong); font-family: var(--font-display); }
 #fmWeek { font-size: 0.78rem; color: var(--muted); }
 .fm-highlight-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
 #fmHighlight { font-size: 0.83rem; color: var(--accent-2); margin-bottom: 6px; }
@@ -4141,7 +4191,7 @@ body.mobile-loop-active .mobile-loop-overlay {
 #simWatchHeader { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); }
 .sw-matchup { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
 .sw-team { font-weight: 700; flex: 1; }
-.sw-score { font-size: 1.4rem; font-weight: 800; color: var(--accent-strong); font-family: "Rockwell", serif; min-width: 28px; text-align: center; }
+.sw-score { font-size: 1.4rem; font-weight: 800; color: var(--accent-strong); font-family: var(--font-display); min-width: 28px; text-align: center; }
 .sw-vs { color: var(--muted); font-size: 0.8rem; }
 .sw-meta { font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
 #simWatchFeed { flex: 1; overflow-y: auto; padding: 8px 0; max-height: 340px; touch-action: pan-y; overscroll-behavior: contain; }
@@ -4239,7 +4289,7 @@ body.mobile-loop-active .mobile-loop-overlay {
 }
 .record-card:hover { border-color: var(--accent); }
 .record-cat { font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-.record-val { font-size: 1.35rem; font-weight: 800; color: var(--accent-strong); font-family: "Rockwell", serif; }
+.record-val { font-size: 1.35rem; font-weight: 800; color: var(--accent-strong); font-family: var(--font-display); }
 .record-player { font-size: 0.78rem; font-weight: 600; margin-top: 4px; }
 .record-year { font-size: 0.68rem; color: var(--muted); }
 .records-empty { color: var(--muted); font-size: 0.84rem; padding: 20px 0; }
@@ -6336,6 +6386,36 @@ html[data-theme="light"] .bg-layer {
 .desk-more > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .desk-more[open] > summary { margin-bottom: 12px; }
 
+/* The Desk in four groups: "This week" is open, the other three open on demand. */
+.desk-group { min-width: 0; }
+.desk-group-title { margin: 0; }
+/* Panels inside a group keep the spacing the tab's own grid used to give them. */
+section.desk-group,
+.desk-group-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.85rem; }
+section.desk-group > *,
+.desk-group-body > * { min-width: 0; }
+[data-desk-tab-link][hidden] { display: none; }
+/* The club snapshot moved to "Your club", so the hero is one full-width column. */
+.desk-group .overview-hero-grid { grid-template-columns: minmax(0, 1fr); }
+details.desk-group > summary {
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  min-height: 44px;
+  padding: 10px 14px;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+}
+details.desk-group > summary::-webkit-details-marker { display: none; }
+details.desk-group > summary::after { content: "+"; margin-left: auto; color: var(--muted); font-weight: 700; }
+details.desk-group[open] > summary::after { content: "–"; }
+details.desk-group > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+details.desk-group[open] > summary { margin-bottom: 12px; }
+
 /* S113 League Pulse */
 .league-lens .lens-grid { display: grid; gap: 18px; }
 @media (min-width: 980px) { .league-lens .lens-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
@@ -6461,4 +6541,27 @@ html[data-theme="light"] .bg-layer {
   .gm-career-card h2 { font-size: 1.25rem; }
   .gm-career-offers { grid-template-columns: 1fr; }
   .gm-career-actions button { flex: 1 1 100%; }
+}
+
+/* GM Profile tab: career record, Trophy Case, share, saves and backups. */
+#gmProfileTab .panel { min-width: 0; }
+#gmProfileTab h3 { margin: 1rem 0 0.4rem; }
+#gmProfileTab input[type="text"], #gmProfileTab input[type="password"], #gmProfileTab input:not([type]) { max-width: 100%; min-width: 0; }
+#gmProfileTab .cloud-sync-panel label, #gmProfileTab .row > label { min-width: 0; }
+.gm-profile-status { margin: 0 0 0.7rem; color: var(--ink); }
+.gm-profile-stat { font-size: 1.35rem; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.gm-profile-clubs { display: grid; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
+.gm-profile-club { display: grid; gap: 2px; padding: 0.6rem 0.72rem; border: 1px solid var(--line); border-radius: 12px; background: var(--inset); overflow-wrap: anywhere; }
+.gm-profile-club.is-current { border-color: var(--accent); }
+.gm-profile-club strong { color: var(--ink); }
+.gm-profile-club span { color: var(--muted); font-size: 0.86rem; }
+.gm-profile-tier { display: grid; gap: 0.35rem; }
+.gm-profile-tier p { margin: 0; }
+.gm-profile-tier-name { color: var(--accent-strong); font-size: 1.1rem; }
+.gm-profile-trophy-progress { display: grid; gap: 2px; margin-top: 2px; }
+.gm-profile-trophy-progress progress { width: 100%; height: 6px; accent-color: var(--accent); }
+@media (max-width: 520px) {
+  #gmProfileTab .row > button { flex: 1 1 100%; min-height: 44px; }
+  #gmProfileTab .row > label { flex: 1 1 100%; }
+  #gmProfileTab .row > label > input { width: 100%; }
 }

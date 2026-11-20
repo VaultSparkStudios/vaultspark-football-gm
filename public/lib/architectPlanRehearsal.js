@@ -143,7 +143,7 @@ export function buildArchitectPlanRehearsal({ dashboard = {}, decisionChoice = n
       || "No owner pressure observed",
     identityPreview: identityPreview?.copy || "No executed tactic means no change to your team identity.",
     architectThesis: thesis ? {
-      label: `${thesis.label} hypothesis`,
+      label: `${thesis.label} adjustment`,
       text: `Declared from ${thesis.sourceEntryId}: ${thesis.sourceObserved}`
     } : null,
     counterSignal,

@@ -372,6 +372,9 @@ export function ensurePageMetadata(html, { ogImageUrl = "https://playfranchisear
   if (missing(/property="og:description"/) && description) tags.push(`<meta property="og:description" content="${description}" />`);
   if (missing(/property="og:type"/)) tags.push('<meta property="og:type" content="website" />');
   if (missing(/property="og:site_name"/)) tags.push('<meta property="og:site_name" content="Franchise Architect: Football" />');
+  // Every share image this site publishes is a 1200x630 card.
+  if (missing(/property="og:image:width"/)) tags.push('<meta property="og:image:width" content="1200" />', '<meta property="og:image:height" content="630" />');
+  if (missing(/property="og:image:alt"/)) tags.push(`<meta property="og:image:alt" content="${ogTitle}" />`);
   if (missing(/name="twitter:card"/)) tags.push('<meta name="twitter:card" content="summary_large_image" />');
   if (missing(/name="twitter:title"/)) tags.push(`<meta name="twitter:title" content="${ogTitle}" />`);
   if (missing(/name="twitter:description"/) && ogDescription) tags.push(`<meta name="twitter:description" content="${ogDescription}" />`);

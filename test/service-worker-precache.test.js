@@ -53,6 +53,8 @@ test("evidence and freshness surfaces are never precached", () => {
   assert.equal(shouldPrecache("images/cover.png"), false, "the 378 KB social card is never needed by the game shell (S113)");
   assert.equal(shouldPrecache("images/screens/desk.png"), false, "marketing screenshots stay off the install path (S113)");
   assert.equal(shouldPrecache("images/mark.svg"), true, "brand icons the shell renders stay precached");
+  assert.equal(shouldPrecache("og/faq.png"), false, "per-page share cards are for link previews, never the install path");
+  assert.equal(shouldPrecache("fonts/barlow-latin-400-normal.woff2"), true, "the self-hosted faces the shell renders in are available offline");
 });
 
 test("manifest is deterministic, content-versioned, and byte-accounted", async () => {

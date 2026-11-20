@@ -126,6 +126,8 @@ async function findAcceptedOneForOneTrade(page, teamA, teamB) {
 
 test("create league, advance week, and open player modal", async ({ page }) => {
   await createLeagueFromSetup(page);
+  // The schedule sits in the Desk's collapsed "The league" group and renders when it opens.
+  await page.evaluate(() => { for (const group of document.querySelectorAll("details.desk-group")) group.open = true; });
 
   const teamOptions = await page.locator("#teamSelect option").evaluateAll((options) =>
     options
@@ -606,7 +608,7 @@ test("scouting lock persists across save and load", async ({ page }) => {
   await waitGameReady(page);
   await expect(page.locator("#scoutingLockText")).toContainText("Locked");
 
-  await page.click('[data-testid="tab-settings"]');
+  await page.click('[data-testid="tab-gm-profile"]');
   const slot = `pw-lock-${Date.now()}`;
   await page.fill("#saveSlotInput", slot);
   await page.click("#saveBtn");
@@ -653,8 +655,8 @@ test("switching runtime mode reloads setup state", async ({ page }) => {
   await createLeagueFromSetup(page);
 
   const slot = `runtime-switch-${Date.now()}`;
-  await page.click('[data-testid="tab-settings"]');
-  await expect(page.locator("#settingsTab")).not.toHaveAttribute("aria-busy", "true");
+  await page.click('[data-testid="tab-gm-profile"]');
+  await expect(page.locator("#gmProfileTab")).not.toHaveAttribute("aria-busy", "true");
   await page.fill("#saveSlotInput", slot);
   await page.click("#saveBtn");
   await waitGameReady(page);
