@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0",
+  "session": 132,
+  "release": "second",
+  "sourceRevision": "75829192a35bfd3d7702b584f9b04cff0df5474a",
+  "artifactDigest": "685e31c2b743a18483bd9cdc80e7848bf927588f73a7661a15597a91572b7c06",
+  "ci": {
+    "run": 44681573534,
+    "jobs": 11,
+    "passed": 11,
+    "note": "First hosted run of the four-shard browser gate; all four shards passed here and on the previous commit (run 44668785251)."
+  },
+  "staging": {
+    "deploy": "14/14",
+    "provenance": "10/10",
+    "noindex": "verified by scripts/verify-edge-policy-application.mjs",
+    "receipts": [
+      "reports/s132b-staging-authority.json",
+      "reports/s132b-staging-receipt.json",
+      "reports/s132b-staging.json"
+    ]
+  },
+  "production": {
+    "run": 44682173048,
+    "provenance": "10/10",
+    "receipt": "reports/s132b-production.json",
+    "note": "Attempt 1 failed browser-release-gate shard 2 on tests-ui/player-acceleration-study.spec.js (the reduced-motion caption flake recorded in Session 131); the failed job was re-run once and passed. No test or gate was changed.",
+    "priorCandidate": {
+      "sourceRevision": "e76a109c0b78de46c7b1ee94238140dd26728956",
+      "run": 44670150432,
+      "result": "publish refused: the hosted build tagged every page with the cover share image because the workflow sets the cover variable, so its digest differed from staging. Fixed in 75829192; the gate was not changed."
+    }
+  },
+  "api": {
+    "run": 44682169583,
+    "health": {
+      "ok": true,
+      "database": "ready",
+      "schemaVersion": 3,
+      "sourceRevision": "75829192a35bfd3d7702b584f9b04cff0df5474a"
+    },
+    "challengeBoardRoute": "GET /community/v1/challenge/board?week=2026-W47 answered 200 with status not-enough-scores"
+  },
+  "performance": "docs/performance/LATEST.json verified",
+  "visual": {
+    "receipt": "docs/visual-qa/LATEST.json",
+    "captures": 226,
+    "blocking": 0
+  },
+  "localEvidence": {
+    "core": "811/811",
+    "runtime": "1309/1309",
+    "studio": "458/458",
+    "browser": "139 tests on edited and affected specs; one timed out on an idle host and passed on rerun"
+  },
+  "scope": "Technical release only. No public launch, lifecycle change or player outcome is claimed."
+}

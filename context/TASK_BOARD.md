@@ -19,6 +19,7 @@ Session Intent: audit toward public beta, implement the plan in efficiency order
 - [x] [S132 second release] Bundled fonts, retaken screenshots, per-page share images.
 - [x] [S132 second release] Staging noindex, import size cap, escape helpers, IPv6 /64 limits, retention timer. Least-privilege database role prepared in ops/sql, not applied.
 - [x] [S132 second release] Browser gates as four shards in CI and promotion.
+- [x] Second release at 75829192 — hosted CI 11/11 (run 44681573534), staging 14/14 and 10/10, production promotion run 44682173048 10/10, API run 44682169583 ready on schema 3, performance and release authority verified.
 - [ ] [S132 follow-up] Apply the least-privilege database role once migrations run as the owner role instead of at service start.
 - [ ] [S132 follow-up] Gist import refuses files over 10 MB, which is smaller than a one-season save; the server save route accepts 64 MiB. Align the three limits.
 - [ ] [S132 follow-up] Canvas share cards still name Bahnschrift; the dev server serves no font files (the built site does).
@@ -26,6 +27,8 @@ Session Intent: audit toward public beta, implement the plan in efficiency order
 - [ ] [S132 follow-up] Trade screenshots show a one-for-one swap scored 0 / 100 beside the old "B, even trade" card. The card now follows the score; retake the four trade images with a fair deal, and check whether a 47-point value gap should score 0.
 - [ ] [S132 follow-up] One 14-3 season reached GM Legacy 92 "Immortal" in one capture run and 30 in another; measure the legacy score over many first seasons.
 - [ ] [S132 follow-up] First Season Contract rows run the label into its detail with no space; the default club differs on every new league; the identity screenshot is mostly footer.
+- [ ] [S132 follow-up] The capture script waits 120 s for the one-year realism check, which took about 115 s locally and timed out five times; give the wait room (and print the stack on failure) or find why one simulated year takes that long.
+- [ ] [S132 follow-up] The opening checklist still says "Earn the first receipt" (src/runtime/GameSession.js); rewording it changes the golden baseline.
 - [ ] [S132 follow-up] Read the weekly challenge board after a week of real posts; the five-browser threshold and the step of five are untested against real traffic.
 - [ ] [S132 carried] Career limits: owner mode off, a permanent move to Sandbox and a rewind all avoid dismissal; a difficulty change resets owner patience. Decide which are intended.
 - [ ] [S132 carried] Draft follow-ups: projected round reveals true potential order; scouting accuracy is permanent per club; rival GM personas may be identical across leagues (unconfirmed); check champion concentration over 30 seasons.

@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S132 released at 7f389bdd: career stakes, scouted rival drafts, in-game feedback, faster first week, new site pages and a minified build on the matching frontend and API.",
+  "currentFocus": "S132 second release at 75829192: GM Profile, a scored weekly challenge, a grouped Desk, game-plan dials, bundled fonts and the security remainder on the matching frontend and API.",
   "nextMilestone": "GM Profile, scored weekly challenge, Desk consolidation, visual upgrade and the security remainder.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
@@ -22,7 +22,7 @@
     "protocol": "oidc-authorization-code-s256-pkce",
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
-  "truthAuditStatus": "S132 thirteen audit outcomes and the matching frontend/API release are verified at 7f389bdd. Broader readiness, player, financial and adoption outcomes remain unmeasured.",
+  "truthAuditStatus": "S132 nineteen of twenty audit outcomes and the matching frontend/API release are verified at 75829192. Broader readiness, player, financial and adoption outcomes remain unmeasured.",
   "truthAuditLastRun": "2026-11-19",
   "ignisScore": 41418,
   "ignisGrade": "FORGE",
@@ -119,21 +119,14 @@
   "silHealth": 506,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 1,
+    "blockingFailing": 0,
     "total": 12,
-    "failing": 1,
-    "score": 92,
+    "failing": 0,
+    "score": 100,
     "date": "2026-11-20",
-    "passing": 11,
+    "passing": 12,
     "warning": 0,
-    "checks": [
-      {
-        "id": "release-authority-git-head-covered-by-publication",
-        "status": "failing",
-        "blocking": true,
-        "detail": "HEAD 40889531f9521c70fb67b06bf5ba9e270cd0e88b is not covered by live production 7f389bdd8e5dfd5d3462c08e4d71f4a93afe1d80"
-      }
-    ]
+    "checks": []
   },
   "complianceScore": 37,
   "complianceTotal": 37,
@@ -162,7 +155,7 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-11-18"
+      "lastChecked": "2026-11-20"
     }
   ],
   "lastSession": 132,
@@ -274,12 +267,12 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "f15e671dc559e45ca59478a38ea78c5a1afdd9266a23b10e9050db254a76b90e",
-    "sourceRevision": "7f389bdd8e5dfd5d3462c08e4d71f4a93afe1d80",
+    "receiptSha256": "c38b340d8d49c721e3c2b4e93f7b626166de8db3b6edf63bc9dd0a79c6951192",
+    "sourceRevision": "75829192a35bfd3d7702b584f9b04cff0df5474a",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "bc7e1e3f45b7c7dd8f3c761ad070cde42cbe0b050298c8f098ec1715e94da081",
-      "files": 383,
+      "digest": "685e31c2b743a18483bd9cdc80e7848bf927588f73a7661a15597a91572b7c06",
+      "files": 455,
       "entries": [
         {
           "path": ".well-known/llms.txt",
@@ -293,13 +286,13 @@
         },
         {
           "path": "404.html",
-          "bytes": 5070,
-          "sha256": "8397610c4e2226f94ce6d236aaabd93b57326f627c81339d583b6416f69978b5"
+          "bytes": 6163,
+          "sha256": "312e179b21830eaeeb144c3401eb74a607668f2c4c66f591d690d227114e3b10"
         },
         {
           "path": "_headers",
-          "bytes": 2159,
-          "sha256": "d4a9c14208520236d06cd97243f7139d68e336781e308ca18d0c01bc976fd300"
+          "bytes": 2438,
+          "sha256": "2b2278d9cd327eeb138ec802bacbe7cc7a0878d857d7d9dd526aa484db0f2c85"
         },
         {
           "path": "_redirects",
@@ -308,8 +301,8 @@
         },
         {
           "path": "about.html",
-          "bytes": 7511,
-          "sha256": "401993635c5bda5990e8136ebbc2b79c021c098f0073b05af9ac7a0b28748c41"
+          "bytes": 8587,
+          "sha256": "86856f17fb1fa463b8a68d56944947b59762f937e52e89d48d62daf71f6d1b3b"
         },
         {
           "path": "agents.json",
@@ -318,18 +311,18 @@
         },
         {
           "path": "app.js",
-          "bytes": 71463,
-          "sha256": "79e1c1ff60037728e822821e5532481910caa5f8e038f381d7c5d65e763f2299"
+          "bytes": 70901,
+          "sha256": "c2eb578b1acefc3339668a5a9f9ab7b1eecbd4dde123a93ac2714827126ed0f6"
         },
         {
           "path": "boot-manifest.json",
-          "bytes": 2001,
-          "sha256": "d0c14a86963f91513789b80b46216740ebdc18557bab89c86610e1f5f196071b"
+          "bytes": 2142,
+          "sha256": "0a161378ec384eda1aaaca99f6df84a9e196e3fe80d0fc6d818a85913cf7ab79"
         },
         {
           "path": "changelog.xml",
-          "bytes": 34934,
-          "sha256": "31460a6216ea35306c9b2beceaecc11e7a2678cea3d662a6c0dda0b5436ef087"
+          "bytes": 36449,
+          "sha256": "22d219ab73fe6ea9e0f0956691884f72f1ffe43f44457da50f629db7ecd6a5c4"
         },
         {
           "path": "community-stats.8d48a20039.js",
@@ -343,23 +336,23 @@
         },
         {
           "path": "compare.html",
-          "bytes": 11915,
-          "sha256": "cff0a017466416607ec43326623fd776737f230da51ebc8a95500b11ac103b85"
+          "bytes": 13005,
+          "sha256": "8bbc69a486a1ec1193388f009f631adc614b14e94ee84ad449394c4941078288"
         },
         {
           "path": "contact.html",
-          "bytes": 6788,
-          "sha256": "adf88fdca853b046986aea6faa21e3c767729a061b636e37dc2b8eed3c5ac9b3"
+          "bytes": 7870,
+          "sha256": "b5ef1f4042185848b79eae95428ac4347e03c3be89733447cf80603bb53dd918"
         },
         {
           "path": "content/claims.json",
-          "bytes": 13672,
-          "sha256": "057429e29cc2e3088c0cb78f7a9ee8c73eed5f45480643f86496883a6ea3518b"
+          "bytes": 17718,
+          "sha256": "7c9e8a0a4c2f473eafc397fcff5a64b68564517d7106b9971deeeb77f9df0784"
         },
         {
           "path": "faq.html",
-          "bytes": 16753,
-          "sha256": "0d7ed777d5e5b24c59739938d75a1cb09024251a7a83c281b5668489d90db0ee"
+          "bytes": 17823,
+          "sha256": "0f424ed6f4985cf1b4a800fc23a9ca73e73394d6c5144ff1a216db763cf5f926"
         },
         {
           "path": "favicon.ico",
@@ -373,8 +366,33 @@
         },
         {
           "path": "features.html",
-          "bytes": 16841,
-          "sha256": "cf33ca9753e6a69d4618ac54ad34f21d7465567446536715c2253bfed6f3aa14"
+          "bytes": 22885,
+          "sha256": "3d507f3cf6e3e0b49f5a84fb750f5c3fed67f876b8019fbdabf2f6fba62cca42"
+        },
+        {
+          "path": "fonts/LICENSE",
+          "bytes": 6014,
+          "sha256": "4877e0c1b66f0b16cc3ebc4801c4def24c06252f618b9229428b20c7387aa0c0"
+        },
+        {
+          "path": "fonts/barlow-latin-400-normal.woff2",
+          "bytes": 22196,
+          "sha256": "b0a8ad37ac45f5fb22ced461576db72e44e295107aad7a9c8a7a4bad728fd03b"
+        },
+        {
+          "path": "fonts/barlow-latin-600-normal.woff2",
+          "bytes": 22772,
+          "sha256": "4b52ddd4836b592df0e4832b8286956883cdc651b015126bdd18f184b7f90cc3"
+        },
+        {
+          "path": "fonts/barlow-latin-700-normal.woff2",
+          "bytes": 22788,
+          "sha256": "2d797dd8b35dcb3413e1af9d7052b3f4f8c341a147cdcb01f4f06af80db53289"
+        },
+        {
+          "path": "fonts/barlow-semi-condensed-latin-700-normal.woff2",
+          "bytes": 23244,
+          "sha256": "fb958c8c20a05552ac8a85d925d96028d52565792650e941a5fe96b6997aa5cb"
         },
         {
           "path": "footer-manifest.json",
@@ -383,18 +401,18 @@
         },
         {
           "path": "game.html",
-          "bytes": 117552,
-          "sha256": "488894d92ba0635873f764e2c3d10fcf1e8b3fc28d6c3edb87c8bc415e2dc6e3"
+          "bytes": 121117,
+          "sha256": "b44d99fa99b003650a813bb94066f5b4517f58242d3e08bd0f532a7a08b88be6"
         },
         {
           "path": "guides.html",
-          "bytes": 20213,
-          "sha256": "346eb175163506ca06c47834cf8dc642e60fcb4be152507502a404af214dea9d"
+          "bytes": 21292,
+          "sha256": "37422c61745d84075d8c010f77a53f0888957ae049659febdc42c289dcc3b8b3"
         },
         {
           "path": "how-to-play.html",
-          "bytes": 9718,
-          "sha256": "b8485ad2d47f7fb16f3e1cbee935a99660e996599ba11ede6d9817d89a63738a"
+          "bytes": 10812,
+          "sha256": "8791347d7f0473d81b70eb9c39c0bab8b67fab1207246ba13e75a58a1a4dc0ab"
         },
         {
           "path": "images/apple-touch-icon.png",
@@ -432,34 +450,234 @@
           "sha256": "b7b5a916704a3a11868fe31d7dbb86ece3d371aab2fd872d5ff7f3fb5e65f1a7"
         },
         {
-          "path": "images/screens/boardroom.jpg",
-          "bytes": 152963,
-          "sha256": "6255f9c371e31178db42af10f520e80f634930729a06c1d6903af274dc9e9f66"
+          "path": "images/screens/advisor.webp",
+          "bytes": 81920,
+          "sha256": "88094cf6daacc96dd8b5fa53fa229fd8e7e28a6d4ae7a1238eb83af253964bc9"
         },
         {
-          "path": "images/screens/contracts.jpg",
-          "bytes": 138297,
-          "sha256": "282107d77478dfa9f0d8820a28363f38a5d0a909143c4603ce45a796b1257d9f"
+          "path": "images/screens/boardroom.webp",
+          "bytes": 78016,
+          "sha256": "9c56a83af877d36be7814ed561f2002a31288d9bbf78384d804458280cdcf19b"
         },
         {
-          "path": "images/screens/desk.jpg",
-          "bytes": 103191,
-          "sha256": "cd66e490aedb12d6da6bb39134ccb81d1ab300c331fef20b7c5922bf96b15847"
+          "path": "images/screens/career.webp",
+          "bytes": 45778,
+          "sha256": "3d272f4edf7b7ae32fe4d88405303b852a12f708d87f2c3cca0a0626bea1b73f"
+        },
+        {
+          "path": "images/screens/challenge-codes.webp",
+          "bytes": 54690,
+          "sha256": "cdfd11f36533f806c2a49cfa94bf6b4e04e207a518ce80cb2c99f1ca1cb68bd3"
+        },
+        {
+          "path": "images/screens/commissioner.webp",
+          "bytes": 58864,
+          "sha256": "c6dd38fec8d5828e7149391b8c3fc363ad6b15b02c4d7b53d8da064c1648c76d"
+        },
+        {
+          "path": "images/screens/community.webp",
+          "bytes": 58766,
+          "sha256": "58dd523299454e921e80153d2baa643e1f74907b2dc794f9944ad522db3ee023"
+        },
+        {
+          "path": "images/screens/contracts.webp",
+          "bytes": 73002,
+          "sha256": "628d5efa24e3785b41b63274d646580284a3c7e792f6dc02634ec181b2c88882"
+        },
+        {
+          "path": "images/screens/depth-chart.webp",
+          "bytes": 71192,
+          "sha256": "e37d128cd9037dfaa449224650e642f5f7e5b762b404b3834feabf900e27da6d"
+        },
+        {
+          "path": "images/screens/draft.webp",
+          "bytes": 92058,
+          "sha256": "682fb4e7dd842f9bf79d26d5d82ef4759630a6661e2fd80a7a44ce95bc04ada9"
+        },
+        {
+          "path": "images/screens/first-season.webp",
+          "bytes": 33860,
+          "sha256": "8873a7919f73e65edaea9093e325d2dd47aa863543d28e89f0881a776d7f0aa3"
         },
         {
           "path": "images/screens/hero.jpg",
-          "bytes": 154408,
-          "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
+          "bytes": 142627,
+          "sha256": "cd21897623c45fd794afe68a2a615e36278fe7ffc479a08eaa2963d524fb82ca"
         },
         {
-          "path": "images/screens/trade.jpg",
-          "bytes": 125476,
-          "sha256": "51bed8fcb5bb28d7aa98bd52e4d258a23bcb94d71789398192cb55a2ee133108"
+          "path": "images/screens/history.webp",
+          "bytes": 96708,
+          "sha256": "6e5183cd2f81b0c602cf79373a0aee51e2afc76cd3bde538636929062c9c11c2"
+        },
+        {
+          "path": "images/screens/identity.webp",
+          "bytes": 52430,
+          "sha256": "77d5af210c419abaf18e1cfc1f980814d010a93372557d92d2e41f2656efcf62"
+        },
+        {
+          "path": "images/screens/injuries.webp",
+          "bytes": 49806,
+          "sha256": "8aa52c1453ba11c62399e8f9a4e088e98bd297f746bd59ebacc21d6bd9847e67"
+        },
+        {
+          "path": "images/screens/job-market.webp",
+          "bytes": 41926,
+          "sha256": "008d84eef7de44e3bffd699fd55c7fc429db2f24ccd7dfd25a27f24e1a1ea3d9"
+        },
+        {
+          "path": "images/screens/league-pulse.webp",
+          "bytes": 76070,
+          "sha256": "43ff888b8bb5a7917bdf5155014bcfe2874babb429c0f3153fb9e83c37d7031d"
+        },
+        {
+          "path": "images/screens/light/community.webp",
+          "bytes": 66132,
+          "sha256": "d22714d2426fbcd47e27430f0bda6085aa91d2d28b4e9e1cdac16c1f5805f783"
+        },
+        {
+          "path": "images/screens/light/depth-chart.webp",
+          "bytes": 77260,
+          "sha256": "f96258cca3ef50723a5838aca56fab6704fbeb4cd32d37ac36c66fc49a29bd66"
+        },
+        {
+          "path": "images/screens/light/desk.webp",
+          "bytes": 86646,
+          "sha256": "5a79fef42cffec44ac64a589ff37f060e16cffdd58872bd99d7316fbf7b3ca77"
+        },
+        {
+          "path": "images/screens/light/draft.webp",
+          "bytes": 87278,
+          "sha256": "c9e68f19f22c4bc41cedb6c4d956933f8271768923bf2084f01ad34629828766"
+        },
+        {
+          "path": "images/screens/light/job-market.webp",
+          "bytes": 41400,
+          "sha256": "09433370b07cb2ab601bbb70fe03ad807abbde630ff16aeb5bfbd375c15f57e4"
+        },
+        {
+          "path": "images/screens/light/player-identity.webp",
+          "bytes": 75282,
+          "sha256": "f37a68797d4381df2c475d0f1c268c72360990cb5437292446a42f0cbed59ffd"
+        },
+        {
+          "path": "images/screens/light/trade.webp",
+          "bytes": 58724,
+          "sha256": "81eead1f97b89a9aeb21ae30358f693f091a7d07114a2a093d00e003a4eddbf0"
+        },
+        {
+          "path": "images/screens/measured-realism.webp",
+          "bytes": 72324,
+          "sha256": "df73a5d80267741e459699847963598c3aaf436c89876e09ee3b8b0fdba8f95e"
+        },
+        {
+          "path": "images/screens/phone/community-dark.webp",
+          "bytes": 62596,
+          "sha256": "81efeb56e9bed3820cb26068a483acb83bf3f7eeadd91942ca64f2d0dcb63c97"
+        },
+        {
+          "path": "images/screens/phone/community-light.webp",
+          "bytes": 63100,
+          "sha256": "dfd4af5cc697b9987067d6f654434388fcb4dcf586e0e00d0c29fe35c74ab610"
+        },
+        {
+          "path": "images/screens/phone/depth-chart-dark.webp",
+          "bytes": 25890,
+          "sha256": "f2264e1539c5a27e4a35ccf50bfab03be6507dba1e1c191820750ac7fca47c61"
+        },
+        {
+          "path": "images/screens/phone/depth-chart-light.webp",
+          "bytes": 27038,
+          "sha256": "3b958d61b79caaa5d5cf6051e34f0bf89a8a5ab91e668d21ee4324e14f28b8c0"
+        },
+        {
+          "path": "images/screens/phone/desk-dark.webp",
+          "bytes": 25760,
+          "sha256": "a01b66327ea5b634be88a4a566ab3e105ef221226c2caae82efc17b1d749893c"
+        },
+        {
+          "path": "images/screens/phone/desk-light.webp",
+          "bytes": 26478,
+          "sha256": "024b2d445467b6671f6365601fd048c8edce6b857974e7d87667e68d505d8d52"
+        },
+        {
+          "path": "images/screens/phone/draft-dark.webp",
+          "bytes": 32010,
+          "sha256": "b72b8668732927983d7e01e02fee3f07bb04f1b7a636effacbd9d037d601f8da"
+        },
+        {
+          "path": "images/screens/phone/draft-light.webp",
+          "bytes": 30502,
+          "sha256": "c3ab6270d453883ec9096a94a99e582a796919407d569c567c5488b94ff0acc7"
+        },
+        {
+          "path": "images/screens/phone/job-market-dark.webp",
+          "bytes": 28794,
+          "sha256": "8398339f850ed6687e2b3c33da1c96d75fa0ff7e38969d196622332773f213ce"
+        },
+        {
+          "path": "images/screens/phone/job-market-light.webp",
+          "bytes": 27002,
+          "sha256": "e0c4c289244dda341dd94a2bb21a0e24d0b28d860e99baccc964814504deba3c"
+        },
+        {
+          "path": "images/screens/phone/player-identity-dark.webp",
+          "bytes": 15200,
+          "sha256": "a409744059c4da9ceb5ffe767b1c8afa27d03c42f0a66aecaff81338b8502f70"
+        },
+        {
+          "path": "images/screens/phone/player-identity-light.webp",
+          "bytes": 16726,
+          "sha256": "d99abbaa705fa5fa1ff43ce96c0139f975390c643a97e73495cfd170c10e1ec7"
+        },
+        {
+          "path": "images/screens/phone/trade-dark.webp",
+          "bytes": 22766,
+          "sha256": "937e6e4fe9966f973bde8bd7f952c262dfac391e5ba60e7a5e5e26437edce613"
+        },
+        {
+          "path": "images/screens/phone/trade-light.webp",
+          "bytes": 22436,
+          "sha256": "58202b54797c7277720d6593c3dca0a5dc92acb856365a00bd0381d34085f6d2"
+        },
+        {
+          "path": "images/screens/player-identity.webp",
+          "bytes": 72614,
+          "sha256": "39d4d1bfe0f0cd94c1a91f814e412873309087c907788018b06b5a23240cfd6a"
+        },
+        {
+          "path": "images/screens/saves.webp",
+          "bytes": 42572,
+          "sha256": "53ac89f7e9458fc17c85b33f513f69638de43a21bafe716e47c3f89bf4451597"
+        },
+        {
+          "path": "images/screens/share.webp",
+          "bytes": 63820,
+          "sha256": "7c1642ab51b6233c3db21c8c1e165d744e09d0f320d0155246e2f91fb831e1a1"
+        },
+        {
+          "path": "images/screens/sim-watch.webp",
+          "bytes": 82668,
+          "sha256": "15cef99f1e8bb8da1ef8c024da44a6b59a0b1f168a6817905cf2646fd00406b5"
+        },
+        {
+          "path": "images/screens/standing-orders.webp",
+          "bytes": 54508,
+          "sha256": "8b9516276c4abc9cc03dced43692ee72992ac16cc153b437b16e105de1ed407d"
+        },
+        {
+          "path": "images/screens/trade-market.webp",
+          "bytes": 74718,
+          "sha256": "af9d26c8d22177408cc42b074605e99b8fde1655e1bb96f6a6247209b5325755"
+        },
+        {
+          "path": "images/screens/trade.webp",
+          "bytes": 58666,
+          "sha256": "5b3ff70c48bcfce94eb69ee32007dc4c8d1d60e4c1f9ac7be9eca180611ddf75"
         },
         {
           "path": "index.html",
-          "bytes": 414450,
-          "sha256": "8d21a9229bed4e16051ebf8d5bdabdd9c73c250bea43155176bab2019c7644a3"
+          "bytes": 403632,
+          "sha256": "282f1f2bd1b23859116132e0df64221859cb3c16bcaa4a9af348fdcb2f139f31"
         },
         {
           "path": "lib/achievements.js",
@@ -524,7 +742,7 @@
         {
           "path": "lib/architectPlanRehearsal.js",
           "bytes": 4459,
-          "sha256": "69b5e360c23734786b2e7220452aa609c642f980f73b9b58ed70807052a6f69e"
+          "sha256": "e0df953e3290b47b50b80cd97aacd40d144aa4baefd8e985db87c2a2d5d45e83"
         },
         {
           "path": "lib/audioFeedback.js",
@@ -563,8 +781,8 @@
         },
         {
           "path": "lib/clientRecoveryUi.js",
-          "bytes": 3864,
-          "sha256": "bc722701bc2fa5730dc9d9568eb02b09aa5b8bfb1f6709a45b04be950e9b211f"
+          "bytes": 3866,
+          "sha256": "1920673e4704031241517ed4e789a48c65962b1b074a77f3be86db651cf0befe"
         },
         {
           "path": "lib/coGmBriefPanel.js",
@@ -573,8 +791,8 @@
         },
         {
           "path": "lib/coGmBriefing.js",
-          "bytes": 4833,
-          "sha256": "c8ea95d421446add4b061f41974af9ff8343ff0c46d0a4bb2a35eff3dd32cff2"
+          "bytes": 4831,
+          "sha256": "ee97e48865c8095037b835245256c78992bd4edaf69a9357b9ff54927aa41480"
         },
         {
           "path": "lib/coachingMarketActions.js",
@@ -603,8 +821,8 @@
         },
         {
           "path": "lib/communityTelemetry.js",
-          "bytes": 12988,
-          "sha256": "ea9f693db6ce78d9f77c95c9e656bf2019a41ee629d743970afc1daac177f9a4"
+          "bytes": 13150,
+          "sha256": "dd9d538f9af8a80d820f044e09bcd288f0699155e31ba0518b401384f3d26cbd"
         },
         {
           "path": "lib/contextualFeedback.js",
@@ -647,6 +865,11 @@
           "sha256": "e7b1d7442e5d6e3f36583827375794cdb28bb59733bde331330140b8014c83f8"
         },
         {
+          "path": "lib/deskRivalry.js",
+          "bytes": 2894,
+          "sha256": "048ad904dfd0f2889d127aa4c69ef9f61257814052cd3c24454d5720518db0d5"
+        },
+        {
           "path": "lib/devSurfaces.js",
           "bytes": 425,
           "sha256": "e4a56de55185b0c5c413b18ac73a7875ac87c354f36b2a94ee94dda5ddac635e"
@@ -663,13 +886,13 @@
         },
         {
           "path": "lib/engagementFeatures.js",
-          "bytes": 18665,
-          "sha256": "4252b8b1b6d2c2e4251811736fcff20f9474d329f54227ac342693f16eaa5428"
+          "bytes": 18883,
+          "sha256": "0145fa3b893e13c427d48ec9f7397f6f15ac75ccf2233f871618e8c7a6ddd6d2"
         },
         {
           "path": "lib/exactSurfaceNavigation.js",
-          "bytes": 1366,
-          "sha256": "2c3eec7ef0a24bb04496f08f1ff44f5e979e1f2d22951d07faaa5cc72acbf810"
+          "bytes": 1468,
+          "sha256": "55b34acc07c503fb509900e1df2323f8e3f00c406f1fd138ea85de16f00be0aa"
         },
         {
           "path": "lib/extractCommunityEvents.js",
@@ -708,8 +931,8 @@
         },
         {
           "path": "lib/firstSeasonContract.js",
-          "bytes": 9519,
-          "sha256": "7e4deea11a303fe0a199578f7ce13377c6fa59ba874e5ca7402ba7cce1b672e0"
+          "bytes": 9543,
+          "sha256": "473a39901fcd241bfe7b31d18033044e3fde92b3599e10d0a7cfc219c9d3cf64"
         },
         {
           "path": "lib/franchiseArchitecture.js",
@@ -723,8 +946,8 @@
         },
         {
           "path": "lib/franchiseNewsletter.js",
-          "bytes": 6204,
-          "sha256": "4e6f33e2389a6c7d3b82115de7fad1f6d717b1fb93a273f7779aae545e77bb8f"
+          "bytes": 6226,
+          "sha256": "3a6d6595ec75bbab90f0ad9139f479e1a7005120456885f2b8525246b615b973"
         },
         {
           "path": "lib/franchiseScope.js",
@@ -733,18 +956,28 @@
         },
         {
           "path": "lib/frontOfficeAdvisor.js",
-          "bytes": 16152,
-          "sha256": "92ee20944885b04af89461b1ee22528b35c416660186f2b83746f9e7be49cbc5"
+          "bytes": 16144,
+          "sha256": "cf6c17c3f9c3c8be8501487741a14cbd087bcfd7c9cb546b03ad27299f4a5747"
         },
         {
           "path": "lib/gameFlow.js",
-          "bytes": 39522,
-          "sha256": "e3900a009797bae283612899c7922d634ec01af698e9ab0659d2b63a31635170"
+          "bytes": 40141,
+          "sha256": "b6e3987c52430464384ab5c02d8cba28d16592ef8f028a36cc21d364e05a92b8"
         },
         {
           "path": "lib/gameOutcome.js",
           "bytes": 1081,
           "sha256": "0e0cded2ad735de449bbdc7e209f217ee97acb45a42bfca0790b3f3bcc7a4d29"
+        },
+        {
+          "path": "lib/gamePlanDepth.js",
+          "bytes": 2926,
+          "sha256": "6d05a487ea6c0d0cb618e098370cc1e0c4056c36fbad5da6ddbc7799f221f230"
+        },
+        {
+          "path": "lib/gamePlanDials.js",
+          "bytes": 1805,
+          "sha256": "645d926083ee07100b18d3ba32bc9005778ae9c33660d61711e452b09188e40e"
         },
         {
           "path": "lib/gameplayNavigation.js",
@@ -763,8 +996,8 @@
         },
         {
           "path": "lib/gistSync.js",
-          "bytes": 3573,
-          "sha256": "4041b80a1fb72c8a624d6205e606eb93bac26a0197fa492e7c19515291524079"
+          "bytes": 3580,
+          "sha256": "11d892f0e4fa9dd80fc4a1310a0ad6d31dc3fa7065bbc61b2442262326794013"
         },
         {
           "path": "lib/gistVerification.js",
@@ -775,6 +1008,16 @@
           "path": "lib/gmCareerUi.js",
           "bytes": 6474,
           "sha256": "e0e2bf60d2f7c1504a8244d0098b4ecf05407de798875888afb80a7cc0312b75"
+        },
+        {
+          "path": "lib/gmProfile.js",
+          "bytes": 5618,
+          "sha256": "6a674768db5c55e985d0f3fdc14b156852c1255948efdf1613b86a9bbb7fefbe"
+        },
+        {
+          "path": "lib/gmProfileModel.js",
+          "bytes": 4105,
+          "sha256": "132a5d1832b9cdd1ffcb76610ed8cff54050ba7a830d11bcc6dc20e30881c6ba"
         },
         {
           "path": "lib/hairArrangement.js",
@@ -818,8 +1061,8 @@
         },
         {
           "path": "lib/leagueStoryExport.js",
-          "bytes": 8823,
-          "sha256": "8186a4d97a92c96efed720acee7d65011934a1dea0b4de0ad0caa1f27d13ee5e"
+          "bytes": 8845,
+          "sha256": "0fb352b90f891107fc95112a55c533a04f0d318b23216cc1298edea0c8363963"
         },
         {
           "path": "lib/longHairFlow.js",
@@ -843,8 +1086,8 @@
         },
         {
           "path": "lib/mobileLoop.js",
-          "bytes": 11259,
-          "sha256": "d3a92b0aadedeee3a05c363730ca97e3d36aea0fa1c6338ba656b76efa136f99"
+          "bytes": 11304,
+          "sha256": "e1d6d50fc64f43158a2d2ddb4e400251aef1ede51766399fd63fd5c9a7d3481e"
         },
         {
           "path": "lib/mobileNavigation.js",
@@ -1038,8 +1281,8 @@
         },
         {
           "path": "lib/returnDigest.js",
-          "bytes": 6905,
-          "sha256": "6d7379055cc087aea064087b78252db07c7b4acfa1863b64d76d85a50f33d420"
+          "bytes": 6903,
+          "sha256": "8f96ca713713359ccea386f368276fdabb871b008ec24043b456f5b6f776ad37"
         },
         {
           "path": "lib/rewardBeats.js",
@@ -1068,8 +1311,8 @@
         },
         {
           "path": "lib/seasonChapters.js",
-          "bytes": 10928,
-          "sha256": "ca594064180340695b3d884ccfac301a0b04ec64f3928f8a0d9e8c6f76159a45"
+          "bytes": 10923,
+          "sha256": "5a4c893e1c573af7addc169b4a37f69f5aa2ece24eaf88784b171810138eb765"
         },
         {
           "path": "lib/seasonEpilogue.js",
@@ -1134,12 +1377,12 @@
         {
           "path": "lib/tabHistory.js",
           "bytes": 29912,
-          "sha256": "17711800c3a8b90f5fc5388f426750c2e52dea2f2bfa9d5eae5ede88dc619a12"
+          "sha256": "9eef6eafb99733e1bbcdf481da87a321b5e0bb37110a5b69e542693a8382fa06"
         },
         {
           "path": "lib/tabHydration.js",
-          "bytes": 3634,
-          "sha256": "4e5af2f47de991c02cd6a859fdb3afb93140860bb309bcf9f8fe0ec958447957"
+          "bytes": 3688,
+          "sha256": "3b536b3c40f60cfaf6e6359e9bdd38a837d8977b976cb8a392e3a04d111d6945"
         },
         {
           "path": "lib/tabKeyboardNavigation.js",
@@ -1148,8 +1391,8 @@
         },
         {
           "path": "lib/tabOverview.js",
-          "bytes": 48260,
-          "sha256": "8f6397821d9ea386223eff2587fe02bc222ca76de3b6446def822acb2eac7237"
+          "bytes": 46647,
+          "sha256": "12244eb6480daa88756738d8771dd03635744717c00b41cfdb865110284a85d9"
         },
         {
           "path": "lib/tabRoster.js",
@@ -1158,8 +1401,8 @@
         },
         {
           "path": "lib/tabSettings.js",
-          "bytes": 30617,
-          "sha256": "3f7f547833dcd6f3476531491349b38044b7512898b353a34695be01850b3bfe"
+          "bytes": 30685,
+          "sha256": "43dedd86cbb85ac50b9746b89918aa13c27ba4e25539f6845d5a4526f6689612"
         },
         {
           "path": "lib/tabStats.js",
@@ -1168,8 +1411,8 @@
         },
         {
           "path": "lib/tacticalFilmRoom.js",
-          "bytes": 8469,
-          "sha256": "19df5f443e323bdabb5528804a343322663c1459f68d7924e415f3d7faf460ec"
+          "bytes": 8462,
+          "sha256": "958b32974b16be7fd29d44e5aa47fc582f3206e0e346ba511e51bc2fc35c86f4"
         },
         {
           "path": "lib/teamCrest.js",
@@ -1218,18 +1461,33 @@
         },
         {
           "path": "lib/uiIslands.js",
-          "bytes": 4521,
-          "sha256": "5bf894d2f4ad60fc404f837e059e1709936d5316829372bba53e4dddc7be30ac"
+          "bytes": 4536,
+          "sha256": "0fc2c613bb1d4c41e33bc7ae05831a8c658e2aa3241590a9d361c3ef8f616c7b"
         },
         {
           "path": "lib/weeklyChallenge.js",
-          "bytes": 1956,
-          "sha256": "2dabf0c35895969ac4e92e51a3b0c9cdae0116e19b19c07c5abbdf8b5d01dea9"
+          "bytes": 2389,
+          "sha256": "c4d1164b9beff73bf94f53683996374266cfb6c2303e19bb441accdb610c4a0f"
+        },
+        {
+          "path": "lib/weeklyChallengeBoard.js",
+          "bytes": 1909,
+          "sha256": "5e65624886aa2629f86dd06bfa2f815e54fed59e3a846233ab2b555e891aa4f0"
+        },
+        {
+          "path": "lib/weeklyChallengePanel.js",
+          "bytes": 5237,
+          "sha256": "9c776d074e794c0623805bc41f7b92a075ca395db005068839a45314c901d8f1"
+        },
+        {
+          "path": "lib/weeklyChallengeScoreContract.js",
+          "bytes": 5391,
+          "sha256": "c9252cbe8580469231a1912f79624f77b572203416210d6a00db17387695bed3"
         },
         {
           "path": "lib/weeklyPlanComposer.js",
-          "bytes": 4433,
-          "sha256": "fbf340650d7a2a9aa394fc4a6f8d727f2bbdb540c838e5d009edb7192638f82a"
+          "bytes": 4850,
+          "sha256": "73aba42963db71a004215af8c06da25e8848ffd5d64ef051dd590e3e442575ec"
         },
         {
           "path": "llms.txt",
@@ -1243,23 +1501,108 @@
         },
         {
           "path": "media.html",
-          "bytes": 9790,
-          "sha256": "6cd339c9b72f826a582c9e702c0b7a01e155f0035bcd7bdf1da67066b591e4cf"
+          "bytes": 27682,
+          "sha256": "291123113577cdc01f29d1e716613ff38e479f6ef12a6bc5af033b582598e9d6"
+        },
+        {
+          "path": "og/about.png",
+          "bytes": 53906,
+          "sha256": "27bea889dfcd8cada9e846d0442ec1ae011769b3b081e64610e65761c9a60305"
+        },
+        {
+          "path": "og/compare.png",
+          "bytes": 54147,
+          "sha256": "a4fa45157816013194682ec8089ed11ce761a0e3620aa1ea222ca128dc08c12a"
+        },
+        {
+          "path": "og/contact.png",
+          "bytes": 45724,
+          "sha256": "ade83f5ad90cc7f4d549171e2560f51a3d47e451bd60aac0529e3ac3ac3db67f"
+        },
+        {
+          "path": "og/faq.png",
+          "bytes": 58885,
+          "sha256": "355e415f7f3e77553b0789e4608796ab34f20dcfb35a7059b3a5e5042d6d154a"
+        },
+        {
+          "path": "og/features.png",
+          "bytes": 50625,
+          "sha256": "d4a410719d6a92b2f754691e1daa927c6b8cb0dbfe943c9b27a56aa926b15630"
+        },
+        {
+          "path": "og/guides.png",
+          "bytes": 46761,
+          "sha256": "4207fd0c3ce16ddda18c4609ff74e9921f5ed2342931b932ce684ce7a80d0024"
+        },
+        {
+          "path": "og/how-to-play.png",
+          "bytes": 53658,
+          "sha256": "0aeb6f73a11e81960fae4a6eee49dc8bd7a7c79ca1e84210359205a8b0369335"
+        },
+        {
+          "path": "og/index.png",
+          "bytes": 58337,
+          "sha256": "bb091c6779b6afa649cad9a7027105b2b55dcc0e026957e07b83fd3745e0e86b"
+        },
+        {
+          "path": "og/media.png",
+          "bytes": 45759,
+          "sha256": "2c7fd27410f65f6f34b3b8a8525a71e71f261b8f2c88393d23ea80404c17c8a0"
+        },
+        {
+          "path": "og/press.png",
+          "bytes": 43164,
+          "sha256": "1d0e2801cab4c5702ef19f4c90d18fa8f2b0bc05ca10bf59d6071666c777bda8"
+        },
+        {
+          "path": "og/privacy.png",
+          "bytes": 57945,
+          "sha256": "9f7c92356d62738dc6e70f52f14fcb432bb318daae738af4af9d2e2898380d4b"
+        },
+        {
+          "path": "og/roadmap.png",
+          "bytes": 41234,
+          "sha256": "b252531f6a840b1b0cb57386d78a992d00b094576c12ee22086c1eb8768985f3"
+        },
+        {
+          "path": "og/simulation.png",
+          "bytes": 59765,
+          "sha256": "1f90dfdda486b6942e95cbf80038ba475ebd81258e2dce1a195ae645c89739c0"
+        },
+        {
+          "path": "og/stats.png",
+          "bytes": 46960,
+          "sha256": "ac9d5293985b7f94f793edff5ce9952ee550f356cd4c96badebf3cbfc1b27a03"
+        },
+        {
+          "path": "og/status-archive.png",
+          "bytes": 40899,
+          "sha256": "b1bc1c5190922ebfdb0ef49ab0e3e2d91169da2eadf8e885df8d37d58911cf78"
+        },
+        {
+          "path": "og/status.png",
+          "bytes": 52090,
+          "sha256": "ffc13de82a53503d91552f3a9bae1556a2b79ce4d7b3c73f9fb405c8f69cd293"
+        },
+        {
+          "path": "og/terms.png",
+          "bytes": 45864,
+          "sha256": "2edbf8ef308dd4f82976c51a2d31f4c25ef3f52992674fcedc89d488b8bfe5e1"
         },
         {
           "path": "precache-manifest.json",
-          "bytes": 27258,
-          "sha256": "48b68c01ed121c6a7fc4562f6b8813e3ae4f09bf09fccfda23aa2f09ea38683c"
+          "bytes": 28384,
+          "sha256": "5236259034468cbec7ccc8e85073650dbd7c5931aec0d7e8054c07a607b68a20"
         },
         {
           "path": "press.html",
-          "bytes": 9722,
-          "sha256": "8b2ef1a5c6a9ffb6a1fa55bc2f8b899969c17aab7f16144be7c7cd9f3ab972ff"
+          "bytes": 10802,
+          "sha256": "4e923340f92948a22b3397ffd3bb0711dde0aaf54b3b55af5501ca3f9bbb765f"
         },
         {
           "path": "privacy.html",
-          "bytes": 10284,
-          "sha256": "033a63744c2170d489f6cce241d6264e1e17dccfa51750292d5420e54665a6be"
+          "bytes": 12369,
+          "sha256": "91831acaebe1d0b956d2ce7497d635ed99e39a846849dc07cda7d5d06a1059b6"
         },
         {
           "path": "public-identity.json",
@@ -1275,6 +1618,11 @@
           "path": "public/lib/gameOutcome.js",
           "bytes": 1081,
           "sha256": "0e0cded2ad735de449bbdc7e209f217ee97acb45a42bfca0790b3f3bcc7a4d29"
+        },
+        {
+          "path": "public/lib/gamePlanDepth.js",
+          "bytes": 2926,
+          "sha256": "6d05a487ea6c0d0cb618e098370cc1e0c4056c36fbad5da6ddbc7799f221f230"
         },
         {
           "path": "public/lib/gameplayNavigation.js",
@@ -1303,13 +1651,13 @@
         },
         {
           "path": "public/lib/tacticalFilmRoom.js",
-          "bytes": 8469,
-          "sha256": "19df5f443e323bdabb5528804a343322663c1459f68d7924e415f3d7faf460ec"
+          "bytes": 8462,
+          "sha256": "958b32974b16be7fd29d44e5aa47fc582f3206e0e346ba511e51bc2fc35c86f4"
         },
         {
           "path": "roadmap.html",
-          "bytes": 9457,
-          "sha256": "cc6bcf8e4e406111066aca202484b11d879b87ec8be742599f4e539895e5b4d8"
+          "bytes": 10539,
+          "sha256": "9907b44be337effcf93fe5d8448ed6a32dbcf1d44b93c6ec6adda4dbb47342ca"
         },
         {
           "path": "robots.txt",
@@ -1318,8 +1666,8 @@
         },
         {
           "path": "setup.js",
-          "bytes": 20992,
-          "sha256": "6c68733e6bf2f04d8a6000d8852e5f7a9fe37423cfde8b86377a6f4cf41fe6f1"
+          "bytes": 21147,
+          "sha256": "79c70b838dcaabc75f520e518d1d4cdebf5bdc6db0f20d7386ee11b4ff319085"
         },
         {
           "path": "showcase-league.json",
@@ -1328,23 +1676,23 @@
         },
         {
           "path": "simulation.html",
-          "bytes": 12525,
-          "sha256": "c1fc2886cafc19114bbc5236952a6305b0856035fc802215872e56a660c7cf66"
+          "bytes": 13602,
+          "sha256": "488cf2233643d379cf63ced0df7ee4b5bbbaffc6af1b052e31bff6ae5da1f053"
         },
         {
-          "path": "site.000d12ed36.css",
-          "bytes": 9130,
-          "sha256": "000d12ed3621d3948c155a99b13c35ce16b502fa8ea0c974920623fd56be6bb2"
+          "path": "site.048849dfd6.css",
+          "bytes": 9299,
+          "sha256": "048849dfd6d22edb9e5df4ae5b1321c95491df277be5469fde5022ecc078a2a6"
         },
         {
           "path": "site.css",
-          "bytes": 9130,
-          "sha256": "000d12ed3621d3948c155a99b13c35ce16b502fa8ea0c974920623fd56be6bb2"
+          "bytes": 9299,
+          "sha256": "048849dfd6d22edb9e5df4ae5b1321c95491df277be5469fde5022ecc078a2a6"
         },
         {
           "path": "sitemap.xml",
           "bytes": 2144,
-          "sha256": "4f28e72210acc75bc0502cca891ab599910152991c953672ffd87745a0a54309"
+          "sha256": "f20d425105007e351dc94814e0b2ae5b2295c27ec81c454bad7e11a89ac44423"
         },
         {
           "path": "src/adapters/persistence/browserSaveStore.js",
@@ -1378,8 +1726,8 @@
         },
         {
           "path": "src/app/api/localApiRuntime.js",
-          "bytes": 48603,
-          "sha256": "1f6cdccb13850ce901c1ce34fc254c285ccd7c68bba63ec354e916300217d80e"
+          "bytes": 48720,
+          "sha256": "bf43d35f4c8ccb1594e304fbf0042497ebd3ae3af7c3bbb2c8b79ac1ae482b0d"
         },
         {
           "path": "src/config.js",
@@ -1762,9 +2110,14 @@
           "sha256": "b68a9d241415584a1a3ed9d5c52f37d72e57adc294234c9d1cfbf6e975ace313"
         },
         {
+          "path": "src/engine/gamePlanDepth.js",
+          "bytes": 1207,
+          "sha256": "f594b909520ed55e08f444b608a5d9a2ee95a864329f8bc5055eda48e894f962"
+        },
+        {
           "path": "src/engine/gameSimulator.js",
-          "bytes": 37254,
-          "sha256": "2899c86342e6c8c55f324958cafbf6d84cdd63199e3117da51d578e0feb64953"
+          "bytes": 37532,
+          "sha256": "057fb08e6bdae9a399de436547e5a7014d52aa33ef94bbb8f15f3ec188ee3320"
         },
         {
           "path": "src/engine/gmArchetype.js",
@@ -1788,8 +2141,8 @@
         },
         {
           "path": "src/engine/gmLegacyScore.js",
-          "bytes": 9684,
-          "sha256": "9908e2268a249bf016df92291ae373f2a658b98561096af3d939c3c5e5296d82"
+          "bytes": 10160,
+          "sha256": "d8534d3aba8dda6c6fa146d51a2f854e7c7fa912d8b66e65ec40d31100531f6e"
         },
         {
           "path": "src/engine/injurySystem.js",
@@ -1928,8 +2281,8 @@
         },
         {
           "path": "src/runtime/advanceWeekCommand.js",
-          "bytes": 4187,
-          "sha256": "65d1ed294a50455ccda3dbe73ef1b3cc20fe4d677bc65272f81a9cfa22dab3b2"
+          "bytes": 4506,
+          "sha256": "e2c2006836af025bb7cb81709bdba6d7776125c09bced4853cf811568a439975"
         },
         {
           "path": "src/runtime/applyLeagueSetup.js",
@@ -2033,8 +2386,8 @@
         },
         {
           "path": "src/runtime/weeklyTactic.js",
-          "bytes": 721,
-          "sha256": "8f2254fb8a210dd47f5a860f3ffe8868e1b18348d54a14b35b910b665f1b66a0"
+          "bytes": 990,
+          "sha256": "d3dc09352bef6a5eb1775dbb0385f1066dd5aab742e0786eacf84a472c8c4cbc"
         },
         {
           "path": "src/sport/calendarContract.js",
@@ -2163,38 +2516,38 @@
         },
         {
           "path": "stats.html",
-          "bytes": 9521,
-          "sha256": "a741b14e6961280f92bf4fdf88a02c6283d33507d7e172d2112896f15d7f067e"
+          "bytes": 10833,
+          "sha256": "c873b423c5526a1b36c235b22b5f1426814b56e6e131d4d963d657578dca21a0"
         },
         {
           "path": "status-archive.html",
-          "bytes": 31635,
-          "sha256": "ace68ae0b5f7b41f708e931f606225abb4af63a7839d88c86c4708a6f9b61a0f"
+          "bytes": 34043,
+          "sha256": "9f4944d85aedaaec926ca3278c2830e8bf46f76a62d5d8c646ec8e687a1c6e9b"
         },
         {
           "path": "status.html",
-          "bytes": 10529,
-          "sha256": "3855e55dcdee9c172a72a12bb8c52d9987f83a255049888c97b97b1ce55575de"
+          "bytes": 12378,
+          "sha256": "45f9fad57be1bc6b091f2ecc24d2cbf3b2c963d398cbd3118bbc17898e96ef8f"
         },
         {
-          "path": "styles.a6a408aa6e.css",
-          "bytes": 176422,
-          "sha256": "a6a408aa6e47b419efb98c4f6dc8503591fca636a26a7a31a75f13835bda631f"
+          "path": "styles.6be7ad8b98.css",
+          "bytes": 180045,
+          "sha256": "6be7ad8b9855d7c03d3936ba8da38a4af1318dac38a15eb2bdf6f78d553a2e00"
         },
         {
           "path": "styles.css",
-          "bytes": 176422,
-          "sha256": "a6a408aa6e47b419efb98c4f6dc8503591fca636a26a7a31a75f13835bda631f"
+          "bytes": 180045,
+          "sha256": "6be7ad8b9855d7c03d3936ba8da38a4af1318dac38a15eb2bdf6f78d553a2e00"
         },
         {
           "path": "sw.js",
-          "bytes": 13503,
-          "sha256": "a809e583ce91e2a1678e9e08065bcce47a75fc2d70be715cc4145fac26858eb0"
+          "bytes": 13966,
+          "sha256": "b0116460fcd6cfc2611d78ff95fb9d85530e43c519434128f8970536165303ae"
         },
         {
           "path": "terms.html",
-          "bytes": 7286,
-          "sha256": "88b6abd05c2a2817d36a7e4e56797f88cad3c83953250aedf5be1a45582c87b5"
+          "bytes": 8375,
+          "sha256": "4c21769ef2a12190550252ff06919a0ccec2266ebe75b6c1d1c94d8fae660a6f"
         }
       ],
       "exclusions": [
@@ -2203,21 +2556,21 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "9b3d16bd-4d5f-4fd6-a554-31111d06c0ab",
+    "deploymentId": "121c9624-8776-4ec0-846e-512998e115d7",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-11-18T12:02:32.267Z"
+      "checkedAt": "2026-11-20T05:36:34.466Z"
     },
     "rollback": {
-      "previousDeploymentId": "8c3d5918-128d-4df7-a35e-172fb238c255",
+      "previousDeploymentId": "1023d617-c980-4208-81dd-cf1cf2b65aea",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-11-18T12:02:32.267Z"
+    "observedAt": "2026-11-20T05:36:34.466Z"
   },
   "lastCloseoutAt": "2026-10-27T01:27:00.881Z",
   "performanceAuthority": {
@@ -2253,31 +2606,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-11-19T05:08:54.801Z",
+    "observedAt": "2026-11-20T07:38:06.850Z",
     "status": "verified",
-    "sourceRevision": "7f389bdd8e5dfd5d3462c08e4d71f4a93afe1d80",
-    "publicationRevision": "7f389bdd8e5dfd5d3462c08e4d71f4a93afe1d80",
+    "sourceRevision": "75829192a35bfd3d7702b584f9b04cff0df5474a",
+    "publicationRevision": "75829192a35bfd3d7702b584f9b04cff0df5474a",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "bc7e1e3f45b7c7dd8f3c761ad070cde42cbe0b050298c8f098ec1715e94da081"
+      "digest": "685e31c2b743a18483bd9cdc80e7848bf927588f73a7661a15597a91572b7c06"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "7f389bdd8e5dfd5d3462c08e4d71f4a93afe1d80",
-        "artifactDigest": "bc7e1e3f45b7c7dd8f3c761ad070cde42cbe0b050298c8f098ec1715e94da081"
+        "sourceRevision": "75829192a35bfd3d7702b584f9b04cff0df5474a",
+        "artifactDigest": "685e31c2b743a18483bd9cdc80e7848bf927588f73a7661a15597a91572b7c06"
       },
       "production": {
-        "sourceRevision": "7f389bdd8e5dfd5d3462c08e4d71f4a93afe1d80",
-        "artifactDigest": "bc7e1e3f45b7c7dd8f3c761ad070cde42cbe0b050298c8f098ec1715e94da081"
+        "sourceRevision": "75829192a35bfd3d7702b584f9b04cff0df5474a",
+        "artifactDigest": "685e31c2b743a18483bd9cdc80e7848bf927588f73a7661a15597a91572b7c06"
       },
       "visual": {
-        "sourceRevision": "7f389bdd8e5dfd5d3462c08e4d71f4a93afe1d80",
-        "artifactDigest": "bc7e1e3f45b7c7dd8f3c761ad070cde42cbe0b050298c8f098ec1715e94da081"
+        "sourceRevision": "75829192a35bfd3d7702b584f9b04cff0df5474a",
+        "artifactDigest": "685e31c2b743a18483bd9cdc80e7848bf927588f73a7661a15597a91572b7c06"
       },
       "performance": {
-        "sourceRevision": "7f389bdd8e5dfd5d3462c08e4d71f4a93afe1d80",
-        "artifactDigest": "bc7e1e3f45b7c7dd8f3c761ad070cde42cbe0b050298c8f098ec1715e94da081"
+        "sourceRevision": "75829192a35bfd3d7702b584f9b04cff0df5474a",
+        "artifactDigest": "685e31c2b743a18483bd9cdc80e7848bf927588f73a7661a15597a91572b7c06"
       }
     },
     "checks": [
@@ -2318,17 +2671,17 @@
       "lifecycle-authority-unverified"
     ],
     "backendAuthority": {
-      "sourceRevision": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",
-      "verifiedAt": "2026-11-17T07:27:51.320Z",
+      "sourceRevision": "7f389bdd8e5dfd5d3462c08e4d71f4a93afe1d80",
+      "verifiedAt": "2026-11-19T05:09:34.060Z",
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "cf0cb70f6b44217489569e70a3a021bc2a8168a31c79419c04fec809048c66e8",
-      "productionSha256": "374e13d4a849651adf37462ed3c3c5e0bf453ffa47581a247c149f8efa787657",
-      "visualSha256": "b2c93011bdd7d50d6d9dbd8a180dd0d86f2df9691db5816b55bebd3421c9cee7",
-      "performanceSha256": "338cc8c4295459b31340d30d545f9b36570dd82b256f66d847e185603556fabf"
+      "stagingSha256": "7b007611a9bc6f9f53c45355e9363854776abb8d460351a2d42cc2f11cf7155b",
+      "productionSha256": "70c05811cd5d6b235e44d2058ae8fc91fe06ed3e6563a79e7bae8bc565734cd7",
+      "visualSha256": "6650196af2dec9f24a15cc07f3a6c1974be1517284349b41ddbbfa878872158f",
+      "performanceSha256": "7dd5e071dabd0692f12367395b945da13279e827f8bc220ec1bf1d31c89dba27"
     },
-    "receiptSha256": "a1e477d76fd8251fa6dcd303830bdaf5e3ab08727282e64c52ad85066001ecec"
+    "receiptSha256": "9cd27e50ca4e6eb66d8ebe26624f65f64b5ade9778f62a6b842ed7d947d73505"
   },
   "launchReady": false,
   "sil": {
@@ -2360,7 +2713,7 @@
   "sessionState": {
     "version": 1,
     "durableSession": 132,
-    "currentFocus": "S132 released at 7f389bdd: career stakes, scouted rival drafts, in-game feedback, faster first week, new site pages and a minified build on the matching frontend and API.",
+    "currentFocus": "S132 second release at 75829192: GM Profile, a scored weekly challenge, a grouped Desk, game-plan dials, bundled fonts and the security remainder on the matching frontend and API.",
     "nextMilestone": "GM Profile, scored weekly challenge, Desk consolidation, visual upgrade and the security remainder.",
     "lastSessionSummary": "S132 audited toward public beta and released 13 of 20 items at 7f389bdd: owner can dismiss the GM, rivals draft through scouting fog, in-game feedback, a shorter first week, three site pages and a minified build. Hosted CI 7/7, staging 14/14, production 10/10 and matching API verified."
   },

@@ -61,7 +61,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE WE LEFT OFF  ·  Session 132 ═══════════════════════════╗
-║  Shipped:  S132 released at 7f389bdd: career stakes, scouted ri  ║
+║  Shipped:  S132 second release at 75829192: GM Profile, a score  ║
 ║  Tests: Unverified for this session                              ║
 ║  Deploy: Frontend/API 67ab750b matched; staging/production14/14  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -89,7 +89,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⛔  Doctor        11/12 (92%)  ·  1 failing                      ║
+║  ✓  Doctor        12/12 (100%)  ·  2026-11-20  ✓                 ║
 ║  ✓  Cost          Max flat-rate · $0.22/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
