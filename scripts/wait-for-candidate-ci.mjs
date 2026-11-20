@@ -3,9 +3,13 @@ import {pathToFileURL} from 'node:url';
 import {releaseCandidateVerdict} from './lib/release-candidate.mjs';
 
 const workflow='.github/workflows/ci.yml';
+export const BROWSER_SHARDS=Object.freeze([1,2,3,4]);
 export const REQUIRED_CI_JOBS=Object.freeze(Object.fromEntries([
   ...['core','runtime','sim:contract','sim:realism','long','studio'].map(shard=>[`unit-shards (${shard})`,`Run ${shard} shard`]),
-  ['browser-gates','Run UI tests']
+  // The browser suite runs as four Playwright shards; each must have run its
+  // own test step, and the aggregate job must have accepted all four.
+  ...BROWSER_SHARDS.map(shard=>[`browser-shards (${shard})`,'Run UI tests']),
+  ['browser-gates','Require every browser shard']
 ]));
 const pending=new Set(['queued','in_progress','waiting','pending','requested']);
 function invalid(message){throw new Error(`Candidate CI unverified: ${message}`);}
@@ -60,7 +64,7 @@ export async function waitForCandidateCi({repository,sha,maxWaitMs=90*60000,poll
         if(refreshed?.status==='completed'&&refreshed.conclusion!=='success')invalid(`run ${refreshed.id} attempt ${refreshed.run_attempt} did not succeed`);
         if(refreshed?.id===run.id&&refreshed.run_attempt===run.run_attempt&&refreshed.status==='completed'&&refreshed.conclusion==='success'&&now()<deadline){
           const report={ok:true,sha,runId:run.id,attempt:run.run_attempt,requiredJobs:Object.keys(REQUIRED_CI_JOBS),lane:verdict.lane};
-          log(`Exact candidate CI passed: ${sha} run ${run.id} attempt ${run.run_attempt}; seven required jobs verified.`);return report;
+          log(`Exact candidate CI passed: ${sha} run ${run.id} attempt ${run.run_attempt}; ${report.requiredJobs.length} required jobs verified.`);return report;
         }
       }
     }

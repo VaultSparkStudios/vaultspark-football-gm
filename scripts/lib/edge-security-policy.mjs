@@ -5,8 +5,35 @@ import { createHash } from "node:crypto";
 const INLINE_EVENT_HANDLER = /\son[a-z]+\s*=/i;
 const JAVASCRIPT_URL = /(?:href|src)\s*=\s*["']\s*javascript:/i;
 
-// Replay the generated artifact's path rules in local browser evidence. This
-// supports the literal paths and * globs emitted below, not a second policy.
+// Production and staging serve the SAME artifact, so staging cannot be kept out
+// of search results by building it differently. Cloudflare Pages `_headers`
+// rules may be keyed by an absolute https URL (host and path), and a `:name`
+// placeholder in the host matches one label. These hosts get
+// `X-Robots-Tag: noindex`; every other host -- production -- gets no such rule.
+// The names mirror STAGING_DOMAIN / STAGING_PROJECT in scripts/deploy-staging.mjs
+// (a test holds the two together).
+export const NOINDEX_HOSTS = Object.freeze([
+  "staging.playfranchisearchitect.com",
+  "franchise-architect-staging.pages.dev",
+  ":version.franchise-architect-staging.pages.dev"
+]);
+
+function patternFor(text, placeholder) {
+  return text.split("*").map((part) => part
+    .split(/(:[A-Za-z]\w*)/)
+    .map((piece) => (placeholder && /^:[A-Za-z]\w*$/.test(piece) ? placeholder : piece.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")))
+    .join("")).join(".*");
+}
+
+export function hostMatchesNoindexRule(host, hosts = NOINDEX_HOSTS) {
+  const name = String(host || "").toLowerCase().replace(/:\d+$/, "");
+  return hosts.some((entry) => new RegExp(`^${patternFor(entry, "[^./]+")}$`).test(name));
+}
+
+// Replay the generated artifact's rules in local browser evidence. This
+// supports the literal paths, * globs and absolute https URL rules emitted
+// below, not a second policy. A host-scoped rule applies only when the caller
+// names a matching host; a replay that names none sees what production serves.
 export function parseArtifactHeaderRules(contents) {
   const rules = [];
   let current;
@@ -14,9 +41,17 @@ export function parseArtifactHeaderRules(contents) {
     if (!line.trim() || line.trimStart().startsWith("#")) continue;
     if (!/^\s/.test(line)) {
       const route = line.trim();
-      if (!route.startsWith("/")) throw new Error(`Unsupported artifact header route: ${route}`);
-      const escaped = route.split("*").map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join(".*");
-      current = { route, pattern: new RegExp(`^${escaped}$`), headers: {} };
+      // Cloudflare: absolute URLs must begin with https and may not name a port.
+      const absolute = /:\d/.test(route) ? null : route.match(/^https:\/\/([^/*]+)(\/.*)$/);
+      if (!route.startsWith("/") && !absolute) throw new Error(`Unsupported artifact header route: ${route}`);
+      const pathRoute = absolute ? absolute[2] : route;
+      current = {
+        route,
+        host: absolute ? absolute[1] : null,
+        hostPattern: absolute ? new RegExp(`^${patternFor(absolute[1], "[^./]+")}$`) : null,
+        pattern: new RegExp(`^${patternFor(pathRoute, null)}$`),
+        headers: {}
+      };
       rules.push(current);
       continue;
     }
@@ -30,9 +65,11 @@ export function parseArtifactHeaderRules(contents) {
   return rules;
 }
 
-export function resolveArtifactHeaders(rules, pathname) {
+export function resolveArtifactHeaders(rules, pathname, { host = null } = {}) {
   const headers = {};
+  const name = host ? String(host).toLowerCase().replace(/:\d+$/, "") : null;
   for (const rule of rules) {
+    if (rule.hostPattern && !(name && rule.hostPattern.test(name))) continue;
     if (rule.pattern.test(pathname)) Object.assign(headers, rule.headers);
   }
   return headers;
@@ -231,7 +268,12 @@ export function buildEdgeHeaders({ inlineScriptHashes = [], inlineStyleHashes = 
     "",
     "/community-stats.*.js",
     "  Cache-Control: public, max-age=31536000, immutable",
-    ""
+    "",
+    // Staging is the same bytes as production on a different host, so it is a
+    // duplicate of the whole site. Host-keyed rules keep it out of search
+    // results without a second build. No path-only rule may carry this header:
+    // a path-only rule would also apply to production.
+    ...NOINDEX_HOSTS.flatMap((host) => [`https://${host}/*`, "  X-Robots-Tag: noindex", ""])
   ].join("\n");
 }
 
@@ -275,6 +317,9 @@ export async function emitEdgeSecurityPolicy({
       "permissions-policy"
     ],
     edgeInjectedOrigins: EDGE_INJECTED_ORIGINS.map((entry) => ({ ...entry })),
+    // Hosts whose responses must carry X-Robots-Tag: noindex. Every other host
+    // (production) must not. Verified live by verify-edge-policy-application.
+    noindexHosts: [...NOINDEX_HOSTS],
     mountsInheritFromArtifact: true,
     observationNote: "This receipt proves the deployable artifact policy only. Hosted application requires live response-header evidence, including that the served policy admits every origin the served document requests."
   };

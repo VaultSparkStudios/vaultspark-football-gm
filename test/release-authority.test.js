@@ -29,6 +29,11 @@ function assertCompletePagesPublicationChain(source) {
   const rawNeeds = publish.match(/^ {4}needs:\s*\[([^\]]+)\]$/m)?.[1];
   const needs = rawNeeds?.split(",").map((value) => value.trim()) || [];
   assert.ok(needs.includes("build") && needs.includes("responsive-capture"), "publication needs both the built candidate and all responsive jobs");
+  // The browser suite left the build job to run as four shards of its own job.
+  const browser = workflowJob(source, "browser-release-gate");
+  assert.match(browser, /^ {4}needs: build$/m, "browser shards use the gated built candidate");
+  assert.match(browser, /npm run test:ui -- --shard=\$\{\{ matrix\.shard \}\}\/4/, "the browser job runs the real suite");
+  assert.ok(needs.includes("browser-release-gate"), "publication needs every browser shard");
   const aggregate = publish.indexOf("node scripts/aggregate-responsive-evidence.mjs");
   assert.ok(aggregate >= 0, "publication executes the complete responsive aggregate gate");
   for (const mutation of ["- name: Upload Pages artifact", "- name: Publish to Cloudflare Pages"]) {
@@ -115,7 +120,9 @@ test("Pages production publication is explicit and bound to exact stable-staging
 test("Pages publication-chain guard rejects bypassed capture, aggregation and final deployment dependencies", () => {
   const workflow = readFileSync(new URL("../.github/workflows/deploy-pages.yml", import.meta.url), "utf8").replace(/\r\n/g, "\n");
   for (const bypass of [
-    workflow.replace("needs: [build, responsive-capture]", "needs: build"),
+    workflow.replace("needs: [build, browser-release-gate, responsive-capture]", "needs: build"),
+    workflow.replace("needs: [build, browser-release-gate, responsive-capture]", "needs: [build, responsive-capture]"),
+    workflow.replace("run: npm run test:ui -- --shard=${{ matrix.shard }}/4", "run: echo skipped"),
     workflow.replace("node scripts/aggregate-responsive-evidence.mjs", "node scripts/not-the-aggregate-gate.mjs"),
     workflow.replace("  deploy:\n    needs: publish", "  deploy:\n    needs: build")
   ]) assert.throws(() => assertCompletePagesPublicationChain(bypass));

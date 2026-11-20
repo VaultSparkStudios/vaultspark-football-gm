@@ -6,7 +6,7 @@ import path from "node:path";
 import { CommunityStore, hashParticipant } from "../src/community/communityStore.js";
 
 class FakePool {
-  constructor() { this.rows = []; this.feedback = []; this.diagnostics = []; this.schemaSql = ""; }
+  constructor() { this.rows = []; this.feedback = []; this.diagnostics = []; this.challenge_scores = []; this.schemaSql = ""; }
 
   async query(sql, params = []) {
     if (/CREATE SCHEMA/.test(sql)) { this.schemaSql = sql; return {}; }
@@ -35,7 +35,13 @@ class FakePool {
       this.diagnostics = this.diagnostics.filter((r) => r.participant_hash !== participantHash);
       return { rowCount: before - this.diagnostics.length };
     }
-    const sweep = /DELETE FROM community_stats\.(feedback|diagnostics) WHERE received_at < now\(\) - \(\$1::int \* interval '1 day'\)/.exec(sql);
+    if (/DELETE FROM community_stats\.challenge_scores WHERE participant_hash=\$1/.test(sql)) {
+      const [participantHash] = params;
+      const before = this.challenge_scores.length;
+      this.challenge_scores = this.challenge_scores.filter((r) => r.participant_hash !== participantHash);
+      return { rowCount: before - this.challenge_scores.length };
+    }
+    const sweep = /DELETE FROM community_stats\.(feedback|diagnostics|challenge_scores) WHERE received_at < now\(\) - \(\$1::int \* interval '1 day'\)/.exec(sql);
     if (sweep) {
       const [days] = params;
       assert.ok(Number.isInteger(days) && days > 0, "retention days must be bound as a positive integer");
@@ -221,7 +227,7 @@ test("health reports ok after initialize succeeds", async () => {
   const health = await store.health();
   assert.equal(health.ok, true);
   assert.equal(health.database, "ready");
-  assert.equal(health.schemaVersion, 2);
+  assert.equal(health.schemaVersion, 3);
 });
 
 test("schema setup only ever adds: the new tables are created if missing and nothing existing is altered or dropped", async () => {
@@ -231,6 +237,8 @@ test("schema setup only ever adds: the new tables are created if missing and not
   assert.match(pool.schemaSql, /CREATE TABLE IF NOT EXISTS community_stats\.feedback/);
   assert.match(pool.schemaSql, /CREATE TABLE IF NOT EXISTS community_stats\.diagnostics/);
   assert.match(pool.schemaSql, /schema_migrations\(version\) VALUES \(2\) ON CONFLICT DO NOTHING/);
+  assert.match(pool.schemaSql, /CREATE TABLE IF NOT EXISTS community_stats\.challenge_scores/);
+  assert.match(pool.schemaSql, /schema_migrations\(version\) VALUES \(3\) ON CONFLICT DO NOTHING/);
   assert.doesNotMatch(pool.schemaSql, /\b(DROP|ALTER|TRUNCATE)\b/i);
   for (const statement of pool.schemaSql.split(";").map((part) => part.replace(/--.*$/gm, "").trim()).filter((part) => /^CREATE/.test(part))) {
     assert.match(statement, /^CREATE (SCHEMA|TABLE|INDEX) IF NOT EXISTS /, `must be safe to repeat on a live database: ${statement.slice(0, 60)}`);

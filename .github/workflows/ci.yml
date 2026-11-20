@@ -30,9 +30,18 @@ jobs:
       - name: Run ${{ matrix.shard }} shard
         run: npm run test:${{ matrix.shard }}
 
-  browser-gates:
+  # The browser suite runs with one Playwright worker because the dev server
+  # holds a single global game session, so one job ran every spec in sequence
+  # (about 1.7 hours). Four jobs each start their own server and run a quarter
+  # of the specs; every spec still runs exactly once and the worker count is
+  # unchanged. `browser-gates` below is the single name that requires them all.
+  browser-shards:
     runs-on: ubuntu-latest
-    timeout-minutes: 205
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
     env:
       PLAYWRIGHT_CHANNEL: chrome
 
@@ -66,6 +75,21 @@ jobs:
 
       - name: Run UI tests
         # The complete single-worker suite exceeded one hour on the S118 host.
-        # Preserve every case and leave a finite three-hour execution budget.
-        timeout-minutes: 180
-        run: npm run test:ui
+        # Each quarter keeps a finite budget well above its expected ~25-30 min.
+        timeout-minutes: 75
+        run: npm run test:ui -- --shard=${{ matrix.shard }}/4
+
+  # Keeps the job name the release contract waits on. It runs even when a shard
+  # failed or was cancelled, and succeeds only if all four shards succeeded.
+  browser-gates:
+    needs: browser-shards
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require every browser shard
+        env:
+          BROWSER_SHARDS_RESULT: ${{ needs.browser-shards.result }}
+        run: |
+          echo "browser-shards: $BROWSER_SHARDS_RESULT"
+          test "$BROWSER_SHARDS_RESULT" = "success"

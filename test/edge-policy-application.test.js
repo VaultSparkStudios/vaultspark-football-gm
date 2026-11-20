@@ -86,3 +86,44 @@ test("source-green policy never fabricates a hosted application receipt", () => 
   assert.deepEqual(report.missingInlineScriptHashes, [hash]);
   assert.equal(report.owningHostApplicationPayload.status, "HOLD");
 });
+
+// ── Search indexing: staging must be noindex, production must not be ─────────
+
+function indexingReport(origin, extraHeaders = {}, noindexHosts = ["staging.playfranchisearchitect.com", ":version.franchise-architect-staging.pages.dev"]) {
+  return buildEdgePolicyAttestation({
+    origin,
+    receipt: { ...receipt, ...(noindexHosts ? { noindexHosts } : {}) },
+    headers: { ...greenHeaders(), ...extraHeaders },
+    health: { status: "ok", launchReady: false, sourceRevision: "abc123" },
+    deployManifest: { sourceRevision: "abc123" },
+    deliveredHtml: '<!doctype html><html><head><script type="module" src="./app.js"></script></head><body></body></html>',
+    checkedAt: "2026-11-19T00:00:00.000Z"
+  });
+}
+
+test("a staging origin is APPLIED only when it answers X-Robots-Tag: noindex", () => {
+  const missing = indexingReport("https://staging.playfranchisearchitect.com/");
+  assert.equal(missing.status, "HOLD", "a staging host that can be indexed is a duplicate of the site");
+  assert.deepEqual(missing.missingHeaders, [], "every security header is present; only indexing holds it");
+  assert.equal(missing.indexing.noindexExpected, true);
+  assert.equal(missing.indexing.ok, false);
+  assert.equal(indexingReport("https://staging.playfranchisearchitect.com/", { "x-robots-tag": "noindex" }).status, "APPLIED");
+  assert.equal(indexingReport("https://a1b2c3d4.franchise-architect-staging.pages.dev/", { "X-Robots-Tag": "nosnippet, noindex" }).status, "APPLIED");
+});
+
+test("a production origin that answers noindex is HOLD, and an indexable one is APPLIED", () => {
+  const wrong = indexingReport("https://playfranchisearchitect.com/", { "x-robots-tag": "noindex" });
+  assert.equal(wrong.status, "HOLD", "noindex on production removes the real site from search");
+  assert.equal(wrong.indexing.noindexExpected, false);
+  assert.equal(wrong.indexing.ok, false);
+  const right = indexingReport("https://playfranchisearchitect.com/");
+  assert.equal(right.status, "APPLIED");
+  assert.equal(right.indexing.ok, true);
+  assert.equal(indexingReport("https://playfranchisearchitect.com/", { "x-robots-tag": "nosnippet" }).status, "APPLIED");
+});
+
+test("a receipt written before the indexing rule is not judged on it", () => {
+  const report = indexingReport("https://staging.playfranchisearchitect.com/", {}, null);
+  assert.equal(report.status, "APPLIED");
+  assert.equal(report.indexing.declared, false);
+});

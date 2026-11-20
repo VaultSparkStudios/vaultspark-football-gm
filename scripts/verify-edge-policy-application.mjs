@@ -2,7 +2,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { auditDeliveredDocument } from "./lib/edge-security-policy.mjs";
+import { auditDeliveredDocument, hostMatchesNoindexRule } from "./lib/edge-security-policy.mjs";
 
 const HEADER_NAMES = Object.freeze([
   "strict-transport-security",
@@ -58,7 +58,25 @@ export function buildEdgePolicyAttestation({
     ? auditDeliveredDocument(deliveredHtml, csp)
     : { ok: true, violations: [], note: "No delivered document supplied; document/policy agreement is UNPROVED." };
   const deliveredDocumentProved = typeof deliveredHtml === "string";
+  // Staging serves production's exact artifact, so only a host-keyed rule keeps
+  // it out of search results. Both directions matter: a staging host without
+  // noindex is a duplicate site, and a production host WITH it would remove the
+  // real site from search. A receipt that predates the rule declares no hosts
+  // and is not judged on it.
+  const noindexHosts = Array.isArray(receipt.noindexHosts) ? receipt.noindexHosts : null;
+  let originHost = null;
+  try { originHost = new URL(origin).hostname; } catch { originHost = null; }
+  const noindexExpected = noindexHosts ? hostMatchesNoindexRule(originHost, noindexHosts) : null;
+  const noindexObserved = /(?:^|[\s,])noindex(?:$|[\s,])/i.test(observed["x-robots-tag"] || "");
+  const indexing = {
+    declared: Boolean(noindexHosts),
+    host: originHost,
+    noindexExpected,
+    noindexObserved,
+    ok: noindexHosts ? noindexExpected === noindexObserved : true
+  };
   const applied = headerChecks.every((check) => check.ok)
+    && indexing.ok
     && missingInlineScriptHashes.length === 0
     && revisionMatches
     && healthValid
@@ -83,6 +101,7 @@ export function buildEdgePolicyAttestation({
     deliveredDocumentOk: deliveredDocument.ok,
     deliveredDocumentViolations: deliveredDocument.violations,
     deliveredDocumentNote: deliveredDocument.note,
+    indexing,
     observabilityNote: applied
       ? "The live origin independently proves this exact revision's required edge contract."
       : "The source artifact may be green, but live application is not proved and remains HOLD."
@@ -167,6 +186,7 @@ async function main(argv = process.argv.slice(2)) {
     console.log(`  revision: ${report.deployedRevision || "unproved"} (${report.revisionMatches ? "matches" : "not bound"})`);
     console.log(`  missing headers: ${report.missingHeaders.join(", ") || "none"}`);
     console.log(`  missing inline hashes: ${report.missingInlineScriptHashes.length}`);
+    console.log(`  search indexing: ${!report.indexing.declared ? "not declared by this receipt" : `${report.indexing.noindexObserved ? "noindex" : "indexable"} (${report.indexing.ok ? "as expected" : `EXPECTED ${report.indexing.noindexExpected ? "noindex" : "indexable"}`})`}`);
     console.log(`  delivered document: ${report.deliveredDocumentOk ? "admitted" : "REFUSED"} (${report.deliveredDocumentViolations.length} violation(s))`);
     for (const violation of report.deliveredDocumentViolations) {
       console.log(`    ✗ ${violation.directive} refuses ${violation.origin} — requested by ${violation.reference}`);

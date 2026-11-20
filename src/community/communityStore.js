@@ -5,11 +5,14 @@ import pg from "pg";
 import { aggregateCommunitySnapshot } from "./aggregateCommunitySnapshot.js";
 import { COMMUNITY_RAW_RETENTION_DAYS } from "./eventContract.js";
 import { diagnosticSignatureSource } from "./feedbackContract.js";
+import { CHALLENGE_BOARD_MIN_GMS, summarizeChallengeBoard, weeklyObjective } from "./challengeContract.js";
 
 const { Pool } = pg;
 const MAX_SNAPSHOT_ROWS = 500_000;
+const MAX_BOARD_ROWS = 200_000;
 const FEEDBACK_DAILY_CEILING = 2000;
 const DIAGNOSTICS_DAILY_PER_PARTICIPANT = 40;
+const RETENTION_INTERVAL_MS = 6 * 60 * 60 * 1000;
 
 async function loadPepper(filePath) {
   try { return (await fs.readFile(filePath, "utf8")).trim(); } catch (error) {
@@ -28,9 +31,21 @@ export function hashParticipant(participantId, pepper) {
 }
 
 export class CommunityStore {
-  constructor({ databaseUrl, keyPath = path.resolve("data/community-stats/pepper"), clock = () => new Date(), pool = null } = {}) {
+  constructor({ databaseUrl, keyPath = path.resolve("data/community-stats/pepper"), clock = () => new Date(), pool = null, logger = console } = {}) {
     if (!pool && !databaseUrl) throw new Error("DATABASE_URL is required for Community Stats.");
     this.pool = pool || new Pool({ connectionString: databaseUrl, max: 6, idleTimeoutMillis: 30_000, connectionTimeoutMillis: 5_000 });
+    this.logger = logger;
+    this.retentionTimer = null;
+    this.cleanupInFlight = null;
+    // pg emits "error" on the pool when an idle client's connection drops (for
+    // example a database restart). With no listener that is an uncaught
+    // exception and the process exits; the pool already discards the client,
+    // so logging is all that is needed. Only the error code is logged.
+    if (typeof this.pool.on === "function") {
+      this.pool.on("error", (error) => {
+        this.logger?.error?.(`Community Stats database pool error (idle client dropped): ${String(error?.code || error?.name || "unknown")}`);
+      });
+    }
     this.keyPath = keyPath;
     this.clock = clock;
     this.pepper = null;
@@ -38,6 +53,7 @@ export class CommunityStore {
     this.cacheAt = 0;
     this.ready = null;
     this.lastCleanupAt = 0;
+    this.boardCache = new Map();
   }
 
   async initialize() {
@@ -90,6 +106,18 @@ export class CommunityStore {
         );
         CREATE INDEX IF NOT EXISTS community_diagnostics_received_idx ON community_stats.diagnostics (received_at DESC);
         INSERT INTO community_stats.schema_migrations(version) VALUES (2) ON CONFLICT DO NOTHING;
+        -- Version 3: one weekly challenge score per anonymous browser code per
+        -- week. Additive and repeatable, like version 2.
+        CREATE TABLE IF NOT EXISTS community_stats.challenge_scores (
+          participant_hash char(64) NOT NULL,
+          week_key varchar(8) NOT NULL,
+          objective varchar(24) NOT NULL,
+          score integer NOT NULL,
+          received_at timestamptz NOT NULL DEFAULT now(),
+          PRIMARY KEY (participant_hash, week_key)
+        );
+        CREATE INDEX IF NOT EXISTS community_challenge_scores_week_idx ON community_stats.challenge_scores (week_key);
+        INSERT INTO community_stats.schema_migrations(version) VALUES (3) ON CONFLICT DO NOTHING;
       `);
       return true;
     })().catch((error) => { this.ready = null; throw error; });
@@ -132,8 +160,53 @@ export class CommunityStore {
     const result = await this.pool.query("DELETE FROM community_stats.receipts WHERE participant_hash=$1", [participantHash]);
     // Error reports are tied to the same anonymous code, so they go too.
     const reports = await this.pool.query("DELETE FROM community_stats.diagnostics WHERE participant_hash=$1", [participantHash]);
+    // So do its weekly challenge scores.
+    const scores = await this.pool.query("DELETE FROM community_stats.challenge_scores WHERE participant_hash=$1", [participantHash]);
     this.cacheAt = 0;
-    return { deleted: (result.rowCount || 0) + (reports.rowCount || 0) };
+    // Read the scores again on the next request. A board still moves only in steps of five browsers.
+    for (const entry of this.boardCache.values()) entry.at = 0;
+    return { deleted: (result.rowCount || 0) + (reports.rowCount || 0) + (scores.rowCount || 0) };
+  }
+
+  /**
+   * Keeps one weekly challenge score per browser code per week: the best one.
+   * The entry has already been checked against the shared contract, so only
+   * its week, goal and score are stored.
+   */
+  async saveChallengeScore(participantId, entry) {
+    await this.initialize();
+    const result = await this.pool.query(
+      "INSERT INTO community_stats.challenge_scores(participant_hash,week_key,objective,score) VALUES($1,$2,$3,$4) ON CONFLICT (participant_hash,week_key) DO UPDATE SET score=GREATEST(community_stats.challenge_scores.score, EXCLUDED.score) RETURNING score",
+      [this.digest(participantId), entry.week, entry.objective, entry.score]
+    );
+    // Read the scores again on the next request; see challengeBoard() for when the board itself moves.
+    const cachedBoard = this.boardCache.get(entry.week);
+    if (cachedBoard) cachedBoard.at = 0;
+    await this.cleanupIfDue();
+    return { accepted: 1, best: Number(result.rows?.[0]?.score ?? entry.score) };
+  }
+
+  /** The shared board for one week. Scores only; no browser code is read. */
+  async challengeBoard(weekKey) {
+    await this.initialize();
+    const now = this.clock().getTime();
+    const cached = this.boardCache.get(weekKey);
+    if (cached && now - cached.at < 60_000) return cached.board;
+    const result = await this.pool.query(
+      "SELECT score FROM community_stats.challenge_scores WHERE week_key=$1 AND objective=$2 LIMIT $3",
+      [weekKey, weeklyObjective(weekKey)?.id ?? "", MAX_BOARD_ROWS]
+    );
+    const scores = result.rows.map((row) => Number(row.score));
+    // A published board changes only once five more (or five fewer) browsers
+    // are counted than when it was last published. Comparing two reads then
+    // never shows what a single browser added or removed.
+    const previous = cached?.published;
+    const published = previous && previous.count >= CHALLENGE_BOARD_MIN_GMS && scores.length >= CHALLENGE_BOARD_MIN_GMS && Math.abs(scores.length - previous.count) < CHALLENGE_BOARD_MIN_GMS
+      ? previous
+      : { count: scores.length, board: summarizeChallengeBoard(weekKey, scores) };
+    if (this.boardCache.size > 16 && !this.boardCache.has(weekKey)) this.boardCache.clear();
+    this.boardCache.set(weekKey, { at: now, board: published.board, published });
+    return published.board;
   }
 
   /**
@@ -180,9 +253,40 @@ export class CommunityStore {
     return { accepted, duplicates };
   }
 
-  async cleanupIfDue() {
+  /**
+   * Starts the periodic retention pass. Writes still trigger cleanupIfDue(),
+   * but a service nobody writes to must delete old rows too. The timer is
+   * unref'd so it never keeps the process alive, starting twice is a no-op,
+   * and a failed pass is logged and retried on the next tick.
+   */
+  startRetentionTimer({ intervalMs = RETENTION_INTERVAL_MS, setIntervalFn = setInterval } = {}) {
+    if (this.retentionTimer) return this.retentionTimer;
+    this.retentionTimer = setIntervalFn(() => {
+      this.initialize().then(() => this.cleanupIfDue({ force: true })).catch((error) => {
+        this.logger?.error?.(`Community Stats retention pass failed: ${String(error?.code || error?.name || "unknown")}`);
+      });
+    }, intervalMs);
+    this.retentionTimer?.unref?.();
+    return this.retentionTimer;
+  }
+
+  stopRetentionTimer({ clearIntervalFn = clearInterval } = {}) {
+    if (!this.retentionTimer) return;
+    clearIntervalFn(this.retentionTimer);
+    this.retentionTimer = null;
+  }
+
+  // One pass at a time: a timer tick and a write (or two writes) that arrive
+  // together share the pass already running instead of starting another.
+  async cleanupIfDue({ force = false } = {}) {
+    if (this.cleanupInFlight) return this.cleanupInFlight;
+    if (!force && this.clock().getTime() - this.lastCleanupAt < RETENTION_INTERVAL_MS) return;
+    this.cleanupInFlight = this.runCleanup().finally(() => { this.cleanupInFlight = null; });
+    return this.cleanupInFlight;
+  }
+
+  async runCleanup() {
     const now = this.clock().getTime();
-    if (now - this.lastCleanupAt < 6 * 60 * 60 * 1000) return;
     await this.pool.query(
       "DELETE FROM community_stats.receipts WHERE received_at < now() - ($1::int * interval '1 day')",
       [COMMUNITY_RAW_RETENTION_DAYS]
@@ -194,6 +298,10 @@ export class CommunityStore {
     );
     await this.pool.query(
       "DELETE FROM community_stats.diagnostics WHERE received_at < now() - ($1::int * interval '1 day')",
+      [COMMUNITY_RAW_RETENTION_DAYS]
+    );
+    await this.pool.query(
+      "DELETE FROM community_stats.challenge_scores WHERE received_at < now() - ($1::int * interval '1 day')",
       [COMMUNITY_RAW_RETENTION_DAYS]
     );
     this.lastCleanupAt = now;
@@ -217,8 +325,8 @@ export class CommunityStore {
     const started = this.clock().getTime();
     await this.initialize();
     await this.pool.query("SELECT 1");
-    return { ok: true, database: "ready", latencyMs: Math.max(0, this.clock().getTime() - started), schemaVersion: 2 };
+    return { ok: true, database: "ready", latencyMs: Math.max(0, this.clock().getTime() - started), schemaVersion: 3 };
   }
 
-  async close() { await this.pool.end(); }
+  async close() { this.stopRetentionTimer(); await this.pool.end(); }
 }

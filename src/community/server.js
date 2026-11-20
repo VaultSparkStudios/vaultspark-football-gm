@@ -1,10 +1,12 @@
 import http from "node:http";
+import { isIP } from "node:net";
 import { createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 import { pathToFileURL } from "node:url";
 import { CommunityStore } from "./communityStore.js";
 import { aggregateCommunitySnapshot } from "./aggregateCommunitySnapshot.js";
 import { COMMUNITY_BATCH_LIMIT, normalizeCommunityEvent } from "./eventContract.js";
 import { DIAGNOSTIC_BATCH_LIMIT, normalizeDiagnosticReport, normalizeFeedback } from "./feedbackContract.js";
+import { isChallengeWeekKey, normalizeChallengeScore, openChallengeWeeks } from "./challengeContract.js";
 
 const PORT = Number(process.env.PORT || 8082);
 const MAX_BODY_BYTES = 32 * 1024;
@@ -22,6 +24,7 @@ const FEEDBACK_LIMIT_PER_HOUR = 5;
 const FEEDBACK_CAPABILITY_LIMIT_PER_HOUR = 10;
 const FEEDBACK_CAPABILITY_USES = 2;
 const DIAGNOSTICS_LIMIT_PER_HOUR = 30;
+const CHALLENGE_SCORE_LIMIT_PER_HOUR = 20;
 
 export function runtimeSourceRevision(value = process.env.SOURCE_REVISION) {
   const revision = String(value || "").trim();
@@ -99,12 +102,38 @@ function trustedRequestAddress(req, env = process.env) {
 }
 
 /**
+ * Groups an address for rate limiting. One IPv6 subscriber is normally handed
+ * a whole /64, so counting each of its addresses separately would let a single
+ * connection mint unlimited keys; every address in a /64 therefore shares one
+ * group. IPv4 addresses (including IPv4-mapped IPv6) are counted individually,
+ * and anything that is not an address is passed through unchanged.
+ */
+export function rateLimitAddressGroup(value) {
+  const raw = String(value || "").trim().toLowerCase().replace(/^\[|\]$/g, "").replace(/%.*$/, "");
+  const mapped = /^(?:::ffff:|0{1,4}(?::0{1,4}){4}:ffff:)(\d{1,3}(?:\.\d{1,3}){3})$/.exec(raw);
+  if (mapped && isIP(mapped[1]) === 4) return mapped[1];
+  if (isIP(raw) !== 6) return raw;
+  let text = raw;
+  const dotted = /^(.*:)(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/.exec(text);
+  if (dotted) text = `${dotted[1]}${((Number(dotted[2]) << 8) | Number(dotted[3])).toString(16)}:${((Number(dotted[4]) << 8) | Number(dotted[5])).toString(16)}`;
+  const [head, tail] = text.split("::");
+  const headParts = head ? head.split(":") : [];
+  const tailParts = tail ? tail.split(":") : [];
+  const groups = tail === undefined
+    ? headParts
+    : [...headParts, ...Array(Math.max(0, 8 - headParts.length - tailParts.length)).fill("0"), ...tailParts];
+  return `${groups.slice(0, 4).map((part) => (parseInt(part, 16) || 0).toString(16)).join(":")}::/64`;
+}
+
+/**
  * Produces a process-local, privacy-safe rate-limit key. Raw network addresses
  * exist only long enough to compute this HMAC; they are never stored or logged.
+ * Every limiter in the handler (requests, capabilities, feedback, diagnostics)
+ * keys on this one value, so the IPv6 /64 grouping applies to all of them.
  */
 export function createPrivacySafeAddressKey(signingKey = PROCESS_ADDRESS_KEY, { env = process.env } = {}) {
   const key = Buffer.isBuffer(signingKey) ? signingKey : Buffer.from(String(signingKey));
-  return (req) => createHmac("sha256", key).update(`community-address-v1:${trustedRequestAddress(req, env)}`).digest("base64url");
+  return (req) => createHmac("sha256", key).update(`community-address-v1:${rateLimitAddressGroup(trustedRequestAddress(req, env))}`).digest("base64url");
 }
 
 function capabilityError(message = "Participation capability is invalid, expired, or exhausted.") {
@@ -245,7 +274,9 @@ export function createCommunityStatsHandler({
   addressKey = createPrivacySafeAddressKey(),
   feedbackRateLimit = createMemoryRateLimiter({ limit: FEEDBACK_LIMIT_PER_HOUR, windowMs: HOUR_MS }),
   feedbackCapabilityRateLimit = createMemoryRateLimiter({ limit: FEEDBACK_CAPABILITY_LIMIT_PER_HOUR, windowMs: HOUR_MS }),
-  diagnosticsRateLimit = createMemoryRateLimiter({ limit: DIAGNOSTICS_LIMIT_PER_HOUR, windowMs: HOUR_MS })
+  diagnosticsRateLimit = createMemoryRateLimiter({ limit: DIAGNOSTICS_LIMIT_PER_HOUR, windowMs: HOUR_MS }),
+  challengeScoreRateLimit = createMemoryRateLimiter({ limit: CHALLENGE_SCORE_LIMIT_PER_HOUR, windowMs: HOUR_MS }),
+  challengeClock = () => Date.now()
 } = {}) {
   if (!store) throw new Error("Community Stats handler requires a store.");
   return async function handler(req, res) {
@@ -345,6 +376,30 @@ export function createCommunityStatsHandler({
         const result = await store.ingest(id, events);
         sendJson(res, 202, { ok: true, ...result, receivedAt: new Date(now).toISOString() }, { "Cache-Control": "no-store" }); return;
       }
+      // Weekly challenge board. A score needs the same sharing capability as
+      // game stats, so only a browser with Community Stats on can post one.
+      if (req.method === "POST" && url.pathname === "/community/v1/challenge/score") {
+        const allowance = challengeScoreRateLimit(privateAddressKey);
+        if (!allowance.ok) { sendJson(res, 429, { ok: false, error: "Challenge score limit reached; try again later." }, { "Retry-After": String(allowance.retryAfter) }); return; }
+        const body = await readJson(req);
+        const id = participantId(body.participantId);
+        if (body.schemaVersion !== "1.0" || !id || !body.entry || typeof body.entry !== "object") {
+          sendJson(res, 400, { ok: false, error: "Expected schemaVersion 1.0, an anonymous browser identifier, and one challenge score." }); return;
+        }
+        capabilities.consume(body.capability, id);
+        const entry = normalizeChallengeScore(body.entry, { now: challengeClock() });
+        if (!entry) { sendJson(res, 400, { ok: false, error: "That score does not fit an open week's challenge goal." }); return; }
+        const result = await store.saveChallengeScore(id, entry);
+        sendJson(res, 202, { ok: true, ...result }, { "Cache-Control": "no-store" }); return;
+      }
+      if (req.method === "GET" && url.pathname === "/community/v1/challenge/board") {
+        const week = url.searchParams.get("week");
+        if (!isChallengeWeekKey(week) || !openChallengeWeeks(challengeClock()).includes(week)) {
+          sendJson(res, 400, { ok: false, error: "Expected an open challenge week such as 2026-W47." }, { "Cache-Control": "no-store" }); return;
+        }
+        const board = await store.challengeBoard(week);
+        sendJson(res, 200, board, { "Cache-Control": "public, max-age=30, s-maxage=60" }); return;
+      }
       if (req.method === "DELETE" && url.pathname === "/community/v1/participation") {
         const body = await readJson(req);
         const id = participantId(body.participantId);
@@ -365,6 +420,9 @@ export function startCommunityStatsServer({ databaseUrl = process.env.DATABASE_U
   const store = new CommunityStore({ databaseUrl, ...(keyPath ? { keyPath } : {}) });
   const server = http.createServer(createCommunityStatsHandler({ store }));
   server.listen(PORT, "0.0.0.0", () => console.log(`Community Stats listening on ${PORT}`));
+  // Retention must not depend on somebody writing: a quiet service still has
+  // to delete rows older than 30 days. store.close() stops the timer.
+  store.startRetentionTimer();
   const close = async () => { server.close(); await store.close(); };
   process.once("SIGTERM", close); process.once("SIGINT", close);
   return { server, store };
