@@ -1,5 +1,18 @@
 # Current State
 
+## 2026-11-19 — Session 132, second release — A GM page, a scored challenge and a game plan that changes the game
+
+The seven items carried from the first Session 132 release are implemented; 19 of the 20 audit items are now shipped or shipped in reduced form, and the launch hold stays with the founder. Release identity is recorded in the paragraph below once the candidate is verified.
+
+- GM Profile is a new tab: career, trophies, legacy tier, share cards, saves and backup health. Settings keeps settings.
+- The weekly challenge states a goal, scores the first season, and offers a share text. With Community Stats on, the score is posted and the game says what share of GMs it beat. The board gives no figures below five browsers and moves in steps of five, so one score cannot be read back from it.
+- The Desk is four collapsible groups (This week, Your club, The league, Your career); player copy uses football words in place of process words.
+- The game plan has tempo, run/pass and risk dials that change the simulated game. Over 7,440 games per position: plays −4.5% to +4.5%, rushes +6.2% to −6.3%, takeaways −7.0% to +6.5%. A staged plan applies to one week only. Golden master adopted as s132-v6 with v5 frozen by hash.
+- Barlow fonts are bundled as WOFF2, each page has its own share image, and the screenshots were retaken.
+- Staging answers noindex; rate limits group IPv6 by /64; retention runs on a timer; save import refuses files over 512 MiB before reading; browser gates run as four shards in CI and in promotion.
+
+Local evidence: studio shard, core 811/811, runtime 1309/1309, 139 browser tests across the edited and affected specs (one timed out while the host was idle and passed on rerun), four new browser specs, boot budget 647,307/730,000, public-truth gate. An independent review found three defects (the board revealed an exact score two ways; a staged plan could land on a later week); all three are fixed with tests. Player response is unmeasured.
+
 ## 2026-11-18 — Session 132 — Stakes, believable rivals and a way to hear from players
 
 A full audit toward public beta ranked 20 items (docs/AUDIT_2026-11-17_SESSION132.json); 13 are shipped or shipped in reduced form and 7 are carried. Released: frontend and API source 7f389bdd8e5dfd5d3462c08e4d71f4a93afe1d80, artifact bc7e1e3f. Hosted CI 7/7 (run 44300045275); staging 14/14 deploy and 10/10 provenance; production promotion run 44301777428 (publish passed on its second attempt after a storage egress-limit error on the first) with 10/10 provenance; API run 44301772817, database ready on schema version 2 with the feedback route answering; hosted performance verified; visual receipt 214 captures reviewed, 0 blocking; release authority verified. The first hosted run on 648e1be4 failed two browser tests, both fixed before this candidate. Technical release only; launch and player outcomes are unmeasured.

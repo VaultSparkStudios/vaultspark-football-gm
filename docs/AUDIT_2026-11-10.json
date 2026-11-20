@@ -625,7 +625,7 @@
       "impact": 8,
       "innovation": 5,
       "priority": 12,
-      "status": "pending",
+      "status": "shipped-reduced",
       "readinessArea": "core journeys and product correctness",
       "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
       "recipe": "Apply one glossary across player-facing strings (receipt, ledger, thesis, committed, evidence, degraded) and extend check-public-truth to client UI strings and stats-surface.json.",
@@ -663,7 +663,13 @@
           "recipe": "Full depth including the optional extensions named in the approved plan."
         }
       },
-      "executionLog": [],
+      "executionLog": [
+        {
+          "at": "2026-11-19T08:00:00.000Z",
+          "status": "shipped-reduced",
+          "note": "Session 132 applied one glossary to player-visible copy in the game and added a vocabulary test that fails on the retired words. About 75 strings sent by the engine still use the old words."
+        }
+      ],
       "rank": 9
     },
     {
@@ -907,7 +913,7 @@
       "impact": 7,
       "innovation": 4,
       "priority": 8.4,
-      "status": "pending",
+      "status": "shipped-reduced",
       "readinessArea": "core journeys and product correctness",
       "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
       "recipe": "Merge five news surfaces, three leader surfaces, three trophy surfaces and three Commissioner panels; relabel same-device multiplayer honestly; hide runtime text from players.",
@@ -942,6 +948,11 @@
           "at": "2026-11-18T07:00:00.000Z",
           "status": "pending",
           "note": "Session 132 relabelled the same-device lobby as a shared-device league, so that premise is retired. The surface merges and the QA-named panel remain open."
+        },
+        {
+          "at": "2026-11-19T08:00:00.000Z",
+          "status": "shipped-reduced",
+          "note": "Session 132 relabelled the shared-device lobby, moved saves, share exports and the trophy case to a GM Profile tab, put the diagnostics table behind the developer switch and grouped the Desk into four sections. News and leader surfaces were not merged."
         }
       ],
       "rank": 15

@@ -107,6 +107,10 @@ Claims are bound to evidence: the before/after games-missed histogram is an engi
 
 Claims are bound to evidence. The draft tables are engine measurements on three seeds with a declared population (all picks by the 31 non-user clubs, rounds 1 to 7, ten classes), taken on clean before and after snapshots, not player measurements. Build sizes are local build output. Shard results are local: studio, core 786/786, runtime 1260/1260; the sim-contract shard timed out after 185 passes and one expected baseline difference and is not claimed as complete. Browser evidence covers the edited and affected specs, not the whole suite. Seven audit items are deferred and say so in the sidecar. Known limits of the career rules and the feedback limits are listed on the task board. Nothing in this paragraph claims a release; the release is recorded in the current state after staging, production and API readback at 7f389bdd.
 
+## 2026-11-19 — Session 132, second release — Committed, release recorded separately
+
+Claims are bound to evidence. The game-plan figures are engine measurements (7,440 games per dial position, declared population: all regular-season games of the measured leagues), not player measurements. Shard results are local: studio, core 811/811, runtime 1309/1309. Browser evidence covers the edited and affected specs (139 tests; one timed out on an idle host and passed on rerun) and four new specs, not the whole suite; the four-shard hosted gate had not run when this was written. The challenge board has never held a real score. The font packages passed a hand review after the trust gate returned REVIEW. The least-privilege database role is prepared and not applied. Email delivery, founder approval and lifecycle authority remain open; no launch is claimed.
+
 <!-- ledger-roll:pointer -->
 ---
 

@@ -157,6 +157,18 @@ Feedback notes are sent only on Send, carry a fixed context and no identifier th
 
 The published mounts stay a declared contract; only the nested copies were removed. Minification is build-time only, with authored sources unchanged. No accounts for beta. The release label does not change until beta launch.
 
+## 2026-11-19 — Session 132, second release — What the challenge board may say
+
+The weekly challenge board publishes a count and enough to place one score, and nothing else: no median, no top-decile figure. It gives no figures below five browsers and republishes only when the count has moved by five, so two reads cannot be differenced to recover one browser's score. A browser posts only with Community Stats on, and posts each week's score once.
+
+A staged weekly game plan applies to the next game only and is cleared after every simulated week, including inside a multi-week advance. The dials are bounded so a plan shifts play counts, run share and takeaways by single-digit percentages; results change for leagues that use them (golden master s132-v6).
+
+GM Profile owns career, trophies, share cards and saves; Settings owns settings. Control ids were kept so saved habits and tests carry over. No accounts: the profile is local to the browser.
+
+Barlow and Barlow Semi Condensed are bundled from the fontsource packages (SIL Open Font License). The package-trust gate returned REVIEW 60/100; registry, source, licence and absence of install scripts were checked by hand before install.
+
+The least-privilege database role is prepared but not applied, because the service still runs its own migrations at start and would lose the rights it needs.
+
 <!-- ledger-roll:pointer -->
 ---
 

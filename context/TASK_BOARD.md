@@ -11,15 +11,22 @@ Session Intent: audit toward public beta, implement the plan in efficiency order
 - [x] Wave 6: owner can fire the general manager, job market, Sandbox-only club switching; rival clubs draft through scouting fog (golden master s132-v5).
 - [x] Independent review: six defects found and fixed (three ways around the career rules, a crash path, an error-scrub gap, collapsed background-task reports).
 - [x] Released at 7f389bdd — hosted CI 7/7 (run 44300045275), staging 14/14 and 10/10, production promotion run 44301777428 10/10, API run 44301772817 ready, performance and release authority verified.
-- [ ] [S132 follow-up] Add Guides, How It Compares and Screenshots to the public capture inventory.
+- [x] [S132 follow-up] Guides, How It Compares and Screenshots added to the public capture inventory.
 - [ ] [S132 follow-up] The setup form starts from the active league's settings, so a Sandbox league carries into the next new league; decide whether that is intended.
-- [ ] [S132 carried] GM Profile page (career, trophies, shareables, save health); Settings split.
-- [ ] [S132 carried] Weekly challenge with a goal, a score and a shared board.
-- [ ] [S132 carried] Desk consolidation and game-plan depth; plain football wording across the Desk.
-- [ ] [S132 carried] Visual upgrade: bundled fonts, fresh screenshots, per-page share images.
-- [ ] [S132 carried] Security remainder: staging noindex, import size cap, one escape helper, least-privilege database role, diagnostics strip.
-- [ ] [S132 carried] Release process diet: parallel browser workers and a curated gate set.
-- [ ] [S132 carried] Feedback limits are per address; group IPv6 by /64 and run retention on a timer, not only on writes.
+- [x] [S132 second release] GM Profile tab (career, trophies, share cards, save health); Settings split.
+- [x] [S132 second release] Weekly challenge with a goal, a score and a shared board (community schema 3).
+- [x] [S132 second release] Desk in four groups, game-plan dials (golden master s132-v6), plain football wording.
+- [x] [S132 second release] Bundled fonts, retaken screenshots, per-page share images.
+- [x] [S132 second release] Staging noindex, import size cap, escape helpers, IPv6 /64 limits, retention timer. Least-privilege database role prepared in ops/sql, not applied.
+- [x] [S132 second release] Browser gates as four shards in CI and promotion.
+- [ ] [S132 follow-up] Apply the least-privilege database role once migrations run as the owner role instead of at service start.
+- [ ] [S132 follow-up] Gist import refuses files over 10 MB, which is smaller than a one-season save; the server save route accepts 64 MiB. Align the three limits.
+- [ ] [S132 follow-up] Canvas share cards still name Bahnschrift; the dev server serves no font files (the built site does).
+- [ ] [S132 follow-up] Move the screenshot and share-image capture scripts into the repo; they were run from a scratch folder.
+- [ ] [S132 follow-up] Trade screenshots show a one-for-one swap scored 0 / 100 beside the old "B, even trade" card. The card now follows the score; retake the four trade images with a fair deal, and check whether a 47-point value gap should score 0.
+- [ ] [S132 follow-up] One 14-3 season reached GM Legacy 92 "Immortal" in one capture run and 30 in another; measure the legacy score over many first seasons.
+- [ ] [S132 follow-up] First Season Contract rows run the label into its detail with no space; the default club differs on every new league; the identity screenshot is mostly footer.
+- [ ] [S132 follow-up] Read the weekly challenge board after a week of real posts; the five-browser threshold and the step of five are untested against real traffic.
 - [ ] [S132 carried] Career limits: owner mode off, a permanent move to Sandbox and a rewind all avoid dismissal; a difficulty change resets owner patience. Decide which are intended.
 - [ ] [S132 carried] Draft follow-ups: projected round reveals true potential order; scouting accuracy is permanent per club; rival GM personas may be identical across leagues (unconfirmed); check champion concentration over 30 seasons.
 - [ ] [S132 carried] Launch hold: email-delivery check and founder approval packet (founder-run).

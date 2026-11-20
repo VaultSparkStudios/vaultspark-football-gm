@@ -1079,7 +1079,7 @@ function bindEvents() {
       const b = result.valuation?.[payload.teamB] || {};
       const fairness = Math.max(0, 100 - Math.abs((a.delta || 0) - (b.delta || 0)) * 4);
       setTradeEvalText(
-        `${payload.teamA}: in ${a.incomingValue ?? 0} / out ${a.outgoingValue ?? 0} | ${payload.teamB}: in ${b.incomingValue ?? 0} / out ${b.outgoingValue ?? 0}`
+        `${payload.teamA}: in ${Math.round(a.incomingValue ?? 0)} / out ${Math.round(a.outgoingValue ?? 0)} | ${payload.teamB}: in ${Math.round(b.incomingValue ?? 0)} / out ${Math.round(b.outgoingValue ?? 0)}`
       );
       setTradeEvalCards({ fairness, capDeltaA: a.capDelta || 0, capDeltaB: b.capDelta || 0 });
       // Show trade breakdown card (Session 8)

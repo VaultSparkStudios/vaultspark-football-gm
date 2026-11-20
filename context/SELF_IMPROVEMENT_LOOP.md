@@ -3,11 +3,11 @@
 
 
 <!-- rolling-status-start -->
-Last session: 132 (2026-11-18) | Total: 560/1000 | Velocity: 2 | Debt: →
-Avgs — 3: 547.3 | 5: 541.2 | 10: 528.9 | 25: 713.9 | all: 908.3
+Last session: 132 (2026-11-19) | Total: 580/1000 | Velocity: 2 | Debt: →
+Avgs — 3: 554 | 5: 545.2 | 10: 530.9 | 25: 714.7 | all: 908.5
 Sparkline: ▁▁▁▁▁
-Intent rate: 60% (3/5 last 5)
-SIL delta: 537 → 560 (+23). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 86 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+Intent rate: 80% (4/5 last 5)
+SIL delta: 537 → 580 (+43). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 86 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
 > Older entries S112 live verbatim in `context/archive/SELF_IMPROVEMENT_LOOP_S112-S112.md`.
@@ -271,6 +271,26 @@ Velocity: 13 selected product outcomes, excluding SIL/meta tasks. Debt: →, car
 
 - [SIL:132] Future improvement — unselected: Run a new browser spec before reporting it as written.
 - [SIL:132] Future improvement — unselected: A fixture that patches shipped script text must match minified output.
+
+## 2026-11-19 — Session 132, second release — The seven carried items
+
+SIL v3.0: **580 / 1000** (Dev Health 86, Creative Alignment 80, Momentum 76, Engagement 58, Process Quality 62, Cross-Repo Coherence 58, Security Posture 72, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 68). Intent outcome: Achieved for implementation — 19 of 20 audit items shipped or shipped in reduced form; the launch hold is founder-run. Prior 560; delta +20. Engineering judgment, not measured player, financial or launch outcomes.
+
+Velocity: 7 selected product outcomes, excluding SIL/meta tasks. Debt: →, carried; no new whole-board debt census.
+
+- Dev Health: 86: studio, core 811/811 and runtime 1309/1309 green locally; 139 browser tests across edited and affected specs; hosted CI is the full receipt.
+- Creative Alignment: 80: the game plan now changes the game by a measured amount; player response is unmeasured.
+- Momentum: 76: the seven carried items landed in one pass.
+- Engagement: 58: a scored weekly challenge with a share text is a reason to return; return rate is unmeasured.
+- Process Quality: 62: review caught three defects before release; the first board design leaked an exact score and was caught by review, not by its own tests.
+- Cross-Repo Coherence: 58: no change.
+- Security Posture: 72: staging noindex, /64 limits, retention timer, import cap; database role prepared, not applied.
+- Ecosystem Integration: 20: project reporting only.
+- Capital Efficiency: 0 proof credit: token and runway efficiency unmeasured; not a finding of poor finances.
+- Automation Coverage: 68: browser gates run as four shards.
+
+- [SIL:132] Future improvement — unselected: For any shared aggregate, write the "can one contributor be read back" test before the route.
+- [SIL:132] Future improvement — unselected: Keep capture scripts in the repo so screenshots can be retaken without a scratch folder.
 
 <!-- ledger-roll:pointer -->
 ---

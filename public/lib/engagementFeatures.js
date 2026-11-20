@@ -581,7 +581,15 @@ export function renderTradeBreakdown(evalResult) {
     : delta < -15 ? "Team A wins this trade decisively"
     : delta > 0 ? "Slight edge to Team B"
     : "Slight edge to Team A";
-  const fairGrade = gradeScore(Number(fairness) || 70);
+  // The fairness score is the game's own valuation; when it is present the
+  // grade and the sentence both follow it, so the card cannot contradict the
+  // score beside it. A score of 0 is a real score, not a missing one.
+  const scored = fairness != null && Number.isFinite(Number(fairness));
+  const fairGrade = gradeScore(scored ? Number(fairness) : 70);
+  const sentence = !scored ? verdict
+    : Number(fairness) >= 85 ? "Even trade — both sides get fair value"
+    : Number(fairness) >= 60 ? "Uneven trade — one side gives up more value"
+    : "Lopsided trade — one side gives up far more value";
   el.hidden = false;
   el.innerHTML = `
     <div class="tbd-header">Trade Breakdown</div>
@@ -600,7 +608,7 @@ export function renderTradeBreakdown(evalResult) {
     </div>
     <div class="tbd-verdict">
       <span class="tbd-fairness-grade ${gradeClass(fairGrade)}">${fairGrade}</span>
-      <span class="tbd-verdict-text">${escapeHtml(verdict)}</span>
+      <span class="tbd-verdict-text">${escapeHtml(sentence)}</span>
     </div>
   `;
 }

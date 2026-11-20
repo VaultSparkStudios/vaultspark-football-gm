@@ -9,7 +9,7 @@
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-11-19",
+  "lastUpdated": "2026-11-20",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "type": "game",
@@ -23,7 +23,7 @@
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
   "truthAuditStatus": "S132 thirteen audit outcomes and the matching frontend/API release are verified at 7f389bdd. Broader readiness, player, financial and adoption outcomes remain unmeasured.",
-  "truthAuditLastRun": "2026-11-18",
+  "truthAuditLastRun": "2026-11-19",
   "ignisScore": 41418,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-11-13",
@@ -68,18 +68,18 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 560,
+  "silScore": 580,
   "silCategoriesV3": {
     "devHealth": 86,
-    "creativeAlignment": 78,
-    "momentum": 72,
-    "engagement": 52,
-    "processQuality": 60,
+    "creativeAlignment": 80,
+    "momentum": 76,
+    "engagement": 58,
+    "processQuality": 62,
     "crossRepoCoherence": 58,
-    "securityPosture": 68,
+    "securityPosture": 72,
     "ecosystemIntegration": 20,
     "capitalEfficiency": 0,
-    "automationCoverage": 66
+    "automationCoverage": 68
   },
   "currentSession": 132,
   "lastAgent": "codex",
@@ -116,17 +116,24 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 498,
+  "silHealth": 506,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 0,
+    "blockingFailing": 1,
     "total": 12,
-    "failing": 0,
-    "score": 100,
-    "date": "2026-11-19",
-    "passing": 12,
+    "failing": 1,
+    "score": 92,
+    "date": "2026-11-20",
+    "passing": 11,
     "warning": 0,
-    "checks": []
+    "checks": [
+      {
+        "id": "release-authority-git-head-covered-by-publication",
+        "status": "failing",
+        "blocking": true,
+        "detail": "HEAD 40889531f9521c70fb67b06bf5ba9e270cd0e88b is not covered by live production 7f389bdd8e5dfd5d3462c08e4d71f4a93afe1d80"
+      }
+    ]
   },
   "complianceScore": 37,
   "complianceTotal": 37,
@@ -2327,18 +2334,18 @@
   "sil": {
     "version": "3.0",
     "session": 132,
-    "silScore": 560,
+    "silScore": 580,
     "categories": {
       "devHealth": 86,
-      "creativeAlignment": 78,
-      "momentum": 72,
-      "engagement": 52,
-      "processQuality": 60,
+      "creativeAlignment": 80,
+      "momentum": 76,
+      "engagement": 58,
+      "processQuality": 62,
       "crossRepoCoherence": 58,
-      "securityPosture": 68,
+      "securityPosture": 72,
       "ecosystemIntegration": 20,
       "capitalEfficiency": 0,
-      "automationCoverage": 66
+      "automationCoverage": 68
     },
     "date": "2026-11-18"
   },
@@ -2980,7 +2987,7 @@
     "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact f39 staging/frontend/API identity, terminal receipt-only CI with no observed executed failure, zero owned transient jobs/processes, and release only the original S124 lock."
   },
   "silDebtTrend": "→",
-  "silLastUpdated": "2026-11-18",
+  "silLastUpdated": "2026-11-19",
   "lastDeployStatus": "Frontend/API 67ab750b matched; staging/production14/14, API database ready; C2 rollback retained.",
   "previousBackendDeployment": {
     "sourceRevision": "86291dc4124a3d6c44cf9bef83f01daf0857f0f1",

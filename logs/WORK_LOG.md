@@ -98,6 +98,10 @@ Injuries now cost the games their label states. Regular-season recovery ticked b
 
 A 20-item audit toward public beta (docs/AUDIT_2026-11-17_SESSION132.json); 13 implemented, 7 carried. The owner can dismiss the general manager, with a job market and Sandbox-only club switching at the command boundary. Rival clubs draft on a per-club scouted read (first-round busts 5.4% to 9.6% over 7,600 picks on three seeds; golden master s132-v5). The in-game feedback form and opt-in error reports post to the community service. The first week is shorter. The site gains Guides, How It Compares and Screenshots pages and a grouped footer. The build minifies scripts and styles with an engine parity check (built site 57.2 MB to 28.7 MB). An independent review found six defects; all fixed with tests. Local: core 786/786, runtime 1260/1260, studio green after two record fixes, pages smoke, affected browser specs. Commits fe0f86fd, 1ff91587, 6b8bb437; release recorded separately.
 
+## 2026-11-19 — Session 132, second release — The seven carried items
+
+Implemented the seven items carried from the first release: GM Profile tab; a scored weekly challenge with a shared board on the community service (schema 3); the Desk in four groups with plain football wording; game-plan dials that change the simulated game (golden master s132-v6); bundled fonts, retaken screenshots and per-page share images; staging noindex, IPv6 /64 limits, a retention timer and an import size cap; browser gates as four shards. An independent review found three defects; all fixed with tests. Evidence: studio, core 811/811, runtime 1309/1309, 139 browser tests across edited and affected specs.
+
 <!-- ledger-roll:pointer -->
 ---
 

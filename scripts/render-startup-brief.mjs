@@ -336,8 +336,9 @@ if (cat3Match) {
 // real state was S141/996). We now scan EVERY `## …Session N…` header in either
 // format, capture each body, and select the latest by session NUMBER.
 const allSilEntries = [...sil.matchAll(/##[^\n]*?\bSession\s+(\d+)\b[^\n]*\n([\s\S]*?)(?=\n##\s|$)/g)]
-  .map(m => ({ session: parseInt(m[1], 10), header: m[0].split('\n')[0], body: m[2] ?? '' }))
-  .sort((a, b) => b.session - a.session);
+  .map(m => ({ session: parseInt(m[1], 10), header: m[0].split('\n')[0], body: m[2] ?? '', at: m.index }))
+  // A session that wrote twice (a second release, say): the entry lower in this newest-last file is the current one.
+  .sort((a, b) => b.session - a.session || b.at - a.at);
 
 // Highest session number present in the SIL log (source of truth for "what session are we on").
 const silMaxSession = allSilEntries.length ? allSilEntries[0].session : null;

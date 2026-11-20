@@ -482,7 +482,7 @@
       "innovation": 6,
       "effortHours": 10,
       "priority": 17.6,
-      "status": "deferred",
+      "status": "shipped",
       "readinessArea": "onboarding and identity/access",
       "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the approved order.",
       "recipe": "New lazy tab holding career record, legacy tier, Trophy Case, share exports, save slots and backup status. Settings keeps preferences only. No account is introduced.",
@@ -515,8 +515,8 @@
       "executionLog": [
         {
           "at": "2026-11-18T01:30:00.000Z",
-          "status": "deferred",
-          "note": "Not started in session 132; carried to the next session."
+          "status": "shipped",
+          "note": "Second release of session 132. A lazy GM Profile tab holds the career record, clubs managed, trophy case, share cards and saves, backups and cloud sync, moved from Settings with their ids unchanged. Settings keeps preferences, the shared-device league and developer diagnostics. On a phone the tab is three taps from the Desk through the menu."
         }
       ]
     },
@@ -533,7 +533,7 @@
       "innovation": 8,
       "effortHours": 10,
       "priority": 19.2,
-      "status": "deferred",
+      "status": "shipped",
       "readinessArea": "observability and actionable analytics",
       "stageRationale": "FORGE/FB public-beta hardening, wave 6 of the approved order.",
       "recipe": "Each week's seed gets a stated objective and a deterministic score. Opted-in players submit to the community service; the board shows only when the participation threshold is met.",
@@ -567,8 +567,8 @@
       "executionLog": [
         {
           "at": "2026-11-18T01:30:00.000Z",
-          "status": "deferred",
-          "note": "Not started in session 132; carried to the next session."
+          "status": "shipped",
+          "note": "Second release of session 132. Each week's seed picks one of four goals and a deterministic score from the first season's totals. With sharing on, the best score per browser per week is counted; the board shows only bucket counts of five or more browsers, publishes no single score, and moves only in steps of five browsers. An existing bug that put the wrong seed in challenge codes is fixed. Scores are computed in the browser, so the service can only bound them."
         }
       ]
     },
@@ -688,7 +688,7 @@
       "innovation": 6,
       "effortHours": 12,
       "priority": 16.9,
-      "status": "deferred",
+      "status": "shipped-reduced",
       "readinessArea": "accessibility, mobile parity and every supported theme",
       "stageRationale": "FORGE/FB public-beta hardening, wave 4 of the approved order.",
       "recipe": "Self-host two WOFF2 faces so typography is the same on every device. Rebuild the hero around the showcase league. Recapture screenshots in both themes and at phone width, including portraits and the depth chart. Set per-page share images.",
@@ -722,8 +722,8 @@
       "executionLog": [
         {
           "at": "2026-11-18T01:30:00.000Z",
-          "status": "deferred",
-          "note": "Not started in session 132; needs bundled fonts and a fresh screenshot capture."
+          "status": "shipped-reduced",
+          "note": "Second release of session 132. Barlow and Barlow Semi Condensed are self-hosted (4 files, 89 KB) for the site and the game; 17 per-page share images; current screenshots on every feature card and the media page; the three newer pages are in the capture inventory. The package trust gate returned REVIEW, not APPROVE, and the evidence it asks for was gathered. The hero was not rebuilt around the showcase league, and canvas text still names the old face."
         }
       ]
     },
@@ -792,7 +792,7 @@
       "innovation": 4,
       "effortHours": 8,
       "priority": 15,
-      "status": "deferred",
+      "status": "shipped-reduced",
       "readinessArea": "accessibility, mobile parity and every supported theme",
       "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the approved order.",
       "recipe": "Replace process words in player-facing copy with football terms from one glossary, auto-load panels that still wait for a button, and bind the command palette to Ctrl/Cmd+K.",
@@ -826,8 +826,8 @@
       "executionLog": [
         {
           "at": "2026-11-18T01:30:00.000Z",
-          "status": "deferred",
-          "note": "Only the first-week copy changed in session 132; the Desk wording pass is carried."
+          "status": "shipped-reduced",
+          "note": "Second release of session 132. One glossary applied to player-visible copy in the game, with a vocabulary test that fails on the retired words (negative control: 18 findings on the previous Desk file). The command palette opens with Ctrl or Cmd K. About 75 strings sent by the engine still use the old words."
         }
       ]
     },
@@ -844,7 +844,7 @@
       "innovation": 4,
       "effortHours": 8,
       "priority": 16.7,
-      "status": "deferred",
+      "status": "shipped-reduced",
       "readinessArea": "staging, release evidence and truthful beta/release communication",
       "stageRationale": "FORGE/FB public-beta hardening, wave 3 of the approved order.",
       "recipe": "Run browser tests on several workers with a curated release set and the full set nightly. Run the process-tooling shard beside the deploy, not in front of it. Parse the truth status token correctly and import the hosted test receipt into the brief.",
@@ -886,8 +886,8 @@
       "executionLog": [
         {
           "at": "2026-11-18T01:30:00.000Z",
-          "status": "deferred",
-          "note": "The browser suite shares one server session and the workflows are asserted by tests, so this needs its own session."
+          "status": "shipped-reduced",
+          "note": "Second release of session 132. The browser suite runs as four shards with an aggregating job in CI and as a four-shard gate in the promotion; publish needs every shard. Expected wall-clock about 30 minutes against 1.7 hours, to be confirmed by the first hosted run. The process-tooling shard still gates the deploy, and the brief parser was left to its owner."
         }
       ]
     },
@@ -904,7 +904,7 @@
       "innovation": 3,
       "effortHours": 8,
       "priority": 14.2,
-      "status": "shipped-reduced",
+      "status": "shipped",
       "readinessArea": "security, privacy, data integrity and abuse controls",
       "stageRationale": "FORGE/FB public-beta hardening, wave 1 of the approved order.",
       "recipe": "Staging is marked noindex. Imports are size-capped before parsing. One tested escape helper replaces the copies and covers style values. The service uses a least-privilege database role. Automated dependency merges check the pull request author. Developer diagnostics are stripped from production markup.",
@@ -938,8 +938,8 @@
       "executionLog": [
         {
           "at": "2026-11-18T01:30:00.000Z",
-          "status": "shipped-reduced",
-          "note": "Implemented and verified locally in session 132; release state is recorded at closeout. Timeline escape helper escapes quotes and the team color is escaped in the style attribute, with a test that failed first; edge header lines are length-checked at build. Not done: staging noindex, import size cap, single escape helper, database role, diagnostics strip. The dependency auto-merge workflow is portfolio-managed and reported to its owner."
+          "status": "shipped",
+          "note": "Second release of session 132. Adds: IPv6 rate-limit keys grouped by /64, a retention timer, a database pool error handler, a save-import size check before reading, all escape helpers escaping five characters with a test that runs each one, and a host-keyed noindex rule for staging to be verified on the next staging deploy. A least-privilege role is prepared as SQL but not applied, because the service still creates its tables at start."
         }
       ]
     },
@@ -956,7 +956,7 @@
       "innovation": 6,
       "effortHours": 14,
       "priority": 14.8,
-      "status": "deferred",
+      "status": "shipped",
       "readinessArea": "core journeys and product correctness",
       "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the approved order.",
       "recipe": "Group the Desk into this week, your club, the league and your career, with the rest one click down. Extend the weekly plan beyond four tactics with pace, run-pass lean and coverage choices whose effect is measured.",
@@ -989,8 +989,8 @@
       "executionLog": [
         {
           "at": "2026-11-18T01:30:00.000Z",
-          "status": "deferred",
-          "note": "Not started in session 132."
+          "status": "shipped",
+          "note": "Second release of session 132. The Desk is grouped into This week, Your club, The league and Your career, with collapsed groups rendering on first open and all panel ids kept. The weekly plan adds pace, run-pass lean and coverage. Over 7,440 games per position: plays -4.5% / +4.5%, rush attempts +6.2% / -6.3%, takeaways -7.0% / +6.5%. Neutral is byte-identical. Lean run costs about 1.8% of points on average."
         }
       ]
     },
@@ -1094,7 +1094,7 @@
         {
           "at": "2026-11-18T01:30:00.000Z",
           "status": "deferred",
-          "note": "Founder-run. No packet was prepared in session 132."
+          "note": "Founder-run. Read-only status in session 132: routes and origin verified, email delivery unverified, founder approval and lifecycle authority open, evidence window expired 2026-11-14. The install prompt and the release label were not changed."
         }
       ]
     }
