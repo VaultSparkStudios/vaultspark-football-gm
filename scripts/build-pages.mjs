@@ -279,12 +279,14 @@ async function copyBrowserModules() {
 
 // Each public page shares its own 1200x630 card from public/og/<page>.png, so a
 // link to the FAQ does not preview as the landing page. The app shell and the
-// not-found page keep the cover, and an explicit VITE_OG_IMAGE_URL still wins.
+// not-found page keep the cover. VITE_OG_IMAGE_URL names that cover only: the
+// promotion workflow sets it, and a page card that gave way to it would make
+// the hosted build differ from the staged one.
 const SHARE_IMAGE_EXEMPT = new Set(["game.html", "404.html"]);
 
 function shareImageUrlFor(pagePath) {
   const pageName = pagePath === "./" ? "index.html" : pagePath;
-  if (process.env.VITE_OG_IMAGE_URL || SHARE_IMAGE_EXEMPT.has(pageName)) return ogImageUrl;
+  if (SHARE_IMAGE_EXEMPT.has(pageName)) return ogImageUrl;
   const card = `og/${pageName.replace(/\.html$/, "")}.png`;
   if (!fsSync.existsSync(path.join(publicDir, card))) {
     throw new Error(`${pageName} has no share image at public/${card}`);
