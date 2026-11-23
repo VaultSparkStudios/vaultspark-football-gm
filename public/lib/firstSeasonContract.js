@@ -312,7 +312,7 @@ export function renderContractRows(summary) {
     const progress = row.progress ? `<small>${escapeHtml(row.progress)}</small>` : "";
     return `<li class="first-season-objective" data-objective="${escapeHtml(row.id)}" data-done="${row.done ? "true" : "false"}">` +
       `<span class="first-season-mark" aria-hidden="true">${row.done ? "✓" : row.status === "unverified" ? "?" : "○"}</span>` +
-      `<div><strong>${escapeHtml(row.title)}</strong><p class="small">${escapeHtml(row.detail)}</p>${progress}</div>` +
+      `<div><strong>${escapeHtml(row.title)}</strong> <p class="small">${escapeHtml(row.detail)}</p> ${progress}</div>` +
       `<span class="visually-hidden">${row.status || (row.done ? "done" : "open")}</span></li>`;
   }).join("");
 }
