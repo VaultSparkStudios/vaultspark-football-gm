@@ -36,7 +36,10 @@ services:
     environment:
       NODE_ENV: production
       PORT: 8082
-      DATABASE_URL: postgresql://studio_admin:${POSTGRES_PASSWORD}@postgres:5432/community_stats
+      # The password travels as PGPASSWORD (node-postgres reads it when the URL
+      # carries none), so no credential sits inside a connection string.
+      DATABASE_URL: postgresql://studio_admin@postgres:5432/community_stats
+      PGPASSWORD: ${POSTGRES_PASSWORD}
       COMMUNITY_KEY_PATH: /var/lib/community-stats/pepper
       COMMUNITY_ALLOWED_ORIGINS: https://playfranchisearchitect.com,https://staging.playfranchisearchitect.com
       # Human check on capability issuance. Both empty (the default) leaves it off.
