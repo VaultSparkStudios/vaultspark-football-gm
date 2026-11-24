@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S133 release at c7c7c44c: Frame Matters (bodies change games and injuries, golden master s133-v8), RAS and body programmes, combine fixes, the default-on anonymous Gridiron Census (schema 4), club uniforms, a drive chart, franchise scenarios and a tidier site.",
+  "currentFocus": "S133 release at 2cc74c1f: Frame Matters (bodies change games and injuries, golden master s133-v8), RAS and body programmes, combine fixes, the default-on anonymous Gridiron Census (schema 4), club uniforms, a drive chart, franchise scenarios and a tidier site.",
   "nextMilestone": "Read the first Census totals and the landing-to-game ratio; aging curve, helmets and game kit, landing hero, page merges and the Draft Day room are carried.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
@@ -137,7 +137,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.233,
   "entropyLastComputed": "2026-11-13",
-  "lastSessionSummary": "S133 audited (16 items) and released 12 at c7c7c44c: Frame Matters, scouting measurables and body programmes, combine fixes, the Gridiron Census (default-on, ID-free, opt-out), uniforms, drive chart, franchise scenarios and four pages folded with 301s; the cut-off 2026-11-22 work verified and shipped. CI 11/11, staging 14/14 and 10/10, production 10/10, API schema 4, performance, visual review (owner-approved) and release authority verified. Launch and player outcomes are unmeasured.",
+  "lastSessionSummary": "S133 audited (16 items) and released 12 at c7c7c44c, then the independent-review fixes at 2cc74c1f: Frame Matters, scouting measurables and body programmes, combine fixes, the Gridiron Census (default-on, ID-free, opt-out), uniforms, drive chart, franchise scenarios and four pages folded with 301s; the cut-off 2026-11-22 work verified and shipped. Final 2cc74c1f: CI 11/11, staging 14/14 and 10/10, production 10/10, API schema 4, performance, visual review (owner-approved) and release authority verified. Launch and player outcomes are unmeasured.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -267,11 +267,11 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "6f3db8648bde7fd0c92c1652d31d7da399fa816698473cc3cdcf8549e435e5bf",
-    "sourceRevision": "c7c7c44caa599b53b3b84c1275ad3388ab63ae21",
+    "receiptSha256": "f2533eb92db246c46fd5659cd4d3f0b3e3ecf2e0e013f31c479b99d25d8177c8",
+    "sourceRevision": "2cc74c1f2f136705b442037b8479002382d403e5",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "0afc91a32a8aae121106ff7fbab60e8be961c3edea82e0848a8ebe175ae4c81c",
+      "digest": "ab0d4d2b944c205663c82f89e47db223d83b9f4c94b9b7448b764b7b2badbc6d",
       "files": 461,
       "entries": [
         {
@@ -1071,8 +1071,8 @@
         },
         {
           "path": "lib/leaguePulse.js",
-          "bytes": 3982,
-          "sha256": "7ec64a2b8d5be42e5e4a3cdd98f408eaa697bb2ef5b8741a2a9b0912a76d3398"
+          "bytes": 4034,
+          "sha256": "204be9f3b3d93d0b6963cdde10b2bc78448da0bc782ec46c94f4e728add44d98"
         },
         {
           "path": "lib/leaguePulseContract.js",
@@ -1082,7 +1082,7 @@
         {
           "path": "lib/leaguePulseNotice.js",
           "bytes": 1790,
-          "sha256": "7b06e0242970cc13662d707d7301ecaa49453be648da85b63f7517d8efc9ff6f"
+          "sha256": "aac31b2f5c3059ce35e4361a3a3b484a2feb03bede052352381b9e642df12b31"
         },
         {
           "path": "lib/leagueStoryExport.js",
@@ -1186,8 +1186,8 @@
         },
         {
           "path": "lib/playerFrameCard.js",
-          "bytes": 4735,
-          "sha256": "21694d7c89aad43da68b55f9cbdac469010bf1fb3b551148f774a4c1b817ad3d"
+          "bytes": 4723,
+          "sha256": "cd3bf7c614a85d38f50fe3a747aed65a611980024d02cbed838d8c35511e9802"
         },
         {
           "path": "lib/playerHand.js",
@@ -1612,7 +1612,7 @@
         {
           "path": "precache-manifest.json",
           "bytes": 29291,
-          "sha256": "2a085f1d6c80d4bce552ebd4f00a54232d2f56a16aff81e5019fdcf69dfb1402"
+          "sha256": "d94612220f8cb77b77a3d2783f4630867282ffb970b79ee9b41022fdb4dc530b"
         },
         {
           "path": "press.html",
@@ -1831,8 +1831,8 @@
         },
         {
           "path": "src/domain/bodyProgram.js",
-          "bytes": 1810,
-          "sha256": "8944caed2d8fc0ccc8d51c31b4dde2110a7b2d62c7a759f0d1b98f3d7dbffaf0"
+          "bytes": 2029,
+          "sha256": "0fa1e3b177f676d077692036708d5118d23d6428351826cc69c0de3bd8736a08"
         },
         {
           "path": "src/domain/capCarryover.js",
@@ -1916,8 +1916,8 @@
         },
         {
           "path": "src/domain/physicalProfile.js",
-          "bytes": 4472,
-          "sha256": "f666f10f84e351ff621e161437879ee91b32ba2eaa62da4b7f3c4d36bfb14fe4"
+          "bytes": 4500,
+          "sha256": "f8cc0bd3b5815f6154a49ead0a0a184a785db6429ffab29137c12f7800171aee"
         },
         {
           "path": "src/domain/playerDemographicModel.js",
@@ -2572,7 +2572,7 @@
         {
           "path": "sw.js",
           "bytes": 14309,
-          "sha256": "f8fe0599774a4b0356c54a907aeccb0869c6f110e0376e7cd2a29b242fc4f84e"
+          "sha256": "f6e248a0fdee2e28998c0e6ed0c823da4c9ce537197ddeae37188dc201143f68"
         },
         {
           "path": "terms.html",
@@ -2586,21 +2586,21 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "b7475d62-40ca-44fb-9fbe-6eaa79389ea3",
+    "deploymentId": "8b0b3043-10b8-423d-85ae-3dc5f90dd020",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-11-24T03:20:53.002Z"
+      "checkedAt": "2026-11-24T06:17:29.757Z"
     },
     "rollback": {
-      "previousDeploymentId": "9b679dc8-b32f-494c-95fa-c8b53ffd7394",
+      "previousDeploymentId": "b7475d62-40ca-44fb-9fbe-6eaa79389ea3",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-11-24T03:20:53.002Z"
+    "observedAt": "2026-11-24T06:17:29.758Z"
   },
   "lastCloseoutAt": "2026-10-27T01:27:00.881Z",
   "performanceAuthority": {
@@ -2636,31 +2636,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-11-24T06:02:03.078Z",
+    "observedAt": "2026-11-24T12:13:16.726Z",
     "status": "verified",
-    "sourceRevision": "c7c7c44caa599b53b3b84c1275ad3388ab63ae21",
-    "publicationRevision": "c7c7c44caa599b53b3b84c1275ad3388ab63ae21",
+    "sourceRevision": "2cc74c1f2f136705b442037b8479002382d403e5",
+    "publicationRevision": "2cc74c1f2f136705b442037b8479002382d403e5",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "0afc91a32a8aae121106ff7fbab60e8be961c3edea82e0848a8ebe175ae4c81c"
+      "digest": "ab0d4d2b944c205663c82f89e47db223d83b9f4c94b9b7448b764b7b2badbc6d"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "c7c7c44caa599b53b3b84c1275ad3388ab63ae21",
-        "artifactDigest": "0afc91a32a8aae121106ff7fbab60e8be961c3edea82e0848a8ebe175ae4c81c"
+        "sourceRevision": "2cc74c1f2f136705b442037b8479002382d403e5",
+        "artifactDigest": "ab0d4d2b944c205663c82f89e47db223d83b9f4c94b9b7448b764b7b2badbc6d"
       },
       "production": {
-        "sourceRevision": "c7c7c44caa599b53b3b84c1275ad3388ab63ae21",
-        "artifactDigest": "0afc91a32a8aae121106ff7fbab60e8be961c3edea82e0848a8ebe175ae4c81c"
+        "sourceRevision": "2cc74c1f2f136705b442037b8479002382d403e5",
+        "artifactDigest": "ab0d4d2b944c205663c82f89e47db223d83b9f4c94b9b7448b764b7b2badbc6d"
       },
       "visual": {
-        "sourceRevision": "c7c7c44caa599b53b3b84c1275ad3388ab63ae21",
-        "artifactDigest": "0afc91a32a8aae121106ff7fbab60e8be961c3edea82e0848a8ebe175ae4c81c"
+        "sourceRevision": "2cc74c1f2f136705b442037b8479002382d403e5",
+        "artifactDigest": "ab0d4d2b944c205663c82f89e47db223d83b9f4c94b9b7448b764b7b2badbc6d"
       },
       "performance": {
-        "sourceRevision": "c7c7c44caa599b53b3b84c1275ad3388ab63ae21",
-        "artifactDigest": "0afc91a32a8aae121106ff7fbab60e8be961c3edea82e0848a8ebe175ae4c81c"
+        "sourceRevision": "2cc74c1f2f136705b442037b8479002382d403e5",
+        "artifactDigest": "ab0d4d2b944c205663c82f89e47db223d83b9f4c94b9b7448b764b7b2badbc6d"
       }
     },
     "checks": [
@@ -2706,12 +2706,12 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "0817937fa69a3688f180e500285b580d3ac4fa063d54acb0570ede6556efeb6e",
-      "productionSha256": "3c77b4b5488bef6bca2723f217d928924dd898e977acf558f9a919160b0b7323",
-      "visualSha256": "17157b3c5c7f5fc0aea5f7832a2399050a8c8df87f89296750ae8843a8b5399f",
-      "performanceSha256": "32fd90831be69486696a82380e4d0d0cc2c244c00c59d191761347206aa5f3c8"
+      "stagingSha256": "0e4d5931349e6b560c0d704969757e8cdc5a2f9f76aabf725e39863566e28299",
+      "productionSha256": "22d78ddf3ebb05f90d02bd22c8770e4b6542f1996b8cbe15f560f60015711598",
+      "visualSha256": "58049175f3a63d865c2159bc25c21f6fc202f2b07717248f8b86c3d86401ebbf",
+      "performanceSha256": "68f96404de2e8bb5501f1a795607ec3f2e44e0398982acb895825e0d5d275fa4"
     },
-    "receiptSha256": "103dfe1fd0254f69c604bddc19d26592044ee2999104ceb667be6f0ba0df214e"
+    "receiptSha256": "995bc0498747431f9ebd9456aadfa20d4dd08fbf66920b10f9f3a0549b042faf"
   },
   "launchReady": false,
   "sil": {
@@ -2743,9 +2743,9 @@
   "sessionState": {
     "version": 1,
     "durableSession": 133,
-    "currentFocus": "S133 release at c7c7c44c: Frame Matters (bodies change games and injuries, golden master s133-v8), RAS and body programmes, combine fixes, the default-on anonymous Gridiron Census (schema 4), club uniforms, a drive chart, franchise scenarios and a tidier site.",
+    "currentFocus": "S133 release at 2cc74c1f: Frame Matters (bodies change games and injuries, golden master s133-v8), RAS and body programmes, combine fixes, the default-on anonymous Gridiron Census (schema 4), club uniforms, a drive chart, franchise scenarios and a tidier site.",
     "nextMilestone": "Read the first Census totals and the landing-to-game ratio; aging curve, helmets and game kit, landing hero, page merges and the Draft Day room are carried.",
-    "lastSessionSummary": "S133 audited (16 items) and released 12 at c7c7c44c: Frame Matters, scouting measurables and body programmes, combine fixes, the Gridiron Census (default-on, ID-free, opt-out), uniforms, drive chart, franchise scenarios and four pages folded with 301s; the cut-off 2026-11-22 work verified and shipped. CI 11/11, staging 14/14 and 10/10, production 10/10, API schema 4, performance, visual review (owner-approved) and release authority verified. Launch and player outcomes are unmeasured."
+    "lastSessionSummary": "S133 audited (16 items) and released 12 at c7c7c44c, then the independent-review fixes at 2cc74c1f: Frame Matters, scouting measurables and body programmes, combine fixes, the Gridiron Census (default-on, ID-free, opt-out), uniforms, drive chart, franchise scenarios and four pages folded with 301s; the cut-off 2026-11-22 work verified and shipped. Final 2cc74c1f: CI 11/11, staging 14/14 and 10/10, production 10/10, API schema 4, performance, visual review (owner-approved) and release authority verified. Launch and player outcomes are unmeasured."
   },
   "partialCloseout": {
     "session": 117,

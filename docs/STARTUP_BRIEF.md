@@ -22,7 +22,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ LAST SESSION (S133) - WHAT SHIPPED ══════════════════════════╗
-║  S133 audited (16 items) and released 12 at c7c7c44c: Frame Mat  ║
+║  S133 audited (16 items) and released 12 at c7c7c44c, then the   ║
 ║  Tests Unverified for this session                               ║
 ║  Deploy —                                                        ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -61,7 +61,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE WE LEFT OFF  ·  Session 133 ═══════════════════════════╗
-║  Shipped:  S133 release at c7c7c44c: Frame Matters (bodies chan  ║
+║  Shipped:  S133 release at 2cc74c1f: Frame Matters (bodies chan  ║
 ║  Tests: Unverified for this session                              ║
 ║  Deploy: Frontend/API 67ab750b matched; staging/production14/14  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -80,7 +80,7 @@
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
 ║  ⚠  IGNIS         41418 FORGE  ·  11d old                        ║
-║  ⛔  Truth         S133 audit outcomes and the matching frontend  ║
+║  ⛔  Truth         S133 audit outcomes, the independent-review f  ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ⚠  Genome dims   unmeasured (5 dimensions; —/25)                ║
 ║  ✓  Entropy       0.233  (healthy)                               ║

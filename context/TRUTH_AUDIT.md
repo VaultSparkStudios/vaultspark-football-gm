@@ -1,7 +1,7 @@
 <!-- truth-audit-version: 1.1 -->
 # Truth Audit
 
-Overall status: S133 audit outcomes and the matching frontend/API release are verified at c7c7c44c. Census uptake, player response, launch and adoption outcomes remain unmeasured.
+Overall status: S133 audit outcomes, the independent-review fixes and the matching frontend/API release are verified at 2cc74c1f. Census uptake, player response, launch and adoption outcomes remain unmeasured.
 Last reviewed: 2026-11-24
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
@@ -119,3 +119,5 @@ Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`.
 ## 2026-11-24 — Session 133 — Release c7c7c44c
 
 Exact source c7c7c44caa599b53b3b84c1275ad3388ab63ae21 and artifact 0afc91a32a8aae121106ff7fbab60e8be961c3edea82e0848a8ebe175ae4c81c bind this technical release: CI 11/11 (run 45314156854), staging 14/14 and 10/10, production 10/10 (promotion run 45318900270, one browser shard passed on rerun), API run 45318732766 on schema 4 (deploy-server passed on rerun after the shared host's admission lock), hosted performance verified, visual receipt 214 captures with 0 blocking. The visual review was performed by the session agent and recorded with the studio owner's explicit in-session approval; the agent's own attestation was refused by the tool policy first. The responsive capture used an uncommitted longer wait. The player dossier is not among the captured surfaces. Census totals, conversion and player outcomes are unmeasured.
+
+Final release after the independent review: source 2cc74c1f2f136705b442037b8479002382d403e5, artifact ab0d4d2b. Hosted CI 11/11 (run 45339291489); staging 14/14 and 10/10; production promotion run 45379522110 with 10/10 provenance; API run 45379516023 on schema 4; hosted performance verified; visual receipt 214 captures reviewed again (none byte-identical to the c7c7c44c set; owner-approved), 0 blocking; release and staging authority reconciled; doctor 0 failing. The review found four defects (the Census off switch failed when the browser refused storage; a body programme could move weight and ratings more than stated; bulk/lean alternation was a free ratchet; a null measurement scored as zero), all fixed with tests.

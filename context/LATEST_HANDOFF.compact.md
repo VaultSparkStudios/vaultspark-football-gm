@@ -1,39 +1,39 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: c3ee8a22a669 -->
-<!-- generated-at: 2026-11-24T06:04:32.713Z -->
+<!-- source-hash: 372e41891bee -->
+<!-- generated-at: 2026-11-24T12:13:44.094Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION 134 HANDOFF SUMMARY
+SESSION 133 → 134 HANDOFF
 
-Session
-- Session 133 complete; handoff to 134.
+Status
+- Technical release only. No launch, player outcomes, or lifecycle change claimed.
+- Final release source 2cc74c1f, artifact ab0d4d2b (after independent review).
 
-Shipped (S133)
-- Player body affects game outcomes and injuries vs league position centres (golden master s133-v8).
-- Dossier: frame type, RAS, Speed Score, catch radius, wingspan, hands, offseason body programmes; combine bugs fixed.
+Shipped
+- Body attributes affect games/injuries vs league position centres (golden master s133-v8); dossier shows frame type, RAS, Speed Score, catch radius, wingspan, hands, offseason body programmes.
+- Combine bugs fixed; 4 review defects fixed with tests (Census off-switch on refused storage; body programme over-moving weight/ratings; bulk/lean free ratchet; null measurement scored as zero).
 - Gridiron Census: anonymous league totals default-on with opt-out; detailed Community Stats opt-in.
-- Club-coloured uniforms; Sim-Watch drive chart; four franchise scenarios; four thin pages folded to Guides/FAQ/Updates with 301s and 13-link footer; working automatic highlights.
+- Club-coloured uniforms; Sim-Watch drive chart; 4 franchise scenarios; 4 thin pages folded into Guides/FAQ/Updates with 301s + 13-link footer; working auto-highlights.
 
-Release State
-- Source c7c7c44, artifact 0afc91a3; frontend+API released.
-- CI 11/11 (run 45314156854); staging 14/14 deploy, 10/10 provenance.
-- Production promotion 45318900270, 10/10 provenance (one browser shard passed on rerun).
-- API run 45318732766; deploy-server passed on rerun. Database schema v4; /community/v1/pulse live. Doctor 0 failing.
-- Technical release only; launch and player outcomes unmeasured.
+Verification
+- Hosted CI 11/11 (45339291489); staging 14/14 + 10/10 provenance; production promotion 45379522110 (10/10); API 45379516023 schema 4; hosted perf verified; 214 visual captures reviewed, owner-approved, 0 blocking; authority reconciled; doctor 0 failing.
 
-Now Bucket (top 3)
+Now (top 3)
 - Read first Census totals and run npm run report:visits (landing-to-game ratio) before touching landing page.
 - Check EU consent position for default-on counters before launch.
-- Work carried task-board items in efficiency order (aging curve, helmets/game kit, landing hero, page merges, Draft Day room, CSS split, acceleration spec).
+- Work carried task-board items (see blockers list).
 
-Blockers (top 3)
-- Acceleration spec (S117) asserts one-frame 'Ready' state slow runners can miss; browser shard flaky, needs fix.
-- Shared host admission lock can return exit 75 on deploy-server (rerun workaround).
-- Boot graph at 649,284 / 650,000 bytes; near ceiling.
+Blockers / Carried (task board)
+- Aging curve; helmets and game kit; landing hero.
+- Page merges; Draft Day room; CSS split.
+- Acceleration spec one-frame "Ready" assertion flaky on slow runners (S117 spec).
 
-Human-Blocked
-- Launch hold (email delivery, founder approval, lifecycle authority): founder-run, pending. No public launch or lifecycle change claimed.
-- Census default-on counter decision gated on EU consent review.
+Human-blocked
+- Launch hold (email delivery, founder approval, lifecycle authority) — founder-run. No public launch claimed.
 
-Next: Start by reading Census totals and visit ratios before any landing-page change; do not claim launch.
+Notes
+- Boot graph at 649,284 / 650,000 bytes (near limit).
+- Launch and player outcomes unmeasured.
+
+Next session: pull Census totals and visit ratio before any landing-page change.
