@@ -4,13 +4,13 @@ import { applyBodyProgram, setPlayerBodyProgram } from "../src/domain/bodyProgra
 import { createSession } from "../src/runtime/bootstrap.js";
 import { authorizeCommand } from "../src/runtime/franchiseAuthority.js";
 
-const player = (over = {}) => ({ id: "p1", position: "RB", weightLbs: 215, ratings: { strength: 70, trucking: 70, speed: 85, acceleration: 84, agility: 80 }, ...over });
+const player = (over = {}) => ({ id: "p1", teamId: "BUF", position: "RB", weightLbs: 215, ratings: { strength: 70, trucking: 70, speed: 85, acceleration: 84, agility: 80 }, ...over });
 
 test("a body programme is a trade: bulk adds mass and power and costs a step; lean does the reverse", () => {
   const bulk = player(); setPlayerBodyProgram(bulk, "bulk");
   const change = applyBodyProgram(bulk);
   assert.equal(bulk.weightLbs, 223);
-  assert.deepEqual(change.ratingChanges, { strength: 2, trucking: 1, speed: -1, acceleration: -1 });
+  assert.deepEqual(change.ratingChanges, { strength: 2, speed: -1, acceleration: -1 });
   assert.equal(bulk.bodyProgram, undefined, "consumed once");
   const lean = player(); setPlayerBodyProgram(lean, "lean"); applyBodyProgram(lean);
   assert.equal(lean.weightLbs, 207);
@@ -48,4 +48,35 @@ test("the command boundary refuses a programme for another club's player", () =>
   assert.equal(verdict?.status, 403);
   assert.equal(verdict.payload.reasonCode, "team-authority");
   assert.equal(authorizeCommand({ session, route: "/api/players/body-program", body: { teamId: "BUF" } }), null, "the own club passes");
+});
+test("bulk and lean are exact inverses, so alternating them is never a free gain", () => {
+  const p = player();
+  const start = JSON.stringify(p.ratings);
+  for (let cycle = 0; cycle < 5; cycle += 1) {
+    setPlayerBodyProgram(p, "bulk"); applyBodyProgram(p);
+    setPlayerBodyProgram(p, "lean"); applyBodyProgram(p);
+  }
+  assert.equal(p.weightLbs, 215);
+  assert.equal(JSON.stringify(p.ratings), start);
+});
+
+test("a body outside its limits moves at most one programme's worth, with no multiplied trade", () => {
+  const heavyCorner = { ...player({ position: "DB", weightLbs: 246 }) };
+  setPlayerBodyProgram(heavyCorner, "lean");
+  const change = applyBodyProgram(heavyCorner);
+  assert.equal(heavyCorner.weightLbs, 238);
+  for (const delta of Object.values(change.ratingChanges)) assert.ok(Math.abs(delta) <= 2);
+  const lightLineman = { ...player({ position: "OL", weightLbs: 250 }) };
+  setPlayerBodyProgram(lightLineman, "bulk");
+  applyBodyProgram(lightLineman);
+  assert.equal(lightLineman.weightLbs, 258);
+});
+
+test("a programme belongs to the club that set it; a traded player drops it", () => {
+  const p = player();
+  setPlayerBodyProgram(p, "bulk");
+  p.teamId = "MIA";
+  assert.equal(applyBodyProgram(p), null);
+  assert.equal(p.weightLbs, 215);
+  assert.equal(p.bodyProgram, undefined);
 });

@@ -3,11 +3,11 @@
 
 
 <!-- rolling-status-start -->
-Last session: 132 (2026-11-19) | Total: 580/1000 | Velocity: 2 | Debt: →
-Avgs — 3: 554 | 5: 545.2 | 10: 530.9 | 25: 714.7 | all: 908.5
+Last session: 133 (2026-11-24) | Total: 592/1000 | Velocity: 2 | Debt: →
+Avgs — 3: 569.7 | 5: 557.2 | 10: 540.1 | 25: 699.8 | all: 904.9
 Sparkline: ▁▁▁▁▁
 Intent rate: 80% (4/5 last 5)
-SIL delta: 537 → 580 (+43). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 86 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 580 → 592 (+12). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 87 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
 > Older entries S112 live verbatim in `context/archive/SELF_IMPROVEMENT_LOOP_S112-S112.md`.
@@ -291,6 +291,26 @@ Velocity: 7 selected product outcomes, excluding SIL/meta tasks. Debt: →, carr
 
 - [SIL:132] Future improvement — unselected: For any shared aggregate, write the "can one contributor be read back" test before the route.
 - [SIL:132] Future improvement — unselected: Keep capture scripts in the repo so screenshots can be retaken without a scratch folder.
+
+## 2026-11-24 — Session 133 — Bodies that matter, the Gridiron Census and a tidier site
+
+SIL v3.0: **592 / 1000** (Dev Health 86, Creative Alignment 84, Momentum 78, Engagement 64, Process Quality 60, Cross-Repo Coherence 58, Security Posture 74, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 68). Intent outcome: Achieved for implementation and deployment — 12 of 16 audit items shipped or shipped reduced and released at c7c7c44c; 4 carried. Prior 580; delta +12. Engineering judgment, not measured player, financial or launch outcomes.
+
+Velocity: 12 selected product outcomes, excluding SIL/meta tasks. Debt: →; carried items are on the task board.
+
+- Dev Health: 86: CI 11/11, release gates green, golden master v8 reproduced; boot budget at 649,284 of 650,000 leaves almost no room.
+- Creative Alignment: 84: the studio's asks (bodies that matter, wingspan, football-first site, default-on counts) shipped; aging and helmets are carried.
+- Momentum: 78: twelve outcomes and a release in one session despite a loaded host.
+- Engagement: 64: scenarios, body programmes, drive chart and the Census give reasons to play and return; none is measured yet.
+- Process Quality: 60: hosted CI found eleven defects the local runs did not; the cut-off tree was not committed alone before new work.
+- Cross-Repo Coherence: 58: no change.
+- Security Posture: 74: password out of the connection URL, Turnstile admitted by default, the Census cannot leak from tests or staging.
+- Ecosystem Integration: 20: project reporting only.
+- Capital Efficiency: 0 proof credit: unmeasured; not a finding.
+- Automation Coverage: 68: unchanged.
+
+- [SIL:133] Future improvement — unselected: Run the studio shard and the boot-budget check locally before every push; three of the eleven CI defects were studio gates that run in under a minute.
+- [SIL:133] Future improvement — unselected: Any default-on network feature needs an "inert in Node" test before its first call site.
 
 <!-- ledger-roll:pointer -->
 ---

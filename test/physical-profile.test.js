@@ -107,3 +107,11 @@ test("scouting measurables: Speed Score, catch radius, archetype and a 0-10 RAS"
   assert.equal(frameArchetype(body("OL", 78, 345, { wingspan: 80.5 }), norms).key, "power");
   assert.equal(frameArchetype(body("WR", 73, 200, { wingspan: 75.5 }), norms).key, "prototype");
 });
+
+test("a null or empty measurement is missing, not zero", () => {
+  const norms = buildFrameNorms(league());
+  const withNull = { ...body("WR", 73, 200), measurements: { wingspanInches: null, armLengthInches: "", handSizeInches: null } };
+  const plain = { position: "WR", heightInches: 73, weightLbs: 200, status: "active" };
+  assert.equal(frameEdge(withNull, "catchRadius", norms), frameEdge(plain, "catchRadius", norms));
+  assert.equal(ballSecurityFactor(withNull, norms), ballSecurityFactor(plain, norms));
+});

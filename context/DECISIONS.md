@@ -173,3 +173,11 @@ The least-privilege database role is prepared but not applied, because the servi
 ---
 
 Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+## 2026-11-24 — Session 133 — Default-on anonymous counts, and bodies in the sim
+
+Studio decision: anonymous league totals (the Gridiron Census) are on by default with a one-click opt-out, and per-browser detail stays opt-in. The default-on part carries no identifier, stores nothing in the browser except the player's own off switch, honours Global Privacy Control and Do Not Track, and is inert outside a real page. The service keeps one total per metric per day and counts only the live origin. It is named the Gridiron Census because "League Pulse" is already an in-game screen. Several EU states require consent even for cookieless analytics; that is to be checked before launch.
+
+A player's frame changes games through bounded edges against centres measured from the live league each game, never constants, and draws no random numbers. The separate aging curve for physical ratings is deferred, because shifting which ratings absorb development moves overall and needs its own parity window.
+
+Pages that repeated other pages were folded into them with 301s rather than kept as thin destinations. Portraits remain byte-identical to saved looks unless club colours are passed.

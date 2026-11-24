@@ -11,12 +11,12 @@
 export const BODY_PROGRAMS = Object.freeze({
   maintain: Object.freeze({ id: "maintain", label: "Maintain", summary: "Keep his current frame.", weightLbs: 0, ratings: Object.freeze({}) }),
   bulk: Object.freeze({
-    id: "bulk", label: "Bulk up", summary: "Add about 8 lb: more strength and power, a step slower.",
-    weightLbs: 8, ratings: Object.freeze({ strength: 2, trucking: 1, speed: -1, acceleration: -1 })
+    id: "bulk", label: "Bulk up", summary: "Add about 8 lb: more strength, a step slower.",
+    weightLbs: 8, ratings: Object.freeze({ strength: 2, speed: -1, acceleration: -1 })
   }),
   lean: Object.freeze({
-    id: "lean", label: "Lean down", summary: "Cut about 8 lb: quicker and more agile, less power at contact.",
-    weightLbs: -8, ratings: Object.freeze({ speed: 1, agility: 1, strength: -2 })
+    id: "lean", label: "Lean down", summary: "Cut about 8 lb: quicker off the mark, less power at contact.",
+    weightLbs: -8, ratings: Object.freeze({ strength: -2, speed: 1, acceleration: 1 })
   })
 });
 
@@ -37,8 +37,8 @@ export function setPlayerBodyProgram(player, program) {
   if (!player) return { ok: false, error: "Player not found." };
   if (!id) return { ok: false, error: `Unknown body programme: ${program}.` };
   if (player.position === "K" || player.position === "P") return { ok: false, error: "Specialists keep their own conditioning." };
-  if (id === "maintain") delete player.bodyProgram;
-  else player.bodyProgram = id;
+  if (id === "maintain") { delete player.bodyProgram; delete player.bodyProgramTeamId; }
+  else { player.bodyProgram = id; player.bodyProgramTeamId = player.teamId || null; }
   return { ok: true, program: id, policy: BODY_PROGRAMS[id] };
 }
 
@@ -49,14 +49,20 @@ export function setPlayerBodyProgram(player, program) {
  */
 export function applyBodyProgram(player) {
   const id = normalizeBodyProgram(player?.bodyProgram);
-  if (!id || id === "maintain") { if (player) delete player.bodyProgram; return null; }
+  // A programme belongs to the club that set it; a traded or released player
+  // drops it, so a rival club never runs one.
+  const ownClub = player?.bodyProgramTeamId && player.bodyProgramTeamId === player.teamId;
+  if (!id || id === "maintain" || !ownClub) { if (player) { delete player.bodyProgram; delete player.bodyProgramTeamId; } return null; }
   const program = BODY_PROGRAMS[id];
   const [lo, hi] = WEIGHT_LIMITS[player.position] || [160, 380];
   const before = Number(player.weightLbs);
   const weightBefore = Number.isFinite(before) ? before : (lo + hi) / 2;
-  const weightAfter = Math.max(lo, Math.min(hi, Math.round(weightBefore + program.weightLbs)));
+  const target = Math.round(weightBefore + program.weightLbs);
+  const weightAfter = program.weightLbs > 0 ? Math.min(target, Math.max(weightBefore, hi)) : Math.max(target, Math.min(weightBefore, lo));
   // A body that cannot move further gets none of the rating trade either.
-  const share = program.weightLbs ? (weightAfter - weightBefore) / program.weightLbs : 0;
+  // At most one programme's worth: a body that starts outside its limits is
+  // moved toward them by no more than the programme's own weight change.
+  const share = program.weightLbs ? Math.min(1, (weightAfter - weightBefore) / program.weightLbs) : 0;
   const changes = {};
   if (share > 0 && player.ratings) {
     for (const [key, delta] of Object.entries(program.ratings)) {
@@ -67,5 +73,6 @@ export function applyBodyProgram(player) {
   }
   player.weightLbs = weightAfter;
   delete player.bodyProgram;
+  delete player.bodyProgramTeamId;
   return { program: id, weightBefore, weightAfter, ratingChanges: changes };
 }

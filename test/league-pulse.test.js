@@ -129,6 +129,18 @@ test("a new franchise is sent at once, because setup navigates away before a hid
   });
 });
 
+test("turning the Census off holds for the visit even when the browser refuses to store the choice", () => {
+  withBrowser({}, () => {
+    globalThis.localStorage.setItem = () => { throw new Error("QuotaExceededError"); };
+    assert.equal(setLeaguePulse(false), false);
+    assert.equal(isLeaguePulseEnabled(), false);
+    assert.equal(countPulse("gamesPlayed", 3), false);
+    const { calls, fetchImpl } = recordingFetch();
+    assert.equal(flushLeaguePulse({ fetchImpl }), null);
+    assert.equal(calls.length, 0);
+  });
+});
+
 test("outside a browser page the pulse is inert, so tests and scripts never post to the live service", () => {
   assert.equal(typeof window, "undefined");
   assert.equal(isLeaguePulseEnabled(), false);
@@ -141,6 +153,7 @@ test("the first-visit notice shows once, only when the player has made no choice
   assert.equal(shouldShowPulseNotice({ seen: true, preference: "default", privacySignal: false }), false);
   assert.equal(shouldShowPulseNotice({ seen: false, preference: "off", privacySignal: false }), false);
   assert.equal(shouldShowPulseNotice({ seen: false, preference: "default", privacySignal: true }), false);
+  // Unreadable storage reads as "not seen": the default is never unannounced.
 });
 
 // ── The service ─────────────────────────────────────────────────────────────

@@ -20,6 +20,9 @@ export const LEAGUE_PULSE_SUMMARY = "Anonymous league totals (games, seasons, ti
 const ACTIVE_TICK_MS = 15_000;
 const MINUTE_ROUND = 5;
 
+// The player's choice for this visit. Kept in memory as well as storage so
+// that "off" holds even when the browser refuses to store it (S133 review).
+let sessionPreference = null;
 let pending = {};
 let activeMs = 0;
 let activeTimer = null;
@@ -40,6 +43,7 @@ export function browserPrivacySignal() {
 
 /** The player's own choice: "on", "off", or "default" when never touched. */
 export function getLeaguePulsePreference() {
+  if (sessionPreference) return sessionPreference;
   try {
     const value = storage()?.getItem(LEAGUE_PULSE_PREFERENCE_KEY);
     return value === "off" || value === "on" ? value : "default";
@@ -58,7 +62,8 @@ export function isLeaguePulseEnabled() {
 }
 
 export function setLeaguePulse(enabled) {
-  try { storage()?.setItem(LEAGUE_PULSE_PREFERENCE_KEY, enabled ? "on" : "off"); } catch { /* the choice still applies to this visit */ }
+  sessionPreference = enabled ? "on" : "off";
+  try { storage()?.setItem(LEAGUE_PULSE_PREFERENCE_KEY, sessionPreference); } catch { /* the in-memory choice still applies to this visit */ }
   if (!enabled) { pending = {}; activeMs = 0; }
   if (typeof window !== "undefined" && typeof CustomEvent === "function") {
     window.dispatchEvent(new CustomEvent("fa:league-pulse", { detail: { enabled: Boolean(enabled) } }));
@@ -94,7 +99,7 @@ function activeMinutes() {
  * cookies, no credentials.
  */
 export function flushLeaguePulse({ fetchImpl = globalThis.fetch } = {}) {
-  if (!isLeaguePulseEnabled()) { pending = {}; return null; }
+  if (!isLeaguePulseEnabled()) { pending = {}; activeMs = 0; return null; }
   const counts = pendingLeaguePulse();
   const payload = { schemaVersion: LEAGUE_PULSE_SCHEMA_VERSION, counts };
   if (!normalizeLeaguePulse(payload) || typeof fetchImpl !== "function") return null;
@@ -149,7 +154,10 @@ export function observePulseReceipt({ events = [], path = "", response = {} } = 
 }
 
 function tickActive() {
-  if (typeof document === "undefined" || document.visibilityState === "visible") activeMs += ACTIVE_TICK_MS;
+  // Time is only counted while the Census is on, so nothing from before an
+  // opt-in can be sent after it.
+  if (!isLeaguePulseEnabled()) { activeMs = 0; return; }
+  if (document.visibilityState === "visible") activeMs += ACTIVE_TICK_MS;
 }
 
 /**
@@ -170,6 +178,7 @@ export function installLeaguePulse({ returning = false } = {}) {
 
 /** Test seam: forget everything counted in this module. */
 export function resetLeaguePulseForTests() {
+  sessionPreference = null;
   pending = {};
   activeMs = 0;
   installed = false;

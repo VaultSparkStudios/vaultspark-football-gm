@@ -18,6 +18,8 @@ const SIZE_POSITIONS = Object.freeze(["QB", "RB", "WR", "TE", "OL", "DL", "LB", 
 const Z_LIMIT = 2.5;
 
 function finite(value, fallback = null) {
+  // null and "" are missing measurements, not zero (Number(null) === 0).
+  if (value === null || value === undefined || value === "") return fallback;
   const n = Number(value);
   return Number.isFinite(n) ? n : fallback;
 }

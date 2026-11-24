@@ -1,0 +1,38 @@
+{
+  "session": "S133",
+  "date": "2026-11-24",
+  "repo": "franchise-architect",
+  "headline": "The studio asked for bodies that matter, wingspan, a football-first site and anonymous counts by default; twelve of sixteen audit items shipped and went live at c7c7c44c, with a cut-off session's work recovered and released, and hosted CI catching eleven defects that were fixed before release.",
+  "items": [
+    {
+      "title": "Frame Matters: a player's body changes games and injuries",
+      "projectImpact": 9,
+      "ecosystemImpact": 5,
+      "evidence": "physicalProfile.js measures position centres from the live league each game and turns height, weight, wingspan, arm and hand into bounded edges (4 rating points; injury x0.9-1.2; fumble x0.85-1.15) with no random draws. Golden master s133-v8 with v7 frozen by hash; champions move in both scenarios; sim realism and long shards pass in CI."
+    },
+    {
+      "title": "Scouting measurables, body programmes and combine fixes",
+      "projectImpact": 8,
+      "ecosystemImpact": 4,
+      "evidence": "RAS, Speed Score, catch radius and frame type on the dossier; bulk / lean programmes through the command seam (403 for another club); timed drills no longer invert and the combine no longer moves the session's random stream. Unit tests for each."
+    },
+    {
+      "title": "Gridiron Census: anonymous counts on by default",
+      "projectImpact": 9,
+      "ecosystemImpact": 6,
+      "evidence": "Studio decision. Counters with no identifier and no analytics storage, GPC and Do Not Track honoured, inert outside a page; community schema 4 keeps one total per metric per day and counts only the live origin. Negative controls in test/league-pulse.test.js; live GET /community/v1/pulse answers on schema 4."
+    },
+    {
+      "title": "Uniforms, drive chart, scenarios and automatic highlights",
+      "projectImpact": 7,
+      "ecosystemImpact": 3,
+      "evidence": "Club colours with position-sized pads (saved looks byte-identical without colours); Sim-Watch drive chart; four one-click franchise scenarios; automatic highlights never opened before because the advance dialog was still on the modal stack, now scheduled after it closes. reward-beats 5/5."
+    },
+    {
+      "title": "A tidier site and a safer release path",
+      "projectImpact": 7,
+      "ecosystemImpact": 4,
+      "evidence": "Four thin pages folded with 301s, footer 19 to 13; database password out of the connection URL; Turnstile admitted by default. CI 11/11, staging 14/14 and 10/10, production 10/10, performance and release authority verified; visual review recorded with owner approval."
+    }
+  ]
+}

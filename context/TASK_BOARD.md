@@ -1,3 +1,24 @@
+## S133 Wave status
+
+Session Intent: /start, audit, implement the plan in efficiency order, close out, push to main and deploy.
+
+- [x] Phase 0: verify and release the cut-off 2026-11-22 tree; the edge policy admits the Turnstile origin by default.
+- [x] Phase 1: Gridiron Census (default-on, ID-free, opt-out; schema 4); report:visits landing-to-game ratio; agents.json and llms.txt.
+- [x] Phase 2: Frame Matters, RAS / Speed Score / catch radius, combine fixes, body programmes (golden master s133-v8).
+- [x] Phase 3 (reduced): club-coloured uniforms with pads on portraits.
+- [x] Phase 4 (reduced): four pages folded with 301s, footer 19 → 13, landing Census panel and tagline, stale copy.
+- [x] Phase 5 (reduced): drive chart, four franchise scenarios.
+- [x] Released at c7c7c44c: CI 11/11, staging 14/14 and 10/10, production 10/10, API schema 4, performance, visual review (owner-approved) and release authority.
+- [ ] [S133 carried] Aging curve for physical ratings (heavy frames lose speed sooner); needs its own measured parity window.
+- [ ] [S133 carried] Helmets, the full-body game kit and the 3D kit; a player-card share image.
+- [ ] [S133 carried] Animated field hero, screenshot feature cards, saves and backups moved off the landing page.
+- [ ] [S133 carried] Merge About, Press, Media and Contact; rename the stats page heading to Gridiron Census.
+- [ ] [S133 carried] Draft Day room; a GM legacy across saves; scenario codes and a scenario board.
+- [ ] [S133 carried] Split styles.css by screen (boot JS is at 649,284 of 650,000 bytes, so the next boot addition must move something out first).
+- [ ] [S133 carried] tests-ui/player-acceleration-study.spec.js asserts a one-frame 'Ready (0%)' state; assert the reset another way.
+- [ ] [S133 carried] Realism Sweep (scheduled) timed out on its 20-minute long smoke shard on 787bba6b.
+- [ ] [S133 carried] Read the first Census totals and npm run report:visits before deciding on landing changes; check the EU consent position for default-on counters before launch.
+
 ## S132 Wave status
 
 Session Intent: audit toward public beta, implement the plan in efficiency order, close out, push to main and deploy.

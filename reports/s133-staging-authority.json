@@ -3,11 +3,11 @@
   "kind": "independent-staging-authority",
   "project": "franchise-architect-staging",
   "branch": "staging",
-  "sourceRevision": "1f9446f75fe99ecbc7466a6eb947b97aaf1297f7",
+  "sourceRevision": "c7c7c44caa599b53b3b84c1275ad3388ab63ae21",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "579fce02ce6cc81caeed39c6b2a18072a6f03b8cf61bd39a52b48dc0114ed935",
-    "files": 459,
+    "digest": "0afc91a32a8aae121106ff7fbab60e8be961c3edea82e0848a8ebe175ae4c81c",
+    "files": 461,
     "entries": [
       {
         "path": ".well-known/llms.txt",
@@ -46,8 +46,8 @@
       },
       {
         "path": "app.js",
-        "bytes": 72108,
-        "sha256": "fdeaf15b5ddfeb3f08cc3107b4e250e0889647447c34bbfada9cb77112397c69"
+        "bytes": 71803,
+        "sha256": "422f6e03632e35e19856bff123b059ca1c27dc465ef1a54ae71a0d1b301c7ad0"
       },
       {
         "path": "boot-manifest.json",
@@ -446,8 +446,8 @@
       },
       {
         "path": "lib/appCore.js",
-        "bytes": 42298,
-        "sha256": "d0c6fbe9dd7d71457136daa46cb21821a8ead1d92a823f435d50326c8ef8164b"
+        "bytes": 38314,
+        "sha256": "4147f0e9f23774157149d7c862581ad9e967ae80643df27c5198c36a9322ec34"
       },
       {
         "path": "lib/appState.js",
@@ -806,8 +806,8 @@
       },
       {
         "path": "lib/leaguePulse.js",
-        "bytes": 3931,
-        "sha256": "f9e607f965fa6de16e00a19396b5775b3277aebb8df56cc98d95067af075c651"
+        "bytes": 3982,
+        "sha256": "7ec64a2b8d5be42e5e4a3cdd98f408eaa697bb2ef5b8741a2a9b0912a76d3398"
       },
       {
         "path": "lib/leaguePulseContract.js",
@@ -920,6 +920,11 @@
         "sha256": "cb5b1d8e1e7cdfc6225ee0a7b2473b4da756412957e865ae0b7b7a68ef314a9a"
       },
       {
+        "path": "lib/playerFrameCard.js",
+        "bytes": 4735,
+        "sha256": "21694d7c89aad43da68b55f9cbdac469010bf1fb3b551148f774a4c1b817ad3d"
+      },
+      {
         "path": "lib/playerHand.js",
         "bytes": 1258,
         "sha256": "81db12946544426259e00ee1b95dc986ecda92b740202384f163de9167f4aaba"
@@ -951,8 +956,8 @@
       },
       {
         "path": "lib/playerPortraitFace.js",
-        "bytes": 41202,
-        "sha256": "9584a619a6e749747459d9ba267d70d9d25376840531fb30beae5d88ae352e6d"
+        "bytes": 41884,
+        "sha256": "7b5e873f0c3664dba4bf5f98e61f1eb4f23f422943d4259c462c7fb6a98620bc"
       },
       {
         "path": "lib/playerPortraitMotion.js",
@@ -1046,8 +1051,8 @@
       },
       {
         "path": "lib/rewardBeats.js",
-        "bytes": 5743,
-        "sha256": "2dfdf79b5d47e518a018f3fa89640a47a8a83681ea1e2c1bd02736138f726981"
+        "bytes": 6197,
+        "sha256": "29a3cdcdf2096d6ea66343402e585b0e861156e4367bdb44dc78ea599d53e5a6"
       },
       {
         "path": "lib/rivalCoachIntel.js",
@@ -1091,13 +1096,18 @@
       },
       {
         "path": "lib/simWatchDirector.js",
-        "bytes": 11261,
-        "sha256": "8d907202e75288f97ce797973740e4c230755c15f353ba6aa400c0891655afba"
+        "bytes": 10510,
+        "sha256": "268b07af6e47e8ca941fda42a9af63565bdd26f6392823c588abbb8aa0e4141b"
+      },
+      {
+        "path": "lib/simWatchDriveChart.js",
+        "bytes": 1868,
+        "sha256": "91ec2394365aacc474a0bd4711deef1765066419a81e97994db429d542567b9d"
       },
       {
         "path": "lib/simWatchPlayback.js",
-        "bytes": 6000,
-        "sha256": "b45644864b24bcd0921e95d73fb3ea2f8abfa5c4fcb3f0d04db3688ca5ca68bc"
+        "bytes": 5154,
+        "sha256": "5a96b65db0143cc43909f87fda4998627d797e17e8ddd45ca97b83baec1e3e72"
       },
       {
         "path": "lib/simulationCheckpoints.js",
@@ -1336,8 +1346,8 @@
       },
       {
         "path": "precache-manifest.json",
-        "bytes": 29140,
-        "sha256": "fd7e3bedf9ddf22b8b5b1abdc4724dbbc829082ea4c43cd9340952bc34a4e5d7"
+        "bytes": 29291,
+        "sha256": "2a085f1d6c80d4bce552ebd4f00a54232d2f56a16aff81e5019fdcf69dfb1402"
       },
       {
         "path": "press.html",
@@ -2296,8 +2306,8 @@
       },
       {
         "path": "sw.js",
-        "bytes": 14252,
-        "sha256": "6e4a3249d84b05f0ec476e2bfc7d39acc01e2b7644f771918c0d18e1a1b8dbe9"
+        "bytes": 14309,
+        "sha256": "f8fe0599774a4b0356c54a907aeccb0869c6f110e0376e7cd2a29b242fc4f84e"
       },
       {
         "path": "terms.html",
@@ -2311,9 +2321,9 @@
       "edge-policy-receipt.json"
     ]
   },
-  "promotionIdentity": "1f9446f75fe99ecbc7466a6eb947b97aaf1297f7:579fce02ce6cc81caeed39c6b2a18072a6f03b8cf61bd39a52b48dc0114ed935",
-  "deploymentId": "9b679dc8-b32f-494c-95fa-c8b53ffd7394",
-  "deploymentUrl": "https://9b679dc8.franchise-architect-staging.pages.dev",
+  "promotionIdentity": "c7c7c44caa599b53b3b84c1275ad3388ab63ae21:0afc91a32a8aae121106ff7fbab60e8be961c3edea82e0848a8ebe175ae4c81c",
+  "deploymentId": "b7475d62-40ca-44fb-9fbe-6eaa79389ea3",
+  "deploymentUrl": "https://b7475d62.franchise-architect-staging.pages.dev",
   "stableUrl": "https://staging.playfranchisearchitect.com",
   "domainStatus": "active",
   "independent": true,
@@ -2323,12 +2333,12 @@
     "status": "verified",
     "checksPassed": 14,
     "checksTotal": 14,
-    "checkedAt": "2026-11-24T00:54:46.189Z"
+    "checkedAt": "2026-11-24T03:20:53.002Z"
   },
   "rollback": {
-    "previousDeploymentId": "4284d474-acc1-4973-8849-a8ca1e13f09f",
+    "previousDeploymentId": "9b679dc8-b32f-494c-95fa-c8b53ffd7394",
     "available": true
   },
   "verified": true,
-  "observedAt": "2026-11-24T00:54:46.189Z"
+  "observedAt": "2026-11-24T03:20:53.002Z"
 }

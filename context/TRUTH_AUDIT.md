@@ -1,8 +1,8 @@
 <!-- truth-audit-version: 1.1 -->
 # Truth Audit
 
-Overall status: S132 thirteen audit outcomes and the matching frontend/API release are verified at 7f389bdd. Broader readiness, player, financial and adoption outcomes remain unmeasured.
-Last reviewed: 2026-11-18
+Overall status: S133 audit outcomes and the matching frontend/API release are verified at c7c7c44c. Census uptake, player response, launch and adoption outcomes remain unmeasured.
+Last reviewed: 2026-11-24
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
 ## 2026-10-25 — Session 123 — Explicit receipt and verification scope
@@ -115,3 +115,7 @@ Claims are bound to evidence. The game-plan figures are engine measurements (7,4
 ---
 
 Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+## 2026-11-24 — Session 133 — Release c7c7c44c
+
+Exact source c7c7c44caa599b53b3b84c1275ad3388ab63ae21 and artifact 0afc91a32a8aae121106ff7fbab60e8be961c3edea82e0848a8ebe175ae4c81c bind this technical release: CI 11/11 (run 45314156854), staging 14/14 and 10/10, production 10/10 (promotion run 45318900270, one browser shard passed on rerun), API run 45318732766 on schema 4 (deploy-server passed on rerun after the shared host's admission lock), hosted performance verified, visual receipt 214 captures with 0 blocking. The visual review was performed by the session agent and recorded with the studio owner's explicit in-session approval; the agent's own attestation was refused by the tool policy first. The responsive capture used an uncommitted longer wait. The player dossier is not among the captured surfaces. Census totals, conversion and player outcomes are unmeasured.

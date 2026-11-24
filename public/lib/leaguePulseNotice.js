@@ -13,7 +13,9 @@ import {
 const NOTICE_KEY = "fa:league-pulse-notice:v1";
 
 function noticeSeen() {
-  try { return localStorage.getItem(NOTICE_KEY) === "1"; } catch { return true; }
+  // Unreadable storage means the notice cannot be remembered, so it is shown
+  // rather than hidden: the default must never run unannounced.
+  try { return localStorage.getItem(NOTICE_KEY) === "1"; } catch { return false; }
 }
 
 function markNoticeSeen() {

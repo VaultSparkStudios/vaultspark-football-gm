@@ -19,8 +19,8 @@ const FRAME_HINTS = Object.freeze({
 
 const PROGRAMS = Object.freeze([
   ["maintain", "Maintain", "Keep his current frame."],
-  ["bulk", "Bulk up", "About +8 lb: more strength and power, a step slower."],
-  ["lean", "Lean down", "About -8 lb: quicker and more agile, less power at contact."]
+  ["bulk", "Bulk up", "About +8 lb: more strength, a step slower."],
+  ["lean", "Lean down", "About -8 lb: quicker off the mark, less power at contact."]
 ]);
 
 export function renderFrameStrip(player, { controlledTeamId = state.dashboard?.controlledTeamId } = {}) {
