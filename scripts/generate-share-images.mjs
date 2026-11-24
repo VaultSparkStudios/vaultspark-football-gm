@@ -71,7 +71,7 @@ p{margin-top:26px;font:400 33px/1.32 "Barlow";color:#cdd8d3;display:-webkit-box;
 <div class="foot"><span class="chip">${esc(releaseLabel)}</span><span class="url">playfranchisearchitect.com</span></div>
 </body></html>`;
 
-const browser = await chromium.launch();
+const browser = await chromium.launch({ ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}) });
 const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
 const report = [];
 for (const card of cards) {

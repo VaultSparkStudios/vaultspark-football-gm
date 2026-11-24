@@ -567,10 +567,11 @@
         {
           "claim": "Roadmap still lists shipped power rankings",
           "adapter": "grep",
-          "target": "public/roadmap.html",
+          "target": "public/status.html",
           "pattern": "[Pp]ower rankings",
           "operator": "eq",
-          "expected": true
+          "expected": true,
+          "retargeted": "S133 folded roadmap.html into status.html#whats-next (301); the claim is read where the roadmap now lives."
         },
         {
           "claim": "Dev-server controls still ship in the landing page markup",
@@ -771,7 +772,7 @@
       "impact": 6,
       "innovation": 5,
       "priority": 9,
-      "status": "pending",
+      "status": "implemented",
       "readinessArea": "branding, legal, contact and rights/provenance",
       "stageRationale": "FB beta hardening: closes a demonstrated player-facing or readiness gap before public beta.",
       "recipe": "Move every page to one layout, add imagery to the seven text-only pages, add FAQPage and Article structured data and per-page share images.",
@@ -801,7 +802,13 @@
           "recipe": "Full depth including the optional extensions named in the approved plan."
         }
       },
-      "executionLog": [],
+      "executionLog": [
+        {
+          "at": "2026-11-24T02:30:00Z",
+          "status": "implemented",
+          "note": "Delivered by later audits rather than this one: S132 #11 one-site-template (one page template and grouped footer), #13 visual-upgrade (bundled fonts, hero, screenshots, per-page share images) and #19 structured data, completed by the recovered 2026-11-22 work that moved every page below the landing page onto the shared frame (test/site-one-template.test.js). Recorded in S133 when this premise was found contradicted."
+        }
+      ],
       "rank": 12
     },
     {

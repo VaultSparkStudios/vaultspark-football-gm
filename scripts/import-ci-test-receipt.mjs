@@ -20,7 +20,7 @@
  * Usage: node scripts/import-ci-test-receipt.mjs [--sha <40-hex>] [--dry-run]
  */
 import path from "node:path";
-import { execFileSync } from "node:child_process";
+import { execFileSync } from "./lib/safe-spawn.mjs";
 import { fileURLToPath } from "node:url";
 import { buildTestReceipt, parseTapSummary, writeTestReceiptAtomic } from "./lib/test-receipt.mjs";
 import { DEFAULT_SHARDS } from "./run-test-shard.mjs";
@@ -59,10 +59,10 @@ export function shardsFromCiJobs(jobs, requiredShards = DEFAULT_SHARDS) {
 }
 
 function git(root, ...args) {
-  return execFileSync("git", args, { cwd: root, encoding: "utf8" }).trim();
+  return execFileSync("git", args, { cwd: root, encoding: "utf8", windowsHide: true }).trim();
 }
 function gh(root, ...args) {
-  return execFileSync("gh", args, { cwd: root, encoding: "utf8", maxBuffer: 256 * 1024 * 1024 });
+  return execFileSync("gh", args, { cwd: root, encoding: "utf8", maxBuffer: 256 * 1024 * 1024, windowsHide: true });
 }
 
 export function importCiTestReceipt({ root, sha, dryRun = false, run = { git, gh } }) {

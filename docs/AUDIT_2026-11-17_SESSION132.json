@@ -112,10 +112,11 @@
         {
           "claim": "The roadmap lists the drag depth chart as future work although it shipped.",
           "adapter": "file-content",
-          "target": "public/roadmap.html",
+          "target": "public/status.html",
           "pattern": "<h3>A depth chart you can drag</h3>",
           "operator": "eq",
-          "expected": true
+          "expected": true,
+          "retargeted": "S133 folded roadmap.html into status.html#whats-next (301); the claim is read where the roadmap now lives."
         }
       ],
       "premise": "The roadmap lists the drag depth chart as future work although it shipped.",

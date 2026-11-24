@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-11-20 (Session 132 closeout) -->
+<!-- generated-at: 2026-11-24 (Session 132 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: 06c3f662e849c4b7 -->
-<!-- genius-authority-fingerprint: 922635e75361822a -->
+<!-- genius-authority-fingerprint: 13f9719abdbde544 -->
 <!-- session-authority: committed=S132 · SIL=S132 · status=S132 · handoff=S132; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 132 closeout · 2026-11-20.
+> **Fast-boot brief** — generated at Session 132 closeout · 2026-11-24.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,7 +17,7 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 133 · 2026-11-20 · BUILDER MODE                         ║
+║  Session 133 · 2026-11-24 · BUILDER MODE                         ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -34,7 +34,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · cache stale 52d · refresh required             ║
+║  Profile · game · cache stale 56d · refresh required             ║
 ║  ✓ Lifecycle authority · local FORGE · registry FORGE            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -42,7 +42,7 @@
 ║                                                                  ║
 ║    580/1000   █████████████░░░░░░░░░░░   58%                     ║
 ║    SIL v3.0  ·  Avg3: 554  ·  Velocity 7→                        ║
-║    Active 0d · closeout 1d · source: newest SIL/status/handoff   ║
+║    Active 0d · closeout 5d · source: newest SIL/status/handoff   ║
 ║    Trend  ▁▁▁▁▁  →  (last 5 sessions)                            ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -79,7 +79,7 @@
 ║  ✓  Velocity      7   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ⚠  IGNIS         41418 FORGE  ·  7d old                         ║
+║  ⚠  IGNIS         41418 FORGE  ·  11d old                        ║
 ║  ⛔  Truth         S132 thirteen audit outcomes and the matching  ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ⚠  Genome dims   unmeasured (5 dimensions; —/25)                ║
@@ -89,8 +89,8 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ✓  Doctor        12/12 (100%)  ·  2026-11-20  ✓                 ║
-║  ✓  Cost          Max flat-rate · $0.22/7d notional · no alarm   ║
+║  ⛔  Doctor        9/12 (75%)  ·  3 failing                       ║
+║  ✓  Cost          Max flat-rate · $0.21/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ ORCHESTRATOR ════════════════════════════════════════════════╗
@@ -113,22 +113,22 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ cache source: AUDIT_2026-11-17_SESSION132.json                ║
+║  ✓ cache source: AUDIT_2026-11-23_SESSION133.json                ║
 ║                                                                  ║
-║  #1 · ⚡ · legacy-mirrors-to-redirects                            ║
-║  Legacy URL mirrors become redirects; the deploy ships one copy  ║
+║  #3 · 🔨 · frame-matters                                         ║
+║  Frame Matters: a player's body changes the games                ║
 ║                                                                  ║
-║  #3 · 🔨 · bundle-and-minify                                     ║
-║  Minified, bundled, content-hashed client; hero image no longer  ║
+║  #6 · 🔨 · players-in-uniform                                    ║
+║  Players wear their club's colours                               ║
 ║                                                                  ║
-║  #4 · 🔨 · in-game-feedback-and-diagnostics                      ║
-║  Feedback and opt-in error reports are sent from inside the gam  ║
+║  #7 · 🔨 · landing-for-conversion                                ║
+║  The landing page sells football and shows a live league         ║
 ║                                                                  ║
-║  #6 · ⚡ · game-day-in-the-loop                                   ║
-║  Advancing a week offers the highlight reel of your game         ║
+║  #8 · 🔨 · site-consolidation                                    ║
+║  Fewer, better pages: four folded in, footer from 19 links to 1  ║
 ║                                                                  ║
-║  #11 · ⚡ · one-site-template                                     ║
-║  One page template, grouped footer, one name per destination     ║
+║  #10 · 🔨 · franchise-scenarios                                  ║
+║  Franchise scenarios with shareable codes                        ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -136,5 +136,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 132 closeout · 2026-11-20*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 132 closeout · 2026-11-24*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

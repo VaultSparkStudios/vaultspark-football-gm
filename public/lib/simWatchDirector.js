@@ -1,7 +1,7 @@
 import { api, state } from "./appState.js";
 import { escapeHtml, showToast, teamCode } from "./appCore.js";
 import { observeBackgroundTask, recordClientDiagnostic, resolveClientDiagnostic } from "./clientDiagnostics.js";
-import { buildDriveChart, buildGameFlow, buildScoringTimeline, createSimWatchPlayback, deriveFieldState, deriveFinalReel, resolveBoxScoreTeamIds, SIM_WATCH_SPEEDS } from "./simWatchPlayback.js";
+import { buildGameFlow, buildScoringTimeline, createSimWatchPlayback, deriveFieldState, deriveFinalReel, resolveBoxScoreTeamIds, SIM_WATCH_SPEEDS } from "./simWatchPlayback.js";
 import { playSound } from "./audioFeedback.js";
 import { deriveMarqueeBadge } from "./marqueeBadge.js";
 import { closeModal, openModal } from "./modalManager.js";
@@ -9,6 +9,8 @@ import { closeModal, openModal } from "./modalManager.js";
 let active = false;
 let controller = null;
 let context = null;
+// The drive chart (S133) loads with the first broadcast, never at boot.
+let driveChart = null;
 
 // Pure/testable: the td-flourish cue should fire once per touchdown play as
 // the viewer advances *forward* through the broadcast (a "tick" from
@@ -115,7 +117,7 @@ function updateField(boxScore, play, index) {
   if (yardLine) yardLine.textContent = spot?.spotLabel || "—";
   if (downDistance) downDistance.textContent = spot?.downLabel || "";
   renderGameFlow(index);
-  renderDriveChart(index);
+  driveChart?.renderDriveChart(document.getElementById("simWatchDrives"), context, index);
 }
 
 function renderGameFlow(index) {
@@ -136,28 +138,6 @@ function renderGameFlow(index) {
     <text x="2" y="9" class="sw-flow-label">${escapeHtml(homeCode)} ahead</text>
     <text x="2" y="${height - 2}" class="sw-flow-label">${escapeHtml(awayCode)} ahead</text>`;
 }
-// S133: every drive so far as an arrow on the field, coloured by club, with
-// how it ended. Drawn from the same spots the live ball uses.
-const DRIVE_RESULT_LABEL = { td: "TD", fg: "FG", turnover: "TO", punt: "Punt" };
-function renderDriveChart(index) {
-  const svg = document.getElementById("simWatchDrives");
-  if (!svg || !context?.plays?.length) return;
-  const drives = buildDriveChart(context.plays, context.teamIds, index).slice(-12);
-  const rowHeight = 9;
-  const height = Math.max(rowHeight * 2, drives.length * rowHeight + 4);
-  svg.setAttribute("viewBox", `0 0 300 ${height}`);
-  const yardLines = [10, 20, 30, 40, 50, 60, 70, 80, 90].map((yard) => `<line x1="${yard * 3}" y1="0" x2="${yard * 3}" y2="${height}" class="sw-drive-yard${yard === 50 ? " sw-drive-mid" : ""}"></line>`).join("");
-  const rows = drives.map((drive, i) => {
-    const y = 4 + i * rowHeight + rowHeight / 2;
-    const x1 = (drive.startX * 3).toFixed(1), x2 = (drive.endX * 3).toFixed(1);
-    const side = drive.teamId === context.teamIds.home ? "home" : "away";
-    const label = DRIVE_RESULT_LABEL[drive.result] || "";
-    return `<g class="sw-drive sw-drive-${side} sw-drive-${drive.result || "open"}"><line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}"></line><circle cx="${x2}" cy="${y}" r="2.4"></circle>${label ? `<text x="${Math.min(288, Math.max(Number(x1), Number(x2)) + 4)}" y="${y + 2.6}">${label}</text>` : ""}</g>`;
-  }).join("");
-  svg.innerHTML = yardLines + rows;
-  svg.setAttribute("aria-label", `Drive chart: ${drives.length} drive${drives.length === 1 ? "" : "s"} so far`);
-}
-
 function scoringThrough(index) {
   const totals = { away: 0, home: 0 };
   for (const score of context.scoreTimeline) {
@@ -247,6 +227,7 @@ export async function runSimWatch(gameId) {
     const scoring = boxScore.scoringSummary || [];
     context = { boxScore, teamIds: resolveBoxScoreTeamIds(boxScore), plays, fullPlays: plays, scoring, scoreTimeline: buildScoringTimeline(plays, scoring), scoringSet: new Set(scoring.map((entry) => entry.description)), mode: "full", renderedIndex: -1 };
   context.flow = buildGameFlow(plays, context.scoreTimeline, context.teamIds);
+  if (!driveChart) observeBackgroundTask(() => import("./simWatchDriveChart.js").then((module) => { driveChart = module; }), { surface: "sim-watch", operation: "load-drive-chart", authorityKey: "sim-watch", severity: "degraded" });
     active = true;
     renderHeader(boxScore);
     overlay.hidden = false;

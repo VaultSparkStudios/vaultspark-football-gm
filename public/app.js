@@ -1814,24 +1814,9 @@ function bindEvents() {
 
   document.getElementById("loadQaBtn").addEventListener("click", () => runAction(loadQa, "Loading QA report..."));
 
-  // S133: offseason body programmes from the player dossier. Applied at the
-  // next offseason; the frame it builds changes games through Frame Matters.
   document.addEventListener("click", (event) => {
     const button = event.target.closest?.(".body-program-btn");
-    if (!button) return;
-    runAction(async () => {
-      const payload = await api("/api/players/body-program", {
-        method: "POST",
-        body: { teamId: state.dashboard?.controlledTeamId, playerId: button.dataset.playerId, program: button.dataset.program }
-      });
-      applyDashboard(payload.state);
-      for (const sibling of button.parentElement?.querySelectorAll(".body-program-btn") || []) {
-        const active = sibling === button;
-        sibling.classList.toggle("active", active);
-        sibling.setAttribute("aria-pressed", String(active));
-      }
-      showToast(`${payload.receipt?.label}: ${payload.receipt?.playerName} (applies this offseason)`);
-    }, "Setting body programme...");
+    if (button) runAction(() => import("./lib/playerFrameCard.js").then((m) => m.applyBodyProgramChoice(button, { api, applyDashboard, showToast })), "Setting body programme...");
   });
 
   document.getElementById("rehabCommandCenter")?.addEventListener("click", (event) => {

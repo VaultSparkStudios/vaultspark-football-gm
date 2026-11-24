@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildDriveChart } from "../public/lib/simWatchPlayback.js";
+import { buildDriveChart } from "../public/lib/simWatchDriveChart.js";
 
 const teamIds = { home: "BUF", away: "MIA" };
 const plays = [
