@@ -186,11 +186,11 @@ export function validateReserveListState(snapshot) {
   const applied = new Map();
   const finals = new Set();
   if (league.reserveGameHistory != null) {
-    if (!Array.isArray(league.reserveGameHistory)) throw new Error('Invalid reserve game ledger');
+    if (!Array.isArray(league.reserveGameHistory)) throw new Error('Invalid reserve game record');
     for (const row of league.reserveGameHistory) {
       if (!row || !parseGame(row.key) || applied.has(row.key) || !Array.isArray(row.playerIds)
         || row.playerIds.some(id => typeof id !== 'string') || new Set(row.playerIds).size !== row.playerIds.length)
-        throw new Error('Invalid reserve game ledger');
+        throw new Error('Invalid reserve game record');
       if (Object.hasOwn(row, 'game')) {
         let physical;
         try { physical = canonicalFootballGame(row.game); } catch { throw invalidPhysicalGame(); }
@@ -223,14 +223,14 @@ export function validateReserveListState(snapshot) {
       || new Set(r.gamesMissed.map(key => parseGame(key)?.week)).size !== r.gamesMissed.length
       || typeof r.countsAgainstReturnLimit !== 'boolean' || typeof r.returnCharged !== 'boolean'
       || (r.practiceStartedWeek !== null && (!Number.isInteger(r.practiceStartedWeek) || r.practiceStartedWeek < r.placedWeek))) {
-      const error = new Error(`Invalid reserve receipt for ${p.id}`);
+      const error = new Error(`Invalid reserve record for ${p.id}`);
       error.reasonCode = 'RESERVE_RECEIPT_INVALID'; throw error;
     }
   }
   if (league.reserveReturnHistory != null && (!Array.isArray(league.reserveReturnHistory)
     || league.reserveReturnHistory.some(row => !row || !Number.isInteger(row.year) || !Number.isInteger(row.week)
       || typeof row.playerId !== 'string' || typeof row.teamId !== 'string' || typeof row.atCut !== 'boolean')))
-    throw new Error('Invalid reserve return ledger');
+    throw new Error('Invalid reserve return record');
 }
 
 export function resetReserveListsForYear(league, year) {

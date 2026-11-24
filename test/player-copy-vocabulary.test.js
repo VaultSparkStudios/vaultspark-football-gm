@@ -13,10 +13,14 @@ import { fileURLToPath } from "node:url";
  * They stay legal in identifiers, data keys, CSS classes, storage keys and
  * comments, because renaming those would change behaviour for no player gain.
  *
- * What is scanned: every string/template literal in public/lib/*.js and the
- * markup text (plus aria-label/title/placeholder/alt values) of public/game.html.
- * What is NOT scanned: copy the engine sends in API payloads (src/), the
- * marketing pages, and comments.
+ * What is scanned: every string/template literal in public/*.js, public/lib/*.js
+ * and the engine under src/ (the engine writes the news, objectives, advice and
+ * error text the client shows as-is), plus the markup text and the
+ * aria-label/title/placeholder/alt values of public/game.html.
+ * What is NOT scanned: the marketing pages, comments, and src/community. The
+ * Community Stats service describes its own counting method on the stats page,
+ * where "receipt" is the published name of a counted event; that wording is
+ * kept in step with that page, not with the game.
  *
  * Glossary (retired -> use instead):
  *   receipt            -> result / record / recap / note (per context)
@@ -248,8 +252,40 @@ export function scanPlayerCopy(root = repoRoot) {
       findings.push({ file, ...finding });
     }
   }
+  const publicDir = path.join(root, "public");
+  for (const name of fs.readdirSync(publicDir).filter((entry) => entry.endsWith(".js")).sort()) {
+    for (const finding of scanJs(fs.readFileSync(path.join(publicDir, name), "utf8"))) findings.push({ file: name, ...finding });
+  }
   const html = fs.readFileSync(path.join(root, "public", "game.html"), "utf8");
   for (const finding of scanHtml(html)) findings.push({ file: "game.html", ...finding });
+  return findings;
+}
+
+/** Directories under src/ whose text is not written for the game's player. */
+const ENGINE_NOT_PLAYER_COPY = new Set(["community"]);
+
+/** Every .js file under src/, as repo-relative paths, in a stable order. */
+export function engineSourceFiles(root = repoRoot) {
+  const files = [];
+  const walk = (dir, top) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+      if (entry.isDirectory()) {
+        if (top && ENGINE_NOT_PLAYER_COPY.has(entry.name)) continue;
+        walk(path.join(dir, entry.name), false);
+      } else if (entry.name.endsWith(".js")) {
+        files.push(path.relative(root, path.join(dir, entry.name)).replaceAll("\\", "/"));
+      }
+    }
+  };
+  walk(path.join(root, "src"), true);
+  return files;
+}
+
+export function scanEngineCopy(root = repoRoot) {
+  const findings = [];
+  for (const file of engineSourceFiles(root)) {
+    for (const finding of scanJs(fs.readFileSync(path.join(root, file), "utf8"))) findings.push({ file, ...finding });
+  }
   return findings;
 }
 
@@ -259,6 +295,33 @@ test("player-visible copy carries no retired process words", () => {
     .map((entry) => `  public/${entry.file}:${entry.line}  "${entry.found}"  in: ${entry.text.slice(0, 140)}`)
     .join("\n");
   assert.equal(findings.length, 0, `Retired words in player copy (see the glossary at the top of this file):\n${report}`);
+});
+
+test("text the engine sends to the player carries no retired process words", () => {
+  const files = engineSourceFiles();
+  assert.ok(files.length > 100, `the engine scan found only ${files.length} files; it is looking in the wrong place`);
+  assert.ok(files.includes("src/runtime/GameSession.js"));
+  assert.ok(!files.some((file) => file.startsWith("src/community/")));
+  const findings = scanEngineCopy();
+  const report = findings
+    .map((entry) => `  ${entry.file}:${entry.line}  "${entry.found}"  in: ${entry.text.slice(0, 140)}`)
+    .join("\n");
+  assert.equal(findings.length, 0, `Retired words in engine text (see the glossary at the top of this file):\n${report}`);
+});
+
+test("the engine scan catches the wording it replaced", () => {
+  // Negative control: the lines this gate was written against, as they were.
+  const before = [
+    '{ id: "receipt", label: "Earn the first receipt", complete: false }',
+    "const line = `Receipts are in: the beat reporter went ${hits}-${misses} on preseason predictions`;",
+    'return { ok: false, error: "Trade authority changed after evaluation. Re-evaluate before committing." };',
+    "if (!Array.isArray(charges)) fail('cap receipts');",
+    'throw new Error("Invalid reserve game ledger");',
+    'const label = score >= 35 ? "Emerging Architect" : "Portfolio In Formation";'
+  ];
+  for (const line of before) assert.ok(scanJs(line).length > 0, `expected a finding in: ${line}`);
+  // The data key that names the objective is untouched and must stay legal.
+  assert.deepEqual(scanJs('{ id: "receipt", label: "Play your first game" }'), []);
 });
 
 test("the scanner flags retired words in copy and ignores identifiers", () => {

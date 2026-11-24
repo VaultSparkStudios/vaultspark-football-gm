@@ -8,6 +8,8 @@ import { recordDevelopmentInjury } from "../domain/livingPotential.js";
 import { playerAppearance, playerFrame } from "../domain/playerIdentity.js";
 import { ensurePlayerVisualIdentity, validateSnapshotVisualIdentity } from "../domain/playerVisualIdentity.js";
 import { resolvePlayerMeasurements } from "../domain/playerMeasurements.js";
+import { buildFrameNorms, buildWorkoutNorms, frameInjuryFactor, physicalCard } from "../domain/physicalProfile.js";
+import { setPlayerBodyProgram } from "../domain/bodyProgram.js";
 import { validatePracticeSquadAddition, selectEligiblePracticeSquad, practiceEligibilityGroup } from "../domain/practiceSquadEligibility.js";
 import { practiceSalaryForSeason } from '../data/nflPracticeSalary.js';
 import { transitionReserveList, validateReserveListState, resetReserveListsForYear, describeReserveReturn } from '../domain/reserveLists.js';
@@ -592,10 +594,13 @@ function deriveMakeupRead(prospect, rng) {
 
 // Deterministic per-prospect durability read — a fixed trait revealed by deep
 // medical investment, not fresh randomness on every allocation call.
-function deriveMedicalRead(prospect) {
+// Frame Matters (S133): the read now comes from the same body model that
+// rolls real injuries, so a red flag predicts something. The id hash keeps
+// some of each file private to the doctors (history the body does not show).
+function deriveMedicalRead(prospect, frameNorms = null) {
   const seed = stableHash(prospect.id) % 100;
-  const heavyPosition = ["OL", "DL", "LB"].includes(prospect.position);
-  const risk = seed + (heavyPosition ? 8 : 0) + Math.max(0, (prospect.weightLbs || 220) - 260) * 0.15;
+  const bodyRisk = frameNorms ? (frameInjuryFactor(prospect, frameNorms) - 1) * 220 : Math.max(0, (prospect.weightLbs || 220) - 260) * 0.15;
+  const risk = seed * 0.7 + 12 + bodyRisk;
   if (risk < 55) return { level: "clean", note: "Medical staff signed off clean. No durability concerns on file." };
   if (risk < 80) return { level: "monitor", note: "Minor durability flag — team doctors want a re-check closer to the draft, not disqualifying." };
   return { level: "red-flag", note: "Significant medical risk flagged. Expect this to affect draft-day price more than the tape does." };
@@ -1388,7 +1393,7 @@ function defaultRulebookRows() {
     { section: "League Setup", topic: "Season Setup", summary: "Create or resume a league, pick a team, and load realism profiles if available." },
     { section: "Simulation", topic: "Weekly Advance", summary: "Advancing the calendar simulates games, injuries, news, standings, and stat progression." },
     { section: "Roster", topic: "Depth Charts", summary: "Depth order drives role share, snap counts, touches, and long-run stat accumulation." },
-    { section: "Contracts", topic: "Cap Management", summary: "Extensions, restructures, tags, options, waivers, and dead cap all feed the cap ledger." },
+    { section: "Contracts", topic: "Cap Management", summary: "Extensions, restructures, tags, options, waivers, and dead cap all feed the cap sheet." },
     { section: "Scouting", topic: "Draft Cycle", summary: "Allocate scouting points, lock your board, and manage user or CPU draft picks." },
     { section: "Realism", topic: "Verification", summary: "Run 10-20 year checks to compare season and career output against PFR-based target profiles." },
     { section: "Commissioner", topic: "Admin Tools", summary: "Override retirements, force player edits, export or import snapshots, and inspect diagnostics." }
@@ -2577,7 +2582,7 @@ export class GameSession {
       ? `${appliedGameScheduled ? `No controlled-team result was recorded for Week ${appliedWeek}.` : `Week ${appliedWeek} was a scheduled bye.`} Week ${currentWeek}${nextOpponent ? ` vs ${nextOpponent}` : ""} is the next source gate.`
       : `Week ${appliedWeek}${nextOpponent ? ` vs ${nextOpponent}` : ""} is ready to play`;
     const waitingAction = currentWeek > appliedWeek
-      ? `Commit your tactic for Week ${currentWeek}${nextOpponent ? ` vs ${nextOpponent}` : ""} and earn the first game receipt.`
+      ? `Commit your tactic for Week ${currentWeek}${nextOpponent ? ` vs ${nextOpponent}` : ""} and play your first game.`
       : "Play the opening week to earn your first result.";
     const isHome = game?.homeTeamId === this.controlledTeamId;
     const teamScore = game ? Number(isHome ? game.homeScore : game.awayScore) : null;
@@ -2603,7 +2608,7 @@ export class GameSession {
         { id: "plan", label: "Set the weekly intent", complete: Boolean(weeklyPlan), detail: result
           ? receipt.effects?.weeklyPlan?.summary || tacticalFilm?.label || 'Opening plan applied'
           : weeklyPlan?.summary || "Matchup plan pending" },
-        { id: "receipt", label: "Earn the first receipt", complete: Boolean(result), detail: result ? `${result.verdict} ${result.teamScore}-${result.opponentScore} vs ${result.opponentId}` : waitingDetail }
+        { id: "receipt", label: "Play your first game", complete: Boolean(result), detail: result ? `${result.verdict} ${result.teamScore}-${result.opponentScore} vs ${result.opponentId}` : waitingDetail }
       ],
       nextAction: result ? "Review the evidence and choose the next franchise decision." : waitingAction,
       ownerPressure: ownerExpectation ? { mandate: ownerExpectation.mandate || null, trend: ownerExpectation.trend || "watch", heat: ownerExpectation.heat ?? null } : null,
@@ -3427,10 +3432,20 @@ export class GameSession {
     const controlledState = this.controlledTeamId
       ? this.ensureScoutingTeamState(this.controlledTeamId)
       : null;
+    // S133: the pro day now reads the athlete. A prospect who tested above
+    // this class's median combine grade earns a point, one below it loses one;
+    // the centre is this class, measured here, never a constant.
+    const classGrades = (this.league.pendingDraft?.available || [])
+      .map((prospect) => Number(prospect.scouting?.combineGrade))
+      .filter(Number.isFinite)
+      .sort((a, b) => a - b);
+    const medianGrade = classGrades.length ? classGrades[Math.floor(classGrades.length / 2)] : null;
     for (const prospect of this.league.pendingDraft?.available || []) {
-      // Public baseline: unchanged flat-noise pro-day bump — nobody's homework,
-      // nobody's payoff. This is the grade a team that never scouted still sees.
-      const bump = this.rng.int(-1, 3);
+      // Public baseline: the flat pro-day noise (one draw per prospect, as
+      // before) plus the workout signal above.
+      const grade = Number(prospect.scouting?.combineGrade);
+      const workoutSignal = medianGrade === null || !Number.isFinite(grade) ? 0 : clamp(Math.round((grade - medianGrade) / 12), -1, 1);
+      const bump = this.rng.int(-1, 3) + workoutSignal;
       prospect.scouting.proDayBoost = (prospect.scouting.proDayBoost || 0) + bump;
       prospect.scouting.scoutedOverall = clamp((prospect.scouting.scoutedOverall || prospect.overall) + bump, 45, 99);
 
@@ -4881,7 +4896,7 @@ export class GameSession {
       flags.makeup = deriveMakeupRead(prospect, this.rng);
     }
     if (totalEffort >= SCOUTING_MEDICAL_THRESHOLD && !flags.medical) {
-      flags.medical = deriveMedicalRead(prospect);
+      flags.medical = deriveMedicalRead(prospect, buildFrameNorms(this.league.players || []));
     }
 
     const reportKey = `${this.currentYear}-${this.currentWeek}`;
@@ -5901,6 +5916,18 @@ export class GameSession {
     };
   }
 
+  // S133: an offseason body programme for one of the club's own players. It is
+  // stored on the player and applied once, at the next offseason progression.
+  setBodyProgram({ teamId = this.controlledTeamId, playerId, program }) {
+    const player = this.getPlayerById(playerId);
+    if (!player || player.teamId !== teamId) return { ok: false, error: "Player not found on that team." };
+    const result = setPlayerBodyProgram(player, program);
+    if (!result.ok) return result;
+    const receipt = { type: "body-program", teamId, playerId, playerName: player.name, program: result.program, label: result.policy.label, summary: result.policy.summary, year: this.currentYear, week: this.currentWeek };
+    this.logTransaction({ type: "body-program", teamId, playerId, playerName: player.name, details: receipt });
+    return { ...result, receipt };
+  }
+
   setRehabPlan({ teamId = this.controlledTeamId, playerId, plan }) {
     const player = this.getPlayerById(playerId);
     if (!player || player.teamId !== teamId) return { ok: false, error: "Injured player not found on that team." };
@@ -6378,6 +6405,8 @@ export class GameSession {
       injuryModifierCache.set(teamId, modifiers);
       return modifiers;
     };
+    // Frame Matters: one set of position centres for the week's injury rolls.
+    const frameNorms = buildFrameNorms(this.league.players || []);
     for (const game of weekResult.games) {
       // Injury exposure is limited to players who actually dressed: the same
       // dressed-roster authority that builds lineups (active slot, not IR/PUP/NFI,
@@ -6386,7 +6415,8 @@ export class GameSession {
       const awayPlayers = this.gameDressedPlayers(game, game.awayTeamId);
       const injured = rollGameInjuries(homePlayers, awayPlayers, this.rng, injuryMultiplier, {
         gameId:game.gameId,
-        getTeamModifiers: injuryModifiers
+        getTeamModifiers: injuryModifiers,
+        frameNorms
       });
       for (const { player } of injured) {
         reportSignificantInjury(this.league, player, this.currentYear, weekResult.week);
@@ -6610,7 +6640,7 @@ export class GameSession {
     const capsuleGrade = gradeTimeCapsule({ league: this.league, statBook: this.statBook, year: this.currentYear });
     if (capsuleGrade) {
       this.logNews(
-        `Receipts are in: the beat reporter went ${capsuleGrade.hits}-${capsuleGrade.misses}${capsuleGrade.pushes ? ` (${capsuleGrade.pushes} push)` : ""} on preseason predictions`,
+        `The results are in: the beat reporter went ${capsuleGrade.hits}-${capsuleGrade.misses}${capsuleGrade.pushes ? ` (${capsuleGrade.pushes} push)` : ""} on preseason predictions`,
         { year: this.currentYear, kind: "time-capsule-receipts", verdict: capsuleGrade.reporterVerdict }
       );
     }
@@ -6852,7 +6882,7 @@ export class GameSession {
     if (draft.cohort != null) {
       validateDraftCohortPolicy(draft.cohort);
       if (!Array.isArray(draft.available) || draft.available.length!==draft.cohort.generatedCount)
-        throw new TypeError('Draft cohort population does not match its receipt');
+        throw new TypeError('Draft cohort population does not match its record');
       const needed=draftCohortSize(slots.length)-draft.available.length;
       if (needed>0) {
         draft.available.push(...this.createScoutedDraftProspects({size:needed,year:draft.year,rankOffset:draft.available.length}));
@@ -7296,6 +7326,11 @@ export class GameSession {
         heightInches: player.heightInches || null,
         weightLbs: player.weightLbs || null,
         bodyMeasurements: resolvePlayerMeasurements(player),
+        // S133 Frame Matters: the body as a scout reads it, against today's
+        // league. Built from public measurables only (size and workout).
+        bodyProgram: player.bodyProgram || "maintain",
+        physicalCard: physicalCard(player, buildFrameNorms(this.league.players || []),
+          buildWorkoutNorms([...(this.league.players || []), ...(this.league.pendingDraft?.available || [])])),
         jerseyNumber: player.jerseyNumber ?? null,
         experience: player.experience,
         service: { accrued: playerServiceCount(player, 'accrued'), salaryCredited: playerServiceCount(player, 'credited'), pension: pensionServiceCount(player) },

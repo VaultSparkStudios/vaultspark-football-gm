@@ -17,7 +17,7 @@ export function admitUndraftedFreeAgents(league, draft, { year } = {}) {
   if (receipt && (receipt.version !== UNDRAFTED_FREE_AGENCY_VERSION || receipt.year !== year ||
     !Array.isArray(receipt.playerIds) || receipt.playerIds.some(id=>typeof id!=='string') ||
     new Set(receipt.playerIds).size !== receipt.playerIds.length))
-    throw new TypeError('Invalid undrafted admission receipt');
+    throw new TypeError('Invalid undrafted admission record');
   const existing=new Set([...(league.players || []),...(league.retiredPlayers || [])].map(p=>p.id));
   const selected=new Set((draft.selections || []).map(row=>row.playerId));
   const seen=new Set(),admitted=[];

@@ -99,6 +99,7 @@ const POST_PATHS = [
   "/api/onboarding/start-scenario",
   "/api/owner",
   "/api/coaching-market",
+  "/api/players/body-program",
   "/api/practice-squad",
   "/api/press-conference",
   "/api/release",

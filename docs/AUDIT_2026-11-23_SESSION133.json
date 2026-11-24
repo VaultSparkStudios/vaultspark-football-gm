@@ -1,0 +1,946 @@
+{
+  "schemaVersion": "2.1",
+  "date": "2026-11-23",
+  "session": 133,
+  "source": "787bba6b",
+  "project": {
+    "slug": "franchise-architect-football",
+    "type": "game",
+    "name": "Franchise Architect: Football"
+  },
+  "scope": "S133 audit after /start: player bodies and visuals, the public site and the landing-to-game funnel, anonymous measurement (studio decision: Census counters on by default with an opt-out, detail opt-in), and the cut-off session in the working tree. Sixteen ranked items in seven waves; this record states what shipped, what shipped reduced and what is carried.",
+  "profile": {
+    "rubric": "product",
+    "audience": "public-unlaunched",
+    "type": "game",
+    "source": "Three read-only source audits after /start (public site, game client and engine, infrastructure and release process) plus public competitor research.",
+    "staging": "independent Cloudflare Pages project; stable staging domain"
+  },
+  "lifecycleFocus": {
+    "stage": "FB",
+    "display": "FORGE · BETA",
+    "audience": "public-unlaunched",
+    "health": "yellow",
+    "mode": "public-beta-hardening",
+    "readiness": true,
+    "statusSource": "project-status",
+    "stageSource": "project-status"
+  },
+  "axes": {
+    "features-depth": 2,
+    "ui-ux-feedback": 4,
+    "gamification-immersion": 5,
+    "ai-intelligence": 1.5,
+    "security": 2,
+    "speed-organization-efficiency": 3,
+    "token-cost": 1.5,
+    "observability-honesty": 3,
+    "sil-debt": 1
+  },
+  "items": [
+    {
+      "id": 1,
+      "rank": 1,
+      "slug": "checkpoint-cut-off-session",
+      "title": "Verify and ship the cut-off session's work; the human check can be switched on without a site rebuild",
+      "axis": "security",
+      "category": "security",
+      "tier": "⚡",
+      "wave": 0,
+      "impact": 7,
+      "innovation": 4,
+      "effortHours": 3,
+      "priority": 8,
+      "status": "shipped",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 0 of the S133 order.",
+      "recipe": "Run the cut-off tree's tests, then commit it. Admit the Turnstile origin in the edge policy by default, because the switch lives on the community server and the build never learned the server's key.",
+      "acceptance": "The cut-off work passes its tests and is released; enabling COMMUNITY_TURNSTILE_SITE_KEY on the service no longer breaks sharing and feedback.",
+      "premises": [
+        {
+          "claim": "The edge policy gated the human-check origin on a build variable no workflow sets.",
+          "adapter": "file-content",
+          "target": "scripts/lib/edge-security-policy.mjs",
+          "pattern": "VITE_TURNSTILE_SITE_KEY",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "The edge policy gated the human-check origin on a build variable no workflow sets.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Smallest honest slice."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Run the cut-off tree's tests, then commit it. Admit the Turnstile origin in the edge policy by default, because the switch lives on the community server and the build never learned the server's key."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Full depth, as described in the plan."
+        }
+      },
+      "evidence": "Read-only source audit after /start on 2026-11-23 (three parallel read-only passes: player physicals and visuals, public site and funnel, telemetry and the cut-off session).",
+      "executionLog": [
+        {
+          "at": "2026-11-24T00:30:00Z",
+          "status": "shipped",
+          "note": "The edge policy admits challenges.cloudflare.com for script and frame only (never connect-src) unless EDGE_HUMAN_CHECK=off; the test asserts the default admits it."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "rank": 2,
+      "slug": "gridiron-census",
+      "title": "Gridiron Census: anonymous league totals on by default with a one-click opt-out",
+      "axis": "observability-honesty",
+      "category": "observability-honesty",
+      "tier": "🔨",
+      "wave": 1,
+      "impact": 10,
+      "innovation": 8,
+      "effortHours": 10,
+      "priority": 7,
+      "status": "shipped",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 1 of the S133 order.",
+      "recipe": "A pulse-1 contract of capped counters with no identifier; the browser sends them with no credentials and stores nothing but the player's own off switch; GPC and Do Not Track mean off. The service keeps one total per metric per day (schema 4). Totals: game sessions, returning sessions, franchises founded, first games, games, seasons, players drafted, titles, Hall of Famers, trades, signings and minutes managed. Shown on the stats page and the landing page; documented on Privacy, agents.json and llms.txt.",
+      "acceptance": "Negative controls send nothing with GPC, Do Not Track or the switch off; a pulse with an identifier, unknown key or over-cap value is refused; the store writes no browser or address; a new franchise's opening week and club Hall of Fame inductions are counted from the game's own response.",
+      "premises": [
+        {
+          "claim": "Nothing is measured between a page load and season 1 unless the player opted in.",
+          "adapter": "file-content",
+          "target": "public/lib/communityTelemetry.js",
+          "pattern": "if (!getCommunityParticipation()) return [];",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "premise": "Nothing is measured between a page load and season 1 unless the player opted in.",
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Smallest honest slice."
+        },
+        "L2": {
+          "effortHours": 10,
+          "recipe": "A pulse-1 contract of capped counters with no identifier; the browser sends them with no credentials and stores nothing but the player's own off switch; GPC and Do Not Track mean off. The service keeps one total per metric per day (schema 4). Totals: game sessions, returning sessions, franchises founded, first games, games, seasons, players drafted, titles, Hall of Famers, trades, signings and minutes managed. Shown on the stats page and the landing page; documented on Privacy, agents.json and llms.txt."
+        },
+        "L3": {
+          "effortHours": 20,
+          "recipe": "Full depth, as described in the plan."
+        }
+      },
+      "evidence": "Read-only source audit after /start on 2026-11-23 (three parallel read-only passes: player physicals and visuals, public site and funnel, telemetry and the cut-off session).",
+      "executionLog": [
+        {
+          "at": "2026-11-24T00:30:00Z",
+          "status": "shipped",
+          "note": "Shipped with tests (test/league-pulse.test.js). Detailed Community Stats stays opt-in; its offer still comes after season 1 because the Census now measures the first steps without adding friction before setup. Fixed a funnel bug: a browser that opts in mid-career no longer reports its next advance as its first."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "rank": 3,
+      "slug": "frame-matters",
+      "title": "Frame Matters: a player's body changes the games",
+      "axis": "features-depth",
+      "category": "features-depth",
+      "tier": "🔨",
+      "wave": 2,
+      "impact": 10,
+      "innovation": 9,
+      "effortHours": 14,
+      "priority": 6.1,
+      "status": "shipped-reduced",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 2 of the S133 order.",
+      "recipe": "physicalProfile.js measures each position's centre from the live league per game (never a constant, never stored) and turns height, weight, wingspan, arm and hand into bounded rating edges: pass blocking, pass rush, run fits, coverage, tackling, catch radius, passer sight, broken tackles and ball security; heavy-and-fast and light-for-position bodies carry more injury risk, and the scouting medical read uses the same model.",
+      "acceptance": "Every edge is bounded (4 rating points, injury multiplier 0.9-1.2, fumble 0.85-1.15); no new random draws; golden master v8 written once with v7 frozen by hash.",
+      "premises": [
+        {
+          "claim": "Height, weight and limb measurements never reach the play sim.",
+          "adapter": "file-content",
+          "target": "src/engine/gameSimulator.js",
+          "pattern": "physicalProfile",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "premise": "Height, weight and limb measurements never reach the play sim.",
+      "ladder": {
+        "L1": {
+          "effortHours": 5,
+          "recipe": "Smallest honest slice."
+        },
+        "L2": {
+          "effortHours": 14,
+          "recipe": "physicalProfile.js measures each position's centre from the live league per game (never a constant, never stored) and turns height, weight, wingspan, arm and hand into bounded rating edges: pass blocking, pass rush, run fits, coverage, tackling, catch radius, passer sight, broken tackles and ball security; heavy-and-fast and light-for-position bodies carry more injury risk, and the scouting medical read uses the same model."
+        },
+        "L3": {
+          "effortHours": 28,
+          "recipe": "Full depth, as described in the plan."
+        }
+      },
+      "evidence": "Read-only source audit after /start on 2026-11-23 (three parallel read-only passes: player physicals and visuals, public site and funnel, telemetry and the cut-off session).",
+      "executionLog": [
+        {
+          "at": "2026-11-24T00:30:00Z",
+          "status": "shipped-reduced",
+          "note": "Shipped in the sim, injuries and medical read. Reduced: the separate aging curve for physical ratings is deferred, because moving which ratings absorb development changes overall and needs its own measured parity window."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "rank": 4,
+      "slug": "measurables-and-ras",
+      "title": "Scouting measurables: RAS, Speed Score, catch radius and a frame type on every player",
+      "axis": "features-depth",
+      "category": "features-depth",
+      "tier": "⚡",
+      "wave": 2,
+      "impact": 8,
+      "innovation": 8,
+      "effortHours": 4,
+      "priority": 9.6,
+      "status": "shipped",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 2 of the S133 order.",
+      "recipe": "physicalCard() on the player detail payload; the dossier shows Frame, RAS (0-10 with a bar), Speed Score, catch radius for skill players and wingspan with hand size.",
+      "acceptance": "Unit tests cover RAS, Speed Score, catch radius and archetypes; the card is built only from public measurables.",
+      "premises": [],
+      "premise": "No player card shows an athletic score, Speed Score or frame type.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Smallest honest slice."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "physicalCard() on the player detail payload; the dossier shows Frame, RAS (0-10 with a bar), Speed Score, catch radius for skill players and wingspan with hand size."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "Full depth, as described in the plan."
+        }
+      },
+      "evidence": "Read-only source audit after /start on 2026-11-23 (three parallel read-only passes: player physicals and visuals, public site and funnel, telemetry and the cut-off session).",
+      "executionLog": [
+        {
+          "at": "2026-11-24T00:30:00Z",
+          "status": "shipped",
+          "note": "Shipped (test/physical-profile.test.js)."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "rank": 5,
+      "slug": "combine-fixes",
+      "title": "The combine measures the athlete it tests",
+      "axis": "features-depth",
+      "category": "features-depth",
+      "tier": "⚡",
+      "wave": 2,
+      "impact": 7,
+      "innovation": 4,
+      "effortHours": 3,
+      "priority": 8,
+      "status": "shipped",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 2 of the S133 order.",
+      "recipe": "Timed drills no longer invert (better prospects ran slower 40s); each prospect draws from his own derived stream, not the session's, and no wall clock; measured workouts win; combine grades narrow every club's read; the pro day reads the combine against this class's median; the results table shows position, 40, vertical and bench.",
+      "acceptance": "Running the combine does not move the session's random stream; existing combine tests pass.",
+      "premises": [],
+      "premise": "The on-demand combine gives better prospects slower timed drills and draws from the session's random stream.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Smallest honest slice."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Timed drills no longer invert (better prospects ran slower 40s); each prospect draws from his own derived stream, not the session's, and no wall clock; measured workouts win; combine grades narrow every club's read; the pro day reads the combine against this class's median; the results table shows position, 40, vertical and bench."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Full depth, as described in the plan."
+        }
+      },
+      "evidence": "Read-only source audit after /start on 2026-11-23 (three parallel read-only passes: player physicals and visuals, public site and funnel, telemetry and the cut-off session).",
+      "executionLog": [
+        {
+          "at": "2026-11-24T00:30:00Z",
+          "status": "shipped",
+          "note": "Shipped."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "rank": 6,
+      "slug": "players-in-uniform",
+      "title": "Players wear their club's colours",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "🔨",
+      "wave": 3,
+      "impact": 8,
+      "innovation": 6,
+      "effortHours": 8,
+      "priority": 6.1,
+      "status": "shipped-reduced",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 3 of the S133 order.",
+      "recipe": "The portrait jersey takes the club's primary colour with secondary trim, sleeve stripes, outlined numbers and shoulder pads sized by position; colours are accepted only as plain hex.",
+      "acceptance": "A probe renders BUF players in #00338d with #c60c30 trim and pads; hostile colour strings never reach the SVG.",
+      "premises": [],
+      "premise": "Portraits wear one of five muted hashed colours, not the club's.",
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Smallest honest slice."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "The portrait jersey takes the club's primary colour with secondary trim, sleeve stripes, outlined numbers and shoulder pads sized by position; colours are accepted only as plain hex."
+        },
+        "L3": {
+          "effortHours": 16,
+          "recipe": "Full depth, as described in the plan."
+        }
+      },
+      "evidence": "Read-only source audit after /start on 2026-11-23 (three parallel read-only passes: player physicals and visuals, public site and funnel, telemetry and the cut-off session).",
+      "executionLog": [
+        {
+          "at": "2026-11-24T00:30:00Z",
+          "status": "shipped-reduced",
+          "note": "Shipped for portraits. Reduced: helmets, the full-body game kit and the 3D kit are carried."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "rank": 7,
+      "slug": "landing-for-conversion",
+      "title": "The landing page sells football and shows a live league",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "🔨",
+      "wave": 4,
+      "impact": 8,
+      "innovation": 6,
+      "effortHours": 10,
+      "priority": 5.4,
+      "status": "shipped-reduced",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 4 of the S133 order.",
+      "recipe": "A football tagline and a compact Gridiron Census on the landing page instead of an empty 'still filling up' panel.",
+      "acceptance": "The landing renders the Census tiles when the service answers and an honest empty state when it does not.",
+      "premises": [],
+      "premise": "The landing community panel shows an empty state to every visitor before launch.",
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Smallest honest slice."
+        },
+        "L2": {
+          "effortHours": 10,
+          "recipe": "A football tagline and a compact Gridiron Census on the landing page instead of an empty 'still filling up' panel."
+        },
+        "L3": {
+          "effortHours": 20,
+          "recipe": "Full depth, as described in the plan."
+        }
+      },
+      "evidence": "Read-only source audit after /start on 2026-11-23 (three parallel read-only passes: player physicals and visuals, public site and funnel, telemetry and the cut-off session).",
+      "executionLog": [
+        {
+          "at": "2026-11-24T00:30:00Z",
+          "status": "shipped-reduced",
+          "note": "Reduced: the animated field hero, screenshot feature cards and moving saves and backups into the game are carried."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "rank": 8,
+      "slug": "site-consolidation",
+      "title": "Fewer, better pages: four folded in, footer from 19 links to 13",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "🔨",
+      "wave": 4,
+      "impact": 7,
+      "innovation": 4,
+      "effortHours": 6,
+      "priority": 5.6,
+      "status": "shipped-reduced",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 4 of the S133 order.",
+      "recipe": "How to Play becomes the first chapter of Guides, How It Compares an FAQ answer, Roadmap and Beta become 'What's next' and 'Early access' on Updates; each old URL is a 301. Footer groups: Play, The game, Studio, Legal; the header swaps How to Play for Guides; Community Stats is labelled Gridiron Census.",
+      "acceptance": "Retired pages are absent from the sitemap, agents.json and llms.txt; the build emits the four 301s; public tests updated.",
+      "premises": [],
+      "premise": "The footer carries 19 links, several to thin or repeated pages.",
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Smallest honest slice."
+        },
+        "L2": {
+          "effortHours": 6,
+          "recipe": "How to Play becomes the first chapter of Guides, How It Compares an FAQ answer, Roadmap and Beta become 'What's next' and 'Early access' on Updates; each old URL is a 301. Footer groups: Play, The game, Studio, Legal; the header swaps How to Play for Guides; Community Stats is labelled Gridiron Census."
+        },
+        "L3": {
+          "effortHours": 12,
+          "recipe": "Full depth, as described in the plan."
+        }
+      },
+      "evidence": "Read-only source audit after /start on 2026-11-23 (three parallel read-only passes: player physicals and visuals, public site and funnel, telemetry and the cut-off session).",
+      "executionLog": [
+        {
+          "at": "2026-11-24T00:30:00Z",
+          "status": "shipped-reduced",
+          "note": "Reduced: About, Press, Media and Contact remain separate pages."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "rank": 9,
+      "slug": "body-programmes",
+      "title": "Offseason body programmes: bulk, lean or maintain",
+      "axis": "gamification-immersion",
+      "category": "gamification-immersion",
+      "tier": "🔨",
+      "wave": 5,
+      "impact": 7,
+      "innovation": 8,
+      "effortHours": 8,
+      "priority": 6.3,
+      "status": "shipped",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the S133 order.",
+      "recipe": "Bulk up (+8 lb, +2 strength, +1 trucking, -1 speed and acceleration) or lean down (-8 lb, +1 speed and agility, -2 strength) for one of the club's own players, chosen in the dossier and applied once at the next offseason progression, before development; weight stays inside position limits and a body at its limit gets none of the trade. Rival clubs do not run programmes, so nothing ratchets.",
+      "acceptance": "Unit tests cover both trades, the limits, refusals and the command boundary (403 for another club).",
+      "premises": [],
+      "premise": "No player decision changes a body.",
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Smallest honest slice."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "A per-player offseason choice through the command seam."
+        },
+        "L3": {
+          "effortHours": 16,
+          "recipe": "Full depth, as described in the plan."
+        }
+      },
+      "evidence": "Read-only source audit after /start on 2026-11-23 (three parallel read-only passes: player physicals and visuals, public site and funnel, telemetry and the cut-off session).",
+      "executionLog": [
+        {
+          "at": "2026-11-24T01:10:00Z",
+          "status": "shipped",
+          "note": "Shipped (test/body-program.test.js). The changed weight moves the player's frame edges and injury risk through Frame Matters."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "rank": 10,
+      "slug": "franchise-scenarios",
+      "title": "Franchise scenarios with shareable codes",
+      "axis": "gamification-immersion",
+      "category": "gamification-immersion",
+      "tier": "🔨",
+      "wave": 5,
+      "impact": 8,
+      "innovation": 7,
+      "effortHours": 10,
+      "priority": 5.8,
+      "status": "shipped-reduced",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the S133 order.",
+      "recipe": "Four one-click scenario cards on the start page (Rebuild, Cap Hell, Aging Core, No Quarterback) built on the existing franchise archetypes, which change ownership patience, dead cap, chemistry and roster age.",
+      "acceptance": "Each card starts a league with its archetype; the cards are disabled while a league is being created.",
+      "premises": [],
+      "premise": "Every new league starts from the same few setups.",
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Smallest honest slice."
+        },
+        "L2": {
+          "effortHours": 10,
+          "recipe": "Seeded starts on the challenge-code entry."
+        },
+        "L3": {
+          "effortHours": 20,
+          "recipe": "Full depth, as described in the plan."
+        }
+      },
+      "evidence": "Read-only source audit after /start on 2026-11-23 (three parallel read-only passes: player physicals and visuals, public site and funnel, telemetry and the cut-off session).",
+      "executionLog": [
+        {
+          "at": "2026-11-24T01:45:00Z",
+          "status": "shipped-reduced",
+          "note": "Reduced: scenario codes and a scenario board on the Census are carried; challenge codes already share a league."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "rank": 11,
+      "slug": "draft-day-room",
+      "title": "Draft Day room",
+      "axis": "gamification-immersion",
+      "category": "gamification-immersion",
+      "tier": "🔨",
+      "wave": 5,
+      "impact": 8,
+      "innovation": 8,
+      "effortHours": 14,
+      "priority": 5.1,
+      "status": "deferred",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the S133 order.",
+      "recipe": "Clock, war-board, trade-up calls and steal-or-bust retrospectives.",
+      "acceptance": "A full draft runs in the room.",
+      "premises": [],
+      "premise": "The draft runs as a table without a room.",
+      "ladder": {
+        "L1": {
+          "effortHours": 5,
+          "recipe": "Smallest honest slice."
+        },
+        "L2": {
+          "effortHours": 14,
+          "recipe": "Clock, war-board, trade-up calls and steal-or-bust retrospectives."
+        },
+        "L3": {
+          "effortHours": 28,
+          "recipe": "Full depth, as described in the plan."
+        }
+      },
+      "evidence": "Read-only source audit after /start on 2026-11-23 (three parallel read-only passes: player physicals and visuals, public site and funnel, telemetry and the cut-off session).",
+      "executionLog": [
+        {
+          "at": "2026-11-24T00:30:00Z",
+          "status": "deferred",
+          "note": "Deferred to S134."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "rank": 12,
+      "slug": "field-drive-chart",
+      "title": "Field drive chart in the game-day reel",
+      "axis": "gamification-immersion",
+      "category": "gamification-immersion",
+      "tier": "🔨",
+      "wave": 5,
+      "impact": 7,
+      "innovation": 7,
+      "effortHours": 8,
+      "priority": 5.9,
+      "status": "shipped",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the S133 order.",
+      "recipe": "Sim-Watch draws every drive so far as an arrow on a green field under the live ball: club colour, start and end spot from the recorded field position, and TD, FG, TO or Punt; turnovers dashed. Plays with no recorded spot are skipped, never invented.",
+      "acceptance": "buildDriveChart unit tests: orientation, results, skipped drives and progressive reveal.",
+      "premises": [],
+      "premise": "The game-day reel has no field view.",
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Smallest honest slice."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "A 2D field with drive arrows from the play log."
+        },
+        "L3": {
+          "effortHours": 16,
+          "recipe": "Full depth, as described in the plan."
+        }
+      },
+      "evidence": "Read-only source audit after /start on 2026-11-23 (three parallel read-only passes: player physicals and visuals, public site and funnel, telemetry and the cut-off session).",
+      "executionLog": [
+        {
+          "at": "2026-11-24T01:30:00Z",
+          "status": "shipped",
+          "note": "Shipped (test/drive-chart.test.js)."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "rank": 13,
+      "slug": "cross-league-legacy",
+      "title": "A GM legacy that outlives one save",
+      "axis": "gamification-immersion",
+      "category": "gamification-immersion",
+      "tier": "🔨",
+      "wave": 5,
+      "impact": 7,
+      "innovation": 7,
+      "effortHours": 8,
+      "priority": 5.9,
+      "status": "deferred",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the S133 order.",
+      "recipe": "Hall of Fame and achievements across saves.",
+      "acceptance": "Two saves add to one legacy.",
+      "premises": [],
+      "premise": "A GM's legacy lives inside one save.",
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Smallest honest slice."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "Hall of Fame and achievements across saves."
+        },
+        "L3": {
+          "effortHours": 16,
+          "recipe": "Full depth, as described in the plan."
+        }
+      },
+      "evidence": "Read-only source audit after /start on 2026-11-23 (three parallel read-only passes: player physicals and visuals, public site and funnel, telemetry and the cut-off session).",
+      "executionLog": [
+        {
+          "at": "2026-11-24T00:30:00Z",
+          "status": "deferred",
+          "note": "Deferred to S134."
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "rank": 14,
+      "slug": "css-split",
+      "title": "Split the game stylesheet by screen",
+      "axis": "speed-organization-efficiency",
+      "category": "speed-organization-efficiency",
+      "tier": "🔨",
+      "wave": 6,
+      "impact": 6,
+      "innovation": 3,
+      "effortHours": 6,
+      "priority": 4.7,
+      "status": "deferred",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 6 of the S133 order.",
+      "recipe": "Lazy per-screen CSS.",
+      "acceptance": "Boot budget improves with no visual change.",
+      "premises": [],
+      "premise": "The game stylesheet is one 231 KB file.",
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Smallest honest slice."
+        },
+        "L2": {
+          "effortHours": 6,
+          "recipe": "Lazy per-screen CSS."
+        },
+        "L3": {
+          "effortHours": 12,
+          "recipe": "Full depth, as described in the plan."
+        }
+      },
+      "evidence": "Read-only source audit after /start on 2026-11-23 (three parallel read-only passes: player physicals and visuals, public site and funnel, telemetry and the cut-off session).",
+      "executionLog": [
+        {
+          "at": "2026-11-24T00:30:00Z",
+          "status": "deferred",
+          "note": "Deferred."
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "rank": 15,
+      "slug": "census-agent-surfaces",
+      "title": "The Census is machine-readable",
+      "axis": "ai-intelligence",
+      "category": "ai-intelligence",
+      "tier": "⚡",
+      "wave": 6,
+      "impact": 5,
+      "innovation": 5,
+      "effortHours": 1,
+      "priority": 12,
+      "status": "shipped",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 6 of the S133 order.",
+      "recipe": "agents.json gridironCensus block and an llms.txt line for GET /community/v1/pulse.",
+      "acceptance": "Both surfaces list the totals route and its privacy terms.",
+      "premises": [],
+      "premise": "Machine-readable surfaces list no league-wide totals.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Smallest honest slice."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "agents.json gridironCensus block and an llms.txt line for GET /community/v1/pulse."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "Full depth, as described in the plan."
+        }
+      },
+      "evidence": "Read-only source audit after /start on 2026-11-23 (three parallel read-only passes: player physicals and visuals, public site and funnel, telemetry and the cut-off session).",
+      "executionLog": [
+        {
+          "at": "2026-11-24T00:30:00Z",
+          "status": "shipped",
+          "note": "Shipped."
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "rank": 16,
+      "slug": "visits-report",
+      "title": "Human visits vs runs, measured",
+      "axis": "observability-honesty",
+      "category": "observability-honesty",
+      "tier": "⚡",
+      "wave": 6,
+      "impact": 7,
+      "innovation": 4,
+      "effortHours": 2,
+      "priority": 9.8,
+      "status": "shipped-reduced",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB public-beta hardening, wave 6 of the S133 order.",
+      "recipe": "npm run report:visits adds a landing-to-game ratio from beacon-executing browsers; the Census carries game sessions, franchises and first games.",
+      "acceptance": "The report shows landingLoads, gameLoads and the ratio.",
+      "premises": [],
+      "premise": "Reading human page views needs a manual script with no conversion figure.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Smallest honest slice."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "npm run report:visits adds a landing-to-game ratio from beacon-executing browsers; the Census carries game sessions, franchises and first games."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "Full depth, as described in the plan."
+        }
+      },
+      "evidence": "Read-only source audit after /start on 2026-11-23 (three parallel read-only passes: player physicals and visuals, public site and funnel, telemetry and the cut-off session).",
+      "executionLog": [
+        {
+          "at": "2026-11-24T00:30:00Z",
+          "status": "shipped-reduced",
+          "note": "Reduced: the launch hold (email delivery, studio approval, lifecycle authority) stays with the studio."
+        }
+      ]
+    }
+  ],
+  "candidateAssessments": [],
+  "readinessAssessment": [
+    {
+      "area": "core journeys and product correctness",
+      "status": "partial",
+      "evidence": "No fail state for the GM; game day absent from the weekly loop; CPU draft scoring reads the overall rating.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Wave 5 and 6 acceptance checks.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "onboarding and identity/access",
+      "status": "partial",
+      "evidence": "About twelve clicks and three modals before the first result; no account system by design.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Click-count browser spec (faster-first-week).",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "accessibility, mobile parity and every supported theme",
+      "status": "partial",
+      "evidence": "No automated accessibility run; typography depends on platform fonts.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Captures in both themes and at phone width for touched surfaces.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "performance and capacity",
+      "status": "fail",
+      "evidence": "Build output carries nested copies of the site; client ships unminified with the hero inlined.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Wave 1 size check and wave 2 throttled measurements.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "security, privacy, data integrity and abuse controls",
+      "status": "partial",
+      "evidence": "Strict headers and escaping are in place; several small gaps are listed in the hardening batch.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Each hardening fix lands with a failing-first test.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "backup, recovery and rollback",
+      "status": "pass",
+      "evidence": "Rolling backups, rewind and export exist; not re-tested this audit.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Re-check when save surfaces move to the GM Profile.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "email and notifications where used",
+      "status": "fail",
+      "evidence": "Launch hold names unverified email delivery.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Received-message receipt (launch-hold-clearance).",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "observability and actionable analytics",
+      "status": "fail",
+      "evidence": "No remote error reporting and no funnel events.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Staging receipt of feedback, diagnostics and funnel events.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "feedback, support and issue triage",
+      "status": "fail",
+      "evidence": "In-game surveys stay on the device; sending feedback needs an external account.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "In-game form stores a staging submission.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "branding, legal, contact and rights/provenance",
+      "status": "partial",
+      "evidence": "Legal pages exist without effective dates; three page templates.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Wave 4 template and legal-date checks.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "human and agent access where applicable",
+      "status": "partial",
+      "evidence": "llms.txt and the agent manifest are good; agent instructions link to files outside the public repo.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Dead-link check and published briefing schema.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    },
+    {
+      "area": "staging, release evidence and truthful beta/release communication",
+      "status": "fail",
+      "evidence": "Roadmap lists shipped work as future; one release has no note; the label differs from the planned beta label.",
+      "sourceRevision": "d7fa6cfe",
+      "nextAcceptanceCheck": "Public-truth check red on a seeded stale claim, green after the pass.",
+      "observedAt": "2026-11-17T23:30:00.000Z",
+      "owner": "project release owner"
+    }
+  ],
+  "totals": {
+    "count": 16,
+    "priority": 111.3,
+    "top3": [
+      "checkpoint-cut-off-session",
+      "gridiron-census",
+      "frame-matters"
+    ],
+    "effortHours": 115
+  },
+  "generatedAt": "2026-11-24T00:30:00Z",
+  "axisCoverage": {
+    "features-depth": {
+      "surviving": [
+        "frame-matters",
+        "measurables-and-ras",
+        "combine-fixes"
+      ],
+      "rejectedOnVerify": []
+    },
+    "ui-ux-feedback": {
+      "surviving": [
+        "players-in-uniform",
+        "landing-for-conversion",
+        "site-consolidation"
+      ],
+      "rejectedOnVerify": []
+    },
+    "gamification-immersion": {
+      "surviving": [
+        "body-programmes",
+        "franchise-scenarios",
+        "draft-day-room",
+        "field-drive-chart",
+        "cross-league-legacy"
+      ],
+      "rejectedOnVerify": []
+    },
+    "ai-intelligence": {
+      "surviving": [
+        "census-agent-surfaces"
+      ],
+      "rejectedOnVerify": []
+    },
+    "security": {
+      "surviving": [
+        "checkpoint-cut-off-session"
+      ],
+      "rejectedOnVerify": []
+    },
+    "speed-organization-efficiency": {
+      "surviving": [
+        "css-split"
+      ],
+      "rejectedOnVerify": []
+    },
+    "token-cost": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "product-token-reduction",
+          "premise": "The product spends API tokens.",
+          "evidence": "No model or AI endpoint calls exist in src/ or public/."
+        }
+      ]
+    },
+    "observability-honesty": {
+      "surviving": [
+        "gridiron-census",
+        "visits-report"
+      ],
+      "rejectedOnVerify": []
+    },
+    "sil-debt": {
+      "surviving": [],
+      "rejectedOnVerify": []
+    }
+  }
+}

@@ -6,6 +6,7 @@ import { aggregateCommunitySnapshot } from "./aggregateCommunitySnapshot.js";
 import { COMMUNITY_RAW_RETENTION_DAYS } from "./eventContract.js";
 import { diagnosticSignatureSource } from "./feedbackContract.js";
 import { CHALLENGE_BOARD_MIN_GMS, summarizeChallengeBoard, weeklyObjective } from "./challengeContract.js";
+import { emptyLeaguePulseTotals, LEAGUE_PULSE_SCHEMA_VERSION } from "./pulseContract.js";
 
 const { Pool } = pg;
 const MAX_SNAPSHOT_ROWS = 500_000;
@@ -54,6 +55,8 @@ export class CommunityStore {
     this.ready = null;
     this.lastCleanupAt = 0;
     this.boardCache = new Map();
+    this.pulseCache = null;
+    this.pulseCacheAt = 0;
   }
 
   async initialize() {
@@ -118,6 +121,15 @@ export class CommunityStore {
         );
         CREATE INDEX IF NOT EXISTS community_challenge_scores_week_idx ON community_stats.challenge_scores (week_key);
         INSERT INTO community_stats.schema_migrations(version) VALUES (3) ON CONFLICT DO NOTHING;
+        -- Version 4: League Pulse. One running total per metric per day and
+        -- nothing else: no browser, no address, no event row. Additive.
+        CREATE TABLE IF NOT EXISTS community_stats.pulse_daily (
+          day date NOT NULL,
+          metric varchar(32) NOT NULL,
+          total bigint NOT NULL DEFAULT 0,
+          PRIMARY KEY (day, metric)
+        );
+        INSERT INTO community_stats.schema_migrations(version) VALUES (4) ON CONFLICT DO NOTHING;
       `);
       return true;
     })().catch((error) => { this.ready = null; throw error; });
@@ -321,11 +333,48 @@ export class CommunityStore {
     return this.cache;
   }
 
+  /** Add one normalized pulse (see pulseContract.js) to today's totals. */
+  async addPulse(counts) {
+    await this.initialize();
+    const entries = Object.entries(counts || {}).filter(([, value]) => Number.isSafeInteger(value) && value > 0);
+    if (!entries.length) return { added: 0 };
+    const day = this.clock().toISOString().slice(0, 10);
+    await this.pool.query(
+      `INSERT INTO community_stats.pulse_daily(day,metric,total)
+       SELECT $1::date, metric, total FROM unnest($2::varchar[], $3::bigint[]) AS input(metric,total)
+       ON CONFLICT (day,metric) DO UPDATE SET total = community_stats.pulse_daily.total + EXCLUDED.total`,
+      [day, entries.map(([key]) => key), entries.map(([, value]) => value)]
+    );
+    this.pulseCache = null;
+    return { added: entries.length };
+  }
+
+  /** All-time and last-30-day totals per metric, cached for a minute. */
+  async pulseTotals() {
+    await this.initialize();
+    const now = this.clock();
+    if (this.pulseCache && now.getTime() - this.pulseCacheAt < 60_000) return this.pulseCache;
+    const result = await this.pool.query(
+      `SELECT metric, sum(total)::bigint AS all_time,
+              sum(total) FILTER (WHERE day >= (now() - interval '30 days')::date)::bigint AS last_30
+         FROM community_stats.pulse_daily GROUP BY metric`
+    );
+    const allTime = emptyLeaguePulseTotals(), last30Days = emptyLeaguePulseTotals();
+    for (const row of result.rows) {
+      if (!Object.hasOwn(allTime, row.metric)) continue;
+      allTime[row.metric] = Number(row.all_time || 0);
+      last30Days[row.metric] = Number(row.last_30 || 0);
+    }
+    this.pulseCache = { schemaVersion: LEAGUE_PULSE_SCHEMA_VERSION, computedAt: now.toISOString(), allTime, last30Days };
+    this.pulseCacheAt = now.getTime();
+    return this.pulseCache;
+  }
+
   async health() {
     const started = this.clock().getTime();
     await this.initialize();
     await this.pool.query("SELECT 1");
-    return { ok: true, database: "ready", latencyMs: Math.max(0, this.clock().getTime() - started), schemaVersion: 3 };
+    return { ok: true, database: "ready", latencyMs: Math.max(0, this.clock().getTime() - started), schemaVersion: 4 };
   }
 
   async close() { this.stopRetentionTimer(); await this.pool.end(); }

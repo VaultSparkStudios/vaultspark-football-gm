@@ -181,7 +181,7 @@ function concurrencyError(league, teamId, input) {
     return { ok: false, status: 400, reasonCode: "mentorship-authority-required", error: "Current revision and fingerprint are required.", state };
   }
   if (Number(input.expectedRevision) !== state.revision || String(input.expectedFingerprint) !== state.fingerprint) {
-    return { ok: false, status: 409, reasonCode: "stale-mentorship-plan", error: "The roster or mentorship plan changed. Reload its current authority.", state };
+    return { ok: false, status: 409, reasonCode: "stale-mentorship-plan", error: "The roster or mentorship plan changed. Reload and try again.", state };
   }
   return null;
 }

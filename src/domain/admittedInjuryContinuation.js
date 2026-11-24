@@ -35,7 +35,7 @@ function source(league,right){
  const game=canonicalFootballGame(elevation.game);
  if(game.gameId!==right.gameId||![game.homeTeamId,game.awayTeamId].includes(right.teamId)
   ||!clubs.has(game.homeTeamId)||!clubs.has(game.awayTeamId))fail('injury game/payer');
- if(league.injurySalaryClaims?.some(claim=>claim.playerId===right.playerId&&claim.gameId===right.gameId))fail('disputed claim has separate authority');
+ if(league.injurySalaryClaims?.some(claim=>claim.playerId===right.playerId&&claim.gameId===right.gameId))fail('disputed claim has separate coverage');
  return {player,episode};
 }
 

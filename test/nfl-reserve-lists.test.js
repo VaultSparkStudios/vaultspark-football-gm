@@ -58,11 +58,11 @@ test('restore refuses invented absence strings, unapplied canonical games and wr
   for (const keys of [['a', 'b', 'c', 'd'], ['2026:regular:2:BUF:MIA'], ['2025:regular:1:BUF:MIA']]) {
     const snapshot = structuredClone(f.session.toSnapshot());
     snapshot.league.players.find(p => p.id === f.player.id).reserveStatus.gamesMissed = keys;
-    assert.throws(() => createSessionFromSnapshot(snapshot), /Invalid reserve receipt/);
+    assert.throws(() => createSessionFromSnapshot(snapshot), /Invalid reserve record/);
   }
   const snapshot = structuredClone(f.session.toSnapshot());
   snapshot.league.players.find(p => p.id === f.player.id).reserveStatus.placedWeek = 2;
-  assert.throws(() => createSessionFromSnapshot(snapshot), /Invalid reserve receipt/);
+  assert.throws(() => createSessionFromSnapshot(snapshot), /Invalid reserve record/);
 });
 
 test('duplicate application cannot add a newly placed reserve player to an already applied game', () => {
@@ -156,7 +156,7 @@ test('reserve receipts survive compressed restore, reject malformed counters and
   assert.deepEqual(player.reserveStatus, f.player.reserveStatus);
   assert.equal(player.rosterSlot, 'reserve');
   const bad = structuredClone(restored.toSnapshot()); bad.league.players.find(p => p.id === player.id).reserveStatus.gamesMissed.push(player.reserveStatus.gamesMissed[0]);
-  assert.throws(() => createSessionFromSnapshot(bad), /Invalid reserve receipt/);
+  assert.throws(() => createSessionFromSnapshot(bad), /Invalid reserve record/);
   const contract = structuredClone(player.contract);
   resetReserveListsForYear(restored.league, 2027);
   assert.equal(player.rosterSlot, 'active'); assert.equal(player.designations.ir, false);

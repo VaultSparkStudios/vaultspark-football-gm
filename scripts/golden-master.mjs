@@ -36,7 +36,17 @@ export const S132_V5_GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures",
 // S132 (second release): each GM season-history entry also records points for,
 // points against and cap space, for the weekly challenge score. No simulation
 // section moved; only the two sections that carry that history did.
-export const GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s132-v6.json");
+export const S132_V6_GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s132-v6.json");
+// S132 (third release): engine-written text uses football words ("Play your
+// first game", "The results are in"). Only sections that carry that text moved;
+// every simulated number, roster, result and the next random draw are identical.
+export const S132_V7_GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s132-v7.json");
+// S133: Frame Matters. A body measured against its position (league-measured
+// centres) now edges pass blocking, pass rush, run fits, coverage, catch
+// radius, broken tackles, fumbles and injuries; the combine reads the measured
+// workout and its own derived stream, and the pro day reads the combine.
+// Every simulated section moves from the first game.
+export const GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s133-v8.json");
 export const GOLDEN_MASTER_SCENARIOS = Object.freeze([
   Object.freeze({ id: "drive-20260306-BUF", seed: 20260306, mode: "drive", controlledTeamId: "BUF", seasons: 3 }),
   Object.freeze({ id: "play-4113-CHI", seed: 4113, mode: "play", controlledTeamId: "CHI", seasons: 3 })

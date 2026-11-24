@@ -63,7 +63,8 @@ export async function sendFeedback({ category, message, rating = null, context =
   fetchImpl = globalThis.fetch,
   endpoint = statsEndpoint,
   identifier = oneOffIdentifier,
-  build = getCommunityBuildId
+  build = getCommunityBuildId,
+  solve = null
 } = {}) {
   let feedback = normalizeFeedback({ category, message, rating, context });
   if (!feedback) return { ok: false, reason: "invalid" };
@@ -75,7 +76,18 @@ export async function sendFeedback({ category, message, rating = null, context =
       if (revision) feedback = normalizeFeedback({ ...feedback, context: { ...feedback.context, build: revision } });
     }
     const participantId = identifier();
-    const issued = await post(fetchImpl, endpoint("capability"), { schemaVersion: "1.0", participantId, purpose: "feedback" });
+    const request = { schemaVersion: "1.0", participantId, purpose: "feedback" };
+    let issued = await post(fetchImpl, endpoint("capability"), request);
+    if (issued.status === 403) {
+      // The service may ask for a human check before it accepts a note.
+      const { humanCheckFrom, solveHumanCheck } = await import("./humanCheck.js");
+      // A 403 without a readable challenge is an ordinary refusal: it is
+      // reported to the caller as http-403 below, not swallowed.
+      let refusal = null;
+      try { refusal = await issued.json(); } catch { refusal = null; }
+      const challenge = humanCheckFrom(refusal);
+      if (challenge) issued = await post(fetchImpl, endpoint("capability"), { ...request, humanCheckToken: await (solve || solveHumanCheck)(challenge) });
+    }
     if (!issued.ok) return { ok: false, reason: `http-${issued.status}` };
     const capability = (await issued.json())?.capability;
     if (typeof capability !== "string" || !capability) return { ok: false, reason: "unavailable" };

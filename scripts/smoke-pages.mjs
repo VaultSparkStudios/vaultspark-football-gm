@@ -11,8 +11,14 @@ const rootDir = path.resolve(__dirname, "..");
 const staticDir = path.join(rootDir, "static");
 const slug = "franchise-architect-football";
 const mountPath = `/${slug}`;
-const legacyMountPath = "/games/vaultspark-football-gm";
-const productionMountPath = "/games/franchise-architect";
+const RETIRED_MOUNTS = [
+  `${mountPath}/`,
+  "/vaultspark-football-gm/",
+  "/franchise-architect/",
+  "/games/vaultspark-football-gm/",
+  "/games/franchise-architect/",
+  "/games/franchise-architect-football/"
+];
 const host = "127.0.0.1";
 const port = 4310;
 const baseUrl = `http://${host}:${port}/`;
@@ -86,8 +92,6 @@ async function createServer() {
     let relativePath = url.pathname.replace(/^\/+/, "");
     if (url.pathname.startsWith(`${mountPath}/`)) {
       relativePath = url.pathname.slice(mountPath.length).replace(/^\/+/, "");
-    } else if (url.pathname.startsWith(`${legacyMountPath}/`)) {
-      relativePath = url.pathname.slice(legacyMountPath.length).replace(/^\/+/, "");
     }
     const targetPath = relativePath || "index.html";
     const safePath = path.normalize(targetPath).replace(/^(\.\.[\\/])+/, "");
@@ -102,9 +106,10 @@ async function createServer() {
 
 async function assertPublishedMountContract() {
   const manifest = JSON.parse(await fs.readFile(path.join(staticDir, "deploy-manifest.json"), "utf8"));
-  if (!Array.isArray(manifest.publishedMounts) || !manifest.publishedMounts.includes(`${productionMountPath}/`)) {
-    throw new Error(`Deploy manifest is missing the production mount ${productionMountPath}/`);
+  if (JSON.stringify(manifest.publishedMounts) !== JSON.stringify(["/"])) {
+    throw new Error(`Deploy manifest must publish one copy at the root; received ${JSON.stringify(manifest.publishedMounts)}.`);
   }
+  await assertRetiredMountsRedirect(manifest);
   if (manifest.assetBasePath !== "./") {
     throw new Error(`Deploy manifest must declare a mount-relative asset base; received ${manifest.assetBasePath}.`);
   }
@@ -158,6 +163,30 @@ async function assertShippedAssetsMinified() {
     if (shipped > authored * 0.85) {
       throw new Error(`${name} shipped at ${shipped} bytes against ${authored} authored; expected the minified file.`);
     }
+  }
+}
+
+// Every path the site used to be copied under must be a redirect, not a copy:
+// declared in the manifest, written as a pair of 301 rules ahead of any shorter
+// rule that would shadow it, and absent from the artifact as a directory.
+async function assertRetiredMountsRedirect(manifest) {
+  const declared = [...(manifest.retiredMounts || [])].sort();
+  if (JSON.stringify(declared) !== JSON.stringify([...RETIRED_MOUNTS].sort())) {
+    throw new Error(`Deploy manifest retired mounts differ from the known list: ${JSON.stringify(declared)}`);
+  }
+  const rules = (await fs.readFile(path.join(staticDir, "_redirects"), "utf8")).split("\n").map((line) => line.trim());
+  for (const mount of RETIRED_MOUNTS) {
+    const bare = mount.replace(/\/$/, "");
+    const exact = rules.indexOf(`${bare} / 301`);
+    const splat = rules.indexOf(`${bare}/* /:splat 301`);
+    if (exact < 0 || splat < 0) throw new Error(`No redirect pair for retired mount ${mount}`);
+    const shadow = rules.findIndex((rule) => {
+      const match = /^(\/\S+)\/\* \/:splat 301$/.exec(rule);
+      return match && match[1] !== bare && bare.startsWith(`${match[1]}/`);
+    });
+    if (shadow >= 0 && shadow < splat) throw new Error(`Redirect for ${mount} is shadowed by an earlier rule: ${rules[shadow]}`);
+    const root = bare.split("/")[1];
+    if (await fileExists(path.join(staticDir, root))) throw new Error(`Retired mount directory still published: ${root}/`);
   }
 }
 
@@ -227,28 +256,6 @@ async function main() {
     await assertStaticPath(`/edge-policy-receipt.json`, /"status": "source-authored"/);
     await assertStaticPath(`/.well-known/security.txt`, /Canonical: https:\/\/playfranchisearchitect\.com/);
 
-    await assertStaticFile(`${slug}/index.html`, /Franchise Architect: Football/);
-    await assertStaticFile(`${slug}/game.html`, /Franchise Architect: Football/);
-    await assertStaticFile(`${slug}/styles.css`, /:root/);
-    await assertStaticFile(`${slug}/contact.html`, /football@playfranchisearchitect\.com/);
-    await assertStaticFile(`${slug}/privacy.html`, /Browser-First Play/);
-    await assertStaticFile(`${slug}/terms.html`, /All rights reserved/);
-    await assertStaticFile(`${slug}/agents.json`, /Proprietary - All Rights Reserved/);
-    await assertStaticFile(`${slug}/.well-known/llms.txt`, /Franchise Architect: Football/);
-    await assertStaticFile(`${slug}/llms.txt`, /\?challenge=weekly/);
-    await assertStaticFile(`${slug}/sitemap.xml`, /contact\.html/);
-    await assertStaticFile(`${slug}/_health`, /"styleAsset": "styles\.[a-f0-9]{10}\.css"/);
-    await assertStaticFile(`${slug}/deploy-manifest.json`, /"sourceRevision":/);
-    await assertStaticFile(`games/vaultspark-football-gm/styles.css`, /:root/);
-    await assertStaticFile(`games/vaultspark-football-gm/setup.js`, /createApiClient/);
-    await assertStaticPath(`${legacyMountPath}/styles.css`, /:root/);
-    await assertStaticPath(`${legacyMountPath}/setup.js`, /createApiClient/);
-    await assertStaticFile(`games/franchise-architect/styles.css`, /:root/);
-    await assertStaticFile(`games/franchise-architect/setup.js`, /createApiClient/);
-    await assertStaticFile(`games/franchise-architect/favicon.ico`);
-    await assertStaticPath(`${productionMountPath}/styles.css`, /:root/, "text/css");
-    await assertStaticPath(`${productionMountPath}/setup.js`, /createApiClient/, "application/javascript");
-    await assertStaticPath(`${productionMountPath}/favicon.ico`, null, "image/x-icon");
     await assertPublishedMountContract();
     console.log("Static Pages smoke pass completed.");
   } finally {

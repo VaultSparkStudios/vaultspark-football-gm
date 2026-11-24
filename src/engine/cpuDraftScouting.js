@@ -87,8 +87,11 @@ export function clubScoutingAccuracy({ leagueKey, teamId, scoutingWeeklyBonus = 
 export function prospectScoutingConfidence(prospect) {
   const { confidenceStepPerRound, confidenceFloor } = CPU_DRAFT_SCOUTING;
   const round = finiteOr(prospect?.scouting?.projectedRound, null);
-  if (round === null || round < 1) return confidenceFloor;
-  return clamp(1 - (round - 1) * confidenceStepPerRound, confidenceFloor, 1);
+  // S133: a prospect who tested at the combine is a better-known quantity.
+  // Every club saw the same public workout, so it narrows every read a little.
+  const combineBonus = Number.isFinite(Number(prospect?.scouting?.combineGrade)) ? 0.08 : 0;
+  if (round === null || round < 1) return clamp(confidenceFloor + combineBonus, confidenceFloor, 1);
+  return clamp(1 - (round - 1) * confidenceStepPerRound + combineBonus, confidenceFloor, 1);
 }
 
 /** Share of the public error a club removes for this prospect, in [0, accuracy]. */

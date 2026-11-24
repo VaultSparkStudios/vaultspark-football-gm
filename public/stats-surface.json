@@ -5,11 +5,18 @@
   "machineReadable": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/snapshot",
   "feedVersion": "analytica-feed-v1",
   "precomputed": true,
-  "showcase": ["participating-browsers", "weeks-managed", "strategy-mix"],
+  "showcase": [
+    "participating-browsers",
+    "weeks-managed",
+    "strategy-mix"
+  ],
   "refreshSeconds": 30,
   "refreshMechanism": "poll",
   "refreshPolicy": "Server snapshot at most once per 60 seconds; visible clients check at most once per 30 seconds.",
-  "privacy": { "aggregateOnly": true, "smallCountSuppression": 5 },
+  "privacy": {
+    "aggregateOnly": true,
+    "smallCountSuppression": 5
+  },
   "denominator": "participating anonymous browsers",
   "suppressionThreshold": 5,
   "rawRetentionDays": 30,
@@ -72,6 +79,16 @@
       "computedAt": "runtime snapshot",
       "unitOrDenominator": "validated outcome records",
       "interpretation": "Reports observed wins, season boundaries and championships without causal or retention claims.",
+      "banded": true
+    },
+    {
+      "id": "first-steps",
+      "label": "First steps and return visits",
+      "value": "live endpoint",
+      "period": "24 hours, 7 days, and 30 days",
+      "computedAt": "runtime snapshot",
+      "unitOrDenominator": "participating browsers, counted once each",
+      "interpretation": "How many sharing browsers finished setup, played a first week, finished a first season, or came back after a time away; each count is hidden when fewer than five browsers are in it, and none is a retention claim about all players.",
       "banded": true
     }
   ]

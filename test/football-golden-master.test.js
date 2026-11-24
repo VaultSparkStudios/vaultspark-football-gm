@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { createHash } from "node:crypto";
-import { computeGoldenMaster, diffGoldenMaster, GOLDEN_MASTER_FIXTURE, HISTORICAL_GOLDEN_MASTER_FIXTURE, S118_GOLDEN_MASTER_FIXTURE, S119_GOLDEN_MASTER_FIXTURE, S131_GOLDEN_MASTER_FIXTURE, S132_V5_GOLDEN_MASTER_FIXTURE, GOLDEN_MASTER_SCENARIOS } from "../scripts/golden-master.mjs";
+import { computeGoldenMaster, diffGoldenMaster, GOLDEN_MASTER_FIXTURE, HISTORICAL_GOLDEN_MASTER_FIXTURE, S118_GOLDEN_MASTER_FIXTURE, S119_GOLDEN_MASTER_FIXTURE, S131_GOLDEN_MASTER_FIXTURE, S132_V5_GOLDEN_MASTER_FIXTURE, S132_V6_GOLDEN_MASTER_FIXTURE, S132_V7_GOLDEN_MASTER_FIXTURE, GOLDEN_MASTER_SCENARIOS } from "../scripts/golden-master.mjs";
 
 // S116 Phase 0: every multi-sport extraction step must leave football byte-identical.
 // A mismatch names the drifted sections. Regenerate the fixture only for an
@@ -92,7 +92,7 @@ test("S132 rival-scouting baseline preserves S131 byte-identical and keeps every
 test("S132 challenge-score baseline preserves v5 byte-identical and moves only the GM history sections", () => {
   const v5Bytes = fs.readFileSync(S132_V5_GOLDEN_MASTER_FIXTURE);
   assert.equal(createHash('sha256').update(v5Bytes).digest('hex'), 'b57decefff6fe62573635582e015496be9e4575932545b75e64902c04c94c292');
-  const v5 = JSON.parse(v5Bytes), current = JSON.parse(fs.readFileSync(GOLDEN_MASTER_FIXTURE));
+  const v5 = JSON.parse(v5Bytes), current = JSON.parse(fs.readFileSync(S132_V6_GOLDEN_MASTER_FIXTURE));
   // The GM season history gained three recorded totals. Nothing that is
   // simulated may move: results, rosters, awards and champions are identical.
   assert.deepEqual(diffGoldenMaster(v5, current).sort(), [
@@ -102,6 +102,50 @@ test("S132 challenge-score baseline preserves v5 byte-identical and moves only t
     'play-4113-CHI: league.gmLegacy changed'
   ]);
   for (const id of Object.keys(v5.scenarios)) assert.deepEqual(current.scenarios[id].summary, v5.scenarios[id].summary);
+});
+
+test("S132 wording baseline preserves v6 byte-identical and moves only the sections that carry engine-written text", () => {
+  const v6Bytes = fs.readFileSync(S132_V6_GOLDEN_MASTER_FIXTURE);
+  assert.equal(createHash('sha256').update(v6Bytes).digest('hex'), '58e0e9acf054574d1d39093b0fe2f1269f366f77cb58754530aa88dbdd25f42e');
+  const v6 = JSON.parse(v6Bytes), current = JSON.parse(fs.readFileSync(S132_V7_GOLDEN_MASTER_FIXTURE));
+  // Engine-written copy dropped the process words ("receipt", "ledger" ...).
+  // That text lives in the news feed, the event log, the stewardship reports
+  // and the dashboard. Nothing simulated may move: players, teams, results,
+  // stat tables, the draw position of the random stream and champions are
+  // identical.
+  assert.deepEqual(diffGoldenMaster(v6, current).sort(), [
+    'drive-20260306-BUF: dashboard changed',
+    'drive-20260306-BUF: league.eventLog changed',
+    'drive-20260306-BUF: league.gmStewardshipReports changed',
+    'drive-20260306-BUF: league.newsFeed changed',
+    'play-4113-CHI: dashboard changed',
+    'play-4113-CHI: league.eventLog changed',
+    'play-4113-CHI: league.gmStewardshipReports changed',
+    'play-4113-CHI: league.newsFeed changed'
+  ]);
+  for (const id of Object.keys(v6.scenarios)) {
+    assert.deepEqual(current.scenarios[id].summary, v6.scenarios[id].summary);
+    assert.equal(current.scenarios[id].sections['session.position'], v6.scenarios[id].sections['session.position'], 'the random stream is at the same draw');
+  }
+});
+
+test("S133 Frame Matters baseline preserves v7 byte-identical and moves the simulation from the first game", () => {
+  const v7Bytes = fs.readFileSync(S132_V7_GOLDEN_MASTER_FIXTURE);
+  assert.equal(createHash('sha256').update(v7Bytes).digest('hex'), '9f109807151189f5c0c4262aaba5d71e581d66f1979bcfd99f1bd51549a0a752');
+  const v7 = JSON.parse(v7Bytes), current = JSON.parse(fs.readFileSync(GOLDEN_MASTER_FIXTURE));
+  const lines = diffGoldenMaster(v7, current);
+  // Sections appear and empty out where different games create or clear them
+  // (an admitted injury continuation, a rival GM's memory). Scenarios may not
+  // appear or go missing.
+  for (const line of lines) assert.doesNotMatch(line, /scenario missing|unexpected scenario/, line);
+  // Bodies now edge blocking, rushing, coverage, catches, tackles, fumbles and
+  // injuries, so results, rosters and the stat tables all move.
+  for (const id of Object.keys(v7.scenarios)) {
+    assert.ok(lines.includes(`${id}: league.players changed`), `${id}: rosters moved`);
+    assert.ok(lines.includes(`${id}: league.schedule changed`) || lines.some((line) => line.startsWith(`${id}: `) && /stat|season/i.test(line)), `${id}: results moved`);
+    assert.notDeepEqual(current.scenarios[id].summary.champions, v7.scenarios[id].summary.champions, "the change reaches who wins");
+    assert.equal(current.scenarios[id].sections['league.settings'], v7.scenarios[id].sections['league.settings'], 'league settings are untouched');
+  }
 });
 
 test("the diff names changed, added and missing sections", () => {

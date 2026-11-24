@@ -90,7 +90,7 @@ export function buildArchitectMasteryPortfolio(league = {}, teamId = null) {
     evidence: seasons
       ? `Career cap grade ${Math.round(avgCap)}; culture grade ${Math.round(avgCulture)}; trade net Approximate Value ${Number(legacy.tradeNetAV || 0)}.`
       : "Cap and culture grades are recorded only at season close.",
-    nextMilestone: seasons ? "Raise the lower of cap discipline and culture health at the next season receipt." : "Reach season close with a valid cap and culture receipt."
+    nextMilestone: seasons ? "Raise the lower of cap discipline and culture health by the next season close." : "Reach season close with a valid cap and culture record."
   });
 
   const commitments = (league.gmCommitments || []).filter((entry) => !teamId || entry.teamId === teamId);
@@ -119,8 +119,8 @@ export function buildArchitectMasteryPortfolio(league = {}, teamId = null) {
     evidenceCount: declared.length,
     evidence: declared.length
       ? `${declared.length} declared decision receipt${declared.length === 1 ? "" : "s"}. ${identityEvidence.summary}`
-      : "No declared tactic or General Manager decision has a committed Architect receipt.",
-    nextMilestone: declared.length ? "Review the latest film receipt and deliberately reinforce or counter it." : "Declare a tactic, advance one week, and review its film receipt.",
+      : "No declared tactic or General Manager decision has a recorded result yet.",
+    nextMilestone: declared.length ? "Review the latest film review and deliberately reinforce or counter it." : "Declare a tactic, advance one week, and read its film review.",
     breakdown: identityEvidence
   });
 
@@ -139,22 +139,22 @@ export function buildArchitectMasteryPortfolio(league = {}, teamId = null) {
     schemaVersion: "1.0",
     score,
     maxScore: 100,
-    label: score >= 80 ? "Complete Franchise Architect" : score >= 60 ? "Multi-Path Builder" : score >= 35 ? "Emerging Architect" : "Portfolio In Formation",
+    label: score >= 80 ? "Complete Franchise Architect" : score >= 60 ? "Multi-Path Builder" : score >= 35 ? "Emerging Architect" : "Laying The Foundation",
     evidenceCount: paths.reduce((sum, path) => sum + path.evidenceCount, 0),
     paths,
     focus: {
       pathId: activeFocus.id,
       label: activeFocus.label,
       source: selectedFocus ? "player-authored" : "system-recommendation",
-      reason: selectedFocus ? "You selected this path as the current Architect thesis focus." : focusPath.evidenceCount === 0
-        ? "This path has no committed evidence yet."
+      reason: selectedFocus ? "You selected this path as your current Architect Plan focus." : focusPath.evidenceCount === 0
+        ? "This path has no results yet."
         : `This is the lowest current path at ${focusPath.score}/25.`,
       nextMilestone: activeFocus.nextMilestone
     },
     recommendedFocus: {
       pathId: focusPath.id,
       label: focusPath.label,
-      reason: focusPath.evidenceCount === 0 ? "This path has no committed evidence yet." : `This is the lowest current path at ${focusPath.score}/25.`
+      reason: focusPath.evidenceCount === 0 ? "This path has no results yet." : `This is the lowest current path at ${focusPath.score}/25.`
     },
     thesis: teamId ? league.architectTheses?.[teamId] || null : null,
     signature: signaturePath ? {

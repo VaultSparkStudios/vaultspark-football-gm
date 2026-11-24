@@ -84,7 +84,7 @@ test('bad payroll or playoff club refuses before match RNG, stats or bracket mut
     amount:1,kind:'practice-postseason-benefit-v1',capCharge:0}};
   const run=()=>simulateNextPostseasonGame({state,league:session.league,statBook:session.statBook,year:2026,rng:session.rng});
   const before=JSON.stringify(session.toSnapshot()),stateBefore=structuredClone(state);
-  assert.throws(run,/Invalid postseason practice payroll receipt/);
+  assert.throws(run,/Invalid postseason practice payroll record/);
   assert.equal(JSON.stringify(session.toSnapshot()),before);
   assert.deepEqual(state,stateBefore);
   delete player.contract.postseasonPayLedger;

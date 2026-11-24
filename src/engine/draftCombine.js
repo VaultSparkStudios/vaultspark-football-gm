@@ -18,6 +18,8 @@
  * Combine results attach to prospect.combineResults: { grade, events, performedAt }.
  */
 
+import { derivedRng } from "../utils/rng.js";
+
 // ── Position baselines [min, max] ─────────────────────────────────────────────
 
 const COMBINE_BASELINES = {
@@ -37,20 +39,42 @@ function lerp(min, max, t) {
   return min + (max - min) * Math.max(0, Math.min(1, t));
 }
 
+// Timed drills: a lower number is the better performance.
+function isTimeEvent(event) {
+  return event.includes("forty") || event.includes("cone") || event.includes("shuttle");
+}
+
+// The prospect's own measured workout, when the draft class carries one
+// (playerWorkouts.js derives it from speed, agility, jumping and strength).
+// A combine reads the athlete it measured, not a fresh guess.
+const WORKOUT_FIELDS = Object.freeze({ fortyYard: "forty", verticalJump: "vertical", benchPress: "bench", shortShuttle: "shuttle", coneDrill: "cone" });
+
 // ── Run combine for one prospect ──────────────────────────────────────────────
 
-export function runCombineForProspect(prospect, rng) {
+/**
+ * S133 fixes: timed drills were drawn on the same scale as scored ones, so a
+ * better prospect ran a *slower* 40; the draw came from the session's random
+ * stream (running the combine changed every later game) and the wall clock.
+ * Now each prospect's numbers come from a stream derived from his own id, the
+ * measured workout wins where one exists, and `rng` is accepted only for
+ * older callers and never read.
+ */
+export function runCombineForProspect(prospect, _rng = null, { performedAt = null } = {}) {
   const pos = prospect.position;
   const baseline = COMBINE_BASELINES[pos] || COMBINE_BASELINES.LB;
+  const draw = derivedRng(`draft-combine:${prospect.id}`);
 
   // Skill bias: OVR 60 → 0.3, OVR 85 → 0.7
   const skillBias = 0.3 + ((prospect.overall || 70) - 60) * 0.016;
 
   const events = {};
   for (const [event, [min, max]] of Object.entries(baseline)) {
-    const noise = (rng.next() - 0.5) * 0.5;
+    const noise = (draw.next() - 0.5) * 0.5;
     const t = Math.min(1, Math.max(0, skillBias + noise));
-    events[event] = Number(lerp(min, max, t).toFixed(2));
+    const measured = Number(prospect.workout?.[WORKOUT_FIELDS[event]]);
+    events[event] = Number.isFinite(measured)
+      ? Number(measured.toFixed(2))
+      : Number((isTimeEvent(event) ? lerp(max, min, t) : lerp(min, max, t)).toFixed(2));
   }
 
   const grade = _computeGrade(events, pos, skillBias);
@@ -64,7 +88,7 @@ export function runCombineForProspect(prospect, rng) {
     overall:     prospect.scouting?.scoutedOverall ?? prospect.overall,
     events,
     grade,
-    performedAt: new Date().toISOString()
+    performedAt
   };
 }
 
@@ -73,9 +97,9 @@ function _computeGrade(events, pos, skillBias) {
   const baseline = COMBINE_BASELINES[pos] || COMBINE_BASELINES.LB;
   const scores = Object.entries(events).map(([event, val]) => {
     const [min, max] = baseline[event] || [0, 100];
-    // For 40-yard dash and cone drill, lower is better
-    const isTimeEvent = event.includes("forty") || event.includes("cone") || event.includes("shuttle");
-    return isTimeEvent ? 1 - ((val - min) / Math.max(1, max - min)) : (val - min) / Math.max(1, max - min);
+    const span = Math.max(0.01, max - min);
+    const unit = Math.max(0, Math.min(1, (val - min) / span));
+    return isTimeEvent(event) ? 1 - unit : unit;
   });
   const avg = scores.reduce((s, v) => s + v, 0) / Math.max(1, scores.length);
   return Math.round(Math.min(99, Math.max(35, avg * 64 + 35)));

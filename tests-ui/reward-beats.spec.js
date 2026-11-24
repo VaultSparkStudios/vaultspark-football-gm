@@ -117,6 +117,51 @@ for (const scenario of WEEKLY_SCENARIOS) {
   });
 }
 
+async function advanceOpeningWeek(page) {
+  const before = await readDashboard(page);
+  const isAdvance = (request) => new URL(request.url()).pathname === "/api/advance-week" && request.method() === "POST";
+  const [response] = await Promise.all([
+    page.waitForResponse((candidate) => isAdvance(candidate.request())),
+    (async () => {
+      await page.click("#advanceWeekBtn");
+      await drainWeeklyPlanModals(page, before);
+    })()
+  ]);
+  expect(response.ok()).toBe(true);
+}
+
+test("with automatic highlights on, the replay opens by itself after the player's game", async ({ page }) => {
+  await createLeague(page);
+  await page.click('[data-testid="tab-settings"]');
+  const toggle = page.locator("#autoHighlightsInput");
+  await expect(toggle).not.toBeChecked();
+  await toggle.check();
+  expect(await page.evaluate(() => localStorage.getItem("fa:auto-highlights"))).toBe("1");
+  await expect(page.locator("#installAppBtn")).toBeHidden();
+  await page.click('[data-testid="tab-overview"]');
+
+  await advanceOpeningWeek(page);
+  await expect(page.locator("#simWatchOverlay")).toBeVisible({ timeout: 30_000 });
+  // The recap card would give the score away before the replay does.
+  await expect(page.locator("#weekRecapCard.wr-visible")).toHaveCount(0);
+  await page.locator("#simWatchCloseBtn").click();
+  await expect(page.locator("#simWatchOverlay")).toBeHidden();
+});
+
+test("automatic highlights stay off while the device asks for reduced motion", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await createLeague(page);
+  await page.evaluate(() => localStorage.setItem("fa:auto-highlights", "1"));
+  await page.click('[data-testid="tab-settings"]');
+  await page.click('[data-testid="tab-overview"]');
+
+  await advanceOpeningWeek(page);
+  const card = page.locator("#weekRecapCard.wr-visible");
+  await expect(card).toBeVisible({ timeout: 30_000 });
+  await expect(card.locator('.wr-action[data-recap-action="box-score"]')).toHaveText("View box score");
+  await expect(page.locator("#simWatchOverlay")).toBeHidden();
+});
+
 test("trophy case renders the full registry and the sound toggle persists", async ({ page }) => {
   await createLeague(page);
   await page.click('[data-testid="tab-gm-profile"]');

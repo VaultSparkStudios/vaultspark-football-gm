@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playfranchisearchitect.com/schemas/co-gm-briefing-1.0.schema.json",
+  "title": "Co-GM briefing",
+  "description": "A player-created export of what the Desk already shows for one franchise at one point in a season. It carries no save file, no hidden ratings and nothing that identifies the player.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "kind", "authority", "currentCommand", "pressure", "architectThesis", "recentDecisionReceipts", "disclosure"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "kind": { "const": "co-gm-briefing" },
+    "authority": {
+      "description": "Which franchise and which moment the briefing describes.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["teamId", "teamName", "year", "week", "phase", "record"],
+      "properties": {
+        "teamId": { "type": "string", "description": "Team code, or \"unknown\" when the Desk had no team loaded." },
+        "teamName": { "type": "string" },
+        "year": { "type": ["number", "null"] },
+        "week": { "type": ["number", "null"] },
+        "phase": { "type": "string" },
+        "record": { "type": "string" }
+      }
+    },
+    "currentCommand": {
+      "description": "The top-ranked thing the Desk is asking the player to do.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rank", "lane", "title", "detail", "reasonCode", "blocking", "action", "decisionId", "occurrenceKey", "targetTab", "choices"],
+      "properties": {
+        "rank": { "type": ["number", "null"] },
+        "lane": { "type": "string" },
+        "title": { "type": "string" },
+        "detail": { "type": "string" },
+        "reasonCode": { "type": "string" },
+        "blocking": { "type": "boolean", "description": "True when the week cannot advance until this is handled." },
+        "action": { "type": "string" },
+        "decisionId": { "type": ["string", "null"] },
+        "occurrenceKey": { "type": ["string", "null"] },
+        "targetTab": { "type": ["string", "null"] },
+        "choices": {
+          "type": "array",
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "label", "effect"],
+            "properties": {
+              "id": { "type": "string" },
+              "label": { "type": "string" },
+              "effect": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "pressure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ownerMandate", "ownerTrend", "ownerHeat", "capSpace", "controlledTeamInjuries", "rosterNeeds", "leagueHeadline"],
+      "properties": {
+        "ownerMandate": { "type": "string" },
+        "ownerTrend": { "type": "string" },
+        "ownerHeat": { "type": ["number", "null"] },
+        "capSpace": { "type": ["number", "null"] },
+        "controlledTeamInjuries": { "type": "number" },
+        "rosterNeeds": { "type": "array", "maxItems": 4, "items": { "type": "string" } },
+        "leagueHeadline": { "type": "string" }
+      }
+    },
+    "architectThesis": {
+      "description": "The long-term plan the player has declared for the franchise.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["focusPathId", "revision", "pendingAdaptation"],
+      "properties": {
+        "focusPathId": { "type": ["string", "null"] },
+        "revision": { "type": ["number", "null"] },
+        "pendingAdaptation": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["mode", "label", "sourceEntryId"],
+          "properties": {
+            "mode": { "type": "string" },
+            "label": { "type": "string" },
+            "sourceEntryId": { "type": ["string", "null"] }
+          }
+        }
+      }
+    },
+    "recentDecisionReceipts": {
+      "description": "The most recent decisions, newest first, with what was declared and what was observed.",
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "year", "week", "declared", "observed", "aligned"],
+        "properties": {
+          "id": { "type": "string" },
+          "year": { "type": ["number", "null"] },
+          "week": { "type": ["number", "null"] },
+          "declared": { "type": "string" },
+          "observed": { "type": "string" },
+          "aligned": { "type": ["boolean", "null"] }
+        }
+      }
+    },
+    "disclosure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bounded", "included", "excluded", "note"],
+      "properties": {
+        "bounded": { "const": true },
+        "included": { "type": "array", "items": { "type": "string" } },
+        "excluded": { "type": "array", "items": { "type": "string" } },
+        "note": { "type": "string" }
+      }
+    }
+  }
+}

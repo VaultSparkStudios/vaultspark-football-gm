@@ -75,7 +75,7 @@ export function buildArchitectLedgerEntry({
       recordAfter: compactRecord(teamAfter)
     },
     nextAdaptation: adaptationFor({ tacticalReceipt, gmDecision }),
-    disclaimer: "This ledger joins declared intent to observed game and league receipts. It does not claim the decision or tactic alone caused the result."
+    disclaimer: "This record joins what you declared to what the games and the league then showed. It does not claim the decision or tactic alone caused the result."
   };
 }
 

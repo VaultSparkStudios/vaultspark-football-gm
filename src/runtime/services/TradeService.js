@@ -286,7 +286,7 @@ export class TradeService {
           ok: false,
           status: 409,
           reasonCode: "stale-trade-plan",
-          error: "Trade authority changed after evaluation. Re-evaluate before committing.",
+          error: "The trade changed after evaluation. Re-evaluate before committing.",
           currentPlan
         };
       }

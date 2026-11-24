@@ -35,7 +35,7 @@ export function handleArchitectThesisRequest({
       body: {
         ok: false,
         reasonCode: "ARCHITECT_METHOD_NOT_ALLOWED",
-        error: "The Architect Thesis endpoint supports GET and POST."
+        error: "This endpoint supports GET and POST."
       }
     };
   }

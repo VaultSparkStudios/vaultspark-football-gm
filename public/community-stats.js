@@ -1,3 +1,4 @@
+import { observeBackgroundTask } from "./lib/clientDiagnostics.js";
 import {
   COMMUNITY_ENDPOINT,
   getCommunityParticipation,
@@ -47,7 +48,14 @@ const PLAYER_STAT_DESCRIPTIONS = Object.freeze({
   "top-challenge": "The structured challenge completed most often.",
   "top-feat": "The rare achievement reached most often.",
   "top-contract-band": "The yearly salary range used most often in contract moves.",
-  "top-staff-role": "The coaching role changed most often."
+  "top-staff-role": "The coaching role changed most often.",
+  "setup-finished": "Sharing browsers that finished creating a franchise.",
+  "first-advance": "Sharing browsers that played their first week.",
+  "first-season-finished": "Sharing browsers that completed their first season.",
+  "return-same-day": "Sharing browsers that came back later the same day.",
+  "return-1-6": "Sharing browsers that came back one to six days later.",
+  "return-7-29": "Sharing browsers that came back one to four weeks later.",
+  "return-30-plus": "Sharing browsers that came back after thirty days or more."
 });
 let activePeriod = "30d";
 let latestSnapshot = null;
@@ -234,9 +242,33 @@ function renderComparisons(period) {
   root.innerHTML = rows.map(([key, label, value]) => `<article class="community-comparison"><span>${escapeHtml(label)}</span><strong>${number(value)}</strong><p>${escapeHtml(percentileMessage(value, period.comparisons?.[key], period.status))}</p></article>`).join("");
 }
 
+/**
+ * The First steps section for one period. Three states, each said plainly:
+ * the service did not send the figures, not enough browsers are sharing yet,
+ * or the counts themselves (any single count under the threshold stays hidden).
+ */
+export function firstStepsMarkup(period, threshold = 5) {
+  const steps = period?.firstSteps;
+  if (!steps || !Array.isArray(steps.milestones) || !Array.isArray(steps.returns)) {
+    return `<p class="community-empty">First-steps figures are not available right now.</p>`;
+  }
+  if (steps.status !== "live") {
+    return `<p class="community-empty">Not enough players are sharing yet. These counts appear once at least ${number(threshold)} sharing browsers are included, and each one stays hidden until ${number(threshold)} browsers are counted in it.</p>`;
+  }
+  const group = (title, stats) => `<h3 class="community-first-steps-title">${escapeHtml(title)}</h3><div class="community-atlas-grid">${stats.map((stat) => statCard(stat)).join("")}</div>`;
+  return `${group("Getting started", steps.milestones)}${group("Coming back", steps.returns)}`;
+}
+
+function renderFirstSteps(snapshot) {
+  const root = document.querySelector("[data-community-first-steps-content]");
+  if (!root) return;
+  root.innerHTML = firstStepsMarkup(snapshot?.periods?.[activePeriod], Number(snapshot?.suppressionThreshold ?? 5));
+}
+
 function renderAtlas(snapshot) {
   const root = document.querySelector("[data-community-atlas]");
   if (!root) return;
+  renderFirstSteps(snapshot);
   const period = snapshot?.periods?.[activePeriod];
   const consentShell = document.querySelector("[data-community-consent-shell]");
   if (consentShell) { consentShell.innerHTML = participationMarkup(); bindConsent(consentShell); }
@@ -396,6 +428,15 @@ function init() {
     else scheduleRefresh(nextSnapshotRefreshAt - Date.now());
   });
   bindConsent(); void loadSnapshot(); renderShowcase();
+  // A module that fails to load is a recorded fault and an honest message,
+  // never an empty board that looks like a quiet league.
+  observeBackgroundTask(
+    () => import("./lib/censusBoard.js").then((census) => census.mountCensusBoards()).then(null, (error) => {
+      for (const host of document.querySelectorAll("[data-census-grid]")) host.innerHTML = '<p class="community-empty">The Census could not load just now.</p>';
+      throw error;
+    }),
+    { surface: "community-stats", operation: "mount-census", authorityKey: "census", severity: "degraded" }
+  );
 }
 
 if (typeof document !== "undefined") {

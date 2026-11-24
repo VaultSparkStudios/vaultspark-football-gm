@@ -9,7 +9,7 @@ import { prepareFullPageCapture } from "./lib/capture-readiness.mjs";
 const root = process.cwd();
 const staticDir = path.join(root, "static");
 const outputDir = path.join(root, "output", "playwright", "public-qa");
-const routes = ["index.html", "features.html", "how-to-play.html", "guides.html", "compare.html", "faq.html", "roadmap.html", "about.html", "press.html", "media.html", "status.html", "status-archive.html", "stats.html", "simulation.html", "contact.html", "privacy.html", "terms.html"];
+const routes = ["index.html", "features.html", "guides.html", "faq.html", "about.html", "press.html", "media.html", "status.html", "status-archive.html", "stats.html", "simulation.html", "contact.html", "privacy.html", "terms.html"];
 const viewports = [
   { name: "desktop", width: 1440, height: 1000 },
   { name: "mobile", width: 390, height: 844 }

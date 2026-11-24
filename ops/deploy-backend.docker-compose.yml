@@ -39,6 +39,9 @@ services:
       DATABASE_URL: postgresql://studio_admin:${POSTGRES_PASSWORD}@postgres:5432/community_stats
       COMMUNITY_KEY_PATH: /var/lib/community-stats/pepper
       COMMUNITY_ALLOWED_ORIGINS: https://playfranchisearchitect.com,https://staging.playfranchisearchitect.com
+      # Human check on capability issuance. Both empty (the default) leaves it off.
+      COMMUNITY_TURNSTILE_SECRET: ${COMMUNITY_TURNSTILE_SECRET:-}
+      COMMUNITY_TURNSTILE_SITE_KEY: ${COMMUNITY_TURNSTILE_SITE_KEY:-}
     volumes:
       - community_stats_keys:/var/lib/community-stats
     depends_on:

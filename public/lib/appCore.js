@@ -72,7 +72,39 @@ async function ensurePortraitRenderer() {
 }
 
 export function buildPlayerPortraitSvg(player) {
-  return portraitRenderer ? portraitRenderer(player) : '<div class="portrait-unavailable">Loading portrait…</div>';
+  // S133: players wear their club's colours.
+  const teamColors = TEAM_THEME_MAP[String(player?.teamId || "").toUpperCase()] || null;
+  return portraitRenderer ? portraitRenderer(player, { teamColors }) : '<div class="portrait-unavailable">Loading portrait…</div>';
+}
+
+// S133 Frame Matters: the body as a scout reads it, always visible. The
+// numbers come from the engine (physicalProfile.js), measured against the
+// league today, and the same model moves the games.
+const FRAME_HINTS = Object.freeze({
+  long: "Long arms for his position: wins at the line and at the catch point.",
+  power: "Heavy and compact: anchors, drives and breaks arm tackles.",
+  tower: "Tall for his position: a big target and a long reach.",
+  compact: "Short and solid: low leverage, hard to move off a spot.",
+  lean: "Light for his position: quick, but every collision costs more.",
+  thick: "Heavy for his position: holds the point, slower over distance.",
+  prototype: "Built like the average starter at his position."
+});
+export function renderFrameStrip(player) {
+  const card = player?.physicalCard;
+  if (!card) return "";
+  const ras = Number(card.ras);
+  const rasTier = ras >= 8 ? "elite" : ras >= 6 ? "good" : ras >= 4 ? "average" : "poor";
+  const cells = [
+    `<div class="frame-cell frame-archetype" title="${escapeHtml(FRAME_HINTS[card.archetypeKey] || "")}"><span>Frame</span><strong>${escapeHtml(card.archetype)}</strong></div>`,
+    Number.isFinite(ras) ? `<div class="frame-cell frame-ras frame-ras-${rasTier}" title="Relative Athletic Score: size and workouts against his position, 0 to 10"><span>RAS</span><strong>${ras.toFixed(1)}</strong><i style="--ras:${Math.max(0, Math.min(10, ras)) * 10}%"></i></div>` : "",
+    card.speedScore != null ? `<div class="frame-cell" title="Speed Score: weight × 200 ÷ forty⁴. About 100 is average for a back."><span>Speed Score</span><strong>${escapeHtml(card.speedScore)}</strong></div>` : "",
+    card.catchRadiusInches != null && ["WR", "TE", "RB", "DB"].includes(player.position) ? `<div class="frame-cell" title="Highest point he can catch a ball: standing reach plus vertical jump"><span>Catch radius</span><strong>${escapeHtml(card.catchRadiusInches)}″</strong></div>` : ""
+  ].filter(Boolean);
+  const ownPlayer = player.teamId && player.teamId === state.dashboard?.controlledTeamId && !player.isDraftProspect && !["K", "P"].includes(player.position);
+  const current = player.bodyProgram || "maintain";
+  const programs = [["maintain", "Maintain", "Keep his current frame."], ["bulk", "Bulk up", "About +8 lb: more strength and power, a step slower."], ["lean", "Lean down", "About -8 lb: quicker and more agile, less power at contact."]];
+  const programControl = ownPlayer ? `<div class="body-program" role="group" aria-label="Offseason body programme for ${escapeHtml(player.name || "this player")}"><span class="small">Offseason body programme</span>${programs.map(([id, label, hint]) => `<button type="button" class="body-program-btn${current === id ? " active" : ""}" aria-pressed="${current === id}" data-player-id="${escapeHtml(player.id)}" data-program="${id}" title="${escapeHtml(hint)}">${label}</button>`).join("")}</div>` : "";
+  return `<div class="player-frame-strip" aria-label="Frame and athletic profile">${cells.join("")}<p class="small muted">${escapeHtml(FRAME_HINTS[card.archetypeKey] || "")}</p>${programControl}</div>`;
 }
 
 function renderPlayerPhysique(player) {
@@ -174,11 +206,13 @@ export function renderPlayerProfileHero(profile) {
         <div class="profile-badge-row">
           ${badges.map((badge) => `<span class="profile-badge">${escapeHtml(badge)}</span>`).join("")}
         </div>
+        ${renderFrameStrip(player)}
         <div class="player-meta-grid">
           <div class="player-meta-card">
             <strong>Frame</strong>
             <div>${escapeHtml(formatHeight(player.heightInches))} / ${escapeHtml(player.weightLbs || "-")} lbs</div>
             <div class="small">${escapeHtml(playerBodyTypeLabel(player))} | Scheme fit ${escapeHtml(outlook.fitLabel || "-")} (${escapeHtml(outlook.fit ?? "-")})</div>
+            ${player.bodyMeasurements?.values?.wingspanInches != null ? `<div class="small">Wingspan ${escapeHtml(player.bodyMeasurements.values.wingspanInches)}″ · Hand ${escapeHtml(player.bodyMeasurements.values.handSizeInches ?? "-")}″</div>` : ""}
           </div>
           <div class="player-meta-card">
             <strong>Contract</strong>

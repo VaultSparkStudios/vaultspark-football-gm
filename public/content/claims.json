@@ -4,7 +4,7 @@
   "statusLabel": "Free early access",
   "statusLine": "Franchise Architect: Football is free to play in early access. It is complete enough to run a franchise for decades, and it changes often; every change is dated in the changelog.",
   "heroSubline": "No account and no install. Your league runs and saves in your browser.",
-  "privacyLine": "Your league is saved in this browser. Nothing leaves it unless you turn on anonymous Community Stats or choose GitHub Gist sync.",
+  "privacyLine": "Your league is saved in this browser. By default the game sends only the Gridiron Census, anonymous counters with no ID that you can turn off; nothing else leaves unless you turn on Community Stats or choose GitHub Gist sync.",
   "intelligenceLine": "No AI services and no paid APIs. Every rival, every Advisor call and every headline is worked out by the game's own rules from your league's data.",
   "heroImage": {
     "src": "./images/screens/hero.jpg",
@@ -172,7 +172,7 @@
       "index": false,
       "image": {
         "src": "./images/screens/share.webp",
-        "alt": "The Trophy Case in Settings: the achievements a franchise can earn, shown locked until you earn them"
+        "alt": "The Trophy Case on GM Profile: the achievements a franchise can earn, shown locked until you earn them"
       }
     },
     {
@@ -303,13 +303,13 @@
     },
     {
       "id": "community",
-      "title": "Community Stats, if you want them",
-      "teaser": "An optional, anonymous look at what other general managers are doing.",
-      "description": "Community Stats is off until you turn it on. When it is on, the game shares anonymous choices and results, never your save, names or notes. A trend stays hidden until enough players are included for it to mean anything.",
+      "title": "Gridiron Census: every franchise, one scoreboard",
+      "teaser": "Live totals across every franchise: games, seasons, titles and Hall of Famers.",
+      "description": "The Gridiron Census adds your games to anonymous totals shared by every franchise: games played, seasons finished, championships won and Hall of Famers developed. It sends counters with no ID and you can turn it off. Detailed Community Stats, the trends behind other GMs' choices, stay off until you turn them on.",
       "index": false,
       "link": {
         "href": "./stats#methodology",
-        "label": "How Community Stats works"
+        "label": "How the Gridiron Census works"
       },
       "image": {
         "src": "./images/screens/community.webp",

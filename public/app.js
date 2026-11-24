@@ -197,6 +197,14 @@ import {
 import { recordPlaytestJourneyCheckpoint, startPlaytestJourney } from "./lib/playtestJourney.js";
 import { navigateToExactSurface } from "./lib/exactSurfaceNavigation.js";
 import { closeModal, hasOpenModal, isModalOpen, openModal } from "./lib/modalManager.js";
+import { isAutoHighlightsEnabled, setAutoHighlightsEnabled } from "./lib/autoHighlights.js";
+
+// A browser that can install the app says so once; the offer loads only then.
+let installOffer = null;
+addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  installOffer = import("./lib/installPrompt.js").then((install) => (install.offerInstall(event), install), () => null);
+});
 
 import {
   ingestNewsIntoInbox,
@@ -463,7 +471,7 @@ async function refreshAfterWeeklyCommand(response) {
     const { game } = recordAchievementEvent("week-advanced", {
       completedWeek: Number(state.dashboard?.currentWeek) - 1
     });
-    if (game) (await import("./lib/rewardBeats.js")).presentWeekRecap(game);
+    if (game) await (await import("./lib/rewardBeats.js")).presentWeekRecap(game);
   } catch (error) {
     recordClientDiagnostic({
       surface: "engagement",
@@ -473,6 +481,7 @@ async function refreshAfterWeeklyCommand(response) {
       severity: "warning"
     });
   }
+  installOffer?.then((install) => install?.maybeShowInstallHint());
   return hydration;
 }
 const deskIslands = () => import("./lib/deskIslands.js");
@@ -745,7 +754,7 @@ function bindEvents() {
         applyDashboard(response.state);
         await renderGmLegacyScore();
         showToast(adaptationAction
-          ? (body.adaptationMode ? `${response.thesis.pendingAdaptation.label} hypothesis declared.` : "Adaptation hypothesis cleared.")
+          ? (body.adaptationMode ? `${response.thesis.pendingAdaptation.label} adjustment declared.` : "Adjustment cleared.")
           : "Architect mastery focus saved.");
         return response;
       }, "Saving Architect thesis...").catch(presentActionError);
@@ -1805,6 +1814,26 @@ function bindEvents() {
 
   document.getElementById("loadQaBtn").addEventListener("click", () => runAction(loadQa, "Loading QA report..."));
 
+  // S133: offseason body programmes from the player dossier. Applied at the
+  // next offseason; the frame it builds changes games through Frame Matters.
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest?.(".body-program-btn");
+    if (!button) return;
+    runAction(async () => {
+      const payload = await api("/api/players/body-program", {
+        method: "POST",
+        body: { teamId: state.dashboard?.controlledTeamId, playerId: button.dataset.playerId, program: button.dataset.program }
+      });
+      applyDashboard(payload.state);
+      for (const sibling of button.parentElement?.querySelectorAll(".body-program-btn") || []) {
+        const active = sibling === button;
+        sibling.classList.toggle("active", active);
+        sibling.setAttribute("aria-pressed", String(active));
+      }
+      showToast(`${payload.receipt?.label}: ${payload.receipt?.playerName} (applies this offseason)`);
+    }, "Setting body programme...");
+  });
+
   document.getElementById("rehabCommandCenter")?.addEventListener("click", (event) => {
     const button = event.target.closest(".rehab-plan-btn");
     if (!button) return;
@@ -2449,6 +2478,11 @@ async function init() {
       if (hapticsInput.checked) vibrate(HAPTIC_PATTERNS.tick);
     });
   }
+  const autoHighlightsInput = document.getElementById("autoHighlightsInput");
+  if (autoHighlightsInput) {
+    autoHighlightsInput.checked = isAutoHighlightsEnabled();
+    autoHighlightsInput.addEventListener("change", () => setAutoHighlightsEnabled(autoHighlightsInput.checked));
+  }
   const [tutorialCampaign, betaFeedback] = await firstRunSurfacesPromise;
   const { injectTutorialStyles, mountTutorial, resetTutorial } = tutorialCampaign;
   const { mountBetaFeedback } = betaFeedback;
@@ -2484,6 +2518,14 @@ async function init() {
     showToast("A new version is cached — reload to play the latest build.");
   });
   mountBetaFeedback();
+  // League Pulse: anonymous totals, on by default with a one-click opt-out.
+  // "Returning" is read from the franchise itself, never from an identifier.
+  observeBackgroundTask(
+    () => import("./lib/leaguePulseNotice.js").then((pulse) => pulse.startLeaguePulse({
+      returning: Boolean(state.dashboard?.startScenarioReceipt) || Number(state.dashboard?.currentWeek) > 1
+    })),
+    { surface: "community-telemetry", operation: "league-pulse", authorityKey: "league-pulse", severity: "degraded" }
+  );
   observeBackgroundTask(
     () => maybeShowReturnDigest(state.dashboard, {
       getDashboard: () => state.dashboard,

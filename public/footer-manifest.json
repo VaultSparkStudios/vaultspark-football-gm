@@ -1,26 +1,21 @@
 {
-  "schemaVersion": "1.4",
+  "schemaVersion": "1.6",
   "headerLinks": [
     "./index.html",
     "./features.html",
-    "./how-to-play.html",
+    "./guides.html",
     "./faq.html",
     "./stats",
     "./status.html"
   ],
   "footerLinks": [
     "./index.html",
-    "./how-to-play.html",
     "./guides.html",
     "./faq.html",
     "./features.html",
-    "./compare.html",
     "./simulation.html",
-    "./media.html",
     "./stats",
     "./status.html",
-    "./status-archive.html",
-    "./roadmap.html",
     "./about.html",
     "./press.html",
     "./contact.html",
@@ -33,27 +28,22 @@
       "label": "Play",
       "links": [
         "./index.html",
-        "./how-to-play.html",
         "./guides.html",
         "./faq.html"
       ]
     },
     {
-      "label": "Learn",
+      "label": "The game",
       "links": [
         "./features.html",
-        "./compare.html",
         "./simulation.html",
-        "./media.html",
-        "./stats"
+        "./stats",
+        "./status.html"
       ]
     },
     {
-      "label": "Project",
+      "label": "Studio",
       "links": [
-        "./status.html",
-        "./status-archive.html",
-        "./roadmap.html",
         "./about.html",
         "./press.html",
         "./contact.html",
@@ -69,13 +59,8 @@
     }
   ],
   "footerOnly": [
-    "./guides.html",
-    "./compare.html",
-    "./media.html",
-    "./roadmap.html",
-    "./about.html",
     "./simulation.html",
-    "./status-archive.html",
+    "./about.html",
     "./press.html",
     "./contact.html",
     "./privacy.html",
@@ -89,9 +74,7 @@
   "sharedFooterPages": [
     "index.html",
     "features.html",
-    "how-to-play.html",
     "faq.html",
-    "roadmap.html",
     "about.html",
     "status.html",
     "contact.html",
@@ -101,26 +84,21 @@
     "simulation.html",
     "press.html",
     "guides.html",
-    "compare.html",
     "media.html"
   ],
   "labels": {
     "./index.html": "Play",
     "./features.html": "Features",
-    "./how-to-play.html": "How to Play",
     "./faq.html": "FAQ",
-    "./roadmap.html": "Roadmap",
     "./about.html": "About",
     "./simulation.html": "The Simulation",
-    "./stats": "Community Stats",
+    "./stats": "Gridiron Census",
     "./status.html": "Updates",
-    "./status-archive.html": "Changelog",
-    "./press.html": "Press",
+    "./press.html": "Press & Media",
     "./contact.html": "Contact",
     "./privacy.html": "Privacy",
     "./terms.html": "Terms",
     "./guides.html": "Guides",
-    "./compare.html": "How It Compares",
     "./media.html": "Screenshots",
     "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions": "Discussions"
   }

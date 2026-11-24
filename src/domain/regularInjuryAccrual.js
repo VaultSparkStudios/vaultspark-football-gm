@@ -57,7 +57,7 @@ export function commitRegularInjuryAccrual(league,{year,week,receipts}={}){
   const additionalCents=Math.max(0,captured.payCents-practiceCents);
   const row={...captured,practiceCents,additionalCents,capChargeCents:additionalCents};
   const existing=player.elevationInjuryPay.payroll.find(r=>r.year===year&&r.week===week);
-  if(existing){if(!same(existing,row))fail('conflicting earned receipt');continue;}
+  if(existing){if(!same(existing,row))fail('conflicting earned record');continue;}
   if(year!==(league.financialYear??league.year)||league.capLedger?.[row.teamId]?.rolloverAppliedThroughYear>=year)fail('financial year closed');
   player.elevationInjuryPay.payroll.push(row);
   const ledger=planned.capLedger[row.teamId];ledger.elevationInjuryCharges||=[];

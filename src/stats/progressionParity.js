@@ -741,7 +741,7 @@ export function buildProgressionParityReceipt({ start, end, seasons, seed, devel
 }
 export function appendProgressionHistory(history = [], progression, generatedAt = Date.now()) {
   if (!progression || !Number.isFinite(Number(progression.seed))) {
-    throw new TypeError("A progression receipt with a finite seed is required.");
+    throw new TypeError("A progression record with a finite seed is required.");
   }
   const entry = {
     generatedAt: Number(generatedAt),

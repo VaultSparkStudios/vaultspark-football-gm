@@ -73,7 +73,7 @@ export function priorActiveInactiveGames({league,player,teamId,year,gameId,posts
   // imported career has other unknown games. This number is a lower bound.
   if(observed>=3||!thresholdRequired)return observed;
   const club=league.teams.find(t=>t.id===teamId);
-  if(!club||postseasonState?.year!==year||!Array.isArray(postseasonState.gameArchiveEntries))fail('postseason coverage authority');
+  if(!club||postseasonState?.year!==year||!Array.isArray(postseasonState.gameArchiveEntries))fail('postseason coverage basis');
   const expectedWeeks=club.season?.weekResults;
   const counters=['wins','losses','ties'].map(key=>club.season?.[key]);
   const completeResults=Array.isArray(expectedWeeks)&&counters.every(value=>Number.isSafeInteger(value)&&value>=0)

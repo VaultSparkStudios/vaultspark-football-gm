@@ -64,7 +64,8 @@ export function publicEntryTransferMetrics(beforeHtml, afterHtml, bodies, heroJp
   return { decodedBytes, decodedLimitBytes: PUBLIC_ENTRY_MAX_BYTES, maxTransferRatio: PUBLIC_ENTRY_MAX_TRANSFER_RATIO, encodings };
 }
 
-export function inlinePublicEntry({ pageName, html, themeBoot, styles, siteStyles, heroJpeg, styleHref, siteStyleHref }) {
+export function inlinePublicEntry({ pageName, html, themeBoot, styles, siteStyles, heroJpeg, styleHref, siteStyleHref, heroMode = "inline" }) {
+  if (heroMode !== "inline" && heroMode !== "preload") throw new Error("heroMode: inline or preload required");
   if (typeof html !== "string") throw new Error("Entry HTML must be text");
   if (pageName !== "index.html") return { html, metrics: null };
   const before = normalize(html);
@@ -86,9 +87,18 @@ export function inlinePublicEntry({ pageName, html, themeBoot, styles, siteStyle
     const tag = `<link rel="stylesheet" href="./${href}" />`;
     next = replaceTag(next, "link", "href", `./${href}`, `<style>${body}</style>`, tag);
   }
-  const dataUrl = `data:image/jpeg;base64,${heroJpeg.toString("base64")}`;
-  next = replaceTag(next, "img", "src", "./images/screens/hero.jpg", (tag) =>
-    tag.replace(new RegExp(`(\\ssrc\\s*=\\s*)(["'])${escaped("./images/screens/hero.jpg")}\\2`, "i"), (_, prefix, quote) => `${prefix}${quote}${dataUrl}${quote}`));
+  if (heroMode === "preload") {
+    // The image stays a file. The same single <img> must still exist, and the
+    // browser is told about it in <head> so the fetch starts with the document
+    // instead of after layout finds the tag.
+    replaceTag(next, "img", "src", "./images/screens/hero.jpg", (tag) => tag);
+    if (next.split("</head>").length !== 2) throw new Error("hero preload: one </head> required");
+    next = next.replace("</head>", () => '<link rel="preload" as="image" href="./images/screens/hero.jpg" fetchpriority="high" />\n  </head>');
+  } else {
+    const dataUrl = `data:image/jpeg;base64,${heroJpeg.toString("base64")}`;
+    next = replaceTag(next, "img", "src", "./images/screens/hero.jpg", (tag) =>
+      tag.replace(new RegExp(`(\\ssrc\\s*=\\s*)(["'])${escaped("./images/screens/hero.jpg")}\\2`, "i"), (_, prefix, quote) => `${prefix}${quote}${dataUrl}${quote}`));
+  }
   const metrics = publicEntryTransferMetrics(before, next, [script, css, siteCss], heroJpeg);
   if (metrics.decodedBytes > PUBLIC_ENTRY_MAX_BYTES) throw new Error("Public entry exceeds decoded 512 KiB budget");
   if (Object.values(metrics.encodings).some(({ ratio }) => ratio > PUBLIC_ENTRY_MAX_TRANSFER_RATIO)) {

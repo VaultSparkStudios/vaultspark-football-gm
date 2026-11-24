@@ -3,6 +3,7 @@ import { FOOTBALL_RULES } from "../sport/football/rules.js";
 import { passerRating } from "../sport/football/statSchema.js";
 import { createZeroedSeasonStats, mergeStats } from "../domain/playerFactory.js";
 import { coverageDepthRating, quarterbackDepthAccuracy } from "../domain/ratings.js";
+import { ballSecurityFactor, buildFrameNorms, frameEdge, rotationFrameEdge } from "../domain/physicalProfile.js";
 import { clamp, mean } from "../utils/rng.js";
 import { choosePlayType, chooseFourthDownDecision, fieldGoalDistanceFromPosition } from "./playCalling.js";
 import { matchupEdgeFromContexts } from "./matchupEdge.js";
@@ -541,6 +542,18 @@ function buildGameReadyRoster(roster, team, rng) {
   return ready;
 }
 
+// One set of position centres per game, shared by both clubs, measured from
+// the league's players at kickoff. Keyed by the game object, so it can never
+// outlive the game it was measured for.
+const frameNormCache = new WeakMap();
+function frameNormsFor(league, game) {
+  const key = game && typeof game === "object" ? game : null;
+  if (key && frameNormCache.has(key)) return frameNormCache.get(key);
+  const norms = buildFrameNorms(league?.players || []);
+  if (key) frameNormCache.set(key, norms);
+  return norms;
+}
+
 function buildTeamContext(league, teamId, rng,game) {
   const team = league.teams.find((t) => t.id === teamId);
   const ready = buildGameReadyRoster(getGameTeamPlayers(league, teamId,game), team, rng);
@@ -645,8 +658,31 @@ function buildTeamContext(league, teamId, rng,game) {
       averageRatingFromRotation(dbRotation, ["tackle", "pursuit", "coverage"], 66)
     ])
   };
+  // Frame Matters (S133): bodies measured against the league as it is today.
+  // Each unit gains or loses a few rating points from its rotation's frames;
+  // ratings still carry most of the weight.
+  const norms = frameNormsFor(league, game);
+  const frame = {
+    passBlock: rotationFrameEdge(olRotation.slice(0, 5), "passBlock", norms),
+    runBlock: rotationFrameEdge(olRotation.slice(0, 5), "runBlock", norms),
+    passRush: mean([rotationFrameEdge(dlRotation, "passRush", norms), rotationFrameEdge(lbRotation, "passRush", norms) * 0.6]),
+    runDefense: mean([rotationFrameEdge(dlRotation, "runDefense", norms), rotationFrameEdge(lbRotation, "runDefense", norms)]),
+    coverage: rotationFrameEdge([...dbRotation, ...lbRotation.map((row) => ({ ...row, usageWeight: (row.usageWeight || 0) * 0.4 }))], "coverage", norms),
+    tackling: rotationFrameEdge([...lbRotation, ...dbRotation], "tackling", norms),
+    passerSight: frameEdge(qb, "passerSight", norms)
+  };
+  unitRatings.passBlocking += frame.passBlock;
+  unitRatings.runBlocking += frame.runBlock;
+  unitRatings.passRush += frame.passRush;
+  unitRatings.runDefense += frame.runDefense;
+  unitRatings.coverageShort += frame.coverage * 0.7;
+  unitRatings.coverageMedium += frame.coverage;
+  unitRatings.coverageDeep += frame.coverage * 1.1;
+  unitRatings.tackling += frame.tackling;
   unitRatings.coverage = mean([unitRatings.coverageShort, unitRatings.coverageMedium, unitRatings.coverageDeep]);
   return {
+    frameNorms: norms,
+    frameEdges: frame,
     team,
     roster,
     gameDayRoster: selection.receipt,
@@ -928,7 +964,11 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
           (linePass - passRush) / 360 +
           (offenseContext.team.offenseRating - defenseContext.team.defenseRating) / 430 -
           (depthCoverage - 70) / 370 +
-          (depthBucket === "deep" ? coveragePlan.completionDeep : depthBucket === "short" ? coveragePlan.completionShort : 0),
+          (depthBucket === "deep" ? coveragePlan.completionDeep : depthBucket === "short" ? coveragePlan.completionShort : 0) +
+          // Frame Matters: a big catch radius wins more contested balls the
+          // further downfield they go; a taller passer sees over his line.
+          frameEdge(receiver, "catchRadius", offenseContext.frameNorms) / (depthBucket === "deep" ? 250 : depthBucket === "medium" ? 330 : 560) +
+          (offenseContext.frameEdges?.passerSight || 0) / 600,
         depthBucket === "deep" ? 0.24 : depthBucket === "medium" ? 0.42 : 0.52,
         depthProfile.maxCompletion
       );
@@ -1101,7 +1141,7 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
         27
       );
       const brokenTackleChance = clamp(
-        0.08 + (mean([rating(runner, "breakTackle"), rating(runner, "trucking"), rating(runner, "elusiveness")]) - tackling) / 260,
+        0.08 + (mean([rating(runner, "breakTackle"), rating(runner, "trucking"), rating(runner, "elusiveness")]) + frameEdge(runner, "breakTackle", offenseContext.frameNorms) - tackling) / 260,
         0.04,
         0.42
       );
@@ -1120,7 +1160,7 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
           (offenseContext.weeklyPlan?.disciplineBoost || 0) * 0.0015,
         0.004,
         0.028
-      ) * offensePlan.giveawayScale;
+      ) * offensePlan.giveawayScale * ballSecurityFactor(runner, offenseContext.frameNorms);
       if (rng.chance(fumbleChance)) {
         turnover = true;
         turnoverType = "FUMBLE";

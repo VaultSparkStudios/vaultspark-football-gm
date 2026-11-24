@@ -1,5 +1,6 @@
 import { recordDevelopmentInjury } from "../domain/livingPotential.js";
 import { recordElevationFootballInjury,endElevationInjuryPay } from '../domain/elevationInjuryPay.js';
+import { frameInjuryFactor } from '../domain/physicalProfile.js';
 
 /**
  * Injury System — Position Contact Rates & Recovery Tracking
@@ -125,8 +126,11 @@ export function rollGameInjuries(teamAPlayers, teamBPlayers, rng, multiplier = 1
   for (const player of [...teamAPlayers, ...teamBPlayers]) {
     if (!player || player.status !== "active") continue;
     const modifiers = options.getTeamModifiers?.(player.teamId, player) || {};
+    // Frame Matters (S133): heavy-and-fast and light-for-the-position bodies
+    // carry more risk. Neutral (exactly 1) when no league norms are given.
+    const bodyMultiplier = multiplier * (options.frameNorms ? frameInjuryFactor(player, options.frameNorms) : 1);
     if (!rollInjuryCheck(player, rng, {
-      multiplier,
+      multiplier: bodyMultiplier,
       injuryChanceDelta: modifiers.injuryChanceDelta || 0
     })) continue;
     const severity = getSeverity(rng);
@@ -136,7 +140,7 @@ export function rollGameInjuries(teamAPlayers, teamBPlayers, rng, multiplier = 1
       player,
       severity,
       probability: injuryProbability(player, {
-        multiplier,
+        multiplier: bodyMultiplier,
         injuryChanceDelta: modifiers.injuryChanceDelta || 0
       })
     });

@@ -10,6 +10,7 @@
   "liveStateContract": {
     "name": "co-gm-briefing",
     "schemaVersion": "1.0",
+    "schema": "https://playfranchisearchitect.com/schemas/co-gm-briefing-1.0.schema.json",
     "ui": "https://playfranchisearchitect.com/game.html#coGmBriefPanel",
     "activation": "Player-initiated copy or download",
     "privacy": "Only franchise information already visible in the game; excludes save payloads, credentials, personal identifiers, and hidden simulation state"
@@ -31,20 +32,12 @@
       "url": "https://playfranchisearchitect.com/features.html"
     },
     {
-      "label": "How to Play",
-      "url": "https://playfranchisearchitect.com/how-to-play.html"
-    },
-    {
       "label": "Guides",
       "url": "https://playfranchisearchitect.com/guides.html"
     },
     {
       "label": "FAQ",
       "url": "https://playfranchisearchitect.com/faq.html"
-    },
-    {
-      "label": "How It Compares",
-      "url": "https://playfranchisearchitect.com/compare.html"
     },
     {
       "label": "Screenshots",
@@ -79,7 +72,7 @@
       "url": "https://playfranchisearchitect.com/terms.html"
     },
     {
-      "label": "Community Stats",
+      "label": "Gridiron Census",
       "url": "https://playfranchisearchitect.com/stats"
     }
   ],
@@ -89,5 +82,26 @@
     "descriptor": "https://playfranchisearchitect.com/stats-surface.json",
     "denominator": "participating anonymous browsers",
     "privacy": "Opt-in anonymous aggregates of a fixed set of game choices and results; a figure is published only when at least five browsers contribute; no saves, names, free text, credentials, player identities, hidden ratings, or stored IP addresses."
+  },
+  "gridironCensus": {
+    "page": "https://playfranchisearchitect.com/stats#census",
+    "totals": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/pulse",
+    "schemaVersion": "pulse-1",
+    "metrics": [
+      "gameLoaded",
+      "returningLoad",
+      "leagueCreated",
+      "firstWeekPlayed",
+      "gamesPlayed",
+      "seasonsCompleted",
+      "playersDrafted",
+      "championships",
+      "hallOfFamers",
+      "tradesMade",
+      "freeAgentsSigned",
+      "activeMinutes"
+    ],
+    "shape": "{ schemaVersion, computedAt, allTime: { metric: total }, last30Days: { metric: total } }",
+    "privacy": "On by default with an in-game opt-out; Global Privacy Control and Do Not Track are honoured. Counters only, with no identifier of any kind; the service keeps one running total per metric per day and nothing per browser."
   }
 }

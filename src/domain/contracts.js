@@ -51,14 +51,14 @@ export function normalizeContract(contract = {}) {
     if(contract.salary!==salary||contract.baseSalary!==salary||contract.capHit!==salary) throw new TypeError('Invalid practice contract reservation');
     for(const [key,row] of Object.entries(contract.payLedger)) {
       if(!row||row.year!==contract.year||!Number.isInteger(row.week)||row.week<contract.startWeek||row.week>18
-        ||key!==`${row.year}:${row.week}`||row.amount!==contract.weeklySalary||typeof row.teamId!=='string') throw new TypeError('Invalid practice payroll receipt');
+        ||key!==`${row.year}:${row.week}`||row.amount!==contract.weeklySalary||typeof row.teamId!=='string') throw new TypeError('Invalid practice payroll record');
     }
     if(contract.postseasonPayLedger!=null) {
       if(typeof contract.postseasonPayLedger!=='object'||Array.isArray(contract.postseasonPayLedger)) throw new TypeError('Invalid postseason practice payroll');
       for(const [key,row] of Object.entries(contract.postseasonPayLedger)) {
         if(!row||row.year!==contract.year||!Number.isInteger(row.week)||row.week<19||row.week>23
           ||key!==`${row.year}:postseason:${row.week}`||row.amount!==contract.weeklySalary
-          ||typeof row.teamId!=='string'||row.kind!=='practice-postseason-benefit-v1'||row.capCharge!==0) throw new TypeError('Invalid postseason practice payroll receipt');
+          ||typeof row.teamId!=='string'||row.kind!=='practice-postseason-benefit-v1'||row.capCharge!==0) throw new TypeError('Invalid postseason practice payroll record');
       }
     }
     return {...contract,voidYears:0,prorationYears:1,restructureCount:0,franchiseTagYear:0,optionYear:false};

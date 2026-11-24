@@ -43,7 +43,7 @@ export function validatePreRolloverMedicalCalendar(league){
       ||!Number.isSafeInteger(league.year)||row.year>league.year
       ||typeof row.finalGameId!=='string'||!row.finalGameId
       ||row.finalGameId!==completedMedicalCalendarFinal(league,row.year)
-      ||row.throughWeek!==PRE_ROLLOVER_MEDICAL_END_WEEK||seen.has(row.year))fail('pre-rollover calendar receipt');
+      ||row.throughWeek!==PRE_ROLLOVER_MEDICAL_END_WEEK||seen.has(row.year))fail('pre-rollover calendar record');
     seen.add(row.year);
   }
 }
@@ -72,7 +72,7 @@ export function validatePlayerElevationInjuryPay(player){
       ||!integer(row.payCents)||!integer(row.practiceCents)||!integer(row.additionalCents)||!integer(row.capChargeCents)
       ||row.payCents!==regularElevationSalaryForSeason(row.year,episode.creditedSeasons,{rate:'injury-continuation-down'}).weeklyAmountCents
       ||row.additionalCents!==Math.max(0,row.payCents-row.practiceCents)
-      ||row.capChargeCents!==((currentCapPolicy?salaryPeriod(row.week):row.week<=18)?row.additionalCents:0)||seen.has(receiptKey))fail('payroll receipt');
+      ||row.capChargeCents!==((currentCapPolicy?salaryPeriod(row.week):row.week<=18)?row.additionalCents:0)||seen.has(receiptKey))fail('payroll record');
     if(player.standardElevations.games.find(game=>game.game.gameId===episode.gameId).status!=='reverted')fail('unsettled injury source game');
     seen.add(receiptKey);
   }
@@ -80,12 +80,12 @@ export function validatePlayerElevationInjuryPay(player){
 
 export function retainedElevationInjuryCap(ledger={}){
   if(ledger.elevationInjuryCharges===undefined)return 0;
-  if(!Array.isArray(ledger.elevationInjuryCharges))fail('cap receipts');
+  if(!Array.isArray(ledger.elevationInjuryCharges))fail('cap charges');
   const seen=new Set();let cents=0;
   for(const row of ledger.elevationInjuryCharges){
     if(!exact(row,['gameId','playerId','year','week','amountCents'])||typeof row.gameId!=='string'||!row.gameId
       ||typeof row.playerId!=='string'||!row.playerId||!Number.isSafeInteger(row.year)||row.year<2022||row.year>2200
-      ||!Number.isSafeInteger(row.week)||row.week<1||row.week>27||!salaryPeriod(row.week)||!integer(row.amountCents)||seen.has(key(row)))fail('cap receipt');
+      ||!Number.isSafeInteger(row.week)||row.week<1||row.week>27||!salaryPeriod(row.week)||!integer(row.amountCents)||seen.has(key(row)))fail('cap charge');
     seen.add(key(row));cents+=row.amountCents;
   }
   if(!integer(cents))fail('cap total');return cents/100;

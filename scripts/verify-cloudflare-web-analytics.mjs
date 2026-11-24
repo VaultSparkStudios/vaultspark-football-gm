@@ -50,12 +50,26 @@ export function buildAnalyticsReport({ host, since, rows = [], observedAt = new 
     .map(([requestPath, pageLoads]) => ({ requestPath, pageLoads }))
     .sort((a, b) => b.pageLoads - a.pageLoads || a.requestPath.localeCompare(b.requestPath));
   const pageLoads = paths.reduce((sum, entry) => sum + entry.pageLoads, 0);
+  // Web Analytics counts page loads that ran its beacon, so crawlers that do
+  // not execute scripts are already excluded; the dashboard's raw "requests"
+  // and "visits" are not. The landing-to-game ratio answers "visits but no
+  // runs": how many landing views became a game page load.
+  const loadsAt = (...candidates) => paths.filter((entry) => candidates.includes(entry.requestPath)).reduce((sum, entry) => sum + entry.pageLoads, 0);
+  const landingLoads = loadsAt("/", "/index.html");
+  const gameLoads = loadsAt("/game.html", "/game");
+  const funnel = {
+    landingLoads,
+    gameLoads,
+    landingToGame: landingLoads > 0 ? Math.round((gameLoads / landingLoads) * 1000) / 1000 : null,
+    note: "Human page loads only (beacon-executing browsers). Game sessions, franchises founded and first games come from the Gridiron Census: GET /community/v1/pulse."
+  };
   return {
     schemaVersion: "1.0",
     kind: "cloudflare-web-analytics-aggregate-proof",
     host,
     window: { since, observedAt },
     aggregate: { pageLoads, paths },
+    funnel,
     conclusions: {
       reportingVerified: pageLoads > 0,
       engagementVerified: false,

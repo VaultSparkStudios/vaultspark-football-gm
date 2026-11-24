@@ -365,7 +365,7 @@ const ENTITLEMENT_DEFS = Object.freeze({
     id: "extended_contract_offer",
     kind: "recognition",
     label: "Board tenure recognition",
-    description: "The career ledger recognizes the board's longer-term confidence; no hidden contract mechanic is claimed."
+    description: "Your career record recognizes the board's longer-term confidence; no hidden contract mechanic is claimed."
   }),
   fa_discount: Object.freeze({
     id: "fa_discount",

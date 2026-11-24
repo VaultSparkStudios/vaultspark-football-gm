@@ -28,7 +28,7 @@ const VERDICT_BANK = {
   clean: [
     "Five for five territory. I'd like to thank the film, the tape, and my own relentless genius.",
     "Print the column again. The board doesn't miss when the homework gets DONE in July.",
-    "Some call it luck. The ledger calls it scouting."
+    "Some call it luck. The record calls it scouting."
   ],
   sharp: [
     "Mostly right, and the misses were noble. The tape giveth and the tape taketh away.",

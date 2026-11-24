@@ -34,7 +34,7 @@ let navigationInFlight = false;
 let pendingNavigation = false;
 
 function setNavigationControlsDisabled(disabled) {
-  document.querySelectorAll("#runtimeModeSelect, #instantStartBtn, #createLeagueBtn, #presetModernBtn, #presetBalancedBtn, #presetLegacyBtn, #continueActiveBtn, #resumeLatestBtn, #applyChallengeCodeBtn, #weeklyChallengeBtn, #teamSelect, #heroTeamSelect, #eraProfileInput, #franchiseArchetypeInput, #rulesPresetInput, #difficultyPresetInput, #challengeModeInput, #ownerModeInput, #narrativesInput, #compPicksInput, #chemistryInput, [data-resume], [data-backup-resume]")
+  document.querySelectorAll("#runtimeModeSelect, #instantStartBtn, #createLeagueBtn, #presetModernBtn, #presetBalancedBtn, #presetLegacyBtn, #continueActiveBtn, #resumeLatestBtn, #applyChallengeCodeBtn, #weeklyChallengeBtn, #teamSelect, #heroTeamSelect, #eraProfileInput, #franchiseArchetypeInput, #rulesPresetInput, #difficultyPresetInput, #challengeModeInput, #ownerModeInput, #narrativesInput, #compPicksInput, #chemistryInput, [data-resume], [data-backup-resume], [data-scenario]")
     .forEach((button) => { button.disabled = disabled; });
 }
 
@@ -613,6 +613,20 @@ function bindEvents() {
   document.getElementById("presetBalancedBtn").addEventListener("click", () => quickStartLeague("balanced"));
   document.getElementById("presetLegacyBtn").addEventListener("click", () => quickStartLeague("legacy"));
   document.getElementById("instantStartBtn")?.addEventListener("click", () => quickStartLeague("balanced"));
+  // S133: franchise scenarios. One click takes a job with a built-in problem:
+  // the balanced era with the scenario's franchise archetype.
+  for (const card of document.querySelectorAll("[data-scenario]")) {
+    card.addEventListener("click", async () => {
+      try {
+        applyPreset("balanced");
+        const archetype = document.getElementById("franchiseArchetypeInput");
+        if (archetype && [...archetype.options].some((option) => option.value === card.dataset.scenario)) archetype.value = card.dataset.scenario;
+        await createLeague();
+      } catch (error) {
+        setStatus(`Error: ${error.message}`);
+      }
+    });
+  }
   // One team choice, two pickers: whichever the visitor touches sets both.
   document.getElementById("heroTeamSelect")?.addEventListener("change", (event) => {
     const teamSelect = document.getElementById("teamSelect");

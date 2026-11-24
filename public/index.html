@@ -25,21 +25,61 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "VideoGame",
-        "name": "Franchise Architect: Football",
-        "url": "https://playfranchisearchitect.com/",
-        "description": "A football franchise management game that runs in the browser: contracts, the salary cap, scouting, the draft, rival front offices with memory, and a league that keeps its own history. Free early access.",
-        "applicationCategory": "Game",
-        "genre": ["Sports", "Simulation", "Strategy", "Management"],
-        "gamePlatform": "Web Browser",
-        "operatingSystem": "Any (browser-based)",
-        "playMode": "SinglePlayer",
-        "inLanguage": "en",
-        "image": "https://playfranchisearchitect.com/og/index.png",
-        "screenshot": "https://playfranchisearchitect.com/images/screens/hero.jpg",
-        "author": { "@type": "Organization", "name": "VaultSpark Studios", "url": "https://vaultsparkstudios.com/" },
-        "publisher": { "@type": "Organization", "name": "VaultSpark Studios", "url": "https://vaultsparkstudios.com/" },
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+        "@graph": [
+          {
+            "@type": "VideoGame",
+            "@id": "https://playfranchisearchitect.com/#game",
+            "name": "Franchise Architect: Football",
+            "url": "https://playfranchisearchitect.com/",
+            "description": "A football franchise management game that runs in the browser: contracts, the salary cap, scouting, the draft, rival front offices with memory, and a league that keeps its own history. Free early access.",
+            "applicationCategory": "Game",
+            "genre": [
+              "Sports",
+              "Simulation",
+              "Strategy",
+              "Management"
+            ],
+            "gamePlatform": "Web Browser",
+            "operatingSystem": "Any (browser-based)",
+            "playMode": "SinglePlayer",
+            "inLanguage": "en",
+            "image": "https://playfranchisearchitect.com/og/index.png",
+            "screenshot": "https://playfranchisearchitect.com/images/screens/hero.jpg",
+            "author": {
+              "@id": "https://vaultsparkstudios.com/#organization"
+            },
+            "publisher": {
+              "@id": "https://vaultsparkstudios.com/#organization"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://playfranchisearchitect.com/#website",
+            "name": "Franchise Architect: Football",
+            "url": "https://playfranchisearchitect.com/",
+            "inLanguage": "en",
+            "publisher": {
+              "@id": "https://vaultsparkstudios.com/#organization"
+            },
+            "about": {
+              "@id": "https://playfranchisearchitect.com/#game"
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://vaultsparkstudios.com/#organization",
+            "name": "VaultSpark Studios",
+            "url": "https://vaultsparkstudios.com/",
+            "email": "football@playfranchisearchitect.com",
+            "logo": "https://playfranchisearchitect.com/images/franchise-architect-mark.svg"
+          }
+        ]
       }
     </script>
   </head>
@@ -50,7 +90,7 @@
     <header class="site-header" data-site-header>
       <div class="site-header-inner">
         <a class="site-brand" href="./index.html"><img src="./images/franchise-architect-mark.svg" alt="" width="28" height="28" /><span>Franchise Architect</span></a>
-        <nav class="site-nav" aria-label="Primary"><a href="./features.html">Features</a><a href="./how-to-play.html">How to Play</a><a href="./faq.html">FAQ</a><a href="./stats">Community</a><a href="./status.html">Updates</a></nav>
+        <nav class="site-nav" aria-label="Primary"><a href="./features.html">Features</a><a href="./guides.html#how-to-play">How to Play</a><a href="./faq.html">FAQ</a><a href="./stats">Community</a><a href="./status.html">Updates</a></nav>
         <button id="setupThemeToggleBtn" class="theme-toggle-btn" type="button" title="Theme" aria-label="Customize theme">◐</button>
       </div>
     </header>
@@ -66,7 +106,7 @@
               <h1 class="setup-title">Franchise Architect: Football</h1>
             </div>
           </div>
-          <p class="setup-tagline">Build a dynasty. Own every roster move, draft pick, and cap decision across decades of franchise football.</p>
+          <p class="setup-tagline">You're the GM. Draft on film and frame, work the cap, out-trade 31 rival front offices, and build a dynasty that outlasts everyone in the building.</p>
           <p class="setup-hero-sub"><!-- claims:hero-subline:start -->No account and no install. Your league runs and saves in your browser.<!-- claims:hero-subline:end --></p>
           <div class="setup-hero-actions">
             <select id="heroTeamSelect" class="hero-team-select" data-testid="hero-team-select" aria-label="Your team">
@@ -83,6 +123,15 @@
           <!-- claims:hero-shot:start --><figure class="hero-shot">
   <img src="./images/screens/hero.jpg" alt="The franchise Desk in mid-season: your club, its competitive window and needs, cap space, standing orders and the controls to advance the week" width="1440" height="900" loading="eager" fetchpriority="high" decoding="async" />
 </figure><!-- claims:hero-shot:end -->
+          <!-- claims:hero-decade:start --><aside class="hero-decade" aria-labelledby="heroDecadeTitle">
+  <p class="hero-decade-kicker" id="heroDecadeTitle">One league, 10 seasons, played out by the game itself</p>
+  <dl class="hero-decade-stats">
+<div class="hero-decade-stat"><dt>Different champions</dt><dd>8</dd><dd class="hero-decade-detail">8 of 32 clubs lifted the trophy at least once in 10 seasons.</dd></div>
+<div class="hero-decade-stat"><dt>Most titles</dt><dd>3 in 10</dd><dd class="hero-decade-detail">San Antonio Storm won 3 championships across the decade.</dd></div>
+<div class="hero-decade-stat"><dt>Career passing yards leader</dt><dd>46,619</dd><dd class="hero-decade-detail">Christopher Adebayo, over the decade.</dd></div>
+  </dl>
+  <p class="hero-decade-note">A simulated league, seasons 2026 to 2035, not player data. <a href="./stats">See the whole decade</a></p>
+</aside><!-- claims:hero-decade:end -->
         </div>
       </section>
 
@@ -165,6 +214,16 @@
           </button>
         </div>
 
+        <div class="scenario-strip" aria-labelledby="scenarioTitle">
+          <h3 id="scenarioTitle" class="scenario-title">Or take on a franchise scenario</h3>
+          <div class="scenario-grid">
+            <button type="button" class="scenario-card" data-scenario="rebuild" data-testid="scenario-rebuild"><strong>Rebuild</strong><span>A patient owner and a thin roster. Build it the right way.</span><span class="quickstart-go">Take the job →</span></button>
+            <button type="button" class="scenario-card" data-scenario="cap-hell" data-testid="scenario-cap-hell"><strong>Cap Hell</strong><span>$28M of dead money and a win-now owner. Find the cap space.</span><span class="quickstart-go">Take the job →</span></button>
+            <button type="button" class="scenario-card" data-scenario="aging-core" data-testid="scenario-aging-core"><strong>Aging Core</strong><span>A veteran locker room with one more run in it, and fragile bodies.</span><span class="quickstart-go">Take the job →</span></button>
+            <button type="button" class="scenario-card" data-scenario="no-qb" data-testid="scenario-no-qb"><strong>No Quarterback</strong><span>Everything but the most important position. Go find one.</span><span class="quickstart-go">Take the job →</span></button>
+          </div>
+        </div>
+
         <div class="setup-team-row">
           <label class="setup-team-label">
             Your Team
@@ -191,9 +250,10 @@
       <!-- ── COMMUNITY PULSE ── -->
       <section class="community-pulse" data-community-pulse data-state="loading" aria-labelledby="communityPulseTitle">
         <div class="community-pulse-head">
-          <div><span class="brand-kicker">Around the league</span><h2 id="communityPulseTitle">What GMs are doing</h2><p>See the franchises players are building, the moves they are making, and the milestones they are reaching. Updated throughout the day.</p></div>
+          <div><span class="brand-kicker">The Gridiron Census</span><h2 id="communityPulseTitle">Every franchise, counted together</h2><p>Games played, seasons finished, titles won and Hall of Famers developed by every general manager, added up anonymously.</p></div>
           <div class="community-live-mark"><span></span><strong data-community-freshness role="status" aria-live="polite">Connecting…</strong></div>
         </div>
+        <div class="census-landing" data-census-grid data-census-compact="1" aria-live="polite" aria-busy="true"><p class="community-empty">Counting every franchise…</p></div>
         <div data-community-pulse-content data-community-prerendered="pre-cohort" aria-live="polite">
           <div class="community-invitation" data-community-invitation>
             <h3>The league is still filling up</h3>
@@ -322,7 +382,7 @@
 
       <!-- ── FOOTER ── -->
       <footer class="setup-footer">
-        <span class="setup-footer-links">A <a href="https://vaultsparkstudios.com/" rel="author" target="_blank">VaultSpark Studios</a> Game · <a href="#why">Why Franchise Architect?</a> · <a href="./features.html">Features</a> · <a href="./how-to-play.html">How to Play</a> · <a href="./faq.html">FAQ</a> · <a href="./guides.html">Guides</a> · <a href="./compare.html">How It Compares</a> · <a href="./media.html">Screenshots</a> · <a href="./roadmap.html">Roadmap</a> · <a href="./about.html">About</a> · <a href="./simulation.html">The Simulation</a> · <a href="./stats">Community Stats</a> · <a href="./status.html">Updates</a> · <a href="./status-archive.html">Changelog</a> · <a href="./press.html">Press</a> · <a href="./contact.html">Contact</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions" target="_blank" rel="noopener">Discussions</a></span>
+        <span class="setup-footer-links">A <a href="https://vaultsparkstudios.com/" rel="author" target="_blank">VaultSpark Studios</a> Game · <a href="#why">Why Franchise Architect?</a> · <a href="./features.html">Features</a> · <a href="./guides.html#how-to-play">How to Play</a> · <a href="./faq.html">FAQ</a> · <a href="./guides.html">Guides</a> · <a href="./faq.html#compare">How It Compares</a> · <a href="./media.html">Screenshots</a> · <a href="./status.html#whats-next">Roadmap</a> · <a href="./about.html">About</a> · <a href="./simulation.html">The Simulation</a> · <a href="./stats">Community Stats</a> · <a href="./status.html">Updates</a> · <a href="./status-archive.html">Changelog</a> · <a href="./status.html#early-access">Beta</a> · <a href="./press.html">Press</a> · <a href="./contact.html">Contact</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions" target="_blank" rel="noopener">Discussions</a></span>
         <span class="studio-copyright" data-studio-copyright>© 2026 VaultSpark Studios LLC. All rights reserved.</span>
       </footer>
 

@@ -227,7 +227,7 @@ test("health reports ok after initialize succeeds", async () => {
   const health = await store.health();
   assert.equal(health.ok, true);
   assert.equal(health.database, "ready");
-  assert.equal(health.schemaVersion, 3);
+  assert.equal(health.schemaVersion, 4);
 });
 
 test("schema setup only ever adds: the new tables are created if missing and nothing existing is altered or dropped", async () => {

@@ -12,14 +12,36 @@
   </head>
   <body class="setup-body">
     <div class="bg-layer"></div>
-    <main class="legal-wrap">
-      <h1>Updates</h1>
-      <section class="panel legal-panel" id="status">
+    <main class="site-page site-page--reading">
+      <header class="site-intro">
+        <h1>Updates</h1>
+      </header>
+
+      <section class="site-section" id="status">
         <p><span class="site-status-chip"><!-- claims:status-label:start -->Free early access<!-- claims:status-label:end --></span></p>
         <p><!-- claims:status-line:start -->Franchise Architect: Football is free to play in early access. It is complete enough to run a franchise for decades, and it changes often; every change is dated in the changelog.<!-- claims:status-line:end --></p>
-        <p>The <a href="./roadmap.html">roadmap</a> describes where the game is heading.</p>
       </section>
-      <section class="panel legal-panel" id="known-issues">
+      <section class="site-section" id="early-access">
+        <h2>Early access, and the public beta</h2>
+        <p>Everything is playable today: pick a club, run it for decades and keep your league in your browser, with no account, no payment and no waiting list. Early access means the game is still changing. Balance moves between releases, screens are reworked, and some things are rough.</p>
+        <ul>
+          <li><strong>The beta stays free.</strong> No price, no ads, no account.</li>
+          <li><strong>It opens when we can support it.</strong> That means our contact address is confirmed to deliver reliably and the studio has signed off the release. The label at the top of this page changes on the day it opens.</li>
+          <li><strong>Protect your saves.</strong> The game keeps rolling backups and you can export a save file at any time. <a href="./features.html#saves">How saves work</a>.</li>
+        </ul>
+        <p>The most useful report says what you did, what you expected, what happened instead, and which browser and device you used. Press <em>Feedback</em> inside the game, post on <a href="https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions" target="_blank" rel="noopener">GitHub Discussions</a>, or email <a href="mailto:football@playfranchisearchitect.com">football@playfranchisearchitect.com</a>.</p>
+      </section>
+      <section class="site-section" id="whats-next">
+        <h2>What's next</h2>
+        <p>Directions, not dates. What actually ships is dated in the release notes below.</p>
+        <div class="site-roadmap">
+          <article><h3>Bodies that age</h3><p>Frames already change games and injuries, and body programmes let you add or cut weight each offseason. Next, heavy players lose a step sooner and keep their strength longer.</p></article>
+          <article><h3>Players you can tell apart</h3><p>A personality and a background for every player, and a profile that reads like a scouting report instead of a list of numbers.</p></article>
+          <article><h3>Deeper game days</h3><p>Richer Sim-Watch broadcasts, clearer reasons a game turned, and playoff injuries that follow the regular-season clock.</p></article>
+          <article><h3>Smarter rivals</h3><p>Rival front offices that plan further ahead, build distinct identities over time, and react more sharply to what you do.</p></article>
+        </div>
+      </section>
+      <section class="site-section" id="known-issues">
         <h2>Known issues</h2>
         <p>These are open problems we know about. Each one leaves this list when its fix appears in the release notes below.</p>
         <ul>
@@ -28,8 +50,20 @@
         </ul>
         <p>Found something that is not listed? The <a href="./contact.html">contact page</a> lists the ways to tell us.</p>
       </section>
-      <section class="panel legal-panel" id="release-notes">
+      <section class="site-section" id="release-notes">
         <h2>Release Notes</h2>
+        <h3>2026-11-24 — Bodies that matter, uniforms and the Gridiron Census</h3>
+        <p>A player's body now changes what happens on the field. Height, weight, wingspan, arm length and hand size are measured against everyone else at his position in your league, and the games read them: long arms win at the line, a big catch radius wins contested balls, heavy backs break more tackles, big hands hold on to the ball, and very light or heavy-and-fast bodies get hurt a little more often. Each effect is small; ratings still decide most plays. Because of this, simulated seasons and champions differ from earlier versions.</p>
+        <p>Every player card shows his frame type, a Relative Athletic Score from 0 to 10, a Speed Score and, for pass catchers and defensive backs, his catch radius, next to his wingspan and hand size. You can put one of your players on a body programme (bulk up or lean down) and it takes effect at the next offseason. The scouting combine fixes a bug that made better prospects run slower times, and the medical red flag now reflects the same injury risk the games use.</p>
+        <p>Players wear their club's colours, with shoulder pads sized to their position. Sim-Watch draws every drive on the field as it happens, with how each one ended. The start page has four one-click franchise scenarios: Rebuild, Cap Hell, Aging Core and No Quarterback.</p>
+        <p>The game now counts anonymous league totals for the new <a href="./stats#census">Gridiron Census</a>: games and seasons played, titles won, Hall of Famers developed and more, across every franchise. It sends only numbers, with no ID, stores nothing about you, and you can turn it off in Settings; the <a href="./privacy.html#gridiron-census">privacy page</a> lists exactly what is counted. Detailed Community Stats stay off until you choose them.</p>
+        <p>The site is tidier: How to Play is now the first chapter of <a href="./guides.html#how-to-play">Guides</a>, How It Compares is an <a href="./faq.html#compare">FAQ answer</a>, and the roadmap and beta notes live on this page under <a href="#early-access">Early access</a> and <a href="#whats-next">What's next</a>. Old links redirect.</p>
+        <h3>2026-11-21 — Automatic highlights, an install button and a lighter site</h3>
+        <p>Settings has a new choice, <em>Play highlights automatically after my game</em>. With it on, advancing a week opens the highlights of your game straight away. It is off by default and stays off if your device asks for reduced motion.</p>
+        <p>On browsers that support it, Settings has an <em>Install the app</em> button so the game can open in its own window. A one-line reminder appears on the Desk after your first week and does not come back once you dismiss it.</p>
+        <p>More of the game's own messages, including first-season goals and season-end news, use plain football words.</p>
+        <p>Community Stats has a new First steps section showing how many participating browsers finished setup, played a first week and a first season, and came back. Like every figure there, it appears only once at least five browsers are counted.</p>
+        <p>The front page shows three figures from a league the game simulated for ten seasons. Legal, contact and update pages now share the layout of the rest of the site. Old addresses under earlier names of the game redirect to the current pages instead of serving separate copies.</p>
         <h3>2026-11-19 — GM Profile, a scored weekly challenge and a deeper game plan</h3>
         <p>There is a new GM Profile page with your career record, every club you have run, the trophy case, your share cards and your saves and backups. Settings now holds preferences only.</p>
         <p>The weekly challenge has a goal and a score. Everyone who starts the week's league plays for the same goal, and when your first season ends you get a score and a short result you can copy and share. If you share Community Stats, your best score is counted and the game tells you how you compare with other general managers once at least five have played; the <a href="./privacy.html">privacy page</a> lists what is sent.</p>
@@ -40,7 +74,7 @@
         <p>Rival clubs now draft from their own scouting reports instead of knowing every prospect's true ability. Some clubs scout better than others, so first-round misses and late-round finds happen about twice as often as before. If you let the game make your pick, it uses what your own draft board shows. Because drafts change, simulated seasons and champions will differ from earlier versions.</p>
         <p>Starting a league takes fewer steps: pick your team on the first screen, and the first week skips the planning pop-ups so you reach a result sooner. After a week is played you can watch its highlights straight from the result.</p>
         <p>Tell the Commissioner now sends your note directly to the team from inside the game, with no account needed. If you share Community Stats, the game also sends short error reports when something breaks; the <a href="./privacy.html#feedback-privacy">privacy page</a> lists exactly what is sent.</p>
-        <p>The site has three new pages, <a href="./guides.html">Guides</a>, <a href="./compare.html">How It Compares</a> and <a href="./media.html">Screenshots</a>, and the game now downloads faster because its files are smaller.</p>
+        <p>The site has three new pages, <a href="./guides.html">Guides</a>, <a href="./faq.html#compare">How It Compares</a> and <a href="./media.html">Screenshots</a>, and the game now downloads faster because its files are smaller.</p>
         <h3>2026-11-16 — Injuries last as long as they say</h3>
         <p>In the regular season, an injury now keeps a player out for the number of weeks its label states, and a bye week counts as one of them. Before this, a player listed as out for one week was usually healed in time for the very next game, so short injuries rarely changed a lineup. Playoff recovery is unchanged for now. Because who plays each week changes, simulated seasons, standings and champions will differ from earlier versions.</p>
         <p>A Questionable tag now reads as a game-time status on the roster, depth chart and player profile. It no longer appears as “Questionable (0)”, “Ready” or a recovery, and it stays separate from a player who is out.</p>

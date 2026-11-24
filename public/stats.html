@@ -18,12 +18,16 @@
   </head>
   <body class="setup-body community-stats-page">
     <div class="bg-layer"></div>
-    <main class="setup-wrap community-atlas-wrap">
+    <main class="site-page community-atlas-wrap">
       <nav class="community-breadcrumb" aria-label="Breadcrumb"><a href="./index.html">Franchise Architect</a><span aria-hidden="true">/</span><span>Community Stats</span><button id="setupThemeToggleBtn" class="theme-toggle-btn" type="button" title="Toggle theme">◐</button></nav>
       <header class="community-atlas-hero">
         <div><span class="brand-kicker">Across the community</span><h1>Community Stats</h1><p>See how other GMs build their teams, work the market, attack the draft, and chase championships. Updated throughout the day.</p></div>
         <div class="community-live-orbit" aria-hidden="true"><span></span><i></i></div>
       </header>
+      <section class="community-local-section census-section" id="census" aria-labelledby="censusHeading">
+        <div class="community-category-head"><span>CENSUS</span><div><h2 id="censusHeading">Gridiron Census</h2><p>Every franchise, counted together. Anonymous totals with no ID and nothing stored about you. <a href="./privacy.html#gridiron-census">What is counted</a></p></div></div>
+        <div data-census-grid aria-live="polite" aria-busy="true"><p class="community-empty">Counting every franchise…</p></div>
+      </section>
       <section class="community-command-bar" aria-label="Stats period">
         <div role="group" aria-label="Choose reporting period">
           <button type="button" data-community-period="24h" aria-pressed="false" aria-controls="communityAtlas">24H</button>
@@ -38,6 +42,10 @@
         <div class="community-category-head"><span>YOU</span><div><h2>Your franchise vs. the community</h2><p>Your totals are calculated on this device and stay here.</p></div></div>
         <div class="community-comparison-grid" data-community-comparisons></div>
       </section>
+      <section class="community-local-section" id="first-steps" data-community-first-steps>
+        <div class="community-category-head"><span>START</span><div><h2>First steps</h2><p>How many sharing browsers reached each early milestone, and how long people were away before they came back. Each figure counts browsers, once each.</p></div></div>
+        <div data-community-first-steps-content><p class="community-empty">Checking the latest numbers…</p></div>
+      </section>
       <section class="community-local-section community-showcase" id="showcase" data-community-showcase hidden>
         <div class="community-category-head"><span>SIM</span><div><h2>What a decade looks like</h2><p>A ten-season league run from one fixed seed at build time. This is the simulation, not the community: nothing here comes from a player.</p></div></div>
         <div class="community-atlas-grid" data-community-showcase-grid></div>
@@ -47,7 +55,7 @@
         <div><span class="brand-kicker">Methodology</span><h2>Honest by construction</h2></div>
         <div class="community-method-grid">
           <article><strong>Who is included?</strong><p>Only players who choose to share anonymous game stats. It is a community sample, not every Franchise Architect player.</p></article>
-          <article><strong>What is shared?</strong><p>Game choices and results such as league starts, weeks played, tactics, trades, draft picks, wins, challenges, and milestones. With sharing on, the game also sends a few first-steps milestones and short error reports when something breaks. Those are used to fix the game and are not published here. Finishing a weekly challenge also posts three things to that week's shared board: the week, the week's goal, and your score. The board shows totals only, never players, and stays empty until five browsers have posted a score.</p></article>
+          <article><strong>What is shared?</strong><p>Game choices and results such as league starts, weeks played, tactics, trades, draft picks, wins, challenges, and milestones. With sharing on, the game also sends four first-steps milestones (finished setting up, played a first week, finished a first season, and came back after a time away) and short error reports when something breaks. The milestones appear under First steps as counts of browsers, never as a list of who did what. Error reports are used to fix the game and are not published here. Finishing a weekly challenge also posts three things to that week's shared board: the week, the week's goal, and your score. The board shows totals only, never players, and stays empty until five browsers have posted a score.</p></article>
           <article><strong>What stays private?</strong><p>Your full save, names, notes, email, credentials, player identities, hidden ratings, and story history never become Community Stats.</p></article>
           <article><strong>How is privacy protected?</strong><p>Sharing is optional. Internet addresses are used only briefly, in memory, to limit abuse, and are never stored. Individual records are deleted after 30 days, and a figure stays hidden until at least five participating browsers are counted in it.</p></article>
           <article><strong>How fresh are the numbers?</strong><p>The community totals can refresh about once a minute. The page clearly says when an update is delayed or unavailable.</p></article>

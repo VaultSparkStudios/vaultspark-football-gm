@@ -274,7 +274,7 @@ export function respondToInboundTradeOffer(session, { offerId, action } = {}) {
     };
   }
   const trade = session.services?.trades;
-  if (!trade) return { ok: false, status: 500, error: "Trade authority unavailable." };
+  if (!trade) return { ok: false, status: 500, error: "Trade service unavailable." };
   const input = {
     teamA: offer.fromTeamId,
     teamB: offer.toTeamId,

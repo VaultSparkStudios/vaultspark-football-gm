@@ -12,36 +12,49 @@
   </head>
   <body class="setup-body">
     <div class="bg-layer"></div>
-    <main class="legal-wrap">
-      <h1>Privacy</h1>
-      <p class="small legal-updated">Last updated: 17 November 2026</p>
-      <section class="panel legal-panel">
+    <main class="site-page site-page--reading">
+      <header class="site-intro">
+        <h1>Privacy</h1>
+        <p class="small legal-updated">Last updated: 20 November 2026</p>
+      </header>
+
+      <section class="site-section">
         <h2>Browser-First Play</h2>
-        <p>Franchise Architect: Football runs in your browser and saves your leagues there. Your leagues, settings and challenge data stay in your browser unless you export or share them yourself.</p>
+        <p>Franchise Architect: Football runs in your browser and saves your leagues there. Your leagues, settings and challenge data stay in your browser unless you export or share them yourself. The only thing the game sends by default is the Gridiron Census, a set of anonymous counters described below.</p>
       </section>
-      <section class="panel legal-panel" id="site-measurement-privacy">
+      <section class="site-section" id="site-measurement-privacy">
         <h2>Site Measurement</h2>
         <p>The website measures page views using Cloudflare Web Analytics. It sets no cookies, builds no cross-site profile, and never receives a name, an email address, a save file, or anything typed into the game. It reports only which page was loaded and how quickly it rendered.</p>
-        <p>This is separate from Community Stats below. Site measurement covers the website; Community Stats covers in-game choices and is off until you turn it on.</p>
+        <p>This is separate from the Gridiron Census and Community Stats below. Site measurement covers the website; the Census counts league-wide totals; Community Stats covers in-game choices and is off until you turn it on.</p>
       </section>
-      <section class="panel legal-panel" id="community-stats-privacy">
+      <section class="site-section" id="gridiron-census">
+        <h2>Gridiron Census</h2>
+        <p>The Gridiron Census adds your games to anonymous totals shown on the <a href="./stats">Census page</a>: how many franchises were founded and kicked off, games and seasons played, players drafted, trades and signings made, championships won, Hall of Famers who played for your club, and minutes spent managing (rounded to five). It also counts that the game page was opened, and whether this browser already had a franchise.</p>
+        <p>It is on by default, and it is built so that it cannot single anyone out. Each update is only a handful of numbers with no identifier of any kind: no browser code, no cookie, no team or player names, nothing from your save. Nothing is stored in your browser for it except your own choice if you turn it off. The service adds the numbers to one running total per day and keeps nothing else: no record per browser and no internet address (an address is used briefly, in memory, only to limit abuse). Every number has a ceiling per update, so a single browser cannot move a total far.</p>
+        <p>Turn it off at any time in the game under Settings, "Count my games in the Gridiron Census". If your browser sends Global Privacy Control or Do Not Track, the Census stays off unless you switch it on yourself.</p>
+      </section>
+      <section class="site-section" id="community-stats-privacy">
         <h2>Optional Community Stats</h2>
         <p>Community Stats is off until you choose to take part. When it is on, after each successful game action your browser may send a short, fixed set of categories and numbers, such as league settings, weeks completed, tactics, transactions, draft positions and results.</p>
-        <p>With Community Stats on, your browser also sends two things that are used to fix the game and are not published. First, a few milestones: that setup was finished, that a first week and a first season were played, and that you came back, counted only as the same day, 1 to 6 days, 7 to 29 days, or 30 or more days. Second, a short error report when something in the game breaks: the error's name, the file names and line numbers of the game's own scripts, the screen you were on and the app version. For the browser's own error types it also includes a shortened error message with web addresses, email addresses and quoted text removed; a message written by the game is never sent. Each error is reported at most once a day per browser, and turning participation off deletes these too.</p>
+        <p>With Community Stats on, your browser also sends two things that are used to fix the game. First, a few milestones: that setup was finished, that a first week and a first season were played, and that you came back, counted only as the same day, 1 to 6 days, 7 to 29 days, or 30 or more days. These are published on <a href="./stats">Community Stats</a> only as counts of browsers, and only once at least five browsers are in a count. Second, a short error report, which is never published when something in the game breaks: the error's name, the file names and line numbers of the game's own scripts, the screen you were on and the app version. For the browser's own error types it also includes a shortened error message with web addresses, email addresses and quoted text removed; a message written by the game is never sent. Each error is reported at most once a day per browser, and turning participation off deletes these too.</p>
         <p>With Community Stats on, finishing the first season of a weekly challenge league also posts your score to that week's shared board. Exactly three things are sent: the week, which goal that week had, and your score as one number. Your club, your record and the names in your league are not sent. The service keeps one score per browser for each week, your best, under the same anonymous code as your other game stats. The board only shows totals: how many GMs posted a score and how the scores are spread, in groups of at least five browsers. It never shows any single score, it changes only when five more browsers have been counted, it shows nothing at all until at least five browsers have posted a score, and it never lists players. This browser also remembers the last score it posted for each recent week, so it does not post the same score again. With Community Stats off, no score is sent and the game does not contact the board. Turning participation off deletes your scores too.</p>
         <p>Community Stats never receives your saves, names, email, free text, passwords or tokens, player identities, hidden ratings, or story history. A random browser identifier is converted into an anonymous code by the service. Internet addresses are used only briefly, in memory, to limit abuse, and are never stored. Individual records are deleted after 30 days. A published figure only appears once at least five participating browsers are counted in it. Turning participation off asks the service to delete the records tied to your browser's identifier.</p>
         <p>Published figures describe the browsers that chose to take part, not all players. The <a href="./stats#methodology">methodology</a> explains how to read them.</p>
       </section>
-      <section class="panel legal-panel" id="feedback-privacy">
+      <section class="site-section" id="feedback-privacy">
         <h2>Feedback</h2>
         <p>The in-game feedback form sends a note to the team only when you press Send. It sends the kind of note you picked, the message you wrote, a rating if you gave one, and: the screen you were on, the season and week, the app version, your screen size (phone, tablet or desktop) and your theme. It never sends your save, your email address, or the names in your league. You do not need an account, and you do not need to turn on Community Stats.</p>
         <p>A note is not linked to you or to Community Stats. Each one is sent with a random one-off identifier that is not saved in your browser and not stored by the service. Internet addresses are used only briefly, in memory, to limit abuse, and are never stored. Notes are deleted after 30 days. Please do not put personal details in your message. If you prefer a public conversation, the form links to GitHub Discussions, which needs a GitHub account.</p>
       </section>
-      <section class="panel legal-panel" id="cloud-save-privacy">
+      <section class="site-section" id="human-check-privacy">
+        <h2>Human Check</h2>
+        <p>The service that receives Community Stats and feedback can ask for proof that a request comes from a person and not a script, using Cloudflare Turnstile. This check is switched off today, and nothing from Cloudflare loads in the game while it is off. If we switch it on, the check loads from Cloudflare only at the moment you share stats or send feedback, Cloudflare processes the signals its check collects from your browser under its own privacy policy, and our service receives only a pass or fail. We do not send Cloudflare your internet address ourselves, and this section will be updated on the day the check is switched on.</p>
+      </section>
+      <section class="site-section" id="cloud-save-privacy">
         <h2>Optional Cloud Save Credentials</h2>
         <p>If you choose GitHub Gist sync, the GitHub token you supply is kept in memory and in storage that lasts only for the current browser tab. Franchise Architect removes any older stored copies, never includes the token in save exports, and sends it only to GitHub's API to perform the sync you asked for. An optional save passphrase is used on your device to create an authentication key; the passphrase is never stored or sent. Authentication detects unauthorized changes but does not encrypt the save stored by GitHub.</p>
       </section>
-      <section class="panel legal-panel">
+      <section class="site-section">
         <h2>Contact</h2>
         <p>Questions: <a href="mailto:football@playfranchisearchitect.com">football@playfranchisearchitect.com</a></p>
       </section>

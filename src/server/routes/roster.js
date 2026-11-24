@@ -228,6 +228,18 @@ export async function handleRosterRoutes(req, res, url, ctx) {
     return true;
   }
 
+  if (req.method === "POST" && url.pathname === "/api/players/body-program") {
+    const body = parseJsonBody(await readRequestBody(req));
+    const check = assertFields(body, ["teamId", "playerId", "program"]);
+    if (!check.ok) {
+      sendJson(res, 400, { ok: false, error: check.error });
+      return true;
+    }
+    const result = ctx.session.setBodyProgram({ teamId: String(body.teamId).toUpperCase(), playerId: String(body.playerId), program: String(body.program) });
+    sendJson(res, result.ok ? 200 : 400, { ...result, state: ctx.session.getDashboardState() });
+    return true;
+  }
+
   if (req.method === "POST" && url.pathname === "/api/injuries/rehab-plan") {
     const body = parseJsonBody(await readRequestBody(req));
     const check = assertFields(body, ["teamId", "playerId", "plan"]);

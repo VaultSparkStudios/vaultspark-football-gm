@@ -75,6 +75,9 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
     stagePendingWeeklyTactic(session, tacticTeam.id, command.tacticPlan, command.gamePlan || null);
   }
 
+  // League Pulse counts Hall of Fame classes that include one of the player's
+  // own former players. Read-only: the hall is diffed, never changed here.
+  const hallBefore = new Set((session.league.hallOfFame || []).map((entry) => entry.playerId));
   const results = [];
   try {
     for (let index = 0; index < command.count; index += 1) {
@@ -133,10 +136,18 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
   const thesisResolution = resolveArchitectThesis(session.league, session.controlledTeamId, architectEntry);
   if (architectEntry && thesisResolution) architectEntry.thesisResolution = thesisResolution;
 
+  const clubHallOfFameInductions = (session.league.hallOfFame || []).filter((entry) =>
+    !hallBefore.has(entry.playerId) && (entry.teams || []).includes(session.controlledTeamId)).length;
+  // True only for the command that plays a new franchise's opening regular-season week.
+  const franchiseOpeningWeek = started.phase === "regular-season" && Number(started.week) === 1
+    && Number(started.year) === Number(session.startYear ?? started.year) && results.length > 0;
+
   return {
     ok: true,
     count: command.count,
     results,
+    clubHallOfFameInductions,
+    franchiseOpeningWeek,
     gmDecision,
     tacticApplied: command.tactic,
     ...(command.gamePlan ? { gamePlanApplied: command.gamePlan } : null),

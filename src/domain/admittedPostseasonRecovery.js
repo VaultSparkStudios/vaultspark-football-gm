@@ -22,8 +22,8 @@ export function validateAdmittedPostseasonClock(state,{league,completed=false}={
  const row=state.admittedMedicalClock;
  if(!row||Array.isArray(row)||Object.keys(row).length!==3||row.version!==ADMITTED_POSTSEASON_CLOCK_VERSION
   ||!Number.isSafeInteger(row.year)||row.year<2023||row.year>2200||row.year!==(completed?state.medicalRecovery?.year:state.year)
-  ||row.throughWeek!==(completed?23:appliedThrough(state)))fail('elapsed authority');
- if(league?.admittedInjuryPayroll?.some(pay=>pay.earningYear===row.year&&pay.phase==='postseason'&&pay.week>row.throughWeek))fail('wage beyond elapsed authority');
+  ||row.throughWeek!==(completed?23:appliedThrough(state)))fail('elapsed coverage');
+ if(league?.admittedInjuryPayroll?.some(pay=>pay.earningYear===row.year&&pay.phase==='postseason'&&pay.week>row.throughWeek))fail('wage beyond elapsed coverage');
 }
 
 // Admitted incapacity survives employment and a club's elimination. Its old
@@ -46,7 +46,7 @@ export function advanceAdmittedPostseasonRecovery({state,league,year,throughWeek
  if(state?.year!==year||year!==league.year||year!==financialYearForLeague(league)
   ||!Number.isSafeInteger(year)||year<2023||year>2200||![19,20,21,23].includes(throughWeek))fail('open season/period');
  const prior=state.admittedMedicalClock?.throughWeek??appliedThrough(state);
- if(league.admittedInjuryPayroll?.some(pay=>pay.earningYear===year&&pay.phase==='postseason'&&pay.week>prior))fail('wage without elapsed authority');
+ if(league.admittedInjuryPayroll?.some(pay=>pay.earningYear===year&&pay.phase==='postseason'&&pay.week>prior))fail('wage without elapsed coverage');
  if(throughWeek<=prior)return {alreadyApplied:true,weeksAdvanced:0,receipts:[]};
  const planned=structuredClone(league),receipts=[];
  const modifiers=getTeamModifiers||(teamId=>teamRecoveryModifiers(planned.teams.find(team=>team.id===teamId)));

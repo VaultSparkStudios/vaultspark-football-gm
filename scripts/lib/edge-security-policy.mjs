@@ -208,10 +208,24 @@ export function inspectInlineStyleHashes(html) {
   return hashes;
 }
 
-export function buildEdgeHeaders({ inlineScriptHashes = [], inlineStyleHashes = [] } = {}) {
+// The community service can ask for a Cloudflare Turnstile human check before
+// it issues a capability. The widget needs its script and its frame admitted,
+// and nothing else (Cloudflare's documented CSP values). They are admitted by
+// default: the switch that turns the check on lives on the community server
+// (COMMUNITY_TURNSTILE_SITE_KEY), on a different machine from this build, so a
+// policy gated on a build variable broke sharing and feedback the moment the
+// server enabled the check without a matching site rebuild. Only the script and
+// frame are admitted, never connect-src.
+export const HUMAN_CHECK_ORIGIN = "https://challenges.cloudflare.com";
+
+export function buildEdgeHeaders({
+  inlineScriptHashes = [],
+  inlineStyleHashes = [],
+  humanCheck = String(process.env.EDGE_HUMAN_CHECK || "on").trim() !== "off"
+} = {}) {
   const hashes = [...new Set(inlineScriptHashes)].sort();
   const styles = [...new Set(inlineStyleHashes)].sort();
-  const scriptSources = ["'self'", ...hashes, ...edgeOriginsFor("script-src")].join(" ");
+  const scriptSources = ["'self'", ...hashes, ...edgeOriginsFor("script-src"), ...(humanCheck ? [HUMAN_CHECK_ORIGIN] : [])].join(" ");
   const styleSources = ["'self'", ...styles].join(" ");
   const connectSources = [
     "'self'",
@@ -232,6 +246,7 @@ export function buildEdgeHeaders({ inlineScriptHashes = [], inlineStyleHashes = 
     "img-src 'self' data:",
     "font-src 'self'",
     `connect-src ${connectSources}`,
+    ...(humanCheck ? [`frame-src ${HUMAN_CHECK_ORIGIN}`] : []),
     "worker-src 'self'",
     "manifest-src 'self'",
     "upgrade-insecure-requests"

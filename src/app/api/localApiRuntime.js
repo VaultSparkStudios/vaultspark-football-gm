@@ -368,7 +368,7 @@ export function createLocalApiRuntime({
     now: () => new Date(now()).toISOString(),
     onDegrade: (reason) => {
       runtimeMetrics.lastPersistenceDegrade = reason;
-      console.warn("High-capacity save store degraded to localStorage:", reason);
+      console.warn("High-capacity save store fell back to localStorage:", reason);
     }
   });
   const setupBootstrap = createLeagueBase(currentYear);
@@ -1815,6 +1815,14 @@ export function createLocalApiRuntime({
         if (!teamId) return finish(jsonResponse(400, { ok: false, error: "team required." }));
         const fs = getFanSentiment(s.league, teamId);
         return finish(jsonResponse(200, { ok: true, teamId, fanSentiment: { ...fs, label: fanApprovalLabel(fs.approval) } }));
+      }
+
+      if (method === "POST" && pathname === "/api/players/body-program") {
+        const s = ensureSession();
+        const check = assertFields(body, ["teamId", "playerId", "program"]);
+        if (!check.ok) return finish(jsonResponse(400, { ok: false, error: check.error }));
+        const result = s.setBodyProgram({ teamId: String(body.teamId).toUpperCase(), playerId: String(body.playerId), program: String(body.program) });
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(s) }));
       }
 
       if (method === "POST" && pathname === "/api/injuries/rehab-plan") {

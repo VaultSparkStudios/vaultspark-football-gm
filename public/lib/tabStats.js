@@ -180,6 +180,9 @@ export function renderCompareSearchResults() {
 
 let chartThemeObserver = null;
 
+const CHART_FONT = '700 11px "Barlow Semi Condensed", "Bahnschrift SemiCondensed", "Arial Narrow", sans-serif';
+let chartFontRequested = false;
+
 export function renderAnalyticsChart() {
   const canvas = document.getElementById("analyticsChart");
   if (!(canvas instanceof HTMLCanvasElement)) return;
@@ -190,6 +193,12 @@ export function renderAnalyticsChart() {
     chartThemeObserver.observe(document.documentElement, {
       attributes: true, attributeFilter: ["data-theme", "data-accent"]
     });
+  }
+  // A canvas draws with whatever face is ready at that instant. Draw now with
+  // the fallback, then once more when the bundled face has arrived.
+  if (!chartFontRequested && document.fonts?.load) {
+    chartFontRequested = true;
+    if (!document.fonts.check(CHART_FONT)) document.fonts.load(CHART_FONT).then(renderAnalyticsChart, () => {});
   }
   const palette = getComputedStyle(canvas);
   const barColor = palette.getPropertyValue("--accent-2").trim();
@@ -213,7 +222,7 @@ export function renderAnalyticsChart() {
     ctx.fillStyle = barColor;
     ctx.fillRect(x, y, barW, barHeight);
     ctx.fillStyle = labelColor;
-    ctx.font = "11px Bahnschrift";
+    ctx.font = CHART_FONT;
     ctx.fillText(metric.label, x, height - 4);
   });
 }

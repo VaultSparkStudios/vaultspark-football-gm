@@ -2,6 +2,7 @@ import { extractCommunityEvents } from "./extractCommunityEvents.js";
 import { COMMUNITY_BATCH_LIMIT, COMMUNITY_FUNNEL_EVENT_TYPES, normalizeCommunityEvent, returnVisitGap } from "./communityEventContract.js";
 import { buildDiagnosticReport, diagnosticSignatureSource, DIAGNOSTIC_BATCH_LIMIT } from "./communityFeedbackContract.js";
 import { observeBackgroundTask, subscribeClientDiagnostics } from "./clientDiagnostics.js";
+import { observePulseReceipt } from "./leaguePulse.js";
 
 export const COMMUNITY_CONSENT_KEY = "fa:community-participation:v1";
 export const COMMUNITY_PARTICIPANT_KEY = "fa:community-participant:v1";
@@ -143,7 +144,8 @@ async function request(path, init, eventRequest = false) {
     return await Promise.race([stopped, (async () => {
       const response = await fetch(statsEndpoint(path), { ...init, signal: controller.signal });
       let body = null;
-      if (response.ok) {
+      // A 403 may carry the human check the service wants solved; nothing else is read from a refusal.
+      if (response.ok || response.status === 403) {
         try { body = await response.json(); } catch { /* mutation count receipts are optional */ }
       }
       return { response, body };
@@ -156,13 +158,21 @@ async function request(path, init, eventRequest = false) {
 }
 
 async function requestCapability(browserId) {
-  const { response, body } = await request("capability", {
+  const ask = (extra = {}) => request("capability", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ schemaVersion: "1.0", participantId: browserId }),
+    body: JSON.stringify({ schemaVersion: "1.0", participantId: browserId, ...extra }),
     mode: "cors",
     credentials: "omit"
   });
+  let { response, body } = await ask();
+  if (response.status === 403 && body?.humanCheck) {
+    // The service wants a human check first. The solver is loaded only now, so
+    // a service without the check never costs this page the download.
+    const { humanCheckFrom, solveHumanCheck } = await import("./humanCheck.js");
+    const challenge = humanCheckFrom(body);
+    if (challenge) ({ response, body } = await ask({ humanCheckToken: await solveHumanCheck(challenge) }));
+  }
   if (!response.ok) throw new Error(`Community participation capability unavailable (HTTP ${response.status}).`);
   if (typeof body?.capability !== "string" || !body.capability || !(Date.parse(body.expiresAt) > Date.now())) throw new Error("Community participation capability response is invalid.");
   return {
@@ -286,6 +296,7 @@ export async function setCommunityParticipation(participating) {
       emitParticipationChange(false);
       return { participating: false, deletion: { status: "not-requested", deleted: null } };
     }
+    seedFunnelFromLocalLedger();
     emitParticipationChange(true);
     if (browserId && typeof fetch === "function") {
       observeBackgroundTask(
@@ -416,6 +427,22 @@ export async function flushCommunityQueue() {
 
 let returnVisitChecked = false;
 
+/**
+ * A browser that turns sharing on mid-career has already passed some first
+ * steps. Mark those from the local ledger (which never leaves the browser) so
+ * the next advance is not reported as this browser's "first". Only runs when
+ * no milestone record exists yet, and only after the player opted in.
+ */
+function seedFunnelFromLocalLedger() {
+  if (readJson(COMMUNITY_FUNNEL_KEY, null)) return;
+  const totals = getLocalCommunityLedger().totals || {};
+  const seen = {};
+  if (Number(totals.franchises) > 0) seen.setup = 1;
+  if (Number(totals.weeks) > 0) seen.advance = 1;
+  if (Number(totals.seasons) > 0) seen.season = 1;
+  if (Object.keys(seen).length) writeJson(COMMUNITY_FUNNEL_KEY, seen);
+}
+
 function funnelEvent(type, runtime, dimensions = {}) {
   const occurredAt = new Date().toISOString();
   return normalizeCommunityEvent({
@@ -520,6 +547,9 @@ export async function flushCommunityDiagnostics() {
 export function observeCommunityApiReceipt({ method, path, body, response, runtime }) {
   const events = extractCommunityEvents({ method, path, body, response, runtime });
   if (!events.length) return events;
+  // League Pulse reads the same coarse events, before any detail is derived.
+  // It keeps its own on-by-default, opt-out switch and sends no identifier.
+  observePulseReceipt({ events, path, response });
   events.push(...deriveFunnelEvents(events, runtime));
   recordLocally(events);
   queueEvents(events);

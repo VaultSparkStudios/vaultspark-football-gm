@@ -8,6 +8,8 @@ import { escapeHtml, showToast, teamName } from "./appCore.js";
 import { playSound, vibrate, HAPTIC_PATTERNS } from "./audioFeedback.js";
 import { findTeamStanding, formatTeamRecord } from "./teamRecord.js";
 import { GAME_RESULTS, gameResultFromScores, gameResultTone } from "./gameOutcome.js";
+import { isAutoHighlightsEnabled, shouldAutoPlayHighlights } from "./autoHighlights.js";
+import { hasOpenModal } from "./modalManager.js";
 
 const AUTO_DISMISS_MS = 8000;
 const ACTION_DISMISS_MS = 14000;
@@ -106,9 +108,23 @@ async function openWeekRecapAction({ kind, gameId }) {
   }
 }
 
-export function presentWeekRecap(game) {
+// With "play highlights automatically" on, the replay opens by itself and the
+// recap card stays away so it cannot give the score away first. If the replay
+// cannot open, the ordinary recap card takes over.
+export async function presentWeekRecap(game) {
   const model = buildWeekRecapModel({ game, dashboard: state.dashboard });
   if (!model) return false;
+  if (shouldAutoPlayHighlights(game, {
+    enabled: isAutoHighlightsEnabled(),
+    reducedMotion: prefersReducedMotion(),
+    modalOpen: hasOpenModal()
+  })) {
+    try {
+      if (await (await import("./simWatchDirector.js")).runSimWatch(game.gameId)) return true;
+    } catch {
+      // Sim-Watch has recorded and announced its own failure; show the recap.
+    }
+  }
   const recapAction = weekRecapAction(game);
   playSound(model.result === GAME_RESULTS.WIN ? "win-chime" : model.result === GAME_RESULTS.LOSS ? "loss-thud" : "advance-tick");
   vibrate(model.result === GAME_RESULTS.WIN ? HAPTIC_PATTERNS.win : model.result === GAME_RESULTS.LOSS ? HAPTIC_PATTERNS.loss : HAPTIC_PATTERNS.tick);

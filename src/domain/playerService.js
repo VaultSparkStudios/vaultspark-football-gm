@@ -18,7 +18,7 @@ export function validatePlayerService(player, context) {
   validatePensionService(player, context);
   const ledger = player.serviceLedger;
   if (!ledger) return;
-  const fail = () => { const error = new Error(`Invalid service ledger for ${player.id}`); error.reasonCode = 'PLAYER_SERVICE_INVALID'; throw error; };
+  const fail = () => { const error = new Error(`Invalid service record for ${player.id}`); error.reasonCode = 'PLAYER_SERVICE_INVALID'; throw error; };
   if (ledger.version !== PLAYER_SERVICE_VERSION || !ledger.baseline || !ledger.seasons || typeof ledger.seasons !== 'object' || Array.isArray(ledger.seasons)) fail();
   for (const purpose of ['accrued', 'credited']) {
     if (ledger.baseline[purpose] !== null && !count(ledger.baseline[purpose])) fail();
@@ -60,7 +60,7 @@ export function playerServiceCount(player, purpose) {
   const field = purpose === 'accrued' ? 'accruedSeasons' : 'creditedSeasons';
   if (!ledger) return { seasons: count(player[field]) ? player[field] : Math.max(0, Math.floor(Number(player.experience) || 0)),
     provenance: count(player[field]) ? `declared-${purpose}-seasons` : 'experience-proxy-not-service-history', completeHistory: count(player[field]) };
-  if (ledger.version !== PLAYER_SERVICE_VERSION) throw new Error('Unsupported player service ledger');
+  if (ledger.version !== PLAYER_SERVICE_VERSION) throw new Error('Unsupported player service record');
   const observed = Object.values(ledger.seasons).filter(row => row[`${purpose}Awarded`] === true).length;
   const known = count(ledger.baseline[purpose]);
   return { seasons: (known ? ledger.baseline[purpose] : ledger.baseline.proxy) + observed,

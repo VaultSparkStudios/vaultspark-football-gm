@@ -13,12 +13,25 @@ const outPath = path.join(rootDir, "public", "images", "cover.png");
 const markSvg = await fs.readFile(path.join(rootDir, "public", "images", "franchise-architect-mark.svg"), "utf8");
 const markDataUri = `data:image/svg+xml;base64,${Buffer.from(markSvg).toString("base64")}`;
 
+// The card is set in the same bundled faces as the site, embedded here so the
+// result does not depend on which fonts the rendering machine has installed.
+const fontFace = async (pkg, file, family, weight) => {
+  const bytes = await fs.readFile(path.join(rootDir, "node_modules", "@fontsource", pkg, "files", file));
+  return `@font-face{font-family:"${family}";font-weight:${weight};src:url(data:font/woff2;base64,${bytes.toString("base64")}) format("woff2")}`;
+};
+const fontFaces = (await Promise.all([
+  fontFace("barlow", "barlow-latin-600-normal.woff2", "Barlow", 600),
+  fontFace("barlow", "barlow-latin-700-normal.woff2", "Barlow", 700),
+  fontFace("barlow-semi-condensed", "barlow-semi-condensed-latin-700-normal.woff2", "Barlow Semi Condensed", 700)
+])).join("\n");
+
 const html = `<!doctype html><html><head><style>
+  ${fontFaces}
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     width: 1200px; height: 630px; overflow: hidden;
     background: linear-gradient(135deg, #0d0f14 0%, #1a1030 45%, #0d1a2e 100%);
-    font-family: 'Segoe UI', 'Bahnschrift', system-ui, sans-serif;
+    font-family: 'Barlow', 'Segoe UI', system-ui, sans-serif;
     color: #e8ecf4; position: relative;
   }
   .glow { position: absolute; top: -220px; left: 50%; transform: translateX(-50%);
@@ -32,7 +45,7 @@ const html = `<!doctype html><html><head><style>
     align-items: center; justify-content: center; text-align: center; z-index: 2; padding-bottom: 40px; }
   .mark { width: 130px; height: 130px; margin-bottom: 28px; }
   .kicker { font-size: 22px; letter-spacing: 9px; text-transform: uppercase; color: #4f8ef7; font-weight: 700; margin-bottom: 14px; }
-  h1 { font-size: 76px; font-weight: 900; letter-spacing: -2px; line-height: 1.04; }
+  h1 { font-family: 'Barlow Semi Condensed', 'Arial Narrow', sans-serif; font-size: 76px; font-weight: 700; letter-spacing: -1px; line-height: 1.04; }
   h1 span { color: #4f8ef7; }
   .sub { margin-top: 20px; font-size: 27px; color: #aab3c7; font-weight: 600; }
   .badges { margin-top: 30px; display: flex; gap: 14px; }

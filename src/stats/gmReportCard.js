@@ -212,7 +212,7 @@ export function generateGMReportCard(team, teamPlayers, year, {
       source: "ContractService.getCapSummary"
     },
     tradeReceipt,
-    evidenceBoundary: "Grades summarize canonical roster, cap, draft, transaction and season-stat authorities; they do not prove that a single decision caused an outcome.",
+    evidenceBoundary: "Grades summarize the official roster, cap, draft, transaction and season-stat records; they do not prove that a single decision caused an outcome.",
     dimensions: Object.keys(scores).map((k) => ({
       key: k,
       label: LABELS[k],

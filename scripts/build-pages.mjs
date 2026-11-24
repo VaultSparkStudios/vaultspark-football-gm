@@ -102,11 +102,8 @@ const htmlPages = [
   "simulation.html",
   "press.html",
   "features.html",
-  "how-to-play.html",
   "faq.html",
-  "roadmap.html",
   "guides.html",
-  "compare.html",
   "media.html",
   "404.html"
 ];
@@ -126,16 +123,15 @@ function normalizeBasePath(value) {
 }
 
 const basePath = normalizeBasePath(process.env.VITE_APP_BASE_PATH || "/");
-// The Studio host can mount this artifact at any declared alias. Keep browser
-// assets relative to the document directory so the same HTML remains valid at
-// /franchise-architect/, /games/franchise-architect/, and GitHub Pages paths.
+// Keep browser assets relative to the document directory so the same HTML is
+// valid at the origin root and under a GitHub Pages project path.
 const assetBasePath = "./";
 const canonicalBase = process.env.VITE_CANONICAL_URL || `https://playfranchisearchitect.com${basePath}`;
 const ogImageUrl = process.env.VITE_OG_IMAGE_URL || `https://playfranchisearchitect.com${basePath}images/cover.png`;
-const publishedMounts = [...new Set([
-  basePath,
-  ...[slug, ...legacySlugs].map((mount) => normalizeBasePath(mount))
-])];
+// One copy of the site ships. The paths it used to be copied under are served
+// as redirects (see emitRetiredRouteRedirects), so they are not mounts.
+const publishedMounts = [basePath];
+const retiredMounts = [slug, ...legacySlugs].map((mount) => normalizeBasePath(mount));
 
 async function ensureCleanDir(dir) {
   await fs.rm(dir, { recursive: true, force: true });
@@ -439,7 +435,13 @@ async function writeHtml(pageName) {
         styles: await fs.readFile(path.join(outDir, hashedStyleHref), "utf8"),
         siteStyles: await fs.readFile(path.join(outDir, hashedSiteStyleHref), "utf8"),
         heroJpeg: await fs.readFile(path.join(outDir, "images", "screens", "hero.jpg")),
-        styleHref: hashedStyleHref, siteStyleHref: hashedSiteStyleHref
+        styleHref: hashedStyleHref, siteStyleHref: hashedSiteStyleHref,
+        // Embedded is the default because it measured faster. Phone viewport,
+        // 4x CPU slowdown, medians of 5 interleaved cold loads (2026-11-20):
+        //   slow 4G  embedded FCP 908 ms, LCP 1736 ms | preloaded FCP 1260 ms, LCP 1932 ms
+        //   fast 4G  embedded FCP 904 ms, LCP 1032 ms | preloaded FCP 1040 ms, LCP 1300 ms
+        // VSFGM_HERO_MODE=preload builds the other variant to measure again.
+        heroMode: process.env.VSFGM_HERO_MODE || "inline"
       });
       servedHtml = entry.html;
       console.log(`Public entry: ${entry.metrics.decodedBytes} decoded bytes; gzip ${entry.metrics.encodings.gzip.afterBytes}, brotli ${entry.metrics.encodings.brotli.afterBytes} cold bytes`);
@@ -454,34 +456,6 @@ function withFeedLink(html) {
     "</head>",
     `    <link rel="alternate" type="application/rss+xml" title="Franchise Architect: Football changelog" href="./${CHANGELOG_FEED}" />\n  </head>`
   );
-}
-
-const mountRootNames = new Set([slug, ...legacySlugs].map((mount) => mount.split("/")[0]));
-
-async function mirrorPath(mirrorSlug) {
-  const projectDir = path.join(outDir, ...mirrorSlug.split("/"));
-  const entries = await fs.readdir(outDir, { withFileTypes: true });
-  await fs.mkdir(projectDir, { recursive: true });
-
-  for (const entry of entries) {
-    // Skip every mount root, derived from the mount list itself. The literal list
-    // this replaces omitted "franchise-architect", so each games/* mount carried a
-    // nested second copy of the site and its own service worker.
-    if (mountRootNames.has(entry.name)) continue;
-    const source = path.join(outDir, entry.name);
-    const destination = path.join(projectDir, entry.name);
-    if (entry.isDirectory()) {
-      await fs.cp(source, destination, { recursive: true });
-    } else {
-      await fs.copyFile(source, destination);
-    }
-  }
-}
-
-async function mirrorProjectPaths() {
-  for (const mirrorSlug of [slug, ...legacySlugs]) {
-    await mirrorPath(mirrorSlug);
-  }
 }
 
 // S94: sitemap lastmod, derived instead of declared.
@@ -544,15 +518,35 @@ const RETIRED_ROUTES = Object.freeze([
   ["/landing.html", "/#why", "merged into the root page (S94)"],
   ["/changelog.html", "/status-archive.html", "the changelog is the full release history"],
   ["/ip.html", "/terms.html", "rights notice lives on Terms"],
-  ["/play.html", "/", "the root page is the play surface"]
+  ["/play.html", "/", "the root page is the play surface"],
+  // S133: thin and repeated pages folded into the pages players already read.
+  ["/how-to-play.html", "/guides.html#how-to-play", "How to Play is the first chapter of Guides (S133)"],
+  ["/compare.html", "/faq.html#compare", "How It Compares is an FAQ answer (S133)"],
+  ["/roadmap.html", "/status.html#whats-next", "the roadmap is What's next on Updates (S133)"],
+  ["/beta.html", "/status.html#early-access", "the beta explainer is Early access on Updates (S133)"]
 ]);
 
+// The site used to be copied whole under each of these paths: six extra copies
+// of every file and six extra service workers on the live origin. Each path now
+// answers with a redirect to the same page at the root. Saves are stored per
+// origin, not per path, so a player arriving from an old link keeps them, and
+// the root service worker clears the caches the old copies left behind.
+// Longest path first so a nested rule is matched before its parent.
+function retiredMountRules() {
+  return [...retiredMounts]
+    .sort((left, right) => right.length - left.length || left.localeCompare(right))
+    .flatMap((mount) => {
+      const bare = mount.replace(/\/$/, "");
+      return [`${bare} / 301`, `${bare}/* /:splat 301`];
+    });
+}
+
 async function emitRetiredRouteRedirects() {
-  const body = RETIRED_ROUTES
-    .map(([from, to, why]) => [`# ${why}`, `${from} ${to} 301`].join("\n"))
-    .join("\n");
-  await fs.writeFile(path.join(outDir, "_redirects"), `${body}\n`, "utf8");
-  return RETIRED_ROUTES.length;
+  const routes = RETIRED_ROUTES
+    .map(([from, to, why]) => [`# ${why}`, `${from} ${to} 301`].join("\n"));
+  const mounts = ["# former copies of the site, now one copy at the root", ...retiredMountRules()];
+  await fs.writeFile(path.join(outDir, "_redirects"), `${[...routes, ...mounts].join("\n")}\n`, "utf8");
+  return RETIRED_ROUTES.length + retiredMounts.length;
 }
 
 // Shipped scripts and stylesheets are minified in place, one file to one file,
@@ -668,6 +662,7 @@ async function emitDeployEvidence(edgePolicy, artifactFingerprint) {
     basePath,
     assetBasePath,
     publishedMounts,
+    retiredMounts,
     runtimeDefault,
     serverAvailable: serverAvailable === "true",
     edgePolicyFingerprint: edgePolicy.policyFingerprint,
@@ -748,7 +743,6 @@ async function main() {
   // index copy — a mistyped URL should say so instead of silently booting the app.
   const artifactFingerprint = await fingerprintArtifactDirectory(outDir);
   await emitDeployEvidence(edgePolicy, artifactFingerprint);
-  await mirrorProjectPaths();
   console.log(`Built Pages bundle in ${outDir}`);
 }
 

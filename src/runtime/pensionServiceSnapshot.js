@@ -20,7 +20,7 @@ export function compactSnapshotPensionService(snapshot) {
   const dictionary = [], ids = new Map();
   const compact = transform(snapshot, state => {
     const signature = JSON.stringify(state);
-    if (signature === undefined) invalid('non-JSON ledger');
+    if (signature === undefined) invalid('non-JSON record');
     if (!ids.has(signature)) { ids.set(signature, dictionary.length); dictionary.push(JSON.parse(signature)); }
     return ids.get(signature);
   });
@@ -34,7 +34,7 @@ export function expandSnapshotPensionService(snapshot) {
   const expanded = transform(snapshot, reference => {
     if (!Number.isSafeInteger(reference) || reference < 0 || reference >= storage.dictionary.length) invalid('reference out of range');
     try { return JSON.parse(JSON.stringify(storage.dictionary[reference])); }
-    catch { invalid('non-JSON ledger'); }
+    catch { invalid('non-JSON record'); }
   });
   delete expanded.pensionServiceStorage;
   return expanded;

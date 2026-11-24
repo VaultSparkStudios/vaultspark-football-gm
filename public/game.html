@@ -1394,6 +1394,7 @@
                  class="btn-discord" id="discordLink">
                 🎮 Join the VaultSpark Discord
               </a>
+              <button type="button" id="installAppBtn" hidden>Install the app</button>
             </div>
             <div class="small" style="color:var(--muted);margin-top:.5rem;">
               Mobile mode shows a simplified daily-decision view optimized for narrow screens.
@@ -1403,7 +1404,14 @@
               <label><input id="hapticsEnabledInput" type="checkbox" checked /> Haptics (mobile)</label>
               <span class="small muted">All audio is synthesized in-browser — nothing downloads, nothing tracks.</span>
             </div>
-          </div>
+            <div class="row compact" style="margin-top:12px">
+              <label><input id="autoHighlightsInput" type="checkbox" /> Play highlights automatically after my game</label>
+              <span class="small muted">Off by default. Stays off while your device asks for reduced motion.</span>
+            </div>
+            <div class="row compact" style="margin-top:12px">
+              <label><input id="leaguePulseInput" type="checkbox" /> Count my games in the Gridiron Census</label>
+              <span class="small muted">Anonymous league totals with no ID and nothing stored in your browser. <a href="./privacy.html#gridiron-census">What is counted</a></span>
+            </div>          </div>
         <div class="panel dev-only" data-dev-surface hidden aria-hidden="true">
             <!-- ── DEVELOPER DIAGNOSTICS (S94) ──
                  Launch Readiness, System Health, the 10-20 year Realism
@@ -1981,6 +1989,7 @@
       <div class="sw-swipe-hint" aria-hidden="true">Swipe the play log left or right for the next or previous key play.</div>
       <div id="simWatchField" class="sw-field" aria-hidden="true"><span id="simWatchBall" class="sw-ball"></span><div class="sw-field-meta"><span id="simWatchPossession">Possession</span><span id="simWatchDownDistance"></span><span id="simWatchYardLine">50</span></div></div>
       <svg id="simWatchFlow" class="sw-flow" viewBox="0 0 300 40" preserveAspectRatio="none" role="img" aria-label="Score margin through the game"></svg>
+          <svg id="simWatchDrives" class="sw-drives" viewBox="0 0 300 18" preserveAspectRatio="none" role="img" aria-label="Drive chart"></svg>
       <div id="simWatchFeed" role="log"></div>
       <div id="simWatchFinal" hidden></div>
     </div>

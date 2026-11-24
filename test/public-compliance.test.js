@@ -23,11 +23,8 @@ const requiredFiles = [
   "../public/manifest.webmanifest",
   "../public/site.css",
   "../public/features.html",
-  "../public/how-to-play.html",
   "../public/faq.html",
-  "../public/roadmap.html",
   "../public/guides.html",
-  "../public/compare.html",
   "../public/media.html"
 ];
 
@@ -54,9 +51,9 @@ test("public Pages bundle has contact, legal, sitemap, and agent metadata source
   assert.match(sitemap, /simulation\.html/, "sitemap lists the simulation methodology page");
   assert.doesNotMatch(sitemap, /<loc>[^<]*\/stats<\/loc>/, "a zero-cohort stats page is withheld from the crawl invitation (S94)");
   assert.match(sitemap, /status\.html/, "sitemap lists the merged status+release-notes page");
-  for (const page of ["features.html", "how-to-play.html", "faq.html", "roadmap.html", "guides.html", "compare.html", "media.html"]) {
+  for (const page of ["features.html", "faq.html", "guides.html", "media.html"]) {
     assert.match(sitemap, new RegExp(page.replace(".", "\\.")), `sitemap lists ${page}`);
-    if (["guides.html", "compare.html", "media.html"].includes(page)) {
+    if (["guides.html", "media.html"].includes(page)) {
       assert.ok(agents.entrypoints.some((entry) => entry.url.endsWith(`/${page}`)), `agents.json lists ${page}`);
       assert.ok(llms.includes(`- /${page} - `), `llms.txt lists ${page}`);
     }
@@ -66,6 +63,10 @@ test("public Pages bundle has contact, legal, sitemap, and agent metadata source
   assert.doesNotMatch(sitemap, /\/play\.html/, "play.html is a redirect stub and stays out of the sitemap");
   assert.doesNotMatch(sitemap, /game\.html/, "the app shell is not an indexable page");
   assert.doesNotMatch(sitemap, /ip\.html/, "ip.html merged into terms.html");
+  for (const retired of ["how-to-play.html", "compare.html", "roadmap.html", "beta.html"]) {
+    assert.doesNotMatch(sitemap, new RegExp(retired.replace(".", "\\.")), `${retired} is a 301 since S133 and stays out of the sitemap`);
+    assert.equal(fs.existsSync(new URL(`../public/${retired}`, import.meta.url)), false, `${retired} was folded into another page (S133)`);
+  }
 });
 
 test("public identity, health, and footer contracts use the actual deploy repository", () => {
@@ -146,12 +147,9 @@ const themedStaticPages = [
   "../public/simulation.html",
   "../public/stats.html",
   "../public/features.html",
-  "../public/how-to-play.html",
   "../public/faq.html",
-  "../public/roadmap.html",
   "../public/press.html",
   "../public/guides.html",
-  "../public/compare.html",
   "../public/media.html"
 ];
 
@@ -226,7 +224,7 @@ test("retired routes are real 301s and merged pages hold their contracts", () =>
     ? fs.readFileSync(new URL("../static/_redirects", import.meta.url), "utf8")
     : "";
   if (redirects) {
-    for (const [from, to] of [["/play.html", "/"], ["/changelog.html", "/status-archive.html"], ["/ip.html", "/terms.html"], ["/landing.html", "/#why"]]) {
+    for (const [from, to] of [["/play.html", "/"], ["/changelog.html", "/status-archive.html"], ["/ip.html", "/terms.html"], ["/landing.html", "/#why"], ["/how-to-play.html", "/guides.html#how-to-play"], ["/compare.html", "/faq.html#compare"], ["/roadmap.html", "/status.html#whats-next"], ["/beta.html", "/status.html#early-access"]]) {
       assert.ok(redirects.includes(`${from} ${to} 301`), `${from} must 301 to ${to}`);
     }
   }

@@ -5,7 +5,7 @@ export const MEASUREMENT_PROVENANCE_STORAGE='measurement-provenance-dictionary-v
 const owns=(value,key)=>Object.prototype.hasOwnProperty.call(value,key);
 const object=value=>value!==null&&typeof value==='object'&&!Array.isArray(value);
 function invalid(message) {
-  const error=new Error(`Invalid measurement provenance encoding: ${message}`);
+  const error=new Error(`Invalid measurement source encoding: ${message}`);
   error.reasonCode='SNAPSHOT_MEASUREMENT_PROVENANCE_ENCODING_INVALID';error.status=400;
   throw error;
 }

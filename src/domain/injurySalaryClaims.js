@@ -17,13 +17,13 @@ const chargeKeys=['version','claimId','kind','year','amountCents'];
 
 export function retainedInjurySalaryClaimCap(ledger={}){
  const rows=ledger.injurySalaryClaimCharges;if(rows===undefined)return 0;
- if(!Array.isArray(rows))fail('cap receipts');
+ if(!Array.isArray(rows))fail('cap charges');
  let total=0n;const seen=new Set();
  for(const row of rows){
   const key=JSON.stringify([row.claimId,row.kind]);
   if(!exact(row,chargeKeys)||row.version!==INJURY_SALARY_CLAIM_VERSION||typeof row.claimId!=='string'||!row.claimId
     ||!['filed','settled'].includes(row.kind)||!year(row.year)||!Number.isSafeInteger(row.amountCents)
-    ||row.kind==='filed'&&row.amountCents<0||seen.has(key))fail('cap receipt');
+    ||row.kind==='filed'&&row.amountCents<0||seen.has(key))fail('cap charge');
   seen.add(key);total+=BigInt(row.amountCents);
  }
  if(total>BigInt(Number.MAX_SAFE_INTEGER)||total<BigInt(Number.MIN_SAFE_INTEGER))fail('cap total');
@@ -70,11 +70,11 @@ export function validateSnapshotInjurySalaryClaims(snapshot){
   for(const row of ledger.injurySalaryClaimCharges||[]){
    const key=`${row.claimId}:${row.kind}`,source=expected.get(key);
    if(!source||source.teamId!==teamId||source.year!==row.year||source.amountCents!==row.amountCents
-     ||row.year!==current||ledger.rolloverAppliedThroughYear>=row.year||found.has(key))fail('unmatched cap receipt');
+     ||row.year!==current||ledger.rolloverAppliedThroughYear>=row.year||found.has(key))fail('unmatched cap charge');
    found.add(key);
   }
  }
- for(const [key,source]of expected)if(source.year===current&&!(league.capLedger?.[source.teamId]?.rolloverAppliedThroughYear>=current)&&!found.has(key))fail('missing cap receipt');
+ for(const [key,source]of expected)if(source.year===current&&!(league.capLedger?.[source.teamId]?.rolloverAppliedThroughYear>=current)&&!found.has(key))fail('missing cap charge');
 }
 
 function openYear(league){
@@ -98,7 +98,7 @@ export function fileElevationInjurySalaryClaim(league,{playerId,gameId,claimedCe
  if(!cents(claimedCents)||claimedCents===0)fail('claim amount');
  const claimId=identity(playerId,gameId),existing=league.injurySalaryClaims?.find(row=>row.claimId===claimId);
  if(existing){if(existing.claimedCents!==claimedCents)fail('conflicting claim retry');return {alreadyFiled:true,claim:structuredClone(existing)};}
- if(league.admittedInjuryContinuations?.some(right=>right.playerId===playerId&&right.gameId===gameId))fail('admitted continuation has separate authority');
+ if(league.admittedInjuryContinuations?.some(right=>right.playerId===playerId&&right.gameId===gameId))fail('admitted continuation has separate coverage');
  const player=league.players?.find(p=>p.id===playerId),episode=player?.elevationInjuryPay?.episodes.find(row=>row.gameId===gameId);
  if(!episode||episode.status!=='active'||!(player.injury?.weeksRemaining>0))fail('unresolved qualifying injury required');
  const claim={version:INJURY_SALARY_CLAIM_VERSION,claimId,playerId,gameId,teamId:episode.teamId,injuryYear:episode.year,

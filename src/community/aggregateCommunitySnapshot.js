@@ -1,4 +1,16 @@
-import { COMMUNITY_SNAPSHOT_SCHEMA_VERSION, COMMUNITY_SUPPRESSION_THRESHOLD, publicStat } from "./eventContract.js";
+import { COMMUNITY_RETURN_GAPS, COMMUNITY_SNAPSHOT_SCHEMA_VERSION, COMMUNITY_SUPPRESSION_THRESHOLD, publicStat } from "./eventContract.js";
+
+const FIRST_STEP_LABELS = Object.freeze({
+  setup_finished: { id: "setup-finished", label: "Finished setting up a franchise", interpretation: "Participating browsers that finished creating a franchise in this period." },
+  first_advance: { id: "first-advance", label: "Played a first week", interpretation: "Participating browsers that advanced their first week in this period." },
+  first_season_finished: { id: "first-season-finished", label: "Finished a first season", interpretation: "Participating browsers that completed their first season in this period." }
+});
+const RETURN_GAP_LABELS = Object.freeze({
+  "same-day": "Came back the same day",
+  "1-6": "Came back within a week",
+  "7-29": "Came back within a month",
+  "30-plus": "Came back after a month or more"
+});
 
 const PERIODS = Object.freeze({
   "24h": { label: "Past 24 hours", milliseconds: 24 * 60 * 60 * 1000 },
@@ -49,6 +61,9 @@ function aggregatePeriod(rows, periodKey, computedAt) {
   const selected = rows.filter((row) => Date.parse(row.occurred_at || row.occurredAt) >= cutoff);
   const participants = new Map();
   const choices = { teams: new Map(), eras: new Map(), archetypes: new Map(), difficulties: new Map(), modes: new Map(), tactics: new Map(), positions: new Map(), decisions: new Map(), challenges: new Map(), feats: new Map(), contractBands: new Map(), staffRoles: new Map() };
+  // First steps count browsers, not events: a set per milestone and per gap.
+  const reached = Object.fromEntries(Object.keys(FIRST_STEP_LABELS).map((type) => [type, new Set()]));
+  const returned = Object.fromEntries(COMMUNITY_RETURN_GAPS.map((gap) => [gap, new Set()]));
   const totals = { events: 0, franchises: 0, weeks: 0, seasons: 0, wins: 0, losses: 0, ties: 0, trades: 0, draftPicks: 0, freeAgents: 0, contracts: 0, staffMoves: 0, challenges: 0, championships: 0, playoffBerths: 0, decisions: 0, rareFeats: 0 };
 
   for (const row of selected) {
@@ -76,6 +91,8 @@ function aggregatePeriod(rows, periodKey, computedAt) {
     else if (row.type === "staff_changed") { totals.staffMoves += 1; increment(choices.staffRoles, d.role); }
     else if (row.type === "challenge_completed") { totals.challenges += 1; increment(choices.challenges, d.challenge); }
     else if (row.type === "rare_feat") { totals.rareFeats += Number(m.count || 1); increment(choices.feats, d.feat, Number(m.count || 1)); }
+    else if (FIRST_STEP_LABELS[row.type]) reached[row.type].add(participantKey);
+    else if (row.type === "return_visit" && returned[d.gap]) returned[d.gap].add(participantKey);
   }
 
   const sampleSize = participants.size;
@@ -137,11 +154,28 @@ function aggregatePeriod(rows, periodKey, computedAt) {
     if (!insights.length) insights.push(`${totals.weeks.toLocaleString("en-US")} receipted weeks are shaping the live community baseline.`);
   }
 
+  // Each first-steps figure is the number of browsers in it, so each one is
+  // held to the threshold on its own: fewer than five browsers, no number.
+  const browserStat = (id, label, browsers, interpretation) => {
+    const shown = visible && browsers >= COMMUNITY_SUPPRESSION_THRESHOLD;
+    return publicStat({
+      id, label, value: shown ? browsers : null, unit: "browsers", period: spec.label, sampleSize, computedAt, interpretation,
+      status: shown ? "live" : sampleSize === 0 ? "warming" : "suppressed"
+    });
+  };
+  const firstSteps = {
+    status,
+    sampleSize,
+    milestones: Object.entries(FIRST_STEP_LABELS).map(([type, entry]) => browserStat(entry.id, entry.label, reached[type].size, entry.interpretation)),
+    returns: COMMUNITY_RETURN_GAPS.map((gap) => browserStat(`return-${gap}`, RETURN_GAP_LABELS[gap], returned[gap].size, "Participating browsers that came back after this long away, counted once each."))
+  };
+
   return {
     key: periodKey,
     label: spec.label,
     status,
     sampleSize,
+    firstSteps,
     headline: [stats.participants, stats.franchises, stats.weeks, stats.seasons, stats.decisions, stats.championships],
     categories: [
       { id: "scale", label: "Community Scale", stats: [stats.participants, stats.franchises, stats.weeks, stats.seasons] },

@@ -109,7 +109,7 @@ export function buildTeamCrestSvg(opts = {}) {
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${dim} ${dim}" width="${dim}" height="${dim}" role="img" aria-label="${escapeSvgText(label)} crest">` +
     `<path d="${shieldPath(dim)}" fill="${primary}" stroke="${outline}" stroke-width="${Math.max(1, dim * 0.03)}" />` +
     motifShapeMarkup(motif, dim, secondary) +
-    `<text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="central" font-family="Bahnschrift, 'Franklin Gothic Medium', sans-serif" font-weight="800" font-size="${fontSize.toFixed(1)}" fill="${textColor}">${escapeSvgText(monogram)}</text>` +
+    `<text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="central" font-family="'Barlow Semi Condensed', 'Bahnschrift SemiCondensed', 'Arial Narrow', sans-serif" font-weight="800" font-size="${fontSize.toFixed(1)}" fill="${textColor}">${escapeSvgText(monogram)}</text>` +
     `</svg>`
   );
 }

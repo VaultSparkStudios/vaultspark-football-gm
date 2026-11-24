@@ -24,6 +24,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const defaultRoot = path.resolve(__dirname, "..", "..");
 
 export const CLAIMS_RELATIVE_PATH = path.join("public", "content", "claims.json");
+export const SHOWCASE_RELATIVE_PATH = path.join("public", "showcase-league.json");
 
 export function escapeHtml(value) {
   return String(value ?? "")
@@ -44,6 +45,11 @@ function safeHref(href) {
 export function loadClaims(root = defaultRoot) {
   const claims = JSON.parse(fs.readFileSync(path.join(root, CLAIMS_RELATIVE_PATH), "utf8"));
   validateClaims(claims);
+  // The landing page quotes the simulated decade that the Community Stats page
+  // shows. It is read from the generated file, never retyped into claims.json,
+  // so the two pages cannot report different numbers for the same league.
+  const showcasePath = path.join(root, SHOWCASE_RELATIVE_PATH);
+  if (fs.existsSync(showcasePath)) claims.showcase = JSON.parse(fs.readFileSync(showcasePath, "utf8"));
   return claims;
 }
 
@@ -170,7 +176,27 @@ function renderGallery(claims) {
   return `<div class="site-gallery">\n${items.join("\n")}\n</div>`;
 }
 
+// Three figures from the simulated decade, in the order a newcomer would ask:
+// is the league competitive, can a club still build a dynasty, do careers add up.
+const HERO_DECADE_CARDS = Object.freeze(["champions", "dynasty", "passing"]);
+
+function renderHeroDecade(claims) {
+  const showcase = claims.showcase;
+  const cards = HERO_DECADE_CARDS.map((id) => (showcase?.cards || []).find((card) => card.id === id));
+  if (!showcase || cards.some((card) => !card)) return "";
+  const stats = cards.map((card) =>
+    `<div class="hero-decade-stat"><dt>${escapeHtml(card.label)}</dt><dd>${escapeHtml(card.value)}</dd><dd class="hero-decade-detail">${escapeHtml(card.detail)}</dd></div>`);
+  return [
+    '<aside class="hero-decade" aria-labelledby="heroDecadeTitle">',
+    `  <p class="hero-decade-kicker" id="heroDecadeTitle">One league, ${escapeHtml(showcase.seasons)} seasons, played out by the game itself</p>`,
+    `  <dl class="hero-decade-stats">\n${stats.join("\n")}\n  </dl>`,
+    `  <p class="hero-decade-note">A simulated league, seasons ${escapeHtml(showcase.startYear)} to ${escapeHtml(showcase.endYear)}, not player data. <a href="./stats">See the whole decade</a></p>`,
+    "</aside>"
+  ].join("\n");
+}
+
 export const CLAIM_BLOCKS = Object.freeze({
+  "hero-decade": renderHeroDecade,
   "features-cards": renderFeatureCards,
   "feature-tour": renderFeatureTour,
   facts: renderFacts,

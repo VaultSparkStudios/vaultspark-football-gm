@@ -62,7 +62,7 @@ test('practice return and invalid placement refuse without changing the saved fr
  const replacement=session.league.players.find(q=>q.teamId==='BUF'&&q.rosterSlot==='active'&&q.experience===0);assert.ok(replacement);replacement.rosterSlot='practice';
  assert.equal(session.getRoster('BUF').find(q=>q.id===p.id).reserveStatus.activation.reasonCode,'PRACTICE_SQUAD_FULL');refused({active:false});
  const bad=session.toSnapshot();bad.league.players.find(q=>q.id===p.id).reserveStatus.countsAgainstReturnLimit=false;
- assert.throws(()=>createSessionFromSnapshot(bad),/Invalid reserve receipt/);
+ assert.throws(()=>createSessionFromSnapshot(bad),/Invalid reserve record/);
 });
 test('actual weekly play cannot turn ordinary Practice Squad/Injured salary into active service',()=>{
  const {session,p,designate}=fixture();p.injury.weeksRemaining=9;assert.equal(designate().ok,true);

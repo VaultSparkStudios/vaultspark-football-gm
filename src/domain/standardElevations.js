@@ -106,14 +106,14 @@ export function recordElevationPracticeRejoin(player,{teamId}){
 export function retainedElevationCap(ledger={}) {
   const charges=ledger.elevationCharges;
   if(charges===undefined)return retainedElevationInjuryCap(ledger);
-  if(!Array.isArray(charges))fail('cap receipts');
+  if(!Array.isArray(charges))fail('cap charges');
   const keys=new Set();let cents=0;
   for(const row of charges){
     if(!exactKeys(row,['year','gameId','playerId','amountCents','status'])||typeof row.playerId!=='string'||!row.playerId||typeof row.gameId!=='string'||!row.gameId
-      ||!nonnegative(row.amountCents)||!Number.isSafeInteger(row.year)||row.year<2022||row.year>2200||!['reserved','earned'].includes(row.status))fail('cap receipt');
-    const key=JSON.stringify([row.playerId,row.gameId]);if(keys.has(key))fail('duplicate cap receipt');keys.add(key);cents+=row.amountCents;
+      ||!nonnegative(row.amountCents)||!Number.isSafeInteger(row.year)||row.year<2022||row.year>2200||!['reserved','earned'].includes(row.status))fail('cap charge');
+    const key=JSON.stringify([row.playerId,row.gameId]);if(keys.has(key))fail('duplicate cap charge');keys.add(key);cents+=row.amountCents;
   }
-  if(!nonnegative(cents))fail('cap receipt sum');
+  if(!nonnegative(cents))fail('cap charge sum');
   return cents/100+retainedElevationInjuryCap(ledger);
 }
 
@@ -154,7 +154,7 @@ export function validateSnapshotStandardElevations(snapshot) {
     const player=(league.players||[]).find(p=>p.id===charge.playerId)|| (league.retiredPlayers||[]).find(p=>p.id===charge.playerId);
     const row=player&&history(player).find(r=>r.game.gameId===charge.gameId&&r.teamId===teamId);
     if(!row||row.game.seasonType!=='regular'||row.game.year!==charge.year||row.capChargeCents!==charge.amountCents
-      ||charge.status!==(row.status==='declared'?'reserved':'earned'))fail('unmatched cap receipt');
+      ||charge.status!==(row.status==='declared'?'reserved':'earned'))fail('unmatched cap charge');
   }
   validateSnapshotElevationInjuryPay({league});
 }
@@ -229,7 +229,7 @@ export function settleStandardElevationGame({league,result,priorClubListGames,di
     const update={status:'reverted'};let charge=null;
     if(row.game.seasonType==='playoffs'){
       if(typeof priorClubListGames!=='function'||typeof divisionWinner!=='function'
-        ||![result.homeTeamId,result.awayTeamId].includes(result.winnerId))fail('postseason entitlement authority missing');
+        ||![result.homeTeamId,result.awayTeamId].includes(result.winnerId))fail('postseason entitlement basis missing');
       update.priorClubListGames=priorClubListGames(player,row.teamId,row.game.year,result.gameId);
       update.divisionWinner=divisionWinner(row.teamId);update.won=result.winnerId===row.teamId;
       const rate=postseasonElevationSalaryForSeason(row.game.year,{round:row.game.round,...update});

@@ -7,6 +7,8 @@ import { aggregateCommunitySnapshot } from "./aggregateCommunitySnapshot.js";
 import { COMMUNITY_BATCH_LIMIT, normalizeCommunityEvent } from "./eventContract.js";
 import { DIAGNOSTIC_BATCH_LIMIT, normalizeDiagnosticReport, normalizeFeedback } from "./feedbackContract.js";
 import { isChallengeWeekKey, normalizeChallengeScore, openChallengeWeeks } from "./challengeContract.js";
+import { createTurnstileHumanCheck } from "./humanCheck.js";
+import { normalizeLeaguePulse } from "./pulseContract.js";
 
 const PORT = Number(process.env.PORT || 8082);
 const MAX_BODY_BYTES = 32 * 1024;
@@ -23,8 +25,18 @@ const HOUR_MS = 60 * 60 * 1000;
 const FEEDBACK_LIMIT_PER_HOUR = 5;
 const FEEDBACK_CAPABILITY_LIMIT_PER_HOUR = 10;
 const FEEDBACK_CAPABILITY_USES = 2;
+// Two more bounds behind the hourly one, because five an hour from each of a
+// few addresses is still enough to bury a day's reading: one address gets a
+// dozen notes a day, and the whole service accepts a bounded number an hour.
+const FEEDBACK_LIMIT_PER_DAY = 12;
+const FEEDBACK_SERVICE_LIMIT_PER_HOUR = 120;
+const FEEDBACK_SERVICE_KEY = "feedback-service";
 const DIAGNOSTICS_LIMIT_PER_HOUR = 30;
 const CHALLENGE_SCORE_LIMIT_PER_HOUR = 20;
+// A pulse is sent when the game is hidden or closed and after each season, so
+// an honest browser sends a handful an hour; a whole household on one address
+// stays well under this.
+const PULSE_LIMIT_PER_HOUR = 60;
 
 export function runtimeSourceRevision(value = process.env.SOURCE_REVISION) {
   const revision = String(value || "").trim();
@@ -274,8 +286,12 @@ export function createCommunityStatsHandler({
   addressKey = createPrivacySafeAddressKey(),
   feedbackRateLimit = createMemoryRateLimiter({ limit: FEEDBACK_LIMIT_PER_HOUR, windowMs: HOUR_MS }),
   feedbackCapabilityRateLimit = createMemoryRateLimiter({ limit: FEEDBACK_CAPABILITY_LIMIT_PER_HOUR, windowMs: HOUR_MS }),
+  feedbackDailyRateLimit = createMemoryRateLimiter({ limit: FEEDBACK_LIMIT_PER_DAY, windowMs: 24 * HOUR_MS }),
+  feedbackServiceRateLimit = createMemoryRateLimiter({ limit: FEEDBACK_SERVICE_LIMIT_PER_HOUR, windowMs: HOUR_MS }),
+  humanCheck = createTurnstileHumanCheck(),
   diagnosticsRateLimit = createMemoryRateLimiter({ limit: DIAGNOSTICS_LIMIT_PER_HOUR, windowMs: HOUR_MS }),
   challengeScoreRateLimit = createMemoryRateLimiter({ limit: CHALLENGE_SCORE_LIMIT_PER_HOUR, windowMs: HOUR_MS }),
+  pulseRateLimit = createMemoryRateLimiter({ limit: PULSE_LIMIT_PER_HOUR, windowMs: HOUR_MS }),
   challengeClock = () => Date.now()
 } = {}) {
   if (!store) throw new Error("Community Stats handler requires a store.");
@@ -327,6 +343,9 @@ export function createCommunityStatsHandler({
         // to a throwaway identifier and counted per address by the hour instead
         // of against the per-address browser limit that protects the statistics.
         const feedbackOnly = body.purpose === "feedback";
+        // With a human check configured, nothing is issued (and no allowance
+        // is spent) until Cloudflare confirms the token this browser solved.
+        if (humanCheck) await humanCheck.verify(body.humanCheckToken);
         const issuance = feedbackOnly ? feedbackCapabilityRateLimit(privateAddressKey) : capabilityIssueRateLimit(privateAddressKey, id);
         if (!issuance.ok) { sendJson(res, 429, { ok: false, error: "Participation capability limit reached; try again shortly." }, { "Retry-After": String(issuance.retryAfter) }); return; }
         const lease = feedbackOnly ? capabilities.issue(id, { scope: "feedback", useLimit: FEEDBACK_CAPABILITY_USES }) : capabilities.issue(id);
@@ -342,6 +361,12 @@ export function createCommunityStatsHandler({
           sendJson(res, 400, { ok: false, error: "Expected schemaVersion 1.0, a request identifier, a category and a message." }); return;
         }
         capabilities.consume(body.capability, id, "feedback");
+        // Counted only for a note that is otherwise acceptable, so a refused
+        // request cannot use up anybody's day or the service's hour.
+        const daily = feedbackDailyRateLimit(privateAddressKey);
+        if (!daily.ok) { sendJson(res, 429, { ok: false, error: "Feedback limit reached for today; please use email instead." }, { "Retry-After": String(daily.retryAfter) }); return; }
+        const service = feedbackServiceRateLimit(FEEDBACK_SERVICE_KEY);
+        if (!service.ok) { sendJson(res, 429, { ok: false, error: "The feedback inbox is busy; try again later or use email." }, { "Retry-After": String(service.retryAfter) }); return; }
         // The request identifier only binds the capability; it is not stored.
         await store.saveFeedback(feedback);
         sendJson(res, 202, { ok: true, receivedAt: new Date().toISOString() }, { "Cache-Control": "no-store" }); return;
@@ -400,6 +425,38 @@ export function createCommunityStatsHandler({
         const board = await store.challengeBoard(week);
         sendJson(res, 200, board, { "Cache-Control": "public, max-age=30, s-maxage=60" }); return;
       }
+      // First steps: how many participating browsers reached each early
+      // milestone, and how long people were away before coming back. The same
+      // figures the snapshot carries, on their own for a report to read.
+      if (req.method === "GET" && url.pathname === "/community/v1/first-steps") {
+        const snapshot = await store.snapshot();
+        const payload = {
+          schemaVersion: snapshot.schemaVersion,
+          computedAt: snapshot.computedAt,
+          suppressionThreshold: snapshot.suppressionThreshold,
+          denominator: snapshot.denominator,
+          periods: Object.fromEntries(Object.entries(snapshot.periods || {}).map(([key, period]) => [key, period.firstSteps ?? null]))
+        };
+        sendJson(res, 200, payload, { "Cache-Control": "public, max-age=30, s-maxage=60, stale-while-revalidate=300" }); return;
+      }
+      // League Pulse: anonymous counters, on by default in the game with an
+      // opt-out. No identifier, no capability and no stored row per request:
+      // the counters are added to a daily total and the request is forgotten.
+      // An allowed browser origin is still required (checked above), the
+      // address is only used, keyed and in memory, to rate-limit, and every
+      // counter has a per-pulse ceiling (pulseContract.js).
+      if (req.method === "POST" && url.pathname === "/community/v1/pulse") {
+        const allowance = pulseRateLimit(privateAddressKey);
+        if (!allowance.ok) { sendJson(res, 429, { ok: false, error: "Pulse limit reached; try again later." }, { "Retry-After": String(allowance.retryAfter) }); return; }
+        const counts = normalizeLeaguePulse(await readJson(req));
+        if (!counts) { sendJson(res, 400, { ok: false, error: "Expected a pulse-1 payload of known counters within their limits." }, { "Cache-Control": "no-store" }); return; }
+        const result = await store.addPulse(counts);
+        sendJson(res, 202, { ok: true, ...result }, { "Cache-Control": "no-store" }); return;
+      }
+      if (req.method === "GET" && url.pathname === "/community/v1/pulse") {
+        const totals = await store.pulseTotals();
+        sendJson(res, 200, totals, { "Cache-Control": "public, max-age=60, s-maxage=120, stale-while-revalidate=600" }); return;
+      }
       if (req.method === "DELETE" && url.pathname === "/community/v1/participation") {
         const body = await readJson(req);
         const id = participantId(body.participantId);
@@ -411,7 +468,9 @@ export function createCommunityStatsHandler({
       sendJson(res, 404, { ok: false, error: "Community Stats route not found." }, { "Cache-Control": "no-store" });
     } catch (error) {
       const status = Number(error.status || 500);
-      sendJson(res, status, { ok: false, error: status >= 500 ? "Community Stats is temporarily unavailable." : error.message }, { "Cache-Control": "no-store" });
+      // A human-check refusal names the widget to solve; nothing else about the failure is sent.
+      const extra = error.humanCheck ? { humanCheck: error.humanCheck } : {};
+      sendJson(res, status, { ok: false, error: status >= 500 && !error.humanCheck ? "Community Stats is temporarily unavailable." : error.message, ...extra }, { "Cache-Control": "no-store" });
     }
   };
 }

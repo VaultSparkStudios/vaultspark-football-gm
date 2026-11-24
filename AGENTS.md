@@ -14,6 +14,25 @@ Public-safe rule:
 - keep deployable code and browser-safe configuration in this repo
 - keep internal operating procedures, private planning, secret-handling workflows, and detailed studio process docs in the private Studio OS / ops repository
 
+## This game: where things live
+
+Franchise Architect: Football is a browser football-management game. The simulation runs in the player's browser; the only servers are an optional game API and a small community service.
+
+| Area | Path | Notes |
+|---|---|---|
+| Simulation rules | `src/domain/`, `src/engine/`, `src/sport/`, `src/stats/` | Pure logic. Deterministic for a given seed; golden baselines in `test/` fail on any drift. |
+| Season runner | `src/runtime/GameSession.js` | Owns a league in memory. CPU clubs call the same methods the player does, so permission checks belong at the shared command boundary, not here. |
+| Browser API | `src/app/api/localApiRuntime.js` | The in-browser stand-in for the server; the build copies its module graph into the site. |
+| Game client | `public/game.html`, `public/app.js`, `public/lib/` | Plain ES modules, no framework. Each screen is a lazily imported module with a byte budget (`npm run check:browser-boot`). |
+| Site pages | `public/*.html`, `public/site.css`, `public/footer-manifest.json`, `public/content/claims.json` | Header, footer, share images and structured data are written at build time by `scripts/lib/public-chrome.mjs`. Public claims come from `claims.json`. |
+| Community service | `src/community/` | The Gridiron Census (anonymous counters, on by default with an opt-out; `pulseContract.js`), opt-in Community Stats, feedback, error reports and the weekly challenge board. |
+| Build | `scripts/build-pages.mjs` → `static/` | Minifies, hashes stylesheets, writes headers, redirects and the service worker. `npm run smoke:pages` checks the result. |
+| Machine-readable surfaces | `public/agents.json`, `public/.well-known/llms.txt`, `public/schemas/` | The Co-GM briefing export has a published JSON Schema. |
+
+Tests: `npm run test:core`, `test:runtime`, `test:sim:contract`, `test:sim:realism`, `test:studio` and `test:long` run Node test shards; `npm run test:ui` runs the Playwright specs in `tests-ui/`. Wording and layout changes usually need matching edits in `tests-ui/` and `scripts/responsive-evidence.mjs`.
+
+Some documents named further down (`docs/STUDIO_CANON.md`, `docs/STUDIO_ARK.md`, `docs/EXECUTION_CONTRACT.md`, `docs/AGENT_ACTION_REFERENCE.md`, `docs/RIGHTS_PROVENANCE.md`) are kept in the private Studio operations repository and are not part of this public one.
+
 ## IP and Licensing (CANON-008)
 
 All VaultSpark Studios code, content, assets, and designs are **proprietary by default**. All rights are reserved by VaultSpark Studios LLC unless a license is explicitly declared and approved by the Studio Owner.

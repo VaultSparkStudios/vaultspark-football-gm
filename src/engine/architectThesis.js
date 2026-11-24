@@ -83,7 +83,7 @@ export function setArchitectThesis(league, input = {}) {
       ok: false,
       status: 409,
       reasonCode: "ARCHITECT_THESIS_REVISION_CONFLICT",
-      error: "The Architect thesis changed in another view. Reload its current authority before saving.",
+      error: "Your Architect Plan changed in another view. Reload it before saving.",
       thesis: getArchitectThesis(league, teamId)
     };
   }
@@ -91,7 +91,7 @@ export function setArchitectThesis(league, input = {}) {
   if (hasAdaptation && adaptationMode) {
     const source = latestObservedEntry(league, teamId);
     if (!source) {
-      return { ok: false, status: 409, reasonCode: "ARCHITECT_THESIS_NEEDS_FILM", error: "Commit one weekly receipt before declaring an adaptation hypothesis." };
+      return { ok: false, status: 409, reasonCode: "ARCHITECT_THESIS_NEEDS_FILM", error: "Play one week before declaring an adjustment." };
     }
     pendingAdaptation = {
       mode: adaptationMode,

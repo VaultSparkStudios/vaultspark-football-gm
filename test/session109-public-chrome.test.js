@@ -106,12 +106,12 @@ test("the manifest footer labels every destination and marks the current page", 
   const footer = renderFooter(manifest, { currentPage: "about.html" });
   assert.match(footer, /aria-current="page"/);
   assert.match(footer, />About</);
-  assert.match(footer, />Changelog</);
+  assert.doesNotMatch(footer, />Changelog</, "the changelog is reached from Updates, not the footer (S133)");
   assert.match(footer, /target="_blank" rel="noopener"/, "external links open in a new tab");
 });
 
 test("the footer renders the manifest's groups, and every destination sits in exactly one of them", () => {
-  assert.deepEqual(manifest.footerGroups.map((group) => group.label), ["Play", "Learn", "Project", "Legal"]);
+  assert.deepEqual(manifest.footerGroups.map((group) => group.label), ["Play", "The game", "Studio", "Legal"]);
   const report = inspectFooterGroups(manifest);
   assert.equal(report.grouped, true);
   assert.deepEqual([report.missing, report.unknown, report.duplicated, report.unlabelled], [[], [], [], []]);
@@ -122,7 +122,7 @@ test("the footer renders the manifest's groups, and every destination sits in ex
   }
   assert.equal((footer.match(/<a /g) || []).length, manifest.footerLinks.length + 1, "each destination is linked once, plus the Studio link-back");
   assert.match(footer, /href="\.\/guides\.html" aria-current="page"/);
-  for (const page of ["guides.html", "compare.html", "media.html"]) {
+  for (const page of ["guides.html", "press.html", "simulation.html"]) {
     assert.ok(manifest.footerLinks.includes(`./${page}`), `${page} is a footer destination`);
     assert.ok(fs.existsSync(path.join(publicDir, page)), `${page} exists`);
   }
@@ -161,7 +161,7 @@ test("a destination has one label in the header and the footer", () => {
   for (const href of manifest.headerLinks.filter((link) => link !== "./index.html")) {
     assert.equal(headerLabels.get(href), footerLabels.get(href), `${href} is labelled the same in both`);
   }
-  assert.equal(footerLabels.get("./stats"), "Community Stats");
+  assert.equal(footerLabels.get("./stats"), "Gridiron Census");
   assert.equal(footerLabels.get("./status.html"), "Updates");
   const labels = Object.values(manifest.labels);
   assert.equal(new Set(labels).size, labels.length, "no two destinations share a label");

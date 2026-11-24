@@ -4861,14 +4861,12 @@ html[data-theme="light"] .bg-layer {
   min-height: 44px;
 }
 
-.legal-wrap {
-  width: min(920px, calc(100vw - 32px));
-  margin: 0 auto;
-  padding: 34px 0 54px;
-}
-
-.legal-panel {
-  line-height: 1.6;
+.community-first-steps-title {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .footer-link-row {
@@ -5916,6 +5914,12 @@ html[data-theme="light"] .bg-layer {
   .week-recap-card { left: 12px; right: 12px; max-width: none; bottom: 76px; }
 }
 
+/* ── Install the app: one dismissible line on the Desk ── */
+.install-hint { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 12px; padding: 10px 14px; border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; background: var(--inset); font-size: 0.8rem; }
+.install-hint > span { flex: 1 1 220px; }
+.install-hint button { min-height: 44px; }
+.install-hint-dismiss { background: none; border-color: transparent; color: var(--muted); }
+
 /* ── Position-Room Watch (S73) ── */
 .room-watch { margin: 8px 0 12px; padding: 10px; border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; background: var(--inset); }
 .room-watch--action-required { border-left-color: var(--danger); }
@@ -6565,3 +6569,28 @@ details.desk-group[open] > summary { margin-bottom: 12px; }
   #gmProfileTab .row > label { flex: 1 1 100%; }
   #gmProfileTab .row > label > input { width: 100%; }
 }
+
+/* S133 Frame Matters: the scout's read of a body. */
+.player-frame-strip { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; align-items: stretch; }
+.player-frame-strip > p { flex-basis: 100%; margin: 2px 0 0; }
+.frame-cell { position: relative; display: grid; gap: 2px; min-width: 86px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--inset); overflow: hidden; }
+.frame-cell span { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.frame-cell strong { font-family: var(--font-display); font-size: 1.15rem; color: var(--ink-strong); font-variant-numeric: tabular-nums; }
+.frame-archetype strong { color: var(--accent-strong); }
+.frame-ras i { position: absolute; left: 0; bottom: 0; height: 3px; width: var(--ras, 0%); background: var(--accent-2); }
+.frame-ras-elite i { background: var(--success); }
+.frame-ras-poor i { background: var(--danger); }
+.body-program { flex-basis: 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 4px; }
+.body-program > span { margin-right: 4px; color: var(--muted); }
+.body-program-btn { padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--ink); font-size: 0.8rem; cursor: pointer; }
+.body-program-btn.active { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent-strong); }
+/* S133: the drive chart under the Sim-Watch field. */
+.sw-drives { display: block; width: 100%; height: auto; min-height: 36px; margin-top: 6px; background: linear-gradient(90deg, rgba(40, 110, 60, .35), rgba(30, 95, 50, .35)); border-radius: 6px; }
+.sw-drive-yard { stroke: rgba(255, 255, 255, .14); stroke-width: .6; }
+.sw-drive-mid { stroke: rgba(255, 255, 255, .32); }
+.sw-drive line { stroke-width: 3; stroke-linecap: round; }
+.sw-drive-home line, .sw-drive-home circle { stroke: var(--accent-2); fill: var(--accent-2); }
+.sw-drive-away line, .sw-drive-away circle { stroke: var(--accent); fill: var(--accent); }
+.sw-drive-td line { stroke-width: 4; }
+.sw-drive-turnover line { stroke-dasharray: 3 2; }
+.sw-drive text { font-size: 6px; font-weight: 700; fill: var(--ink-strong); }

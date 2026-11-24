@@ -56,7 +56,7 @@ test("empty evidence remains visibly empty instead of receiving fabricated progr
   assert.ok(portfolio.paths.every((path) => path.status === "awaiting-evidence"));
   assert.ok(portfolio.paths.every((path) => path.evidenceCount === 0));
   assert.equal(portfolio.signature, null);
-  assert.match(portfolio.focus.reason, /no committed evidence/i);
+  assert.match(portfolio.focus.reason, /no results yet/i);
 });
 
 test("the strongest signature is visible with its source count and honest empty state", () => {

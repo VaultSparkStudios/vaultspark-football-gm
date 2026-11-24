@@ -40,6 +40,7 @@ import { recordElevationPracticeRejoin,recordPermanentElevationActivation } from
 import { assertAnnualElevationInjuryContractTransition } from '../domain/elevationInjuryPay.js';
 import { advancePreRolloverMedicalCalendar } from '../domain/preRolloverMedicalCalendar.js';
 import {startOffseasonMedicalCalendar,advanceOffseasonMedicalCalendar,validateSnapshotOffseasonMedicalCalendar} from '../domain/offseasonMedicalCalendar.js';
+import { applyBodyProgram } from "../domain/bodyProgram.js";
 
 // Fictional CPU development preference, not an expected future rating or an
 // observed NFL coefficient. Current position grade stays dominant: upside
@@ -365,6 +366,10 @@ export function applyAgingProgressionAndRetirements(league, year, rng, options =
       potentialHeadroomCentre: -reversionCentres.gapCentre,
       potentialReversion: potentialReversionFor(player, reversionCentres)
     };
+    // S133: a body programme the GM chose lands before development, so the
+    // overall it is graded on already reflects the new frame. Only players
+    // with a programme are touched; no random number is drawn.
+    const bodyChange = player.bodyProgram ? applyBodyProgram(player) : null;
     const move = progressPlayer(player, rng, context);
     const row = {
       playerId: player.id,
@@ -378,7 +383,8 @@ export function applyAgingProgressionAndRetirements(league, year, rng, options =
       potential: Number.isFinite(Number(player.potential)) ? Number(player.potential) : null,
       potentialRevision: player.lastPotentialRevision || null,
       trait: player.developmentTrait || null,
-      retired: false
+      retired: false,
+      ...(bodyChange ? { bodyProgram: bodyChange } : {})
     };
     progressed.push(row);
     const chance = retirementChance(player, team, {

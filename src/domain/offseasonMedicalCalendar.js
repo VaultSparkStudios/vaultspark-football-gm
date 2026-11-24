@@ -23,7 +23,7 @@ export function validateSnapshotOffseasonMedicalCalendar(snapshot){
   if(!exact(row)||row.version!==OFFSEASON_MEDICAL_VERSION||!Number.isSafeInteger(row.sourceYear)||row.sourceYear<2022||row.sourceYear>=2200
    ||row.earningYear!==row.sourceYear+1||row.sourceYear>league.year||row.earningYear>current||!anchor||row.finalGameId!==anchor.finalGameId
    ||!Number.isSafeInteger(row.throughWeek)||![0,6,7,8,25].includes(row.throughWeek)||seen.has(row.earningYear)
-   ||row.earningYear<=league.year&&row.throughWeek!==25)fail('interval authority');
+   ||row.earningYear<=league.year&&row.throughWeek!==25)fail('interval coverage');
   if(league.admittedInjuryPayroll?.some(pay=>pay.earningYear===row.earningYear&&pay.phase==='offseason'&&pay.week>row.throughWeek))fail('wage outside elapsed interval');
   seen.add(row.earningYear);
  }

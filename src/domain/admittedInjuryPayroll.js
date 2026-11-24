@@ -183,7 +183,7 @@ export function commitAdmittedRegularAccrual(league,{year,week,receipts}={}){
   if(existing){
    if(existing.version===RECONCILED_ADMITTED_PAYROLL_VERSION){
     if(existing.grossCents!==captured.amountCents)fail('conflicting earned rate');
-   }else if(JSON.stringify(existing)!==JSON.stringify(captured))fail('conflicting earned receipt');
+   }else if(JSON.stringify(existing)!==JSON.stringify(captured))fail('conflicting earned record');
    continue;
   }
   if(year!==league.year||year!==financialYearForLeague(league)||league.capLedger?.[right.teamId]?.rolloverAppliedThroughYear>=year)fail('regular financial year closed');

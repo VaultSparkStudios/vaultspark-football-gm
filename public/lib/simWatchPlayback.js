@@ -242,3 +242,35 @@ export function createSimWatchPlayback({
     }
   });
 }
+
+/**
+ * S133: the game as a drive chart. One row per drive, in order: who had the
+ * ball, where it started and ended on a 0-100 field drawn from the home end
+ * zone (same orientation as deriveFieldState), and how it finished. Plays
+ * without a recorded spot are skipped rather than invented.
+ */
+export function buildDriveChart(plays = [], teamIds = {}, throughIndex = Infinity) {
+  const drives = [];
+  let previous = null;
+  const last = Math.min(plays.length - 1, Number.isFinite(throughIndex) ? throughIndex : plays.length - 1);
+  for (let index = 0; index <= last; index += 1) {
+    const play = { ...plays[index] };
+    play.__derivedDriveKey = driveKey(play, index, previous);
+    previous = play;
+    const spot = deriveFieldState(play, teamIds);
+    const text = String(play.description || play.type || "").toLowerCase();
+    let drive = drives[drives.length - 1];
+    if (!drive || drive.key !== play.__derivedDriveKey) {
+      drive = { key: play.__derivedDriveKey, teamId: play.offenseTeamId || null, startX: spot ? spot.x : null, endX: spot ? spot.x : null, plays: 0, result: null };
+      drives.push(drive);
+    }
+    drive.plays += 1;
+    if (spot) { if (drive.startX == null) drive.startX = spot.x; drive.endX = spot.x; }
+    const type = String(play.type || "").toLowerCase();
+    if (text.includes("touchdown")) drive.result = "td";
+    else if (type === "field-goal" || text.includes("field goal is good")) drive.result = "fg";
+    else if (type === "interception" || type === "fumble" || /intercept|fumble/.test(text)) drive.result = "turnover";
+    else if (type === "punt" || text.includes("punt")) drive.result = drive.result || "punt";
+  }
+  return drives.filter((drive) => drive.startX != null).map(({ key, ...drive }) => drive);
+}

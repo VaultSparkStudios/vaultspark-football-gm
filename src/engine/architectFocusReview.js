@@ -97,7 +97,7 @@ export function buildArchitectFocusReview({
     nextAction: ACTIONS[pathId] || null,
     summary: newReceipt
       ? `${evidenceDelta} new source receipt${evidenceDelta === 1 ? "" : "s"} moved this review beyond its declaration baseline.`
-      : "No new source receipt has changed this focus since declaration.",
+      : "No new result has changed this focus since you set it.",
     disclaimer: "This review compares recorded evidence; it does not infer that a decision caused an outcome."
   };
 }
