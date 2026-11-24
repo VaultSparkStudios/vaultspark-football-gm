@@ -4,7 +4,7 @@
 // numbers come from the engine (src/domain/physicalProfile.js), measured
 // against the league today, and the same model moves the games.
 import { escapeHtml } from "./appCore.js";
-import { state } from "./appState.js";
+import { state, TEAM_THEME_MAP } from "./appState.js";
 import { buildPlayerMovementControls as movementControls, buildPlayerPhysiqueSvg as physiqueRenderer } from "./playerPortrait.js";
 
 const FRAME_HINTS = Object.freeze({
@@ -67,7 +67,7 @@ export function renderPlayerPhysique(player) {
   }
   return `<details class="player-physique"><summary>Physique &amp; measurables</summary>
     <div class="player-body-comparisons">
-    <div class="player-physique-front"><strong class="player-body-view-label">Front silhouette</strong>${physiqueRenderer(player)}</div>
+    <div class="player-physique-front"><strong class="player-body-view-label">Front silhouette</strong>${physiqueRenderer(player, { teamColors: TEAM_THEME_MAP[String(player?.teamId || "").toUpperCase()] || null })}</div>
     <details class="player-physique-side"><summary>Side silhouette</summary>${physiqueRenderer(player, { view: "side", idSuffix: "-dossier-side" })}</details>
     ${movementControls(player)}
     </div>
@@ -81,6 +81,6 @@ export function renderPlayerPhysique(player) {
           : reconciliation?.status === 'companion-dimension-missing' ? ' · companion foot dimension missing; visual estimate used' : '';
       return `<div><dt>${label}</dt><dd>${escapeHtml(display + note)}</dd></div>`;
     }).join("")}</dl>
-    <p class="small">Training kit without pads. Front and side share a height scale. Body shape and missing limb measurements are visual estimates.</p>
+    <p class="small">Front view in the club's game kit; side view in a training kit without pads. Front and side share a height scale. Body shape and missing limb measurements are visual estimates.</p>
   </details>`;
 }

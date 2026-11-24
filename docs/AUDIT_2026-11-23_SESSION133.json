@@ -155,7 +155,7 @@
       "innovation": 9,
       "effortHours": 14,
       "priority": 6.1,
-      "status": "shipped-reduced",
+      "status": "shipped",
       "readinessArea": "core journeys and product correctness",
       "stageRationale": "FORGE/FB public-beta hardening, wave 2 of the S133 order.",
       "recipe": "physicalProfile.js measures each position's centre from the live league per game (never a constant, never stored) and turns height, weight, wingspan, arm and hand into bounded rating edges: pass blocking, pass rush, run fits, coverage, tackling, catch radius, passer sight, broken tackles and ball security; heavy-and-fast and light-for-position bodies carry more injury risk, and the scouting medical read uses the same model.",
@@ -191,6 +191,11 @@
           "at": "2026-11-24T00:30:00Z",
           "status": "shipped-reduced",
           "note": "Shipped in the sim, injuries and medical read. Reduced: the separate aging curve for physical ratings is deferred, because moving which ratings absorb development changes overall and needs its own measured parity window."
+        },
+        {
+          "at": "2026-11-24T09:00:00Z",
+          "status": "shipped",
+          "note": "Second wave: aging by frame. A veteran heavy for his position whose ratings fell moves one point of the fall from strength to speed (zero-sum, no random draw); golden master s133-v9 with v8 frozen by hash."
         }
       ]
     },
@@ -320,6 +325,16 @@
           "at": "2026-11-24T00:30:00Z",
           "status": "shipped-reduced",
           "note": "Shipped for portraits. Reduced: helmets, the full-body game kit and the 3D kit are carried."
+        },
+        {
+          "at": "2026-11-24T09:00:00Z",
+          "status": "shipped-reduced",
+          "note": "Second wave: the full-body view wears the club's game kit with a helmet and a position facemask (lineman cage, open masks for skill players). Reduced: the 3D kit is carried."
+        },
+        {
+          "at": "2026-11-24T10:00:00Z",
+          "status": "shipped-reduced",
+          "note": "Second wave: the 3D body wears the club's primary colour. Reduced: no helmet in the 3D view (the 3D head renderer is separate)."
         }
       ]
     },
@@ -363,6 +378,11 @@
           "at": "2026-11-24T00:30:00Z",
           "status": "shipped-reduced",
           "note": "Reduced: the animated field hero, screenshot feature cards and moving saves and backups into the game are carried."
+        },
+        {
+          "at": "2026-11-24T09:00:00Z",
+          "status": "shipped-reduced",
+          "note": "Second wave: an animated field strip in the hero (CSS only, still under reduced motion) and a screenshot on every feature card. Reduced: saves and backups stay on the start page because returning players resume from there."
         }
       ]
     },
@@ -406,6 +426,11 @@
           "at": "2026-11-24T00:30:00Z",
           "status": "shipped-reduced",
           "note": "Reduced: About, Press, Media and Contact remain separate pages."
+        },
+        {
+          "at": "2026-11-24T09:00:00Z",
+          "status": "shipped-reduced",
+          "note": "Second wave: the stats page is titled Gridiron Census. Reduced: About, Press, Media and Contact remain separate pages; Contact is a launch-evidence surface and the footer already groups them under Studio."
         }
       ]
     },
@@ -492,6 +517,11 @@
           "at": "2026-11-24T01:45:00Z",
           "status": "shipped-reduced",
           "note": "Reduced: scenario codes and a scenario board on the Census are carried; challenge codes already share a league."
+        },
+        {
+          "at": "2026-11-24T10:00:00Z",
+          "status": "shipped-reduced",
+          "note": "Second wave: challenge codes carry the scenario (archetype slug, validated), so Copy Challenge Code shares a Cap Hell or No Quarterback start and the start page applies it. Reduced: a per-scenario results board is not built (the Census counts carry no scenario dimension)."
         }
       ]
     },
@@ -508,7 +538,7 @@
       "innovation": 8,
       "effortHours": 14,
       "priority": 5.1,
-      "status": "deferred",
+      "status": "shipped",
       "readinessArea": "core journeys and product correctness",
       "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the S133 order.",
       "recipe": "Clock, war-board, trade-up calls and steal-or-bust retrospectives.",
@@ -535,6 +565,16 @@
           "at": "2026-11-24T00:30:00Z",
           "status": "deferred",
           "note": "Deferred to S134."
+        },
+        {
+          "at": "2026-11-24T09:00:00Z",
+          "status": "shipped-reduced",
+          "note": "Second wave: the existing war room and on-clock trade market now show each prospect's 40, wingspan and vertical, and the board has 40 and wingspan columns. Reduced: steal-or-bust retrospectives in the league news are carried (they need an engine change)."
+        },
+        {
+          "at": "2026-11-24T09:30:00Z",
+          "status": "shipped",
+          "note": "Steal-or-bust retrospectives: three seasons after a draft the league news names its biggest late-round steal and first-round bust with their combine numbers (test/draft-retrospective.test.js). Together with the existing war room, on-clock trade market and the new measurables, the Draft Day room is complete for this scope."
         }
       ]
     },
@@ -594,7 +634,7 @@
       "innovation": 7,
       "effortHours": 8,
       "priority": 5.9,
-      "status": "deferred",
+      "status": "shipped",
       "readinessArea": "core journeys and product correctness",
       "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the S133 order.",
       "recipe": "Hall of Fame and achievements across saves.",
@@ -621,6 +661,11 @@
           "at": "2026-11-24T00:30:00Z",
           "status": "deferred",
           "note": "Deferred to S134."
+        },
+        {
+          "at": "2026-11-24T09:00:00Z",
+          "status": "shipped",
+          "note": "Second wave: GM Profile keeps one row per franchise in this browser (only ever moving forward) and shows the career across every franchise; tests in test/gm-legacy-ledger.test.js."
         }
       ]
     },
@@ -664,6 +709,11 @@
           "at": "2026-11-24T00:30:00Z",
           "status": "deferred",
           "note": "Deferred."
+        },
+        {
+          "at": "2026-11-24T09:00:00Z",
+          "status": "deferred",
+          "note": "Kept deferred: the boot budget governs JavaScript (649,284/650,000) and the stylesheet is cached by the service worker after the first visit; a split risks every screen's styling for a first-visit gain that was not measured."
         }
       ]
     },

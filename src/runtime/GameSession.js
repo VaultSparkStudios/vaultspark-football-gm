@@ -6660,6 +6660,48 @@ export class GameSession {
     };
   }
 
+  // S133 draft-day stories: three seasons on, the league news names the class's
+  // biggest late-round steal and first-round bust, with the combine numbers
+  // that were on the board that day. Reads history only; draws no random number.
+  reportDraftRetrospective() {
+    const year = Number(this.currentYear) - 3;
+    const draft = (this.league.draftHistory || []).find((entry) => Number(entry.year) === year);
+    if (!draft?.selections?.length) return [];
+    const people = new Map([...(this.league.players || []), ...(this.league.retiredPlayers || [])].map((player) => [player.id, player]));
+    const rows = draft.selections.map((selection) => ({ selection, player: people.get(selection.playerId) })).filter((row) => row.player);
+    const combineLine = (player) => {
+      const workout = player.scouting?.combine || player.workout || {};
+      const parts = [
+        Number.isFinite(Number(workout.forty)) ? `${Number(workout.forty).toFixed(2)} forty` : null,
+        Number.isFinite(Number(player.measurements?.wingspanInches)) ? `${Number(player.measurements.wingspanInches).toFixed(1)}-inch wingspan` : null
+      ].filter(Boolean);
+      return parts.length ? ` On draft day he ran a ${parts.join(" with a ")}.` : "";
+    };
+    const steal = rows.filter(({ selection, player }) => Number(selection.round) >= 4 && Number(player.overall) >= 80)
+      .sort((a, b) => Number(b.player.overall) - Number(a.player.overall) || String(a.player.id).localeCompare(String(b.player.id)))[0];
+    const bust = rows.filter(({ selection, player }) => Number(selection.round) === 1 && Number(player.overall) < 70)
+      .sort((a, b) => Number(a.player.overall) - Number(b.player.overall) || String(a.player.id).localeCompare(String(b.player.id)))[0];
+    const reported = [];
+    for (const [kind, row] of [["steal", steal], ["bust", bust]]) {
+      if (!row) continue;
+      const { selection, player } = row;
+      reportMilestone(this.league, {
+        type: `draft-${kind}`,
+        year: this.currentYear,
+        teamIds: [selection.teamId].filter(Boolean),
+        playerIds: [player.id],
+        headline: kind === "steal"
+          ? `Steal of the ${year} draft: ${player.name}, round ${selection.round}`
+          : `Bust of the ${year} draft: ${player.name}, pick ${selection.pick}`,
+        detail: kind === "steal"
+          ? `Taken ${selection.pick}th overall by ${selection.teamId}, now rated ${player.overall}.${combineLine(player)}`
+          : `A first-round pick by ${selection.teamId} three seasons ago, now rated ${player.overall}.${combineLine(player)}`
+      });
+      reported.push(kind);
+    }
+    return reported;
+  }
+
   advanceSeasonAwardsPhase() {
     // Hall of Fame inductions announce themselves (S62): diff the hall
     // before/after refresh and celebrate new members through the inbox.
@@ -6676,6 +6718,7 @@ export class GameSession {
         detail: `Career AV ${entry.careerAv} · ${entry.championships} title${entry.championships === 1 ? "" : "s"} · Class of ${this.currentYear}. Open the Hall to hold the induction ceremony.`
       });
     }
+    this.reportDraftRetrospective();
     this.prepareDraft();
     this.seedCompLedgerForUpcomingOffseason();
     this.resetOffseasonPipeline(this.currentYear);

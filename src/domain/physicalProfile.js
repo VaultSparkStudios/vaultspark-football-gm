@@ -152,6 +152,22 @@ export function frameInjuryFactor(player, norms) {
   return clamp(1 + heavyAndFast * 0.06 + light * 0.07 - Math.max(0, s.weight - 0.5) * Math.max(0, (70 - speed) / 20) * 0.02, 0.9, 1.2);
 }
 
+/**
+ * Aging by frame: a heavy body loses a step before it loses strength. For a
+ * player 28 or older who is heavy for his position (z >= 1) and whose ratings
+ * fell this offseason (delta < 0), one point of the fall moves from strength
+ * to speed. Zero-sum per player, no random number. Returns whether it applied.
+ */
+export function applyFrameAging(player, norms, delta) {
+  if (!(Number(delta) < 0) || !(Number(player?.age) >= 28) || !player?.ratings) return false;
+  const speed = Number(player.ratings.speed), strength = Number(player.ratings.strength);
+  if (!Number.isFinite(speed) || !Number.isFinite(strength) || speed <= 40 || strength >= 99) return false;
+  if (frameScores(player, norms).weight < 1) return false;
+  player.ratings.speed = speed - 1;
+  player.ratings.strength = strength + 1;
+  return true;
+}
+
 // ── Scouting measurables a fan knows ────────────────────────────────────────
 
 /** Speed Score (Bill Barnwell's): weight * 200 / forty^4. ~100 is average for a back. */

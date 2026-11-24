@@ -83,7 +83,12 @@ export function buildDraftPressureModel({ draft = null, scoutingBoard = [], rost
         urgency,
         value,
         story: narrative.backstory,
-        pressureTrait: narrative.pressureTrait
+        pressureTrait: narrative.pressureTrait,
+        measurables: [
+          Number.isFinite(Number(prospect.workout?.forty)) ? `${Number(prospect.workout.forty).toFixed(2)} forty` : null,
+          Number.isFinite(Number(prospect.measurements?.wingspanInches)) ? `${Number(prospect.measurements.wingspanInches).toFixed(1)}″ wingspan` : null,
+          Number.isFinite(Number(prospect.workout?.vertical)) ? `${Number(prospect.workout.vertical).toFixed(1)}″ vertical` : null
+        ].filter(Boolean).join(" · ")
       };
     })
     .sort((a, b) => b.value - a.value)
@@ -173,6 +178,10 @@ export function renderDraft() {
     age: prospect.age,
     height: formatHeight(prospect.heightInches),
     weight: prospect.weightLbs || "-",
+    // S133: draft-day measurables. Size and workouts are public, and the
+    // games now read them (Frame Matters), so the board shows them.
+    wingspan: Number.isFinite(Number(prospect.measurements?.wingspanInches)) ? `${Number(prospect.measurements.wingspanInches).toFixed(1)}″` : "-",
+    forty: Number.isFinite(Number(prospect.workout?.forty)) ? Number(prospect.workout.forty).toFixed(2) : "-",
     // S108 — the scout's read, not the answer key. True OVR/POT stay with the
     // engine; the board sells the reveal and this table no longer undercuts it.
     scoutOvr: prospect.scouting?.scoutedOverall ?? "-",
@@ -226,6 +235,7 @@ export function renderDraftWarRoom() {
         <div class="draft-target-card">
           <strong>${escapeHtml(target.player || target.id)}</strong>
           <div>${escapeHtml(target.pos || "-")} | ${escapeHtml(target.label)} | Rank ${escapeHtml(target.rank)} | ${escapeHtml(target.stealRisk)} steal risk</div>
+          ${target.measurables ? `<div class="draft-target-measurables small">${escapeHtml(target.measurables)}</div>` : ""}
           <div class="draft-target-story">${escapeHtml(target.story || "The room has no background read yet.")}</div>
         </div>`).join("") : `<div class="narrative-empty">No draft targets loaded yet.</div>`}
     </div>
@@ -424,38 +434,10 @@ export function renderScoutingSpotlight(featured = null, latestReport = null) {
   );
 }
 
+// The combine table loads when the combine is shown, not with the draft screen
+// (S133 moved it out to keep the draft island's declared headroom).
 export function renderCombineResults() {
-  const table = document.getElementById("combineResultsTable");
-  if (!table) return;
-  const results = state.dashboard?.combineResults || [];
-  if (!results.length) {
-    table.innerHTML = `<div class="narrative-empty">No combine data. Run the combine above.</div>`;
-    return;
-  }
-  const sorted = [...results].sort((a, b) => (b.grade || 0) - (a.grade || 0));
-  // The drills a scout reads first; a dash where the position did not run it.
-  const drill = (p, key, digits) => {
-    const value = Number(p.events?.[key]);
-    return Number.isFinite(value) ? value.toFixed(digits) : "—";
-  };
-  table.innerHTML = `<table class="data-table"><thead><tr>
-    <th>Name</th><th>Pos</th><th>Scout OVR</th><th title="40-yard dash, seconds">40</th><th title="Vertical jump, inches">Vert</th><th title="Bench press reps at 225 lb">Bench</th><th>Grade</th><th>Tier</th>
-  </tr></thead><tbody>` +
-  sorted.map((p) => {
-    const g = p.grade ?? 0;
-    const cls = g >= 78 ? "combine-grade-elite" : g >= 65 ? "combine-grade-good" : g >= 50 ? "combine-grade-avg" : "combine-grade-poor";
-    const tier = g >= 78 ? "Elite" : g >= 65 ? "Good" : g >= 50 ? "Average" : "Poor";
-    return `<tr>
-      <td>${escapeHtml(p.name || p.id || "")}</td>
-      <td>${escapeHtml(p.position || p.pos || "")}</td>
-      <td>${escapeHtml(String(p.overall ?? "—"))}</td>
-      <td>${escapeHtml(drill(p, "fortyYard", 2))}</td>
-      <td>${escapeHtml(drill(p, "verticalJump", 1))}</td>
-      <td>${escapeHtml(drill(p, "benchPress", 0))}</td>
-      <td class="${cls}">${escapeHtml(String(p.grade ?? "—"))}</td>
-      <td class="${cls}">${tier}</td>
-    </tr>`;
-  }).join("") + `</tbody></table>`;
+  return import("./draftCombineTable.js").then((table) => table.renderCombineResults());
 }
 
 // S86 [audit #2] — the reveal body lives in ./draftPickReveal.js and is loaded

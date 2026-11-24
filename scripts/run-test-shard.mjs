@@ -223,6 +223,8 @@ export const SHARDS = {
     "test/physical-profile.test.js",
     "test/body-program.test.js",
     "test/drive-chart.test.js",
+    "test/gm-legacy-ledger.test.js",
+    "test/draft-retrospective.test.js",
     "test/community-store.test.js",
     "test/community-resilience.test.js",
     "test/html-escape-helpers.test.js",

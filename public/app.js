@@ -2340,7 +2340,8 @@ async function copyChallengeCode() {
     startYear: meta.startYear,
     teamId: state.speedrunChallenge?.teamId || meta.controlledTeamId,
     rivalSeasons: bestYou?.seasons ?? null,
-    rivalName: bestYou?.playerName ?? null
+    rivalName: bestYou?.playerName ?? null,
+    archetype: state.dashboard?.settings?.franchiseArchetype ?? null
   });
   if (!code) { showToast("Could not build challenge code"); return; }
   const { challengeLink } = await import("./lib/weeklyChallenge.js");

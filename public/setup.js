@@ -775,6 +775,8 @@ function applyChallenge(decoded, message = null) {
     teamSelect.value = decoded.teamId;
     syncHeroTeam();
   }
+  const archetype = document.getElementById("franchiseArchetypeInput");
+  if (decoded.archetype && archetype && [...archetype.options].some((o) => o.value === decoded.archetype)) archetype.value = decoded.archetype;
   saveRivalTarget(decoded.rivalSeasons ? decoded : null);
   setStatus(
     message ||

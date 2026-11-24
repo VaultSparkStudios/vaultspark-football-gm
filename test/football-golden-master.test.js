@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { createHash } from "node:crypto";
-import { computeGoldenMaster, diffGoldenMaster, GOLDEN_MASTER_FIXTURE, HISTORICAL_GOLDEN_MASTER_FIXTURE, S118_GOLDEN_MASTER_FIXTURE, S119_GOLDEN_MASTER_FIXTURE, S131_GOLDEN_MASTER_FIXTURE, S132_V5_GOLDEN_MASTER_FIXTURE, S132_V6_GOLDEN_MASTER_FIXTURE, S132_V7_GOLDEN_MASTER_FIXTURE, GOLDEN_MASTER_SCENARIOS } from "../scripts/golden-master.mjs";
+import { computeGoldenMaster, diffGoldenMaster, GOLDEN_MASTER_FIXTURE, HISTORICAL_GOLDEN_MASTER_FIXTURE, S118_GOLDEN_MASTER_FIXTURE, S119_GOLDEN_MASTER_FIXTURE, S131_GOLDEN_MASTER_FIXTURE, S132_V5_GOLDEN_MASTER_FIXTURE, S132_V6_GOLDEN_MASTER_FIXTURE, S132_V7_GOLDEN_MASTER_FIXTURE, S133_V8_GOLDEN_MASTER_FIXTURE, GOLDEN_MASTER_SCENARIOS } from "../scripts/golden-master.mjs";
 
 // S116 Phase 0: every multi-sport extraction step must leave football byte-identical.
 // A mismatch names the drifted sections. Regenerate the fixture only for an
@@ -132,7 +132,7 @@ test("S132 wording baseline preserves v6 byte-identical and moves only the secti
 test("S133 Frame Matters baseline preserves v7 byte-identical and moves the simulation from the first game", () => {
   const v7Bytes = fs.readFileSync(S132_V7_GOLDEN_MASTER_FIXTURE);
   assert.equal(createHash('sha256').update(v7Bytes).digest('hex'), '9f109807151189f5c0c4262aaba5d71e581d66f1979bcfd99f1bd51549a0a752');
-  const v7 = JSON.parse(v7Bytes), current = JSON.parse(fs.readFileSync(GOLDEN_MASTER_FIXTURE));
+  const v7 = JSON.parse(v7Bytes), current = JSON.parse(fs.readFileSync(S133_V8_GOLDEN_MASTER_FIXTURE));
   const lines = diffGoldenMaster(v7, current);
   // Sections appear and empty out where different games create or clear them
   // (an admitted injury continuation, a rival GM's memory). Scenarios may not
@@ -145,6 +145,19 @@ test("S133 Frame Matters baseline preserves v7 byte-identical and moves the simu
     assert.ok(lines.includes(`${id}: league.schedule changed`) || lines.some((line) => line.startsWith(`${id}: `) && /stat|season/i.test(line)), `${id}: results moved`);
     assert.notDeepEqual(current.scenarios[id].summary.champions, v7.scenarios[id].summary.champions, "the change reaches who wins");
     assert.equal(current.scenarios[id].sections['league.settings'], v7.scenarios[id].sections['league.settings'], 'league settings are untouched');
+  }
+});
+
+test("S133 aging baseline preserves v8 byte-identical and moves only from the first offseason", () => {
+  const v8Bytes = fs.readFileSync(S133_V8_GOLDEN_MASTER_FIXTURE);
+  assert.equal(createHash('sha256').update(v8Bytes).digest('hex'), '0404689fe13411fddf1e4af3ee4a109853249f45e5fbd341b272df227a9f589d');
+  const v8 = JSON.parse(v8Bytes), current = JSON.parse(fs.readFileSync(GOLDEN_MASTER_FIXTURE));
+  const lines = diffGoldenMaster(v8, current);
+  assert.notDeepEqual(lines, [], 'the aging rule records an actual behavior change');
+  for (const line of lines) assert.doesNotMatch(line, /scenario missing|unexpected scenario/, line);
+  for (const id of Object.keys(v8.scenarios)) {
+    assert.ok(lines.includes(`${id}: league.players changed`), `${id}: rosters moved`);
+    assert.deepEqual(current.scenarios[id].summary.champions[0], v8.scenarios[id].summary.champions[0], 'the first season, before any offseason, is untouched');
   }
 });
 

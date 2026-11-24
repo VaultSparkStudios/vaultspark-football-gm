@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  applyFrameAging,
   ballSecurityFactor,
   buildFrameNorms,
   buildWorkoutNorms,
@@ -114,4 +115,18 @@ test("a null or empty measurement is missing, not zero", () => {
   const plain = { position: "WR", heightInches: 73, weightLbs: 200, status: "active" };
   assert.equal(frameEdge(withNull, "catchRadius", norms), frameEdge(plain, "catchRadius", norms));
   assert.equal(ballSecurityFactor(withNull, norms), ballSecurityFactor(plain, norms));
+});
+
+test("a heavy veteran loses a step before strength; nobody else changes, and the total never moves", () => {
+  const norms = buildFrameNorms(league());
+  const heavyVet = { ...body("RB", 71, 240), age: 30, ratings: { speed: 85, strength: 70 } };
+  assert.equal(applyFrameAging(heavyVet, norms, -1), true);
+  assert.deepEqual(heavyVet.ratings, { speed: 84, strength: 71 });
+  const young = { ...body("RB", 71, 240), age: 25, ratings: { speed: 85, strength: 70 } };
+  const average = { ...body("RB", 71, 215), age: 30, ratings: { speed: 85, strength: 70 } };
+  const improving = { ...body("RB", 71, 240), age: 30, ratings: { speed: 85, strength: 70 } };
+  assert.equal(applyFrameAging(young, norms, -1), false);
+  assert.equal(applyFrameAging(average, norms, -1), false);
+  assert.equal(applyFrameAging(improving, norms, 1), false);
+  assert.deepEqual(young.ratings, { speed: 85, strength: 70 });
 });

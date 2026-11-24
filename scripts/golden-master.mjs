@@ -46,7 +46,11 @@ export const S132_V7_GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures",
 // radius, broken tackles, fumbles and injuries; the combine reads the measured
 // workout and its own derived stream, and the pro day reads the combine.
 // Every simulated section moves from the first game.
-export const GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s133-v8.json");
+export const S133_V8_GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s133-v8.json");
+// S133 (second wave): aging by frame. A veteran heavy for his position whose
+// ratings fell moves one point of the fall from strength to speed (zero-sum,
+// no random draw). Only offseason progression and what follows it move.
+export const GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s133-v9.json");
 export const GOLDEN_MASTER_SCENARIOS = Object.freeze([
   Object.freeze({ id: "drive-20260306-BUF", seed: 20260306, mode: "drive", controlledTeamId: "BUF", seasons: 3 }),
   Object.freeze({ id: "play-4113-CHI", seed: 4113, mode: "play", controlledTeamId: "CHI", seasons: 3 })

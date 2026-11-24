@@ -82,7 +82,11 @@ function fromBase64Url(b64url) {
  * @param {string} [input.rivalName]    display name of the challenger
  * @returns {string|null} challenge code, or null on invalid input
  */
-export function encodeChallengeCode({ seed, startYear, teamId, rivalSeasons, rivalName } = {}) {
+// S133: a code can carry the franchise scenario (archetype), so a Cap Hell or
+// No Quarterback start can be shared like any other league. Slug only.
+const ARCHETYPE_RE = /^[a-z][a-z0-9-]{1,23}$/;
+
+export function encodeChallengeCode({ seed, startYear, teamId, rivalSeasons, rivalName, archetype } = {}) {
   const s = Number(seed);
   const y = Number(startYear);
   const t = String(teamId || "").toUpperCase();
@@ -93,6 +97,10 @@ export function encodeChallengeCode({ seed, startYear, teamId, rivalSeasons, riv
   const payload = { s, y, t };
   if (rs != null) payload.rs = rs;
   if (rn) payload.rn = rn;
+  if (archetype != null && archetype !== "" && archetype !== "balanced") {
+    if (!ARCHETYPE_RE.test(String(archetype))) return null;
+    payload.a = String(archetype);
+  }
   const body = toBase64Url(JSON.stringify(payload));
   if (body.length > CHALLENGE_BODY_MAX_LENGTH) return null;
   const code = `${CODE_PREFIX}.${body}.${checksum4(`${CODE_PREFIX}.${body}`)}`;
@@ -127,12 +135,14 @@ export function decodeChallengeCode(code) {
   if (!validSeed(seed) || !validStartYear(startYear) || !TEAM_ID_RE.test(teamId)) return null;
   if (!validRivalSeasons(rivalSeasons)) return null;
   if (payload?.rn != null && !rivalName) return null;
+  if (payload?.a != null && !ARCHETYPE_RE.test(String(payload.a))) return null;
   return {
     seed,
     startYear,
     teamId,
     rivalSeasons,
-    rivalName
+    rivalName,
+    ...(payload?.a != null ? { archetype: String(payload.a) } : {})
   };
 }
 

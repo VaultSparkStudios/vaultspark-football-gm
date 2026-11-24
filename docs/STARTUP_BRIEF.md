@@ -3,7 +3,7 @@
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: 06c3f662e849c4b7 -->
-<!-- genius-authority-fingerprint: 13f9719abdbde544 -->
+<!-- genius-authority-fingerprint: 26f378ac70d544cd -->
 <!-- session-authority: committed=S133 · SIL=S133 · status=S133 · handoff=S133; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
@@ -115,9 +115,6 @@
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
 ║  ✓ cache source: AUDIT_2026-11-23_SESSION133.json                ║
 ║                                                                  ║
-║  #3 · 🔨 · frame-matters                                         ║
-║  Frame Matters: a player's body changes the games                ║
-║                                                                  ║
 ║  #6 · 🔨 · players-in-uniform                                    ║
 ║  Players wear their club's colours                               ║
 ║                                                                  ║
@@ -129,6 +126,9 @@
 ║                                                                  ║
 ║  #10 · 🔨 · franchise-scenarios                                  ║
 ║  Franchise scenarios with shareable codes                        ║
+║                                                                  ║
+║  #14 · 🔨 · css-split                                            ║
+║  Split the game stylesheet by screen                             ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 

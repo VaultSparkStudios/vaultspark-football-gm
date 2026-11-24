@@ -38,7 +38,7 @@ function profiledLimbPath(x0, y0, x1, y1, diameter, sections, shoulderCap = fals
   };
   return `M${n(left[0].x)} ${n(left[0].y)} ${left.slice(1).map((p,i)=>curve(left[i],p)).join(' ')} L${n(right[0].x)} ${n(right[0].y)} ${right.slice(1).map((p,i)=>curve(right[i],p)).join(' ')}${shoulderCap?` Q${n(x0)} ${n(y0-diameter*.32)} ${n(left[0].x)} ${n(left[0].y)}`:''}Z`;
 }
-export function buildPlayerPhysiqueSvg(player, { idSuffix = "", view = "front" } = {}) {
+export function buildPlayerPhysiqueSvg(player, { idSuffix = "", view = "front", teamColors = null } = {}) {
   const rawFrame = player?.visualFrame, a = player?.appearance;
   const craft = a?.fineFaceVersion === 'fine-face-v1';
   const f = rawFrame ? { ...rawFrame, ...renderableIndividualAnatomy(rawFrame) } : rawFrame;
@@ -167,10 +167,19 @@ export function buildPlayerPhysiqueSvg(player, { idSuffix = "", view = "front" }
   const head = buildPlayerPortraitSvg(player, { headOnly: true, idSuffix: `-${id}-head` })
     .replace('<svg class="player-portrait-svg"', `<svg x="${n(160 - headWidth / 2)}" y="${n(headTop)}" width="${n(headWidth)}" height="${n(headHeight)}" class="physique-head"`);
   const reach = f.wingspanInches * 2;
+  // S133 game kit: club jersey, white game pants and a helmet with a
+  // position facemask, only when the caller passes the club's colours. Without
+  // them the training-kit drawing is byte-identical to every saved look.
+  const kitPrimary = kitHex(teamColors?.primary);
+  const kitTrim = kitHex(teamColors?.secondary) && kitHex(teamColors?.secondary) !== kitPrimary ? kitHex(teamColors.secondary) : "#e8ecee";
+  const shirtStops = kitPrimary ? `<stop stop-color="${blend(kitPrimary, "#000", .35)}"/><stop offset=".5" stop-color="${kitPrimary}"/><stop offset="1" stop-color="${blend(kitPrimary, "#000", .35)}"/>` : '<stop stop-color="#203e4b"/><stop offset=".5" stop-color="#39616a"/><stop offset="1" stop-color="#203e4b"/>';
+  const shortsStops = kitPrimary ? bodyClothStops("#e3e7e8") : bodyClothStops(TRAINING_KIT_COLOR);
+  const numberFill = kitPrimary ? kitTrim : "#dce6e7";
+  const helmet = kitPrimary ? gameHelmetMarkup({ x: 160, skullTop: headTop + 65 * headScale, skullHeight, headScale, primary: kitPrimary, trim: kitTrim, position: player.position }) : "";
   return `<svg class="player-physique-svg" viewBox="${bodyViewBox}" role="img" aria-label="${escape(player.name || "Player")} physique, ${escape(f.heightInches)} inches, ${escape(f.weightLbs)} pounds" data-height="${escape(f.heightInches)}" data-weight="${escape(f.weightLbs)}" data-arm-length="${escape(f.armLengthInches)}">
     <defs><linearGradient id="${id}-skin">${craft?bodySkinStops(skin,skinLighting):`<stop stop-color="${skinShade}"/><stop offset=".45" stop-color="${skin}"/><stop offset="1" stop-color="${skinShade}"/>`}</linearGradient>
-      <linearGradient id="${id}-shirt"><stop stop-color="#203e4b"/><stop offset=".5" stop-color="#39616a"/><stop offset="1" stop-color="#203e4b"/></linearGradient>
-      <linearGradient id="${id}-pants">${craft?bodyClothStops('#9caeb4'):`<stop stop-color="#8c9da5"/><stop offset=".35" stop-color="#b9c3c7"/><stop offset=".7" stop-color="#c9d1d3"/><stop offset="1" stop-color="#91a1a8"/>`}</linearGradient>${craft?`<linearGradient id="${id}-shorts">${bodyClothStops(TRAINING_KIT_COLOR)}</linearGradient>`:''}</defs>
+      <linearGradient id="${id}-shirt">${shirtStops}</linearGradient>
+      <linearGradient id="${id}-pants">${craft?bodyClothStops('#9caeb4'):`<stop stop-color="#8c9da5"/><stop offset=".35" stop-color="#b9c3c7"/><stop offset=".7" stop-color="#c9d1d3"/><stop offset="1" stop-color="#91a1a8"/>`}</linearGradient>${craft?`<linearGradient id="${id}-shorts">${shortsStops}</linearGradient>`:''}</defs>
     ${cameraLeft===0&&cameraTop===0?'<rect width="320" height="620" rx="12" fill="#14232c"/>':`<rect x="${cameraLeft}" y="${cameraTop}" width="${cameraWidth}" height="${620-cameraTop}" rx="12" fill="#14232c"/>`}
     <path d="M32 54 V570 H294" stroke="#779099" stroke-width="1" opacity=".6" fill="none"/>
     ${[24, 48, 72, 84].map(inches => `<path d="M28 ${floor - inches * unit} H37" stroke="#a5b8bf"/><text x="24" y="${floor - inches * unit + 3}" text-anchor="end" fill="#c2d0d5" font-size="9" font-family="system-ui">${inches}″</text>`).join("")}
@@ -181,9 +190,31 @@ export function buildPlayerPhysiqueSvg(player, { idSuffix = "", view = "front" }
       ${craft ? torsoSurfaceMarkup({x:160,y:shoulderY,length:hipY-shoulderY,chest:shoulder*2,waist:waist*2,neck,sections:frontSections},{projection:'front',neckOpening:modernJoins,fill:`url(#${id}-shirt)`,id:`${id}-front`}) : `<path d="M${n(160 - shoulder - armWidth * .28)} ${n(shoulderY + 22)} Q${n(160 - shoulder - armWidth*.35)} ${n(shoulderY+5)} ${n(160-shoulder*.86)} ${n(shoulderY-2)} Q${n(160-neck)} ${n(shoulderY-10)} ${n(160-neck*.75)} ${n(shoulderY)} Q160 ${n(shoulderY+11)} ${n(160+neck*.75)} ${n(shoulderY)} Q${n(160+neck)} ${n(shoulderY-10)} ${n(160+shoulder*.86)} ${n(shoulderY-2)} Q${n(160+shoulder+armWidth*.35)} ${n(shoulderY+5)} ${n(160+shoulder+armWidth*.28)} ${n(shoulderY+22)} L${n(160+shoulder-3)} ${n(shoulderY+31)} Q${n(160+shoulder*.95)} ${n(shoulderY+(hipY-shoulderY)*.65)} ${n(160+waist)} ${n(hipY-9)} Q160 ${n(hipY+1)} ${n(160-waist)} ${n(hipY-9)} Q${n(160-shoulder*.95)} ${n(shoulderY+(hipY-shoulderY)*.65)} ${n(160-shoulder+3)} ${n(shoulderY+31)}Z" fill="url(#${id}-shirt)"/>`}
       ${modernJoins?'':`<path d="M${n(160 - neck * .75)} ${n(shoulderY)} Q160 ${n(shoulderY + 21)} ${n(160 + neck * .75)} ${n(shoulderY)}" fill="none" stroke="#c2d0d5" stroke-width="3"/>`}
       ${craft?'':`<path d="M${n(160 - shoulder * .6)} ${n(shoulderY + 34)} Q160 ${n(shoulderY + 51)} ${n(160 + shoulder * .6)} ${n(shoulderY + 34)} M160 ${n(shoulderY + 40)} v30" fill="none" stroke="#13242f" stroke-width="2" opacity="${n(.2 + f.muscleDefinition * .4)}"/>`}
-      <text x="160" y="${n(shoulderY + (hipY - shoulderY) * .6)}" text-anchor="middle" fill="#dce6e7" font-size="32" font-weight="800" font-family="system-ui">${escape(player.jerseyNumber ?? "")}</text>${head}
+      <text x="160" y="${n(shoulderY + (hipY - shoulderY) * .6)}" text-anchor="middle" fill="${numberFill}" font-size="32" font-weight="800" font-family="system-ui">${escape(player.jerseyNumber ?? "")}</text>${head}${helmet}
     </g>
     <path d="M${n(160 - reach / 2)} 593 H${n(160 + reach / 2)} M${n(160 - reach / 2)} 589 v8 M${n(160 + reach / 2)} 589 v8" stroke="#a5b8bf" fill="none"/>
     <text x="160" y="611" text-anchor="middle" fill="#c2d0d5" font-size="10" font-family="system-ui">Reach reference · ${escape(n(f.wingspanInches))}″</text>
   </svg>`;
+}
+
+// A plain six-digit hex only, so nothing from a save reaches the SVG as markup.
+function kitHex(value) {
+  const text = String(value || "").trim();
+  return /^#[0-9a-f]{6}$/i.test(text) ? text.toLowerCase() : null;
+}
+
+// The helmet sits over the measured skull. Facemasks follow the position:
+// linemen wear a cage, backs and receivers an open mask, kickers and
+// quarterbacks the fewest bars.
+function gameHelmetMarkup({ x, skullTop, skullHeight, headScale, primary, trim, position }) {
+  const half = 64 * headScale, top = skullTop - 5 * headScale, sh = skullHeight;
+  const brim = top + sh * .6, chin = top + sh * .92;
+  const shell = `M${n(x - half)} ${n(brim)} C${n(x - half)} ${n(top - sh * .08)} ${n(x + half)} ${n(top - sh * .08)} ${n(x + half)} ${n(brim)} L${n(x + half * .92)} ${n(top + sh * .78)} L${n(x + half * .62)} ${n(top + sh * .74)} L${n(x + half * .62)} ${n(brim - sh * .02)} L${n(x - half * .62)} ${n(brim - sh * .02)} L${n(x - half * .62)} ${n(top + sh * .74)} L${n(x - half * .92)} ${n(top + sh * .78)}Z`;
+  const bars = { OL: 4, DL: 4, TE: 3, LB: 3, RB: 3, DB: 2, WR: 2, QB: 2, K: 1, P: 1 }[position] ?? 2;
+  const mask = Array.from({ length: bars }, (_, i) => {
+    const y = brim + (chin - brim) * ((i + 1) / (bars + 1));
+    return `<path d="M${n(x - half * .66)} ${n(y)} Q${n(x)} ${n(y + sh * .05)} ${n(x + half * .66)} ${n(y)}"/>`;
+  }).join("");
+  const cage = bars >= 4 ? `<path d="M${n(x - half * .2)} ${n(brim)} V${n(chin)} M${n(x + half * .2)} ${n(brim)} V${n(chin)}"/>` : "";
+  return `<g class="physique-game-helmet" data-position="${escape(position || "")}"><path d="${shell}" fill="${primary}" stroke="${blend(primary, "#000", .4)}" stroke-width="1.2"/><path d="M${n(x)} ${n(top - sh * .02)} V${n(brim - sh * .02)}" stroke="${trim}" stroke-width="${n(4 * headScale)}" stroke-linecap="round"/><path d="M${n(x - half * .7)} ${n(top + sh * .2)} Q${n(x - half * .2)} ${n(top - sh * .02)} ${n(x + half * .1)} ${n(top + sh * .02)}" stroke="#fff" stroke-opacity=".35" stroke-width="${n(3 * headScale)}" fill="none"/><g class="physique-facemask" stroke="#c9d1d6" stroke-width="${n(2.4 * headScale)}" fill="none" stroke-linecap="round">${mask}${cage}<path d="M${n(x - half * .66)} ${n(brim)} V${n(chin - sh * .04)} M${n(x + half * .66)} ${n(brim)} V${n(chin - sh * .04)}"/></g></g>`;
 }

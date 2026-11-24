@@ -88,3 +88,11 @@ test("fnv1a is stable for known input", () => {
   assert.equal(fnv1a("VSFC1"), fnv1a("VSFC1"));
   assert.notEqual(fnv1a("VSFC1"), fnv1a("VSFC2"));
 });
+
+test("a challenge code can carry the franchise scenario, and only as a plain slug (S133)", () => {
+  const code = encodeChallengeCode({ seed: 4113, startYear: 2026, teamId: "CHI", archetype: "cap-hell" });
+  assert.equal(decodeChallengeCode(code).archetype, "cap-hell");
+  assert.equal(decodeChallengeCode(encodeChallengeCode({ seed: 4113, startYear: 2026, teamId: "CHI" })).archetype, undefined, "older codes keep their shape");
+  assert.equal(decodeChallengeCode(encodeChallengeCode({ seed: 4113, startYear: 2026, teamId: "CHI", archetype: "balanced" })).archetype, undefined, "the default needs no field");
+  assert.equal(encodeChallengeCode({ seed: 4113, startYear: 2026, teamId: "CHI", archetype: "<script>" }), null);
+});

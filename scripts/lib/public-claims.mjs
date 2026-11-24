@@ -89,6 +89,9 @@ function renderFeatureCards(claims) {
       : ` <a href="./features.html#${escapeHtml(feature.id)}" aria-label="More about ${escapeHtml(feature.title)}">More <span aria-hidden="true">→</span></a>`;
     return [
       '<article class="why-card">',
+      // S133: each card shows its own screenshot; lazy, sized, and decoded off
+      // the main thread so the landing page's first paint does not wait on it.
+      ...(feature.image?.src ? [`  <img class="why-card-shot" src="${escapeHtml(feature.image.src)}" alt="${escapeHtml(feature.image.alt || "")}" width="1440" height="900" loading="lazy" decoding="async" />`] : []),
       `  <h3>${escapeHtml(feature.title)}</h3>`,
       `  <p>${escapeHtml(feature.teaser)}${more}</p>`,
       "</article>"

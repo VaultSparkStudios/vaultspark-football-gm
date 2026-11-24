@@ -12,6 +12,7 @@
  */
 
 import { api, state } from "./appState.js";
+import { gmLegacyMarkup, recordFranchiseCareer, summarizeGmLegacy } from "./gmLegacyLedger.js";
 import { escapeHtml } from "./appCore.js";
 import { observeBackgroundTask, recordClientDiagnostic } from "./clientDiagnostics.js";
 import { dashboardAuthorityKey } from "./franchiseScope.js";
@@ -88,7 +89,9 @@ function renderCareer(career) {
     <h3>Clubs managed</h3>
     ${clubs}
     <h3>Legacy tier</h3>
-    ${tierMarkup(career)}`;
+    ${tierMarkup(career)}
+    <h3>Across every franchise</h3>
+    ${gmLegacyMarkup(summarizeGmLegacy(recordFranchiseCareer({ dashboard: state.dashboard, career })), { escapeHtml, card: statCard })}`;
 }
 
 // ── Trophy Case: progress on the trophies still locked ───────────────────────

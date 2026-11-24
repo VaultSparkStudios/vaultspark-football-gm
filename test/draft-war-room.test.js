@@ -70,3 +70,13 @@ test("prospect narratives include deterministic backstory pressure", () => {
   assert.ok(first.pressureTrait.length > 4);
   assert.match(first.line, /Staff flag:/);
 });
+
+test("war room targets carry the prospect's draft-day measurables (S133)", () => {
+  const model = buildDraftPressureModel({
+    draft: { currentPick: 1, totalPicks: 224, order: ["BUF"], slots: [{ round: 1 }], available: [
+      { id: "p1", name: "Long Corner", position: "DB", scouting: { rank: 1, projectedRound: 1 }, workout: { forty: 4.38, vertical: 39 }, measurements: { wingspanInches: 79.25 } }
+    ] },
+    controlledTeamId: "BUF"
+  });
+  assert.equal(model.targets[0].measurables, "4.38 forty · 79.3″ wingspan · 39.0″ vertical");
+});

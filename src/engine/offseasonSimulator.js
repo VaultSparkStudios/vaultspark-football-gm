@@ -41,6 +41,7 @@ import { assertAnnualElevationInjuryContractTransition } from '../domain/elevati
 import { advancePreRolloverMedicalCalendar } from '../domain/preRolloverMedicalCalendar.js';
 import {startOffseasonMedicalCalendar,advanceOffseasonMedicalCalendar,validateSnapshotOffseasonMedicalCalendar} from '../domain/offseasonMedicalCalendar.js';
 import { applyBodyProgram } from "../domain/bodyProgram.js";
+import { applyFrameAging, buildFrameNorms } from "../domain/physicalProfile.js";
 
 // Fictional CPU development preference, not an expected future rating or an
 // observed NFL coefficient. Current position grade stays dominant: upside
@@ -346,6 +347,9 @@ export function applyAgingProgressionAndRetirements(league, year, rng, options =
   // per offseason, from the league as it stood before anyone was progressed, so
   // every player is differentiated against the same centre.
   const { potentialCentre } = measurePotentialCentre(league);
+  // S133 Frame Matters: position centres for the aging split below, measured
+  // once from the league as it stood before anyone was progressed.
+  const frameNorms = buildFrameNorms(league.players || []);
   // S108 — the development ledger. One row per progressed player, captured
   // from the returned move rather than re-derived, so the record is exactly
   // what the engine did. Retirees stay in it with `retired: true`: the S107
@@ -371,6 +375,14 @@ export function applyAgingProgressionAndRetirements(league, year, rng, options =
     // with a programme are touched; no random number is drawn.
     const bodyChange = player.bodyProgram ? applyBodyProgram(player) : null;
     const move = progressPlayer(player, rng, context);
+    // A heavy body loses a step before it loses strength. For a veteran heavy
+    // for his position whose ratings fell this year, one point of the fall
+    // moves from strength to speed: the total is unchanged, no random number is
+    // drawn, and nothing changes for anyone else.
+    if (applyFrameAging(player, frameNorms, move.delta)) {
+      player.overall = calculatePositionOverall(player.position, player.ratings);
+      move.after = Number(player.overall);
+    }
     const row = {
       playerId: player.id,
       teamId: player.teamId,
