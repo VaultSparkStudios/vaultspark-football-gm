@@ -27,7 +27,9 @@ const ALLOWED_ORIGIN = "https://playfranchisearchitect.com";
 
 // Browser stand-ins, installed per test and always restored (shards share one process).
 function withBrowser({ gpc = false, dnt = null, stored = {} } = {}, run) {
-  const saved = { localStorage: globalThis.localStorage, navigator: Object.getOwnPropertyDescriptor(globalThis, "navigator") };
+  const saved = { localStorage: globalThis.localStorage, navigator: Object.getOwnPropertyDescriptor(globalThis, "navigator"), window: Object.getOwnPropertyDescriptor(globalThis, "window"), document: Object.getOwnPropertyDescriptor(globalThis, "document") };
+  Object.defineProperty(globalThis, "window", { configurable: true, writable: true, value: new EventTarget() });
+  Object.defineProperty(globalThis, "document", { configurable: true, writable: true, value: { querySelector: () => null } });
   const items = new Map(Object.entries(stored));
   const writes = [];
   globalThis.localStorage = {
@@ -42,6 +44,7 @@ function withBrowser({ gpc = false, dnt = null, stored = {} } = {}, run) {
     resetLeaguePulseForTests();
     if (saved.localStorage === undefined) delete globalThis.localStorage; else globalThis.localStorage = saved.localStorage;
     if (saved.navigator) Object.defineProperty(globalThis, "navigator", saved.navigator); else delete globalThis.navigator;
+    for (const key of ["window", "document"]) { if (saved[key]) Object.defineProperty(globalThis, key, saved[key]); else delete globalThis[key]; }
   }
 }
 
@@ -126,6 +129,13 @@ test("a new franchise is sent at once, because setup navigates away before a hid
   });
 });
 
+test("outside a browser page the pulse is inert, so tests and scripts never post to the live service", () => {
+  assert.equal(typeof window, "undefined");
+  assert.equal(isLeaguePulseEnabled(), false);
+  assert.equal(countPulse("gamesPlayed", 3), false);
+  assert.equal(flushLeaguePulse({ fetchImpl: () => assert.fail("no request outside a page") }), null);
+});
+
 test("the first-visit notice shows once, only when the player has made no choice and the browser sends no signal", () => {
   assert.equal(shouldShowPulseNotice({ seen: false, preference: "default", privacySignal: false }), true);
   assert.equal(shouldShowPulseNotice({ seen: true, preference: "default", privacySignal: false }), false);
@@ -135,8 +145,24 @@ test("the first-visit notice shows once, only when the player has made no choice
 
 // ── The service ─────────────────────────────────────────────────────────────
 
+// Shards run many files in one process and some stub globalThis.fetch, so the
+// service is reached through node:http, never the shared global.
+function httpRequest(url, { method = "GET", headers = {}, body = null } = {}) {
+  return new Promise((resolve, reject) => {
+    const req = http.request(url, { method, headers }, (res) => {
+      let text = "";
+      res.setEncoding("utf8");
+      res.on("data", (chunk) => { text += chunk; });
+      res.on("end", () => resolve({ status: res.statusCode, json: async () => JSON.parse(text || "null") }));
+    });
+    req.on("error", reject);
+    if (body != null) req.write(body);
+    req.end();
+  });
+}
+
 async function withServer(store, run) {
-  const server = http.createServer(createCommunityStatsHandler({ store, origins: new Set([ALLOWED_ORIGIN]), humanCheck: null }));
+  const server = http.createServer(createCommunityStatsHandler({ store, origins: new Set([ALLOWED_ORIGIN, "https://staging.playfranchisearchitect.com"]), humanCheck: null }));
   server.listen(0, "127.0.0.1");
   await once(server, "listening");
   try { await run(`http://127.0.0.1:${server.address().port}`); } finally { server.close(); await once(server, "close"); }
@@ -150,15 +176,18 @@ test("the service adds a valid pulse to the totals, refuses anything else and se
     pulseTotals: async () => ({ schemaVersion: "pulse-1", allTime: { gamesPlayed: 9 }, last30Days: { gamesPlayed: 9 } })
   };
   await withServer(store, async (origin) => {
-    const post = (body, headers = {}) => fetch(`${origin}/community/v1/pulse`, { method: "POST", headers: { Origin: ALLOWED_ORIGIN, "Content-Type": "text/plain;charset=UTF-8", ...headers }, body: JSON.stringify(body) });
+    const post = (body, headers = {}) => httpRequest(`${origin}/community/v1/pulse`, { method: "POST", headers: { Origin: ALLOWED_ORIGIN, "Content-Type": "text/plain;charset=UTF-8", ...headers }, body: JSON.stringify(body) });
     assert.equal((await post({ schemaVersion: "pulse-1", counts: { gamesPlayed: 3, seasonsCompleted: 1 } })).status, 202);
     assert.deepEqual(added, [{ gamesPlayed: 3, seasonsCompleted: 1 }]);
     assert.equal((await post({ schemaVersion: "pulse-1", counts: { gamesPlayed: 3 }, participantId: "browser_123456789012" })).status, 400);
     assert.equal((await post({ schemaVersion: "pulse-1", counts: { championships: 999 } })).status, 400);
-    const noOrigin = await fetch(`${origin}/community/v1/pulse`, { method: "POST", body: JSON.stringify({ schemaVersion: "pulse-1", counts: { gamesPlayed: 1 } }) });
+    const noOrigin = await httpRequest(`${origin}/community/v1/pulse`, { method: "POST", body: JSON.stringify({ schemaVersion: "pulse-1", counts: { gamesPlayed: 1 } }) });
     assert.equal(noOrigin.status, 403, "a pulse must come from the game's own pages");
     assert.equal(added.length, 1, "nothing refused reached the store");
-    const totals = await (await fetch(`${origin}/community/v1/pulse`)).json();
+    const staging = await post({ schemaVersion: "pulse-1", counts: { gamesPlayed: 2 } }, { Origin: "https://staging.playfranchisearchitect.com" });
+    assert.equal(staging.status, 202, "staging play is accepted");
+    assert.equal(added.length, 1, "but only the live game is counted");
+    const totals = await (await httpRequest(`${origin}/community/v1/pulse`)).json();
     assert.equal(totals.allTime.gamesPlayed, 9);
   });
 });

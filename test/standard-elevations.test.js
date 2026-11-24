@@ -62,7 +62,7 @@ test('wrong game metadata cannot settle a reservation and absent postseason auth
     assert.throws(()=>settleStandardElevationGame({league,result:{...game,...patch}}));assert.equal(JSON.stringify(league),before);
   }
   settle(league,game);const next=playoff();declare(league,league.players[0],next);
-  const saved=JSON.stringify(league);assert.throws(()=>settle(league,next),/authority missing/);assert.equal(JSON.stringify(league),saved);
+  const saved=JSON.stringify(league);assert.throws(()=>settle(league,next),/entitlement basis missing/);assert.equal(JSON.stringify(league),saved);
 });
 
 test('postseason settlement preflights every player before mutating any pay, and current club prior games decide half/full',()=>{

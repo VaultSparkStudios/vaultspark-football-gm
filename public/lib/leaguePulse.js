@@ -47,6 +47,9 @@ export function getLeaguePulsePreference() {
 }
 
 export function isLeaguePulseEnabled() {
+  // Only a real page counts. Node (tests, the engine's own scripts, a worker)
+  // has no window or document and must never post to the live service.
+  if (typeof window === "undefined" || typeof document === "undefined") return false;
   const preference = getLeaguePulsePreference();
   if (preference === "off") return false;
   // An explicit "on" is the player overriding their browser's signal for this site.

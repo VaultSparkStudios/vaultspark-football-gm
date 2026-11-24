@@ -292,6 +292,7 @@ export function createCommunityStatsHandler({
   diagnosticsRateLimit = createMemoryRateLimiter({ limit: DIAGNOSTICS_LIMIT_PER_HOUR, windowMs: HOUR_MS }),
   challengeScoreRateLimit = createMemoryRateLimiter({ limit: CHALLENGE_SCORE_LIMIT_PER_HOUR, windowMs: HOUR_MS }),
   pulseRateLimit = createMemoryRateLimiter({ limit: PULSE_LIMIT_PER_HOUR, windowMs: HOUR_MS }),
+  pulseOrigins = new Set(String(process.env.COMMUNITY_PULSE_ORIGINS || "https://playfranchisearchitect.com").split(",").map((value) => value.trim().replace(/\/+$/, "")).filter(Boolean)),
   challengeClock = () => Date.now()
 } = {}) {
   if (!store) throw new Error("Community Stats handler requires a store.");
@@ -450,6 +451,9 @@ export function createCommunityStatsHandler({
         if (!allowance.ok) { sendJson(res, 429, { ok: false, error: "Pulse limit reached; try again later." }, { "Retry-After": String(allowance.retryAfter) }); return; }
         const counts = normalizeLeaguePulse(await readJson(req));
         if (!counts) { sendJson(res, 400, { ok: false, error: "Expected a pulse-1 payload of known counters within their limits." }, { "Cache-Control": "no-store" }); return; }
+        // Only the live game counts. Staging and local QA play the same pages,
+        // so their pulses are accepted and dropped rather than refused.
+        if (!pulseOrigins.has(origin)) { sendJson(res, 202, { ok: true, added: 0, counted: false }, { "Cache-Control": "no-store" }); return; }
         const result = await store.addPulse(counts);
         sendJson(res, 202, { ok: true, ...result }, { "Cache-Control": "no-store" }); return;
       }

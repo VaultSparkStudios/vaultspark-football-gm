@@ -10,6 +10,7 @@ import { findTeamStanding, formatTeamRecord } from "./teamRecord.js";
 import { GAME_RESULTS, gameResultFromScores, gameResultTone } from "./gameOutcome.js";
 import { isAutoHighlightsEnabled, shouldAutoPlayHighlights } from "./autoHighlights.js";
 import { hasOpenModal } from "./modalManager.js";
+import { observeBackgroundTask } from "./clientDiagnostics.js";
 
 const AUTO_DISMISS_MS = 8000;
 const ACTION_DISMISS_MS = 14000;
@@ -84,6 +85,14 @@ export function buildWeekRecapModel({ game, dashboard }) {
   };
 }
 
+function waitForModalsToClose(timeoutMs) {
+  return new Promise((resolve) => {
+    const deadline = Date.now() + timeoutMs;
+    const check = () => (!hasOpenModal() || Date.now() >= deadline ? resolve() : setTimeout(check, 100));
+    check();
+  });
+}
+
 function prefersReducedMotion() {
   return globalThis.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches === true;
 }
@@ -114,17 +123,41 @@ async function openWeekRecapAction({ kind, gameId }) {
 export async function presentWeekRecap(game) {
   const model = buildWeekRecapModel({ game, dashboard: state.dashboard });
   if (!model) return false;
-  if (shouldAutoPlayHighlights(game, {
+  const wantsReplay = () => shouldAutoPlayHighlights(game, {
     enabled: isAutoHighlightsEnabled(),
     reducedMotion: prefersReducedMotion(),
     modalOpen: hasOpenModal()
-  })) {
-    try {
-      if (await (await import("./simWatchDirector.js")).runSimWatch(game.gameId)) return true;
-    } catch {
-      // Sim-Watch has recorded and announced its own failure; show the recap.
-    }
+  });
+  // S133: the recap is announced while the advance flow's own dialog is still
+  // on the modal stack, and that dialog closes only after this call returns.
+  // So "a dialog is open" was true on every advance and the replay never
+  // opened. When the player wants the replay, it is scheduled for the moment
+  // the stack is clear instead, never awaited here; if it cannot open, the
+  // ordinary recap card takes over.
+  if (game?.gameId && isAutoHighlightsEnabled() && !prefersReducedMotion() && hasOpenModal()) {
+    observeBackgroundTask(async () => {
+      // Long enough for the player to answer a dialog such as the first-week
+      // check-in; the replay then follows it.
+      await waitForModalsToClose(120_000);
+      if (!(await tryReplay(game, wantsReplay))) showWeekRecapCard(game, model);
+    }, { surface: "engagement", operation: "auto-highlights", authorityKey: String(game.gameId), severity: "warning" });
+    return true;
   }
+  if (await tryReplay(game, wantsReplay)) return true;
+  return showWeekRecapCard(game, model);
+}
+
+async function tryReplay(game, wantsReplay) {
+  if (!wantsReplay()) return false;
+  try {
+    return Boolean(await (await import("./simWatchDirector.js")).runSimWatch(game.gameId));
+  } catch {
+    // Sim-Watch has recorded and announced its own failure; show the recap.
+    return false;
+  }
+}
+
+function showWeekRecapCard(game, model) {
   const recapAction = weekRecapAction(game);
   playSound(model.result === GAME_RESULTS.WIN ? "win-chime" : model.result === GAME_RESULTS.LOSS ? "loss-thud" : "advance-tick");
   vibrate(model.result === GAME_RESULTS.WIN ? HAPTIC_PATTERNS.win : model.result === GAME_RESULTS.LOSS ? HAPTIC_PATTERNS.loss : HAPTIC_PATTERNS.tick);

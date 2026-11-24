@@ -71,7 +71,7 @@ test("the replay opens by itself only for a played game, with the setting on, fu
 test("the recap reaches the replay lazily and falls back to the recap card", () => {
   const recap = read("../public/lib/rewardBeats.js");
   assert.match(recap, /shouldAutoPlayHighlights\(game, \{\s*enabled: isAutoHighlightsEnabled\(\),\s*reducedMotion: prefersReducedMotion\(\),\s*modalOpen: hasOpenModal\(\)/);
-  assert.match(recap, /if \(await \(await import\("\.\/simWatchDirector\.js"\)\)\.runSimWatch\(game\.gameId\)\) return true;/);
+  assert.match(recap, /return Boolean\(await \(await import\("\.\/simWatchDirector\.js"\)\)\.runSimWatch\(game\.gameId\)\);/);
   assert.doesNotMatch(recap, /^import [^;]*simWatchDirector/m, "the replay stays out of the recap's static imports");
   const start = recap.indexOf("export async function presentWeekRecap");
   assert.ok(recap.indexOf("showBeatCard({", start) > recap.indexOf("runSimWatch(game.gameId)", start), "the card is the fallback after the replay attempt");

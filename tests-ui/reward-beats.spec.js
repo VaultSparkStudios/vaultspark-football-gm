@@ -141,6 +141,15 @@ test("with automatic highlights on, the replay opens by itself after the player'
   await page.click('[data-testid="tab-overview"]');
 
   await advanceOpeningWeek(page);
+  // A franchise moment or the first-week check-in can open first; the replay
+  // waits for them and never opens on top. Answer them the way a player would.
+  for (const selector of ["#fmCloseBtn", "#firstDebriefDecline"]) {
+    const control = page.locator(selector);
+    if (await control.waitFor({ state: "visible", timeout: 8_000 }).then(() => true, () => false)) {
+      await expect(page.locator("#simWatchOverlay")).toBeHidden();
+      await control.click();
+    }
+  }
   await expect(page.locator("#simWatchOverlay")).toBeVisible({ timeout: 30_000 });
   // The recap card would give the score away before the replay does.
   await expect(page.locator("#weekRecapCard.wr-visible")).toHaveCount(0);

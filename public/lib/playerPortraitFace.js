@@ -364,6 +364,15 @@ export function buildLegacyPlayerPortraitSvg(player, { headOnly = false, idSuffi
   // Shoulder pads by position: linemen wear the biggest, specialists the least.
   const padScale = { OL: 1.13, DL: 1.12, LB: 1.08, TE: 1.08, RB: 1.04, QB: 1.02, WR: 1.0, DB: 1.0, K: 0.96, P: 0.96 }[player?.position] || 1.02;
   const pad = n(shoulder * padScale);
+  const uniform = Boolean(validHex(teamColors?.primary));
+  // S133 uniforms: drawn only when the caller passes the club's colours (the
+  // game always does). Without them the portrait stays byte-identical to
+  // every saved player's original look.
+  const kitJersey = uniform ? `<path class="portrait-jersey" data-jersey="${jersey}" d="M${n(160 - pad)} ${top + 25} Q${n(160 - pad * .7)} ${top - 4} ${160 - neck} ${top - 18} L${160 + neck} ${top - 18} Q${n(160 + pad * .7)} ${top - 4} ${n(160 + pad)} ${top + 25} L${160 + waist} 440 L${160 - waist} 440Z" fill="url(#${id}-jersey)"/>
+      <path class="portrait-shoulder-pads" d="M${n(160 - pad + 6)} ${top + 22} Q${n(160 - pad * .66)} ${top - 2} ${n(160 - neck - 8)} ${top - 12} M${n(160 + pad - 6)} ${top + 22} Q${n(160 + pad * .66)} ${top - 2} ${n(160 + neck + 8)} ${top - 12}" fill="none" stroke="#ffffff" stroke-opacity=".16" stroke-width="5" stroke-linecap="round"/>` : `<path d="M${160 - shoulder} ${top + 25} Q${160 - shoulder * .65} ${top - 1} ${160 - neck} ${top - 18} L${160 + neck} ${top - 18} Q${160 + shoulder * .65} ${top - 1} ${160 + shoulder} ${top + 25} L${160 + waist} 440 L${160 - waist} 440Z" fill="url(#${id}-jersey)"/>`;
+  const kitCollar = uniform ? `<path d="M${160 - neck - 4} ${top - 17} Q160 ${top + 38} ${160 + neck + 4} ${top - 17}" fill="none" stroke="${trim}" stroke-width="7" opacity=".9"/>` : `<path d="M${160 - neck - 4} ${top - 17} Q160 ${top + 38} ${160 + neck + 4} ${top - 17}" fill="none" stroke="#dce6e7" stroke-width="7" opacity=".8"/>`;
+  const kitStripes = uniform ? `<path class="portrait-sleeve-stripes" d="M${n(160 - pad + 12)} ${top + 34} l22 8 M${n(160 + pad - 12)} ${top + 34} l-22 8" stroke="${trim}" stroke-width="9" opacity=".85"/>` : `<path d="M${160 - shoulder + 15} ${top + 34} l22 8 M${160 + shoulder - 15} ${top + 34} l-22 8" stroke="#dce6e7" stroke-width="9" opacity=".65"/>`;
+  const kitNumber = uniform ? `<text class="portrait-jersey-number" x="160" y="${top + 115}" text-anchor="middle" font-family="var(--font-display, system-ui), sans-serif" font-size="58" font-weight="800" fill="${trim}" stroke="${blend(jersey, "#000", .45)}" stroke-width="2.5" paint-order="stroke">${escape(player?.jerseyNumber ?? "")}</text>` : `<text x="160" y="${top + 115}" text-anchor="middle" font-family="system-ui,sans-serif" font-size="54" font-weight="800" fill="#dce6e7" opacity=".85">${escape(player?.jerseyNumber ?? "")}</text>`;
   const eye = x => {
     if (!enhanced) return `<g class="portrait-eye" style="transform-origin:${x}px 141px"><path d="M${x - 10} 141 Q${x} 133 ${x + 10} 141 Q${x} 148 ${x - 10} 141Z" fill="#dedbd3"/><circle cx="${x}" cy="141" r="4.4" fill="${a.eyeColor}"/><circle cx="${x}" cy="141" r="2.1" fill="#171b20"/><circle cx="${x - 1.2}" cy="139.4" r=".85" fill="#fff"/><path d="M${x - 11} 141 Q${x} 132 ${x + 11} 141" fill="none" stroke="${skinShade}" stroke-width="1.8"/></g>`;
     const side = x < 160 ? -1 : 1, aperture = feature("eyeAperture", 1), y = 141 + side * asymmetry * .3;
@@ -464,13 +473,12 @@ export function buildLegacyPlayerPortraitSvg(player, { headOnly = false, idSuffi
     </defs>
     ${headOnly ? "" : `<rect width="320" height="440" rx="18" fill="url(#${id}-bg)"/><path d="M0 370 L320 160 M0 408 L320 198" stroke="#fff" stroke-opacity=".04" stroke-width="32"/>`}
     <g class="${headOnly ? "physique-face" : "portrait-athlete"}">
-      ${headOnly ? "" : `<path class="portrait-jersey" data-jersey="${jersey}" d="M${n(160 - pad)} ${top + 25} Q${n(160 - pad * .7)} ${top - 4} ${160 - neck} ${top - 18} L${160 + neck} ${top - 18} Q${n(160 + pad * .7)} ${top - 4} ${n(160 + pad)} ${top + 25} L${160 + waist} 440 L${160 - waist} 440Z" fill="url(#${id}-jersey)"/>
-      <path class="portrait-shoulder-pads" d="M${n(160 - pad + 6)} ${top + 22} Q${n(160 - pad * .66)} ${top - 2} ${n(160 - neck - 8)} ${top - 12} M${n(160 + pad - 6)} ${top + 22} Q${n(160 + pad * .66)} ${top - 2} ${n(160 + neck + 8)} ${top - 12}" fill="none" stroke="#ffffff" stroke-opacity=".16" stroke-width="5" stroke-linecap="round"/>
+      ${headOnly ? "" : `${kitJersey}
       ${neckMarkup}
-      <path d="M${160 - neck - 4} ${top - 17} Q160 ${top + 38} ${160 + neck + 4} ${top - 17}" fill="none" stroke="${trim}" stroke-width="7" opacity=".9"/>
-      <path class="portrait-sleeve-stripes" d="M${n(160 - pad + 12)} ${top + 34} l22 8 M${n(160 + pad - 12)} ${top + 34} l-22 8" stroke="${trim}" stroke-width="9" opacity=".85"/>
+      ${kitCollar}
+      ${kitStripes}
       <path d="M${160 - shoulder * .65} ${top + 51} Q160 ${top + 81} ${160 + shoulder * .65} ${top + 51} M160 ${top + 55} v48" fill="none" stroke="#06121c" stroke-opacity="${n(.12 + f.muscleDefinition * .14)}" stroke-width="3"/>
-      <text class="portrait-jersey-number" x="160" y="${top + 115}" text-anchor="middle" font-family="var(--font-display, system-ui), sans-serif" font-size="58" font-weight="800" fill="${trim}" stroke="${blend(jersey, "#000", .45)}" stroke-width="2.5" paint-order="stroke">${escape(player?.jerseyNumber ?? "")}</text>`}
+      ${kitNumber}`}
       <g transform="translate(0 ${n((a.faceLength - 1) * -60)}) scale(1 ${n(a.faceLength)})">
         ${earMarkup}
         <path d="${face}" fill="${surfaceLighting?.fill || `url(#${id}-skin)`}"/>

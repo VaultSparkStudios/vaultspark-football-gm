@@ -158,7 +158,11 @@ test("the weekly league states its goal, scores the first season the same in two
     await expect(privatePanel.getByTestId("weekly-challenge-board")).toContainText("Nothing is sent while it is off.");
     expect((await privatePanel.getByTestId("weekly-challenge-share-text").inputValue()).split("\n")).toHaveLength(5);
     // Reading the public stats snapshot is an anonymous read that predates the board; nothing is posted and the board is never contacted.
-    expect(privateRequests.filter((request) => request.method !== "GET" || request.path.startsWith("challenge/"))).toEqual([]);
+    // The Gridiron Census (S133) is on by default and ID-free; it is the only
+  // thing a non-sharing browser may send, and it never carries an identifier.
+  const census = privateRequests.filter((request) => request.path === "pulse");
+  for (const request of census) expect(JSON.stringify(request.body ?? request.raw ?? "")).not.toMatch(/participant|browser_|capability/);
+  expect(privateRequests.filter((request) => request.path !== "pulse" && (request.method !== "GET" || request.path.startsWith("challenge/")))).toEqual([]);
 
     // Below five browsers the board gives no figures and the game says so.
     board = (weekKey) => summarizeChallengeBoard(weekKey, Array(4).fill(objective.min));
