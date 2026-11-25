@@ -1,7 +1,6 @@
 // One saved person, one cached measured body, one complete shared head.
 // Character views use the same physical camera/depth and lighting pipeline.
 import {createPlayerBodyAnimation3d} from './playerBodyAnimation3d.js';
-import { TEAM_THEME_MAP } from './appState.js';
 import {createBodyRenderer3d} from './playerBody3d.js';
 import {buildHeadMesh3d,createHeadRenderer3d} from './playerHead3d.js';
 import {appearanceSkinColor,appearanceHairColors,blendAppearanceColor} from './appearancePalette.js';
@@ -18,8 +17,9 @@ export function createPlayerCharacterModel(player){
  const head=buildHeadMesh3d(a,colors,{headOnly:true,identitySeed:person.id});let disposed=false;activeModels++;
  return{person,head,colors,diagnostics:{bodyConstructionCount:1,headConstructionCount:1,wholeUnionMassVerified:false},matchesPlayer:p=>body.matchesPlayer(p)&&p?.id===person.id&&p?.age===person.age,update(options){if(disposed)throw Error('Disposed character model');const mesh=body.update(options);return{mesh,placement:characterHeadPlacement(mesh.pose,head.anatomy)};},dispose(){if(disposed)return;disposed=true;body.dispose();activeModels--;}};
 }
-// S133: the 3D body wears the club's primary colour (a plain hex only).
-function clubKitColor(person){const value=String(TEAM_THEME_MAP[String(person?.teamId||'').toUpperCase()]?.primary||'').trim();return /^#[0-9a-f]{6}$/i.test(value)?value:null;}
+// S133: the 3D body wears the club's primary colour when the caller passes
+// one as player.kitColor (a plain hex only); this module reads no app state.
+function clubKitColor(person){const value=String(person?.kitColor||'').trim();return /^#[0-9a-f]{6}$/i.test(value)?value:null;}
 export function createPlayerCharacterView(canvas,model){
  let body,head,disposed=false;
  try{body=createBodyRenderer3d(canvas,{skinColor:model.colors.skin,...(clubKitColor(model.person)?{kitColor:clubKitColor(model.person)}:{})});head=createHeadRenderer3d(canvas,{transparent:true});activeViews++;}catch(error){body?.dispose();head?.dispose();throw error;}

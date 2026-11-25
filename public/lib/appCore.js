@@ -1242,7 +1242,7 @@ export async function loadPlayerModal(playerId) {
       `${teamCode(player.teamId)} | #${player.jerseyNumber ?? "--"} | OVR ${player.overall} | POT ${player.potential ?? "-"}${player.teamId && player.teamId !== state.dashboard?.controlledTeamId && player.status !== "retired" ? " (scouted)" : ""} | Age ${player.age} | ${formatHeight(player.heightInches)} ${player.weightLbs || "-"} lbs | Dev ${player.developmentTrait} | Injury ${player.injury?.type || "Healthy"}`;
   playerMovementCleanup?.();
   document.getElementById("playerProfileSummary").innerHTML = renderPlayerProfileHero(profile);
-  playerMovementCleanup=mountMovement?.(document.getElementById("playerProfileSummary"), profile.player);
+  playerMovementCleanup=mountMovement?.(document.getElementById("playerProfileSummary"), { ...profile.player, kitColor: TEAM_THEME_MAP[String(profile.player?.teamId || "").toUpperCase()]?.primary || null });
   attachPlayerMentorshipBadge(player);
 
   const ratingRows = Object.entries(player.ratings || {})
