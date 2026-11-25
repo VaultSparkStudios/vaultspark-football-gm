@@ -3,11 +3,11 @@
 
 
 <!-- rolling-status-start -->
-Last session: 133 (2026-11-24) | Total: 592/1000 | Velocity: 2 | Debt: →
-Avgs — 3: 569.7 | 5: 557.2 | 10: 540.1 | 25: 699.8 | all: 904.9
+Last session: 133 (2026-11-25) | Total: 600/1000 | Velocity: 2 | Debt: →
+Avgs — 3: 572.3 | 5: 558.8 | 10: 540.9 | 25: 700.2 | all: 905
 Sparkline: ▁▁▁▁▁
 Intent rate: 80% (4/5 last 5)
-SIL delta: 580 → 592 (+12). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 87 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 580 → 600 (+20). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 87 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
 > Older entries S112 live verbatim in `context/archive/SELF_IMPROVEMENT_LOOP_S112-S112.md`.
@@ -316,3 +316,23 @@ Velocity: 12 selected product outcomes, excluding SIL/meta tasks. Debt: →; car
 ---
 
 Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+## 2026-11-25 — Session 133, second release — Bodies that age, a kit that fits and a legacy across saves
+
+SIL v3.0: **600 / 1000** (Dev Health 86, Creative Alignment 88, Momentum 80, Engagement 66, Process Quality 60, Cross-Repo Coherence 58, Security Posture 74, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 68). Intent outcome: Achieved for implementation and deployment — 15 of 16 audit items shipped or shipped reduced and released at a8b46bb3; the stylesheet split is deferred. Prior 592; delta +8. Engineering judgment, not measured player, financial or launch outcomes.
+
+Velocity: 7 selected product outcomes, excluding SIL/meta tasks. Debt: →; carried items are on the task board.
+
+- Dev Health: 86: CI green after one fix, golden master v9 reproduced; boot graph at 649,989 of 650,000 bytes.
+- Creative Alignment: 88: aging by frame, helmets and the club kit close the studio's body-and-visuals ask.
+- Momentum: 80: seven outcomes and a second verified release.
+- Engagement: 66: draft stories and a legacy across saves are reasons to start another league; unmeasured.
+- Process Quality: 60: hosted CI caught a renderer importing app state that the local run did not exercise.
+- Cross-Repo Coherence: 58: no change.
+- Security Posture: 74: no change.
+- Ecosystem Integration: 20: project reporting only.
+- Capital Efficiency: 0 proof credit: token and runway efficiency unmeasured; not a finding of poor finances.
+- Automation Coverage: 68: no change.
+
+- [SIL:133] Future improvement — unselected: Run the isolated-module browser specs locally whenever a lazy renderer gains an import.
+

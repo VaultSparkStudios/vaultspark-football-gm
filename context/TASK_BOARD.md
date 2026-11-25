@@ -9,12 +9,12 @@ Session Intent: /start, audit, implement the plan in efficiency order, close out
 - [x] Phase 4 (reduced): four pages folded with 301s, footer 19 → 13, landing Census panel and tagline, stale copy.
 - [x] Phase 5 (reduced): drive chart, four franchise scenarios.
 - [x] Released at c7c7c44c: CI 11/11, staging 14/14 and 10/10, production 10/10, API schema 4, performance, visual review (owner-approved) and release authority.
-- [ ] [S133 carried] Aging curve for physical ratings (heavy frames lose speed sooner); needs its own measured parity window.
-- [ ] [S133 carried] Helmets, the full-body game kit and the 3D kit; a player-card share image.
-- [ ] [S133 carried] Animated field hero, screenshot feature cards, saves and backups moved off the landing page.
-- [ ] [S133 carried] Merge About, Press, Media and Contact; rename the stats page heading to Gridiron Census.
-- [ ] [S133 carried] Draft Day room; a GM legacy across saves; scenario codes and a scenario board.
-- [ ] [S133 carried] Split styles.css by screen (boot JS is at 649,284 of 650,000 bytes, so the next boot addition must move something out first).
+- [x] Second wave released at a8b46bb3: aging by frame (golden master s133-v9), game kit with helmet and 3D club colour, steal-or-bust draft stories, a GM legacy across saves, archetype scenario codes, animated field strip, screenshot feature cards, Gridiron Census title, trimmed landing footer. CI green, staging 14/14 and 10/10, production 10/10, API schema 4, performance, visual review (owner-approved), authority reconciled, doctor 0 failing.
+- [ ] [S133 carried] A player-card share image.
+- [ ] [S133 carried] Saves and backups moved off the landing page.
+- [ ] [S133 carried] Merge About, Press, Media and Contact.
+- [ ] [S133 carried] A per-scenario board on the Census page.
+- [ ] [S133 carried] Split styles.css by screen (boot JS is at 649,989 of 650,000 bytes, so the next boot addition must move something out first).
 - [ ] [S133 carried] tests-ui/player-acceleration-study.spec.js asserts a one-frame 'Ready (0%)' state; assert the reset another way.
 - [ ] [S133 carried] Realism Sweep (scheduled) timed out on its 20-minute long smoke shard on 787bba6b.
 - [ ] [S133 carried] Read the first Census totals and npm run report:visits before deciding on landing changes; check the EU consent position for default-on counters before launch.

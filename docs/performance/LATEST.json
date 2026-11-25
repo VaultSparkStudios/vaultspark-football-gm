@@ -2,14 +2,14 @@
   "schemaVersion": "1.0",
   "kind": "hosted-performance-evidence",
   "generatedBy": "scripts/measure-hosted-performance.mjs",
-  "observedAt": "2026-11-24T12:13:09.339Z",
+  "observedAt": "2026-11-25T23:14:34.873Z",
   "baseUrl": "https://playfranchisearchitect.com",
   "route": "/",
-  "sourceRevision": "2cc74c1f2f136705b442037b8479002382d403e5",
+  "sourceRevision": "a8b46bb36fe7204c650deac54f8516edd2236fde",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "ab0d4d2b944c205663c82f89e47db223d83b9f4c94b9b7448b764b7b2badbc6d",
-    "files": 461,
+    "digest": "1f4f280f1bf5d2d9680404a1541b795e22e0b21b46e5f0a2d5d19856dfc4cff7",
+    "files": 463,
     "entries": [
       {
         "path": ".well-known/llms.txt",
@@ -24,12 +24,12 @@
       {
         "path": "404.html",
         "bytes": 5983,
-        "sha256": "d1252ef99c05b9bee09dea59ef6b1d331d6598b469e9f06d0c06c37bb8770107"
+        "sha256": "e6347a374338e2920f89d9def30c11048c0a361760b91a65f6ecf7d4dd5f27fb"
       },
       {
         "path": "_headers",
         "bytes": 2355,
-        "sha256": "598dcaccdedb0f5ae5846af528f89d60098b200b26dd54b8bd5fd5232d6ede5b"
+        "sha256": "283b36bc4bdcfb0a1654744957a741da030223ef898b4354b9d46eedc6d616da"
       },
       {
         "path": "_redirects",
@@ -39,7 +39,7 @@
       {
         "path": "about.html",
         "bytes": 8371,
-        "sha256": "d1045beca35700b065c29c871bc0b0de9d65cdcbc17bb84c0d9323cd089ebe65"
+        "sha256": "dcd70d45e0e17ee77183f0e54e913adbb3b18ae2c03f5a3072f98ac57770cffc"
       },
       {
         "path": "agents.json",
@@ -48,8 +48,8 @@
       },
       {
         "path": "app.js",
-        "bytes": 71803,
-        "sha256": "422f6e03632e35e19856bff123b059ca1c27dc465ef1a54ae71a0d1b301c7ad0"
+        "bytes": 71861,
+        "sha256": "0b6e08eb9a8a34860dff900e1f86025ebd4c3f671eedf9fa3e748f1c1cb68b4e"
       },
       {
         "path": "boot-manifest.json",
@@ -58,8 +58,8 @@
       },
       {
         "path": "changelog.xml",
-        "bytes": 40130,
-        "sha256": "4ce786f2c18cdb948ec1fd163298ca226679ba0582eac513a534b962a8d94daa"
+        "bytes": 40662,
+        "sha256": "b3a671e43b881c0c4c727336d6d7146461600de236514f5970822f18b3283e60"
       },
       {
         "path": "community-stats.bb8e6dd346.js",
@@ -74,7 +74,7 @@
       {
         "path": "contact.html",
         "bytes": 7685,
-        "sha256": "8d3dcc3931f7d8dc38d6e691f5fa2b6608cd10170a15992c3ed950663af047d6"
+        "sha256": "3ad37a49b4bd9cf0d0791450cbc2b930a28a7bebf463e87b6d88089c137ff60e"
       },
       {
         "path": "content/claims.json",
@@ -84,7 +84,7 @@
       {
         "path": "faq.html",
         "bytes": 19833,
-        "sha256": "b9d7ac442d9c0f3a6c4069589353e69a64c9170d8979bb03506c03bdd0a42114"
+        "sha256": "9437b278445b56d4613a909e7e6e7027f97195c83c5c2ace8c317a68aae884ee"
       },
       {
         "path": "favicon.ico",
@@ -99,7 +99,7 @@
       {
         "path": "features.html",
         "bytes": 22775,
-        "sha256": "4a9381ddbbf40a341672363923a92007a46f4ef0349acc3663a238ee5ada806e"
+        "sha256": "f0dade441a7c01e0499bdc3a52a9b3fa64dbbcc1d484d67371560186c9d56e39"
       },
       {
         "path": "fonts/LICENSE",
@@ -139,7 +139,7 @@
       {
         "path": "guides.html",
         "bytes": 23845,
-        "sha256": "82aa5ae1339cfe0be1434bdf1d455f250c9968785704fc75898e0a8626ba7235"
+        "sha256": "dd709a32c0f644b80fef5c3e04b6425655b01b2aaeb8c586986a8fe3341a2fb2"
       },
       {
         "path": "images/apple-touch-icon.png",
@@ -403,8 +403,8 @@
       },
       {
         "path": "index.html",
-        "bytes": 412774,
-        "sha256": "845b4bd2df4365ff853fba6748d6706817a6dbcec5314fcd5f41e89a6d775d62"
+        "bytes": 416697,
+        "sha256": "2e9600879a51f6cc0682d0a0899adf1de2f14209d15beff3c8cea31aaad39a7c"
       },
       {
         "path": "lib/achievements.js",
@@ -448,8 +448,8 @@
       },
       {
         "path": "lib/appCore.js",
-        "bytes": 38314,
-        "sha256": "4147f0e9f23774157149d7c862581ad9e967ae80643df27c5198c36a9322ec34"
+        "bytes": 38389,
+        "sha256": "baa22aebc42700af7ed1e05a325e11ef525975b99819409280f7d6fef42c7ad0"
       },
       {
         "path": "lib/appState.js",
@@ -508,8 +508,8 @@
       },
       {
         "path": "lib/challengeCodes.js",
-        "bytes": 2229,
-        "sha256": "9e1646070bf8d4a0efb3a470a0d3d6c724658c357a2b1c10c08a508c2d753f56"
+        "bytes": 2433,
+        "sha256": "631c8e4e6dfb51bb0c7ba9923da9407a98e3f18af645fdda8c9407684af85151"
       },
       {
         "path": "lib/clientDiagnostics.js",
@@ -610,6 +610,11 @@
         "path": "lib/devSurfaces.js",
         "bytes": 425,
         "sha256": "e4a56de55185b0c5c413b18ac73a7875ac87c354f36b2a94ee94dda5ddac635e"
+      },
+      {
+        "path": "lib/draftCombineTable.js",
+        "bytes": 1342,
+        "sha256": "4c0fbe271ff962ccb78ea2e97dfafd9e15c8e82ca613c749d9436b6e7aec1197"
       },
       {
         "path": "lib/draftPickReveal.js",
@@ -747,9 +752,14 @@
         "sha256": "e0e2bf60d2f7c1504a8244d0098b4ecf05407de798875888afb80a7cc0312b75"
       },
       {
+        "path": "lib/gmLegacyLedger.js",
+        "bytes": 2487,
+        "sha256": "16fc2ada6927715ddf3f91aa27718c3e66509cb4b8b447e625033fe46efce497"
+      },
+      {
         "path": "lib/gmProfile.js",
-        "bytes": 5618,
-        "sha256": "6a674768db5c55e985d0f3fdc14b156852c1255948efdf1613b86a9bbb7fefbe"
+        "bytes": 5828,
+        "sha256": "ba5760cdc231132d1f359cd1fb8ea6663aaa01a7e371c59e3f726cb878d6a323"
       },
       {
         "path": "lib/gmProfileModel.js",
@@ -908,8 +918,8 @@
       },
       {
         "path": "lib/playerCharacter3d.js",
-        "bytes": 5012,
-        "sha256": "dfeea08817702f8788aef29e45e86aa2adb378d56a3b8029da66fdbec1a50ecd"
+        "bytes": 5145,
+        "sha256": "5dc5ffdd3a3afeeb4c035ae4840f19330ebb8e30673ab0aa9c3561b24f0e8bff"
       },
       {
         "path": "lib/playerFootArticulation.js",
@@ -923,8 +933,8 @@
       },
       {
         "path": "lib/playerFrameCard.js",
-        "bytes": 4723,
-        "sha256": "cd3bf7c614a85d38f50fe3a747aed65a611980024d02cbed838d8c35511e9802"
+        "bytes": 4851,
+        "sha256": "7f63ee9e68dbed028c0d25d4ef3a3a56fe5e53fddef9d0880d38b49f692e29b1"
       },
       {
         "path": "lib/playerHand.js",
@@ -953,8 +963,8 @@
       },
       {
         "path": "lib/playerPortrait.js",
-        "bytes": 15197,
-        "sha256": "e09221922eae8387cc9f2a43cbe136c6efa24bd1b0808d4448419c598667d441"
+        "bytes": 17022,
+        "sha256": "00a37fe7f4a91f3de246be2089c95f2bb065a39b8cb78dd048271157decdd0a1"
       },
       {
         "path": "lib/playerPortraitFace.js",
@@ -1143,8 +1153,8 @@
       },
       {
         "path": "lib/tabDraft.js",
-        "bytes": 15520,
-        "sha256": "d56a8030b5a8ea89b3a5d2b8cd75a053e585e05ea582c8a05f4a9fc10fe8a681"
+        "bytes": 15055,
+        "sha256": "dd2d8e545e160dd16926c96bb3aa86e2a42f2fc808075449da45512726730f00"
       },
       {
         "path": "lib/tabHistory.js",
@@ -1274,7 +1284,7 @@
       {
         "path": "media.html",
         "bytes": 27433,
-        "sha256": "d44a8d5a73662fc3231243a4fa400fb90d72b897e19a4cea74f3e016375a4de2"
+        "sha256": "4d6e97c899be582b4b45726a4dceb2e89bea7a435ece850ceab2bb5bfc7ca225"
       },
       {
         "path": "og/about.png",
@@ -1348,18 +1358,18 @@
       },
       {
         "path": "precache-manifest.json",
-        "bytes": 29291,
-        "sha256": "d94612220f8cb77b77a3d2783f4630867282ffb970b79ee9b41022fdb4dc530b"
+        "bytes": 29440,
+        "sha256": "29317da594e6404b0a91a4674718702b6bdbc41109907806d7b210b1c47437f7"
       },
       {
         "path": "press.html",
         "bytes": 10566,
-        "sha256": "9efcafd14363d3ef0cdd6dfc4811f1053b68b6bd7e68ce24af0f9bca7d04153f"
+        "sha256": "840fe3097970a4211e39bdc678f8c5da4342280a4b8c6294bec2f7cfbd406a4a"
       },
       {
         "path": "privacy.html",
         "bytes": 14607,
-        "sha256": "90fbb664c4f35ca025e8c9bf0a58bd5da1c1cf020968835db1058ddbecee8402"
+        "sha256": "9aff79873a71364a87fee5a6df51b637e97ab2cf4de53443802ea7ac3bf38962"
       },
       {
         "path": "public-identity.json",
@@ -1423,8 +1433,8 @@
       },
       {
         "path": "setup.js",
-        "bytes": 21471,
-        "sha256": "d3255e87631c2a963f732d0023bdd60b28bb9826a1bc1137ea01fe6bc66634d5"
+        "bytes": 21615,
+        "sha256": "de214746a2b45c451877936c16f0618fbf559119732d15565c6f6ccb51567cdf"
       },
       {
         "path": "showcase-league.json",
@@ -1434,22 +1444,22 @@
       {
         "path": "simulation.html",
         "bytes": 13355,
-        "sha256": "bcff66970516953288274d12e2b5760e9df0fdc687b048facb59e7f205b97d9a"
+        "sha256": "d15bbf322c93875d46c500ffde3684ff87e1f49d3bc6b6b1a5b25c8cfc6d48dd"
       },
       {
-        "path": "site.36d463028f.css",
-        "bytes": 12572,
-        "sha256": "36d463028f48631d78f8116af2893cedc216b0dba901fdf0498669fd99288a90"
+        "path": "site.2685f97830.css",
+        "bytes": 14168,
+        "sha256": "2685f97830e40ecee3054ff036a16b1200941826aa399a0b4f69474258061d98"
       },
       {
         "path": "site.css",
-        "bytes": 12572,
-        "sha256": "36d463028f48631d78f8116af2893cedc216b0dba901fdf0498669fd99288a90"
+        "bytes": 14168,
+        "sha256": "2685f97830e40ecee3054ff036a16b1200941826aa399a0b4f69474258061d98"
       },
       {
         "path": "sitemap.xml",
         "bytes": 1837,
-        "sha256": "c9ce7170e6b28c79fa49290524ced37cd5ef7145c11eedd11046067a1afbdbf8"
+        "sha256": "6aea12bf578178b68d41b0c44ac87fdc518e4cbb7f118462d5f0c6bdebec410f"
       },
       {
         "path": "src/adapters/persistence/browserSaveStore.js",
@@ -1653,8 +1663,8 @@
       },
       {
         "path": "src/domain/physicalProfile.js",
-        "bytes": 4500,
-        "sha256": "f8cc0bd3b5815f6154a49ead0a0a184a785db6429ffab29137c12f7800171aee"
+        "bytes": 4802,
+        "sha256": "a1b10d3c19ad3a9d5bc422210223d20b7147690c638bc5f4edcee00a23b7855e"
       },
       {
         "path": "src/domain/playerDemographicModel.js",
@@ -1933,8 +1943,8 @@
       },
       {
         "path": "src/engine/offseasonSimulator.js",
-        "bytes": 18151,
-        "sha256": "ccec2d12419505bc6b3f2a3e4ad7015d69ce98ae3df63c2adf808113de0a3e66"
+        "bytes": 18343,
+        "sha256": "63e111f47201ee1b254a06821dc2dda3d54ba71ca20397e91e5bade10b64ad4a"
       },
       {
         "path": "src/engine/onClockTradeMarket.js",
@@ -2043,8 +2053,8 @@
       },
       {
         "path": "src/runtime/GameSession.js",
-        "bytes": 215504,
-        "sha256": "95497964d543d8e12132bb5de9cfe0b7f33325ab163a3c8bb13a04febfee67c5"
+        "bytes": 217150,
+        "sha256": "cdc790e7c7efb00220af5077564aad66f89bc2d27c9ca59a77e3118e1d1032dc"
       },
       {
         "path": "src/runtime/advanceWeekCommand.js",
@@ -2283,18 +2293,18 @@
       },
       {
         "path": "stats.html",
-        "bytes": 11811,
-        "sha256": "da43fd13210587a12db38c767f47a45fdf8937ff186afd22bf1ec632dcc3d01d"
+        "bytes": 11921,
+        "sha256": "c8dc2ef4027f4f19fc901b30d8437615f6cdda33f24865707d3712bab7197ae9"
       },
       {
         "path": "status-archive.html",
-        "bytes": 39621,
-        "sha256": "85a09eab66d825101f5f1ba3edcd1e59db6ab8850f9e652253a6ce6b1bf63043"
+        "bytes": 40087,
+        "sha256": "b0030d792f7bced5f4855faf7ec1ed2615cbf262d3db5ee6afa7092b583923cc"
       },
       {
         "path": "status.html",
-        "bytes": 16738,
-        "sha256": "64154f2471de6ffe27059675b74eca314b9430a45c1c03a466c72e2c5d81cae8"
+        "bytes": 17204,
+        "sha256": "e1495c8aa9efd185f323274885da8a051959190e582fa47cca599a0a361357c7"
       },
       {
         "path": "styles.76561afb2a.css",
@@ -2308,13 +2318,13 @@
       },
       {
         "path": "sw.js",
-        "bytes": 14309,
-        "sha256": "f6e248a0fdee2e28998c0e6ed0c823da4c9ce537197ddeae37188dc201143f68"
+        "bytes": 14364,
+        "sha256": "5275c1221de76773957c267f0dee614134e858921ab647b51cd1b139c96ee718"
       },
       {
         "path": "terms.html",
         "bytes": 8182,
-        "sha256": "31b2b8cb5b8bde2fa4a81331384664f0b5c8c0a3ae6b55e54f98b7b92fee83e0"
+        "sha256": "c0e3e887f73ec06cee232c9ee3e832617dfecf99b31960ce55ab65ba16732ff0"
       }
     ],
     "exclusions": [
@@ -2328,17 +2338,17 @@
     "alt-svc": "h3=\":443\"; ma=86400",
     "cache-control": "public, max-age=0, must-revalidate",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a5f85374cd3dd6d5-IAD",
+    "cf-ray": "a60459986f17f989-IAD",
     "connection": "keep-alive",
     "content-encoding": "br",
-    "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-0Rz+2y6JEMRAEBmO0ZGZj9JsqeDSzCWOBbdvKgOCfuU=' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-9+2WwytGYhRIhgW38s5cyGADZStv2WhCuKWnjt+Rj2Q=' 'sha256-HONiLnVUE6Y2HJ9eVyBQBrQrBkHMtrAm6m25hqIYHx0=' 'sha256-KaOaSO/d4V6oGlcD95tZvqSy7QnwhdSYLASFr4aA7Rw=' 'sha256-KsaVR+LuEHednAc+QsMQN0UBj6yLhulFo4jIeEetg78=' 'sha256-LwZntZ/IVQuUyISVcVLHEngh4shx+ykGMKVQBTxRvEI=' 'sha256-O4W9r5p1vZYNP7/dsnmCzBkopk9MAELNfgu9CBwAoxE=' 'sha256-Of2/oycLq8/o0iHHRzBbrtpLHTnUKgvvYfq7ya5fEWM=' 'sha256-Z2EgYyR+Kqjlsc4IZYl1PUPxeGr1cM2D/Wkfhc4+NM8=' 'sha256-hJC0dsAF/B0x/w8dJL+4LorLBJAjxXpbanxq7l7KQOI=' 'sha256-kzXhfSqr19wheiQ6HTvKDupItXIlQtttQNXaNScLRfE=' 'sha256-mRLjEILdiEtsSKhSIwMo/mC4H2AlQMyOEKB801IBELk=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' 'sha256-pS6OrTS7JyDcJIHKMadss3Dksq8iZEBIS2fji6G2AYU=' 'sha256-vMznO4Hy7PzPffigj8Jp9IJk9JlIE2pnQkIl8B0gFBE=' 'sha256-z0bOOrt6l1juvavYkCSZsqhssJ2k/zL1RDjUD4QFRO4=' https://static.cloudflareinsights.com https://challenges.cloudflare.com; style-src-elem 'self' 'sha256-NtRjAo9IYx14+BFq8ok87cIWsNupAf3wSYZp/ZkoipA=' 'sha256-dlYa+ypRwYOtKTCy01pYCIVpWImjUXvCZ3UlT9jYdX4=' 'sha256-qyZDccJ1LPEcJoATh0CyYtt/Mh3GczC9PfJxR2c1CpE='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+    "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-9+2WwytGYhRIhgW38s5cyGADZStv2WhCuKWnjt+Rj2Q=' 'sha256-HONiLnVUE6Y2HJ9eVyBQBrQrBkHMtrAm6m25hqIYHx0=' 'sha256-KaOaSO/d4V6oGlcD95tZvqSy7QnwhdSYLASFr4aA7Rw=' 'sha256-KsaVR+LuEHednAc+QsMQN0UBj6yLhulFo4jIeEetg78=' 'sha256-LwZntZ/IVQuUyISVcVLHEngh4shx+ykGMKVQBTxRvEI=' 'sha256-O4W9r5p1vZYNP7/dsnmCzBkopk9MAELNfgu9CBwAoxE=' 'sha256-Of2/oycLq8/o0iHHRzBbrtpLHTnUKgvvYfq7ya5fEWM=' 'sha256-Z2EgYyR+Kqjlsc4IZYl1PUPxeGr1cM2D/Wkfhc4+NM8=' 'sha256-hJC0dsAF/B0x/w8dJL+4LorLBJAjxXpbanxq7l7KQOI=' 'sha256-kI/fkpmnQ4b1rGRW3tE4MS5dRx5hz9UsGkRc3r+hCPM=' 'sha256-kzXhfSqr19wheiQ6HTvKDupItXIlQtttQNXaNScLRfE=' 'sha256-mRLjEILdiEtsSKhSIwMo/mC4H2AlQMyOEKB801IBELk=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' 'sha256-pS6OrTS7JyDcJIHKMadss3Dksq8iZEBIS2fji6G2AYU=' 'sha256-vMznO4Hy7PzPffigj8Jp9IJk9JlIE2pnQkIl8B0gFBE=' 'sha256-z0bOOrt6l1juvavYkCSZsqhssJ2k/zL1RDjUD4QFRO4=' https://static.cloudflareinsights.com https://challenges.cloudflare.com; style-src-elem 'self' 'sha256-JoX5eDDkDs7jBU/wNqFrEgCUGCaqOZoLT2lHQlgGHZg=' 'sha256-dlYa+ypRwYOtKTCy01pYCIVpWImjUXvCZ3UlT9jYdX4=' 'sha256-qyZDccJ1LPEcJoATh0CyYtt/Mh3GczC9PfJxR2c1CpE='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "content-type": "text/html; charset=utf-8",
-    "date": "Tue, 24 Nov 2026 12:13:09 GMT",
+    "date": "Wed, 25 Nov 2026 23:14:29 GMT",
     "link": "<./lib/api/createApiClient.js>; rel=\"modulepreload\", <./lib/apiContract.js>; rel=\"modulepreload\", <./lib/challengeCodes.js>; rel=\"modulepreload\", <./lib/clientDiagnostics.js>; rel=\"modulepreload\", <./lib/clientRecoveryUi.js>; rel=\"modulepreload\", <./lib/setupTeamChoice.js>; rel=\"modulepreload\", <./lib/themeCustomizer.js>; rel=\"modulepreload\"",
     "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
     "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
     "referrer-policy": "strict-origin-when-cross-origin",
-    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=YdQLm%2B%2B6HqnBKjN8nAbtq0X6p4wqBA1Wmkk%2BsK1ybshBQeYz88vVoqp47x43r0ndEh7HfGVY8bkJ8joXXvvWeaUyD2QufoN4CpqGqsPv0WjZfxalcD38qGtdcb2tcyi0OIEg3fRJkQQqdcVCXg%3D%3D\"}]}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Q9n9HPaVj%2BSF5%2B0cbYZdly5Wtzn93R%2BA1%2BxaNPuZiKrxBlqr5bFaqpbTei5g1RtqX9bIpMO0dfKoVFyD8TPA5F0S%2BmHBGsImca336gJ%2FAvQ%2FG4AtmX%2FRIfBRchdmYd%2B9zL7evFtxVulE2LZK5g%3D%3D\"}]}",
     "server": "cloudflare",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
     "transfer-encoding": "chunked",
@@ -2354,13 +2364,13 @@
         "height": 1000
       },
       "runs": 3,
-      "lcpMs": 448,
+      "lcpMs": 476,
       "inpMs": 24,
       "cls": 0.0007,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 1616,
+          "lcpMs": 3376,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -2370,7 +2380,71 @@
           "cls": 0.0007,
           "shifts": [
             {
-              "startTimeMs": 579,
+              "startTimeMs": 3377,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 438.578125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 468.578125,
+                    "bottom": 511.953125,
+                    "left": 438.578125
+                  },
+                  "currentRect": {
+                    "x": 444.03125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 474.03125,
+                    "bottom": 511.953125,
+                    "left": 444.03125
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3384,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 444.03125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 474.03125,
+                    "bottom": 511.953125,
+                    "left": 444.03125
+                  },
+                  "currentRect": {
+                    "x": 447.171875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 477.171875,
+                    "bottom": 511.953125,
+                    "left": 447.171875
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3426,
               "scrollY": 0,
               "value": 0.0002,
               "sources": [
@@ -2402,7 +2476,39 @@
               ]
             },
             {
-              "startTimeMs": 1929,
+              "startTimeMs": 3449,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 449.8125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 479.8125,
+                    "bottom": 511.953125,
+                    "left": 449.8125
+                  },
+                  "currentRect": {
+                    "x": 452.9375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 482.9375,
+                    "bottom": 511.953125,
+                    "left": 452.9375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4310,
               "scrollY": 0,
               "value": 0.0005,
               "sources": [
@@ -2462,22 +2568,22 @@
                   "className": "setup-session-status",
                   "previousRect": {
                     "x": 679.3125,
-                    "y": 477.34375,
+                    "y": 545.34375,
                     "width": 243.015625,
                     "height": 14,
-                    "top": 477.34375,
+                    "top": 545.34375,
                     "right": 922.328125,
-                    "bottom": 491.34375,
+                    "bottom": 559.34375,
                     "left": 679.3125
                   },
                   "currentRect": {
                     "x": 641.59375,
-                    "y": 477.34375,
+                    "y": 545.34375,
                     "width": 318.46875,
                     "height": 14,
-                    "top": 477.34375,
+                    "top": 545.34375,
                     "right": 960.0625,
-                    "bottom": 491.34375,
+                    "bottom": 559.34375,
                     "left": 641.59375
                   }
                 },
@@ -2487,43 +2593,331 @@
                   "className": "site-status-chip",
                   "previousRect": {
                     "x": 517.65625,
-                    "y": 472.34375,
+                    "y": 540.34375,
                     "width": 147.65625,
                     "height": 24,
-                    "top": 472.34375,
+                    "top": 540.34375,
                     "right": 665.3125,
-                    "bottom": 496.34375,
+                    "bottom": 564.34375,
                     "left": 517.65625
                   },
                   "currentRect": {
                     "x": 479.9375,
-                    "y": 472.34375,
+                    "y": 540.34375,
                     "width": 147.65625,
                     "height": 24,
-                    "top": 472.34375,
+                    "top": 540.34375,
                     "right": 627.59375,
-                    "bottom": 496.34375,
+                    "bottom": 564.34375,
                     "left": 479.9375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 6166,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 595.859375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 625.859375,
+                    "bottom": 511.953125,
+                    "left": 595.859375
+                  },
+                  "currentRect": {
+                    "x": 598.875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 628.875,
+                    "bottom": 511.953125,
+                    "left": 598.875
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 6184,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 598.875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 628.875,
+                    "bottom": 511.953125,
+                    "left": 598.875
+                  },
+                  "currentRect": {
+                    "x": 602,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 632,
+                    "bottom": 511.953125,
+                    "left": 602
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 6199,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 602,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 632,
+                    "bottom": 511.953125,
+                    "left": 602
+                  },
+                  "currentRect": {
+                    "x": 605.125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 635.125,
+                    "bottom": 511.953125,
+                    "left": 605.125
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 6216,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 605.125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 635.125,
+                    "bottom": 511.953125,
+                    "left": 605.125
+                  },
+                  "currentRect": {
+                    "x": 608.296875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 638.296875,
+                    "bottom": 511.953125,
+                    "left": 608.296875
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 6233,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 608.296875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 638.296875,
+                    "bottom": 511.953125,
+                    "left": 608.296875
+                  },
+                  "currentRect": {
+                    "x": 611.484375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 641.484375,
+                    "bottom": 511.953125,
+                    "left": 611.484375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 6249,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 611.484375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 641.484375,
+                    "bottom": 511.953125,
+                    "left": 611.484375
+                  },
+                  "currentRect": {
+                    "x": 614.640625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 644.640625,
+                    "bottom": 511.953125,
+                    "left": 614.640625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 6267,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 614.640625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 644.640625,
+                    "bottom": 511.953125,
+                    "left": 614.640625
+                  },
+                  "currentRect": {
+                    "x": 617.765625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 647.765625,
+                    "bottom": 511.953125,
+                    "left": 617.765625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 6283,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 617.765625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 647.765625,
+                    "bottom": 511.953125,
+                    "left": 617.765625
+                  },
+                  "currentRect": {
+                    "x": 620.84375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 650.84375,
+                    "bottom": 511.953125,
+                    "left": 620.84375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 6300,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 620.84375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 650.84375,
+                    "bottom": 511.953125,
+                    "left": 620.84375
+                  },
+                  "currentRect": {
+                    "x": 623.84375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 653.84375,
+                    "bottom": 511.953125,
+                    "left": 623.84375
                   }
                 }
               ]
             }
           ],
-          "inpMs": 80,
+          "inpMs": 32,
           "interactionObserved": true
         },
         {
-          "lcpMs": 420,
+          "lcpMs": 320,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
             "className": "",
             "text": ""
           },
-          "cls": 0.0007,
+          "cls": 0.001,
           "shifts": [
             {
-              "startTimeMs": 443,
+              "startTimeMs": 334,
               "scrollY": 0,
               "value": 0.0002,
               "sources": [
@@ -2555,7 +2949,967 @@
               ]
             },
             {
-              "startTimeMs": 1453,
+              "startTimeMs": 3209,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 595.859375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 625.859375,
+                    "bottom": 511.953125,
+                    "left": 595.859375
+                  },
+                  "currentRect": {
+                    "x": 598.890625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 628.890625,
+                    "bottom": 511.953125,
+                    "left": 598.890625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3226,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 598.890625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 628.890625,
+                    "bottom": 511.953125,
+                    "left": 598.890625
+                  },
+                  "currentRect": {
+                    "x": 602,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 632,
+                    "bottom": 511.953125,
+                    "left": 602
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3241,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 602,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 632,
+                    "bottom": 511.953125,
+                    "left": 602
+                  },
+                  "currentRect": {
+                    "x": 605.125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 635.125,
+                    "bottom": 511.953125,
+                    "left": 605.125
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3259,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 605.125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 635.125,
+                    "bottom": 511.953125,
+                    "left": 605.125
+                  },
+                  "currentRect": {
+                    "x": 608.3125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 638.3125,
+                    "bottom": 511.953125,
+                    "left": 608.3125
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3276,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 608.3125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 638.3125,
+                    "bottom": 511.953125,
+                    "left": 608.3125
+                  },
+                  "currentRect": {
+                    "x": 611.5,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 641.5,
+                    "bottom": 511.953125,
+                    "left": 611.5
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3292,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 611.5,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 641.5,
+                    "bottom": 511.953125,
+                    "left": 611.5
+                  },
+                  "currentRect": {
+                    "x": 614.640625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 644.640625,
+                    "bottom": 511.953125,
+                    "left": 614.640625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3309,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 614.640625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 644.640625,
+                    "bottom": 511.953125,
+                    "left": 614.640625
+                  },
+                  "currentRect": {
+                    "x": 617.78125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 647.78125,
+                    "bottom": 511.953125,
+                    "left": 617.78125
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3326,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 617.78125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 647.78125,
+                    "bottom": 511.953125,
+                    "left": 617.78125
+                  },
+                  "currentRect": {
+                    "x": 620.859375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 650.859375,
+                    "bottom": 511.953125,
+                    "left": 620.859375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3342,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 620.859375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 650.859375,
+                    "bottom": 511.953125,
+                    "left": 620.859375
+                  },
+                  "currentRect": {
+                    "x": 623.875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 653.875,
+                    "bottom": 511.953125,
+                    "left": 623.875
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4609,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 707.90625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 737.90625,
+                    "bottom": 511.953125,
+                    "left": 707.90625
+                  },
+                  "currentRect": {
+                    "x": 710.984375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 740.984375,
+                    "bottom": 511.953125,
+                    "left": 710.984375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4627,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 710.984375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 740.984375,
+                    "bottom": 511.953125,
+                    "left": 710.984375
+                  },
+                  "currentRect": {
+                    "x": 714.296875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 744.296875,
+                    "bottom": 511.953125,
+                    "left": 714.296875
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4642,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 714.296875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 744.296875,
+                    "bottom": 511.953125,
+                    "left": 714.296875
+                  },
+                  "currentRect": {
+                    "x": 717.796875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 747.796875,
+                    "bottom": 511.953125,
+                    "left": 717.796875
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4659,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 717.796875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 747.796875,
+                    "bottom": 511.953125,
+                    "left": 717.796875
+                  },
+                  "currentRect": {
+                    "x": 721.484375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 751.484375,
+                    "bottom": 511.953125,
+                    "left": 721.484375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4675,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 721.484375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 751.484375,
+                    "bottom": 511.953125,
+                    "left": 721.484375
+                  },
+                  "currentRect": {
+                    "x": 725.34375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 755.34375,
+                    "bottom": 511.953125,
+                    "left": 725.34375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4691,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 725.34375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 755.34375,
+                    "bottom": 511.953125,
+                    "left": 725.34375
+                  },
+                  "currentRect": {
+                    "x": 729.328125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 759.328125,
+                    "bottom": 511.953125,
+                    "left": 729.328125
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4709,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 729.328125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 759.328125,
+                    "bottom": 511.953125,
+                    "left": 729.328125
+                  },
+                  "currentRect": {
+                    "x": 733.4375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 763.4375,
+                    "bottom": 511.953125,
+                    "left": 733.4375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4725,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 733.4375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 763.4375,
+                    "bottom": 511.953125,
+                    "left": 733.4375
+                  },
+                  "currentRect": {
+                    "x": 737.65625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 767.65625,
+                    "bottom": 511.953125,
+                    "left": 737.65625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4743,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 737.65625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 767.65625,
+                    "bottom": 511.953125,
+                    "left": 737.65625
+                  },
+                  "currentRect": {
+                    "x": 741.9375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 771.9375,
+                    "bottom": 511.953125,
+                    "left": 741.9375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4759,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 741.9375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 771.9375,
+                    "bottom": 511.953125,
+                    "left": 741.9375
+                  },
+                  "currentRect": {
+                    "x": 746.25,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 776.25,
+                    "bottom": 511.953125,
+                    "left": 746.25
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4775,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 746.25,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 776.25,
+                    "bottom": 511.953125,
+                    "left": 746.25
+                  },
+                  "currentRect": {
+                    "x": 750.53125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 780.53125,
+                    "bottom": 511.953125,
+                    "left": 750.53125
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4793,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 750.53125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 780.53125,
+                    "bottom": 511.953125,
+                    "left": 750.53125
+                  },
+                  "currentRect": {
+                    "x": 754.75,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 784.75,
+                    "bottom": 511.953125,
+                    "left": 754.75
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4809,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 754.75,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 784.75,
+                    "bottom": 511.953125,
+                    "left": 754.75
+                  },
+                  "currentRect": {
+                    "x": 758.90625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 788.90625,
+                    "bottom": 511.953125,
+                    "left": 758.90625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4825,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 758.90625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 788.90625,
+                    "bottom": 511.953125,
+                    "left": 758.90625
+                  },
+                  "currentRect": {
+                    "x": 762.9375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 792.9375,
+                    "bottom": 511.953125,
+                    "left": 762.9375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4842,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 762.9375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 792.9375,
+                    "bottom": 511.953125,
+                    "left": 762.9375
+                  },
+                  "currentRect": {
+                    "x": 766.859375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 796.859375,
+                    "bottom": 511.953125,
+                    "left": 766.859375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4859,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 766.859375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 796.859375,
+                    "bottom": 511.953125,
+                    "left": 766.859375
+                  },
+                  "currentRect": {
+                    "x": 770.65625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 800.65625,
+                    "bottom": 511.953125,
+                    "left": 770.65625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4875,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 770.65625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 800.65625,
+                    "bottom": 511.953125,
+                    "left": 770.65625
+                  },
+                  "currentRect": {
+                    "x": 774.265625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 804.265625,
+                    "bottom": 511.953125,
+                    "left": 774.265625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4891,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 774.265625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 804.265625,
+                    "bottom": 511.953125,
+                    "left": 774.265625
+                  },
+                  "currentRect": {
+                    "x": 777.75,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 807.75,
+                    "bottom": 511.953125,
+                    "left": 777.75
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4909,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 777.75,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 807.75,
+                    "bottom": 511.953125,
+                    "left": 777.75
+                  },
+                  "currentRect": {
+                    "x": 781.0625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 811.0625,
+                    "bottom": 511.953125,
+                    "left": 781.0625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4925,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 781.0625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 811.0625,
+                    "bottom": 511.953125,
+                    "left": 781.0625
+                  },
+                  "currentRect": {
+                    "x": 784.234375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 814.234375,
+                    "bottom": 511.953125,
+                    "left": 784.234375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4942,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 784.234375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 814.234375,
+                    "bottom": 511.953125,
+                    "left": 784.234375
+                  },
+                  "currentRect": {
+                    "x": 787.234375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 817.234375,
+                    "bottom": 511.953125,
+                    "left": 787.234375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 6549,
               "scrollY": 0,
               "value": 0.0005,
               "sources": [
@@ -2615,22 +3969,22 @@
                   "className": "setup-session-status",
                   "previousRect": {
                     "x": 679.3125,
-                    "y": 477.34375,
+                    "y": 545.34375,
                     "width": 243.015625,
                     "height": 14,
-                    "top": 477.34375,
+                    "top": 545.34375,
                     "right": 922.328125,
-                    "bottom": 491.34375,
+                    "bottom": 559.34375,
                     "left": 679.3125
                   },
                   "currentRect": {
                     "x": 641.59375,
-                    "y": 477.34375,
+                    "y": 545.34375,
                     "width": 318.46875,
                     "height": 14,
-                    "top": 477.34375,
+                    "top": 545.34375,
                     "right": 960.0625,
-                    "bottom": 491.34375,
+                    "bottom": 559.34375,
                     "left": 641.59375
                   }
                 },
@@ -2640,23 +3994,55 @@
                   "className": "site-status-chip",
                   "previousRect": {
                     "x": 517.65625,
-                    "y": 472.34375,
+                    "y": 540.34375,
                     "width": 147.65625,
                     "height": 24,
-                    "top": 472.34375,
+                    "top": 540.34375,
                     "right": 665.3125,
-                    "bottom": 496.34375,
+                    "bottom": 564.34375,
                     "left": 517.65625
                   },
                   "currentRect": {
                     "x": 479.9375,
-                    "y": 472.34375,
+                    "y": 540.34375,
                     "width": 147.65625,
                     "height": 24,
-                    "top": 472.34375,
+                    "top": 540.34375,
                     "right": 627.59375,
-                    "bottom": 496.34375,
+                    "bottom": 564.34375,
                     "left": 479.9375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 7192,
+              "scrollY": 0,
+              "value": 0.0003,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 830.578125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 860.578125,
+                    "bottom": 511.953125,
+                    "left": 830.578125
+                  },
+                  "currentRect": {
+                    "x": 438.703125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 468.703125,
+                    "bottom": 511.953125,
+                    "left": 438.703125
                   }
                 }
               ]
@@ -2666,7 +4052,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 448,
+          "lcpMs": 476,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -2676,7 +4062,7 @@
           "cls": 0.0007,
           "shifts": [
             {
-              "startTimeMs": 534,
+              "startTimeMs": 864,
               "scrollY": 0,
               "value": 0.0002,
               "sources": [
@@ -2708,7 +4094,295 @@
               ]
             },
             {
-              "startTimeMs": 1418,
+              "startTimeMs": 3358,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 595.859375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 625.859375,
+                    "bottom": 511.953125,
+                    "left": 595.859375
+                  },
+                  "currentRect": {
+                    "x": 598.890625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 628.890625,
+                    "bottom": 511.953125,
+                    "left": 598.890625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3374,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 598.890625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 628.890625,
+                    "bottom": 511.953125,
+                    "left": 598.890625
+                  },
+                  "currentRect": {
+                    "x": 601.96875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 631.96875,
+                    "bottom": 511.953125,
+                    "left": 601.96875
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3390,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 601.96875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 631.96875,
+                    "bottom": 511.953125,
+                    "left": 601.96875
+                  },
+                  "currentRect": {
+                    "x": 605.140625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 635.140625,
+                    "bottom": 511.953125,
+                    "left": 605.140625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3408,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 605.140625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 635.140625,
+                    "bottom": 511.953125,
+                    "left": 605.140625
+                  },
+                  "currentRect": {
+                    "x": 608.296875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 638.296875,
+                    "bottom": 511.953125,
+                    "left": 608.296875
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3425,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 608.296875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 638.296875,
+                    "bottom": 511.953125,
+                    "left": 608.296875
+                  },
+                  "currentRect": {
+                    "x": 611.484375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 641.484375,
+                    "bottom": 511.953125,
+                    "left": 611.484375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3441,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 611.484375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 641.484375,
+                    "bottom": 511.953125,
+                    "left": 611.484375
+                  },
+                  "currentRect": {
+                    "x": 614.640625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 644.640625,
+                    "bottom": 511.953125,
+                    "left": 614.640625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3458,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 614.640625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 644.640625,
+                    "bottom": 511.953125,
+                    "left": 614.640625
+                  },
+                  "currentRect": {
+                    "x": 617.78125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 647.78125,
+                    "bottom": 511.953125,
+                    "left": 617.78125
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3474,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 617.78125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 647.78125,
+                    "bottom": 511.953125,
+                    "left": 617.78125
+                  },
+                  "currentRect": {
+                    "x": 620.859375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 650.859375,
+                    "bottom": 511.953125,
+                    "left": 620.859375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3491,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 620.859375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 650.859375,
+                    "bottom": 511.953125,
+                    "left": 620.859375
+                  },
+                  "currentRect": {
+                    "x": 623.859375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 653.859375,
+                    "bottom": 511.953125,
+                    "left": 623.859375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 3515,
               "scrollY": 0,
               "value": 0.0005,
               "sources": [
@@ -2768,22 +4442,22 @@
                   "className": "setup-session-status",
                   "previousRect": {
                     "x": 679.3125,
-                    "y": 477.34375,
+                    "y": 545.34375,
                     "width": 243.015625,
                     "height": 14,
-                    "top": 477.34375,
+                    "top": 545.34375,
                     "right": 922.328125,
-                    "bottom": 491.34375,
+                    "bottom": 559.34375,
                     "left": 679.3125
                   },
                   "currentRect": {
                     "x": 641.59375,
-                    "y": 477.34375,
+                    "y": 545.34375,
                     "width": 318.46875,
                     "height": 14,
-                    "top": 477.34375,
+                    "top": 545.34375,
                     "right": 960.0625,
-                    "bottom": 491.34375,
+                    "bottom": 559.34375,
                     "left": 641.59375
                   }
                 },
@@ -2793,23 +4467,663 @@
                   "className": "site-status-chip",
                   "previousRect": {
                     "x": 517.65625,
-                    "y": 472.34375,
+                    "y": 540.34375,
                     "width": 147.65625,
                     "height": 24,
-                    "top": 472.34375,
+                    "top": 540.34375,
                     "right": 665.3125,
-                    "bottom": 496.34375,
+                    "bottom": 564.34375,
                     "left": 517.65625
                   },
                   "currentRect": {
                     "x": 479.9375,
-                    "y": 472.34375,
+                    "y": 540.34375,
                     "width": 147.65625,
                     "height": 24,
-                    "top": 472.34375,
+                    "top": 540.34375,
                     "right": 627.59375,
-                    "bottom": 496.34375,
+                    "bottom": 564.34375,
                     "left": 479.9375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4758,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 707.90625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 737.90625,
+                    "bottom": 511.953125,
+                    "left": 707.90625
+                  },
+                  "currentRect": {
+                    "x": 710.984375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 740.984375,
+                    "bottom": 511.953125,
+                    "left": 710.984375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4774,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 710.984375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 740.984375,
+                    "bottom": 511.953125,
+                    "left": 710.984375
+                  },
+                  "currentRect": {
+                    "x": 714.296875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 744.296875,
+                    "bottom": 511.953125,
+                    "left": 714.296875
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4790,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 714.296875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 744.296875,
+                    "bottom": 511.953125,
+                    "left": 714.296875
+                  },
+                  "currentRect": {
+                    "x": 717.765625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 747.765625,
+                    "bottom": 511.953125,
+                    "left": 717.765625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4807,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 717.765625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 747.765625,
+                    "bottom": 511.953125,
+                    "left": 717.765625
+                  },
+                  "currentRect": {
+                    "x": 721.484375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 751.484375,
+                    "bottom": 511.953125,
+                    "left": 721.484375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4824,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 721.484375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 751.484375,
+                    "bottom": 511.953125,
+                    "left": 721.484375
+                  },
+                  "currentRect": {
+                    "x": 725.3125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 755.3125,
+                    "bottom": 511.953125,
+                    "left": 725.3125
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4841,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 725.3125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 755.3125,
+                    "bottom": 511.953125,
+                    "left": 725.3125
+                  },
+                  "currentRect": {
+                    "x": 729.296875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 759.296875,
+                    "bottom": 511.953125,
+                    "left": 729.296875
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4858,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 729.296875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 759.296875,
+                    "bottom": 511.953125,
+                    "left": 729.296875
+                  },
+                  "currentRect": {
+                    "x": 733.453125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 763.453125,
+                    "bottom": 511.953125,
+                    "left": 733.453125
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4874,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 733.453125,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 763.453125,
+                    "bottom": 511.953125,
+                    "left": 733.453125
+                  },
+                  "currentRect": {
+                    "x": 737.65625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 767.65625,
+                    "bottom": 511.953125,
+                    "left": 737.65625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4891,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 737.65625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 767.65625,
+                    "bottom": 511.953125,
+                    "left": 737.65625
+                  },
+                  "currentRect": {
+                    "x": 741.9375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 771.9375,
+                    "bottom": 511.953125,
+                    "left": 741.9375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4907,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 741.9375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 771.9375,
+                    "bottom": 511.953125,
+                    "left": 741.9375
+                  },
+                  "currentRect": {
+                    "x": 746.21875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 776.21875,
+                    "bottom": 511.953125,
+                    "left": 746.21875
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4925,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 746.21875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 776.21875,
+                    "bottom": 511.953125,
+                    "left": 746.21875
+                  },
+                  "currentRect": {
+                    "x": 750.5,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 780.5,
+                    "bottom": 511.953125,
+                    "left": 750.5
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4940,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 750.5,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 780.5,
+                    "bottom": 511.953125,
+                    "left": 750.5
+                  },
+                  "currentRect": {
+                    "x": 754.71875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 784.71875,
+                    "bottom": 511.953125,
+                    "left": 754.71875
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4957,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 754.71875,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 784.71875,
+                    "bottom": 511.953125,
+                    "left": 754.71875
+                  },
+                  "currentRect": {
+                    "x": 758.90625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 788.90625,
+                    "bottom": 511.953125,
+                    "left": 758.90625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4974,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 758.90625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 788.90625,
+                    "bottom": 511.953125,
+                    "left": 758.90625
+                  },
+                  "currentRect": {
+                    "x": 762.9375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 792.9375,
+                    "bottom": 511.953125,
+                    "left": 762.9375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4991,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 762.9375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 792.9375,
+                    "bottom": 511.953125,
+                    "left": 762.9375
+                  },
+                  "currentRect": {
+                    "x": 766.859375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 796.859375,
+                    "bottom": 511.953125,
+                    "left": 766.859375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 5007,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 766.859375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 796.859375,
+                    "bottom": 511.953125,
+                    "left": 766.859375
+                  },
+                  "currentRect": {
+                    "x": 770.625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 800.625,
+                    "bottom": 511.953125,
+                    "left": 770.625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 5025,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 770.625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 800.625,
+                    "bottom": 511.953125,
+                    "left": 770.625
+                  },
+                  "currentRect": {
+                    "x": 774.265625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 804.265625,
+                    "bottom": 511.953125,
+                    "left": 774.265625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 5041,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 774.265625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 804.265625,
+                    "bottom": 511.953125,
+                    "left": 774.265625
+                  },
+                  "currentRect": {
+                    "x": 777.734375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 807.734375,
+                    "bottom": 511.953125,
+                    "left": 777.734375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 5057,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 777.734375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 807.734375,
+                    "bottom": 511.953125,
+                    "left": 777.734375
+                  },
+                  "currentRect": {
+                    "x": 781.0625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 811.0625,
+                    "bottom": 511.953125,
+                    "left": 781.0625
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 5074,
+              "scrollY": 0,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 781.0625,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 811.0625,
+                    "bottom": 511.953125,
+                    "left": 781.0625
+                  },
+                  "currentRect": {
+                    "x": 784.234375,
+                    "y": 488.953125,
+                    "width": 30,
+                    "height": 23,
+                    "top": 488.953125,
+                    "right": 814.234375,
+                    "bottom": 511.953125,
+                    "left": 784.234375
                   }
                 }
               ]
@@ -2827,25 +5141,57 @@
         "height": 844
       },
       "runs": 3,
-      "lcpMs": 720,
-      "inpMs": 40,
-      "cls": 0.0119,
+      "lcpMs": 568,
+      "inpMs": 16,
+      "cls": 0.0089,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 1772,
+          "lcpMs": 3360,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
             "className": "",
             "text": ""
           },
-          "cls": 0.0119,
+          "cls": 0.0087,
           "shifts": [
             {
-              "startTimeMs": 1905,
+              "startTimeMs": 3374,
               "scrollY": 0,
-              "value": 0.0119,
+              "value": 0,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 93.703125,
+                    "y": 580,
+                    "width": 30,
+                    "height": 23,
+                    "top": 580,
+                    "right": 123.703125,
+                    "bottom": 603,
+                    "left": 93.703125
+                  },
+                  "currentRect": {
+                    "x": 96.8125,
+                    "y": 580,
+                    "width": 30,
+                    "height": 23,
+                    "top": 580,
+                    "right": 126.8125,
+                    "bottom": 603,
+                    "left": 96.8125
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 4306,
+              "scrollY": 0,
+              "value": 0.0087,
               "sources": [
                 {
                   "tag": "FIGURE",
@@ -2853,20 +5199,20 @@
                   "className": "hero-shot",
                   "previousRect": {
                     "x": 20.1875,
-                    "y": 589.78125,
+                    "y": 657.78125,
                     "width": 349.625,
-                    "height": 254.21875,
-                    "top": 589.78125,
+                    "height": 186.21875,
+                    "top": 657.78125,
                     "right": 369.8125,
                     "bottom": 844,
                     "left": 20.1875
                   },
                   "currentRect": {
                     "x": 20.1875,
-                    "y": 603.78125,
+                    "y": 671.78125,
                     "width": 349.625,
-                    "height": 240.21875,
-                    "top": 603.78125,
+                    "height": 172.21875,
+                    "top": 671.78125,
                     "right": 369.8125,
                     "bottom": 844,
                     "left": 20.1875
@@ -2878,45 +5224,45 @@
                   "className": "setup-session-status",
                   "previousRect": {
                     "x": 73.484375,
-                    "y": 595.390625,
+                    "y": 663.390625,
                     "width": 243.015625,
                     "height": 14,
-                    "top": 595.390625,
+                    "top": 663.390625,
                     "right": 316.5,
-                    "bottom": 609.390625,
+                    "bottom": 677.390625,
                     "left": 73.484375
                   },
                   "currentRect": {
                     "x": 36.1875,
-                    "y": 595.390625,
+                    "y": 663.390625,
                     "width": 317.625,
                     "height": 28,
-                    "top": 595.390625,
+                    "top": 663.390625,
                     "right": 353.8125,
-                    "bottom": 623.390625,
+                    "bottom": 691.390625,
                     "left": 36.1875
                   }
                 }
               ]
             }
           ],
-          "inpMs": 64,
+          "inpMs": 16,
           "interactionObserved": true
         },
         {
-          "lcpMs": 432,
+          "lcpMs": 308,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
             "className": "",
             "text": ""
           },
-          "cls": 0.0119,
+          "cls": 0.0098,
           "shifts": [
             {
-              "startTimeMs": 1529,
+              "startTimeMs": 5130,
               "scrollY": 0,
-              "value": 0.0119,
+              "value": 0.0087,
               "sources": [
                 {
                   "tag": "FIGURE",
@@ -2924,20 +5270,20 @@
                   "className": "hero-shot",
                   "previousRect": {
                     "x": 20.1875,
-                    "y": 589.78125,
+                    "y": 657.78125,
                     "width": 349.625,
-                    "height": 254.21875,
-                    "top": 589.78125,
+                    "height": 186.21875,
+                    "top": 657.78125,
                     "right": 369.8125,
                     "bottom": 844,
                     "left": 20.1875
                   },
                   "currentRect": {
                     "x": 20.1875,
-                    "y": 603.78125,
+                    "y": 671.78125,
                     "width": 349.625,
-                    "height": 240.21875,
-                    "top": 603.78125,
+                    "height": 172.21875,
+                    "top": 671.78125,
                     "right": 369.8125,
                     "bottom": 844,
                     "left": 20.1875
@@ -2949,45 +5295,134 @@
                   "className": "setup-session-status",
                   "previousRect": {
                     "x": 73.484375,
-                    "y": 595.390625,
+                    "y": 663.390625,
                     "width": 243.015625,
                     "height": 14,
-                    "top": 595.390625,
+                    "top": 663.390625,
                     "right": 316.5,
-                    "bottom": 609.390625,
+                    "bottom": 677.390625,
                     "left": 73.484375
                   },
                   "currentRect": {
                     "x": 36.1875,
-                    "y": 595.390625,
+                    "y": 663.390625,
                     "width": 317.625,
                     "height": 28,
-                    "top": 595.390625,
+                    "top": 663.390625,
                     "right": 353.8125,
-                    "bottom": 623.390625,
+                    "bottom": 691.390625,
                     "left": 36.1875
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 7205,
+              "scrollY": 0,
+              "value": 0.0011,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "hero-field-ball",
+                  "previousRect": {
+                    "x": 316.046875,
+                    "y": 580,
+                    "width": 30,
+                    "height": 23,
+                    "top": 580,
+                    "right": 346.046875,
+                    "bottom": 603,
+                    "left": 316.046875
+                  },
+                  "currentRect": {
+                    "x": 93.78125,
+                    "y": 580,
+                    "width": 30,
+                    "height": 23,
+                    "top": 580,
+                    "right": 123.78125,
+                    "bottom": 603,
+                    "left": 93.78125
                   }
                 }
               ]
             }
           ],
-          "inpMs": 40,
+          "inpMs": 16,
           "interactionObserved": true
         },
         {
-          "lcpMs": 720,
+          "lcpMs": 568,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
             "className": "",
             "text": ""
           },
-          "cls": 0.0119,
+          "cls": 0.0089,
           "shifts": [
             {
-              "startTimeMs": 2204,
+              "startTimeMs": 597,
               "scrollY": 0,
-              "value": 0.0119,
+              "value": 0.0001,
+              "sources": [
+                {
+                  "tag": null,
+                  "id": null,
+                  "className": "",
+                  "previousRect": {
+                    "x": 36.1875,
+                    "y": 206.984375,
+                    "width": 317.625,
+                    "height": 12,
+                    "top": 206.984375,
+                    "right": 353.8125,
+                    "bottom": 218.984375,
+                    "left": 36.1875
+                  },
+                  "currentRect": {
+                    "x": 36.1875,
+                    "y": 206.984375,
+                    "width": 317.625,
+                    "height": 12,
+                    "top": 206.984375,
+                    "right": 353.8125,
+                    "bottom": 218.984375,
+                    "left": 36.1875
+                  }
+                },
+                {
+                  "tag": "SPAN",
+                  "id": "activeLeagueText",
+                  "className": "setup-session-status",
+                  "previousRect": {
+                    "x": 76.578125,
+                    "y": 663.390625,
+                    "width": 236.828125,
+                    "height": 14,
+                    "top": 663.390625,
+                    "right": 313.40625,
+                    "bottom": 677.390625,
+                    "left": 76.578125
+                  },
+                  "currentRect": {
+                    "x": 73.484375,
+                    "y": 663.390625,
+                    "width": 243.015625,
+                    "height": 14,
+                    "top": 663.390625,
+                    "right": 316.5,
+                    "bottom": 677.390625,
+                    "left": 73.484375
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 1249,
+              "scrollY": 0,
+              "value": 0.0087,
               "sources": [
                 {
                   "tag": "FIGURE",
@@ -2995,20 +5430,20 @@
                   "className": "hero-shot",
                   "previousRect": {
                     "x": 20.1875,
-                    "y": 589.78125,
+                    "y": 657.78125,
                     "width": 349.625,
-                    "height": 254.21875,
-                    "top": 589.78125,
+                    "height": 186.21875,
+                    "top": 657.78125,
                     "right": 369.8125,
                     "bottom": 844,
                     "left": 20.1875
                   },
                   "currentRect": {
                     "x": 20.1875,
-                    "y": 603.78125,
+                    "y": 671.78125,
                     "width": 349.625,
-                    "height": 240.21875,
-                    "top": 603.78125,
+                    "height": 172.21875,
+                    "top": 671.78125,
                     "right": 369.8125,
                     "bottom": 844,
                     "left": 20.1875
@@ -3020,29 +5455,29 @@
                   "className": "setup-session-status",
                   "previousRect": {
                     "x": 73.484375,
-                    "y": 595.390625,
+                    "y": 663.390625,
                     "width": 243.015625,
                     "height": 14,
-                    "top": 595.390625,
+                    "top": 663.390625,
                     "right": 316.5,
-                    "bottom": 609.390625,
+                    "bottom": 677.390625,
                     "left": 73.484375
                   },
                   "currentRect": {
                     "x": 36.1875,
-                    "y": 595.390625,
+                    "y": 663.390625,
                     "width": 317.625,
                     "height": 28,
-                    "top": 595.390625,
+                    "top": 663.390625,
                     "right": 353.8125,
-                    "bottom": 623.390625,
+                    "bottom": 691.390625,
                     "left": 36.1875
                   }
                 }
               ]
             }
           ],
-          "inpMs": 24,
+          "inpMs": 16,
           "interactionObserved": true
         }
       ]
@@ -3054,13 +5489,13 @@
       {
         "name": "source revision is immutable",
         "ok": true,
-        "observed": "2cc74c1f2f136705b442037b8479002382d403e5",
+        "observed": "a8b46bb36fe7204c650deac54f8516edd2236fde",
         "expected": "40-character git SHA"
       },
       {
         "name": "artifact fingerprint is immutable",
         "ok": true,
-        "observed": "ab0d4d2b944c205663c82f89e47db223d83b9f4c94b9b7448b764b7b2badbc6d",
+        "observed": "1f4f280f1bf5d2d9680404a1541b795e22e0b21b46e5f0a2d5d19856dfc4cff7",
         "expected": "sha256"
       },
       {
@@ -3072,7 +5507,7 @@
       {
         "name": "hosted Content-Security-Policy observed",
         "ok": true,
-        "observed": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-0Rz+2y6JEMRAEBmO0ZGZj9JsqeDSzCWOBbdvKgOCfuU=' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-9+2WwytGYhRIhgW38s5cyGADZStv2WhCuKWnjt+Rj2Q=' 'sha256-HONiLnVUE6Y2HJ9eVyBQBrQrBkHMtrAm6m25hqIYHx0=' 'sha256-KaOaSO/d4V6oGlcD95tZvqSy7QnwhdSYLASFr4aA7Rw=' 'sha256-KsaVR+LuEHednAc+QsMQN0UBj6yLhulFo4jIeEetg78=' 'sha256-LwZntZ/IVQuUyISVcVLHEngh4shx+ykGMKVQBTxRvEI=' 'sha256-O4W9r5p1vZYNP7/dsnmCzBkopk9MAELNfgu9CBwAoxE=' 'sha256-Of2/oycLq8/o0iHHRzBbrtpLHTnUKgvvYfq7ya5fEWM=' 'sha256-Z2EgYyR+Kqjlsc4IZYl1PUPxeGr1cM2D/Wkfhc4+NM8=' 'sha256-hJC0dsAF/B0x/w8dJL+4LorLBJAjxXpbanxq7l7KQOI=' 'sha256-kzXhfSqr19wheiQ6HTvKDupItXIlQtttQNXaNScLRfE=' 'sha256-mRLjEILdiEtsSKhSIwMo/mC4H2AlQMyOEKB801IBELk=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' 'sha256-pS6OrTS7JyDcJIHKMadss3Dksq8iZEBIS2fji6G2AYU=' 'sha256-vMznO4Hy7PzPffigj8Jp9IJk9JlIE2pnQkIl8B0gFBE=' 'sha256-z0bOOrt6l1juvavYkCSZsqhssJ2k/zL1RDjUD4QFRO4=' https://static.cloudflareinsights.com https://challenges.cloudflare.com; style-src-elem 'self' 'sha256-NtRjAo9IYx14+BFq8ok87cIWsNupAf3wSYZp/ZkoipA=' 'sha256-dlYa+ypRwYOtKTCy01pYCIVpWImjUXvCZ3UlT9jYdX4=' 'sha256-qyZDccJ1LPEcJoATh0CyYtt/Mh3GczC9PfJxR2c1CpE='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+        "observed": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-9+2WwytGYhRIhgW38s5cyGADZStv2WhCuKWnjt+Rj2Q=' 'sha256-HONiLnVUE6Y2HJ9eVyBQBrQrBkHMtrAm6m25hqIYHx0=' 'sha256-KaOaSO/d4V6oGlcD95tZvqSy7QnwhdSYLASFr4aA7Rw=' 'sha256-KsaVR+LuEHednAc+QsMQN0UBj6yLhulFo4jIeEetg78=' 'sha256-LwZntZ/IVQuUyISVcVLHEngh4shx+ykGMKVQBTxRvEI=' 'sha256-O4W9r5p1vZYNP7/dsnmCzBkopk9MAELNfgu9CBwAoxE=' 'sha256-Of2/oycLq8/o0iHHRzBbrtpLHTnUKgvvYfq7ya5fEWM=' 'sha256-Z2EgYyR+Kqjlsc4IZYl1PUPxeGr1cM2D/Wkfhc4+NM8=' 'sha256-hJC0dsAF/B0x/w8dJL+4LorLBJAjxXpbanxq7l7KQOI=' 'sha256-kI/fkpmnQ4b1rGRW3tE4MS5dRx5hz9UsGkRc3r+hCPM=' 'sha256-kzXhfSqr19wheiQ6HTvKDupItXIlQtttQNXaNScLRfE=' 'sha256-mRLjEILdiEtsSKhSIwMo/mC4H2AlQMyOEKB801IBELk=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' 'sha256-pS6OrTS7JyDcJIHKMadss3Dksq8iZEBIS2fji6G2AYU=' 'sha256-vMznO4Hy7PzPffigj8Jp9IJk9JlIE2pnQkIl8B0gFBE=' 'sha256-z0bOOrt6l1juvavYkCSZsqhssJ2k/zL1RDjUD4QFRO4=' https://static.cloudflareinsights.com https://challenges.cloudflare.com; style-src-elem 'self' 'sha256-JoX5eDDkDs7jBU/wNqFrEgCUGCaqOZoLT2lHQlgGHZg=' 'sha256-dlYa+ypRwYOtKTCy01pYCIVpWImjUXvCZ3UlT9jYdX4=' 'sha256-qyZDccJ1LPEcJoATh0CyYtt/Mh3GczC9PfJxR2c1CpE='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
         "expected": "present"
       },
       {
@@ -3084,7 +5519,7 @@
       {
         "name": "desktop LCP",
         "ok": true,
-        "observed": 448,
+        "observed": 476,
         "expected": "< 1800ms"
       },
       {
@@ -3108,19 +5543,19 @@
       {
         "name": "mobile LCP",
         "ok": true,
-        "observed": 720,
+        "observed": 568,
         "expected": "< 1800ms"
       },
       {
         "name": "mobile INP",
         "ok": true,
-        "observed": 40,
+        "observed": 16,
         "expected": "<= 200ms"
       },
       {
         "name": "mobile CLS",
         "ok": true,
-        "observed": 0.0119,
+        "observed": 0.0089,
         "expected": "<= 0.1"
       },
       {
@@ -3150,5 +5585,5 @@
     }
   },
   "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
-  "receiptSha256": "0ceb1b4072fbff9d62bc71d00be425384430e4d8dbeb2690a3c79b48174d209e"
+  "receiptSha256": "c75263872016dc13e52b6aed0e8f8d4464ca5f98a59be187cc6983af1907e9a1"
 }
