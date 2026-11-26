@@ -10,7 +10,7 @@
 // Detailed Community Stats (per-browser receipts, error reports, the weekly
 // challenge board) remain a separate opt-in in communityTelemetry.js.
 
-import { LEAGUE_PULSE_METRICS, LEAGUE_PULSE_SCHEMA_VERSION, normalizeLeaguePulse } from "./leaguePulseContract.js";
+import { LEAGUE_PULSE_METRICS, LEAGUE_PULSE_SCHEMA_VERSION, normalizeLeaguePulse, pulseScenarioFor } from "./leaguePulseContract.js";
 import { observeBackgroundTask } from "./clientDiagnostics.js";
 
 export const LEAGUE_PULSE_PREFERENCE_KEY = "fa:league-pulse:v1";
@@ -134,11 +134,17 @@ export function observePulseReceipt({ events = [], path = "", response = {} } = 
   let flushNow = false;
   for (const row of events) {
     const m = row?.metrics || {};
-    if (row?.type === "league_started") { countPulse("leagueCreated"); flushNow = true; }
+    if (row?.type === "league_started") {
+      countPulse("leagueCreated"); flushNow = true;
+      const scenario = pulseScenarioFor(row?.dimensions?.archetype);
+      if (scenario) countPulse(`scenario${scenario.key}Starts`);
+    }
     else if (row?.type === "weeks_managed") {
       countPulse("gamesPlayed", m.weeks);
       countPulse("seasonsCompleted", m.seasonsCompleted);
       countPulse("championships", m.championships);
+      const scenario = pulseScenarioFor(response?.state?.settings?.franchiseArchetype);
+      if (scenario) countPulse(`scenario${scenario.key}Titles`, m.championships);
       if (Number(m.seasonsCompleted) > 0) flushNow = true;
     }
     else if (row?.type === "draft_pick") countPulse("playersDrafted");

@@ -6584,6 +6584,8 @@ details.desk-group[open] > summary { margin-bottom: 12px; }
 .body-program > span { margin-right: 4px; color: var(--muted); }
 .body-program-btn { padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--ink); font-size: 0.8rem; cursor: pointer; }
 .body-program-btn.active { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent-strong); }
+.player-card-btn { display: inline-block; margin-top: 8px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--accent); background: transparent; color: var(--accent-strong); font-size: 0.8rem; cursor: pointer; }
+.player-card-btn:disabled { opacity: 0.6; cursor: progress; }
 /* S133: the drive chart under the Sim-Watch field. */
 .sw-drives { display: block; width: 100%; height: auto; min-height: 36px; margin-top: 6px; background: linear-gradient(90deg, rgba(40, 110, 60, .35), rgba(30, 95, 50, .35)); border-radius: 6px; }
 .sw-drive-yard { stroke: rgba(255, 255, 255, .14); stroke-width: .6; }

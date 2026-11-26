@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.6",
+  "schemaVersion": "1.7",
   "headerLinks": [
     "./index.html",
     "./features.html",
@@ -17,9 +17,6 @@
     "./stats",
     "./status.html",
     "./about.html",
-    "./press.html",
-    "./contact.html",
-    "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions",
     "./privacy.html",
     "./terms.html"
   ],
@@ -44,10 +41,7 @@
     {
       "label": "Studio",
       "links": [
-        "./about.html",
-        "./press.html",
-        "./contact.html",
-        "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions"
+        "./about.html"
       ]
     },
     {
@@ -61,11 +55,8 @@
   "footerOnly": [
     "./simulation.html",
     "./about.html",
-    "./press.html",
-    "./contact.html",
     "./privacy.html",
-    "./terms.html",
-    "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions"
+    "./terms.html"
   ],
   "legalPages": [
     "./privacy.html",
@@ -90,7 +81,7 @@
     "./index.html": "Play",
     "./features.html": "Features",
     "./faq.html": "FAQ",
-    "./about.html": "About",
+    "./about.html": "About & Press",
     "./simulation.html": "The Simulation",
     "./stats": "Gridiron Census",
     "./status.html": "Updates",

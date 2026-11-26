@@ -460,8 +460,14 @@ test("scheduled realism verification cannot be greened by tee", () => {
   assert.match(step, /verifyRealism\.js[\s\S]*\|\s*tee/);
 
   const job = workflow.match(/deep-realism:[\s\S]*$/)?.[0] || "";
-  assert.match(job, /timeout-minutes:\s*125/);
   assert.match(step, /timeout-minutes:\s*90/);
+  // The job budget must exceed its bounded steps plus setup and upload, or the
+  // outer timer kills the job before the report uploads. Asserted as that
+  // relationship, not a number: S133 raised the long step from 20 to 45 minutes.
+  const [jobBudget, ...stepBudgets] = [...job.matchAll(/timeout-minutes:\s*(\d+)/g)].map((m) => Number(m[1]));
+  assert.ok(stepBudgets.length >= 2, "the long smoke and sweep steps are both bounded");
+  const stepsTotal = stepBudgets.reduce((sum, minutes) => sum + minutes, 0);
+  assert.ok(jobBudget >= stepsTotal + 10, `job budget ${jobBudget}m leaves at least 10m beyond its steps (${stepsTotal}m)`);
   assert.match(step, /realism-sweep-progress\.txt/);
 
   const upload = workflow.match(

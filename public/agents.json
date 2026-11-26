@@ -99,9 +99,18 @@
       "hallOfFamers",
       "tradesMade",
       "freeAgentsSigned",
-      "activeMinutes"
+      "activeMinutes",
+      "scenarioRebuildStarts",
+      "scenarioRebuildTitles",
+      "scenarioCapHellStarts",
+      "scenarioCapHellTitles",
+      "scenarioAgingCoreStarts",
+      "scenarioAgingCoreTitles",
+      "scenarioNoQbStarts",
+      "scenarioNoQbTitles"
     ],
     "shape": "{ schemaVersion, computedAt, allTime: { metric: total }, last30Days: { metric: total } }",
-    "privacy": "On by default with an in-game opt-out; Global Privacy Control and Do Not Track are honoured. Counters only, with no identifier of any kind; the service keeps one running total per metric per day and nothing per browser."
+    "privacy": "On by default with an in-game opt-out; Global Privacy Control and Do Not Track are honoured. Counters only, with no identifier of any kind; the service keeps one running total per metric per day and nothing per browser.",
+    "scenarioBoard": "https://playfranchisearchitect.com/stats#scenarios"
   }
 }

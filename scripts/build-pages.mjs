@@ -17,6 +17,7 @@ import { ensurePageMetadata, inspectIndexFooter, renderChangelogFeed, renderPubl
 import { applyClaimBlocks, findUnfilledMarkers, loadClaims } from "./lib/public-claims.mjs";
 import { inspectBuiltPublicVocabulary } from "./check-public-truth.mjs";
 import { inlinePublicEntry } from "./lib/inline-public-entry.mjs";
+import { collectSiteCorpus, corpusVocabulary, subsetStylesheet } from "./lib/site-stylesheet-subset.mjs";
 // CANON-016: never the raw module — safe-spawn forces windowsHide so a build
 // does not flash a console window per git call on Windows.
 import { execFileSync } from "./lib/safe-spawn.mjs";
@@ -50,6 +51,10 @@ const browserEntryPoints = [path.join(srcDir, "app", "api", "localApiRuntime.js"
 // window. styles.css is still emitted for back-compat / smoke assertions.
 let hashedStyleHref = "styles.css";
 let hashedSiteStyleHref = "site.css";
+// S133: public pages get the part of styles.css their markup can use (in source
+// order); only the game page loads the whole sheet. See site-stylesheet-subset.mjs.
+let hashedPublicStyleHref = "styles.css";
+const FULL_STYLESHEET_PAGES = new Set(["game.html"]);
 let hashedCommunityStatsSrc = "community-stats.js";
 
 // S94: module preload hints.
@@ -339,8 +344,10 @@ function injectHtmlDefaults(html, pagePath) {
     );
   }
   if (hashedStyleHref !== "styles.css") {
-    // Rewrite ./styles.css (optionally with an existing ?query) to the hashed file.
-    next = next.replace(/href="\.\/styles\.css(?:\?[^"]*)?"/g, `href="./${hashedStyleHref}"`);
+    // Rewrite ./styles.css (optionally with an existing ?query) to the hashed
+    // file: the full sheet for the game, the public subset for every other page.
+    const styleHref = FULL_STYLESHEET_PAGES.has(pagePath === "./" ? "index.html" : pagePath) ? hashedStyleHref : hashedPublicStyleHref;
+    next = next.replace(/href="\.\/styles\.css(?:\?[^"]*)?"/g, `href="./${styleHref}"`);
   }
   if (hashedSiteStyleHref !== "site.css") {
     next = next.replace(/href="\.\/site\.css(?:\?[^"]*)?"/g, `href="./${hashedSiteStyleHref}"`);
@@ -432,10 +439,10 @@ async function writeHtml(pageName) {
       const entry = inlinePublicEntry({
         pageName: name, html,
         themeBoot: await fs.readFile(path.join(outDir, "lib", "themeBoot.js"), "utf8"),
-        styles: await fs.readFile(path.join(outDir, hashedStyleHref), "utf8"),
+        styles: await fs.readFile(path.join(outDir, hashedPublicStyleHref), "utf8"),
         siteStyles: await fs.readFile(path.join(outDir, hashedSiteStyleHref), "utf8"),
         heroJpeg: await fs.readFile(path.join(outDir, "images", "screens", "hero.jpg")),
-        styleHref: hashedStyleHref, siteStyleHref: hashedSiteStyleHref,
+        styleHref: hashedPublicStyleHref, siteStyleHref: hashedSiteStyleHref,
         // Embedded is the default because it measured faster. Phone viewport,
         // 4x CPU slowdown, medians of 5 interleaved cold loads (2026-11-20):
         //   slow 4G  embedded FCP 908 ms, LCP 1736 ms | preloaded FCP 1260 ms, LCP 1932 ms
@@ -590,6 +597,20 @@ async function emitHashedStylesheet() {
   return hashedStyleHref;
 }
 
+async function emitPublicStylesheetSubset() {
+  const css = await fs.readFile(path.join(outDir, "styles.css"), "utf8");
+  const pages = htmlPages.filter((page) => !FULL_STYLESHEET_PAGES.has(page));
+  const libDir = path.join(rootDir, "scripts", "lib");
+  const buildSources = [fileURLToPath(import.meta.url), ...(await fs.readdir(libDir)).filter((f) => f.endsWith(".mjs")).map((f) => path.join(libDir, f))];
+  const vocabulary = corpusVocabulary(collectSiteCorpus({ publicDir, pages, buildSources }).texts);
+  const subset = subsetStylesheet(css, vocabulary);
+  const hash = createHash("sha256").update(subset).digest("hex").slice(0, 10);
+  hashedPublicStyleHref = `styles.${hash}.css`;
+  await fs.writeFile(path.join(outDir, hashedPublicStyleHref), subset, "utf8");
+  console.log(`public stylesheet subset: ${Math.round(subset.length / 1024)} KB of ${Math.round(css.length / 1024)} KB (game keeps the full sheet)`);
+  return hashedPublicStyleHref;
+}
+
 async function emitHashedSiteStylesheet() {
   const cssPath = path.join(outDir, "site.css");
   const css = await fs.readFile(cssPath, "utf8");
@@ -715,6 +736,7 @@ async function main() {
     console.log(`minified ${minified.files} scripts and stylesheets: ${Math.round(minified.before / 1024)} KB -> ${Math.round(minified.after / 1024)} KB`);
   }
   await emitHashedStylesheet();
+  await emitPublicStylesheetSubset();
   await emitHashedSiteStylesheet();
   await emitHashedCommunityStats();
   await computeModulePreloads();

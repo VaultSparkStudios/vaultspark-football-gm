@@ -358,8 +358,8 @@
         </div>
       </details>
 
-      <!-- ── SAVES ── -->
-      <details id="savedLeaguesSection" class="setup-section setup-details">
+      <!-- ── SAVES ── (S133: shown once this browser has a league; a first visit sees only the start) -->
+      <details id="savedLeaguesSection" class="setup-section setup-details" data-returning-only hidden>
         <summary class="setup-details-toggle">Saved Leagues</summary>
         <div class="setup-details-body">
           <div class="row compact">
@@ -379,7 +379,7 @@
       </details>
 
       <!-- ── BACKUPS ── -->
-      <details class="setup-section setup-details">
+      <details class="setup-section setup-details" data-returning-only hidden>
         <summary class="setup-details-toggle">Auto Backups</summary>
         <div class="setup-details-body">
           <div class="row compact">

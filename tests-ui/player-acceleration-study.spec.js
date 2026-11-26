@@ -16,7 +16,10 @@ test('actual dossier acceleration build-up and controlled capacity comparisons',
  if(phase==='after'){
   await detail.locator('[data-motion-mode]').selectOption('acceleration');
   await expect(detail.locator('svg')).toHaveAttribute('data-mode','acceleration');
-  await expect(detail.locator('[data-motion-caption]')).toContainText('Ready (0%)');
+  // The 0% frame lasts one animation frame; a slow runner can already be
+  // building speed. Either proves the drill restarted from rest (steady pace
+  // takes seconds), so assert the pair, then the full build-up.
+  await expect(detail.locator('[data-motion-caption]')).toContainText(/Ready \(0%\)|Building speed/);
   await expect(detail.locator('[data-motion-caption]')).toContainText('Building speed',{timeout:10000});
   await expect(detail.locator('[data-motion-caption]')).toContainText('Steady pace (100%)',{timeout:10000});
   await detail.locator('[data-motion-toggle]').click();

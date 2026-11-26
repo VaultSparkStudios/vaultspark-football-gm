@@ -3,7 +3,7 @@
 // portrait renderer (appCore.ensurePortraitRenderer), never at boot. The
 // numbers come from the engine (src/domain/physicalProfile.js), measured
 // against the league today, and the same model moves the games.
-import { escapeHtml } from "./appCore.js";
+import { escapeHtml, showToast } from "./appCore.js";
 import { state, TEAM_THEME_MAP } from "./appState.js";
 import { buildPlayerMovementControls as movementControls, buildPlayerPhysiqueSvg as physiqueRenderer } from "./playerPortrait.js";
 
@@ -23,9 +23,39 @@ const PROGRAMS = Object.freeze([
   ["lean", "Lean down", "About -8 lb: quicker off the mark, less power at contact."]
 ]);
 
+// The players whose strip is on screen, so the card button can draw the one
+// it belongs to without another request.
+const shownPlayers = new Map();
+let cardClicksInstalled = false;
+
+function installPlayerCardClicks(doc = globalThis.document) {
+  if (cardClicksInstalled || !doc?.addEventListener) return;
+  cardClicksInstalled = true;
+  doc.addEventListener("click", async (event) => {
+    const button = event.target?.closest?.("[data-player-card]");
+    if (!button) return;
+    const player = shownPlayers.get(button.dataset.playerCard);
+    if (!player) return;
+    button.disabled = true;
+    try {
+      const { downloadPlayerCard } = await import("./playerShareCard.js");
+      const teamColors = TEAM_THEME_MAP[String(player.teamId || "").toUpperCase()] || null;
+      await downloadPlayerCard(player, { silhouetteSvg: physiqueRenderer(player, { teamColors, idSuffix: "-share-card" }), teamColors });
+      showToast(`Player card saved: ${player.name || "player"}`);
+    } catch {
+      showToast("Could not build the player card.");
+    } finally { button.disabled = false; }
+  });
+}
+
 export function renderFrameStrip(player, { controlledTeamId = state.dashboard?.controlledTeamId } = {}) {
   const card = player?.physicalCard;
   if (!card) return "";
+  if (player.id != null) {
+    shownPlayers.set(String(player.id), player);
+    if (shownPlayers.size > 40) shownPlayers.delete(shownPlayers.keys().next().value);
+    installPlayerCardClicks();
+  }
   const ras = Number(card.ras);
   const rasTier = ras >= 8 ? "elite" : ras >= 6 ? "good" : ras >= 4 ? "average" : "poor";
   const hint = FRAME_HINTS[card.archetypeKey] || "";
@@ -40,7 +70,8 @@ export function renderFrameStrip(player, { controlledTeamId = state.dashboard?.c
   const programControl = ownPlayer
     ? `<div class="body-program" role="group" aria-label="Offseason body programme for ${escapeHtml(player.name || "this player")}"><span class="small">Offseason body programme</span>${PROGRAMS.map(([id, label, tip]) => `<button type="button" class="body-program-btn${current === id ? " active" : ""}" aria-pressed="${current === id}" data-player-id="${escapeHtml(player.id)}" data-program="${id}" title="${escapeHtml(tip)}">${label}</button>`).join("")}</div>`
     : "";
-  return `<div class="player-frame-strip" aria-label="Frame and athletic profile">${cells.join("")}<p class="small muted">${escapeHtml(hint)}</p>${programControl}</div>`;
+  const shareControl = player.id != null ? `<button type="button" class="player-card-btn" data-player-card="${escapeHtml(player.id)}" title="Download a scouting card image: game-kit silhouette, frame, RAS and measurables">Download player card</button>` : "";
+  return `<div class="player-frame-strip" aria-label="Frame and athletic profile">${cells.join("")}<p class="small muted">${escapeHtml(hint)}</p>${programControl}${shareControl}</div>`;
 }
 
 /** Set a body programme from a dossier button; the caller supplies api and UI hooks. */

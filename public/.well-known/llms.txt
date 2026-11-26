@@ -26,7 +26,7 @@ Useful paths:
 - /stats - human-readable Community Stats
 - https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/snapshot - machine-readable aggregate snapshot
 - /stats-surface.json - stats contract and methodology descriptor
-- https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/pulse - Gridiron Census: anonymous all-time and 30-day totals across every franchise (games, seasons, titles, Hall of Famers, drafted players, minutes managed)
+- https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/pulse - Gridiron Census: anonymous all-time and 30-day totals across every franchise (games, seasons, titles, Hall of Famers, drafted players, minutes managed, and jobs taken and titles won in each one-click scenario)
 - /llms.txt - this file (also at /.well-known/llms.txt)
 
 Starting a league from a link:

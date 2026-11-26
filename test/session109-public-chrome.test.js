@@ -105,9 +105,10 @@ test("index.html keeps every manifest destination in its own footer, because it 
 test("the manifest footer labels every destination and marks the current page", () => {
   const footer = renderFooter(manifest, { currentPage: "about.html" });
   assert.match(footer, /aria-current="page"/);
-  assert.match(footer, />About</);
+  assert.match(footer, />About &amp; Press<|>About & Press</);
   assert.doesNotMatch(footer, />Changelog</, "the changelog is reached from Updates, not the footer (S133)");
-  assert.match(footer, /target="_blank" rel="noopener"/, "external links open in a new tab");
+  assert.doesNotMatch(footer, /https:\/\/github\.com/, "the footer carries no off-site links since S133; Discussions lives on About & Press");
+  assert.match(fs.readFileSync(path.join(publicDir, "about.html"), "utf8"), /discussions" target="_blank" rel="noopener"/, "external links open in a new tab");
 });
 
 test("the footer renders the manifest's groups, and every destination sits in exactly one of them", () => {
@@ -122,9 +123,17 @@ test("the footer renders the manifest's groups, and every destination sits in ex
   }
   assert.equal((footer.match(/<a /g) || []).length, manifest.footerLinks.length + 1, "each destination is linked once, plus the Studio link-back");
   assert.match(footer, /href="\.\/guides\.html" aria-current="page"/);
-  for (const page of ["guides.html", "press.html", "simulation.html"]) {
+  for (const page of ["guides.html", "simulation.html", "about.html"]) {
     assert.ok(manifest.footerLinks.includes(`./${page}`), `${page} is a footer destination`);
     assert.ok(fs.existsSync(path.join(publicDir, page)), `${page} exists`);
+  }
+  // S133: ten footer links. Press, Contact and Discussions live on About & Press,
+  // so they stay one click from every page without crowding the footer.
+  assert.equal(manifest.footerLinks.length, 10);
+  const about = fs.readFileSync(path.join(publicDir, "about.html"), "utf8");
+  for (const href of ["./press.html", "./media.html", "./contact.html", "mailto:football@playfranchisearchitect.com", "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions"]) {
+    assert.ok(about.includes(`href="${href}"`), `About & Press links ${href}`);
+    if (href.startsWith("./")) assert.ok(fs.existsSync(path.join(publicDir, href.slice(2))), `${href} exists`);
   }
 });
 

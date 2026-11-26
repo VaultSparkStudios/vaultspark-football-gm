@@ -298,7 +298,7 @@
       "innovation": 6,
       "effortHours": 8,
       "priority": 6.1,
-      "status": "shipped-reduced",
+      "status": "shipped",
       "readinessArea": "core journeys and product correctness",
       "stageRationale": "FORGE/FB public-beta hardening, wave 3 of the S133 order.",
       "recipe": "The portrait jersey takes the club's primary colour with secondary trim, sleeve stripes, outlined numbers and shoulder pads sized by position; colours are accepted only as plain hex.",
@@ -335,6 +335,11 @@
           "at": "2026-11-24T10:00:00Z",
           "status": "shipped-reduced",
           "note": "Second wave: the 3D body wears the club's primary colour. Reduced: no helmet in the 3D view (the 3D head renderer is separate)."
+        },
+        {
+          "at": "2026-11-26T03:00:00Z",
+          "status": "shipped",
+          "note": "Player-card share image: the dossier's game-kit silhouette beside frame, RAS, Speed Score, catch radius and measurables, a 1200x630 PNG built in the page on click; browser spec with a negative control."
         }
       ]
     },
@@ -351,7 +356,7 @@
       "innovation": 6,
       "effortHours": 10,
       "priority": 5.4,
-      "status": "shipped-reduced",
+      "status": "shipped",
       "readinessArea": "core journeys and product correctness",
       "stageRationale": "FORGE/FB public-beta hardening, wave 4 of the S133 order.",
       "recipe": "A football tagline and a compact Gridiron Census on the landing page instead of an empty 'still filling up' panel.",
@@ -383,6 +388,11 @@
           "at": "2026-11-24T09:00:00Z",
           "status": "shipped-reduced",
           "note": "Second wave: an animated field strip in the hero (CSS only, still under reduced motion) and a screenshot on every feature card. Reduced: saves and backups stay on the start page because returning players resume from there."
+        },
+        {
+          "at": "2026-11-26T03:00:00Z",
+          "status": "shipped",
+          "note": "Saves and backups are hidden for a browser known to be new (no active league, saves loaded and empty) and appear for returning players; the Continue button names the club, season and week."
         }
       ]
     },
@@ -390,7 +400,7 @@
       "id": 8,
       "rank": 8,
       "slug": "site-consolidation",
-      "title": "Fewer, better pages: four folded in, footer from 19 links to 13",
+      "title": "Fewer, better pages: four folded in, footer from 19 links to 10, About & Press",
       "axis": "ui-ux-feedback",
       "category": "ui-ux-feedback",
       "tier": "🔨",
@@ -399,7 +409,7 @@
       "innovation": 4,
       "effortHours": 6,
       "priority": 5.6,
-      "status": "shipped-reduced",
+      "status": "shipped",
       "readinessArea": "core journeys and product correctness",
       "stageRationale": "FORGE/FB public-beta hardening, wave 4 of the S133 order.",
       "recipe": "How to Play becomes the first chapter of Guides, How It Compares an FAQ answer, Roadmap and Beta become 'What's next' and 'Early access' on Updates; each old URL is a 301. Footer groups: Play, The game, Studio, Legal; the header swaps How to Play for Guides; Community Stats is labelled Gridiron Census.",
@@ -431,6 +441,11 @@
           "at": "2026-11-24T09:00:00Z",
           "status": "shipped-reduced",
           "note": "Second wave: the stats page is titled Gridiron Census. Reduced: About, Press, Media and Contact remain separate pages; Contact is a launch-evidence surface and the footer already groups them under Studio."
+        },
+        {
+          "at": "2026-11-26T03:00:00Z",
+          "status": "shipped",
+          "note": "Footer from 13 links to 10; About becomes About & Press with the press boilerplate, kit and screenshots, contact routes and Discussions. Press and Contact stay as pages one click from About, because the smoke, launch-evidence and compliance gates verify the contact address on /contact.html."
         }
       ]
     },
@@ -490,7 +505,7 @@
       "innovation": 7,
       "effortHours": 10,
       "priority": 5.8,
-      "status": "shipped-reduced",
+      "status": "shipped",
       "readinessArea": "core journeys and product correctness",
       "stageRationale": "FORGE/FB public-beta hardening, wave 5 of the S133 order.",
       "recipe": "Four one-click scenario cards on the start page (Rebuild, Cap Hell, Aging Core, No Quarterback) built on the existing franchise archetypes, which change ownership patience, dead cap, chemistry and roster age.",
@@ -522,6 +537,11 @@
           "at": "2026-11-24T10:00:00Z",
           "status": "shipped-reduced",
           "note": "Second wave: challenge codes carry the scenario (archetype slug, validated), so Copy Challenge Code shares a Cap Hell or No Quarterback start and the start page applies it. Reduced: a per-scenario results board is not built (the Census counts carry no scenario dimension)."
+        },
+        {
+          "at": "2026-11-26T03:00:00Z",
+          "status": "shipped",
+          "note": "Scenario board on the Census page: jobs taken and titles per scenario, counted by franchise archetype through the ID-free Census; a title rate appears only from 20 jobs. Privacy page, agents.json and llms.txt updated."
         }
       ]
     },
@@ -682,7 +702,7 @@
       "innovation": 3,
       "effortHours": 6,
       "priority": 4.7,
-      "status": "deferred",
+      "status": "shipped",
       "readinessArea": "core journeys and product correctness",
       "stageRationale": "FORGE/FB public-beta hardening, wave 6 of the S133 order.",
       "recipe": "Lazy per-screen CSS.",
@@ -714,6 +734,11 @@
           "at": "2026-11-24T09:00:00Z",
           "status": "deferred",
           "note": "Kept deferred: the boot budget governs JavaScript (649,284/650,000) and the stylesheet is cached by the service worker after the first visit; a split risks every screen's styling for a first-visit gain that was not measured."
+        },
+        {
+          "at": "2026-11-26T03:00:00Z",
+          "status": "shipped",
+          "note": "Shipped by page type rather than by screen: the build emits the part of styles.css that public pages can use (45 KB of 178 KB minified, source order kept, so the cascade is unchanged) and the landing page inlines it; the game keeps the full sheet byte for byte. No large screen-specific block exists (largest prefix group 2.4 KB), so a per-screen split would save little and reorder the game's cascade. Pixel parity: every public page in both themes at 1366 and 390 matched the full sheet except screenshots still decoding. Boot JS unchanged at 649,989."
         }
       ]
     },
@@ -773,7 +798,7 @@
       "innovation": 4,
       "effortHours": 2,
       "priority": 9.8,
-      "status": "shipped-reduced",
+      "status": "shipped",
       "readinessArea": "core journeys and product correctness",
       "stageRationale": "FORGE/FB public-beta hardening, wave 6 of the S133 order.",
       "recipe": "npm run report:visits adds a landing-to-game ratio from beacon-executing browsers; the Census carries game sessions, franchises and first games.",
@@ -800,6 +825,11 @@
           "at": "2026-11-24T00:30:00Z",
           "status": "shipped-reduced",
           "note": "Reduced: the launch hold (email delivery, studio approval, lifecycle authority) stays with the studio."
+        },
+        {
+          "at": "2026-11-26T00:45:00Z",
+          "status": "shipped",
+          "note": "Measured. npm run report:visits (2026-11-19 to 2026-11-26, beacon-executing browsers): 82 landing loads, 22 game loads, landing-to-game 0.268. Live Census all-time (2026-11-26T00:43Z): 8 game sessions, 1 returning, 7 franchises founded, 3 played a first week, 5 games, 3 trades, 30 minutes. Some game sessions may be the release's own hosted performance checks, which load production pages in a browser. The launch hold stays with the studio."
         }
       ]
     }

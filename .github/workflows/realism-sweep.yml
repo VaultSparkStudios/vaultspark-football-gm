@@ -10,9 +10,11 @@ on:
 jobs:
   deep-realism:
     runs-on: ubuntu-latest
-    # 20m long smoke + 90m sweep + setup/upload headroom. The job budget must be
+    # 45m long smoke + 90m sweep + setup/upload headroom. The job budget must be
     # larger than its bounded child steps or the outer timer can erase evidence.
-    timeout-minutes: 125
+    # S133: the long shard takes ~30m in CI; the old 20m step timed out three
+    # Mondays running (runs 42573852053, 43818308017, 45125235715).
+    timeout-minutes: 150
 
     steps:
       - name: Checkout
@@ -28,7 +30,7 @@ jobs:
         run: npm ci
 
       - name: Long smoke shard (determinism + career realism)
-        timeout-minutes: 20
+        timeout-minutes: 45
         run: npm run test:long
 
       - name: Deep realism verification (24-season sample)

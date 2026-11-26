@@ -186,6 +186,10 @@ function updateHeroActions() {
   if (resumeBtn) resumeBtn.hidden = !hasSaves;
   const savedSection = document.getElementById("savedLeaguesSection");
   if (savedSection && hasSaves) savedSection.open = true;
+  // A browser known to be new (saves loaded, none, no active league) sees no
+  // save or backup panels; while saves are still loading they stay in place.
+  const knownNew = !hasActive && !state.savesDeferred && state.saves.length === 0;
+  document.querySelectorAll("[data-returning-only]").forEach((node) => { node.hidden = knownNew; });
 }
 
 function renderActiveLeague(activeLeague) {
@@ -208,6 +212,10 @@ function renderActiveLeague(activeLeague) {
     ? ` | ${activeLeague.configSummary.franchiseArchetype?.label || ""} / ${activeLeague.configSummary.difficultyPreset?.label || ""}`
     : "";
   text.textContent = `Active: ${activeLeague.currentYear} W${activeLeague.currentWeek} (${activeLeague.phase}) Team ${team}${name}${mode}${config}`;
+  // S133: the button says where you left off, so a returning player sees their
+  // club and week before they click.
+  const club = activeLeague.controlledTeamName || team;
+  button.textContent = `Continue: ${club} · ${activeLeague.currentYear} · Week ${activeLeague.currentWeek}`;
   button.disabled = false;
 }
 

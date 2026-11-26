@@ -244,3 +244,45 @@ test("the advance-week response says when a new franchise played its opening wee
   const second = executeAdvanceWeekCommand(session, { count: 1 });
   assert.equal(second.franchiseOpeningWeek, false);
 });
+
+// ── The scenario board (S133) ───────────────────────────────────────────────
+
+test("a scenario job and its titles are counted by archetype; any other job counts nothing extra", () => {
+  withBrowser({}, () => {
+    const saved = globalThis.fetch;
+    const { calls, fetchImpl } = recordingFetch();
+    globalThis.fetch = fetchImpl; // a new franchise and a finished season flush at once
+    try {
+      observePulseReceipt({ path: "/api/new-league", response: {}, events: [{ type: "league_started", dimensions: { archetype: "cap-hell" }, metrics: {} }] });
+      observePulseReceipt({ path: "/api/advance-week", response: { state: { settings: { franchiseArchetype: "cap-hell" } } }, events: [{ type: "weeks_managed", metrics: { weeks: 1, seasonsCompleted: 1, championships: 1 } }] });
+      const sent = calls.map((call) => JSON.parse(call.init.body).counts);
+      assert.deepEqual(sent[0], { leagueCreated: 1, scenarioCapHellStarts: 1 });
+      assert.equal(sent[1].scenarioCapHellTitles, 1);
+      assert.equal(sent[1].championships, 1);
+      // Negative control: a balanced league and an unknown archetype add no scenario counter.
+      observePulseReceipt({ path: "/api/new-league", response: {}, events: [{ type: "league_started", dimensions: { archetype: "balanced" }, metrics: {} }] });
+      observePulseReceipt({ path: "/api/advance-week", response: { state: { settings: { franchiseArchetype: "<script>" } } }, events: [{ type: "weeks_managed", metrics: { weeks: 1, seasonsCompleted: 1, championships: 1 } }] });
+      const later = calls.slice(2).flatMap((call) => Object.keys(JSON.parse(call.init.body).counts));
+      assert.ok(later.length > 0, "the later pulses were sent");
+      assert.deepEqual(later.filter((key) => key.startsWith("scenario")), []);
+    } finally { globalThis.fetch = saved; }
+  });
+});
+
+test("the scenario board shows jobs and titles, and a title rate only once the sample is real", async () => {
+  const { scenarioBoardMarkup, SCENARIO_RATE_MIN_STARTS } = await import("../public/lib/censusBoard.js");
+  const allTime = { scenarioRebuildStarts: SCENARIO_RATE_MIN_STARTS, scenarioRebuildTitles: 5, scenarioNoQbStarts: 3, scenarioNoQbTitles: 1 };
+  const html = scenarioBoardMarkup({ allTime });
+  assert.match(html, /data-scenario-row="rebuild"><th scope="row">Rebuild<\/th><td>20<\/td><td>5<\/td><td>0\.25 titles per job/);
+  assert.match(html, /data-scenario-row="no-qb">[\s\S]*?rate shown from 20 jobs/);
+  assert.match(html, /Cap Hell<\/th><td>0<\/td><td>0<\/td>/);
+  assert.match(scenarioBoardMarkup(null), /fills in as franchises take these jobs/);
+  assert.equal(normalizeLeaguePulse({ schemaVersion: "pulse-1", counts: { scenarioRebuildStarts: 5 } }), null, "a scenario start over its cap is refused");
+});
+
+test("agents.json publishes exactly the contract's metrics, so the two lists cannot drift", async () => {
+  const fs = await import("node:fs");
+  const { LEAGUE_PULSE_METRIC_KEYS } = await import("../public/lib/leaguePulseContract.js");
+  const agents = JSON.parse(fs.readFileSync(new URL("../public/agents.json", import.meta.url), "utf8"));
+  assert.deepEqual(agents.gridironCensus.metrics, [...LEAGUE_PULSE_METRIC_KEYS]);
+});

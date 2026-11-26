@@ -26,8 +26,31 @@ export const LEAGUE_PULSE_METRICS = Object.freeze({
   hallOfFamers: 40,       // Hall of Fame inductees who played for the player's club
   tradesMade: 120,
   freeAgentsSigned: 200,
-  activeMinutes: 240      // minutes with the game visible, rounded to 5
+  activeMinutes: 240,     // minutes with the game visible, rounded to 5
+  // S133 scenario board: which job a franchise took (its franchise archetype),
+  // and the titles won in it. Same counters, keyed by scenario; still no ID.
+  scenarioRebuildStarts: 4,
+  scenarioRebuildTitles: 30,
+  scenarioCapHellStarts: 4,
+  scenarioCapHellTitles: 30,
+  scenarioAgingCoreStarts: 4,
+  scenarioAgingCoreTitles: 30,
+  scenarioNoQbStarts: 4,
+  scenarioNoQbTitles: 30
 });
+
+/** The four one-click scenarios, by franchise archetype, for the scenario board. */
+export const LEAGUE_PULSE_SCENARIOS = Object.freeze([
+  Object.freeze({ archetype: "rebuild", key: "Rebuild", label: "Rebuild" }),
+  Object.freeze({ archetype: "cap-hell", key: "CapHell", label: "Cap Hell" }),
+  Object.freeze({ archetype: "aging-core", key: "AgingCore", label: "Aging Core" }),
+  Object.freeze({ archetype: "no-qb", key: "NoQb", label: "No Quarterback" })
+]);
+
+/** The scenario a franchise archetype belongs to, or null for any other job. */
+export function pulseScenarioFor(archetype) {
+  return LEAGUE_PULSE_SCENARIOS.find((s) => s.archetype === String(archetype || "")) || null;
+}
 
 export const LEAGUE_PULSE_METRIC_KEYS = Object.freeze(Object.keys(LEAGUE_PULSE_METRICS));
 
@@ -44,7 +67,15 @@ export const LEAGUE_PULSE_LABELS = Object.freeze({
   hallOfFamers: "Hall of Famers developed",
   tradesMade: "Trades made",
   freeAgentsSigned: "Free agents signed",
-  activeMinutes: "Minutes managed"
+  activeMinutes: "Minutes managed",
+  scenarioRebuildStarts: "Rebuild jobs taken",
+  scenarioRebuildTitles: "Rebuild titles",
+  scenarioCapHellStarts: "Cap Hell jobs taken",
+  scenarioCapHellTitles: "Cap Hell titles",
+  scenarioAgingCoreStarts: "Aging Core jobs taken",
+  scenarioAgingCoreTitles: "Aging Core titles",
+  scenarioNoQbStarts: "No Quarterback jobs taken",
+  scenarioNoQbTitles: "No Quarterback titles"
 });
 
 /**

@@ -2,7 +2,7 @@
 // of Famers, added up. Reads the public totals the community service publishes
 // (GET /community/v1/pulse); sends nothing.
 
-import { LEAGUE_PULSE_LABELS } from "./leaguePulseContract.js";
+import { LEAGUE_PULSE_LABELS, LEAGUE_PULSE_SCENARIOS } from "./leaguePulseContract.js";
 import { pulseEndpoint } from "./leaguePulse.js";
 
 // The order a football fan reads them in; first-steps counters are for the team.
@@ -52,6 +52,26 @@ export function censusMarkup(totals, { metrics = CENSUS_HEADLINE_METRICS, compac
   return `<div class="census-grid${compact ? " census-grid-compact" : ""}">${tiles.join("")}</div>`;
 }
 
+// A title rate on a handful of franchises is noise, so it waits for a sample.
+export const SCENARIO_RATE_MIN_STARTS = 20;
+
+/** Pure: the scenario board, one row per one-click scenario, all-time totals. */
+export function scenarioBoardMarkup(totals) {
+  const allTime = totals?.allTime;
+  if (!allTime || typeof allTime !== "object") {
+    return `<p class="community-empty">The scenario board fills in as franchises take these jobs.</p>`;
+  }
+  const rows = LEAGUE_PULSE_SCENARIOS.map((scenario) => {
+    const starts = Math.max(0, Math.floor(Number(allTime[`scenario${scenario.key}Starts`]) || 0));
+    const titles = Math.max(0, Math.floor(Number(allTime[`scenario${scenario.key}Titles`]) || 0));
+    const rate = starts >= SCENARIO_RATE_MIN_STARTS
+      ? `${(titles / starts).toFixed(2)} titles per job`
+      : `rate shown from ${SCENARIO_RATE_MIN_STARTS} jobs`;
+    return `<tr data-scenario-row="${escapeHtml(scenario.archetype)}"><th scope="row">${escapeHtml(scenario.label)}</th><td>${escapeHtml(formatCensusNumber(starts))}</td><td>${escapeHtml(formatCensusNumber(titles))}</td><td>${escapeHtml(rate)}</td></tr>`;
+  });
+  return `<div class="table-wrap"><table class="census-scenario-table"><thead><tr><th scope="col">Scenario</th><th scope="col">Jobs taken</th><th scope="col">Titles</th><th scope="col">Title rate</th></tr></thead><tbody>${rows.join("")}</tbody></table></div>`;
+}
+
 export async function fetchCensusTotals({ fetchImpl = globalThis.fetch, timeoutMs = 6000 } = {}) {
   if (typeof fetchImpl !== "function") return null;
   const controller = typeof AbortController === "function" ? new AbortController() : null;
@@ -68,8 +88,13 @@ export async function fetchCensusTotals({ fetchImpl = globalThis.fetch, timeoutM
 /** Fill every [data-census-grid] on the page. */
 export async function mountCensusBoards(doc = globalThis.document) {
   const hosts = [...(doc?.querySelectorAll?.("[data-census-grid]") || [])];
-  if (!hosts.length) return 0;
+  const boards = [...(doc?.querySelectorAll?.("[data-scenario-board]") || [])];
+  if (!hosts.length && !boards.length) return 0;
   const totals = await fetchCensusTotals();
+  for (const board of boards) {
+    board.innerHTML = scenarioBoardMarkup(totals);
+    board.setAttribute("aria-busy", "false");
+  }
   for (const host of hosts) {
     const compact = host.dataset.censusCompact === "1";
     const metrics = compact ? CENSUS_HEADLINE_METRICS.slice(0, 4) : CENSUS_HEADLINE_METRICS;
