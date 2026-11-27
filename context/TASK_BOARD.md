@@ -10,13 +10,10 @@ Session Intent: /start, audit, implement the plan in efficiency order, close out
 - [x] Phase 5 (reduced): drive chart, four franchise scenarios.
 - [x] Released at c7c7c44c: CI 11/11, staging 14/14 and 10/10, production 10/10, API schema 4, performance, visual review (owner-approved) and release authority.
 - [x] Second wave released at a8b46bb3: aging by frame (golden master s133-v9), game kit with helmet and 3D club colour, steal-or-bust draft stories, a GM legacy across saves, archetype scenario codes, animated field strip, screenshot feature cards, Gridiron Census title, trimmed landing footer. CI green, staging 14/14 and 10/10, production 10/10, API schema 4, performance, visual review (owner-approved), authority reconciled, doctor 0 failing.
-- [ ] [S133 carried] A player-card share image.
-- [ ] [S133 carried] Saves and backups moved off the landing page.
-- [ ] [S133 carried] Merge About, Press, Media and Contact.
-- [ ] [S133 carried] A per-scenario board on the Census page.
-- [ ] [S133 carried] Split styles.css by screen (boot JS is at 649,989 of 650,000 bytes, so the next boot addition must move something out first).
-- [ ] [S133 carried] tests-ui/player-acceleration-study.spec.js asserts a one-frame 'Ready (0%)' state; assert the reset another way.
-- [ ] [S133 carried] Realism Sweep (scheduled) timed out on its 20-minute long smoke shard on 787bba6b.
+- [x] Third wave released at 14b50e4d: player-card image, About & Press merge (10-link footer), saves and backups hidden for new visitors with a named Continue button, Census scenario board, public stylesheet subset (45 of 178 KB). CI green, staging 14/14 and 10/10, production 10/10, API pulse live, performance, visual review (owner-approved), authority reconciled, doctor 0 failing.
+- [x] Public pages load a stylesheet subset; the game keeps the full sheet (boot JS unchanged at 649,989 of 650,000 bytes).
+- [x] The acceleration spec accepts either the reset state or the first speed-building frame.
+- [ ] [S133 carried] Realism Sweep job budget raised to 150 minutes (long smoke step 45); confirm on the next scheduled run.
 - [ ] [S133 carried] Read the first Census totals and npm run report:visits before deciding on landing changes; check the EU consent position for default-on counters before launch.
 
 ## S132 Wave status
