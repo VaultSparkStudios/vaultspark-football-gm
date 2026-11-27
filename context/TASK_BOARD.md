@@ -47,7 +47,7 @@ Session Intent: audit toward public beta, implement the plan in efficiency order
 - [ ] [S132 follow-up] Move the screenshot and share-image capture scripts into the repo; they were run from a scratch folder.
 - [ ] [S132 follow-up] Trade screenshots show a one-for-one swap scored 0 / 100 beside the old "B, even trade" card. The card now follows the score; retake the four trade images with a fair deal, and check whether a 47-point value gap should score 0.
 - [ ] [S132 follow-up] One 14-3 season reached GM Legacy 92 "Immortal" in one capture run and 30 in another; measure the legacy score over many first seasons.
-- [ ] [S132 follow-up] First Season Contract rows run the label into its detail with no space; the default club differs on every new league; the identity screenshot is mostly footer.
+- [ ] [S132 follow-up] (label/detail spacing fixed on routine/contract-row-spacing, awaiting review) The default club differs on every new league; the identity screenshot is mostly footer.
 - [ ] [S132 follow-up] The capture script waits 120 s for the one-year realism check, which took about 115 s locally and timed out five times; give the wait room (and print the stack on failure) or find why one simulated year takes that long.
 - [ ] [S132 follow-up] The opening checklist still says "Earn the first receipt" (src/runtime/GameSession.js); rewording it changes the golden baseline.
 - [ ] [S132 follow-up] Read the weekly challenge board after a week of real posts; the five-browser threshold and the step of five are untested against real traffic.

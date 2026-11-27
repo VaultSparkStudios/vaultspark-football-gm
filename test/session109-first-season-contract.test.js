@@ -180,6 +180,11 @@ test("rows render escaped, with done state on the element, not only in the glyph
   assert.doesNotMatch(html, /<script/);
 });
 
+test("row text keeps a space between the title and its detail", () => {
+  const html = renderContractRows(contractSummary(dashboard(), { marks: {} }));
+  assert.match(html, /<\/strong> <p class="small">/);
+});
+
 test("the strip and the achievement are wired: markup on the Desk, an achievement that listens for the event, no static import in app.js", () => {
   const game = fs.readFileSync(path.join(rootDir, "public", "game.html"), "utf8");
   assert.match(game, /id="firstSeasonContract"/);
