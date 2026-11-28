@@ -139,6 +139,11 @@
           "at": "2026-11-24T00:30:00Z",
           "status": "shipped",
           "note": "Shipped with tests (test/league-pulse.test.js). Detailed Community Stats stays opt-in; its offer still comes after season 1 because the Census now measures the first steps without adding friction before setup. Fixed a funnel bug: a browser that opts in mid-career no longer reports its next advance as its first."
+        },
+        {
+          "at": "2026-11-28T12:00:00Z",
+          "status": "shipped",
+          "note": "The mid-career opt-in fix now has its own test (test/community-event-contract.test.js: a browser that founded a league and played a week with sharing off, then opts in, reports neither as its first, and still reports its first finished season once). Negative control: removing the seedFunnelFromLocalLedger call fails it."
         }
       ]
     },
@@ -196,6 +201,11 @@
           "at": "2026-11-24T09:00:00Z",
           "status": "shipped",
           "note": "Second wave: aging by frame. A veteran heavy for his position whose ratings fell moves one point of the fall from strength to speed (zero-sum, no random draw); golden master s133-v9 with v8 frozen by hash."
+        },
+        {
+          "at": "2026-11-28T12:00:00Z",
+          "status": "shipped",
+          "note": "Ten-season probe at aa2eaffc (reports/s133-frame-realism-probe.json, seed 2026, 15,275 player-seasons): bodies move outcomes the way football expects, with the group's mean overall shown beside each rate. Broken tackles per 100 carries: Compact +27%, Thick +12%, Lean -19% against the league's 4.07. Fumbles per 100 touches: Long -38%, Thick -37%, Compact +20% against 0.26. Sacks per 1,000 defensive snaps: Power +11%, Long +5%, Tower -10%. Sacks allowed per 1,000 pass-block snaps: Thick and Tower -7.5%, Lean +12%. Catch rate: Long +2.0%, Compact -3.4%. Yards per carry: Compact +8.4%, Tower -4.0%. League-wide spread holds (catch-rate sd 0.082, yards-per-carry sd 1.20; the sim-realism shard gates the league totals and passed on aa2eaffc). Not measured: games missed by archetype (the probe's field came out empty, a probe defect); injury effects by frame rest on test/physical-profile.test.js."
         }
       ]
     },

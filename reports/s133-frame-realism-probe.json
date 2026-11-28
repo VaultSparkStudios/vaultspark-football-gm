@@ -1,0 +1,373 @@
+{
+  "schemaVersion": "s133-frame-realism-probe-1",
+  "sourceRevision": "aa2eaffc2778d00caabf595c2ec0439feb3b766c",
+  "observedAt": "2026-11-28",
+  "method": "createSession({ seed: 2026, startYear: 2026 }) through src/runtime/bootstrap.js, then simulateSeasons(1, { runOffseasonAfterLast: true }) ten times. Before each season the frame norms are rebuilt from the rostered league (buildFrameNorms) and every rostered player's archetype is taken with frameArchetype; that season's stats are then grouped by archetype. 'pooled' is sum(numerator)/sum(denominator); sd and p90 are over per-player-season rates; meanOvr is the group's mean overall at season end, shown so rating differences between groups stay visible. Groups under 15 player-seasons are omitted.",
+  "notMeasured": "Games missed by archetype: the probe's games-missed field came out empty (a probe defect, not an engine reading), so injury effects by frame rest on test/physical-profile.test.js and were not re-measured over this window.",
+  "seasons": 10,
+  "seed": 2026,
+  "rows": 15275,
+  "seconds": 6020,
+  "metrics": {
+    "WR/TE catch rate (rec/targets, >=30 targets)": {
+      "all": {
+        "n": 1548,
+        "pooled": 0.6212,
+        "sd": 0.0822,
+        "p90": 0.7107,
+        "meanOvr": 78.7
+      },
+      "byArchetype": {
+        "Prototype": {
+          "n": 638,
+          "pooled": 0.6218,
+          "sd": 0.0839,
+          "p90": 0.7105,
+          "meanOvr": 78.6
+        },
+        "Long": {
+          "n": 210,
+          "pooled": 0.6334,
+          "sd": 0.0827,
+          "p90": 0.7333,
+          "meanOvr": 79.4
+        },
+        "Compact": {
+          "n": 89,
+          "pooled": 0.5998,
+          "sd": 0.0823,
+          "p90": 0.6842,
+          "meanOvr": 76.7
+        },
+        "Lean": {
+          "n": 258,
+          "pooled": 0.617,
+          "sd": 0.0849,
+          "p90": 0.7034,
+          "meanOvr": 79.6
+        },
+        "Power": {
+          "n": 123,
+          "pooled": 0.6125,
+          "sd": 0.0735,
+          "p90": 0.7027,
+          "meanOvr": 77.7
+        },
+        "Thick": {
+          "n": 43,
+          "pooled": 0.6389,
+          "sd": 0.0847,
+          "p90": 0.7311,
+          "meanOvr": 80.1
+        },
+        "Tower": {
+          "n": 187,
+          "pooled": 0.6211,
+          "sd": 0.074,
+          "p90": 0.6977,
+          "meanOvr": 77.9
+        }
+      }
+    },
+    "RB yards per carry (>=50 att)": {
+      "all": {
+        "n": 555,
+        "pooled": 4.3983,
+        "sd": 1.2014,
+        "p90": 5.5714,
+        "meanOvr": 78.3
+      },
+      "byArchetype": {
+        "Prototype": {
+          "n": 241,
+          "pooled": 4.4724,
+          "sd": 1.2908,
+          "p90": 5.7713,
+          "meanOvr": 78.1
+        },
+        "Tower": {
+          "n": 56,
+          "pooled": 4.2206,
+          "sd": 1.1122,
+          "p90": 5.2269,
+          "meanOvr": 76.9
+        },
+        "Long": {
+          "n": 64,
+          "pooled": 4.2802,
+          "sd": 1.0525,
+          "p90": 5.0033,
+          "meanOvr": 79.2
+        },
+        "Lean": {
+          "n": 72,
+          "pooled": 4.2492,
+          "sd": 1.0341,
+          "p90": 5.321,
+          "meanOvr": 78
+        },
+        "Power": {
+          "n": 71,
+          "pooled": 4.4423,
+          "sd": 1.2036,
+          "p90": 5.9673,
+          "meanOvr": 78.5
+        },
+        "Compact": {
+          "n": 24,
+          "pooled": 4.7699,
+          "sd": 1.2158,
+          "p90": 5.602,
+          "meanOvr": 79.2
+        },
+        "Thick": {
+          "n": 27,
+          "pooled": 4.2644,
+          "sd": 1.2111,
+          "p90": 5.2021,
+          "meanOvr": 80.4
+        }
+      }
+    },
+    "RB broken tackles per 100 att (>=50 att)": {
+      "all": {
+        "n": 555,
+        "pooled": 4.0742,
+        "sd": 2.1891,
+        "p90": 6.6667,
+        "meanOvr": 78.3
+      },
+      "byArchetype": {
+        "Prototype": {
+          "n": 241,
+          "pooled": 4.2057,
+          "sd": 2.3815,
+          "p90": 6.9767,
+          "meanOvr": 78.1
+        },
+        "Tower": {
+          "n": 56,
+          "pooled": 3.7196,
+          "sd": 1.7661,
+          "p90": 5.7471,
+          "meanOvr": 76.9
+        },
+        "Long": {
+          "n": 64,
+          "pooled": 3.6252,
+          "sd": 2.2555,
+          "p90": 6.3492,
+          "meanOvr": 79.2
+        },
+        "Lean": {
+          "n": 72,
+          "pooled": 3.3123,
+          "sd": 1.7246,
+          "p90": 5.283,
+          "meanOvr": 78
+        },
+        "Power": {
+          "n": 71,
+          "pooled": 4.3692,
+          "sd": 2.0614,
+          "p90": 6.9565,
+          "meanOvr": 78.5
+        },
+        "Compact": {
+          "n": 24,
+          "pooled": 5.1702,
+          "sd": 2.016,
+          "p90": 6.7518,
+          "meanOvr": 79.2
+        },
+        "Thick": {
+          "n": 27,
+          "pooled": 4.5462,
+          "sd": 1.7993,
+          "p90": 6.8627,
+          "meanOvr": 80.4
+        }
+      }
+    },
+    "RB/WR fumbles per 100 touches (>=50 touches)": {
+      "all": {
+        "n": 1198,
+        "pooled": 0.261,
+        "sd": 0.5177,
+        "p90": 0.7194,
+        "meanOvr": 79.8
+      },
+      "byArchetype": {
+        "Prototype": {
+          "n": 515,
+          "pooled": 0.2853,
+          "sd": 0.5723,
+          "p90": 0.7491,
+          "meanOvr": 79.3
+        },
+        "Tower": {
+          "n": 132,
+          "pooled": 0.2853,
+          "sd": 0.4961,
+          "p90": 0.6849,
+          "meanOvr": 79.7
+        },
+        "Long": {
+          "n": 153,
+          "pooled": 0.1621,
+          "sd": 0.4486,
+          "p90": 0.4587,
+          "meanOvr": 80.7
+        },
+        "Compact": {
+          "n": 52,
+          "pooled": 0.3132,
+          "sd": 0.3702,
+          "p90": 0.5208,
+          "meanOvr": 79.4
+        },
+        "Lean": {
+          "n": 190,
+          "pooled": 0.2445,
+          "sd": 0.5081,
+          "p90": 0.5814,
+          "meanOvr": 80.8
+        },
+        "Power": {
+          "n": 113,
+          "pooled": 0.2842,
+          "sd": 0.4772,
+          "p90": 0.9174,
+          "meanOvr": 78.4
+        },
+        "Thick": {
+          "n": 43,
+          "pooled": 0.1657,
+          "sd": 0.3645,
+          "p90": 0.5571,
+          "meanOvr": 81.1
+        }
+      }
+    },
+    "DL/LB sacks per 1000 def snaps (>=200 snaps)": {
+      "all": {
+        "n": 2861,
+        "pooled": 5.1567,
+        "sd": 3.8041,
+        "p90": 9.8401,
+        "meanOvr": 77.9
+      },
+      "byArchetype": {
+        "Tower": {
+          "n": 285,
+          "pooled": 4.6436,
+          "sd": 3.3419,
+          "p90": 9.245,
+          "meanOvr": 77.9
+        },
+        "Power": {
+          "n": 251,
+          "pooled": 5.7021,
+          "sd": 3.9757,
+          "p90": 10.4302,
+          "meanOvr": 78
+        },
+        "Thick": {
+          "n": 164,
+          "pooled": 5.3746,
+          "sd": 3.8571,
+          "p90": 9.9573,
+          "meanOvr": 76.3
+        },
+        "Compact": {
+          "n": 122,
+          "pooled": 4.913,
+          "sd": 3.8,
+          "p90": 9.9256,
+          "meanOvr": 76.5
+        },
+        "Prototype": {
+          "n": 1233,
+          "pooled": 5.0495,
+          "sd": 3.7586,
+          "p90": 9.7087,
+          "meanOvr": 77.9
+        },
+        "Lean": {
+          "n": 387,
+          "pooled": 5.22,
+          "sd": 3.8413,
+          "p90": 10.0503,
+          "meanOvr": 78.7
+        },
+        "Long": {
+          "n": 419,
+          "pooled": 5.4202,
+          "sd": 4.0273,
+          "p90": 10.3199,
+          "meanOvr": 78.3
+        }
+      }
+    },
+    "OL sacks allowed per 1000 pass-block snaps (>=200)": {
+      "all": {
+        "n": 1701,
+        "pooled": 7.8537,
+        "sd": 5.2959,
+        "p90": 14.8976,
+        "meanOvr": 80.4
+      },
+      "byArchetype": {
+        "Prototype": {
+          "n": 751,
+          "pooled": 7.6456,
+          "sd": 5.2168,
+          "p90": 14.4928,
+          "meanOvr": 79.6
+        },
+        "Lean": {
+          "n": 253,
+          "pooled": 8.7901,
+          "sd": 5.3425,
+          "p90": 15.5642,
+          "meanOvr": 81.1
+        },
+        "Power": {
+          "n": 143,
+          "pooled": 7.5975,
+          "sd": 5.7698,
+          "p90": 15.544,
+          "meanOvr": 79.8
+        },
+        "Long": {
+          "n": 263,
+          "pooled": 8.0492,
+          "sd": 5.2491,
+          "p90": 15.2174,
+          "meanOvr": 81.6
+        },
+        "Tower": {
+          "n": 130,
+          "pooled": 7.2668,
+          "sd": 4.7131,
+          "p90": 13.3843,
+          "meanOvr": 81.3
+        },
+        "Thick": {
+          "n": 84,
+          "pooled": 7.2663,
+          "sd": 5.6417,
+          "p90": 15.2672,
+          "meanOvr": 82.3
+        },
+        "Compact": {
+          "n": 77,
+          "pooled": 8.188,
+          "sd": 5.2401,
+          "p90": 14.2857,
+          "meanOvr": 78.6
+        }
+      }
+    }
+  }
+}

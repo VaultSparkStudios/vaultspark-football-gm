@@ -337,6 +337,48 @@ test("milestones are derived only while sharing is on, once per browser, with a 
   }
 });
 
+test("a browser that opts in mid-career does not report its next advance or league as its first", async () => {
+  const values = new Map();
+  const localStorage = {
+    getItem(key) { return values.get(String(key)) ?? null; },
+    setItem(key, value) { values.set(String(key), String(value)); },
+    removeItem(key) { values.delete(String(key)); }
+  };
+  const saved = Object.fromEntries(["window", "document", "navigator", "CustomEvent", "fetch"].map((key) => [key, Object.getOwnPropertyDescriptor(globalThis, key)]));
+  try {
+    Object.defineProperty(globalThis, "window", { configurable: true, value: { localStorage, dispatchEvent() {} } });
+    Object.defineProperty(globalThis, "document", { configurable: true, value: { querySelector: () => null } });
+    Object.defineProperty(globalThis, "navigator", { configurable: true, value: { onLine: false } });
+    Object.defineProperty(globalThis, "CustomEvent", { configurable: true, value: class { constructor(type, init) { this.type = type; this.detail = init?.detail; } } });
+    Object.defineProperty(globalThis, "fetch", { configurable: true, writable: true, value: undefined });
+    const telemetry = await import("../public/lib/communityTelemetry.js?funnel-test=mid-career");
+    const league = () => telemetry.observeCommunityApiReceipt({ method: "POST", path: "/api/new-league", body: { controlledTeamId: "BUF" }, response: { ok: true, state: { controlledTeamId: "BUF", settings: {} } }, runtime: "client" });
+    const advance = (completedYear) => telemetry.observeCommunityApiReceipt({
+      method: "POST", path: "/api/advance-week", body: {}, runtime: "client",
+      response: { ok: true, commandReceipt: { count: 1, started: { year: 2026, phase: "regular-season" }, completed: { year: completedYear, phase: "regular-season" } }, state: { controlledTeamId: "BUF", champions: [], latestStandings: [{ team: "BUF", wins: 1, losses: 0 }] } }
+    });
+    const types = (rows) => rows.map((row) => row.type);
+
+    // Sharing off: a franchise is founded and a week played; only the local ledger (which never leaves the browser) knows.
+    league();
+    advance(2026);
+    assert.equal(values.has(telemetry.COMMUNITY_FUNNEL_KEY), false);
+    assert.ok(telemetry.getLocalCommunityLedger().totals.weeks > 0, "fixture premise: the local ledger saw the week");
+
+    const result = await telemetry.setCommunityParticipation(true);
+    assert.equal(result.participating, true);
+    assert.deepEqual(types(advance(2026)), ["weeks_managed"], "the next advance is not this browser's first");
+    assert.deepEqual(types(league()), ["league_started"], "a second franchise is not this browser's first setup");
+    const funnel = (rows) => types(rows).filter((type) => ["setup_finished", "first_advance", "first_season_finished"].includes(type));
+    assert.deepEqual(funnel(advance(2027)), ["first_season_finished"], "a step it had not reached is still reported once");
+  } finally {
+    for (const [key, descriptor] of Object.entries(saved)) {
+      if (descriptor) Object.defineProperty(globalThis, key, descriptor);
+      else delete globalThis[key];
+    }
+  }
+});
+
 test("a feedback note keeps only its category, message, rating and six fixed context fields", async () => {
   const { normalizeFeedback, FEEDBACK_MESSAGE_LIMIT } = await import("../src/community/feedbackContract.js");
   assert.equal(normalizeFeedback(null), null);
