@@ -1,5 +1,5 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-11-26 (Session 133 closeout) -->
+<!-- generated-at: 2026-11-28 (Session 133 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: 06c3f662e849c4b7 -->
@@ -8,7 +8,7 @@
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 133 closeout · 2026-11-26.
+> **Fast-boot brief** — generated at Session 133 closeout · 2026-11-28.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,12 +17,12 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 134 · 2026-11-26 · BUILDER MODE                         ║
+║  Session 134 · 2026-11-28 · BUILDER MODE                         ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ LAST SESSION (S133) - WHAT SHIPPED ══════════════════════════╗
-║  S133 audited (16 items) and released 15 (10 shipped, 5 reduced  ║
+║  S133 audited (16 items) and shipped all 16 across five verifie  ║
 ║  Tests Unverified for this session                               ║
 ║  Deploy —                                                        ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -34,14 +34,14 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · cache stale 58d · refresh required             ║
+║  Profile · game · cache stale 60d · refresh required             ║
 ║  ✓ Lifecycle authority · local FORGE · registry FORGE            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    600/1000   ██████████████░░░░░░░░░░   60%                     ║
-║    SIL v3.0  ·  Avg3: 572.3  ·  Velocity 7→                      ║
+║    604/1000   ██████████████░░░░░░░░░░   60%                     ║
+║    SIL v3.0  ·  Avg3: 573.7  ·  Velocity 6→                      ║
 ║    Active 0d · closeout 1d · source: newest SIL/status/handoff   ║
 ║    Trend  ▁▁▁▁▁  →  (last 5 sessions)                            ║
 ║                                                                  ║
@@ -49,9 +49,9 @@
 ║    ─────────────── ────── ────────── ──────── ─                  ║
 ║    Dev Health        86    █████████░  —        →                ║
 ║    Alignment         88    █████████░  —        →                ║
-║    Momentum          80    ████████░░  —        →                ║
+║    Momentum          82    ████████░░  —        →                ║
 ║    Engagement        66    ███████░░░  —        →                ║
-║    Process Qual      60    ██████░░░░  —        →                ║
+║    Process Qual      62    ██████░░░░  —        →                ║
 ║    Coherence         58    ██████░░░░  ········ →                ║
 ║    Security          74    ███████░░░  ········ →                ║
 ║    Ecosystem         20    ██░░░░░░░░  ········ →                ║
@@ -61,7 +61,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE WE LEFT OFF  ·  Session 133 ═══════════════════════════╗
-║  Shipped:  S133 release at a8b46bb3: Frame Matters (bodies chan  ║
+║  Shipped:  S133 release at aa2eaffc: Frame Matters (bodies chan  ║
 ║  Tests: Unverified for this session                              ║
 ║  Deploy: Frontend/API 67ab750b matched; staging/production14/14  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -76,11 +76,11 @@
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
 ║  ⚠ Tests STALE · current unverified; historical 441/441          ║
 ║  (2026-11-13)                                                    ║
-║  ✓  Velocity      7   ·  Debt: →                                 ║
+║  ✓  Velocity      6   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ⚠  IGNIS         41418 FORGE  ·  13d old                        ║
-║  ⛔  Truth         S133 audit outcomes, the independent-review f  ║
+║  ⛔  IGNIS         41418 FORGE  ·  15d old                        ║
+║  ⛔  Truth         S133 audit outcomes (16 of 16 shipped), the i  ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ⚠  Genome dims   unmeasured (5 dimensions; —/25)                ║
 ║  ✓  Entropy       0.233  (healthy)                               ║
@@ -89,8 +89,8 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ✓  Doctor        12/12 (100%)  ·  2026-11-26  ✓                 ║
-║  ✓  Cost          Max flat-rate · $0.23/7d notional · no alarm   ║
+║  ✓  Doctor        12/12 (100%)  ·  2026-11-28  ✓                 ║
+║  ✓  Cost          Max flat-rate · $0.16/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ ORCHESTRATOR ════════════════════════════════════════════════╗
@@ -107,9 +107,9 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ MOMENTUM METER ══════════════════════════════════════════════╗
-║  Velocity:   ▁▁▁▁▁  7→  (last 5 sessions)                        ║
+║  Velocity:   ▁▁▁▁▁  6→  (last 5 sessions)                        ║
 ║  Intent:     80% achieved last 5                                 ║
-║  Streak:     ✓ 3 consecutive achieved-intent sessions            ║
+║  Streak:     ✓ 4 consecutive achieved-intent sessions            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
@@ -122,5 +122,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 133 closeout · 2026-11-26*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 133 closeout · 2026-11-28*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*
