@@ -609,7 +609,11 @@ th {
 
 .hero-share-choice {
   display: flex;
+  flex-direction: row;
   gap: 0.5rem;
+  min-width: 0;
+  letter-spacing: normal;
+  text-transform: none;
   align-items: flex-start;
   justify-content: center;
   max-width: 34rem;
