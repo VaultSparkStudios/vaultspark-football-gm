@@ -3,11 +3,11 @@
 
 
 <!-- rolling-status-start -->
-Last session: 133 (2026-11-25) | Total: 600/1000 | Velocity: 2 | Debt: →
-Avgs — 3: 572.3 | 5: 558.8 | 10: 540.9 | 25: 700.2 | all: 905
+Last session: 133 (2026-11-27) | Total: 604/1000 | Velocity: 2 | Debt: →
+Avgs — 3: 573.7 | 5: 559.6 | 10: 541.3 | 25: 700.3 | all: 905
 Sparkline: ▁▁▁▁▁
 Intent rate: 80% (4/5 last 5)
-SIL delta: 580 → 600 (+20). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 87 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 580 → 604 (+24). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 87 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
 > Older entries S112 live verbatim in `context/archive/SELF_IMPROVEMENT_LOOP_S112-S112.md`.
@@ -336,3 +336,27 @@ Velocity: 7 selected product outcomes, excluding SIL/meta tasks. Debt: →; carr
 
 - [SIL:133] Future improvement — unselected: Run the isolated-module browser specs locally whenever a lazy renderer gains an import.
 
+
+## 2026-11-27 — Session 133, third release — Player cards, a scenario board and a lighter start page
+
+SIL v3.0: **604 / 1000** (Dev Health 86, Creative Alignment 88, Momentum 82, Engagement 66, Process Quality 62, Cross-Repo Coherence 58, Security Posture 74, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 68). Intent outcome: Achieved for implementation and deployment. All 16 audit items are shipped; the third wave was released at 14b50e4d. An independent review of that wave then found 7 defects, all fixed with tests, for the next candidate. Prior 600; delta +4. These are engineering judgments, not measured player, financial or launch outcomes.
+
+Velocity: 6 selected product outcomes (player card, About & Press, landing saves panel, scenario board, public stylesheet subset, measurables glossary), excluding SIL/meta tasks. Debt: ↓. The acceleration-spec and Realism Sweep budget items are closed or changed.
+
+- Dev Health: 86. CI green on 14b50e4d and on the records commit; boot graph unchanged at 649,989 of 650,000 bytes.
+- Creative Alignment: 88. Player cards and a measurables glossary carry the body-and-visuals ask onto the public surface.
+- Momentum: 82. A fourth verified release in the session, and the audit is closed at 16 of 16.
+- Engagement: 66. The scenario board and player cards give reasons to replay and share; neither is measured yet.
+- Process Quality: 62. A fresh-context review caught what local and hosted gates passed:
+  - an unreadable card accent for 11 clubs
+  - privacy copy that described narrower scenario counting than the code does
+  - backups hidden from the recovery case
+
+  Each fix has a negative control.
+- Cross-Repo Coherence: 58. No change.
+- Security Posture: 74. No change; secret scan clean.
+- Ecosystem Integration: 20. Project reporting only.
+- Capital Efficiency: 0 proof credit. Token and runway efficiency are unmeasured; this is not a finding of poor finances.
+- Automation Coverage: 68. No change.
+
+- [SIL:133] Future improvement, unselected: before release, compare public data-collection copy against the counting code with a test that names each counted source.

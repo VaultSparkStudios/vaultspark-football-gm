@@ -130,3 +130,18 @@ test("a heavy veteran loses a step before strength; nobody else changes, and the
   assert.equal(applyFrameAging(improving, norms, 1), false);
   assert.deepEqual(young.ratings, { speed: 85, strength: 70 });
 });
+
+test("the public measurables glossary names every frame the engine can assign and the Speed Score formula it uses", async () => {
+  const fs = await import("node:fs");
+  const source = fs.readFileSync(new URL("../src/domain/physicalProfile.js", import.meta.url), "utf8");
+  const guides = fs.readFileSync(new URL("../public/guides.html", import.meta.url), "utf8");
+  const agents = JSON.parse(fs.readFileSync(new URL("../public/agents.json", import.meta.url), "utf8"));
+  const labels = [...source.matchAll(/label: "([A-Za-z]+)"/g)].map((m) => m[1]);
+  assert.ok(labels.length >= 7, "engine frame labels found");
+  const frameTerm = guides.match(/id="term-frame">([\s\S]*?)<\/div>/)?.[1] || "";
+  for (const label of labels) assert.match(frameTerm, new RegExp(`\\b${label}\\b`), `guides names the ${label} frame`);
+  assert.match(source, /weight \* 200\) \/ forty \*\* 4/);
+  assert.match(guides, /id="measurables"/);
+  assert.equal(agents.measurablesGlossary.url, "https://playfranchisearchitect.com/guides.html#measurables");
+  assert.match(agents.measurablesGlossary.terms.speedScore, /weight \* 200 \/ forty\^4/);
+});

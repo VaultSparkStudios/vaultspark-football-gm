@@ -9,7 +9,7 @@
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-11-27",
+  "lastUpdated": "2026-11-28",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "type": "game",
@@ -68,13 +68,13 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 600,
+  "silScore": 604,
   "silCategoriesV3": {
     "devHealth": 86,
     "creativeAlignment": 88,
-    "momentum": 80,
+    "momentum": 82,
     "engagement": 66,
-    "processQuality": 60,
+    "processQuality": 62,
     "crossRepoCoherence": 58,
     "securityPosture": 74,
     "ecosystemIntegration": 20,
@@ -2737,13 +2737,13 @@
   "sil": {
     "version": "3.0",
     "session": 133,
-    "silScore": 600,
+    "silScore": 604,
     "categories": {
       "devHealth": 86,
       "creativeAlignment": 88,
-      "momentum": 80,
+      "momentum": 82,
       "engagement": 66,
-      "processQuality": 60,
+      "processQuality": 62,
       "crossRepoCoherence": 58,
       "securityPosture": 74,
       "ecosystemIntegration": 20,

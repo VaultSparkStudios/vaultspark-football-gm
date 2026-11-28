@@ -187,7 +187,9 @@ function updateHeroActions() {
   const savedSection = document.getElementById("savedLeaguesSection");
   if (savedSection && hasSaves) savedSection.open = true;
   // A browser known to be new (saves loaded, none, no active league) sees no
-  // save or backup panels; while saves are still loading they stay in place.
+  // saves panel; while saves are still loading it stays in place. Backups stay
+  // visible for everyone: they load on demand, and they are the way back when
+  // the slots and the active league are gone.
   const knownNew = !hasActive && !state.savesDeferred && state.saves.length === 0;
   document.querySelectorAll("[data-returning-only]").forEach((node) => { node.hidden = knownNew; });
 }
@@ -442,6 +444,8 @@ async function loadSetup(retryCount = 0) {
     // Allow changing runtime after failure; league creation still requires a
     // successful initialization rather than stale team/catalog data.
     document.getElementById('runtimeModeSelect').disabled = false;
+    // Nothing is known about this browser, so keep every recovery panel reachable.
+    document.querySelectorAll("[data-returning-only]").forEach((node) => { node.hidden = false; });
     return;
   }
 

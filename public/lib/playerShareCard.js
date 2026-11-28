@@ -56,11 +56,51 @@ function loadSvgImage(svgMarkup) {
   });
 }
 
+const HEX = /^#[0-9a-f]{6}$/i;
+const CARD_TILE = "#1f2a31"; // the tile colour over the card's dark gradient
+const FALLBACK_ACCENT = "#f7c948";
+
+function luminance(hex) {
+  const [r, g, b] = [1, 3, 5].map((i) => {
+    const c = parseInt(hex.slice(i, i + 2), 16) / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
+/** WCAG contrast ratio between two #rrggbb colours. */
+export function contrastRatio(a, b) {
+  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+  return (hi + 0.05) / (lo + 0.05);
+}
+
+/**
+ * Pure: the colour for the headline numbers. The club's most readable colour
+ * on the dark tile, or the house gold when no club colour reaches 4.5:1
+ * (black, navy and charcoal secondaries are common in the league).
+ */
+export function cardAccentColor(teamColors = null) {
+  const candidates = [teamColors?.secondary, teamColors?.tertiary, teamColors?.primary].filter((c) => HEX.test(c || ""));
+  return candidates.find((c) => contrastRatio(c, CARD_TILE) >= 4.5) || FALLBACK_ACCENT;
+}
+
+/** Largest font size (px, down to a floor) at which the text fits the width. */
+function fitFont(ctx, text, { weight = 800, size = 64, min = 34, maxWidth = 740 } = {}) {
+  let px = size;
+  ctx.font = `${weight} ${px}px Arial`;
+  while (px > min && ctx.measureText(text).width > maxWidth) {
+    px -= 2;
+    ctx.font = `${weight} ${px}px Arial`;
+  }
+  return px;
+}
+
 function drawTiles(ctx, rows, x, y, accent) {
   rows.forEach(([label, value], index) => {
     const tx = x + (index % 2) * 330;
     const ty = y + Math.floor(index / 2) * 112;
-    ctx.fillStyle = "rgba(255,255,255,0.07)";
+    // Opaque, so the accent's tested contrast holds wherever the gradient runs.
+    ctx.fillStyle = CARD_TILE;
     ctx.fillRect(tx, ty, 310, 96);
     ctx.fillStyle = accent;
     ctx.font = "800 40px Arial";
@@ -76,8 +116,8 @@ export async function drawPlayerCard(canvas, player, { silhouetteSvg = "", teamC
   const ctx = canvas?.getContext?.("2d");
   if (!ctx) throw new Error("Card canvas unavailable");
   const lines = playerCardLines(player);
-  const primary = /^#[0-9a-f]{6}$/i.test(teamColors?.primary || "") ? teamColors.primary : "#1d6b57";
-  const accent = /^#[0-9a-f]{6}$/i.test(teamColors?.secondary || "") ? teamColors.secondary : "#f7c948";
+  const primary = HEX.test(teamColors?.primary || "") ? teamColors.primary : "#1d6b57";
+  const accent = cardAccentColor(teamColors);
   canvas.width = PLAYER_CARD_SIZE.width;
   canvas.height = PLAYER_CARD_SIZE.height;
   const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
@@ -100,18 +140,20 @@ export async function drawPlayerCard(canvas, player, { silhouetteSvg = "", teamC
   ctx.font = "700 24px Arial";
   ctx.fillText("FRANCHISE ARCHITECT · SCOUTING CARD", left, 78);
   ctx.fillStyle = "#f2f6ef";
-  ctx.font = "800 64px Arial";
+  fitFont(ctx, lines.name, { weight: 800, size: 64, min: 34, maxWidth: canvas.width - left - 40 });
   ctx.fillText(lines.name, left, 152);
   ctx.fillStyle = "#a9bac6";
-  ctx.font = "600 28px Arial";
+  fitFont(ctx, lines.subtitle, { weight: 600, size: 28, min: 20, maxWidth: canvas.width - left - 40 });
   ctx.fillText(lines.subtitle, left, 196);
   drawTiles(ctx, lines.stats, left, 232, accent);
   ctx.fillStyle = "#f2f6ef";
-  ctx.font = "600 24px Arial";
-  ctx.fillText(lines.body.map(([label, value]) => `${label} ${value}`).join("   "), left, 498);
+  const bodyLine = lines.body.map(([label, value]) => `${label} ${value}`).join("   ");
+  fitFont(ctx, bodyLine, { weight: 600, size: 24, min: 18, maxWidth: canvas.width - left - 40 });
+  ctx.fillText(bodyLine, left, 498);
   ctx.fillStyle = "#7f93a1";
-  ctx.font = "500 20px Arial";
-  ctx.fillText("Measured against his position across the league today · playfranchisearchitect.com", left, 570);
+  const footer = "Measured against the position across the league today · playfranchisearchitect.com";
+  fitFont(ctx, footer, { weight: 500, size: 20, min: 15, maxWidth: canvas.width - left - 40 });
+  ctx.fillText(footer, left, 570);
   return canvas;
 }
 

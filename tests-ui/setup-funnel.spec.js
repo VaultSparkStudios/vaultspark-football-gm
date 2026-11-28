@@ -30,6 +30,9 @@ test("fresh visitor: one-click instant start reaches the game with a random team
 
   // Saved Leagues stays collapsed when there is nothing to show.
   await expect(page.locator("#savedLeaguesSection")).not.toHaveAttribute("open", "");
+  // Backups stay reachable on a fresh browser: they are the way back when the
+  // slots and the active league are gone (S133 review).
+  await expect(page.locator("summary", { hasText: "Auto Backups" })).toBeVisible();
 
   // Team select defaults to the random option.
   await expect(page.locator("#teamSelect")).toHaveValue("__random__");

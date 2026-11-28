@@ -782,6 +782,11 @@
           "at": "2026-11-24T00:30:00Z",
           "status": "shipped",
           "note": "Shipped."
+        },
+        {
+          "at": "2026-11-27T23:30:00Z",
+          "status": "shipped",
+          "note": "The measurables glossary the plan named is published: guides.html#measurables (wingspan and arm, hands, frame types, RAS, Speed Score, catch radius, body programmes), agents.json measurablesGlossary and an llms.txt pointer. test/physical-profile.test.js ties the glossary to the engine's frame labels and Speed Score formula (negative control: dropping a frame name fails it)."
         }
       ]
     },
@@ -830,6 +835,11 @@
           "at": "2026-11-26T00:45:00Z",
           "status": "shipped",
           "note": "Measured. npm run report:visits (2026-11-19 to 2026-11-26, beacon-executing browsers): 82 landing loads, 22 game loads, landing-to-game 0.268. Live Census all-time (2026-11-26T00:43Z): 8 game sessions, 1 returning, 7 franchises founded, 3 played a first week, 5 games, 3 trades, 30 minutes. Some game sessions may be the release's own hosted performance checks, which load production pages in a browser. The launch hold stays with the studio."
+        },
+        {
+          "at": "2026-11-27T23:30:00Z",
+          "status": "shipped",
+          "note": "Independent fresh-context review of the third wave: 7 findings (card accent unreadable for 11 clubs; scenario copy narrower than the counting; Auto Backups hidden from recovery; saves panel hidden when setup fails; two glossary wordings; long names overflowing the card), all fixed with tests; round 2 passed."
         }
       ]
     }

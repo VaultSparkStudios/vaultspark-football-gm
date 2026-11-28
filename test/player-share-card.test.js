@@ -24,3 +24,21 @@ test("missing numbers are left off, never shown as zero, and catch radius is for
   assert.deepEqual(lines.body, []);
   assert.equal(playerCardLines({}).fileName, "franchise-architect-player.png");
 });
+
+test("the card's headline numbers are readable for every club: no accent below 4.5:1 on the tile", async () => {
+  const { cardAccentColor, contrastRatio } = await import("../public/lib/playerShareCard.js");
+  const fs = await import("node:fs");
+  const source = fs.readFileSync(new URL("../public/lib/appState.js", import.meta.url), "utf8");
+  const block = source.slice(source.indexOf("export const TEAM_THEME_MAP"), source.indexOf("};", source.indexOf("export const TEAM_THEME_MAP")));
+  const teams = [...block.matchAll(/([A-Z]{2,3}): \{ primary: "(#[0-9a-f]{6})", secondary: "(#[0-9a-f]{6})", tertiary: "(#[0-9a-f]{6})" \}/gi)]
+    .map(([, id, primary, secondary, tertiary]) => ({ id, primary, secondary, tertiary }));
+  assert.ok(teams.length >= 32, `parsed ${teams.length} clubs`);
+  // Negative control: the colour the card used before (the raw secondary) fails for black-secondary clubs.
+  assert.ok(contrastRatio(teams.find((t) => t.id === "ATL").secondary, "#1f2a31") < 2);
+  for (const colors of teams) {
+    const accent = cardAccentColor(colors);
+    assert.ok(contrastRatio(accent, "#1f2a31") >= 4.5, `${colors.id} accent ${accent}`);
+  }
+  assert.equal(cardAccentColor({ primary: "#97233f", secondary: "#ffb612" }), "#ffb612", "a readable club colour is kept");
+  assert.equal(cardAccentColor(null), "#f7c948");
+});

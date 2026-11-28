@@ -9,10 +9,10 @@ Rights: Proprietary - All Rights Reserved, VaultSpark Studios LLC.
 Useful paths:
 - / - browser game (start page)
 - /features.html - feature tour with screenshots
-- /guides.html - how a season works from week one to the draft, a glossary of the game's own terms, and how-to guides for the first season, the salary cap, the draft and trades
+- /guides.html - how a season works from week one to the draft, a glossary of the game's own terms (with the scouting measurables at /guides.html#measurables: wingspan, hands, frame, RAS, Speed Score, catch radius), and how-to guides for the first season, the salary cap, the draft and trades
 - /faq.html - frequently asked questions: early access, saves, privacy, challenge codes, commissioner mode, how it compares with other football management games, system requirements
 - /simulation.html - what the football simulation is measured against, and the stated limits of that anchor
-- /about.html - about the game and the studio's principles
+- /about.html - About & Press: the game, the studio's principles, the press kit, media and contact routes
 - /press.html - press kit: fact sheet and boilerplate
 - /media.html - gameplay screenshots, logo, mark and cover image, with download links
 - /status.html - updates: current status, early access and the public beta, known issues, what is next, and the latest dated release notes

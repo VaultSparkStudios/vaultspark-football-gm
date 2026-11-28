@@ -55,7 +55,7 @@ export function censusMarkup(totals, { metrics = CENSUS_HEADLINE_METRICS, compac
 // A title rate on a handful of franchises is noise, so it waits for a sample.
 export const SCENARIO_RATE_MIN_STARTS = 20;
 
-/** Pure: the scenario board, one row per one-click scenario, all-time totals. */
+/** Pure: the scenario board, one row per scenario archetype (however the franchise was started), all-time totals. */
 export function scenarioBoardMarkup(totals) {
   const allTime = totals?.allTime;
   if (!allTime || typeof allTime !== "object") {

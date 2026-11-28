@@ -112,5 +112,17 @@
     "shape": "{ schemaVersion, computedAt, allTime: { metric: total }, last30Days: { metric: total } }",
     "privacy": "On by default with an in-game opt-out; Global Privacy Control and Do Not Track are honoured. Counters only, with no identifier of any kind; the service keeps one running total per metric per day and nothing per browser.",
     "scenarioBoard": "https://playfranchisearchitect.com/stats#scenarios"
+  },
+  "measurablesGlossary": {
+    "url": "https://playfranchisearchitect.com/guides.html#measurables",
+    "basis": "Size is scored against each position's live league centre, not a fixed chart.",
+    "terms": {
+      "reach": "Wingspan and arm length, against the position.",
+      "handSize": "Thumb to little finger; ball security and contested catches.",
+      "frame": "Long, Power, Tower, Compact, Lean, Thick or Prototype, from height, weight and reach against the position.",
+      "ras": "Relative Athletic Score, 0-10: size and combine drills as percentiles against the position, averaged.",
+      "speedScore": "weight * 200 / forty^4; about 100 is average for a running back.",
+      "catchRadiusInches": "Standing reach plus vertical jump."
+    }
   }
 }
