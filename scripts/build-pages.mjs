@@ -100,12 +100,10 @@ const htmlPages = [
   "stats.html",
   "game.html",
   "about.html",
-  "contact.html",
   "privacy.html",
   "terms.html",
   "status.html",
   "simulation.html",
-  "press.html",
   "features.html",
   "faq.html",
   "guides.html",
@@ -530,7 +528,9 @@ const RETIRED_ROUTES = Object.freeze([
   ["/how-to-play.html", "/guides.html#how-to-play", "How to Play is the first chapter of Guides (S133)"],
   ["/compare.html", "/faq.html#compare", "How It Compares is an FAQ answer (S133)"],
   ["/roadmap.html", "/status.html#whats-next", "the roadmap is What's next on Updates (S133)"],
-  ["/beta.html", "/status.html#early-access", "the beta explainer is Early access on Updates (S133)"]
+  ["/beta.html", "/status.html#early-access", "the beta explainer is Early access on Updates (S133)"],
+  ["/press.html", "/about.html#press", "the press kit is the Press section of About & Press (S133)"],
+  ["/contact.html", "/about.html#contact", "Contact is the Contact section of About & Press (S133)"]
 ]);
 
 // The site used to be copied whole under each of these paths: six extra copies

@@ -59,7 +59,7 @@ test("every claims block in the source tree is in sync with claims.json", () => 
     assert.deepEqual(report.unfilled, [], `${name} has unfilled claims markers`);
     if (/claims:[a-z-]+:start/.test(source)) withBlocks.push(name);
   }
-  for (const expected of ["index.html", "features.html", "faq.html", "press.html", "status.html", "about.html"]) {
+  for (const expected of ["index.html", "features.html", "faq.html", "status.html", "about.html"]) {
     assert.ok(withBlocks.includes(expected), `${expected} renders its copy from claims.json`);
   }
 });
@@ -77,14 +77,14 @@ test("every marker is filled and the built output carries no marker text", () =>
   for (const feature of claims.features) {
     assert.ok(tour.includes(`id="${feature.id}"`), `features.html has a section for ${feature.id}`);
   }
-  const press = built("press.html");
+  const press = built("about.html");
   for (const fact of claims.facts) assert.ok(press.includes(fact.label), `press fact sheet lists ${fact.label}`);
   // The screenshots have one home; the press kit links to it.
   const media = built("media.html");
   const shots = [claims.heroImage, ...claims.features.map((feature) => feature.image)].filter(Boolean);
   for (const shot of shots) assert.ok(media.includes(`src="${shot.src}"`), `media.html shows ${shot.src}`);
   assert.equal((media.match(/class="site-gallery-item"/g) || []).length >= shots.length + 3, true, "screenshots plus the wordmark, mark and cover");
-  assert.doesNotMatch(press, /class="site-gallery"/, "press.html does not carry a second gallery");
+  assert.doesNotMatch(press, /class="site-gallery"/, "About & Press does not carry a second gallery");
   assert.match(press, /href="\.\/media\.html"/);
 });
 

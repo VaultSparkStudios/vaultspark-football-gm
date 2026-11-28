@@ -326,7 +326,7 @@ export function mountBetaFeedback() {
     fmModal.appendChild(link);
   }
 
-  // The floating Feedback button is a plain link to the contact page until
+  // The floating Feedback button is a plain link to Contact on About & Press until
   // this module arrives; from then on it opens the in-game form instead.
   const widgetLink = document.querySelector("#feedbackWidget a");
   if (widgetLink && !widgetLink.dataset.feedbackBound) {

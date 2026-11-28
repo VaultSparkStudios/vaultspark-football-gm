@@ -241,7 +241,7 @@ async function main() {
 
     await page.goto(`${baseUrl}missing-route`, { waitUntil: "networkidle" });
     await page.waitForSelector("#notFoundHomeLink");
-    await assertStaticPath(`/contact.html`, /football@playfranchisearchitect\.com/);
+    await assertStaticPath(`/about.html`, /football@playfranchisearchitect\.com/);
     await assertStaticPath("/privacy.html", /Browser-First Play/);
     await assertStaticPath("/stats.html", /Community Stats/);
     await assertStaticPath("/stats-surface.json", /participating anonymous browsers/);
@@ -249,7 +249,7 @@ async function main() {
     await assertStaticPath(`/agents.json`, /Proprietary - All Rights Reserved/);
     await assertStaticPath(`/.well-known/llms.txt`, /Franchise Architect: Football/);
     await assertStaticPath(`/llms.txt`, /\?challenge=weekly/);
-    await assertStaticPath(`/sitemap.xml`, /contact\.html/);
+    await assertStaticPath(`/sitemap.xml`, /about\.html/);
     await assertStaticPath(`/_health`, /"launchReady": false/);
     await assertStaticPath(`/deploy-manifest.json`, /"repository": "VaultSparkStudios\/vaultspark-football-gm"/);
     await assertStaticPath(`/_headers`, /Strict-Transport-Security:[^\n]*includeSubDomains/);

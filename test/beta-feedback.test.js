@@ -242,7 +242,7 @@ test("the form states exactly what is sent and turns a prompt's ratings into edi
 test("the Feedback button and Tell the Commissioner open the in-game form, not a GitHub page", async () => {
   const game = readFileSync(new URL("../public/game.html", import.meta.url), "utf8");
   const widget = game.slice(game.indexOf('id="feedbackWidget"'), game.indexOf("</div>", game.indexOf('id="feedbackWidget"')));
-  assert.match(widget, /<a href="\.\/contact\.html" aria-label="Send feedback">/);
+  assert.match(widget, /<a href="\.\/about\.html#contact" aria-label="Send feedback">/);
   assert.doesNotMatch(widget, /github\.com/);
   const source = readFileSync(new URL("../public/lib/betaFeedback.js", import.meta.url), "utf8");
   assert.match(source, /import\("\.\/feedbackModal\.js"\)/);

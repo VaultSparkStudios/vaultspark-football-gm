@@ -498,7 +498,41 @@ async function loadSetup(retryCount = 0) {
   }
 }
 
-async function createLeague() {
+// S133: the detailed Community Stats choice is offered before setup, beside
+// the start button, as an unticked box. It counts as the offer only when the
+// visitor saw it for certain: they started from that button or touched the
+// box. Anyone else (a Quick Start or scenario card further down) keeps the
+// in-game card after season 1. It is applied after the league exists, inside
+// the navigation guard, so a failed start loses nothing and a second click
+// cannot rewrite the form mid-start. The anonymous Census is separate.
+const COMMUNITY_OFFER_KEY = "fa:community-offer:v1";
+const COMMUNITY_CONSENT_KEY = "fa:community-participation:v1";
+
+function prepareShareChoice() {
+  const choice = document.getElementById("heroShareChoice");
+  if (!choice) return;
+  try {
+    const storage = window.localStorage;
+    choice.hidden = !storage || Boolean(storage.getItem(COMMUNITY_OFFER_KEY) || storage.getItem(COMMUNITY_CONSENT_KEY));
+  } catch { choice.hidden = true; }
+}
+
+async function applyShareChoice({ fromHero = false } = {}) {
+  const choice = document.getElementById("heroShareChoice");
+  const box = document.getElementById("shareDetailedStatsInput");
+  if (!choice || choice.hidden || !box) return;
+  if (!fromHero && box.dataset.touched !== "1") return;
+  try { window.localStorage.setItem(COMMUNITY_OFFER_KEY, "offered"); } catch { return; }
+  if (!box.checked) return;
+  try {
+    const { setCommunityParticipation } = await import("./lib/communityTelemetry.js");
+    await setCommunityParticipation(true);
+  } catch (error) {
+    console.error("Community Stats could not be turned on", error);
+  }
+}
+
+async function createLeague({ fromHero = false } = {}) {
   return enterGame(async () => {
     setStatus("Creating league...");
     await api("/api/new-league", {
@@ -523,6 +557,7 @@ async function createLeague() {
         realismProfilePath: document.getElementById("profilePathInput")?.value.trim() || null
       }
     });
+    await applyShareChoice({ fromHero });
   });
 }
 
@@ -612,10 +647,10 @@ function bindEvents() {
 
   // Quick Start cards honor their "Play now" promise: apply the era preset and
   // create the league in the same click (random team unless one was chosen).
-  const quickStartLeague = async (preset) => {
+  const quickStartLeague = async (preset, options = {}) => {
     try {
       applyPreset(preset);
-      await createLeague();
+      await createLeague(options);
     } catch (error) {
       setStatus(`Error: ${error.message}`);
     }
@@ -624,7 +659,10 @@ function bindEvents() {
   document.getElementById("presetModernBtn").addEventListener("click", () => quickStartLeague("modern"));
   document.getElementById("presetBalancedBtn").addEventListener("click", () => quickStartLeague("balanced"));
   document.getElementById("presetLegacyBtn").addEventListener("click", () => quickStartLeague("legacy"));
-  document.getElementById("instantStartBtn")?.addEventListener("click", () => quickStartLeague("balanced"));
+  document.getElementById("instantStartBtn")?.addEventListener("click", () => quickStartLeague("balanced", { fromHero: true }));
+  document.getElementById("shareDetailedStatsInput")?.addEventListener("change", (event) => { event.target.dataset.touched = "1"; });
+  // The Census panel on this page can change the choice too; keep the box in step.
+  window.addEventListener("fa:community-participation", prepareShareChoice);
   // S133: franchise scenarios. One click takes a job with a built-in problem:
   // the balanced era with the scenario's franchise archetype.
   for (const card of document.querySelectorAll("[data-scenario]")) {
@@ -846,6 +884,7 @@ async function init() {
     }
   });
   bindEvents();
+  prepareShareChoice();
   setNavigationControlsDisabled(true);
   await loadSetup();
   observeBackgroundTask(applyChallengeFromUrl, { surface: "setup", operation: "apply-challenge-link", authorityKey: getRuntimeMode() });

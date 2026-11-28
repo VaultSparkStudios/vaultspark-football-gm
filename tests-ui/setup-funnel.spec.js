@@ -46,6 +46,45 @@ test("fresh visitor: one-click instant start reaches the game with a random team
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 60_000 });
 });
 
+// S133: the detailed Community Stats choice is offered before setup as an
+// unticked box beside the start button; the in-game card is only a fallback.
+for (const ticked of [true, false]) {
+  test(`fresh visitor: the sharing choice before setup is honoured when ${ticked ? "ticked" : "left unticked"}`, async ({ page }) => {
+    await page.route(/api-franchise-architect-football\.vaultsparkstudios\.com/, (route) => route.abort());
+    await gotoAsFreshClientVisitor(page);
+    const choice = page.locator('[data-testid="hero-share-choice"]');
+    await expect(choice).toBeVisible();
+    await expect(page.locator('[data-testid="share-detailed-stats"]')).not.toBeChecked();
+    if (ticked) await page.check('[data-testid="share-detailed-stats"]');
+    await page.click('[data-testid="instant-start-btn"]');
+    await expect(page).toHaveURL(/\/game\.html\?resume=tab$/, { timeout: 90_000 });
+    const stored = await page.evaluate(() => ({
+      offer: window.localStorage.getItem("fa:community-offer:v1"),
+      consent: window.localStorage.getItem("fa:community-participation:v1")
+    }));
+    expect(stored.offer).toBe("offered");
+    if (ticked) expect(stored.consent).toBe("participating");
+    else expect(stored.consent === null || stored.consent === "declined" ? "not-participating" : stored.consent).toBe("not-participating");
+    await page.goto("/");
+    await waitSetupReady(page);
+    await expect(choice).toBeHidden();
+  });
+}
+
+test("fresh visitor: a scenario card below the box does not count as seeing the sharing offer", async ({ page }) => {
+  await page.route(/api-franchise-architect-football\.vaultsparkstudios\.com/, (route) => route.abort());
+  await gotoAsFreshClientVisitor(page);
+  await expect(page.locator('[data-testid="hero-share-choice"]')).toBeVisible();
+  await page.locator("[data-scenario]").first().click();
+  await expect(page).toHaveURL(/\/game\.html\?resume=tab$/, { timeout: 90_000 });
+  const stored = await page.evaluate(() => ({
+    offer: window.localStorage.getItem("fa:community-offer:v1"),
+    consent: window.localStorage.getItem("fa:community-participation:v1")
+  }));
+  expect(stored.offer, "the in-game card after season 1 stays available").toBeNull();
+  expect(stored.consent === null || stored.consent === "declined").toBe(true);
+});
+
 test("fresh visitor: the team picked beside the start button is the team they get", async ({ page }) => {
   await gotoAsFreshClientVisitor(page);
   await expect(page.locator('#heroTeamSelect option[value="BUF"]')).toHaveCount(1);

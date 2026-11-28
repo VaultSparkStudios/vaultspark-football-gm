@@ -13,12 +13,12 @@ Useful paths:
 - /faq.html - frequently asked questions: early access, saves, privacy, challenge codes, commissioner mode, how it compares with other football management games, system requirements
 - /simulation.html - what the football simulation is measured against, and the stated limits of that anchor
 - /about.html - About & Press: the game, the studio's principles, the press kit, media and contact routes
-- /press.html - press kit: fact sheet and boilerplate
+- /about.html#press - press kit: fact sheet and boilerplate
 - /media.html - gameplay screenshots, logo, mark and cover image, with download links
 - /status.html - updates: current status, early access and the public beta, known issues, what is next, and the latest dated release notes
 - /status-archive.html - changelog: every dated release note (also at /changelog.html)
 - /changelog.xml - RSS feed of the changelog
-- /contact.html - project contact and bug reports
+- /about.html#contact - project contact and bug reports
 - /privacy.html - privacy notice
 - /terms.html - terms and rights notice
 - /agents.json - machine-readable agent metadata

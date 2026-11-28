@@ -17,8 +17,9 @@ const OWN_LAYOUT = new Set(["index.html", "game.html"]);
 const sitePages = fs.readdirSync(publicDir).filter((name) => name.endsWith(".html") && !OWN_LAYOUT.has(name));
 
 test("every site page below the landing page uses the one shared frame", () => {
-  // S133 folded How to Play, How It Compares, Roadmap and Beta into Guides, the FAQ and Updates.
-  assert.ok(sitePages.length >= 13, `expected the full set of site pages, found ${sitePages.length}`);
+  // S133 folded How to Play, How It Compares, Roadmap and Beta into Guides, the FAQ and Updates,
+  // and Press and Contact into About & Press.
+  assert.ok(sitePages.length >= 11, `expected the full set of site pages, found ${sitePages.length}`);
   for (const name of sitePages) {
     const html = read(name);
     const mains = html.match(/<main\b[^>]*>/g) || [];

@@ -12,7 +12,7 @@ const studioMailbox = "founder@vaultsparkstudios.com";
 const defaultRoutes = [
   "/",
   "/game.html",
-  "/contact.html",
+  "/about.html",
   "/privacy.html",
   "/terms.html",
   "/agents.json",

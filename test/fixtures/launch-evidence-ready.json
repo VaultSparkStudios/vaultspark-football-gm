@@ -11,7 +11,7 @@
       }
     },
     "/game.html": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
-    "/contact.html": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
+    "/about.html": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
     "/privacy.html": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
     "/terms.html": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
     "/agents.json": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },

@@ -7,7 +7,7 @@ import { inspectPublicFooterContract, PUBLIC_COPYRIGHT, PUBLIC_STUDIO_ORIGIN } f
 import { inspectPublicTruth } from "../scripts/check-public-truth.mjs";
 
 const requiredFiles = [
-  "../public/contact.html",
+  "../public/about.html",
   "../public/privacy.html",
   "../public/terms.html",
   "../public/agents.json",
@@ -44,7 +44,8 @@ test("public Pages bundle has contact, legal, sitemap, and agent metadata source
   assert.match(llms, /football@playfranchisearchitect\.com/);
 
   const sitemap = fs.readFileSync(new URL("../public/sitemap.xml", import.meta.url), "utf8");
-  assert.match(sitemap, /contact\.html/);
+  assert.match(sitemap, /about\.html/, "About & Press, which holds Contact and the press kit, is listed");
+  assert.doesNotMatch(sitemap, /contact\.html|press\.html|#/, "folded pages and fragments are not listed");
   assert.match(sitemap, /privacy\.html/);
   assert.match(sitemap, /terms\.html/);
   assert.doesNotMatch(sitemap, /landing\.html/, "landing.html merged into the root page (S94) and is now a 301");
@@ -132,7 +133,7 @@ test("Community Stats descriptor is one privacy-bounded Analytica feed with a cu
 test("primary public pages link contact, privacy, and terms", () => {
   for (const file of ["../public/index.html", "../public/game.html", "../public/simulation.html"]) {
     const source = fs.readFileSync(new URL(file, import.meta.url), "utf8");
-    assert.match(source, /contact\.html/, `${file} links contact`);
+    assert.match(source, /about\.html#contact/, `${file} links contact`);
     assert.match(source, /privacy\.html/, `${file} links privacy`);
     assert.match(source, /terms\.html/, `${file} links terms`);
   }
@@ -141,14 +142,12 @@ test("primary public pages link contact, privacy, and terms", () => {
 const themedStaticPages = [
   "../public/about.html",
   "../public/status.html",
-  "../public/contact.html",
   "../public/privacy.html",
   "../public/terms.html",
   "../public/simulation.html",
   "../public/stats.html",
   "../public/features.html",
   "../public/faq.html",
-  "../public/press.html",
   "../public/guides.html",
   "../public/media.html"
 ];

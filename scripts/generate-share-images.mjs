@@ -32,7 +32,7 @@ const overrides = {
   "status-archive": { title: "Changelog", line: "Every dated change to Franchise Architect: Football, newest first." },
   simulation: { title: "How honest is this simulation?" }
 };
-const pages = ["index", "stats", "about", "contact", "privacy", "terms", "status", "status-archive", "simulation", "press", "features", "faq", "guides", "media"];
+const pages = ["index", "stats", "about", "privacy", "terms", "status", "status-archive", "simulation", "features", "faq", "guides", "media"];
 const only = process.argv.slice(2);
 for (const slug of only) if (!pages.includes(slug)) throw new Error(`Unknown page "${slug}". Known: ${pages.join(", ")}`);
 const cards = pages.filter((slug) => !only.length || only.includes(slug)).map((slug) => {

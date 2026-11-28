@@ -607,6 +607,28 @@ th {
   margin-bottom: 0.8rem;
 }
 
+.hero-share-choice {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 34rem;
+  margin: 0 auto 0.8rem;
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--muted);
+  text-align: left;
+}
+
+.hero-share-choice[hidden] {
+  display: none;
+}
+
+.hero-share-choice input {
+  margin-top: 0.2rem;
+  flex: none;
+}
+
 .setup-session-status {
   display: block;
   color: var(--muted);

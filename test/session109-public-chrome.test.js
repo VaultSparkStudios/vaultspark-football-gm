@@ -92,7 +92,7 @@ test("prose and standalone calls to action survive; duplicate navigation groups 
   assert.doesNotMatch(out, /<p><a href="\.\/index\.html">Play<\/a> ·/, "a repeated navigation group goes");
   const missingPage = builtPage("404.html");
   assert.match(missingPage, /id="notFoundHomeLink"/, "the 404 recovery action survives the footer transform");
-  assert.match(builtPage("contact.html"), /mailto:football@playfranchisearchitect\.com/, "the project contact address remains visible");
+  assert.match(builtPage("about.html"), /mailto:football@playfranchisearchitect\.com/, "the project contact address remains visible");
 });
 
 test("index.html keeps every manifest destination in its own footer, because it is exempt from replacement", () => {
@@ -127,13 +127,20 @@ test("the footer renders the manifest's groups, and every destination sits in ex
     assert.ok(manifest.footerLinks.includes(`./${page}`), `${page} is a footer destination`);
     assert.ok(fs.existsSync(path.join(publicDir, page)), `${page} exists`);
   }
-  // S133: ten footer links. Press, Contact and Discussions live on About & Press,
-  // so they stay one click from every page without crowding the footer.
+  // S133: ten footer links. The press kit and Contact are sections of About &
+  // Press (their old pages 301 there), and the screenshots and Discussions are
+  // one click from it, so nothing is lost from the footer.
   assert.equal(manifest.footerLinks.length, 10);
   const about = fs.readFileSync(path.join(publicDir, "about.html"), "utf8");
-  for (const href of ["./press.html", "./media.html", "./contact.html", "mailto:football@playfranchisearchitect.com", "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions"]) {
+  for (const id of ["press", "facts", "boilerplate", "rights-note", "contact", "report", "email"]) {
+    assert.match(about, new RegExp(`id="${id}"`), `About & Press has the #${id} section`);
+  }
+  for (const href of ["./media.html", "mailto:football@playfranchisearchitect.com", "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions"]) {
     assert.ok(about.includes(`href="${href}"`), `About & Press links ${href}`);
     if (href.startsWith("./")) assert.ok(fs.existsSync(path.join(publicDir, href.slice(2))), `${href} exists`);
+  }
+  for (const retired of ["press.html", "contact.html"]) {
+    assert.equal(fs.existsSync(path.join(publicDir, retired)), false, `${retired} is folded into About & Press`);
   }
 });
 
@@ -193,7 +200,7 @@ test("the sitemap ships without comments", () => {
   const built = stripXmlComments(source);
   assert.doesNotMatch(built, /<!--/);
   assert.doesNotMatch(built, /\bS\d{2,3}\b/);
-  assert.match(built, /<loc>https:\/\/playfranchisearchitect\.com\/press\.html<\/loc>/);
+  assert.match(built, /<loc>https:\/\/playfranchisearchitect\.com\/about\.html<\/loc>/);
   assert.match(built, /status-archive\.html/);
 });
 

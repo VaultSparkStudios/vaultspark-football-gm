@@ -18,7 +18,7 @@ function fakeProber(responsesByUrl) {
 const okRoutes = {
   "/": { ok: true, statusCode: 200, detail: "HTTP 200" },
   "/game.html": { ok: true, statusCode: 200, detail: "HTTP 200" },
-  "/contact.html": { ok: true, statusCode: 200, detail: "HTTP 200" }
+  "/about.html": { ok: true, statusCode: 200, detail: "HTTP 200" }
 };
 const roundTrip = readyFixture.emailEvidence;
 
