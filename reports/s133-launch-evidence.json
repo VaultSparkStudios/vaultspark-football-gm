@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "1.0",
+  "generatedBy": "scripts/launch-evidence-report.mjs",
+  "checkedAt": "2026-11-28T12:17:49.908Z",
+  "baseUrl": "https://playfranchisearchitect.com",
+  "summary": {
+    "status": "blocked",
+    "routesOk": true,
+    "emailForwardingVerified": false,
+    "originEvidenceVerified": true,
+    "blocker": "On-domain email inbound delivery and reply-as-alias are unverified."
+  },
+  "routeChecks": [
+    {
+      "route": "/",
+      "url": "https://playfranchisearchitect.com/",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/",
+          "statusCode": 200
+        }
+      ],
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-frame-options": "DENY",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-9+2WwytGYhRIhgW38s5cyGADZStv2WhCuKWnjt+Rj2Q=' 'sha256-HONiLnVUE6Y2HJ9eVyBQBrQrBkHMtrAm6m25hqIYHx0=' 'sha256-KaOaSO/d4V6oGlcD95tZvqSy7QnwhdSYLASFr4aA7Rw=' 'sha256-KsaVR+LuEHednAc+QsMQN0UBj6yLhulFo4jIeEetg78=' 'sha256-LwZntZ/IVQuUyISVcVLHEngh4shx+ykGMKVQBTxRvEI=' 'sha256-O4W9r5p1vZYNP7/dsnmCzBkopk9MAELNfgu9CBwAoxE=' 'sha256-Of2/oycLq8/o0iHHRzBbrtpLHTnUKgvvYfq7ya5fEWM=' 'sha256-Z2EgYyR+Kqjlsc4IZYl1PUPxeGr1cM2D/Wkfhc4+NM8=' 'sha256-hJC0dsAF/B0x/w8dJL+4LorLBJAjxXpbanxq7l7KQOI=' 'sha256-in/IXaIQkCE/KrXIDGR8X2FJpW5oXIPykoAv+6d8LF0=' 'sha256-kI/fkpmnQ4b1rGRW3tE4MS5dRx5hz9UsGkRc3r+hCPM=' 'sha256-kzXhfSqr19wheiQ6HTvKDupItXIlQtttQNXaNScLRfE=' 'sha256-mRLjEILdiEtsSKhSIwMo/mC4H2AlQMyOEKB801IBELk=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' 'sha256-pS6OrTS7JyDcJIHKMadss3Dksq8iZEBIS2fji6G2AYU=' 'sha256-vMznO4Hy7PzPffigj8Jp9IJk9JlIE2pnQkIl8B0gFBE=' https://static.cloudflareinsights.com https://challenges.cloudflare.com; style-src-elem 'self' 'sha256-17plGzAYibQbxJVuV4KiwoA4PIG1/tRo9OFYTzmMgCc=' 'sha256-JoX5eDDkDs7jBU/wNqFrEgCUGCaqOZoLT2lHQlgGHZg=' 'sha256-qyZDccJ1LPEcJoATh0CyYtt/Mh3GczC9PfJxR2c1CpE='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin"
+      }
+    },
+    {
+      "route": "/game.html",
+      "url": "https://playfranchisearchitect.com/game.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /game → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/game.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/about.html",
+      "url": "https://playfranchisearchitect.com/about.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /about → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/about.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/about",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/privacy.html",
+      "url": "https://playfranchisearchitect.com/privacy.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /privacy → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/privacy.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/privacy",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/terms.html",
+      "url": "https://playfranchisearchitect.com/terms.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /terms → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/terms.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/terms",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/agents.json",
+      "url": "https://playfranchisearchitect.com/agents.json",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/agents.json",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/.well-known/llms.txt",
+      "url": "https://playfranchisearchitect.com/.well-known/llms.txt",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/.well-known/llms.txt",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/sitemap.xml",
+      "url": "https://playfranchisearchitect.com/sitemap.xml",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/sitemap.xml",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/_health",
+      "url": "https://playfranchisearchitect.com/_health",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/_health",
+          "statusCode": 200
+        }
+      ],
+      "headers": {
+        "content-type": "application/octet-stream",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-frame-options": "DENY",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-9+2WwytGYhRIhgW38s5cyGADZStv2WhCuKWnjt+Rj2Q=' 'sha256-HONiLnVUE6Y2HJ9eVyBQBrQrBkHMtrAm6m25hqIYHx0=' 'sha256-KaOaSO/d4V6oGlcD95tZvqSy7QnwhdSYLASFr4aA7Rw=' 'sha256-KsaVR+LuEHednAc+QsMQN0UBj6yLhulFo4jIeEetg78=' 'sha256-LwZntZ/IVQuUyISVcVLHEngh4shx+ykGMKVQBTxRvEI=' 'sha256-O4W9r5p1vZYNP7/dsnmCzBkopk9MAELNfgu9CBwAoxE=' 'sha256-Of2/oycLq8/o0iHHRzBbrtpLHTnUKgvvYfq7ya5fEWM=' 'sha256-Z2EgYyR+Kqjlsc4IZYl1PUPxeGr1cM2D/Wkfhc4+NM8=' 'sha256-hJC0dsAF/B0x/w8dJL+4LorLBJAjxXpbanxq7l7KQOI=' 'sha256-in/IXaIQkCE/KrXIDGR8X2FJpW5oXIPykoAv+6d8LF0=' 'sha256-kI/fkpmnQ4b1rGRW3tE4MS5dRx5hz9UsGkRc3r+hCPM=' 'sha256-kzXhfSqr19wheiQ6HTvKDupItXIlQtttQNXaNScLRfE=' 'sha256-mRLjEILdiEtsSKhSIwMo/mC4H2AlQMyOEKB801IBELk=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' 'sha256-pS6OrTS7JyDcJIHKMadss3Dksq8iZEBIS2fji6G2AYU=' 'sha256-vMznO4Hy7PzPffigj8Jp9IJk9JlIE2pnQkIl8B0gFBE=' https://static.cloudflareinsights.com https://challenges.cloudflare.com; style-src-elem 'self' 'sha256-17plGzAYibQbxJVuV4KiwoA4PIG1/tRo9OFYTzmMgCc=' 'sha256-JoX5eDDkDs7jBU/wNqFrEgCUGCaqOZoLT2lHQlgGHZg=' 'sha256-qyZDccJ1LPEcJoATh0CyYtt/Mh3GczC9PfJxR2c1CpE='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin"
+      },
+      "body": "{\n  \"status\": \"ok\",\n  \"service\": \"franchise-architect-football\",\n  \"sourceRevision\": \"aa2eaffc2778d00caabf595c2ec0439feb3b766c\",\n  \"artifactFingerprint\": {\n    \"algorithm\": \"sha256\",\n    \"digest\": \"25411d8f66e684f369725e9637111e59fb7eb6a9c8879e54c25fb94c96aacc3a\",\n    \"files\": 465,\n    \"exclusions\": [\n      \"_health\",\n      \"deploy-manifest.json\",\n      \"edge-policy-receipt.json\"\n    ]\n  },\n  \"styleAsset\": \"styles.d62bcbd03c.css\",\n  \"communityStatsAsset\": \"community-stats.bb8e6dd346.js\",\n  \"edgePolicyFingerprint\": \"sha256:a3406a58ed011c1b3d161b5773b9650280209829ec44e2dd4b99c1f0393a077b\",\n  \"edgePolicyAppliedToHostedOrigin\": false,\n  \"generatedAt\": \"2026-11-28T07:24:31.784Z\",\n  \"launchReady\": false,\n  \"launchNote\": \"Runtime health is green; launch readiness still requires separate contact-channel, edge-header, deploy-currency, and release-approval evidence.\"\n}\n"
+    }
+  ],
+  "emailForwarding": {
+    "status": "unverified",
+    "address": "football@playfranchisearchitect.com",
+    "detail": "A structured project-email-round-trip JSON receipt is required; a note or filename is not proof."
+  },
+  "originEvidence": {
+    "required": true,
+    "healthReceiptValid": true,
+    "securityHeaders": {
+      "strictTransportSecurity": true,
+      "frameProtection": true,
+      "contentSecurityPolicy": true
+    },
+    "status": "verified"
+  }
+}

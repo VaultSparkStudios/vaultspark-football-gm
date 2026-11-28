@@ -1,0 +1,253 @@
+{
+  "schemaVersion": "s133-frame-injury-probe-1",
+  "sourceRevision": "aa2eaffc2778d00caabf595c2ec0439feb3b766c",
+  "observedAt": "2026-11-28",
+  "method": "createSession({ seed: 2026, startYear: 2026 }) through src/runtime/bootstrap.js, then simulateSeasons(1, { runOffseasonAfterLast: true }) ten times. Before each season the frame norms are rebuilt from the rostered league and each rostered player's archetype taken with frameArchetype; an accessor on player.injury counts every new injury (a null-to-injury transition) and the weeks it was set to last, without changing the value the engine reads. Rates are injuries per 1,000 regular-season snaps for players with at least 200 snaps; gamesPlayedShareOfStarters is regular-season games over 17 for players with at least 4 starts (it also counts benchings, so it is context, not an injury measure). Groups under 15 player-seasons are omitted.",
+  "replaces": "The games-missed field of reports/s133-frame-realism-probe.json, which came out empty.",
+  "seasons": 10,
+  "seed": 2026,
+  "playerSeasons": 19762,
+  "seconds": 3001,
+  "groups": {
+    "All positions (>=200 snaps)": {
+      "all": {
+        "n": 9820,
+        "injuries": 7457,
+        "per1000Snaps": 1.202,
+        "weeksLostPerInjury": 1.59,
+        "gamesPlayedShareOfStarters": 0.897
+      },
+      "byArchetype": {
+        "Long": {
+          "n": 1362,
+          "injuries": 1021,
+          "per1000Snaps": 1.151,
+          "weeksLostPerInjury": 1.53,
+          "gamesPlayedShareOfStarters": 0.9
+        },
+        "Prototype": {
+          "n": 4200,
+          "injuries": 3153,
+          "per1000Snaps": 1.193,
+          "weeksLostPerInjury": 1.57,
+          "gamesPlayedShareOfStarters": 0.898
+        },
+        "Tower": {
+          "n": 934,
+          "injuries": 711,
+          "per1000Snaps": 1.213,
+          "weeksLostPerInjury": 1.64,
+          "gamesPlayedShareOfStarters": 0.894
+        },
+        "Compact": {
+          "n": 541,
+          "injuries": 386,
+          "per1000Snaps": 1.15,
+          "weeksLostPerInjury": 1.53,
+          "gamesPlayedShareOfStarters": 0.898
+        },
+        "Lean": {
+          "n": 1456,
+          "injuries": 1184,
+          "per1000Snaps": 1.28,
+          "weeksLostPerInjury": 1.72,
+          "gamesPlayedShareOfStarters": 0.889
+        },
+        "Power": {
+          "n": 890,
+          "injuries": 682,
+          "per1000Snaps": 1.248,
+          "weeksLostPerInjury": 1.52,
+          "gamesPlayedShareOfStarters": 0.897
+        },
+        "Thick": {
+          "n": 437,
+          "injuries": 320,
+          "per1000Snaps": 1.136,
+          "weeksLostPerInjury": 1.61,
+          "gamesPlayedShareOfStarters": 0.904
+        }
+      }
+    },
+    "Ball carriers and receivers RB/WR/TE (>=200 snaps)": {
+      "all": {
+        "n": 2219,
+        "injuries": 2140,
+        "per1000Snaps": 1.723,
+        "weeksLostPerInjury": 1.54,
+        "gamesPlayedShareOfStarters": 0.864
+      },
+      "byArchetype": {
+        "Prototype": {
+          "n": 949,
+          "injuries": 909,
+          "per1000Snaps": 1.711,
+          "weeksLostPerInjury": 1.45,
+          "gamesPlayedShareOfStarters": 0.87
+        },
+        "Tower": {
+          "n": 259,
+          "injuries": 238,
+          "per1000Snaps": 1.669,
+          "weeksLostPerInjury": 1.64,
+          "gamesPlayedShareOfStarters": 0.863
+        },
+        "Long": {
+          "n": 268,
+          "injuries": 234,
+          "per1000Snaps": 1.458,
+          "weeksLostPerInjury": 1.59,
+          "gamesPlayedShareOfStarters": 0.867
+        },
+        "Compact": {
+          "n": 121,
+          "injuries": 112,
+          "per1000Snaps": 1.721,
+          "weeksLostPerInjury": 1.48,
+          "gamesPlayedShareOfStarters": 0.858
+        },
+        "Lean": {
+          "n": 354,
+          "injuries": 379,
+          "per1000Snaps": 1.946,
+          "weeksLostPerInjury": 1.76,
+          "gamesPlayedShareOfStarters": 0.848
+        },
+        "Power": {
+          "n": 197,
+          "injuries": 199,
+          "per1000Snaps": 1.864,
+          "weeksLostPerInjury": 1.46,
+          "gamesPlayedShareOfStarters": 0.862
+        },
+        "Thick": {
+          "n": 71,
+          "injuries": 69,
+          "per1000Snaps": 1.677,
+          "weeksLostPerInjury": 1.33,
+          "gamesPlayedShareOfStarters": 0.871
+        }
+      }
+    },
+    "Linemen OL/DL (>=200 snaps)": {
+      "all": {
+        "n": 3465,
+        "injuries": 2266,
+        "per1000Snaps": 0.927,
+        "weeksLostPerInjury": 1.61,
+        "gamesPlayedShareOfStarters": 0.907
+      },
+      "byArchetype": {
+        "Prototype": {
+          "n": 1504,
+          "injuries": 996,
+          "per1000Snaps": 0.954,
+          "weeksLostPerInjury": 1.62,
+          "gamesPlayedShareOfStarters": 0.905
+        },
+        "Lean": {
+          "n": 502,
+          "injuries": 333,
+          "per1000Snaps": 0.916,
+          "weeksLostPerInjury": 1.82,
+          "gamesPlayedShareOfStarters": 0.9
+        },
+        "Tower": {
+          "n": 293,
+          "injuries": 190,
+          "per1000Snaps": 0.944,
+          "weeksLostPerInjury": 1.67,
+          "gamesPlayedShareOfStarters": 0.903
+        },
+        "Power": {
+          "n": 327,
+          "injuries": 203,
+          "per1000Snaps": 0.878,
+          "weeksLostPerInjury": 1.47,
+          "gamesPlayedShareOfStarters": 0.911
+        },
+        "Thick": {
+          "n": 169,
+          "injuries": 113,
+          "per1000Snaps": 0.934,
+          "weeksLostPerInjury": 1.46,
+          "gamesPlayedShareOfStarters": 0.914
+        },
+        "Compact": {
+          "n": 152,
+          "injuries": 85,
+          "per1000Snaps": 0.794,
+          "weeksLostPerInjury": 1.58,
+          "gamesPlayedShareOfStarters": 0.923
+        },
+        "Long": {
+          "n": 518,
+          "injuries": 346,
+          "per1000Snaps": 0.92,
+          "weeksLostPerInjury": 1.44,
+          "gamesPlayedShareOfStarters": 0.913
+        }
+      }
+    },
+    "Back seven LB/DB (>=200 snaps)": {
+      "all": {
+        "n": 3178,
+        "injuries": 2731,
+        "per1000Snaps": 1.31,
+        "weeksLostPerInjury": 1.61,
+        "gamesPlayedShareOfStarters": 0.888
+      },
+      "byArchetype": {
+        "Tower": {
+          "n": 299,
+          "injuries": 253,
+          "per1000Snaps": 1.233,
+          "weeksLostPerInjury": 1.57,
+          "gamesPlayedShareOfStarters": 0.889
+        },
+        "Prototype": {
+          "n": 1360,
+          "injuries": 1131,
+          "per1000Snaps": 1.265,
+          "weeksLostPerInjury": 1.61,
+          "gamesPlayedShareOfStarters": 0.891
+        },
+        "Lean": {
+          "n": 457,
+          "injuries": 422,
+          "per1000Snaps": 1.412,
+          "weeksLostPerInjury": 1.62,
+          "gamesPlayedShareOfStarters": 0.885
+        },
+        "Long": {
+          "n": 439,
+          "injuries": 391,
+          "per1000Snaps": 1.343,
+          "weeksLostPerInjury": 1.6,
+          "gamesPlayedShareOfStarters": 0.885
+        },
+        "Compact": {
+          "n": 196,
+          "injuries": 153,
+          "per1000Snaps": 1.215,
+          "weeksLostPerInjury": 1.54,
+          "gamesPlayedShareOfStarters": 0.891
+        },
+        "Power": {
+          "n": 263,
+          "injuries": 251,
+          "per1000Snaps": 1.527,
+          "weeksLostPerInjury": 1.59,
+          "gamesPlayedShareOfStarters": 0.888
+        },
+        "Thick": {
+          "n": 164,
+          "injuries": 130,
+          "per1000Snaps": 1.236,
+          "weeksLostPerInjury": 1.87,
+          "gamesPlayedShareOfStarters": 0.888
+        }
+      }
+    }
+  }
+}

@@ -144,6 +144,11 @@
           "at": "2026-11-28T12:00:00Z",
           "status": "shipped",
           "note": "The mid-career opt-in fix now has its own test (test/community-event-contract.test.js: a browser that founded a league and played a week with sharing off, then opts in, reports neither as its first, and still reports its first finished season once). Negative control: removing the seedFunnelFromLocalLedger call fails it."
+        },
+        {
+          "at": "2026-11-28T18:00:00Z",
+          "status": "shipped",
+          "note": "The detailed Community Stats offer now comes before setup, as the plan named: an unticked box beside Start Your Franchise (copy names short error reports). It counts as the offer only when the visitor started from that button or touched the box, and applies after the league exists inside the navigation guard; the in-game card after season 1 remains the fallback for anyone who never saw it. tests-ui/setup-funnel.spec.js covers ticked, unticked and a scenario-card start, each with a negative control."
         }
       ]
     },
@@ -206,6 +211,11 @@
           "at": "2026-11-28T12:00:00Z",
           "status": "shipped",
           "note": "Ten-season probe at aa2eaffc (reports/s133-frame-realism-probe.json, seed 2026, 15,275 player-seasons): bodies move outcomes the way football expects, with the group's mean overall shown beside each rate. Broken tackles per 100 carries: Compact +27%, Thick +12%, Lean -19% against the league's 4.07. Fumbles per 100 touches: Long -38%, Thick -37%, Compact +20% against 0.26. Sacks per 1,000 defensive snaps: Power +11%, Long +5%, Tower -10%. Sacks allowed per 1,000 pass-block snaps: Thick and Tower -7.5%, Lean +12%. Catch rate: Long +2.0%, Compact -3.4%. Yards per carry: Compact +8.4%, Tower -4.0%. League-wide spread holds (catch-rate sd 0.082, yards-per-carry sd 1.20; the sim-realism shard gates the league totals and passed on aa2eaffc). Not measured: games missed by archetype (the probe's field came out empty, a probe defect); injury effects by frame rest on test/physical-profile.test.js."
+        },
+        {
+          "at": "2026-11-28T18:00:00Z",
+          "status": "shipped",
+          "note": "Injuries by frame measured over ten seasons at aa2eaffc (reports/s133-frame-injury-probe.json, seed 2026, 19,762 player-seasons, 7,457 injuries among players with 200+ snaps, counted as they happen): Lean bodies, light for their position, are hurt 6.5% more often than the league per 1,000 snaps (12.9% more among RB/WR/TE); Power bodies 8.2% more among ball carriers and 16.6% more in the back seven; Thick bodies 5.5% less overall; Long ball carriers 15.4% less. League rate 1.20 per 1,000 snaps, 1.59 weeks per injury. This closes the games-missed gap in the first probe."
         }
       ]
     },
@@ -456,6 +466,11 @@
           "at": "2026-11-26T03:00:00Z",
           "status": "shipped",
           "note": "Footer from 13 links to 10; About becomes About & Press with the press boilerplate, kit and screenshots, contact routes and Discussions. Press and Contact stay as pages one click from About, because the smoke, launch-evidence and compliance gates verify the contact address on /contact.html."
+        },
+        {
+          "at": "2026-11-28T18:00:00Z",
+          "status": "shipped",
+          "note": "Press and Contact are now sections of About & Press (#press: fact sheet, boilerplate, screenshots link, release history, rights; #contact: bug reporting and the project email). /press.html and /contact.html 301 there; sitemap, llms.txt, agents.json, footer manifest, smoke, launch-evidence, compliance, claims and chrome tests repointed. The screenshot gallery stays one page (media.html) because the claims gallery has one home by test."
         }
       ]
     },
@@ -850,6 +865,11 @@
           "at": "2026-11-27T23:30:00Z",
           "status": "shipped",
           "note": "Independent fresh-context review of the third wave: 7 findings (card accent unreadable for 11 clubs; scenario copy narrower than the counting; Auto Backups hidden from recovery; saves panel hidden when setup fails; two glossary wordings; long names overflowing the card), all fixed with tests; round 2 passed."
+        },
+        {
+          "at": "2026-11-28T18:00:00Z",
+          "status": "shipped",
+          "note": "Launch-hold packet prepared: npm run report:visits (human page loads) and scripts/launch-evidence-report.mjs against production (reports/s133-launch-evidence.json): routes OK, origin evidence verified, one blocker left, on-domain email inbound delivery and reply-as-alias unverified. The lifecycle ladder allows FB to F3 and then F3 to S1 (the public launch, which needs the founder's own approval). Both remain founder-run."
         }
       ]
     }

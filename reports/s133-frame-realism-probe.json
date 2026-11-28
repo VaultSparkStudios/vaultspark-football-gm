@@ -3,7 +3,7 @@
   "sourceRevision": "aa2eaffc2778d00caabf595c2ec0439feb3b766c",
   "observedAt": "2026-11-28",
   "method": "createSession({ seed: 2026, startYear: 2026 }) through src/runtime/bootstrap.js, then simulateSeasons(1, { runOffseasonAfterLast: true }) ten times. Before each season the frame norms are rebuilt from the rostered league (buildFrameNorms) and every rostered player's archetype is taken with frameArchetype; that season's stats are then grouped by archetype. 'pooled' is sum(numerator)/sum(denominator); sd and p90 are over per-player-season rates; meanOvr is the group's mean overall at season end, shown so rating differences between groups stay visible. Groups under 15 player-seasons are omitted.",
-  "notMeasured": "Games missed by archetype: the probe's games-missed field came out empty (a probe defect, not an engine reading), so injury effects by frame rest on test/physical-profile.test.js and were not re-measured over this window.",
+  "notMeasured": "Games missed by archetype came out empty in this probe (a probe defect). Injuries by frame were measured separately over the same seed and window: reports/s133-frame-injury-probe.json.",
   "seasons": 10,
   "seed": 2026,
   "rows": 15275,
