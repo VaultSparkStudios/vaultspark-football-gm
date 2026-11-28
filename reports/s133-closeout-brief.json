@@ -45,6 +45,12 @@
       "projectImpact": 7,
       "ecosystemImpact": 3,
       "evidence": "A 1200x630 player-card PNG from the dossier; About, Press, Media and Contact merged with a 10-link footer; saves and backups hidden for new visitors and a Continue button naming club, year and week; a Census scenario board from eight new ID-free counters; public pages load a 45 KB stylesheet subset checked pixel by pixel against the full sheet. CI green (run 45731087407), production 10/10 at 14b50e4d (run 46066494829), API run 46061399009 with the pulse returning scenario counters, owner-approved visual review, doctor 0 failing."
+    },
+    {
+      "title": "A measurables glossary and the third-wave review fixes",
+      "projectImpact": "Players and agents can look up every body measurement and score the game uses, and the player card reads clearly for every club.",
+      "ecosystemImpact": "A glossary held to the engine by a test is a reusable pattern: public copy that cannot drift from the code it explains.",
+      "evidence": "aa2eaffc; CI 46088087941; API 46110633548; Pages 46116105991; production and staging 10/10; live CSP admits Turnstile; review 7 fixed, round 2 pass; doctor 0 failing."
     }
   ]
 }

@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S133 release at 14b50e4d: Frame Matters (bodies change games, injuries and aging, golden master s133-v9), RAS and body programmes, combine fixes, the default-on anonymous Gridiron Census (schema 4) with a per-scenario board, club game kit with helmets and 3D colour, a downloadable player card, a drive chart, franchise scenarios with archetype codes, steal-or-bust draft stories, a GM legacy across saves, About & Press, and a lighter football-first landing page. Launch hold remains founder-run.",
+  "currentFocus": "S133 release at aa2eaffc: Frame Matters (bodies change games, injuries and aging, golden master s133-v9), RAS and body programmes, combine fixes, the default-on anonymous Gridiron Census (schema 4) with a per-scenario board, club game kit with helmets and 3D colour, a downloadable player card, a drive chart, franchise scenarios with archetype codes, steal-or-bust draft stories, a GM legacy across saves, About & Press, a measurables glossary, and a lighter football-first landing page. Launch hold remains founder-run.",
   "nextMilestone": "Read the first Census totals and the landing-to-game ratio; aging curve, helmets and game kit, landing hero, page merges and the Draft Day room are carried.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
@@ -116,14 +116,14 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 510,
+  "silHealth": 511,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
     "score": 100,
-    "date": "2026-11-27",
+    "date": "2026-11-28",
     "passing": 12,
     "warning": 0,
     "checks": []
@@ -137,7 +137,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.233,
   "entropyLastComputed": "2026-11-13",
-  "lastSessionSummary": "S133 audited (16 items) and shipped all 16 across four verified releases: c7c7c44c, the independent-review fixes at 2cc74c1f, the second wave at a8b46bb3 (aging by frame, game kit and helmets, draft stories, GM legacy, scenario archetypes, landing field strip and screenshot cards) and the third at 14b50e4d (player-card image, About & Press, Census scenario board, saves hidden for new visitors, public stylesheet subset 45 of 178 KB). CI green, staging 14/14 and 10/10, production 10/10, API pulse live, performance verified, owner-approved visual review, authority reconciled, doctor 0 failing.",
+  "lastSessionSummary": "S133 audited (16 items) and shipped all 16 across five verified releases: c7c7c44c, the independent-review fixes at 2cc74c1f, the second wave at a8b46bb3 (aging by frame, game kit and helmets, draft stories, GM legacy, scenario archetypes, landing field strip and screenshot cards) and the third at 14b50e4d (player-card image, About & Press, Census scenario board, saves hidden for new visitors, public stylesheet subset 45 of 178 KB) and the final release at aa2eaffc (measurables glossary and the third-wave review fixes). CI green, staging 14/14 and 10/10, production 10/10, API pulse live, performance verified, owner-approved visual review, authority reconciled, doctor 0 failing.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -155,7 +155,7 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-11-26"
+      "lastChecked": "2026-11-28"
     }
   ],
   "lastSession": 133,
@@ -267,17 +267,17 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "15a239016aeee782cc09d2adb9de0f4ba294661ed20c421cd32b3a67ec16f623",
-    "sourceRevision": "14b50e4d6d927d8b01c782086e5998c089326599",
+    "receiptSha256": "438ed08738502cf70ee2367f3decf7774960760d892f44a00f448f3036811d06",
+    "sourceRevision": "aa2eaffc2778d00caabf595c2ec0439feb3b766c",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "d57622949e00a1b9022c3eb20ca3b7e4c280d4f293687978efaff83ce3cddc71",
+      "digest": "25411d8f66e684f369725e9637111e59fb7eb6a9c8879e54c25fb94c96aacc3a",
       "files": 465,
       "entries": [
         {
           "path": ".well-known/llms.txt",
-          "bytes": 4286,
-          "sha256": "1de89d8aa44c6a8a115eba9f1df76e4565d699ac3d1971263ca963e23c8e1c16"
+          "bytes": 4449,
+          "sha256": "cb01f1ad6b48d7e7692534cdbffd7ca5cc87efdd77c281aadff0d40f4bd0653a"
         },
         {
           "path": ".well-known/security.txt",
@@ -306,8 +306,8 @@
         },
         {
           "path": "agents.json",
-          "bytes": 4339,
-          "sha256": "972e4396456f7260c831c27d279d8b1b8426245c1cfda9286ff74d6e8e31f83a"
+          "bytes": 5101,
+          "sha256": "092a7c960e15f58b41dd806b5a51e87584904549905ea2e37faf80ebea34a5a2"
         },
         {
           "path": "app.js",
@@ -321,8 +321,8 @@
         },
         {
           "path": "changelog.xml",
-          "bytes": 41893,
-          "sha256": "6ccb60462f531ec796beab0f492dcc6aacac153a1caa5a61d4fe5ff7d02d6057"
+          "bytes": 42813,
+          "sha256": "5611e8a34d0d94c7fb5dd45b0cded1a827f60639262c3e32f93f1be2db5550e6"
         },
         {
           "path": "community-stats.bb8e6dd346.js",
@@ -401,8 +401,8 @@
         },
         {
           "path": "guides.html",
-          "bytes": 23622,
-          "sha256": "eb787c7c55584d9c8d1d6c2e640b8b5c20d42893f8147d1e0bd50e405ee4c7fe"
+          "bytes": 25644,
+          "sha256": "c252acbe73df345f0b8f95c27bfe145b9e090b073b19c6b2ce86ab6c2687bb7d"
         },
         {
           "path": "images/apple-touch-icon.png",
@@ -666,8 +666,8 @@
         },
         {
           "path": "index.html",
-          "bytes": 280401,
-          "sha256": "506c94ab4c0539633bfcf421ec00e9db41241d0a2a18eeea2e3a3cd60f7a2ba2"
+          "bytes": 280374,
+          "sha256": "15407512ff24f28fe90add82c56ee97fd50381094bf8ad4395c3f82d33402aab"
         },
         {
           "path": "lib/achievements.js",
@@ -1246,8 +1246,8 @@
         },
         {
           "path": "lib/playerShareCard.js",
-          "bytes": 3538,
-          "sha256": "f86e47afc72ae2419d168aed9f0ac31364a979a1a53e022712a458b5fac25c62"
+          "bytes": 4255,
+          "sha256": "6126833cdc6f37e7b53b46faa3d682fd5077c427387fe238562b5f69dbec2e3f"
         },
         {
           "path": "lib/playerSideAppearance.js",
@@ -1541,8 +1541,8 @@
         },
         {
           "path": "llms.txt",
-          "bytes": 4286,
-          "sha256": "1de89d8aa44c6a8a115eba9f1df76e4565d699ac3d1971263ca963e23c8e1c16"
+          "bytes": 4449,
+          "sha256": "cb01f1ad6b48d7e7692534cdbffd7ca5cc87efdd77c281aadff0d40f4bd0653a"
         },
         {
           "path": "manifest.webmanifest",
@@ -1627,7 +1627,7 @@
         {
           "path": "precache-manifest.json",
           "bytes": 29588,
-          "sha256": "ce6cb3553067a2202e68e42d99de7a4ec9ba1b3f13f1ec356ce02b62d260d160"
+          "sha256": "1d1843762fc5e5b01289e792108d66e02769368b731cb05802d1dacd9d3a3615"
         },
         {
           "path": "press.html",
@@ -1636,8 +1636,8 @@
         },
         {
           "path": "privacy.html",
-          "bytes": 14595,
-          "sha256": "dcd04519fe818daa0f4556adc7f037e6f5f1c768ff92a9c42a7bcef828da9b34"
+          "bytes": 14705,
+          "sha256": "e61e21e949f0c8aa314575c3aad2a2dc4e12b993ab025432350ea0d51ea00977"
         },
         {
           "path": "public-identity.json",
@@ -1701,8 +1701,8 @@
         },
         {
           "path": "setup.js",
-          "bytes": 21848,
-          "sha256": "74b17f79a5caf38b196b3ac672ca129183640c29191d8cd3d329628eae4fa490"
+          "bytes": 21925,
+          "sha256": "dfcbb155cd9075dc2b524ae70105364dc349f0ba85ebd83f2df4928ba89d0915"
         },
         {
           "path": "showcase-league.json",
@@ -1727,7 +1727,7 @@
         {
           "path": "sitemap.xml",
           "bytes": 1837,
-          "sha256": "655be6e08e5101fb638fc3397127fe1cdc09add185ac141af817b41d343570c4"
+          "sha256": "7771206d2906933fa6d3ee906d9cfff75ff8b8502fa4d0c339f4bf67b60c9e85"
         },
         {
           "path": "src/adapters/persistence/browserSaveStore.js",
@@ -2561,18 +2561,18 @@
         },
         {
           "path": "stats.html",
-          "bytes": 12284,
-          "sha256": "4b0f115658016ebef0d2ce63e338bad00368770ce30b44c401ef40b09f534d0b"
+          "bytes": 12444,
+          "sha256": "0df6509452d0cef365825d741800d468812ea87ecbaa98de46f723ba6c12e3df"
         },
         {
           "path": "status-archive.html",
-          "bytes": 40914,
-          "sha256": "25b656372b71aa3186dc2317a25b5f7cd3ba76967d1b419acab0469c2c1c22e2"
+          "bytes": 41595,
+          "sha256": "6ee2a695ef1f7feb664b3d98e8f076f5b9928fb864ce34dbe6edfc2d5f6fdcf3"
         },
         {
           "path": "status.html",
-          "bytes": 16430,
-          "sha256": "6134caf73edb99ef56eb2d7f62c37a8233c04d8166351cbc858fb6a3bf5ade00"
+          "bytes": 15801,
+          "sha256": "1b458c0d99e4256495bef4e4261bf9d8c15466683f4d0855226852fb6cdc2de5"
         },
         {
           "path": "styles.css",
@@ -2592,7 +2592,7 @@
         {
           "path": "sw.js",
           "bytes": 14417,
-          "sha256": "ad07c97fde30e7d1000e0427a26e55e769eeb6d0114ff344d2c3685c5732f034"
+          "sha256": "4bf2b959cf40d40e9631b791278378b987aa50e29cc311b39df770db0a96702a"
         },
         {
           "path": "terms.html",
@@ -2606,21 +2606,21 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "3f70e370-99ab-4ef6-9f62-8670a59cc920",
+    "deploymentId": "f7836dd7-4ecc-42fc-91d6-459fba0943c2",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-11-26T00:46:32.910Z"
+      "checkedAt": "2026-11-28T00:29:42.551Z"
     },
     "rollback": {
-      "previousDeploymentId": "31d50055-3a56-4c87-88a9-2cff48ad3ec1",
+      "previousDeploymentId": "3f70e370-99ab-4ef6-9f62-8670a59cc920",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-11-26T00:46:32.910Z"
+    "observedAt": "2026-11-28T00:29:42.551Z"
   },
   "lastCloseoutAt": "2026-10-27T01:27:00.881Z",
   "performanceAuthority": {
@@ -2656,31 +2656,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-11-27T22:21:34.448Z",
+    "observedAt": "2026-11-28T07:59:02.769Z",
     "status": "verified",
-    "sourceRevision": "14b50e4d6d927d8b01c782086e5998c089326599",
-    "publicationRevision": "14b50e4d6d927d8b01c782086e5998c089326599",
+    "sourceRevision": "aa2eaffc2778d00caabf595c2ec0439feb3b766c",
+    "publicationRevision": "aa2eaffc2778d00caabf595c2ec0439feb3b766c",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "d57622949e00a1b9022c3eb20ca3b7e4c280d4f293687978efaff83ce3cddc71"
+      "digest": "25411d8f66e684f369725e9637111e59fb7eb6a9c8879e54c25fb94c96aacc3a"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "14b50e4d6d927d8b01c782086e5998c089326599",
-        "artifactDigest": "d57622949e00a1b9022c3eb20ca3b7e4c280d4f293687978efaff83ce3cddc71"
+        "sourceRevision": "aa2eaffc2778d00caabf595c2ec0439feb3b766c",
+        "artifactDigest": "25411d8f66e684f369725e9637111e59fb7eb6a9c8879e54c25fb94c96aacc3a"
       },
       "production": {
-        "sourceRevision": "14b50e4d6d927d8b01c782086e5998c089326599",
-        "artifactDigest": "d57622949e00a1b9022c3eb20ca3b7e4c280d4f293687978efaff83ce3cddc71"
+        "sourceRevision": "aa2eaffc2778d00caabf595c2ec0439feb3b766c",
+        "artifactDigest": "25411d8f66e684f369725e9637111e59fb7eb6a9c8879e54c25fb94c96aacc3a"
       },
       "visual": {
-        "sourceRevision": "14b50e4d6d927d8b01c782086e5998c089326599",
-        "artifactDigest": "d57622949e00a1b9022c3eb20ca3b7e4c280d4f293687978efaff83ce3cddc71"
+        "sourceRevision": "aa2eaffc2778d00caabf595c2ec0439feb3b766c",
+        "artifactDigest": "25411d8f66e684f369725e9637111e59fb7eb6a9c8879e54c25fb94c96aacc3a"
       },
       "performance": {
-        "sourceRevision": "14b50e4d6d927d8b01c782086e5998c089326599",
-        "artifactDigest": "d57622949e00a1b9022c3eb20ca3b7e4c280d4f293687978efaff83ce3cddc71"
+        "sourceRevision": "aa2eaffc2778d00caabf595c2ec0439feb3b766c",
+        "artifactDigest": "25411d8f66e684f369725e9637111e59fb7eb6a9c8879e54c25fb94c96aacc3a"
       }
     },
     "checks": [
@@ -2726,12 +2726,12 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "43a77379360fc2ad039bdaa76e3b2d3b7e7bfdda7a4777c98f4a3c98e113043b",
-      "productionSha256": "4a92ce23afd7cb2d73ef3dc0a6cea10d29b900eb1c2d8c939a53775cd538c4f1",
-      "visualSha256": "1e457a5f76a189e87714e0fdbfea5f2bd4ae3b5f5208b93781ff6c5818e8a288",
-      "performanceSha256": "0243c7caeb6f9e20431321a631a4a9165faa40fdde571a74c8d06060ac8ddd74"
+      "stagingSha256": "b1b5bc32d8c4d192cb5c3a3ccbb6e2126ac586358b9ff02396d29350c2daed1b",
+      "productionSha256": "eda875c8aa4bea98eafa45d9dd4e2396b2727ea0e198be8f70f8a5b5bc82253b",
+      "visualSha256": "c72d67ced39fb678b62fe4295a51f530fc9767737f94dec5b7683a7e640bf629",
+      "performanceSha256": "09563cd2ff3f61032f11bd1cfd560bb12bf3dcb6dc2100fa35e2376291eea87e"
     },
-    "receiptSha256": "8911cfba712426900ec83d13f7fac117274c4a819ed25d0d37b57f48505d7e21"
+    "receiptSha256": "8ddb4a9f6cb01ee51d764f47754b59ebc8780fda071bfe1db793eb8b36616d05"
   },
   "launchReady": false,
   "sil": {
@@ -2763,9 +2763,9 @@
   "sessionState": {
     "version": 1,
     "durableSession": 133,
-    "currentFocus": "S133 release at 14b50e4d: Frame Matters (bodies change games, injuries and aging, golden master s133-v9), RAS and body programmes, combine fixes, the default-on anonymous Gridiron Census (schema 4) with a per-scenario board, club game kit with helmets and 3D colour, a downloadable player card, a drive chart, franchise scenarios with archetype codes, steal-or-bust draft stories, a GM legacy across saves, About & Press, and a lighter football-first landing page. Launch hold remains founder-run.",
+    "currentFocus": "S133 release at aa2eaffc: Frame Matters (bodies change games, injuries and aging, golden master s133-v9), RAS and body programmes, combine fixes, the default-on anonymous Gridiron Census (schema 4) with a per-scenario board, club game kit with helmets and 3D colour, a downloadable player card, a drive chart, franchise scenarios with archetype codes, steal-or-bust draft stories, a GM legacy across saves, About & Press, a measurables glossary, and a lighter football-first landing page. Launch hold remains founder-run.",
     "nextMilestone": "Read the first Census totals and the landing-to-game ratio; aging curve, helmets and game kit, landing hero, page merges and the Draft Day room are carried.",
-    "lastSessionSummary": "S133 audited (16 items) and shipped all 16 across four verified releases: c7c7c44c, the independent-review fixes at 2cc74c1f, the second wave at a8b46bb3 (aging by frame, game kit and helmets, draft stories, GM legacy, scenario archetypes, landing field strip and screenshot cards) and the third at 14b50e4d (player-card image, About & Press, Census scenario board, saves hidden for new visitors, public stylesheet subset 45 of 178 KB). CI green, staging 14/14 and 10/10, production 10/10, API pulse live, performance verified, owner-approved visual review, authority reconciled, doctor 0 failing."
+    "lastSessionSummary": "S133 audited (16 items) and shipped all 16 across five verified releases: c7c7c44c, the independent-review fixes at 2cc74c1f, the second wave at a8b46bb3 (aging by frame, game kit and helmets, draft stories, GM legacy, scenario archetypes, landing field strip and screenshot cards) and the third at 14b50e4d (player-card image, About & Press, Census scenario board, saves hidden for new visitors, public stylesheet subset 45 of 178 KB) and the final release at aa2eaffc (measurables glossary and the third-wave review fixes). CI green, staging 14/14 and 10/10, production 10/10, API pulse live, performance verified, owner-approved visual review, authority reconciled, doctor 0 failing."
   },
   "partialCloseout": {
     "session": 117,
